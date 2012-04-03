@@ -1,0 +1,209 @@
+body {
+    background-color: #000;
+    font-family: arial, sans-serif;
+}
+
+a {
+
+}
+
+/* Intro Page */
+#tapeplay {
+    width: 960px;
+}
+
+#tapeplay #main {
+    overflow: hidden;
+    padding: 50px;
+    width: 960px;
+}
+
+#tapeplay #main #logo {
+    margin-bottom: 50px;
+    overflow: hidden;
+}
+
+#tapeplay #main #logo h1 {
+    background-image: url('http://localhost:3500/media/images/tapePlay_logoHome.jpg');
+    float: left;
+    height: 159px;
+    margin-right: 10px;
+    text-indent: -9999px;
+    width: 289px;
+}
+
+#tapeplay #main #logo h3 {
+    color: #fff;
+    float: left;
+    font-size: 30px;
+    font-weight: bold;
+    margin-top: 55px;
+    text-align: center;
+    width: 500px;
+}
+
+#tapeplay #main #logo p {
+    color: #666;
+    float: left;
+    font-size: 24px;
+    text-align: center;
+    width: 500px;
+}
+
+#tapeplay #main #sportSelect {
+
+}
+
+#tapeplay #main #sportSelect #pickSport {
+    background-image: url('http://localhost:3500/media/images/tapePlay_pickSportText.jpg');
+    height: 22px;
+    text-indent: -9999px;
+    width: 178px;
+}
+
+#tapeplay #main #sportSelect #dropper {
+    float: left;
+    position: relative;
+    width: 550px;
+}
+
+#tapeplay #main #sportSelect #dropper #values {
+    float: left;
+    margin-right: 1px;
+    overflow: hidden;
+    position: relative;
+    width: 450px;
+}
+
+#tapeplay #main #sportSelect #dropper #values #value {
+    background-color: #fff;
+    float: left;
+    font-size: 40px;
+    font-weight: bold;
+    height: 50px;
+    padding: 25px;
+    width: 410px;
+}
+
+#tapeplay #main #sportSelect #dropper #values #potentials {
+    display: none;
+    float: left;
+    height: 300px;
+    overflow: auto;
+    position: relative;
+    width: 450px;
+    z-index: 1000;
+}
+
+#tapeplay #main #sportSelect #dropper #values #potentials li {
+    background-color: #fff;
+    cursor: pointer;
+    float: left;
+    font-size: 40px;
+    font-weight: bold;
+    height: 50px;
+    padding: 25px;
+    width: 410px;
+}
+
+#tapeplay #main #sportSelect #dropper #arrow {
+    background-image: url('http://localhost:3500/media/images/tapePlay_dropDownButton.jpg');
+    cursor: pointer;
+    float: left;
+    height: 100px;
+    margin-right: 15px;
+    width: 75px;
+}
+
+#tapeplay #main #sportSelect #dropper #links {
+    color: #fff;
+    float: right;
+    margin-top: 15px;
+    position: absolute;
+    right: 17px;
+    top: 100px;
+    z-index: 1;
+}
+
+#tapeplay #main #sportSelect #dropper #links a {
+    color: #fff;
+    margin-left: 7px;
+    margin-right: 7px;
+    text-decoration: none;
+}
+
+#tapeplay #main #sportSelect #continue {
+    background-image: url('http://localhost:3500/media/images/tapePlay_continueButton.jpg');
+    float: left;
+    height: 100px;
+    text-indent: -9999px;
+    width: 229px;
+}
+
+/* Header */
+#header {
+
+}
+
+/* Footer */
+#tapeplay #footer {
+    background-image: url('http://localhost:3500/media/images/tapePlay_footerBackground.gif');
+    background-repeat: repeat-x;
+    bottom: 0px;
+    color: #fff;
+    overflow: hidden;
+    padding: 15px;
+    position: absolute;
+    width: 100%;
+    z-index: 1000;
+}
+
+#tapeplay #footer .col {
+    background-image: url('http://localhost:3500/media/images/tapePlay_footerDivider.gif');
+    background-position: right;
+    background-repeat: no-repeat;
+    float: left;
+    margin-bottom: 50px;
+    margin-right: 50px;
+    width: 200px;
+}
+
+#tapeplay #footer .col.last {
+    background: none;
+}
+
+#tapeplay #footer .col .footerList {
+
+}
+
+#tapeplay #footer .col .footerList li {
+    margin-bottom: 7px;
+}
+
+#tapeplay #footer .col .footerList li.header {
+    color: #999;
+    font-size: 17px;
+    font-weight: bold;
+}
+
+#tapeplay #footer .col .footerList li a {
+    color: #fff;
+    font-size: 13px;
+    text-decoration: none;
+}
+
+#tapeplay #footer .bottom {
+    text-align: center;
+    width: 960px;
+}
+
+#tapeplay #footer .bottom p {
+    font-size: 11px;
+    margin-bottom: 7px;
+}
+
+#tapeplay #footer .bottom p a {
+    color: #fff;
+    font-size: 13px;
+    text-decoration: none;
+}
