@@ -9,157 +9,171 @@ a {
 
 /* Intro Page */
 #tapeplay {
-    width: 960px;
+    font-family: arial, sans-serif;
+    width: 100%;
 }
 
-#tapeplay #main {
-    overflow: hidden;
-    padding: 50px;
-    width: 960px;
+#tapeplay #header {
+    background-image: url('/media/images/header-bg.gif');
+    background-repeat: repeat-x;
+    height: 75px;
+    padding: 7px 15px;
+    width: 100%;
 }
 
-#tapeplay #main #logo {
-    margin-bottom: 50px;
-    overflow: hidden;
+#tapeplay #header #holder {
+    width: 980px;
 }
 
-#tapeplay #main #logo h1 {
-    background-image: url('http://localhost:3500/media/images/tapePlay_logoHome.jpg');
+#tapeplay #header #left {
+    width: 50%;
+}
+
+#tapeplay #header #left h1 {
+    background-image: url('/media/images/logo.jpg');
     float: left;
-    height: 159px;
-    margin-right: 10px;
-    text-indent: -9999px;
-    width: 289px;
-}
-
-#tapeplay #main #logo h3 {
-    color: #fff;
-    float: left;
-    font-size: 30px;
-    font-weight: bold;
-    margin-top: 55px;
-    text-align: center;
-    width: 500px;
-}
-
-#tapeplay #main #logo p {
-    color: #666;
-    float: left;
-    font-size: 24px;
-    text-align: center;
-    width: 500px;
-}
-
-#tapeplay #main #sportSelect {
-
-}
-
-#tapeplay #main #sportSelect #pickSport {
-    background-image: url('http://localhost:3500/media/images/tapePlay_pickSportText.jpg');
-    height: 22px;
-    text-indent: -9999px;
-    width: 178px;
-}
-
-#tapeplay #main #sportSelect #dropper {
-    float: left;
-    position: relative;
-    width: 550px;
-}
-
-#tapeplay #main #sportSelect #dropper #values {
-    float: left;
-    margin-right: 1px;
-    overflow: hidden;
-    position: relative;
-    width: 450px;
-}
-
-#tapeplay #main #sportSelect #dropper #values #value {
-    background-color: #fff;
-    float: left;
-    font-size: 40px;
-    font-weight: bold;
-    height: 50px;
-    padding: 25px;
-    width: 410px;
-}
-
-#tapeplay #main #sportSelect #dropper #values #potentials {
-    display: none;
-    float: left;
-    height: 300px;
-    overflow: auto;
-    position: relative;
-    width: 450px;
-    z-index: 1000;
-}
-
-#tapeplay #main #sportSelect #dropper #values #potentials li {
-    background-color: #fff;
-    cursor: pointer;
-    float: left;
-    font-size: 40px;
-    font-weight: bold;
-    height: 50px;
-    padding: 25px;
-    width: 410px;
-}
-
-#tapeplay #main #sportSelect #dropper #arrow {
-    background-image: url('http://localhost:3500/media/images/tapePlay_dropDownButton.jpg');
-    cursor: pointer;
-    float: left;
-    height: 100px;
-    margin-right: 15px;
-    width: 75px;
-}
-
-#tapeplay #main #sportSelect #dropper #links {
-    color: #fff;
-    float: right;
-    margin-top: 15px;
-    position: absolute;
-    right: 17px;
-    top: 100px;
-    z-index: 1;
-}
-
-#tapeplay #main #sportSelect #dropper #links a {
-    color: #fff;
-    margin-left: 7px;
+    height: 67px;
     margin-right: 7px;
+    text-indent: -9999px;
+    width: 126px;
+}
+
+#tapeplay #header #left #sportSelect {
+    color: white;
+    float: left;
+    margin-top: 5px;
+}
+
+#tapeplay #header #left #sportSelect #dropper {}
+
+#tapeplay #header #left #sportSelect #dropper #values {
+    float: left;
+    margin-right: 5px;
+}
+
+#tapeplay #header #left #sportSelect #dropper #values #potentials {
+    display: none;
+}
+
+#tapeplay #header #left #sportSelect #dropper #arrow {
+    background-image: url('/media/images/arrows/global-top-arrow.png');
+    cursor: pointer;
+    float: left;
+    height: 8px;
+    margin-top: 7px;
+    width: 15px;
+}
+
+#tapeplay #header #left #sportSelect #beta {
+    background-image: url('/media/images/beta-sub.gif');
+    background-repeat: no-repeat;
+    float: left;
+    height: 14px;
+    margin-bottom: 4px;
+    width: 100px;
+}
+
+#tapeplay #header #right {
+    float: right;
+    width: 30%;
+}
+
+#tapeplay #header #right #links {
+    margin-top: 20px;
+}
+
+#tapeplay #header #right #links li {
+    display: inline;
+    margin-right: 25px;
+}
+
+#tapeplay #header #right #links li a {
+    color: #fff;
+    font-size: 12px;
     text-decoration: none;
 }
 
-#tapeplay #main #sportSelect #continue {
-    background-image: url('http://localhost:3500/media/images/tapePlay_continueButton.jpg');
-    float: left;
-    height: 100px;
-    text-indent: -9999px;
-    width: 229px;
+#tapeplay #header #right #links li a .fbSmall {
+    background-image: url('/media/images/facebook-icon.png');
+    background-repeat: no-repeat;
+    height: 15px;
+    width: 15px;
 }
 
-/* Header */
-#header {
+/* Main */
+#tapeplay #main {
+    background-color: #fff;
+    margin: 0px;
+    padding: 20px 10px;
+    width: 972px;
+}
 
+#tapeplay #main #centerAd {
+    background-color: #000;
+    height: 270px;
+    margin-bottom: 40px;
+    width: 970px;
+}
+
+#tapeplay #main h1 {
+    font-size: 55px;
+    font-weight: bold;
+    margin-bottom: 7px;
+    text-align: center;
+}
+
+#tapeplay #main h3 {
+    color: #555;
+    font-size: 25px;
+    margin-bottom: 60px;
+    text-align: center;
+}
+
+#tapeplay #main #searchForm {
+    overflow: hidden;
+    width: 100%;
+}
+
+#tapeplay #main #searchForm .inputField {
+    float: left;
+    width: 79%;
+}
+
+#tapeplay #main #searchForm .inputField .middle {
+    float: left;
+    width: 96%;
+}
+
+#tapeplay #main #searchForm .blackButton {
+    float: left;
+    width: 20%;
+}
+
+#tapeplay #main #searchForm .blackButton .middle .largeBlack {
+    float: left;
+    height: 80px;
+    width: 100%;
+}
+
+#tapeplay #main #searchForm #advance {
+    float: left;
+    width: 79%;
 }
 
 /* Footer */
 #tapeplay #footer {
-    background-image: url('http://localhost:3500/media/images/tapePlay_footerBackground.gif');
+    background-image: url('/media/images/tapePlay_footerBackground.gif');
     background-repeat: repeat-x;
     bottom: 0px;
     color: #fff;
     overflow: hidden;
     padding: 15px;
-    position: absolute;
     width: 100%;
     z-index: 1000;
 }
 
 #tapeplay #footer .col {
-    background-image: url('http://localhost:3500/media/images/tapePlay_footerDivider.gif');
+    background-image: url('/media/images/tapePlay_footerDivider.gif');
     background-position: right;
     background-repeat: no-repeat;
     float: left;
@@ -194,7 +208,7 @@ a {
 
 #tapeplay #footer .bottom {
     text-align: center;
-    width: 960px;
+    width: 980px;
 }
 
 #tapeplay #footer .bottom p {
@@ -206,4 +220,101 @@ a {
     color: #fff;
     font-size: 13px;
     text-decoration: none;
+}
+
+/* COMMON ELEMENTS */
+.inputField {
+    float: left;
+    overflow: hidden;
+}
+
+.inputField .right {
+    background-image: url('/media/images/form/input-box-right.gif');
+    float: left;
+    height: 80px;
+    width: 15px;
+}
+
+.inputField .middle {
+    background-image: url('/media/images/form/input-box-mid.gif');
+    background-repeat: repeat-x;
+    float: left;
+    height: 80px;
+}
+
+.inputField .middle .standard {
+    background-color: #fdfdfd;
+    border: none;
+    color: #888;
+    font-family: arial, sans-serif;
+    font-size: 40px;
+    height: 60px;
+    margin-top: 10px;
+    padding: 0px 10px;
+    width: 100%;
+}
+
+.inputField .left {
+    background-image: url('/media/images/form/input-box-left.gif');
+    background-repeat: no-repeat;
+    float: left;
+    height: 80px;
+    width: 15px;
+}
+
+.blackButton {
+    float: left;
+    overflow: hidden;
+    position: relative;
+}
+
+.blackButton .topLeft {
+    background-image: url('/media/images/buttons/large/white/btn_lg-top-lt-corner-white.png');
+    height: 3px;
+    left: 0px;
+    position: absolute;
+    top: 0px;
+    width: 4px;
+    z-index: 100;
+}
+
+.blackButton .topRight {
+    background-image: url('/media/images/buttons/large/white/btn_lg-top-rt-corner-white.png');
+    height: 3px;
+    right: 0px;
+    position: absolute;
+    top: 0px;
+    width: 4px;
+    z-index: 100;
+}
+
+.blackButton .bottomLeft {
+    background-image: url('/media/images/buttons/large/white/btn_lg-btm-lt-corner-white.png');
+    bottom: 0px;
+    height: 3px;
+    left: 0px;
+    position: absolute;
+    width: 4px;
+    z-index: 100;
+}
+
+.blackButton .bottomRight {
+    background-image: url('/media/images/buttons/large/white/btn_lg-btm-rt-corner-white.png');
+    bottom: 0px;
+    height: 3px;
+    position: absolute;
+    right: 0px;
+    width: 4px;
+    z-index: 100;
+}
+
+.blackButton .middle .largeBlack {
+    background-color: #000;
+    border: none;
+    color: #fff;
+    font-family: arial;
+    font-size: 30px;
+    font-weight: normal;
+    position: relative;
+    z-index: 1;
 }
