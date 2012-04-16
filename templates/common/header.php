@@ -5,8 +5,10 @@
 
         <link rel="stylesheet" href="css/reset.css" type="text/css" />
         <link rel="stylesheet" href="css/tapeplay.css" type="text/css" />
+        <link rel="stylesheet" href="css/jquery.css" type="text/css" />
 
         <script type="text/javascript" src="http://localhost:3500/js/jquery.js"></script>
+        <script type="text/javascript" src="http://localhost:3500/js/jquery-ui.js"></script>
         <script type="text/javascript" src="http://localhost:3500/js/tapeplay.js"></script>
     </head>
     <body id="tapeplay">

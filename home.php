@@ -3,7 +3,7 @@
 ?>
 
 <?php
-    include_once('templates/home.php');
+    include_once('templates/'.$_GET['page'].'.php');
 ?>
 
 <?php

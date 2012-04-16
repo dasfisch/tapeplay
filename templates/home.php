@@ -30,85 +30,93 @@
                 <p class="italic">Add more search criteria</p>
                 <div id="options">
                     <div class="option">
+                        <p class="header">Level</p>
                         <div class="checkbox">
                             <div class="box">
-                                <div class="arrow"></div>
+                                <div class="checkMark"></div>
                             </div>
-                            <div class="levelName">High School</div>
+                            <div class="label">High School</div>
                         </div>
                         <div class="checkbox">
                             <div class="box">
-                                <div class="arrow"></div>
+                                <div class="checkMark"></div>
                             </div>
-                            <div class="levelName">College</div>
+                            <div class="label">College</div>
                         </div>
                         <div class="checkbox">
                             <div class="box">
-                                <div class="arrow"></div>
+                                <div class="checkMark"></div>
                             </div>
-                            <div class="levelName">Professional</div>
+                            <div class="label">Professional</div>
                         </div>
                     </div>
                     <div class="option">
-                        <div id="sportSelect">
-                            <div id="pickSport">Pick Sport:</div>
-                            <div id="dropper">
-                                <div id="values">
-                                    <p id="value">Women's Basketball</p>
-                                    <ul id="potentials">
-                                        <li>Women's Baseketball</li>
-                                        <li>Men's Baseketball</li>
-                                    </ul>
+                        <p class="header">Grade</p>
+                        <div class="sportSelect">
+                            <div class="dropper">
+                                <div class="leftSmall"></div>
+                                <div class="middleSmall">
+                                    <p class="value">Select</p>
                                 </div>
-                                <div id="arrow"></div>
+                                <div class="rightSmall"></div>
+                                <ul class="potentials">
+                                    <?php for($i = 6; $i < 20; $i++): ?>
+                                        <li><?php echo $i; ?></li>
+                                    <?php endfor; ?>
+                                </ul>
                             </div>
+                            <div class="arrowSmall"></div>
                         </div>
                     </div>
                     <div class="option">
+                        <p class="header">Position</p>
                         <div class="checkbox">
                             <div class="box">
-                                <div class="arrow"></div>
+                                <div class="checkMark"></div>
                             </div>
-                            <div class="position">Point Guard</div>
+                            <div class="label">Point Guard</div>
                         </div>
                         <div class="checkbox">
                             <div class="box">
-                                <div class="arrow"></div>
+                                <div class="checkMark"></div>
                             </div>
-                            <div class="position">Shooting Guard</div>
+                            <div class="label">Shooting Guard</div>
                         </div>
                         <div class="checkbox">
                             <div class="box">
-                                <div class="arrow"></div>
+                                <div class="checkMark"></div>
                             </div>
-                            <div class="position">Small Forward</div>
+                            <div class="label">Small Forward</div>
                         </div>
                         <div class="checkbox">
                             <div class="box">
-                                <div class="arrow"></div>
+                                <div class="checkMark"></div>
                             </div>
-                            <div class="position">Power Forward</div>
+                            <div class="label">Power Forward</div>
                         </div>
                         <div class="checkbox">
                             <div class="box">
-                                <div class="arrow"></div>
+                                <div class="checkMark"></div>
                             </div>
-                            <div class="position">Center</div>
+                            <div class="label">Center</div>
                         </div>
                     </div>
                     <div class="option">
-                        <div id="sportSelect">
-                            <div id="pickSport">Pick Sport:</div>
-                            <div id="dropper">
-                                <div id="values">
-                                    <p id="value">Women's Basketball</p>
-                                    <ul id="potentials">
-                                        <li>Women's Baseketball</li>
-                                        <li>Men's Baseketball</li>
-                                    </ul>
+                        <p class="header">Height</p>
+                        <div class="sportSelect">
+                            <div class="dropper">
+                                <div class="leftSmall"></div>
+                                <div class="middleSmall">
+                                    <p class="value">Select</p>
                                 </div>
-                                <div id="arrow"></div>
+                                <div class="rightSmall"></div>
+                                <ul class="potentials">
+                                    <?php for($i = 48; $i < 96; $i++): ?>
+                                        <li><?php echo $i; ?>"</li>
+                                    <?php endfor; ?>
+                                </ul>
                             </div>
+                            <div class="arrowSmall"></div>
                         </div>
                     </div>
                 </div>
