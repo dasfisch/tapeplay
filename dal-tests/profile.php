@@ -1,13 +1,13 @@
 <?php
 
-require_once ("bll/UserBLL.php");
-require_once ("enum/AccountType.php");
+require_once ("bll/ProfileBLL.php");
+require_once ("enum/AccountTypeEnum.php");
 
-use tapeplay\server\bll\UserBLL;
+use tapeplay\server\bll\ProfileBLL;
 use tapeplay\server\model\User;
 use tapeplay\server\model\UserSummary;
 
-$bll = new UserBLL();
+$bll = new ProfileBLL();
 
 $user = new User();
 
@@ -24,8 +24,8 @@ $user->setBirthDate(1225886400);
 $user->setOrganization("Chicago Bulls");
 $user->setTitle("Basketball Superstar");
 $user->setLastLogin(1225886400);
-$user->setAccountType(AccountType::$PLAYER);
+$user->setAccountType(AccountTypeEnum::$PLAYER);
 
-$id = $bll->insert($user);
+$id = $bll->createUser($user);
 
 echo "User was inserted.  ID is " . $id;

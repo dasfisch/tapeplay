@@ -2,31 +2,29 @@
 
 namespace tapeplay\server\model;
 
+require_once("model/School.php");
+require_once("model/User.php");
+require_once("model/Stat.php");
+require_once("model/Sport.php");
+
+use tapeplay\server\model\School;
+use tapeplay\server\model\Sport;
+use tapeplay\server\model\Stat;
+use tapeplay\server\model\User;
+
 class Player
 {
 	private $_id;
 	private $_number;
 	private $_guardianSignup;
-	private $_schoolName;
 	private $_position;
-	private $_account;
 	private $_gradeLevel;
 	private $_height;
 	private $_videoAccess;
-	private $_playingLevel;
 	private $_sport;
 	private $_stats; // array<Stat>
-
-
-	public function setAccount($account)
-	{
-		$this->_account = $account;
-	}
-
-	public function getAccount()
-	{
-		return $this->_account;
-	}
+	private $_user;
+	private $_school;
 
 	public function setGradeLevel($gradeLevel)
 	{
@@ -78,46 +76,6 @@ class Player
 		return $this->_number;
 	}
 
-	public function setPlayingLevel($playingLevel)
-	{
-		$this->_playingLevel = $playingLevel;
-	}
-
-	public function getPlayingLevel()
-	{
-		return $this->_playingLevel;
-	}
-
-	public function setSchoolName($schoolName)
-	{
-		$this->_schoolName = $schoolName;
-	}
-
-	public function getSchoolName()
-	{
-		return $this->_schoolName;
-	}
-
-	public function setSport($sport)
-	{
-		$this->_sport = $sport;
-	}
-
-	public function getSport()
-	{
-		return $this->_sport;
-	}
-
-	public function setVideoAccess($videoAccess)
-	{
-		$this->_videoAccess = $videoAccess;
-	}
-
-	public function getVideoAccess()
-	{
-		return $this->_videoAccess;
-	}
-
 	public function setPosition($position)
 	{
 		$this->_position = $position;
@@ -128,7 +86,27 @@ class Player
 		return $this->_position;
 	}
 
-	public function setStats($stats)
+	public function setSchool(School $school)
+	{
+		$this->_school = $school;
+	}
+
+	public function getSchool()
+	{
+		return $this->_school;
+	}
+
+	public function setSport(Sport $sport)
+	{
+		$this->_sport = $sport;
+	}
+
+	public function getSport()
+	{
+		return $this->_sport;
+	}
+
+	public function setStats(array $stats)
 	{
 		$this->_stats = $stats;
 	}
@@ -136,5 +114,25 @@ class Player
 	public function getStats()
 	{
 		return $this->_stats;
+	}
+
+	public function setUser(User $user)
+	{
+		$this->_user = $user;
+	}
+
+	public function getUser()
+	{
+		return $this->_user;
+	}
+
+	public function setVideoAccess($videoAccess)
+	{
+		$this->_videoAccess = $videoAccess;
+	}
+
+	public function getVideoAccess()
+	{
+		return $this->_videoAccess;
 	}
 }

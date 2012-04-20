@@ -39,7 +39,7 @@ class Video
 		return $this->_baseFileName;
 	}
 
-	public function setComments($comments)
+	public function setComments(array $comments)
 	{
 		$this->_comments = $comments;
 	}
