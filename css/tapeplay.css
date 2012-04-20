@@ -9,157 +9,778 @@ a {
 
 /* Intro Page */
 #tapeplay {
-    width: 960px;
+    font-family: arial, sans-serif;
+    width: 100%;
 }
 
-#tapeplay #main {
+#tapeplay #header {
+    background-image: url('/media/images/header-bg.gif');
+    background-repeat: repeat-x;
+    height: 70px;
+    padding: 3px 0px 3px 15px;
+    width: 99%;
+}
+
+#tapeplay #header #holder {
     overflow: hidden;
-    padding: 50px;
-    width: 960px;
+    width: 980px;
 }
 
-#tapeplay #main #logo {
-    margin-bottom: 50px;
+#tapeplay #header #left {
+    float: left;
     overflow: hidden;
+    width: 50%;
 }
 
-#tapeplay #main #logo h1 {
-    background-image: url('http://localhost:3500/media/images/tapePlay_logoHome.jpg');
+#tapeplay #header #left h1 {
+    background-image: url('/media/images/logo.jpg');
     float: left;
-    height: 159px;
-    margin-right: 10px;
-    text-indent: -9999px;
-    width: 289px;
-}
-
-#tapeplay #main #logo h3 {
-    color: #fff;
-    float: left;
-    font-size: 30px;
-    font-weight: bold;
-    margin-top: 55px;
-    text-align: center;
-    width: 500px;
-}
-
-#tapeplay #main #logo p {
-    color: #666;
-    float: left;
-    font-size: 24px;
-    text-align: center;
-    width: 500px;
-}
-
-#tapeplay #main #sportSelect {
-
-}
-
-#tapeplay #main #sportSelect #pickSport {
-    background-image: url('http://localhost:3500/media/images/tapePlay_pickSportText.jpg');
-    height: 22px;
-    text-indent: -9999px;
-    width: 178px;
-}
-
-#tapeplay #main #sportSelect #dropper {
-    float: left;
-    position: relative;
-    width: 550px;
-}
-
-#tapeplay #main #sportSelect #dropper #values {
-    float: left;
-    margin-right: 1px;
-    overflow: hidden;
-    position: relative;
-    width: 450px;
-}
-
-#tapeplay #main #sportSelect #dropper #values #value {
-    background-color: #fff;
-    float: left;
-    font-size: 40px;
-    font-weight: bold;
-    height: 50px;
-    padding: 25px;
-    width: 410px;
-}
-
-#tapeplay #main #sportSelect #dropper #values #potentials {
-    display: none;
-    float: left;
-    height: 300px;
-    overflow: auto;
-    position: relative;
-    width: 450px;
-    z-index: 1000;
-}
-
-#tapeplay #main #sportSelect #dropper #values #potentials li {
-    background-color: #fff;
-    cursor: pointer;
-    float: left;
-    font-size: 40px;
-    font-weight: bold;
-    height: 50px;
-    padding: 25px;
-    width: 410px;
-}
-
-#tapeplay #main #sportSelect #dropper #arrow {
-    background-image: url('http://localhost:3500/media/images/tapePlay_dropDownButton.jpg');
-    cursor: pointer;
-    float: left;
-    height: 100px;
-    margin-right: 15px;
-    width: 75px;
-}
-
-#tapeplay #main #sportSelect #dropper #links {
-    color: #fff;
-    float: right;
-    margin-top: 15px;
-    position: absolute;
-    right: 17px;
-    top: 100px;
-    z-index: 1;
-}
-
-#tapeplay #main #sportSelect #dropper #links a {
-    color: #fff;
-    margin-left: 7px;
+    height: 67px;
     margin-right: 7px;
+    text-indent: -9999px;
+    width: 126px;
+}
+
+#tapeplay #header #left #sportSelect {
+    color: white;
+    float: left;
+    margin-top: 5px;
+}
+
+#tapeplay #header #left #sportSelect #dropper {}
+
+#tapeplay #header #left #sportSelect #dropper #values {
+    float: left;
+    margin-right: 5px;
+}
+
+#tapeplay #header #left #sportSelect #dropper #values #potentials {
+    display: none;
+}
+
+#tapeplay #header #left #sportSelect #dropper #arrow {
+    background-image: url('/media/images/arrows/global-top-arrow.png');
+    cursor: pointer;
+    float: left;
+    height: 8px;
+    margin-top: 7px;
+    width: 15px;
+}
+
+#tapeplay #header #left #sportSelect #beta {
+    background-image: url('/media/images/beta-sub.gif');
+    background-repeat: no-repeat;
+    float: left;
+    height: 14px;
+    margin-bottom: 4px;
+    width: 100px;
+}
+
+#tapeplay #header #right {
+    float: right;
+    width: 30%;
+}
+
+#tapeplay #header #right #links {
+    margin-top: 20px;
+}
+
+#tapeplay #header #right #links li {
+    display: inline;
+    margin-right: 25px;
+}
+
+#tapeplay #header #right #links li a {
+    color: #fff;
+    font-size: 12px;
     text-decoration: none;
 }
 
-#tapeplay #main #sportSelect #continue {
-    background-image: url('http://localhost:3500/media/images/tapePlay_continueButton.jpg');
-    float: left;
-    height: 100px;
-    text-indent: -9999px;
-    width: 229px;
+#tapeplay #header #right #links li a .fbSmall {
+    background-image: url('/media/images/facebook-icon.png');
+    background-repeat: no-repeat;
+    height: 15px;
+    width: 15px;
 }
 
-/* Header */
-#header {
+/* Main */
+#tapeplay #main {
+    background-color: #fff;
+    float: left;
+    margin: 0px;
+    padding: 20px 10px;
+    width: 972px;
+}
 
+#tapeplay #main #centerAd {
+    background-color: #000;
+    height: 270px;
+    margin-bottom: 40px;
+    width: 970px;
+}
+
+#tapeplay #main h1 {
+    font-size: 55px;
+    font-weight: bold;
+    margin-bottom: 7px;
+    text-align: center;
+}
+
+#tapeplay #main h3 {
+    color: #555;
+    font-size: 25px;
+    margin-bottom: 60px;
+    text-align: center;
+}
+
+#tapeplay #main #searchForm {
+    overflow: hidden;
+    width: 100%;
+}
+
+#tapeplay #main #searchForm .inputField {
+    float: left;
+    width: 79%;
+}
+
+#tapeplay #main #searchForm .inputField .middle {
+    float: left;
+    width: 96%;
+}
+
+#tapeplay #main #searchForm .blackButton {
+    float: left;
+    width: 20%;
+}
+
+#tapeplay #main #searchForm .blackButton .middle .largeBlack {
+    width: 100%;
+}
+
+#tapeplay #main #searchForm #advance {
+    background-color: #eee;
+    float: left;
+    padding: 15px 40px;
+    width: 687px;
+}
+
+#tapeplay #main #searchForm #advance .italic {
+    margin-bottom: 25px;
+}
+
+#tapeplay #main #searchForm #advance #options {
+    overflow: hidden;
+    width: 100%;
+}
+
+#tapeplay #main #searchForm #advance #options .option {
+    float: left;
+    width: 25%;
+}
+
+#tapeplay #main #searchForm #advance #options .option .header {
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+#tapeplay #main #searchForm #advance #options .option .checkbox {
+    cursor: pointer;
+    float: left;
+    margin-bottom: 5px;
+    width: 100%;
+}
+
+#tapeplay #main #searchForm #advance #options .option .checkbox .box {
+    background-color: #fff;
+    background-image: url('/media/images/form/checkbox.gif');
+    float: left;
+    height: 20px;
+    margin-right: 5px;
+    width: 20px;
+}
+
+#tapeplay #main #searchForm #advance #options .option .checkbox .box .checkMark {
+    background-image: url('/media/images/form/orangecheck.png');
+    background-repeat: no-repeat;
+    display: none;
+    height: 20px;
+    width: 20px;
+}
+
+#tapeplay #main #searchForm #advance #options .option .checkbox .label {
+    color: #666;
+    font-size: 12px;
+    padding-top: 5px;
+}
+
+#tapeplay #main #searchForm #advance #options .option .sportSelect {
+
+}
+
+#tapeplay #main #searchForm #advance #options .option .sportSelect .dropper {
+
+}
+
+#tapeplay #main #searchForm #advance #options .option .sportSelect .dropper .leftSmall {
+
+}
+
+#tapeplay #main #searchForm #advance #options .option .sportSelect .dropper .middleSmall {
+    font-size: 12px;
+    height: 15px;
+    padding-top: 5px;
+    text-align: center;
+    width: auto;
+}
+
+#tapeplay #main #searchForm #advance #options .option .sportSelect .dropper .rightSmall {
+
+}
+
+#tapeplay #main #searchForm #advance #options .option .sportSelect .dropper .potentials {
+
+}
+
+#tapeplay #main #searchForm #advance #options .option .sportSelect .dropper .arrowSmall {
+
+}
+
+/* Start Search Page */
+#tapeplay #main #leftCol,
+#tapeplay #main #rightCol {
+    float: left;
+}
+
+#tapeplay #main #leftCol {
+    border-right: 1px solid #ccc;
+    margin-right: 3%;
+    margin-bottom: 15px;s
+    overflow: hidden;
+    padding-right: 3%;
+    width: 69%;
+}
+
+#tapeplay #main #leftCol #search  {
+    margin-bottom: 15px;
+    overflow: hidden;
+}
+
+#tapeplay #main #leftCol #search .inputField .middle {
+    width: 448px;
+}
+
+#tapeplay #main #leftCol p {
+    font-size: 12px;
+    margin-bottom: 20px;
+    padding-left: 25px;
+}
+
+#tapeplay #main #leftCol #results {
+    width: 610px;
+}
+
+#tapeplay #main #leftCol #results .result {
+    cursor: pointer;
+    overflow: hidden;
+    padding: 20px 50px;
+}
+
+#tapeplay #main #leftCol #results .result.locked {
+    opacity: .3;
+}
+
+#tapeplay #main #leftCol #results .result:hover {
+    background-color: #F8E8C8;
+}
+
+#tapeplay #main #leftCol #results .result.locked:hover {
+    background-color: #fff;
+}
+
+#tapeplay #main #leftCol #results .result .resultImage {
+    border: 1px solid #000;
+    float: left;
+    height: 100px;
+    margin-right: 15px;
+    width: 150px;
+}
+
+#tapeplay #main #leftCol #results .result .info {
+    float: left;
+}
+
+#tapeplay #main #leftCol #results .result .info h2 {
+    color: #666;
+    font-size: 28px;
+}
+
+#tapeplay #main #leftCol #results .result .info .position {
+    color: #666;
+    font-size: 12px;
+    margin-bottom: 25px;
+}
+
+#tapeplay #main #leftCol #results .result .info .title,
+#tapeplay #main #leftCol #results .result .info .date {
+    color: #666;
+    font-size: 16px;
+}
+
+#tapeplay #main #leftCol #results .result .info p {
+    margin: 0px;
+    padding: 0px;
+}
+
+#tapeplay #main #rightCol {
+    overflow: hidden;
+    width: 25%;
+}
+
+#tapeplay #main #rightCol h2 {
+    background-color: #D07010;
+    color: #fff;
+    font-size: 18px;
+    padding: 10px;
+    text-align: center;
+}
+
+#tapeplay #main #rightCol .criterium {
+    border: 1px solid #ccc;
+    border-top: none;
+    padding: 7px 18px;
+}
+
+#tapeplay #main #rightCol .criterium .option {
+    margin-bottom: 7px;
+    overflow: hidden;
+}
+
+#tapeplay #main #rightCol .criterium .option.last {
+    margin-bottom: 0px;
+}
+
+#tapeplay #main #rightCol .criterium .option p {
+    color: #aaa;
+    float: left;
+    font-size: 12px;
+}
+
+#tapeplay #main #rightCol .criterium .option .x {
+    bottom: 1px;
+    color: #D07010;
+    cursor: pointer;
+    margin-right: 7px;
+    position: relative;
+    width: 10px;
+}
+
+#tapeplay #main #rightCol .criterium .option .slider {
+    float: right;
+    margin: 10px 0px;
+    width: 91%;
+}
+
+#tapeplay #main #rightCol .criterium .option .values {
+    float: right;
+    width: 92%;
+}
+
+#tapeplay #main #rightCol .criterium .option .values .minVal {
+    float: left;
+    font-size: 12px;
+}
+
+#tapeplay #main #rightCol .criterium .option .values .maxVal {
+    float: right;
+    font-size: 12px;
+}
+
+
+#tapeplay #main #rightCol .criterium .option .value.showing {
+    color: #333;
+}
+
+/* Single Video Page */
+#tapeplay #main #video {
+    margin-bottom: 50px;
+    overflow: hidden;
+    padding: 15px;
+    width: 800px;
+}
+
+#tapeplay #main #video #player {
+    background-color: #000;
+    height: 400px;
+    width: 100%;
+}
+
+#tapeplay #main #video #primaryInfo {
+    margin-bottom: 20px;
+    overflow: hidden;
+    width: 100%;
+}
+
+#tapeplay #main #video #primaryInfo #left {
+    float: left;
+}
+
+#tapeplay #main #video #primaryInfo #left h2 {
+    font-size: 40px;
+    margin-bottom: 7px;
+}
+
+#tapeplay #main #video #primaryInfo #left p {
+    color: #666;
+    font-size: 16px;
+}
+
+#tapeplay #main #video #primaryInfo #right {
+    float: right;
+    margin-top: 63px;
+}
+
+#tapeplay #main #video #primaryInfo #right p {
+    color: #D07010;
+}
+
+#tapeplay #main #video #videoInfo {
+    background-color: #f4f4f4;
+    margin-bottom: 30px;
+    padding: 20px 40px 34px 40px;
+}
+
+#tapeplay #main #video #videoInfo ul li {
+    display: inline;
+}
+
+#tapeplay #main #video #videoInfo #left {
+    float: left;
+}
+
+#tapeplay #main #video #videoInfo #left .basic {
+    color: #666;
+    font-size: 14px;
+    margin-right: 40px;
+}
+
+#tapeplay #main #video #videoInfo #left .basic .italic {
+    font-size: 14px;
+}
+
+#tapeplay #main #video #videoInfo #right {
+    float: right;
+}
+
+#tapeplay #main #video #videoInfo #right .link {
+    color: #D07010;
+    font-size: 14px;
+    margin-right: 40px;
+}
+
+#tapeplay #main #video #videoInfo #right .link.last {
+    margin-right: 0px;
+}
+
+#tapeplay #main #video #leftCol {
+    border: none;
+    float: left;
+    margin: 0px;
+    width: 527px;
+}
+
+#tapeplay #main #video #leftCol #info {
+    background-color: #f4f4f4;
+    margin-bottom: 20px;
+    padding: 20px 40px;
+}
+
+#tapeplay #main #video #leftCol #info #top {
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 13px;
+    padding-bottom: 10px;
+    overflow: hidden;
+    width: 100%;
+}
+
+#tapeplay #main #video #leftCol #info #top #person {
+    float: left;
+}
+
+#tapeplay #main #video #leftCol #info #top #person h3 {
+    color: #666;
+    margin-bottom: 7px;
+    text-align: left;
+}
+
+#tapeplay #main #video #leftCol #info #top #person p {
+    color: #666;
+    margin: 0px 0px 4px 0px;
+    padding: 0px;
+}
+
+#tapeplay #main #video #leftCol #info #top #level {
+    background-color: #D07010;
+    float: right;
+    height: 60px;
+    padding: 2px 5px;
+    width: 55px;
+}
+
+#tapeplay #main #video #leftCol #info #top #level h4 {
+    color: white;
+    font-size: 38px;
+    padding: 0px;
+    margin: 0px;
+}
+
+#tapeplay #main #video #leftCol #info #top #level p {
+    color: white;
+    font-size: 9px;
+    padding-left: 3px;
+}
+
+#tapeplay #main #video #leftCol #info #bottom {
+    overflow: hidden;
+    width: 100%;
+}
+
+#tapeplay #main #video #leftCol #info #bottom .stats {
+    float: left;
+    width: 33%;
+}
+
+#tapeplay #main #video #leftCol #info #bottom .stats li {
+    color: #666;
+    font-size: 12px;
+    margin-bottom: 3px;
+}
+
+#tapeplay #main #video #leftCol #moreVideos {
+    width: 100%;
+}
+
+#tapeplay #main #video #leftCol #moreVideos h2 {
+    font-size: 28px;
+    margin-bottom: 15px;
+}
+
+#tapeplay #main #video #leftCol #moreVideos .result {
+    overflow: hidden;
+}
+
+#tapeplay #main #video #leftCol #moreVideos .result .resultImage {
+    border: 1px solid black;
+    float: left;
+    height: 100px;
+    margin-right: 15px;
+    width: 150px;
+}
+
+#tapeplay #main #video #leftCol #moreVideos .result .info {
+    float: left;
+    padding-top: 7px;
+}
+
+#tapeplay #main #video #leftCol #moreVideos .result .info p {
+    color: #666;
+    padding: 0px;
+}
+
+#tapeplay #main #video #leftCol #moreVideos .result .info h4 {
+    color: #666;
+    font-size: 18px;
+    margin-bottom: 12px;
+}
+
+#tapeplay #main #video #leftCol #moreVideos .result .info .name {
+    margin: 0px 0px 5px 0px;
+}
+
+#tapeplay #main #video #rightCol {
+    float: left;
+    width: 250px;
+}
+
+#tapeplay #main #video #rightCol #ad {
+    background-color: #000;
+    height: 250px;
+    width: 250px;
+}
+
+/* Email A Video */
+#tapeplay #main #leftCol #title {
+    background-image: none;
+    color: #D07010;
+    font-size: 38px;
+    margin-bottom: 15px;
+}
+
+#tapeplay #main #leftCol #single {
+    margin-bottom: 30px;
+    overflow: hidden;
+}
+
+#tapeplay #main #leftCol #single .resultImage {
+    border: 1px solid black;
+    float: left;
+    height: 100px;
+    margin-right: 15px;
+    width: 150px;
+}
+
+#tapeplay #main #leftCol #single .info {
+    overflow: hidden;
+}
+
+#tapeplay #main #leftCol #single .info h2 {
+    color: #666;
+    font-size: 28px;
+}
+
+#tapeplay #main #leftCol #single .info .position {
+    color: #666;
+    font-size: 12px;
+    margin-bottom: 25px;
+}
+
+#tapeplay #main #leftCol #single .info .title,
+#tapeplay #main #leftCol #single .info .date {
+    color: #666;
+    font-size: 16px;
+    margin: 0px;
+}
+
+#tapeplay #main #leftCol label {
+    float: left;
+    font-size: 12px;
+    font-weight: bold;
+    margin-bottom: 7px;
+}
+
+#tapeplay #main #leftCol .inputField {
+    margin-bottom: 30px;
+    width: 100%;
+}
+
+#tapeplay #main #leftCol .inputField .middle {
+    width: 640px;
+}
+
+#tapeplay #main #leftCol .inputField.last {
+    margin-bottom: 15px;
+}
+
+#tapeplay #main #leftCol .addAnother {
+    float: left;
+    margin-bottom: 25px;
+    width: 100%;
+}
+
+#tapeplay #main #leftCol .addAnother p {
+    height: 24px;
+    padding: 0px;
+}
+
+#tapeplay #main #leftCol .addAnother p .plusCircle {
+    background-image: url('/media/images/plus-btn.gif');
+    background-repeat: no-repeat;
+    display: block;
+    float: left;
+    height: 24px;
+    margin-right: 3px;
+    width: 24px;
+}
+
+#tapeplay #main #leftCol .addAnother p .addText {
+    float: left;
+    margin-top: 6px;
+}
+
+#tapeplay #main #rightCol #copy {
+    margin-bottom: 30px;
+    overflow: hidden;
+    padding-top: 15px;
+}
+
+#tapeplay #main #rightCol #copy p {
+    font-size: 12px;
+    margin-bottom: 7px;
+}
+
+#tapeplay #main #rightCol #copy .inputFieldSmall {
+    width: 220px;
+}
+
+#tapeplay #main #rightCol #copy .inputFieldSmall .middle {
+    width: 213px;
+}
+
+#tapeplay #main #rightCol #copy .inputFieldSmall .middle .standard {
+    color: #D07010;
+    padding: 0px;
+    width: 100%;
+}
+
+#tapeplay #main #rightCol #share {
+    
+}
+
+#tapeplay #main #rightCol #share p {
+    font-size: 12px;
+    margin-bottom: 15px;
+}
+
+#tapeplay #main #rightCol #share .shareImg {
+    -webkit-border-radius: 40px;
+    -moz-border-radius: 40px;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 40px;
+    background-color: #000;
+    float: left;
+    height: 80px;
+    margin-bottom: 15px;
+    margin-right: 15px;
+    width: 80px;
+}
+
+#tapeplay #main #rightCol #share .facebook {
+    background-image: url('/media/images/social/facebook-icon.png');
+}
+
+#tapeplay #main #rightCol #share .myspace {
+    background-image: url('/media/images/social/myspace-icon.png');
+}
+
+#tapeplay #main #rightCol #share .twitter {
+    background-image: url('/media/images/social/twitter-icon.png');
+}
+
+#tapeplay #main #rightCol #share .linkedin {
+    background-image: url('/media/images/social/linkedin-icon.png');
+}
+
+/* Ad */
+#tapeplay #ad {
+    background-color: #f00;
+    float: left;
 }
 
 /* Footer */
 #tapeplay #footer {
-    background-image: url('http://localhost:3500/media/images/tapePlay_footerBackground.gif');
+    background-image: url('/media/images/tapePlay_footerBackground.gif');
     background-repeat: repeat-x;
     bottom: 0px;
     color: #fff;
     overflow: hidden;
-    padding: 15px;
-    position: absolute;
-    width: 100%;
+    padding: 15px 0px 15px 15px;
+    width: 99%;
     z-index: 1000;
 }
 
 #tapeplay #footer .col {
-    background-image: url('http://localhost:3500/media/images/tapePlay_footerDivider.gif');
+    background-image: url('/media/images/tapePlay_footerDivider.gif');
     background-position: right;
     background-repeat: no-repeat;
     float: left;
@@ -194,7 +815,7 @@ a {
 
 #tapeplay #footer .bottom {
     text-align: center;
-    width: 960px;
+    width: 980px;
 }
 
 #tapeplay #footer .bottom p {
@@ -206,4 +827,213 @@ a {
     color: #fff;
     font-size: 13px;
     text-decoration: none;
+}
+
+/* COMMON ELEMENTS */
+.inputField {
+    float: left;
+    overflow: hidden;
+}
+
+.inputField .right {
+    background-image: url('/media/images/form/input-box-right.gif');
+    float: left;
+    height: 80px;
+    width: 15px;
+}
+
+.inputField .middle {
+    background-image: url('/media/images/form/input-box-mid.gif');
+    background-repeat: repeat-x;
+    float: left;
+    height: 80px;
+}
+
+.inputField .middle .standard {
+    background-color: #fdfdfd;
+    border: none;
+    color: #888;
+    font-family: arial, sans-serif;
+    font-size: 40px;
+    height: 60px;
+    margin-top: 10px;
+    padding: 0px 10px;
+    width: 100%;
+}
+
+.inputField .left {
+    background-image: url('/media/images/form/input-box-left.gif');
+    background-repeat: no-repeat;
+    float: left;
+    height: 80px;
+    width: 15px;
+}
+
+.blackButton {
+    float: left;
+    overflow: hidden;
+    position: relative;
+}
+
+.blackButton .topLeft {
+    background-image: url('/media/images/buttons/large/white/btn_lg-top-lt-corner-white.png');
+    height: 3px;
+    left: 0px;
+    position: absolute;
+    top: 0px;
+    width: 4px;
+    z-index: 100;
+}
+
+.blackButton .topRight {
+    background-image: url('/media/images/buttons/large/white/btn_lg-top-rt-corner-white.png');
+    height: 3px;
+    right: 0px;
+    position: absolute;
+    top: 0px;
+    width: 4px;
+    z-index: 100;
+}
+
+.blackButton .bottomLeft {
+    background-image: url('/media/images/buttons/large/white/btn_lg-btm-lt-corner-white.png');
+    bottom: 0px;
+    height: 3px;
+    left: 0px;
+    position: absolute;
+    width: 4px;
+    z-index: 100;
+}
+
+.blackButton .bottomRight {
+    background-image: url('/media/images/buttons/large/white/btn_lg-btm-rt-corner-white.png');
+    bottom: 0px;
+    height: 3px;
+    position: absolute;
+    right: 0px;
+    width: 4px;
+    z-index: 100;
+}
+
+.blackButton .middle .largeBlack {
+    background-color: #000;
+    border: none;
+    color: #fff;
+    font-family: arial;
+    font-size: 30px;
+    font-weight: normal;
+    float: left;
+    height: 80px;
+    position: relative;
+    width: 194px;
+    z-index: 1;
+}
+
+.italic {
+    font-style: italic;
+    font-size: 12px;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+/* Dropdown */
+.sportSelect {
+
+}
+
+
+.inputFieldSmall,
+.sportSelect .dropper {
+    float: left;
+    overflow: hidden;
+}
+
+.inputFieldSmall .left,
+.sportSelect .dropper .leftSmall {
+    background-image: url('/media/images/form/stats-box-left.gif');
+    float: left;
+    height: 21px;
+    width: 4px;
+}
+
+.inputFieldSmall .middle,
+.inputFieldSmall .middle .standard,
+.sportSelect .dropper .middleSmall {
+    background-image: url('/media/images/form/stats-box-mid.gif');
+    background-repeat: repeat-x;
+    float: left;
+    height: 21px;
+    width: 1px;
+}
+
+.inputFieldSmall .right,
+.sportSelect .dropper .rightSmall {
+    background-image: url('/media/images/form/stats-box-right.gif');
+    float: left;
+    height: 21px;
+    width: 4px;
+}
+
+.inputFieldSmall .middle .standard {
+    background-color: #fdfdfd;
+    border: none;
+    color: #888;
+    font-family: arial, sans-serif;
+    font-size: 12px;
+    height: 21px;
+    padding: 0px 10px;
+    width: 100%;
+}
+
+.sportSelect .dropper .potentials {
+    clear: both;
+    display: none;
+    font-size: 12px;
+    width: inherit;
+    padding: 0px 2px;
+    background-color: white;
+    border: 1px solid #CCC;
+}
+
+.sportSelect .arrowSmall {
+    background-image: url('/media/images/form/dropdown-arrow.gif');
+    background-repeat: no-repeat;
+    cursor: pointer;
+    float: left;
+    height: 36px;
+    width: 29px;
+}
+
+/* Pagination */
+.pagination {
+    float: left;
+    font-size: 16px;
+    font-weight: bold;
+    margin: 0 auto;
+    padding-left: 20px;
+    width: 60%;
+}
+
+.pagination .previous {
+    float: left;
+    margin-right: 15px;
+    padding-top: 7px;
+}
+
+.pagination .pages li {
+    border: 1px solid #CCC;
+    display: inline;
+    float: left;
+    height: 23px;
+    margin-right: 15px;
+    padding-top: 8px;
+    width: 30px;
+    text-align: center;
+}
+
+.pagination .next {
+    float: left;
+    padding-top: 7px;
 }

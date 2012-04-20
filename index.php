@@ -7,7 +7,7 @@
         <title>TapePlay</title>
 
         <link rel="stylesheet" href="css/reset.css" type="text/css" />
-        <link rel="stylesheet" href="css/tapeplay.css" type="text/css" />
+        <link rel="stylesheet" href="css/landing.css" type="text/css" />
 
         <script type="text/javascript" src="http://localhost:3500/js/jquery.js"></script>
         <script type="text/javascript" src="http://localhost:3500/js/tapeplay.js"></script>
@@ -39,7 +39,7 @@
                 <div id="continue">Continue</div>
             </div>
         </div>
-        <div id="footer">
+        <div id="footer" class="landing">
             <div class="col">
                 <ul class="footerList">
                     <li class="header">The Basics</li>
