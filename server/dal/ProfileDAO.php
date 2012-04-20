@@ -46,15 +46,15 @@ class ProfileDAO extends BaseDOA
 	public function createUser(User $user)
 	{
 		$this->sql = "INSERT INTO users " .
-				"(first_name, last_name, email, password, zipcode, gender, birthdate, last_login, account_type)" .
+				"(first_name, last_name, email, hash, zipcode, gender, birthdate, last_login, account_type)" .
 				" VALUES " .
-				"(:firstName, :lastName, :email, :password, :zipcode, :gender, :birthDate, :lastLogin, :accountType)";
+				"(:firstName, :lastName, :email, :hash, :zipcode, :gender, :birthDate, :lastLogin, :accountType)";
 
 		$this->prep = $this->dbh->prepare($this->sql);
 		$this->prep->bindValue(":firstName", $user->getFirstName(), \PDO::PARAM_STR);
 		$this->prep->bindValue(":lastName", $user->getLastName(), \PDO::PARAM_STR);
 		$this->prep->bindValue(":email", $user->getEmail(), \PDO::PARAM_STR);
-		$this->prep->bindValue(":password", $user->getPassword(), \PDO::PARAM_STR);
+		$this->prep->bindValue(":hash", $user->getHash(), \PDO::PARAM_STR);
 		$this->prep->bindValue(":zipcode", $user->getZipcode(), \PDO::PARAM_STR);
 		$this->prep->bindValue(":gender", $user->getGender(), \PDO::PARAM_STR);
 		$this->prep->bindValue(":birthDate", $user->getBirthDate(), \PDO::PARAM_INT);
@@ -81,7 +81,7 @@ class ProfileDAO extends BaseDOA
 		$this->prep->bindValue(":firstName", $user->getFirstName(), \PDO::PARAM_STR);
 		$this->prep->bindValue(":lastName", $user->getLastName(), \PDO::PARAM_STR);
 		$this->prep->bindValue(":email", $user->getEmail(), \PDO::PARAM_STR);
-		$this->prep->bindValue(":password", $user->getPassword(), \PDO::PARAM_STR);
+		$this->prep->bindValue(":password", $user->getHash(), \PDO::PARAM_STR);
 		$this->prep->bindValue(":zipcode", $user->getZipcode(), \PDO::PARAM_STR);
 		$this->prep->bindValue(":gender", $user->getGender(), \PDO::PARAM_STR);
 		$this->prep->bindValue(":birthDate", $user->getBirthDate(), \PDO::PARAM_INT);
@@ -163,15 +163,15 @@ class ProfileDAO extends BaseDOA
 	public function createScout(Scout $scout)
 	{
 		$this->sql = "INSERT INTO scouts " .
-				"(organization, title, recruitingLevel, user_id)" .
+				"(organization, title, recruiting_level, user_id)" .
 				" VALUES " .
 				"(:organization, :title, :recruitingLevel, :userId)";
 
 		$this->prep = $this->dbh->prepare($this->sql);
-		$this->prep->bindValue(":schoolName", $coach->getSchoolName(), \PDO::PARAM_STR);
-		$this->prep->bindValue(":schoolPosition", $coach->getSchoolPosition(), \PDO::PARAM_STR);
-		$this->prep->bindValue(":association", $coach->getAssociation(), \PDO::PARAM_INT);
-		$this->prep->bindValue(":userId", $coach->getUser()->getId(), \PDO::PARAM_INT);
+		$this->prep->bindValue(":organization", $scout->getOrganization(), \PDO::PARAM_STR);
+		$this->prep->bindValue(":title", $scout->getTitle(), \PDO::PARAM_STR);
+		$this->prep->bindValue(":recruitingLevel", $scout->getRecrutingLevel(), \PDO::PARAM_INT);
+		$this->prep->bindValue(":userId", $scout->getUserId(), \PDO::PARAM_INT);
 
 		$this->prep->execute();
 
@@ -187,15 +187,14 @@ class ProfileDAO extends BaseDOA
 	public function createCoach(Coach $coach)
 	{
 		$this->sql = "INSERT INTO coaches " .
-				"(school_name, school_id, school_position, user_id)" .
+				"(school_id, school_position, user_id)" .
 				" VALUES " .
-				"(:schoolName, :school_id, :schoolPosition, :userId)";
+				"(:schoolId, :schoolPosition, :userId)";
 
 		$this->prep = $this->dbh->prepare($this->sql);
-		$this->prep->bindValue(":schoolName", $coach->getSchoolName(), \PDO::PARAM_STR);
-		$this->prep->bindValue(":schoolId", $coach->getSchoolPosition(), \PDO::PARAM_INT);
-		$this->prep->bindValue(":schoolPosition", $coach->getAssociation(), \PDO::PARAM_INT);
-		$this->prep->bindValue(":userId", $coach->getUser()->getId(), \PDO::PARAM_INT);
+		$this->prep->bindValue(":schoolId", $coach->getSchool()->getId(), \PDO::PARAM_INT);
+		$this->prep->bindValue(":schoolPosition", $coach->getSchoolPosition(), \PDO::PARAM_INT);
+		$this->prep->bindValue(":userId", $coach->getUserId(), \PDO::PARAM_INT);
 
 		$this->prep->execute();
 
@@ -210,16 +209,20 @@ class ProfileDAO extends BaseDOA
 
 	public function createPlayer(Player $player)
 	{
-		$this->sql = "INSERT INTO coaches " .
-				"(school_name, school_position, association, collegiateLevel, user_id)" .
+		$this->sql = "INSERT INTO players " .
+				"(number, guardian_signup, height, grade_level, video_access, position, user_id, school_id)" .
 				" VALUES " .
-				"(:schoolName, :schoolPosition, :association, :collegiateLevel, :userId)";
+				"(:number, :guardianSignup, :height, :gradeLevel, :videoAccess, :position, :userId, :schoolId)";
 
 		$this->prep = $this->dbh->prepare($this->sql);
-		$this->prep->bindValue(":schoolName", $coach->getSchoolName(), \PDO::PARAM_STR);
-		$this->prep->bindValue(":schoolId", $coach->getSchoolPosition(), \PDO::PARAM_INT);
-		$this->prep->bindValue(":schoolPosition", $coach->getAssociation(), \PDO::PARAM_INT);
-		$this->prep->bindValue(":userId", $coach->getUser()->getId(), \PDO::PARAM_INT);
+		$this->prep->bindValue(":number", $player->getNumber(), \PDO::PARAM_INT);
+		$this->prep->bindValue(":guardianSignup", $player->getGuardianSignup(), \PDO::PARAM_BOOL);
+		$this->prep->bindValue(":height", $player->getHeight(), \PDO::PARAM_INT);
+		$this->prep->bindValue(":gradeLevel", $player->getGradeLevel(), \PDO::PARAM_INT);
+		$this->prep->bindValue(":videoAccess", $player->getVideoAccess(), \PDO::PARAM_INT);
+		$this->prep->bindValue(":position", $player->getPosition(), \PDO::PARAM_INT);
+		$this->prep->bindValue(":schoolId", $player->getSchool()->getId(), \PDO::PARAM_INT);
+		$this->prep->bindValue(":userId", $player->getUserId(), \PDO::PARAM_INT);
 
 		$this->prep->execute();
 

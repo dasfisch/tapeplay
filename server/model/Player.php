@@ -12,7 +12,7 @@ use tapeplay\server\model\Sport;
 use tapeplay\server\model\Stat;
 use tapeplay\server\model\User;
 
-class Player
+class Player extends User
 {
 	private $_id;
 	private $_number;
@@ -23,7 +23,6 @@ class Player
 	private $_videoAccess;
 	private $_sport;
 	private $_stats; // array<Stat>
-	private $_user;
 	private $_school;
 
 	public function setGradeLevel($gradeLevel)
@@ -56,12 +55,12 @@ class Player
 		return $this->_height;
 	}
 
-	public function setId($id)
+	public function setUserId($id)
 	{
 		$this->_id = $id;
 	}
 
-	public function getId()
+	public function getUserId()
 	{
 		return $this->_id;
 	}
@@ -114,16 +113,6 @@ class Player
 	public function getStats()
 	{
 		return $this->_stats;
-	}
-
-	public function setUser(User $user)
-	{
-		$this->_user = $user;
-	}
-
-	public function getUser()
-	{
-		return $this->_user;
 	}
 
 	public function setVideoAccess($videoAccess)

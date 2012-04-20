@@ -7,13 +7,11 @@ require_once("model/User.php");
 
 use tapeplay\server\model\User;
 
-class Coach
+class Coach extends User
 {
 	private $_id;
 	private $_school;
 	private $_schoolPosition;
-	private $_user;
-
 
 	public function setId($id)
 	{
@@ -43,15 +41,5 @@ class Coach
 	public function getSchoolPosition()
 	{
 		return $this->_schoolPosition;
-	}
-
-	public function setUser(User $user)
-	{
-		$this->_user = $user;
-	}
-
-	public function getUser()
-	{
-		return $this->_user;
 	}
 }

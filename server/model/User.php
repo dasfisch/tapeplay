@@ -7,18 +7,17 @@ namespace tapeplay\server\model;
  */
 class User
 {
-	private $_id;
-	private $_firstName;
-	private $_lastName;
-	private $_email;
-	private $_password;
-	private $_zipcode;
-	private $_gender;
-	private $_birthDate;
-	private $_lastLogin;
-	private $_organization;
-	private $_title;
-	private $_accountType;
+	protected  $_userId;
+	protected  $_firstName;
+	protected  $_lastName;
+	protected  $_email;
+	protected  $_hash;
+	protected  $_zipcode;
+	protected  $_gender;
+	protected  $_birthDate;
+	protected  $_lastLogin;
+	protected  $_accountType;
+	protected  $_optIns;
 
 
 	public function setAccountType($accountType)
@@ -71,14 +70,14 @@ class User
 		return $this->_gender;
 	}
 
-	public function setId($id)
+	public function setUserId($id)
 	{
-		$this->_id = $id;
+		$this->_userId = $id;
 	}
 
-	public function getId()
+	public function getUserId()
 	{
-		return $this->_id;
+		return $this->_userId;
 	}
 
 	public function setLastLogin($lastLogin)
@@ -101,24 +100,14 @@ class User
 		return $this->_lastName;
 	}
 
-	public function setOrganization($organization)
+	public function setHash($password)
 	{
-		$this->_organization = $organization;
+		$this->_hash = $password;
 	}
 
-	public function getOrganization()
+	public function getHash()
 	{
-		return $this->_organization;
-	}
-
-	public function setPassword($password)
-	{
-		$this->_password = $password;
-	}
-
-	public function getPassword()
-	{
-		return $this->_password;
+		return $this->_hash;
 	}
 
 	public function setZipcode($zipcode)
@@ -131,13 +120,13 @@ class User
 		return $this->_zipcode;
 	}
 
-	public function setTitle($title)
+	public function setOptIns(array $optIns)
 	{
-		$this->_title = $title;
+		$this->_optIns = $optIns;
 	}
 
-	public function getTitle()
+	public function getOptIns()
 	{
-		return $this->_title;
+		return $this->_optIns;
 	}
 }

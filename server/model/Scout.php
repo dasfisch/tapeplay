@@ -2,21 +2,23 @@
 
 namespace tapeplay\server\model;
 
+require_once("model/User.php");
 
-class Scout
+use tapeplay\server\model\User;
+
+class Scout extends User
 {
 	private $_id;
 	private $_organization;
 	private $_title;
 	private $_recrutingLevel;
-	private $_user;
 
-	public function setId($id)
+	public function setUserId($id)
 	{
 		$this->_id = $id;
 	}
 
-	public function getId()
+	public function getUserId()
 	{
 		return $this->_id;
 	}
@@ -49,15 +51,5 @@ class Scout
 	public function getTitle()
 	{
 		return $this->_title;
-	}
-
-	public function setUser(User $user)
-	{
-		$this->_user = $user;
-	}
-
-	public function getUser()
-	{
-		return $this->_user;
 	}
 }
