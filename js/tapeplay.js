@@ -46,4 +46,10 @@ jQuery(document).ready(function(){
         max: 500,
         values: [ 75, 300 ],
     });
+
+    jQuery('#password').blur(function(){
+        if(jQuery(this).val() === '') {
+            jQuery(this).attr('type', '').val('Password');
+        }
+    })
 });

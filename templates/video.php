@@ -1,4 +1,4 @@
-<div id="main">
+<div id="landing">
     <div id="video">
         <div id="primaryInfo">
             <div id="left">

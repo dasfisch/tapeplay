@@ -33,11 +33,11 @@
                     <span class="addText">Add another email address</span>
                 </p>
             </div>
-            <div class="blackButton">
-                <div class="topLeft"></div>
-                <div class="topRight"></div>
-                <div class="bottomLeft"></div>
-                <div class="bottomRight"></div>
+            <div class="bigButton">
+                <div class="topLeft white"></div>
+                <div class="topRight white"></div>
+                <div class="bottomLeft white"></div>
+                <div class="bottomRight white"></div>
                 <div class="middle">
                     <input type="submit" value="Share" id="sendSearch" class="largeBlack" />
                 </div>

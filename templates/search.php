@@ -1,4 +1,4 @@
-<div id="main">
+<div id="landing">
     <!-- Begin two col -->
     <div id="leftCol">
         <div id="search">
@@ -30,8 +30,8 @@
                     <p class="date"><?php echo date('F, Y', strtotime('now')); ?></p>
                 </div>
             </div>
-            <div class="result locked">
-                <img src="/" class="resultImage" />
+            <div class="result">
+                <img src="/" class="resultImage locked" />
                 <div class="info">
                     <h2>First Last Name</h2>
                     <p class="position">Chicago, IL</p>

@@ -1,4 +1,4 @@
-<div id="main">
+<div id="landing">
     <div id="centerAd">Hello Ad</div>
     <h1>Video makes the world go round.</h1>
     <h3>The world's evolved. So has recruiting.</h3>
@@ -11,13 +11,13 @@
                 </div>
                 <div class="right"></div>
             </div>
-            <div class="blackButton">
-                <div class="topLeft"></div>
-                <div class="topRight"></div>
-                <div class="bottomLeft"></div>
-                <div class="bottomRight"></div>
+            <div class="bigButton">
+                <div class="topLeft whiteBg"></div>
+                <div class="topRight whiteBg"></div>
+                <div class="bottomLeft whiteBg"></div>
+                <div class="bottomRight whiteBg"></div>
                 <div class="middle">
-                    <input type="submit" value="Search" id="sendSearch" class="largeBlack" />
+                    <input type="submit" value="Search" id="sendSearch" class="large blackBtn" />
                 </div>
             </div>
 
