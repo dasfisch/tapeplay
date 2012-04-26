@@ -51,7 +51,7 @@ date_default_timezone_set('UTC');
 		var panda_access_details = <?php echo json_encode(@$panda->signed_params("POST", "/videos.json", array())); ?>;
 		jQuery("#returned_video_id").pandaUploader(panda_access_details, {
 			upload_progress_id:'upload_progress',
-			api_url:'<?php echo $panda->api_url() ?>',
+			api_url:'<?php echo $panda->getAPIURL() ?>',
 			uploader_dir:'/tests/panda/temp' // This is the default value
 		});
 	</script>
