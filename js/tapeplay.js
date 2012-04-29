@@ -20,9 +20,6 @@ jQuery(document).ready(function(){
     });
 
     jQuery('.potentials li').click(function(){
-        console.log(jQuery(this).html())
-
-
         jQuery('.value').html(jQuery(this).html());
 
         jQuery('.potentials').slideUp();
@@ -51,5 +48,31 @@ jQuery(document).ready(function(){
         if(jQuery(this).val() === '') {
             jQuery(this).attr('type', '').val('Password');
         }
-    })
+    });
+
+    jQuery('.accordion .header').click(function() {
+        jQuery(this).next().slideToggle('slow');
+
+        return false;
+    }).next().hide();
+
+    jQuery('.edit').click(function() {
+        var inputField = jQuery(this).parentsUntil('.chunk').siblings('.accountInfo').children('.inputField');
+        var p = jQuery(this).parentsUntil('.chunk').siblings('.accountInfo').children('p')
+
+        if(inputField.hasClass('hidden')) {
+            jQuery(this).html('Done');
+        } else {
+            jQuery(this).html('Edit');
+        }
+
+        inputField.toggleClass('hidden');
+        p.toggleClass('hidden');
+    });
+
+    var height = jQuery('#main').outerHeight();
+    if(jQuery('#ad').height() < height) {
+        console.log(height + ' is the height');
+        jQuery('#ad').height(height);
+    }
 });

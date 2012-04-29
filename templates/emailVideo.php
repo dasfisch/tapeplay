@@ -33,13 +33,13 @@
                     <span class="addText">Add another email address</span>
                 </p>
             </div>
-            <div class="bigButton">
-                <div class="topLeft white"></div>
-                <div class="topRight white"></div>
-                <div class="bottomLeft white"></div>
-                <div class="bottomRight white"></div>
+            <div class="bigButton black">
+                <div class="topLeft whiteBg"></div>
+                <div class="topRight whiteBg"></div>
+                <div class="bottomLeft whiteBg"></div>
+                <div class="bottomRight whiteBg"></div>
                 <div class="middle">
-                    <input type="submit" value="Share" id="sendSearch" class="largeBlack" />
+                    <input type="submit" value="Share" id="sendSearch" class="large black" />
                 </div>
             </div>
         </form>

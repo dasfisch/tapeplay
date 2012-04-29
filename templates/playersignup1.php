@@ -1,5 +1,5 @@
 <div id="main">
-    <h2>Coach Sign Up</h2>
+    <h2>Player Sign Up</h2>
     <p class="facebookLogin">Have a Facebook account? <span class="facebookConnect"></span></p>
     <form id="coachForm" name="login" action="" method="post">
         <div class="input">
@@ -107,6 +107,21 @@
                     I agree to the <a>Terms and Condition</a> and <a>Privacy Policy</a>
                 </div>
             </div>
+            <p class="error">
+                * We appreciate your interest, however, in order to use our site, you must
+                be 13 years of age or older.
+            </p>
+        </div>
+        <div class="option check">
+            <div class="checkbox">
+                <div class="box">
+                    <div class="checkMark"></div>
+                </div>
+                <div class="label">
+                    By checking this box, I certify I am at least 13 years of age or older.
+                </div>
+            </div>
+            <p class="error">* Please agree with our Terms of Use.</p>
         </div>
         <div class="bigButton black">
             <div class="topLeft whiteBg"></div>

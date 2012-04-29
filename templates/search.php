@@ -9,13 +9,11 @@
                 </div>
                 <div class="right"></div>
             </div>
-            <div class="blackButton">
-                <div class="topLeft"></div>
-                <div class="topRight"></div>
-                <div class="bottomLeft"></div>
-                <div class="bottomRight"></div>
+            <div class="bigButton black">
+                <div class="topRight whiteBg"></div>
+                <div class="bottomRight whiteBg"></div>
                 <div class="middle">
-                    <input type="submit" value="Search" id="sendSearch" class="largeBlack" />
+                    <input type="submit" value="Search" id="sendSearch" class="large black" />
                 </div>
             </div>
         </div>

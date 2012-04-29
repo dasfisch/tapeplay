@@ -83,27 +83,33 @@
                 </div>
             </div>
         </div>
-        <div class="option check">
-            <div class="checkbox">
-                <div class="box">
-                    <div class="checkMark"></div>
+        <div class="input">
+            <p class="why">Optional: Invite other staff members. <a>Why?</a></p>
+            <div class="inputField">
+                <div class="left"></div>
+                <div class="middle">
+                    <input type="text" class="standard" id="email" name="email" value="Email Address" />
                 </div>
-                <div class="label">
-                    I agree to the <a>Terms and Condition</a> and <a>Privacy Policy</a>
-                </div>
+                <div class="right"></div>
+            </div>
+            <div class="addAnother">
+                <p>
+                    <span class="plusCircle"></span>
+                    <span class="addText">Add another email address</span>
+                </p>
             </div>
         </div>
-        <div class="bigButton">
+        <div class="bigButton black">
             <div class="topLeft whiteBg"></div>
             <div class="topRight whiteBg"></div>
             <div class="bottomLeft whiteBg"></div>
             <div class="bottomRight whiteBg"></div>
             <div class="middle">
-                <input type="submit" value="Log In" id="login" class="large blackBtn" />
+                <input type="submit" value="Log In" id="login" class="large black" />
             </div>
         </div>
         <div class="option step">
-            Step 1 of 3
+            Step 2 of 3
         </div>
     </form>
 </div>

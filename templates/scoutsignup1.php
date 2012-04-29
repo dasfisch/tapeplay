@@ -1,5 +1,5 @@
 <div id="main">
-    <h2>Coach Sign Up</h2>
+    <h2>Scout Sign Up</h2>
     <p class="facebookLogin">Have a Facebook account? <span class="facebookConnect"></span></p>
     <form id="coachForm" name="login" action="" method="post">
         <div class="input">

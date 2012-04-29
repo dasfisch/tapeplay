@@ -697,21 +697,6 @@ a {
     padding: 0px;
 }
 
-#tapeplay #main #leftCol .addAnother p .plusCircle {
-    background-image: url('/media/images/plus-btn.gif');
-    background-repeat: no-repeat;
-    display: block;
-    float: left;
-    height: 24px;
-    margin-right: 3px;
-    width: 24px;
-}
-
-#tapeplay #main #leftCol .addAnother p .addText {
-    float: left;
-    margin-top: 6px;
-}
-
 #tapeplay #main #rightCol {
     float: left;
     width: 220px;
@@ -911,16 +896,16 @@ a {
     width: 700px;
 }
 
-#tapeplay #main #leftCol .info {
+#tapeplay #main #leftCol .help {
     width: 100%;
 }
 
-#tapeplay #main #leftCol .info h3 {
+#tapeplay #main #leftCol .help h3 {
     font-size: 24px;
     margin-bottom: 10px;
 }
 
-#tapeplay #main #leftCol .info p {
+#tapeplay #main #leftCol .help p {
     color: #666;
     font-size: 12px;
     margin-bottom: 30px;
@@ -1083,6 +1068,10 @@ a {
     width: 300px;
 }
 
+#tapeplay #main #coachForm .option.check .error {
+    width: 400px;
+}
+
 #tapeplay #main #coachForm .option.zip {
     width: 500px;
 }
@@ -1100,7 +1089,8 @@ a {
 }
 
 #tapeplay #main #coachForm .option.check .checkbox {
-    width: 325px;
+    margin-right: 0px;
+    width: 500px;
 }
 
 #tapeplay #main #coachForm .option.step {
@@ -1115,7 +1105,7 @@ a {
 
 #tapeplay #main #coachForm #options .option {
     float: left;
-    width: 30%;
+    width: 20%;
 }
 
 #tapeplay #main #coachForm #options .option .header {
@@ -1125,11 +1115,425 @@ a {
 }
 
 #tapeplay #main #coachForm #options .option .checkbox {
-    
+    padding-left: 20px;
 }
 
-#tapeplay #main #coachForm #options .option .checkbox .label {
+#tapeplay #main #coachForm .input .addAnother {
+    float: left;
+    margin-top: 30px;
+    width: 400px;
+}
 
+#tapeplay #main #coachForm .input.cvv2 .inputField .middle {
+    width: 140px;
+}
+
+/* Confirmation */
+#tapeplay #main #explore {
+    float: left;
+    margin-bottom: 25px;
+    width: 100%;
+}
+
+#tapeplay #main .confirmation {
+    color: #666;
+    font-size: 14px;
+    margin-bottom: 25px;
+}
+
+#tapeplay #main #explore p {
+    color: #666;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+#tapeplay #main #explore span {
+    display: block;
+    float: left;
+    margin-right: 15px;
+    padding-top: 30px;
+}
+
+#tapeplay #main #explore .bigButton {
+    margin-right: 15px;
+}
+
+#tapeplay #main .receipt {
+    margin-bottom: 30px;
+}
+
+#tapeplay #main .receipt p {
+    font-size: 12px;
+    margin-bottom: 7px;
+}
+
+#tapeplay #main .receipt p.grey {
+    color: #666;
+}
+
+#tapeplay #main .receipt p.large {
+    font-size: 24px;
+}
+
+#tapeplay #main .receipt.last {
+    margin-bottom: 50px;
+}
+
+/* Account Page */
+#tapeplay #main #accountLeft {
+    border-right: 1px solid #ccc;
+    float: left;
+    min-height: 860px;
+    overflow: hidden;
+    padding-right: 25px;
+    width: 650px;
+}
+
+#tapeplay #main #accountLeft h2 {
+    margin-bottom: 40px;
+}
+
+#tapeplay #main #accountLeft.connect h2 {
+    margin-bottom: 7px;
+}
+
+#tapeplay #main #accountLeft h2.invite {
+    margin-bottom: 15px;
+}
+
+#tapeplay #main #accountLeft.connect p {
+    color: #666;
+    font-size: 14px;
+    margin-bottom: 30px;
+}
+
+#tapeplay #main #accountLeft.connect .chunk {
+    overflow: hidden;
+    width 100%;
+}
+
+#tapeplay #main #accountLeft.connect .chunk .info {
+    float: left;
+    width: 400px;
+}
+
+#tapeplay #main #accountLeft.connect .chunk .info h4 {
+    font-size: 30px;
+}
+
+#tapeplay #main #accountLeft.connect .chunk .bigButton {
+    margin-right: 7px;
+}
+
+#tapeplay #main #accountLeft.connect .chunk .status {
+    float: left;
+    margin-top: 3px;
+}
+
+#tapeplay #main #accountLeft p.invite {
+    margin-bottom: 45px;
+}
+
+#tapeplay #main #accountLeft .chunk.invite {
+    overflow: hidden;
+}
+
+#tapeplay #main #accountLeft .chunk.invite .inputField {
+    margin-bottom: 15px;
+}
+
+#tapeplay #main #accountLeft .chunk.invite .inputField .middle {
+    width: 619px;
+}
+
+#tapeplay #main #accountLeft .addAnother {
+    float: left;
+    margin-bottom: 30px;
+    width: 100%;
+}
+
+#tapeplay #main #accountLeft .accordion {
+    margin-bottom: 7px;
+    width: 100%;
+}
+
+#tapeplay #main #accountLeft .accordion .header {
+    background-color: #f0f0f0;
+    cursor: pointer;
+    overflow: hidden;
+    padding: 7px;
+}
+
+#tapeplay #main #accountLeft .accordion .header .title {
+    float: left;
+    font-size: 24px;
+}
+
+#tapeplay #main #accountLeft .accordion .header .arrow {
+    background-image: url('/media/images/arrows/acct-close-arrow.png');
+    float: right;
+    height: 14px;
+    margin-top: 7px;
+    width: 14px;
+}
+
+#tapeplay #main #accountLeft .accordion .body {
+    height: 400px;
+    overflow: auto;
+}
+
+#tapeplay #main #accountLeft .accordion .body .chunk {
+    color: #666;
+    overflow: hidden;
+    padding: 20px 0px 20px 40px;
+}
+
+#tapeplay #main #accountLeft .accordion .body .chunk.locked {
+    opacity: .3;
+}
+
+#tapeplay #main #accountLeft .accordion .body .chunk.locked:hover {
+    background-color: #fff;
+}
+
+#tapeplay #main #accountLeft .accordion .body .chunk .resultImage {
+    border: 1px solid #000;
+    float: left;
+    height: 100px;
+    margin-right: 15px;
+    width: 150px;
+}
+
+#tapeplay #main #accountLeft .accordion .body .chunk .info {
+    float: left;
+    width: 300px;
+}
+
+#tapeplay #main #accountLeft .accordion .body .chunk .info h4 {
+    color: #666;
+    font-size: 28px;
+}
+
+#tapeplay #main #accountLeft .accordion .body .chunk .info .position {
+    color: #666;
+    font-size: 12px;
+    margin-bottom: 25px;
+}
+
+#tapeplay #main #accountLeft .accordion .body .chunk .info .title,
+#tapeplay #main #accountLeft .accordion .body .chunk .info .date {
+    color: #666;
+    font-size: 16px;
+}
+
+#tapeplay #main #accountLeft .accordion .body .chunk .info p {
+    font-size: 12px;
+    margin: 0px;
+    padding: 0px;
+}
+
+#tapeplay #main #accountLeft .accordion .body .chunk .accountInfo {
+    float: left;
+    width: 475px;
+}
+
+#tapeplay #main #accountLeft .accordion .body .chunk .accountInfo h4 {
+    font-size: 24px;
+    margin-bottom: 7px;
+}
+
+#tapeplay #main #accountLeft .accordion .body .chunk .accountInfo p {
+    font-size: 12px;
+}
+
+#tapeplay #main #accountLeft .accordion .body .chunk .accountInfo .inputField .middle {
+    width: 430px;
+}
+
+#tapeplay #main #accountLeft .accordion .body .chunk .bigButton {
+    margin-right: 7px;
+    margin-top: 40px;
+}
+
+#tapeplay #main #accountLeft .accordion .body .chunk .status {
+    font-size: 12px;
+}
+
+#tapeplay #main #accountLeft .accordion .body .chunk .status span {
+    float: left;
+}
+
+#tapeplay #main #accountLeft .accordion .body .chunk .bigButton .middle span {
+    cursor: pointer;
+}
+
+#tapeplay #main #accountLeft .accordion .body .chunk .check {
+    margin-bottom: 7px;
+}
+
+#tapeplay #main #accountLeft .accordion .body .chunk .check label {
+    font-size: 12px;
+    margin-left: 7px;
+}
+
+#tapeplay #main #accountRight {
+    float: left;
+    padding-left: 25px;
+    width: 250px;
+}
+
+#tapeplay #main #accountRight .bigButton {
+    height: 70px;
+    margin-bottom: 15px;
+    width: 250px;
+}
+
+#tapeplay #main #accountRight .bigButton .bottomRight,
+#tapeplay #main #accountRight .bigButton .topRight {
+    right: 0px;
+}
+
+#tapeplay #main #accountRight .bigButton .middle .large {
+    padding: 0px 22px;
+}
+
+#tapeplay #main #accountRight .bigButton.orange {
+    height: 70px;
+}
+
+#tapeplay #main #accountRight .bigButton.orange .newTriangleCorner {
+    background-image: url('/media/images/new-corner.png');
+    height: 50px;
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    width: 50px;
+}
+
+#tapeplay #main #accountRight .bigButton .middle {
+    padding: 13px 10px 10px 10px;
+}
+
+#tapeplay #main #accountRight .bigButton.black .middle h3 {
+    margin-top: 10px;
+    margin-left: 33px;
+}
+
+#tapeplay #main #accountRight .bigButton .middle h3 {
+    font-size: 24px;
+    margin-bottom: 7px;
+    margin-left: 15px;
+}
+
+#tapeplay #main #accountRight .bigButton .middle p {
+    font-size: 12px;
+    text-align: center;
+}
+
+#tapeplay #main #accountRight .bigButton .middle .large.black{
+    height: 70px;
+}
+
+#tapeplay #main #accountRight .ad250x250 {
+    background-color: #000;
+    float: left;
+    height: 250px;
+    width: 250px;
+}
+
+/* Video Notes*/
+#tapeplay #main #accountLeft .videoNoteInfo {
+    margin-bottom: 15px;
+}
+
+#tapeplay #main #accountLeft #notes {
+
+}
+
+#tapeplay #main #accountLeft #notes .note {
+
+}
+
+#tapeplay #main #accountLeft #notes .note .top {
+    float: left;
+    margin-bottom: 15px;
+    width: 100%;
+}
+
+#tapeplay #main #accountLeft #notes .note .top .resultImage {
+    border: 1px solid black;
+    float: left;
+    height: 100px;
+    margin-right: 15px;
+    width: 150px;
+}
+
+#tapeplay #main #accountLeft #notes .note .accordion {
+
+}
+
+#tapeplay #main #accountLeft #notes .note .accordion .header {
+    background-color: #fff;
+    padding: 0px;
+    width: 100%;
+}
+
+#tapeplay #main #accountLeft #notes .note .accordion .header .time {
+    background-color: #f0f0f0;
+    float: left;
+    margin-right: 15px;
+    padding: 4px 8px;
+    width: 138px;
+}
+
+#tapeplay #main #accountLeft #notes .note .accordion .header p {
+    float: left;
+    margin-top: 3px;
+}
+
+#tapeplay #main #accountLeft #notes .note .accordion .header p .new {
+    font-size: 12px;
+    color: #00f;
+}
+
+#tapeplay #main #accountLeft #notes .note .accordion .header p a {
+    font-size: 12px;
+}
+
+#tapeplay #main #accountLeft #notes .note .accordion .header p {
+    float: left;
+    margin-top: 3px;
+}
+
+#tapeplay #main #accountLeft #notes .note .accordion .singleNote {
+    padding: 10px 25px;
+}
+
+#tapeplay #main #accountLeft #notes .note .accordion .singleNote .single {
+    float: left;
+    margin-bottom: 15px;
+}
+
+#tapeplay #main #accountLeft #notes .note .accordion .singleNote .single .title {
+
+}
+
+#tapeplay #main #accountLeft #notes .note .accordion .singleNote .single .title .date {
+    color: #ccc;
+    margin-left: 3px;
+}
+
+#tapeplay #main #accountLeft #notes .note .accordion .singleNote .single .italic {
+    color: #666;
+    font-style: italic;
+}
+
+#tapeplay #main #accountLeft #notes .note .accordion .singleNote .single .reply {
+    margin-top: 15px;
+}
+
+#tapeplay #main #accountLeft #notes .note .accordion .singleNote .single .bigButton {
+    margin-right: 15px;
 }
 
 /* Ad */
@@ -1243,6 +1647,7 @@ a {
 }
 
 .bigButton {
+    cursor: pointer;
     float: left;
     overflow: hidden;
     position: relative;
@@ -1284,26 +1689,68 @@ a {
     z-index: 100;
 }
 
+.bigButton .middle {
+    overflow: hidden;
+}
+
+/* Button Sizes */
 .bigButton .middle .large {
     border: none;
+    cursor: pointer;
     font-family: arial;
     font-size: 30px;
     font-weight: normal;
     float: left;
     height: 80px;
+    padding: 0px 30px;
     position: relative;
-    width: 194px;
     z-index: 1;
 }
 
-.bigButton .middle .large.blackBtn {
+.bigButton .middle .tiny {
+    border: none;
+    cursor: pointer;
+    font-family: arial;
+    font-size: 12px;
+    font-weight: normal;
+    float: left;
+    padding: 2px;
+    position: relative;
+    z-index: 1;
+}
+
+.bigButton .middle .medium {
+
+}
+
+.bigButton .middle .small {
+
+}
+
+/* Button Colors */
+.black {
     background-color: #000;
     color: #fff;
 }
 
-.bigButton .middle .large.whiteBtn {
+.white {
     background-color: #fff;
     color: #000;
+}
+
+.orange {
+    background-color: #d07010;
+    color: #fff;
+}
+
+.grey {
+    background-color: #ccc;
+    color: #fff;
+}
+
+.tiny {
+    font-size: 12px;
+    padding: 5px;
 }
 
 .topLeft.whiteBg {
@@ -1426,10 +1873,11 @@ a {
 
 .inputFieldSmall .right,
 .sportSelect .dropper .rightSmall {
-    background-image: url('/media/images/form/img_drop-small-box-mid.gif');
+    background-image: url('/media/images/form/stats-box-right.gif');
     background-repeat: repeat-x;
     float: left;
     height: 21px;
+    width: 4px;
 }
 
 .sportSelect .dropper .rightMedium {
@@ -1575,6 +2023,26 @@ a {
     background-image: url('/media/images/social/bebo-icon.png');
 }
 
+/* Add Another */
+.addAnother {
+    cursor: pointer;
+}
+
+.addAnother .addText {
+    float: left;
+    margin-top: 5px;
+}
+
+.addAnother p .plusCircle {
+    background-image: url('/media/images/plus-btn.gif');
+    background-repeat: no-repeat;
+    display: block;
+    float: left;
+    height: 24px;
+    margin-right: 3px;
+    width: 24px;
+}
+
 /* Ads Similar */
 .adSmall {
     background-color: #000;
@@ -1647,4 +2115,30 @@ a {
 .cornerBox.black {
     background-color: #000;
     color: #fff;
+}
+
+/* Fine Print */
+.finePrint {
+    color: #ccc;
+    font-size: 12px;
+    font-style: italic;
+    width: 550px;
+}
+
+/* Save/Remove */
+.action {
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    background-color: #d07010;
+    border-radius: 3px;
+    color: #fff;
+    float: left;
+    font-size: 12px;
+    margin-top: 40px;
+    padding: 5px;
+    text-align: center;
+}
+
+.hidden {
+    display: none;
 }
