@@ -1536,6 +1536,50 @@ a {
     margin-right: 15px;
 }
 
+/* Video Upload */
+#tapeplay #main .uploadNote {
+    color: #666;
+    font-size: 14px;
+    margin-bottom: 15px;
+}
+
+#tapeplay #main .uploadNote.last {
+    margin-bottom: 50px;
+}
+
+#tapeplay #main #uploadForm .input.lessPadding {
+    margin-bottom: 15px;
+}
+
+#tapeplay #main #uploadForm .input .inputField {
+    margin: 0px;
+}
+
+#tapeplay #main #uploadForm .input .inputField .middle.upload {
+    width: 442px;
+}
+
+#tapeplay #main #uploadForm .input .bigButton {
+    margin-right: 7px;
+}
+
+#tapeplay #main #uploadForm .input .sportSelect {
+    float: left;
+    overflow: hidden;
+    width: 200px;
+}
+
+#tapeplay #main #uploadForm .input .sportSelect .middleMedium {
+    color: #999;
+    width: 125px;
+}
+
+#tapeplay #main #uploadForm .option.step {
+    color: #666;
+    margin-left: 20px;
+    padding-top: 30px;
+}
+
 /* Ad */
 #tapeplay #ad {
     background-color: #d07010;
@@ -2141,4 +2185,17 @@ a {
 
 .hidden {
     display: none;
+}
+
+.uploader {
+    -moz-opacity:0;
+    cursor: pointer;
+    filter:alpha(opacity:0);
+    height: 80px;
+    opacity:0;
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    width: 158px;
+    z-index: 2;
 }
