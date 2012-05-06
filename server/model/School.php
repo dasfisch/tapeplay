@@ -4,59 +4,72 @@ namespace tapeplay\server\model;
 
 class School
 {
-    private $id;
-    private $name;
-    private $city;
-    private $state;
-    private $division;
+	public static function create($arr)
+	{
+		$school = new School();
 
-    public function setCity($city)
-    {
-        $this->city = $city;
-    }
+		$school->setId($arr["id"]);
+		$school->setName($arr["name"]);
+		$school->setCity($arr["city"]);
+		$school->setState($arr["state"]);
+		$school->setDivision($arr["division"]);
 
-    public function getCity()
-    {
-        return $this->city;
-    }
+		return $school;
+	}
 
-    public function setDivision($division)
-    {
-        $this->division = $division;
-    }
+	private $id;
+	private $name;
+	private $city;
+	private $state;
+	private $division;
 
-    public function getDivision()
-    {
-        return $this->division;
-    }
+	public function setCity($city)
+	{
+		$this->city = $city;
+	}
 
-    public function setId($id)
-    {
-        $this->id = $id;
-    }
+	public function getCity()
+	{
+		return $this->city;
+	}
 
-    public function getId()
-    {
-        return $this->id;
-    }
+	public function setDivision($division)
+	{
+		$this->division = $division;
+	}
 
-    public function setName($name)
-    {
-        $this->name = $name;
-    }
+	public function getDivision()
+	{
+		return $this->division;
+	}
 
-    public function getName()
-    {
-        return $this->name;
-    }
+	public function setId($id)
+	{
+		$this->id = $id;
+	}
 
-    public function setState($state)
-    {
-        $this->state = $state;
-    }
+	public function getId()
+	{
+		return $this->id;
+	}
 
-    public function getState()
-    {
-        return $this->state;
-    }
+	public function setName($name)
+	{
+		$this->name = $name;
+	}
+
+	public function getName()
+	{
+		return $this->name;
+	}
+
+	public function setState($state)
+	{
+		$this->state = $state;
+	}
+
+	public function getState()
+	{
+		return $this->state;
+	}
 }

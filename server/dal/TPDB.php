@@ -122,7 +122,7 @@ class TPDB
 	 * @param string $statement A valid SQL statement for the target database server
 	 * @param array $driver_options Array of one or more key=>value pairs to set attribute values for the PDOStatement obj
 	returned
-	 * @return PDOStatement
+	 * @return \PDOStatement
 	 */
 	public function prepare($statement, $driver_options = null)
 	{
@@ -134,7 +134,7 @@ class TPDB
 	 * Executes an SQL statement, returning a result set as a PDOStatement object
 	 *
 	 * @param string $statement
-	 * @return PDOStatement
+	 * @return \PDOStatement
 	 */
 	public function query($statement)
 	{

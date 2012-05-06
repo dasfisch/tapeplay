@@ -13,12 +13,12 @@ class Scout extends User
 	private $_title;
 	private $_recrutingLevel;
 
-	public function setUserId($id)
+	public function setId($id)
 	{
 		$this->_id = $id;
 	}
 
-	public function getUserId()
+	public function getId()
 	{
 		return $this->_id;
 	}
