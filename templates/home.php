@@ -11,13 +11,13 @@
                 </div>
                 <div class="right"></div>
             </div>
-            <div class="bigButton">
+            <div class="bigButton black">
                 <div class="topLeft whiteBg"></div>
                 <div class="topRight whiteBg"></div>
                 <div class="bottomLeft whiteBg"></div>
                 <div class="bottomRight whiteBg"></div>
                 <div class="middle">
-                    <input type="submit" value="Search" id="sendSearch" class="large blackBtn" />
+                    <input type="submit" value="Search" id="sendSearch" class="large black" />
                 </div>
             </div>
 

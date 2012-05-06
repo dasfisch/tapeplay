@@ -12,13 +12,13 @@
             <p class="error">* Enter a valid email address</p>
             <p class="error lower">Example: sebastian.frohm@gmail.com</p>
         </div>
-        <div class="bigButton white">
-            <div class="topLeft"></div>
-            <div class="topRight"></div>
-            <div class="bottomLeft"></div>
-            <div class="bottomRight"></div>
+        <div class="bigButton black">
+            <div class="topLeft whiteBg"></div>
+            <div class="topRight whiteBg"></div>
+            <div class="bottomLeft whiteBg"></div>
+            <div class="bottomRight whiteBg"></div>
             <div class="middle">
-                <input type="submit" value="Log In" id="login" class="largeBlack" />
+                <input type="submit" value="Log In" id="login" class="large black" />
             </div>
         </div>
     </form>

@@ -17,13 +17,13 @@
             <li>Upload as many videos as you want</li>
             <li>Know your video activity (Saves, Views, etc.)</li>
         </ul>
-        <div class="bigButton">
+        <div class="bigButton black">
             <div class="topLeft whiteBg"></div>
             <div class="topRight whiteBg"></div>
             <div class="bottomLeft whiteBg"></div>
             <div class="bottomRight whiteBg"></div>
             <div class="middle">
-                <input type="submit" value="Log In" id="login" class="large blackBtn" />
+                <input type="submit" value="Log In" id="login" class="large black" />
             </div>
         </div>
     </div>
@@ -44,13 +44,13 @@
         <p class="last">
             It's simple. Upload videos and get seen by the people who matter.
         </p>
-        <div class="bigButton">
+        <div class="bigButton white">
             <div class="topLeft blackBg"></div>
             <div class="topRight blackBg"></div>
             <div class="bottomLeft blackBg"></div>
             <div class="bottomRight blackBg"></div>
             <div class="middle">
-                <input type="submit" value="Log In" id="login" class="large whiteBtn" />
+                <input type="submit" value="Log In" id="login" class="large white" />
             </div>
         </div>
     </div>
@@ -63,13 +63,13 @@
                 need an .edu email address.
             </p>
         </div>
-        <div class="bigButton">
+        <div class="bigButton black">
             <div class="topLeft whiteBg"></div>
             <div class="topRight whiteBg"></div>
             <div class="bottomLeft whiteBg"></div>
             <div class="bottomRight whiteBg"></div>
             <div class="middle">
-                <input type="submit" value="Log In" id="login" class="large blackBtn" />
+                <input type="submit" value="Log In" id="login" class="large black" />
             </div>
         </div>
     </div>
