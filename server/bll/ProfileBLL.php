@@ -16,8 +16,7 @@ use tapeplay\server\model\User;
 use tapeplay\server\model\UserSummary;
 
 /**
- * Manages all profile database access.  Login, Signup, Forgot Password, Update Profile all
- * fall in this class.
+ * Manages all logic associated with the user's profile.
  */
 class ProfileBLL extends BaseBLL
 {
@@ -28,12 +27,19 @@ class ProfileBLL extends BaseBLL
 		$this->dal = new UserDAO();
 	}
 
+	/**
+	 * Passes a hash to the db to try and retrieve a user with a matching hash.
+	 * @param $username
+	 * @param $password
+	 */
 	public function authenticate($username, $password)
 	{
 		// create md5 hash to pass to dal
 		$hash = md5($username . ProfileBLL::$SALT . $password);
 
-		$this->dal->authenticate($hash);
+		$row = $this->dal->authenticate($hash);
+
+
 	}
 
 	public function createUser(User $user)

@@ -2,6 +2,7 @@
 
 namespace tapeplay\server\dal;
 
+require_once "TPErrorHandling.php";
 require_once "TPDB.php";
 
 /**

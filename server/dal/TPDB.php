@@ -23,7 +23,8 @@ class TPDB
 			{
 				self::$PDOInstance = new \PDO("mysql:host=" . $host . ";dbname=" . $dbname, $username, $password, $driver_options);
 
-				// TODO: Set any attributes to PDO here.
+				// set attributes
+				self::$PDOInstance->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
 			}
 			catch (\PDOException $e)
 			{
@@ -149,7 +150,7 @@ class TPDB
 	 */
 	public function queryFetchAllAssoc($statement)
 	{
-		return self::$PDOInstance->query($statement)->fetchAll(PDO::FETCH_ASSOC);
+		return self::$PDOInstance->query($statement)->fetchAll(\PDO::FETCH_ASSOC);
 	}
 
 	/**

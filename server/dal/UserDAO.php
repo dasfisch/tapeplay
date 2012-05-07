@@ -32,48 +32,65 @@ class UserDAO extends BaseDOA
 	}
 
 	/**
-	 * @param $id
+	 * @param $hash string The hash of the current user
 	 * @return \tapeplay\server\model\User The retrieved user
 	 */
-	public function getFull($id)
+	public function getFull($hash)
 	{
-		$this->sql = "SELECT * FROM users WHERE id = :id";
-		$this->prep = $this->dbh->prepare($this->sql);
-		$this->prep->bindValue(":id", $id, \PDO::PARAM_STR);
-		$this->prep->execute();
+		try
+		{
+			$this->sql = "SELECT * FROM users WHERE hash = :hash";
+			$this->prep = $this->dbh->prepare($this->sql);
+			$this->prep->bindValue(":id", $hash, \PDO::PARAM_STR);
+			$this->prep->execute();
+		}
+		catch (\PDOException $exception)
+		{
+			\TPErrorHandling::handlePDOException($exception->errorInfo);
+			return null;
+		}
 
-		$user = new User();
-
-		return $user;
+		return User::create($this->prep->fetch());
 	}
 
 	/**
 	 * Inserts the base user information.
 	 * @param \tapeplay\server\model\User $user Inserts passed user into database
-	 * @return int The ID that was assigned to this user in the db.
+	 * @return User The user that was passed in
 	 */
 	public function create(User $user)
 	{
-		$this->sql = "INSERT INTO users " .
-				"(first_name, last_name, email, hash, zipcode, gender, birthdate, last_login, account_type)" .
-				" VALUES " .
-				"(:firstName, :lastName, :email, :hash, :zipcode, :gender, :birthDate, :lastLogin, :accountType)";
+		try
+		{
+			$this->sql = "INSERT INTO users " .
+					"(first_name, last_name, email, hash, zipcode, gender, birthdate, last_login, account_type)" .
+					" VALUES " .
+					"(:firstName, :lastName, :email, :hash, :zipcode, :gender, :birthDate, :lastLogin, :accountType)";
 
-		$this->prep = $this->dbh->prepare($this->sql);
-		$this->prep->bindValue(":firstName", $user->getFirstName(), \PDO::PARAM_STR);
-		$this->prep->bindValue(":lastName", $user->getLastName(), \PDO::PARAM_STR);
-		$this->prep->bindValue(":email", $user->getEmail(), \PDO::PARAM_STR);
-		$this->prep->bindValue(":hash", $user->getHash(), \PDO::PARAM_STR);
-		$this->prep->bindValue(":zipcode", $user->getZipcode(), \PDO::PARAM_STR);
-		$this->prep->bindValue(":gender", $user->getGender(), \PDO::PARAM_STR);
-		$this->prep->bindValue(":birthDate", $user->getBirthDate(), \PDO::PARAM_INT);
-		$this->prep->bindValue(":lastLogin", $user->getLastLogin(), \PDO::PARAM_INT);
-		$this->prep->bindValue(":accountType", $user->getAccountType(), \PDO::PARAM_INT);
+			$this->prep = $this->dbh->prepare($this->sql);
+			$this->prep->bindValue(":firstName", $user->getFirstName(), \PDO::PARAM_STR);
+			$this->prep->bindValue(":lastName", $user->getLastName(), \PDO::PARAM_STR);
+			$this->prep->bindValue(":email", $user->getEmail(), \PDO::PARAM_STR);
+			$this->prep->bindValue(":hash", $user->getHash(), \PDO::PARAM_STR);
+			$this->prep->bindValue(":zipcode", $user->getZipcode(), \PDO::PARAM_STR);
+			$this->prep->bindValue(":gender", $user->getGender(), \PDO::PARAM_STR);
+			$this->prep->bindValue(":birthDate", $user->getBirthDate(), \PDO::PARAM_INT);
+			$this->prep->bindValue(":lastLogin", $user->getLastLogin(), \PDO::PARAM_INT);
+			$this->prep->bindValue(":accountType", $user->getAccountType(), \PDO::PARAM_INT);
 
-		$this->prep->execute();
+			$this->prep->execute();
 
-		// return the user's id
-		return ($this->prep->rowCount() > 0) ? $this->dbh->lastInsertId() : -1;
+		}
+		catch (\PDOException $exception)
+		{
+			\TPErrorHandling::handlePDOException($exception->errorInfo);
+			return null;
+		}
+
+		// assign the user to this id
+		$user->setUserId(($this->prep->rowCount() > 0) ? $this->dbh->lastInsertId() : -1);
+
+		return $user;
 	}
 
 	/**
@@ -82,25 +99,33 @@ class UserDAO extends BaseDOA
 	 */
 	public function update(User $user)
 	{
-		$this->sql = "UPDATE users " .
-				" SET " .
-				"(first_name:firstName, :lastName, :email, :password, :zipcode, :gender, :birthDate, :lastLogin, :accountType)" .
-				" WHERE " .
-				"id = :id";
+		try
+		{
+			$this->sql = "UPDATE users " .
+					" SET " .
+					"(first_name:firstName, :lastName, :email, :password, :zipcode, :gender, :birthDate, :lastLogin, :accountType)" .
+					" WHERE " .
+					"id = :id";
 
-		$this->prep = $this->dbh->prepare($this->sql);
-		$this->prep->bindValue(":id", $user->getUserId(), \PDO::PARAM_INT);
-		$this->prep->bindValue(":firstName", $user->getFirstName(), \PDO::PARAM_STR);
-		$this->prep->bindValue(":lastName", $user->getLastName(), \PDO::PARAM_STR);
-		$this->prep->bindValue(":email", $user->getEmail(), \PDO::PARAM_STR);
-		$this->prep->bindValue(":password", $user->getHash(), \PDO::PARAM_STR);
-		$this->prep->bindValue(":zipcode", $user->getZipcode(), \PDO::PARAM_STR);
-		$this->prep->bindValue(":gender", $user->getGender(), \PDO::PARAM_STR);
-		$this->prep->bindValue(":birthDate", $user->getBirthDate(), \PDO::PARAM_INT);
-		$this->prep->bindValue(":lastLogin", $user->getLastLogin(), \PDO::PARAM_INT);
-		$this->prep->bindValue(":accountType", $user->getAccountType(), \PDO::PARAM_INT);
+			$this->prep = $this->dbh->prepare($this->sql);
+			$this->prep->bindValue(":id", $user->getUserId(), \PDO::PARAM_INT);
+			$this->prep->bindValue(":firstName", $user->getFirstName(), \PDO::PARAM_STR);
+			$this->prep->bindValue(":lastName", $user->getLastName(), \PDO::PARAM_STR);
+			$this->prep->bindValue(":email", $user->getEmail(), \PDO::PARAM_STR);
+			$this->prep->bindValue(":password", $user->getHash(), \PDO::PARAM_STR);
+			$this->prep->bindValue(":zipcode", $user->getZipcode(), \PDO::PARAM_STR);
+			$this->prep->bindValue(":gender", $user->getGender(), \PDO::PARAM_STR);
+			$this->prep->bindValue(":birthDate", $user->getBirthDate(), \PDO::PARAM_INT);
+			$this->prep->bindValue(":lastLogin", $user->getLastLogin(), \PDO::PARAM_INT);
+			$this->prep->bindValue(":accountType", $user->getAccountType(), \PDO::PARAM_INT);
 
-		$this->prep->execute();
+			$this->prep->execute();
+		}
+		catch (\PDOException $exception)
+		{
+			\TPErrorHandling::handlePDOException($exception->errorInfo);
+			return false;
+		}
 
 		return ($this->prep->rowCount() > 0);
 	}
@@ -117,7 +142,7 @@ class UserDAO extends BaseDOA
 	/**
 	 * Uses the password to get an MD5 password hash to compare to the hashes in the database.
 	 * @param $hash string The password of the user.
-	 * @return int The "id" of the user that has the matching hash.
+	 * @return int The row from the user.
 	 */
 	public function authenticate($hash)
 	{
@@ -129,7 +154,15 @@ class UserDAO extends BaseDOA
 		$this->prep->bindValue(":hash", $hash, \PDO::PARAM_STR);
 		$this->prep->execute();
 
-		return $user;
+		if ($this->prep->rowCount() > 0)
+		{
+			$row = $this->prep->fetch();
+			return $row["id"];
+		}
+		else
+		{
+			return -1;
+		}
 	}
 
 	/**
