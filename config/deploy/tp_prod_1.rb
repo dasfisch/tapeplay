@@ -14,3 +14,4 @@ role :db, domain, :primary => true
 
 set (:branch) { "development" }
 set (:deploy_to) { "/apps/tapeplay/www" }
+set (:port) { 30000 }
