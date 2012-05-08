@@ -4,70 +4,84 @@ namespace tapeplay\server\model;
 
 class Comment
 {
-	private $id;
-	private $comment;
-	private $createdDate;
-	private $postedDate;
-	private $video;
-	private $user;
-
-	public function setUser($account)
+	public static function create($arr)
 	{
-		$this->user = $account;
+		$comment = new Comment();
+
+		$comment->setId($arr["id"]);
+		$comment->setComment($arr["comment"]);
+		$comment->setCreatedDate($arr["created_date"]);
+		$comment->setPostedDate($arr["posted_date"]);
+		$comment->setVideoId($arr["video_id"]);
+		$comment->setUserId($arr["user_id"]);
+
+		return $comment;
 	}
 
-	public function getUser()
+	private $_id;
+	private $_comment;
+	private $_createdDate;
+	private $_postedDate;
+	private $_videoId;
+	private $_userId;
+
+	public function setUserId($account)
 	{
-		return $this->user;
+		$this->_userId = $account;
+	}
+
+	public function getUserId()
+	{
+		return $this->_userId;
 	}
 
 	public function setComment($comment)
 	{
-		$this->comment = $comment;
+		$this->_comment = $comment;
 	}
 
 	public function getComment()
 	{
-		return $this->comment;
+		return $this->_comment;
 	}
 
 	public function setCreatedDate($createdDate)
 	{
-		$this->createdDate = $createdDate;
+		$this->_createdDate = $createdDate;
 	}
 
 	public function getCreatedDate()
 	{
-		return $this->createdDate;
+		return $this->_createdDate;
 	}
 
 	public function setId($id)
 	{
-		$this->id = $id;
+		$this->_id = $id;
 	}
 
 	public function getId()
 	{
-		return $this->id;
+		return $this->_id;
 	}
 
 	public function setPostedDate($postedDate)
 	{
-		$this->postedDate = $postedDate;
+		$this->_postedDate = $postedDate;
 	}
 
 	public function getPostedDate()
 	{
-		return $this->postedDate;
+		return $this->_postedDate;
 	}
 
-	public function setVideo($video)
+	public function setVideoId($video)
 	{
-		$this->video = $video;
+		$this->_videoId = $video;
 	}
 
-	public function getVideo()
+	public function getVideoId()
 	{
-		return $this->video;
+		return $this->_videoId;
 	}
 }

@@ -13,46 +13,54 @@ require "model/Player.php";
  */
 class PlayerDAO extends BaseDOA
 {
-	function insert(Player $player, $userID)
+	public function insert(Player $player)
 	{
-		$this->sql = "INSERT INTO players (number, guardian_signup, school_name, height, grade_level, video_access, user_id) VALUES (:number, :guardian_signup, :school_name, :height, :grade_level, :video_access, :user_id)";
+		$this->sql = "INSERT INTO players " .
+				"(number, height, grade_level, video_access, position, user_id, school_id)" .
+				" VALUES " .
+				"(:number, :height, :gradeLevel, :videoAccess, :position, :userId, :schoolId)";
+
 		$this->prep = $this->dbh->prepare($this->sql);
 		$this->prep->bindValue(":number", $player->getNumber(), \PDO::PARAM_INT);
-		$this->prep->bindValue(":guardian_signup", $player->getGuardianSignup(), \PDO::PARAM_INT);
-		$this->prep->bindValue(":school_name", $player->getSchoolName(), \PDO::PARAM_INT);
 		$this->prep->bindValue(":height", $player->getHeight(), \PDO::PARAM_INT);
-		$this->prep->bindValue(":grade_level", $player->getGradeLevel(), \PDO::PARAM_STR);
-		$this->prep->bindValue(":video_access", $player->getVideoAccess(), \PDO::PARAM_INT);
-		$this->prep->bindValue(":user_id", $userID, \PDO::PARAM_INT);
+		$this->prep->bindValue(":gradeLevel", $player->getGradeLevel(), \PDO::PARAM_INT);
+		$this->prep->bindValue(":videoAccess", $player->getVideoAccess(), \PDO::PARAM_INT);
+		$this->prep->bindValue(":position", $player->getPosition(), \PDO::PARAM_INT);
+		$this->prep->bindValue(":schoolId", $player->getSchool()->getId(), \PDO::PARAM_INT);
+		$this->prep->bindValue(":userId", $player->getUserId(), \PDO::PARAM_INT);
 
 		$this->prep->execute();
 
+		// return the player with his id
+		$player->setId(($this->prep->rowCount() > 0) ? $this->dbh->lastInsertId() : -1);
 	}
 
 	function update(Player $player)
 	{
-		$this->sql = "UPDATE players SET number = :number, guardian_signup = :guardian_signup, school_name = :school_name, height = :height, grade_level = :grade_level, video_access = :video_access, user_id = :user_id)";
+		$this->sql = "UPDATE players SET " .
+				"number = :number, guardian_signup = :guardian_signup, school_id = :school_id, height = :height, grade_level = :grade_level, video_access = :video_access, user_id = :user_id" .
+				" WHERE id = :id";
 		$this->prep = $this->dbh->prepare($this->sql);
+		$this->prep->bindValue(":id", $player->getId(), \PDO::PARAM_INT);
 		$this->prep->bindValue(":number", $player->getNumber(), \PDO::PARAM_INT);
-		$this->prep->bindValue(":guardian_signup", $player->getGuardianSignup(), \PDO::PARAM_INT);
-		$this->prep->bindValue(":school_name", $player->getSchoolName(), \PDO::PARAM_INT);
+		$this->prep->bindValue(":school_id", $player->getSchool()->getId(), \PDO::PARAM_INT);
 		$this->prep->bindValue(":height", $player->getHeight(), \PDO::PARAM_INT);
 		$this->prep->bindValue(":grade_level", $player->getGradeLevel(), \PDO::PARAM_STR);
 		$this->prep->bindValue(":video_access", $player->getVideoAccess(), \PDO::PARAM_INT);
-		$this->prep->bindValue(":user_id", $userID, \PDO::PARAM_INT);
+		$this->prep->bindValue(":user_id", $player->getUserId(), \PDO::PARAM_INT);
 
 		$this->prep->execute();
+
+		return ($this->prep->rowCount() > 0) ? $this->dbh->lastInsertId() : -1;
 	}
 
 	/**
-	 * @param \tapeplay\server\model\SearchFilter $filter
-	 * @return An array of players who match the search query.
+	 * @param SearchFilter $filter
+	 * @return array An array of players who match the search query.
 	 */
 	function getPlayers(SearchFilter $filter)
 	{
-		/*$this->sql = "SELECT * FROM players";
-		$this->prep = $this->dbh->prepare()
-		$this->prep->execute();*/
+
 	}
 
 

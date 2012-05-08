@@ -55,12 +55,12 @@ class Player extends User
 		return $this->_height;
 	}
 
-	public function setUserId($id)
+	public function setId($id)
 	{
 		$this->_id = $id;
 	}
 
-	public function getUserId()
+	public function getId()
 	{
 		return $this->_id;
 	}

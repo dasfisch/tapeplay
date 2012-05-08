@@ -2,6 +2,7 @@
 
 require_once ("bll/ProfileBLL.php");
 require_once ("enum/AccountTypeEnum.php");
+require_once ("model/User.php");
 
 use tapeplay\server\bll\ProfileBLL;
 use tapeplay\server\model\User;
@@ -24,6 +25,8 @@ $user->setBirthDate(1225886400);
 $user->setLastLogin(1225886400);
 $user->setAccountType(AccountTypeEnum::$PLAYER);
 
-$id = $bll->createUser($user);
+$newlyCreatedUser = new User();
+$newlyCreatedUser = $bll->createUser($user);
 
-echo "User was inserted.  ID is " . $id;
+if ($newlyCreatedUser)
+	echo "User was inserted. " . $newlyCreatedUser->getUserId() . " is the new ID for " . $newlyCreatedUser->getFirstName();

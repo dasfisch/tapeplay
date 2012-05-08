@@ -3,6 +3,7 @@
 namespace tapeplay\server\bll;
 
 require_once ("dal/PlayerDAO.php");
+require_once ("bll/BaseBLL.php");
 require_once ("model/Player.php");
 
 use tapeplay\server\dal\PlayerDAO;
@@ -15,12 +16,12 @@ class PlayerBLL extends BaseBLL
 		$this->dal = new PlayerDAO();
 	}
 
-	function insert(Player $player, $userID)
+	public function insert(Player $player, $userID)
 	{
 		return $this->dal->insert($player, $userID);
 	}
 
-	function update(Player $player)
+	public function update(Player $player)
 	{
 		$this->dal->update($player);
 	}

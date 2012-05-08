@@ -7,6 +7,24 @@ namespace tapeplay\server\model;
  */
 class User
 {
+	public static function create($arr)
+	{
+		$user = new User();
+
+		$user->setUserId($arr["id"]);
+		$user->setFirstName($arr["first_name"]);
+		$user->setLastName($arr["last_name"]);
+		$user->setEmail($arr["email"]);
+		$user->setHash($arr["hash"]);
+		$user->setZipcode($arr["zipcode"]);
+		$user->setGender($arr["gender"]);
+		$user->setBirthDate($arr["birthdate"]);
+		$user->setLastLogin($arr["last_login"]);
+		$user->setAccountType($arr["account_type"]);
+
+		return $user;
+	}
+
 	protected  $_userId;
 	protected  $_firstName;
 	protected  $_lastName;
