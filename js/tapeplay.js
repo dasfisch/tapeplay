@@ -1,5 +1,5 @@
 jQuery(document).ready(function(){
-    var visible = false;
+    var showing = false;
 
     jQuery('#arrow').click(function(){
         jQuery('#potentials').slideDown();
@@ -16,14 +16,24 @@ jQuery(document).ready(function(){
     });
 
     jQuery('.checkbox').click(function(){
-        if(visible) {
-            jQuery(this).children('.box').children('.checkMark').hide();
+        var showing = jQuery(this).attr('showing');
 
-            visible = false;
-        } else {
+        console.log(showing + " is showing outside " + typeof(showing));
+
+        showing = typeof(showing) === 'undefined' ? 'false' : 'true';
+
+        if(showing == 'false') {
+            console.log(showing + " is showing in false")
+
             jQuery(this).children('.box').children('.checkMark').show();
 
-            visible = true;
+            jQuery(this).attr('showing', 'true');
+        } else {
+            console.log(showing + " is showing in true")
+
+            jQuery(this).children('.box').children('.checkMark').hide();
+
+            jQuery(this).attr('showing', 'false');
         }
     });
 
@@ -65,4 +75,26 @@ jQuery(document).ready(function(){
         console.log(height + ' is the height');
         jQuery('#ad').height(height);
     }
+
+    jQuery('.infoOpen').hover(
+        function() {
+            /*var position = jQuery(this).position();
+            var height = jQuery(this).height();
+            var width = jQuery(this).width();
+
+            console.log('postion: ' + position.top + ' ' + position.left + '; height: ' + height + '; width: ' + width);
+
+            jQuery(this).next('.infoBubble').css('top', (position.top + height + 15)).css('left', (position.left)).show();*/
+
+            jQuery(this).next('.infoBubble').show();
+        },
+        function() {
+            var _this = jQuery(this);
+
+            jQuery(document).click(function() {
+                console.log('HERE')
+                _this.next('.infoBubble').fadeOut();
+            });
+        }
+    );
 });

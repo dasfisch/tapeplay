@@ -28,13 +28,25 @@
                     <p class="date"><?php echo date('F, Y', strtotime('now')); ?></p>
                 </div>
             </div>
-            <div class="result">
-                <img src="/" class="resultImage locked" />
-                <div class="info">
-                    <h2>First Last Name</h2>
-                    <p class="position">Chicago, IL</p>
-                    <p class="title">Video Title</p>
-                    <p class="date"><?php echo date('F, Y', strtotime('now')); ?></p>
+            <div class="result opaque">
+                <div class="infoOpen locked">
+                    <img src="/" class="resultImage" />
+                    <div class="info">
+                        <h2>First Last Name</h2>
+                        <p class="position">Chicago, IL</p>
+                        <p class="title">Video Title</p>
+                        <p class="date"><?php echo date('F, Y', strtotime('now')); ?></p>
+                    </div>
+                </div>
+                <div class="infoBubble">
+                    <div class="topLeft"></div>
+                    <div class="topRight"></div>
+                    <div class="middle">
+                        <p>There is supposed to be a bunch of <a href="">text</a> in here!</p>
+                    </div>
+                    <div class="directionBottomRight"></div>
+                    <div class="bottomRight"></div>
+                    <div class="direction"></div>
                 </div>
             </div>
             <div class="result">
@@ -127,8 +139,18 @@
                 }
             ?>
             <li>...</li>
-            <li>19</li>
+            <li class="infoOpen">19</li>
         </ul>
+        <div class="infoBubble">
+            <div class="topLeft black"></div>
+            <div class="directionTopRight"></div>
+            <div class="middle">
+                <p>There is supposed to be a bunch of <a>text</a> in here!</p>
+            </div>
+            <div class="bottomLeft"></div>
+            <div class="bottomRight"></div>
+            <div class="direction"></div>
+        </div>
         <div class="next">&raquo;</div>
     </div>
 </div>

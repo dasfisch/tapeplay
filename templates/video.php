@@ -18,7 +18,19 @@
                 <li class="basic"><span class="italic">Uploaded June 15th, 2011</span></li>
             </ul>
             <ul id="right">
-                <li class="link">Share</li>
+                <li class="link">
+                    <a class="infoOpen">Share</a>
+                    <div class="infoBubble">
+                        <div class="topLeft"></div>
+                        <div class="directionTopRight"></div>
+                        <div class="middle">
+                            <p>There is supposed to be a bunch of <a>text</a> in here!</p>
+                        </div>
+                        <div class="bottomLeft"></div>
+                        <div class="bottomRight"></div>
+                        <div class="direction"></div>
+                    </div>
+                </li>
                 <li class="link">Save</li>
                 <li class="link last">Report Video</li>
             </ul>

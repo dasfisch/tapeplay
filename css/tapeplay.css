@@ -30,7 +30,7 @@ a {
 #tapeplay #header #left {
     float: left;
     overflow: hidden;
-    width: 50%;
+    width: 70%;
 }
 
 #tapeplay #header #left h1 {
@@ -78,16 +78,18 @@ a {
 }
 
 #tapeplay #header #right {
-    float: right;
+    float: left;
     width: 30%;
 }
 
 #tapeplay #header #right #links {
     margin-top: 20px;
+    overflow: hidden;
 }
 
 #tapeplay #header #right #links li {
     display: inline;
+    float: left;
     margin-right: 25px;
 }
 
@@ -297,8 +299,18 @@ a {
     padding: 20px 50px;
 }
 
-#tapeplay #landing #leftCol #results .result.locked {
+#tapeplay #landing #leftCol #results .result.opaque {
+    padding: 0px;
+}
+
+#tapeplay #landing #leftCol #results .result .infoOpen.locked {
     opacity: .3;
+    padding: 20px 50px;
+    width: 83%;
+}
+
+#tapeplay #landing #leftCol #results .result.locked .infoOpen.infoBubble {
+    opacity: 1;
 }
 
 #tapeplay #landing #leftCol #results .result:hover {
@@ -761,7 +773,7 @@ a {
 #tapeplay #main .facebookLogin {
     color: #666;
     font-size: 14px;
-    margin-bottom: 50px;
+    margin-bottom: 30px;
 }
 
 #tapeplay #main .input {
@@ -1091,12 +1103,6 @@ a {
 #tapeplay #main #coachForm .option.check .checkbox {
     margin-right: 0px;
     width: 500px;
-}
-
-#tapeplay #main #coachForm .option.step {
-    color: #666;
-    margin-left: 20px;
-    padding-top: 30px;
 }
 
 #tapeplay #main #coachForm #options {
@@ -1574,10 +1580,145 @@ a {
     width: 125px;
 }
 
-#tapeplay #main #uploadForm .option.step {
+/* Player info update page */
+#tapeplay #main #playerInfo {
+    overflow: hidden;
+    padding: 0px 15px;
+    width: 100%;
+}
+
+#tapeplay #main #playerInfo #status {
     color: #666;
-    margin-left: 20px;
-    padding-top: 30px;
+    font-size: 12px;
+    margin-bottom: 7px;
+}
+
+#tapeplay #main #playerInfo #status .success {
+    font-size: 12px;
+}
+
+#tapeplay #main #playerInfo .resultImage {
+    border: 1px solid black;
+    float: left;
+    height: 100px;
+    margin-right: 15px;
+    width: 150px;
+}
+
+#tapeplay #main #playerInfo #videoInfo {
+    margin-bottom: 30px;
+    overflow: hidden;
+}
+
+#tapeplay #main #playerInfo #videoInfo .info {
+    color: #666;
+    float: left;
+    height: 100px;
+    position: relative;
+    width: 500px;
+}
+
+#tapeplay #main #playerInfo #videoInfo .info h4 {
+    font-size: 24px;
+    margin-bottom: 3px;
+}
+
+#tapeplay #main #playerInfo #videoInfo .info .date {
+    font-size: 12px;
+}
+
+#tapeplay #main #playerInfo #videoInfo .info .length {
+    font-size: 12px;
+}
+
+#tapeplay #main #playerInfo #videoInfo .info .bottom {
+    bottom: 0px;
+    left: 0px;
+    position: absolute;
+}
+
+#tapeplay #main #playerInfo .input {
+    margin-bottom: 30px;
+}
+
+#tapeplay #main #playerInfo .input p {
+    font-size: 14px;
+    margin-bottom: 7px;
+}
+
+#tapeplay #main #playerInfo .input #basicInfo li {
+    border-right: 1px solid #f0f0f0;
+    color: #666;
+    display: inline;
+    float: left;
+    height: 150px;
+    margin-right: 45px;
+    width: 15%;
+}
+
+#tapeplay #main #playerInfo .input #basicInfo .inputField .middle {
+    width: 70px;
+}
+
+#tapeplay #main #playerInfo .input #basicInfo .option {
+    margin-bottom: 0px;
+}
+
+#tapeplay #main #playerInfo .input #basicInfo .option .checkbox {
+    margin-right: 0px;
+}
+
+#tapeplay #main #playerInfo .input #basicInfo .onTop .height {
+    margin-bottom: 7px;
+    overflow: hidden;
+}
+
+#tapeplay #main #playerInfo .input #basicInfo .onTop .weight .inputField .middle {
+    width: 64px;
+}
+
+#tapeplay #main #playerInfo .input .inputField {
+    margin-bottom: 15px;
+}
+
+#tapeplay #main #playerInfo .input #stats {
+    display: inline;
+}
+
+#tapeplay #main #playerInfo .input #stats li {
+    color: #666;
+    display: inline;
+    float: left;
+    overflow: hidden;
+    width: 20%;
+}
+
+#tapeplay #main #playerInfo .input .sportSelect {
+    float: left;
+}
+
+#tapeplay #main #playerInfo .input.graduation .sportSelect {
+    float: left;
+    margin-right: 15px;
+    overflow: hidden;
+}
+
+#tapeplay #main #playerInfo .input #stats li .inputFieldSmall .middle {
+    width: 25px;
+}
+
+#tapeplay #main #playerInfo .input #stats li .inputFieldSmall .middle .standard {
+    padding: 0px;
+}
+
+#tapeplay #main #playerInfo .input #stats li p {
+    color: #666;
+    float: left;
+    margin-right: 7px;
+}
+
+#tapeplay #main #playerInfo .input #stats li .inputFieldSmall {
+    margin-bottom: 7px;
 }
 
 /* Ad */
@@ -1773,22 +1914,22 @@ a {
 
 /* Button Colors */
 .black {
-    background-color: #000;
+    background-color: #000 !important;
     color: #fff;
 }
 
 .white {
-    background-color: #fff;
+    background-color: #fff !important;
     color: #000;
 }
 
 .orange {
-    background-color: #d07010;
+    background-color: #d07010 !important;
     color: #fff;
 }
 
 .grey {
-    background-color: #ccc;
+    background-color: #ccc !important;
     color: #fff;
 }
 
@@ -1814,7 +1955,6 @@ a {
 
 .bottomRight.whiteBg {
     background-image: url('/media/images/buttons/large/white/btn_lg-btm-rt-corner-white.png');
-    background-repeat: no-repeat;
     background-repeat: no-repeat;
 }
 
@@ -1907,7 +2047,6 @@ a {
     background-image: url('/media/images/form/img_drop-small-box-mid.gif');
     float: left;
     height: 36px;
-    width: 1px;
 }
 
 .sportSelect .dropper .middleMedium p {
@@ -2133,6 +2272,13 @@ a {
     padding-top: 10px;
 }
 
+.option.step {
+    color: #666;
+    margin-left: 20px;
+    padding-top: 30px;
+}
+
+
 /* Corners Boxes */
 
 .cornerBox {
@@ -2198,4 +2344,93 @@ a {
     top: 0px;
     width: 158px;
     z-index: 2;
+}
+
+/* Info Bubble */
+.infoBubble {
+    background-color: #fff;
+    border: 1px solid #aaa;
+    display: none;
+    padding: 7px;
+    position: absolute;
+    width: 200px;
+    z-index: 1000;
+}
+
+.infoBubble .topLeft {
+    background-color: #fff;
+    background-image: url('/media/images/pop_up_corners/pop_top-lt-corner.png');
+    background-repeat: no-repeat;
+    height: 5px;
+    left: -2px;
+    position: absolute;
+    top: -2px;
+    width: 5px;
+}
+
+.infoBubble .topRight {
+    background-color: #fff;
+    background-image: url('/media/images/pop_up_corners/pop_top-rt-corner.png');
+    background-repeat: no-repeat;
+    height: 5px;
+    position: absolute;
+    right: -2px;
+    top: -2px;
+    width: 5px;
+}
+
+.infoBubble .bottomLeft {
+    background-color: #fff;
+    background-image: url('/media/images/pop_up_corners/pop_btm-lt-corner.png');
+    background-repeat: no-repeat;
+    bottom: -1px;
+    height: 5px;
+    left: -1px;
+    position: absolute;
+    width: 5px;
+}
+
+.infoBubble .bottomRight {
+    background-color: #fff;
+    background-image: url('/media/images/pop_up_corners/pop_btm-rt-corner.png');
+    background-repeat: no-repeat;
+    bottom: -1px;
+    height: 5px;
+    position: absolute;
+    right: -2px;
+    width: 5px;
+}
+
+.infoBubble .directionTopRight {
+    background-image: url('/media/images/pop_up_corners/pop_top-rt-point.png');
+    height: 12px;
+    right: 0px;
+    position: absolute;
+    top: -12px;
+    width: 12px;
+}
+
+.infoBubble .directionBottomRight {
+    background-image: url('/media/images/pop_up_corners/pop_btm-lt-point.png');
+    height: 12px;
+    left: -1px;
+    position: absolute;
+    bottom: -12px;
+    width: 12px;
+}
+
+.infoBubble .middle p{
+    color: #666;
+    font-size: 12px;
+}
+
+/* Info Bubble Positioning */
+#tapeplay #header #right .infoBubble {
+    left: 635px;
+    top: 55px;
+}
+
+#tapeplay #landing #leftCol #results .result.opaque .infoBubble {
+    left: 150px;
+    top: 375px;
 }

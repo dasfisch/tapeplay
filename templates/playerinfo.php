@@ -5,15 +5,17 @@
         to find what they're looking for.
     </p>
     <div id="playerInfo">
-        <p id="status">
-            Video Status: <span class="success italic">Upload complete!</span>
-        </p>
-        <img src="/" class="resultImage" />
-        <div class="info">
-            <h4>Title</h4>
-            <p class="date">April, 2012</p>
-            <p class="length">12:00</p>
-            <p class="bottom italic">Video file name</p>
+        <div id="videoInfo">
+            <p id="status">
+                Video Status: <span class="success italic">Upload complete!</span>
+            </p>
+            <img src="/" class="resultImage" />
+            <div class="info">
+                <h4>Title</h4>
+                <p class="date">April, 2012</p>
+                <p class="length">12:00</p>
+                <p class="bottom italic">Video file name</p>
+            </div>
         </div>
         <form id="playerInfoForm" name="playerInfoForm" action="" method="post">
             <div class="input">
@@ -68,57 +70,7 @@
                             </div>
                         </div>
                     </li>
-                </ul>
-                <div class="sportSelect">
-                    <div class="dropper">
-                        <div class="leftMedium"></div>
-                        <div class="middleMedium">
-                            <p class="value">Grade</p>
-                        </div>
-                        <div class="rightMedium"></div>
-                        <ul class="potentials">
-                            <li>Women's Soccer</li>
-                            <li>Women's Basketball</li>
-                            <li>Women's Hockey</li>
-                        </ul>
-                    </div>
-                    <div class="arrowSmall"></div>
-                </div>
-                <div class="option">
-                    <p class="header">Position</p>
-                    <div class="checkbox">
-                        <div class="box">
-                            <div class="checkMark"></div>
-                        </div>
-                        <div class="label">Point Guard</div>
-                    </div>
-                    <div class="checkbox">
-                        <div class="box">
-                            <div class="checkMark"></div>
-                        </div>
-                        <div class="label">Shooting Guard</div>
-                    </div>
-                    <div class="checkbox">
-                        <div class="box">
-                            <div class="checkMark"></div>
-                        </div>
-                        <div class="label">Small Forward</div>
-                    </div>
-                    <div class="checkbox">
-                        <div class="box">
-                            <div class="checkMark"></div>
-                        </div>
-                        <div class="label">Power Forward</div>
-                    </div>
-                    <div class="checkbox">
-                        <div class="box">
-                            <div class="checkMark"></div>
-                        </div>
-                        <div class="label">Center</div>
-                    </div>
-                </div>
-                <div class="onTop">
-                    <div class="height">
+                    <li>
                         <div class="sportSelect">
                             <div class="dropper">
                                 <div class="leftMedium"></div>
@@ -134,17 +86,73 @@
                             </div>
                             <div class="arrowSmall"></div>
                         </div>
-                    </div>
-                    <div class="weight">
-                        <div class="inputField">
-                            <div class="left"></div>
-                            <div class="middle">
-                                <input type="text" class="standard" id="number" name="number" value="##"" />
+                    </li>
+                    <li>
+                        <div class="option">
+                            <p class="header">Position</p>
+                            <div class="checkbox">
+                                <div class="box">
+                                    <div class="checkMark"></div>
+                                </div>
+                                <div class="label">Point Guard</div>
                             </div>
-                            <div class="right"></div>
+                            <div class="checkbox">
+                                <div class="box">
+                                    <div class="checkMark"></div>
+                                </div>
+                                <div class="label">Shooting Guard</div>
+                            </div>
+                            <div class="checkbox">
+                                <div class="box">
+                                    <div class="checkMark"></div>
+                                </div>
+                                <div class="label">Small Forward</div>
+                            </div>
+                            <div class="checkbox">
+                                <div class="box">
+                                    <div class="checkMark"></div>
+                                </div>
+                                <div class="label">Power Forward</div>
+                            </div>
+                            <div class="checkbox">
+                                <div class="box">
+                                    <div class="checkMark"></div>
+                                </div>
+                                <div class="label">Center</div>
+                            </div>
                         </div>
-                    </div>
-                </div>
+                    </li>
+                    <li>
+                        <div class="onTop">
+                            <div class="height">
+                                <div class="sportSelect">
+                                    <div class="dropper">
+                                        <div class="leftMedium"></div>
+                                        <div class="middleMedium">
+                                            <p class="value">Grade</p>
+                                        </div>
+                                        <div class="rightMedium"></div>
+                                        <ul class="potentials">
+                                            <li>Women's Soccer</li>
+                                            <li>Women's Basketball</li>
+                                            <li>Women's Hockey</li>
+                                        </ul>
+                                    </div>
+                                    <div class="arrowSmall"></div>
+                                </div>
+                            </div>
+                            <div class="weight">
+                                <div class="inputField">
+                                    <div class="left"></div>
+                                    <div class="middle">
+                                        <input type="text" class="standard" id="number" name="number" value="##"" />
+                                    </div>
+                                    <div class="right"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
             </div>
             <div class="input">
                 <p>School/Team Info</p>
@@ -163,7 +171,7 @@
                     <div class="right"></div>
                 </div>
             </div>
-            <div class="input">
+            <div class="input graduation">
                 <p>Graduation Date (optional)</p>
                 <div class="sportSelect">
                     <div class="dropper">
