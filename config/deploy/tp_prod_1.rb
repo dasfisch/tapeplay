@@ -12,5 +12,5 @@ role :web, "#{domain}"  # Your HTTP server, Apache/etc
 role :app, "#{domain}"  # This may be the same as your `Web` server
 role :db, domain, :primary => true
 
-set (:branch) { "qa" }
+set (:branch) { "development" }
 set (:deploy_to) { "/apps/tapeplay/www" }
