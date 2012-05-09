@@ -15,5 +15,9 @@ role :app, "#{domain}"  # This may be the same as your `Web` server
 role :db, domain, :primary => true
 
 set (:branch) { "development" }
-set (:deploy_to) { "/apps/tapeplay/www" }
+set (:deploy_to) { "/home/tapeplayer/tapeplay" }
 set :deploy_via, :copy
+
+set :move_deploy do
+    run "cp -R /home/tapeplayer/tapeplay/current/* /apps/tapeplay/www/"
+end

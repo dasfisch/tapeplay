@@ -612,7 +612,7 @@ a {
     width: 250px;
 }
 
-#tapeplay #landing #video #rightCol #ad {
+#tapeplay #landing #video #rightCol #siteAd {
     background-color: #000;
     height: 250px;
     width: 250px;
@@ -780,6 +780,13 @@ a {
     margin-bottom: 45px;
     overflow: hidden;
     width: 100%;
+}
+
+#tapeplay #main .input .why {
+    display: block;
+    float: left;
+    margin-bottom: 15px;
+    margin-right: 15px;
 }
 
 #tapeplay #main .input.last {
@@ -2419,18 +2426,16 @@ a {
     width: 12px;
 }
 
+.infoBubble .directionTopMiddle {
+    background-image: url('/media/images/pop_up_corners/pop_top-md-point.png');
+    height: 11px;
+    left: 96px;
+    position: absolute;
+    top: -11px;
+    width: 19px;
+}
+
 .infoBubble .middle p{
     color: #666;
     font-size: 12px;
-}
-
-/* Info Bubble Positioning */
-#tapeplay #header #right .infoBubble {
-    left: 635px;
-    top: 55px;
-}
-
-#tapeplay #landing #leftCol #results .result.opaque .infoBubble {
-    left: 150px;
-    top: 375px;
 }

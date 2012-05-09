@@ -1,17 +1,11 @@
 require 'capistrano/ext/multistage'
 load 'deploy'
 
-#set :application, "uxwordpress"
-#set(:repository) { "git@git301p.prod.ch3.s.com:uxwpress.git" }
-
 ##### SOURCE CONTROL #####
 set :scm, :git
 
 ##### DEPLOYMENT #####
-#set(:user) { "stateadm" }
-#set(:deploy_to) { "/opt/stateapps/uxwpress" }
 set :deploy_via, :remote_cache
-#set :branch, "#{:appBranch}"
 set :use_sudo, false
 
 namespace :deploy do
@@ -31,6 +25,7 @@ namespace :deploy do
 
   task :after_deploy do
     cleanup
+    move_deploy
   end
 
   task :after_symlink do

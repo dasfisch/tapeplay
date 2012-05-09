@@ -46,7 +46,20 @@
             </div>
         </div>
         <div class="input">
-            <p class="why">Optional: Invite other staff members. <a>Why?</a></p>
+            <p class="why">
+                Optional: Invite other staff members.
+            </p>
+            <a class="why infoOpen">Why?</a>
+            <div class="infoBubble">
+                <div class="directionTopMiddle"></div>
+                <div class="topLeft"></div>
+                <div class="topRight"></div>
+                <div class="middle">
+                    <p>There is supposed to be a bunch of <a>text</a> in here!</p>
+                </div>
+                <div class="bottomLeft"></div>
+                <div class="bottomRight"></div>
+            </div>
             <div class="inputField">
                 <div class="left"></div>
                 <div class="middle">

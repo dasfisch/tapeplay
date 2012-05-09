@@ -1,4 +1,5 @@
 jQuery(document).ready(function(){
+    var infoBubbleOpen = false;
     var showing = false;
 
     jQuery('#arrow').click(function(){
@@ -70,30 +71,49 @@ jQuery(document).ready(function(){
         p.toggleClass('hidden');
     });
 
-    var height = jQuery('#main').outerHeight();
-    if(jQuery('#ad').height() < height) {
-        console.log(height + ' is the height');
-        jQuery('#ad').height(height);
+    if(jQuery('#main').length > 0) {
+        var height = jQuery('#main').outerHeight();
+        if(jQuery('#ad').height() < height) {
+            console.log(height + ' is the height main');
+            jQuery('#ad').height(height);
+        }
+    } else if(jQuery('#landing').length > 0) {
+        var height = jQuery('#landing').outerHeight();
+        if(jQuery('#ad').height() < height) {
+            console.log(height + ' is the height ad');
+            jQuery('#ad').height(height);
+        }
     }
 
     jQuery('.infoOpen').hover(
         function() {
-            /*var position = jQuery(this).position();
-            var height = jQuery(this).height();
-            var width = jQuery(this).width();
+            if(infoBubbleOpen === true) {
+                jQuery('.infoBubble').fadeOut();
+            }
 
-            console.log('postion: ' + position.top + ' ' + position.left + '; height: ' + height + '; width: ' + width);
+            var position = jQuery(this).position();
 
-            jQuery(this).next('.infoBubble').css('top', (position.top + height + 15)).css('left', (position.left)).show();*/
+            var bubble = jQuery(this).next('.infoBubble');
+            var bubbleWidth = bubble.width();
+            var thisHeight = jQuery(this).height();
+            var thisWidth = jQuery(this).width();
 
-            jQuery(this).next('.infoBubble').show();
+            console.log(thisHeight + " " + position.top);
+
+            bubble
+                    .css('left', position.left - (bubbleWidth * .5) + (thisWidth * .5))
+                    .css('top', position.top + thisHeight + 12)
+                    .show();
+
+            infoBubbleOpen = true;
         },
         function() {
             var _this = jQuery(this);
 
             jQuery(document).click(function() {
-                console.log('HERE')
                 _this.next('.infoBubble').fadeOut();
+
+                //infoBubbleOpen = false;
             });
         }
     );
