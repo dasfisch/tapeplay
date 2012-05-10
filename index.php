@@ -9,8 +9,8 @@
         <link rel="stylesheet" href="css/reset.css" type="text/css" />
         <link rel="stylesheet" href="css/landing.css" type="text/css" />
 
-        <script type="text/javascript" src="http://localhost:3500/js/jquery.js"></script>
-        <script type="text/javascript" src="http://localhost:3500/js/tapeplay.js"></script>
+        <script type="text/javascript" src="/js/jquery.js"></script>
+        <script type="text/javascript" src="/js/tapeplay.js"></script>
     </head>
     <body id="tapeplay" class="landing">
         <div id="main" class="landing">
@@ -31,9 +31,9 @@
                     </div>
                     <div id="arrow"></div>
                     <div id="links">
-                        <a href="http://localhost:3500/user/login">Log In</a> |
-                        <a href="http://localhost:3500/user/register">Get Started</a> |
-                        <a href="http://localhost:3500/about/policy">Privacy Policy</a>
+                        <a href="/user/login">Log In</a> |
+                        <a href="/user/register">Get Started</a> |
+                        <a href="/about/policy">Privacy Policy</a>
                     </div>
                 </div>
                 <div id="continue">Continue</div>
@@ -44,28 +44,28 @@
                 <ul class="footerList">
                     <li class="header">The Basics</li>
                     <li><a href="">Getting Started</a></li>
-                    <li><a href="http://localhost:3500/about/guidelines">Community Guidelines</a></li>
+                    <li><a href="/about/guidelines">Community Guidelines</a></li>
                 </ul>
             </div>
             <div class="col">
                 <ul class="footerList">
                     <li class="header">Business Info</li>
                     <li><a href="">Getting Started</a></li>
-                    <li><a href="http://localhost:3500/about/guidelines">Community Guidelines</a></li>
+                    <li><a href="/about/guidelines">Community Guidelines</a></li>
                 </ul>
             </div>
             <div class="col">
                 <ul class="footerList">
                     <li class="header">For the Curious</li>
                     <li><a href="">Getting Started</a></li>
-                    <li><a href="http://localhost:3500/about/guidelines">Community Guidelines</a></li>
+                    <li><a href="/about/guidelines">Community Guidelines</a></li>
                 </ul>
             </div>
             <div class="col last">
                 <ul class="footerList">
                     <li class="header">Cool Stuff</li>
                     <li><a href="">Blog</a></li>
-                    <li><a href="http://localhost:3500/about/guidelines">Merchandise</a></li>
+                    <li><a href="/about/guidelines">Merchandise</a></li>
                 </ul>
             </div>
             <div class="bottom">
