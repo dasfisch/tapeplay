@@ -24,7 +24,7 @@ a {
 }
 
 #tapeplay #main #logo h1 {
-    background-image: url('http://localhost:3500/media/images/tapePlay_logoHome.jpg');
+    background-image: url('/media/images/tapePlay_logoHome.jpg');
     float: left;
     height: 159px;
     margin-right: 10px;
@@ -55,7 +55,7 @@ a {
 }
 
 #tapeplay #main #sportSelect #pickSport {
-    background-image: url('http://localhost:3500/media/images/tapePlay_pickSportText.jpg');
+    background-image: url('/media/images/tapePlay_pickSportText.jpg');
     height: 22px;
     text-indent: -9999px;
     width: 178px;
@@ -107,7 +107,7 @@ a {
 }
 
 #tapeplay #main #sportSelect #dropper #arrow {
-    background-image: url('http://localhost:3500/media/images/tapePlay_dropDownButton.jpg');
+    background-image: url('/media/images/tapePlay_dropDownButton.jpg');
     cursor: pointer;
     float: left;
     height: 100px;
@@ -133,7 +133,7 @@ a {
 }
 
 #tapeplay #main #sportSelect #continue {
-    background-image: url('http://localhost:3500/media/images/tapePlay_continueButton.jpg');
+    background-image: url('/media/images/tapePlay_continueButton.jpg');
     float: left;
     height: 100px;
     text-indent: -9999px;
@@ -147,7 +147,7 @@ a {
 
 /* Footer */
 #tapeplay #footer.landing {
-    background-image: url('http://localhost:3500/media/images/tapePlay_footerBackground.gif');
+    background-image: url('/media/images/tapePlay_footerBackground.gif');
     background-repeat: repeat-x;
     bottom: 0px;
     color: #fff;
@@ -159,7 +159,7 @@ a {
 }
 
 #tapeplay #footer.landing .col {
-    background-image: url('http://localhost:3500/media/images/tapePlay_footerDivider.gif');
+    background-image: url('/media/images/tapePlay_footerDivider.gif');
     background-position: right;
     background-repeat: no-repeat;
     float: left;
