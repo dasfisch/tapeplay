@@ -1,9 +1,14 @@
 <div id="main">
     <div id="leftCol" class="helpCenter">
-        <h2>Help Center</h2>
+        <h2>About TapePlay</h2>
         <div class="help">
             <h3>Get Started</h3>
-            <p><a href="">Get started now!</a></p>
+            <p>
+                TapePlay was created for the player. We're here to give power back to the talented
+                athletes that deserve to be seen by coaches and scouts, not just the well connected.
+                <br/>
+                <a href="">Get started now!</a>
+            </p>
         </div>
         <div class="help">
             <h3>Frequently Asked Questions</h3>
