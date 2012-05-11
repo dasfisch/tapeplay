@@ -936,19 +936,24 @@ a {
 }
 
 #tapeplay #main #leftCol .advertising p,
-#tapeplay #main #leftCol .dosanddonts p {
+#tapeplay #main #leftCol .dosanddonts p,
+#tapeplay #main #leftCol.helpCenter p {
     color: #666;
     font-size: 14px;
     margin-bottom: 30px;
 }
 
 #tapeplay #main #leftCol .advertising .header,
-#tapeplay #main #leftCol .dosanddonts .header {
+#tapeplay #main #leftCol .dosanddonts .header,
+#tapeplay #main #leftCol.helpCenter #answers .header {
     color: #000;
     font-size: 16px;
     margin-bottom: 7px;
 }
 
+#tapeplay #main #leftCol.helpCenter #questions {
+    margin-bottom: 30px;
+}
 
 #tapeplay #main #rightCol #header {
     background-color: #999;

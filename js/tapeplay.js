@@ -117,4 +117,10 @@ jQuery(document).ready(function(){
             });
         }
     );
+
+    // Get window width for size
+    var windowWidth = jQuery(window).width();
+    var adWidth = windowWidth - 1010;
+
+    jQuery('#ad').width(adWidth);
 });
