@@ -29,8 +29,8 @@
                 </div>
             </div>
             <div class="result opaque">
-                <div class="infoOpen locked">
-                    <img src="/" class="resultImage" />
+                <div class="infoOpen">
+                    <img src="/" class="resultImage locked" />
                     <div class="info">
                         <h2>First Last Name</h2>
                         <p class="position">Chicago, IL</p>
@@ -42,7 +42,13 @@
                     <div class="topLeft"></div>
                     <div class="topRight"></div>
                     <div class="middle">
-                        <p>There is supposed to be a bunch of <a href="">text</a> in here!</p>
+                        <p>
+                            <strong>We're sorry.</strong> Only account holders can view this video.
+                            <br /><br />
+                            Want to view this video?
+                            <br />
+                            <a>Join</a> or <a>log in</a>.
+                        </p>
                     </div>
                     <div class="directionBottomRight"></div>
                     <div class="bottomRight"></div>

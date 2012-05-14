@@ -104,6 +104,31 @@
                         <p class="date"><?php echo date('F, Y', strtotime('now')); ?></p>
                     </div>
                 </div>
+                <div class="result opaque">
+                    <a class="infoOpen">
+                        <img src="/" class="resultImage locked" />
+                        <div class="info">
+                            <h4>Title</h4>
+                            <p class="name">First Name Last Name</p>
+                            <p class="date"><?php echo date('F, Y', strtotime('now')); ?></p>
+                        </div>
+                    </a>
+                    <div class="infoBubble">
+                        <div class="topLeft"></div>
+                        <div class="topRight"></div>
+                        <div class="middle">
+                            <p>
+                                <strong>We're sorry.</strong> Only account holders can view this video.
+                                <br /><br />
+                                Want to view this video?
+                                <br />
+                                <a>Join</a> or <a>log in</a>.
+                            </p>
+                        </div>
+                        <div class="bottomLeft"></div>
+                        <div class="directionBottomRight"></div>
+                    </div>
+                </div>
             </div>
         </div>
         <div id="rightCol">

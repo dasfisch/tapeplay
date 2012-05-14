@@ -19,19 +19,13 @@ jQuery(document).ready(function(){
     jQuery('.checkbox').click(function(){
         var showing = jQuery(this).attr('showing');
 
-        console.log(showing + " is showing outside " + typeof(showing));
-
         showing = typeof(showing) === 'undefined' ? 'false' : 'true';
 
         if(showing == 'false') {
-            console.log(showing + " is showing in false")
-
             jQuery(this).children('.box').children('.checkMark').show();
 
             jQuery(this).attr('showing', 'true');
         } else {
-            console.log(showing + " is showing in true")
-
             jQuery(this).children('.box').children('.checkMark').hide();
 
             jQuery(this).attr('showing', 'false');
@@ -74,19 +68,19 @@ jQuery(document).ready(function(){
     if(jQuery('#main').length > 0) {
         var height = jQuery('#main').outerHeight();
         if(jQuery('#ad').height() < height) {
-            console.log(height + ' is the height main');
             jQuery('#ad').height(height);
         }
     } else if(jQuery('#landing').length > 0) {
         var height = jQuery('#landing').outerHeight();
         if(jQuery('#ad').height() < height) {
-            console.log(height + ' is the height ad');
             jQuery('#ad').height(height);
         }
     }
 
     jQuery('.infoOpen').hover(
         function() {
+            var thePosition = 0;
+
             if(infoBubbleOpen === true) {
                 jQuery('.infoBubble').fadeOut();
             }
@@ -98,10 +92,16 @@ jQuery(document).ready(function(){
             var thisHeight = jQuery(this).height();
             var thisWidth = jQuery(this).width();
 
-            console.log(thisHeight + " " + position.top);
+            if(jQuery(this).hasClass('leftShift')) {
+                thePosition = position.left - bubbleWidth;
+            } else if(jQuery(this).hasClass('rightShift')) {
+
+            } else {
+                thePosition = position.left - (bubbleWidth * .5) + (thisWidth * .5);
+            }
 
             bubble
-                    .css('left', position.left - (bubbleWidth * .5) + (thisWidth * .5))
+                    .css('left', thePosition)
                     .css('top', position.top + thisHeight + 12)
                     .show();
 

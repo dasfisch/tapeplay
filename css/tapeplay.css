@@ -299,10 +299,6 @@ a {
     padding: 20px 50px;
 }
 
-#tapeplay #landing #leftCol #results .result.opaque {
-    padding: 0px;
-}
-
 #tapeplay #landing #leftCol #results .result .infoOpen.locked {
     opacity: .3;
     padding: 20px 50px;
@@ -317,8 +313,8 @@ a {
     background-color: #F8E8C8;
 }
 
-#tapeplay #landing #leftCol #results .result.locked:hover {
-    background-color: #fff;
+#tapeplay #landing #leftCol #results .result.opaque:hover {
+    background-color: #f0f0f0;
 }
 
 #tapeplay #landing #leftCol #results .result .resultImage {
@@ -576,7 +572,32 @@ a {
 }
 
 #tapeplay #landing #video #leftCol #moreVideos .result {
+    float: left;
+    margin-bottom: 15px;
     overflow: hidden;
+    padding: 20px 50px;
+    width: 80%;
+}
+
+#tapeplay #landing #video #leftCol #moreVideos .result:hover {
+    background-color: #F8E8C8;
+    cursor: pointer;
+}
+
+#tapeplay #landing #video #leftCol #moreVideos .result.locked {
+    background-color: #fff;
+    background-image: none;
+    filter: alpha(opacity=40);
+    float: left;
+    height: auto;
+    margin-bottom: 15px;
+    opacity: 0.4;
+    overflow: hidden;
+    width: 80%;
+}
+
+#tapeplay #landing #video #leftCol #moreVideos .result.opaque:hover {
+    background-color: #fff;
 }
 
 #tapeplay #landing #video #leftCol #moreVideos .result .resultImage {
@@ -2211,6 +2232,12 @@ a {
     z-index: 1000;
 }
 
+.opaque {
+    background-color: #F0F0F0;
+    filter: alpha(opacity=40); /* For IE8 and earlier */
+    opacity: 0.4;
+}
+
 /* Icons */
 
 .facebook {
@@ -2459,7 +2486,13 @@ a {
     width: 19px;
 }
 
-.infoBubble .middle p{
+.infoBubble .middle p {
     color: #666;
+    font-size: 12px;
+}
+
+.infoBubble .middle p a {
+    color: #d07010 !important;
+    cursor: pointer;
     font-size: 12px;
 }

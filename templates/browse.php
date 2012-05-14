@@ -34,7 +34,13 @@
                 <div class="topLeft"></div>
                 <div class="topRight"></div>
                 <div class="middle">
-                    <p>There is supposed to be a bunch of <a>text</a> in here!</p>
+                    <p>
+                        <strong>We're sorry.</strong> Only account holders can view this video.
+                        <br /><br />
+                        Want to view this video?
+                        <br />
+                        <a>Join</a> or <a>log in</a>.
+                    </p>
                 </div>
                 <div class="bottomLeft"></div>
                 <div class="bottomRight"></div>

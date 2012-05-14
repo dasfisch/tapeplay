@@ -39,12 +39,20 @@
                             <a href="">Log In</a>
                         </li>
                         <li>
-                            <a href="" class="infoOpen">Upload</a>
+                            <a href="" class="infoOpen leftShift">Upload</a>
                             <div class="infoBubble">
                                 <div class="topLeft black"></div>
                                 <div class="directionTopRight"></div>
                                 <div class="middle">
-                                    <p>There is supposed to be a bunch of <a>text</a> in here!</p>
+                                    <p>
+                                        <strong>Players</strong> must be logged into their accounts to
+                                        upload a video. <a>Log in</a>.
+                                        <br /><br />
+                                        Don't have an account yet? <a>Sign up</a>.
+                                        <br /><br />
+                                        <strong>Coaches and Scouts</strong> cannot upload videos. We're
+                                        sure you're very talented, but we're not interested. Sorry.
+                                    </p>
                                 </div>
                                 <div class="bottomLeft"></div>
                                 <div class="bottomRight"></div>
