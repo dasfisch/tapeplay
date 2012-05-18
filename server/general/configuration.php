@@ -9,7 +9,7 @@
          * @param $folder string
          * @param $section bool
          *
-         * @void
+         * @    void
          */
         public function __construct($file='general.conf', $folder='/etc/config/', $section=true) {
             $this->_file = $folder.$file;

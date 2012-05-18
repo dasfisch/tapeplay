@@ -1,0 +1,75 @@
+#beta {
+    background-color: #fff;
+    font-family: arial;
+}
+
+#beta #betaTop {
+    background-color: #000;
+    padding: 30px 0px;
+}
+
+#beta #betaTop #header {
+    margin: 0 auto 30px auto;
+    width: 500px;
+}
+
+#beta #betaTop #header .beta {
+    position: relative;
+    bottom: 190px;
+}
+
+#beta #betaTop h1 {
+    color: #fff;
+    font-size: 40px;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+#beta #betaTop h2 {
+    color: #666;
+    font-size: 20px;
+    text-align: center;
+}
+
+#beta #betaBottom {
+    margin: 0 auto;
+    padding-top: 30px;
+    text-align: center;
+    width: 700px;
+}
+
+#beta #betaBottom p {
+    color: #666;
+    float: left;
+    font-size: 14px;
+    margin-bottom: 30px;
+    width: 600px;
+}
+
+#signUp {
+    float: left;
+    margin-bottom: 60px;
+    overflow: hidden;
+}
+
+#beta #betaBottom .copy {
+    font-size: 12px;
+}
+
+#beta #betaBottom .status {
+    margin: 30px auto;
+    overflow: hidden;
+    width: 500px;
+}
+
+#beta #betaBottom .status span {
+    float: left;
+    color: #0f0;
+    font-size: 30px;
+}
+
+#beta #betaBottom .status .greenCheckMark {
+    float: left;
+    position: relative;
+    top: 8px;
+}

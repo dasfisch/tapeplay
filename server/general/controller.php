@@ -1,6 +1,4 @@
 <?php
-    include_once('server/general/configuration.php');
-    include_once('server/general/request.php');
 
     class Controller {
         public $configuration;
@@ -13,12 +11,16 @@
             $this->before();
         }
 
-        public function before() {
+        protected static function before() {
             $this->header = '';
 
             $validator = new InputFilter();
 
             $this->_get = $validator->process($_GET);
             $this->_post = (isset($_POST) && isset($_POST['hash']) && $validator->validatePostHash($_POST['hash'])) ? $validator->process($_POST) : null;
+        }
+
+        protected static function after() {
+
         }
     }
