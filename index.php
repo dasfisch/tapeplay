@@ -1,6 +1,6 @@
 <?php
     $error = false;
-    $success = (isset($_GET['sent']) && $_GET['sent'] =='true') ? true : false;
+    $success = $false;
 
     if(isset($_POST['email']) && $_POST['email'] != '') {
         $senderEmail = $_POST['email'];
@@ -24,7 +24,7 @@
             if(mail($targetEmail, $messageSubject, $messageText, $messageHeaders)) {
                 $success = true;
             } else {
-                header("Location: ".$redirectURL);
+                $error = true;
             }
         } else {
             $error = true;
@@ -60,7 +60,7 @@
                 And if you know an athelete, please spread the word.
             </p>
             <?php if(!$success): ?>
-                <form id="signUp" action="http://www.tapeplay.com/?sent=true" method="post">
+                <form id="signUp" action="http://www.tapeplay.com/" method="post">
                     <div class="inputField">
                         <div class="left"></div>
                         <div class="middle">
