@@ -4,17 +4,13 @@
 
     if(isset($_POST['email']) && $_POST['email'] != '') {
         $senderEmail = $_POST['email'];
-        $targetEmail = 'sebastian.frohm@gmail.com';
         $messageSubject = 'TapePlay Sign Up';
+        $targetEmail = 'lindsayeaustin@gmail.com';
         $redirectToReferer = true;
         $redirectURL = 'http://www.tapeplay.com/';
-        //****************************************
-
-        // mail content
-        $umail = $_POST['umail'];
 
         // company email:
-        $messageText =	'Email: '.$umail."\n";
+        $messageText = $umail." has signed up!\n";
 
         // client email:
         $messageHeaders =	'From: '.$senderEmail."\r\n".
