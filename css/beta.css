@@ -9,7 +9,7 @@
 }
 
 #beta #betaTop #header {
-    margin: 0 auto 30px auto;
+    margin-left: 36%;
     width: 500px;
 }
 
@@ -21,6 +21,7 @@
 #beta #betaTop h1 {
     color: #fff;
     font-size: 40px;
+    font-weight: bold;
     margin-bottom: 15px;
     text-align: center;
 }
@@ -42,6 +43,7 @@
     color: #666;
     float: left;
     font-size: 14px;
+    line-height: 140%;
     margin-bottom: 30px;
     width: 600px;
 }

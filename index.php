@@ -4,7 +4,7 @@
 
     if(isset($_POST['email']) && $_POST['email'] != '') {
         $senderEmail = $_POST['email'];
-        $targetEmail = 'lindsayeaustin@gmail.com';
+        $targetEmail = 'sebastian.frohm@gmail.com';
         $messageSubject = 'TapePlay Sign Up';
         $redirectToReferer = true;
         $redirectURL = 'http://www.tapeplay.com/';
@@ -22,7 +22,7 @@
                             'X-Mailer: PHP/'.phpversion();
         if (preg_match('/^[_.0-9a-z-]+@([0-9a-z][0-9a-z-]+.)+[a-z]{2,4}$/',$targetEmail,$matches)) {
             if(mail($targetEmail, $messageSubject, $messageText, $messageHeaders)) {
-                header("Location: ".@$_SERVER['HTTP_REFERER'].'?sent=true');
+                $success = true;
             } else {
                 header("Location: ".$redirectURL);
             }
