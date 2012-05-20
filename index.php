@@ -52,7 +52,7 @@
             <p>
                 So get your best game tape ready and we'll notify you when the site is here.
                 <br/>
-                And if you know an athelete, please spread the word.
+                And if you know an athlete, please spread the word.
             </p>
             <?php if(!$success): ?>
                 <form id="signUp" action="http://www.tapeplay.com/" method="post">
@@ -77,7 +77,7 @@
             <?php else: ?>
                 <div class="status">
                     <div class="greenCheckMark"></div>
-                    <span>An email invitation has been sent!</span>
+                    <span>Thanks. You'll be hearing from us soon</span>
                 </div>
             <?php endif; ?>
             <p class="copy">&copy; <?php echo date('Y', strtotime('now')); ?> TapePlay. All rights reserved.</p>
