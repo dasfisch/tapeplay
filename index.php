@@ -39,8 +39,7 @@
     <body id="beta">
         <div id="betaTop">
             <div id="header">
-                <img src="/media/images/beta_logo.jpg" />
-                <img src="/media/images/beta_img_beta.gif" class="beta" />
+                <img src="/media/images/logo-center.jpg" classs="logo" />
             </div>
             <h1>Video makes the world go round.</h1>
             <h2>The world's evolved. So has recruiting.</h2>
