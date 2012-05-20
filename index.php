@@ -60,7 +60,10 @@
                     <div class="inputField">
                         <div class="left"></div>
                         <div class="middle">
-                            <input type="text" class="standard" id="email" name="email" value="Enter Email Address" />
+                            <input type="text" class="standard" id="email" name="email" value="Enter Email Address"
+                                   onfocus="if (this.value == 'Enter Email Address') this.value='';"
+                                   onblur="if (this.value == '') this.value='Enter Email Address';"
+                                    />
                         </div>
                         <div class="right"></div>
                     </div>
@@ -68,7 +71,7 @@
                         <div class="topRight whiteBg"></div>
                         <div class="bottomRight whiteBg"></div>
                         <div class="middle">
-                            <input type="submit" value="Search" id="sendSearch" class="large black" />
+                            <input type="submit" value="Submit" id="sendSearch" class="large black" />
                         </div>
                     </div>
                 </form>

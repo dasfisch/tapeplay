@@ -9,6 +9,7 @@
 }
 
 #beta #betaTop #header {
+    margin-bottom: 30px;
     margin-left: 36%;
     width: 500px;
 }
@@ -42,10 +43,10 @@
 #beta #betaBottom p {
     color: #666;
     float: left;
-    font-size: 14px;
-    line-height: 140%;
+    font-size: 16px;
+    line-height: 24px;
     margin-bottom: 30px;
-    width: 600px;
+    width: 700px;
 }
 
 #signUp {
@@ -74,4 +75,8 @@
     float: left;
     position: relative;
     top: 8px;
+}
+
+.inputField .middle .standard {
+    color: #b2b2b2;
 }
