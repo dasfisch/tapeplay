@@ -72,7 +72,15 @@
         </div>
     </div>
     <div id="showMore">
-        Show More Players
+        <div class="bigButton black">
+            <div class="topLeft whiteBg"></div>
+            <div class="topRight whiteBg"></div>
+            <div class="bottomLeft whiteBg"></div>
+            <div class="bottomRight whiteBg"></div>
+            <div class="middle">
+                <input type="submit" value="Show More Players" id="show" class="large black" />
+            </div>
+        </div>
     </div>
 </div>
 <div id="ad">

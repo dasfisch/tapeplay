@@ -896,7 +896,7 @@ a {
 
 #tapeplay #main #results .result {
     float: left;
-    margin: 0px 65px 50px 0px;
+    margin: 0px 50px 50px 0px;
     position: relative;
     width: 125;
 }
@@ -917,11 +917,10 @@ a {
 #tapeplay #main #results .result p {
     color: #666;
     font-size: 12px;
+    line-height: 15px;
 }
 
 #tapeplay #main #showMore {
-    background-color: #F0F0F0;
-    border: 1px solid #CCC;
     float: left;
     font-size: 23px;
     margin-left: 273px;
