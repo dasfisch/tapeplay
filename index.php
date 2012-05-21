@@ -77,7 +77,7 @@
             <?php else: ?>
                 <div class="status">
                     <div class="greenCheckMark"></div>
-                    <span>Thanks. You'll be hearing from us soon.</span>
+                    <span>You'll be hearing from us soon.</span>
                 </div>
             <?php endif; ?>
             <p class="copy">&copy; <?php echo date('Y', strtotime('now')); ?> TapePlay. All rights reserved.</p>

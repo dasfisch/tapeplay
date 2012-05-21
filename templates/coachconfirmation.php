@@ -1,5 +1,5 @@
 <div id="main">
-    <h2>School Information Page</h2>
+    <h2>Confirmation</h2>
     <p class="confirmation">Nice work! An order receipt has been sent to your email address!</p>
     <div id="explore">
         <p>Ready to explore?</p>
