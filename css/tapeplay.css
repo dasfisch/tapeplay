@@ -1253,7 +1253,7 @@ a {
     float: left;
     min-height: 860px;
     overflow: hidden;
-    padding-right: 25px;
+    padding-right: 24px;
     width: 650px;
 }
 
@@ -1334,7 +1334,7 @@ a {
 
 #tapeplay #main #accountLeft .accordion .header .title {
     float: left;
-    font-size: 24px;
+    font-size: 30px;
 }
 
 #tapeplay #main #accountLeft .accordion .header .arrow {
@@ -1369,7 +1369,7 @@ a {
     float: left;
     height: 100px;
     margin-right: 15px;
-    width: 150px;
+    width: 125px;
 }
 
 #tapeplay #main #accountLeft .accordion .body .chunk .info {
@@ -1379,19 +1379,19 @@ a {
 
 #tapeplay #main #accountLeft .accordion .body .chunk .info h4 {
     color: #666;
-    font-size: 28px;
+    font-size: 30px;
 }
 
 #tapeplay #main #accountLeft .accordion .body .chunk .info .position {
     color: #666;
-    font-size: 12px;
+    font-size: 13px;
     margin-bottom: 25px;
 }
 
 #tapeplay #main #accountLeft .accordion .body .chunk .info .title,
 #tapeplay #main #accountLeft .accordion .body .chunk .info .date {
     color: #666;
-    font-size: 16px;
+    font-size: 15px;
 }
 
 #tapeplay #main #accountLeft .accordion .body .chunk .info p {
@@ -1406,7 +1406,7 @@ a {
 }
 
 #tapeplay #main #accountLeft .accordion .body .chunk .accountInfo h4 {
-    font-size: 24px;
+    font-size: 30px;
     margin-bottom: 7px;
 }
 

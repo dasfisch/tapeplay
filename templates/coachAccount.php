@@ -336,11 +336,11 @@
                 <div class="chunk">
                     <p class="check">
                         <input type="checkbox" name="recommendations" id="recommendations" />
-                        <label for="recommendations">Send me recommendations about how to use TapePlay</label>
+                        <label for="recommendations">Allow TapePlay to import my Facebook info</label>
                     </p>
                     <p class="check">
                         <input type="checkbox" name="recommendations" id="recommendations" />
-                        <label for="recommendations">Send me recommendations about how to use TapePlay</label>
+                        <label for="recommendations">Use my account info for relevant advertising. <a>Why?</a></label>
                     </p>
                     <p class="check">
                         <input type="checkbox" name="recommendations" id="recommendations" />
