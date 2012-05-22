@@ -1,5 +1,5 @@
 <?php
-    include_once('server/general/inputfilter.php');
+    include_once('general/inputfilter.php');
 
     class Request {
         public function __construct() {}

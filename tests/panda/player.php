@@ -1,22 +1,36 @@
 <?php
 
+require_once("bll/VideoBLL.php");
 require_once("bll/Panda.php");
 
+use tapeplay\server\bll\VideoBLL;
 use tapeplay\server\bll\Panda;
 
-// The details of your Panda account
-$panda = new Panda();
+?>
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>TapePlay</title>
 
+	<script type="text/javascript" src="/js/jquery.js"></script>
+	<script type="text/javascript" src="/js/jquery-ui.js"></script>
+	<script type="text/javascript" src="/js/tapeplay.js"></script>
+	<script type="text/javascript" src="/js/jwplayer.js"></script>
+</head>
+<body>
 
-$video_id = $_GET['panda_video_id']; // Coming from the previous form
+<?php
 
-$all_encodings = json_decode(@$panda->get("/videos/$video_id/encodings.json"));
-$vid = $all_encodings[0];
-$vid->url = "http://tapeplay.s3.amazonaws.com/{$vid->path}{$vid->extname}";
+	// grab the video id from the URL
+	$video_id = $_GET["id"];
+
+	// get HTML for incoming video id
+	$playerBLL = new VideoBLL();
+	print $playerBLL->getFullVideoHTML("6c3539e69f3b5346a98b0935d874f0d7");
+
 ?>
 
-<div>
-    <video id="movie" width="<?php echo $vid->width ?>" height="<?php echo $vid->height ?>" preload="none" controls>
-      <source src="<?php echo $vid->url ?>" type="video/mp4">
-    </video>
-</div>
+</body>
+</html>
+
+

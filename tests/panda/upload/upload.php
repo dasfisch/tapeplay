@@ -1,19 +1,15 @@
 <?php
 
+require_once("enum/PandaVerbTypes.php");
 require_once("bll/Panda.php");
 
 use tapeplay\server\bll\Panda;
 
 // The details of your Panda account
-$panda = new Panda(array(
-	'api_host' => 'api.pandastream.com', // Use api.eu.pandastream.com if your account is in the EU
-	'cloud_id' => 'd4a9dbbf62283685c237bc487936a06c',
-	'access_key' => '2ab6113b810253bfc761',
-	'secret_key' => '423c86a2837251d5e713',
-));
+$panda = new Panda();
 
 // The S3 bucket where your Panda cloud has been told to store encoded videos
-$s3_bucket_name = "tapeplay";
+$s3_bucket_name = "tpvideo";
 
 // You may want to change this to your own timezone,
 date_default_timezone_set('UTC');
@@ -31,7 +27,7 @@ date_default_timezone_set('UTC');
 
 <p>Upload your video</p>
 
-<form action="player.php">
+<form action="../player.php">
 	<!-- file selector -->
 	<span id="upload_button"></span>
 
@@ -39,7 +35,7 @@ date_default_timezone_set('UTC');
 	<input type="text" id="upload_filename" class="panda_upload_filename" disabled="true"/>
 
 	<!-- upload progress bar (optional) -->
-	<div id="upload_progress" class="panda_upload_progress"></div>
+	<div id="progressMeter" class="panda_upload_progress"></div>
 
 	<!-- field where the video ID will be stored after the upload -->
 	<input type="hidden" name="panda_video_id" id="returned_video_id"/>
@@ -48,11 +44,23 @@ date_default_timezone_set('UTC');
 	<p><input type="submit" value="Upload video"/></p>
 
 	<script>
-		var panda_access_details = <?php echo json_encode(@$panda->signed_params("POST", "/videos.json", array())); ?>;
+		// grabs cloud_id, access_key, and secret_key for Panda
+		var panda_access_details = <?php echo json_encode(@$panda->signed_params(PandaVerbTypes::$POST, "/videos.json", array())); ?>;
+
+		// set options for <widget> parameter below
+		var html_5_options = {};
+		var flash_options = {};
+
+		// creates the uploader component with the customized options
 		jQuery("#returned_video_id").pandaUploader(panda_access_details, {
-			upload_progress_id:'upload_progress',
+			onsuccess: function() { alert("File uploaded successfully");},
+			upload_progress_id:'progressMeter',
 			api_url:'<?php echo $panda->getAPIURL() ?>',
-			uploader_dir:'/tests/panda/temp' // This is the default value
+			uploader_dir:'.',
+			upload_strategy: new PandaUploader.UploadOnSubmit({disable_submit_button: true}),
+			widget: new PandaUploader.SmartWidget(html_5_options, flash_options),
+			allowed_extensions: ['aac', 'avi', '3gp', 'flv', 'mov', 'mp3', 'mp4', 'mpeg', 'ogg', 'wav', 'webm', 'wma', 'wmv'],
+			file_size_limit: '250MB'
 		});
 	</script>
 </form>
