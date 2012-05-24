@@ -93,32 +93,6 @@
                         <div class="inputField hidden">
                             <div class="left"></div>
                             <div class="middle">
-                                <input type="text" class="standard" id="lastName" name="lastName" value="Sebastian Frohm" />
-                            </div>
-                            <div class="right"></div>
-                        </div>
-                        <p>Sebastian Frohm</p>
-                    </div>
-                    <div class="bigButton orange">
-                        <div class="topLeft whiteBg"></div>
-                        <div class="topRight whiteBg"></div>
-                        <div class="bottomLeft whiteBg"></div>
-                        <div class="bottomRight whiteBg"></div>
-                        <div class="middle tiny">
-                            <span class="edit">Edit</span>
-                        </div>
-                    </div>
-                    <div class="status">
-                        <div class="greenCheckMark"></div>
-                        <span>Success!</span>
-                    </div>
-                </div>
-                <div class="chunk">
-                    <div class="accountInfo">
-                        <h4>Name</h4>
-                        <div class="inputField hidden">
-                            <div class="left"></div>
-                            <div class="middle">
                                 <input type="text" class="standard" id="email" name="email" value="Email Address" />
                             </div>
                             <div class="right"></div>
@@ -275,7 +249,7 @@
                 </div>
                 <div class="chunk">
                     <div class="accountInfo">
-                        <h4>Name</h4>
+                        <h4>Association Dropdown</h4>
                         <div class="inputField hidden">
                             <div class="left"></div>
                             <div class="middle">
@@ -301,7 +275,7 @@
                 </div>
                 <div class="chunk">
                     <div class="accountInfo">
-                        <h4>Name</h4>
+                        <h4>Collegiate Level Dropdown</h4>
                         <div class="inputField hidden">
                             <div class="left"></div>
                             <div class="middle">

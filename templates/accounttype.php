@@ -33,11 +33,11 @@
         <p>
             You'll have all the access that coaches do. Inside are player videos that you can
             search, save, comment on with time stamps, and share instantly with your entire
-            staff. EVen when you're on the road. We're here to make finding talent quick and easy.
+            staff. Even when you're on the road. We're here to make finding talent quick and easy.
         </p>
         <ul>
             <li>Access player videos and statistics</li>
-            <li>Use <strong>VideoNotes</strong> to share time stamps and notes with staff</li>
+            <li>Use <span clas="bold">VideoNotes</span> to share time stamps and notes with staff</li>
             <li>Search for athletes by specific criteria</li>
             <li>Save any video with one click</li>
         </ul>

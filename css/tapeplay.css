@@ -4,7 +4,7 @@ body {
 }
 
 a {
-    color: #d07010;
+    color: #e18a07;
     text-decoration: none;
 }
 
@@ -357,7 +357,7 @@ a {
 }
 
 #tapeplay #landing #rightCol h2 {
-    background-color: #D07010;
+    background-color: #e18a07;
     color: #fff;
     font-size: 18px;
     padding: 10px;
@@ -450,7 +450,7 @@ a {
 }
 
 #tapeplay #landing #video #primaryInfo #right p {
-    color: #D07010;
+    color: #e18a07;
 }
 
 #tapeplay #landing #video #videoInfo {
@@ -482,7 +482,7 @@ a {
 }
 
 #tapeplay #landing #video #videoInfo #right .link {
-    color: #D07010;
+    color: #e18a07;
     font-size: 14px;
     margin-right: 40px;
 }
@@ -526,7 +526,7 @@ a {
 }
 
 #tapeplay #landing #video #leftCol #info #top #level {
-    background-color: #D07010;
+    background-color: #e18a07;
     float: right;
     height: 60px;
     padding: 2px 5px;
@@ -659,7 +659,7 @@ a {
 
 #tapeplay #main #leftCol #title {
     background-image: none;
-    color: #D07010;
+    color: #e18a07;
     font-size: 38px;
     margin-bottom: 15px;
 }
@@ -755,7 +755,7 @@ a {
 }
 
 #tapeplay #main #rightCol #copy .inputFieldSmall .middle .standard {
-    color: #D07010;
+    color: #e18a07;
     padding: 0px;
     width: 100%;
 }
@@ -786,8 +786,8 @@ a {
 /* Login page */
 
 #tapeplay #main h2 {
-    color: #D07010;
-    font-size: 50px;
+    color: #e18a07;
+    font-size: 48px;
     margin-bottom: 25px;
 }
 
@@ -878,7 +878,7 @@ a {
 }
 
 #tapeplay #main #top h2 {
-    color: #d07010;
+    color: #e18a07;
     float: left;
     font-size: 45px;
     margin-right: 15px;
@@ -940,7 +940,7 @@ a {
 }
 
 #tapeplay #main #leftCol .help h3 {
-    font-size: 24px;
+    font-size: 30px;
     margin-bottom: 10px;
 }
 
@@ -958,8 +958,8 @@ a {
 #tapeplay #main #leftCol .advertising p,
 #tapeplay #main #leftCol .dosanddonts p,
 #tapeplay #main #leftCol.helpCenter p {
-    color: #666;
-    font-size: 14px;
+    color: #333;
+    font-size: 18px;
     margin-bottom: 30px;
 }
 
@@ -979,7 +979,8 @@ a {
     background-color: #999;
     background-image: none;
     color: white;
-    font-size: 20px;
+    font-size: 21px;
+    font-weight: bold;
     height: auto;
     margin-bottom: 30px;
     padding: 12px;
@@ -1045,7 +1046,7 @@ a {
 
 #tapeplay #main .tallAccount.white {
     background-color: #fff;
-    border: 1px solid #ccc;
+    border: 1px solid #e5e5e5;
     color: #666;
     margin-right: 20px;
     padding: 30px 30px 0px 30px;
@@ -1205,19 +1206,20 @@ a {
 
 #tapeplay #main .confirmation {
     color: #666;
-    font-size: 14px;
+    font-size: 18px;
     margin-bottom: 25px;
 }
 
 #tapeplay #main #explore p {
     color: #666;
-    font-size: 14px;
+    font-size: 18px;
     margin-bottom: 10px;
 }
 
 #tapeplay #main #explore span {
     display: block;
     float: left;
+    font-size: 13px;
     margin-right: 15px;
     padding-top: 30px;
 }
@@ -1231,16 +1233,17 @@ a {
 }
 
 #tapeplay #main .receipt p {
-    font-size: 12px;
+    font-size: 13px;
     margin-bottom: 7px;
 }
 
 #tapeplay #main .receipt p.grey {
+    background: none !important;
     color: #666;
 }
 
 #tapeplay #main .receipt p.large {
-    font-size: 24px;
+    font-size: 32px;
 }
 
 #tapeplay #main .receipt.last {
@@ -1411,7 +1414,7 @@ a {
 }
 
 #tapeplay #main #accountLeft .accordion .body .chunk .accountInfo p {
-    font-size: 12px;
+    font-size: 60px;
 }
 
 #tapeplay #main #accountLeft .accordion .body .chunk .accountInfo .inputField .middle {
@@ -1425,6 +1428,9 @@ a {
 
 #tapeplay #main #accountLeft .accordion .body .chunk .status {
     font-size: 12px;
+    overflow: hidden;
+    position: relative;
+    top: 42px;
 }
 
 #tapeplay #main #accountLeft .accordion .body .chunk .status span {
@@ -1785,7 +1791,7 @@ a {
 
 /* Ad */
 #tapeplay #ad {
-    background-color: #d07010;
+    background-color: #e18a07;
     float: left;
     height: 860px;
     width: 285px;
@@ -1986,7 +1992,7 @@ a {
 }
 
 .orange {
-    background-color: #d07010 !important;
+    background-color: #e18a07 !important;
     color: #fff;
 }
 
@@ -2362,13 +2368,13 @@ a {
 }
 
 .cornerBox.orange {
-    background-color: #d07010;
+    background-color: #e18a07;
     color: #fff;
 }
 
 .cornerBox.white {
     background-color: #fff;
-    color: #d07010;
+    color: #e18a07;
 }
 
 .cornerBox.black {
@@ -2378,9 +2384,10 @@ a {
 
 /* Fine Print */
 .finePrint {
-    color: #ccc;
-    font-size: 12px;
+    color: #666;
+    font-size: 14px;
     font-style: italic;
+    line-height: 20px;
     width: 550px;
 }
 
@@ -2388,7 +2395,7 @@ a {
 .action {
     -webkit-border-radius: 3px;
     -moz-border-radius: 3px;
-    background-color: #d07010;
+    background-color: #e18a07;
     border-radius: 3px;
     color: #fff;
     float: left;
@@ -2503,7 +2510,7 @@ a {
 }
 
 .infoBubble .middle p a {
-    color: #d07010 !important;
+    color: #e18a07 !important;
     cursor: pointer;
     font-size: 12px;
 }
