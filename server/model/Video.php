@@ -5,15 +5,12 @@ namespace tapeplay\server\model;
 class Video
 {
 	private $_id;
-	private $_url_code;
-	private $_baseFileName;
+	private $_pandaId;
 	private $_title;
 	private $_length;
-	private $_uploadMonth;
-	private $_uploadYear;
-	private $_uploaded;
-	private $_recorded;
-	private $_thumbnailFileName;
+	private $_recordedMonth;
+	private $_recordedYear;
+	private $_uploadDate;
 	private $_views;
 	private $_active;
 	private $_comments;
@@ -27,16 +24,6 @@ class Video
 	public function getActive()
 	{
 		return $this->_active;
-	}
-
-	public function setBaseFileName($baseFileName)
-	{
-		$this->_baseFileName = $baseFileName;
-	}
-
-	public function getBaseFileName()
-	{
-		return $this->_baseFileName;
 	}
 
 	public function setComments(array $comments)
@@ -59,6 +46,16 @@ class Video
 		return $this->_id;
 	}
 
+	public function setPandaId($pandaId)
+	{
+		$this->_pandaId = $pandaId;
+	}
+
+	public function getPandaId()
+	{
+		return $this->_pandaId;
+	}
+
 	public function setLength($length)
 	{
 		$this->_length = $length;
@@ -67,16 +64,6 @@ class Video
 	public function getLength()
 	{
 		return $this->_length;
-	}
-
-	public function setThumbnailFileName($thumbnailFileName)
-	{
-		$this->_thumbnailFileName = $thumbnailFileName;
-	}
-
-	public function getThumbnailFileName()
-	{
-		return $this->_thumbnailFileName;
 	}
 
 	public function setTitle($title)
@@ -89,44 +76,24 @@ class Video
 		return $this->_title;
 	}
 
-	public function setRecorded($uploadDate)
+	public function setRecordedMonth($uploadMonth)
 	{
-		$this->_recorded = $uploadDate;
+		$this->_recordedMonth = $uploadMonth;
 	}
 
-	public function getRecorded()
+	public function getRecordedMonth()
 	{
-		return $this->_recorded;
+		return $this->_recordedMonth;
 	}
 
-	public function setUploadMonth($uploadMonth)
+	public function setRecordedYear($uploadYear)
 	{
-		$this->_uploadMonth = $uploadMonth;
+		$this->_recordedYear = $uploadYear;
 	}
 
-	public function getUploadMonth()
+	public function getRecordedYear()
 	{
-		return $this->_uploadMonth;
-	}
-
-	public function setUploadYear($uploadYear)
-	{
-		$this->_uploadYear = $uploadYear;
-	}
-
-	public function getUploadYear()
-	{
-		return $this->_uploadYear;
-	}
-
-	public function setUrlCode($url_code)
-	{
-		$this->_url_code = $url_code;
-	}
-
-	public function getUrlCode()
-	{
-		return $this->_url_code;
+		return $this->_recordedYear;
 	}
 
 	public function setViews($views)
@@ -139,14 +106,14 @@ class Video
 		return $this->_views;
 	}
 
-	public function setUploaded($uploaded)
+	public function setUploadDate($uploaded)
 	{
-		$this->_uploaded = $uploaded;
+		$this->_uploadDate = $uploaded;
 	}
 
-	public function getUploaded()
+	public function getUploadDate()
 	{
-		return $this->_uploaded;
+		return $this->_uploadDate;
 	}
 }
 

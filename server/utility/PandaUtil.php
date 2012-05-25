@@ -5,9 +5,27 @@ class PandaUtil
 
 	public static $S3_BUCKET_URL = "http://s3.amazonaws.com/tpvideosdev/";
 
-	public static $VIDEO_TAG = "<video id='videoPlayer' width='{width}' height='{height}'>{encodings}></video>";
-	public static $SOURCE_TAG = "<source src='{source}' type='{type}' />";
-	public static $JW_PLAYER = "<script type='text/javascript'>jwplayer('videoPlayer').setup({ flashplayer:'/media/playback/player.swf'});</script>";
+	public static $VIDEO_TAG = <<<EOD
+<video id="videoPlayer" width="{width}" height="{height}">
+	{encodings}
+</video>
+EOD;
+
+
+	public static $SOURCE_TAG = <<<EOD
+<source src="{source}" type="{type}" />
+EOD;
+
+	public static $JW_PLAYER = <<<EOD
+<script type='text/javascript'>
+	jwplayer('videoPlayer').setup({
+		modes: [
+			{ type: "html5" },
+			{ type: "flash", src: "/media/playback/player.swf" },
+			{ type: "download" }]
+	});
+</script>
+EOD;
 
 	public static function generateTimestamp()
 	{

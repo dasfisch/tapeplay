@@ -16,27 +16,30 @@ class VideoDAO extends BaseDOA
 
 	}
 
+	/**
+	 * @param \tapeplay\server\model\Video $video Video that we want to save
+	 * @return \tapeplay\server\model\Video Returns video with new id
+	 */
 	public function insert(Video $video)
 	{
 		$this->sql = "INSERT INTO videos " .
-					 "(url_code, base_file_name, title, length, uploaded, recorded, thumbnail_id, views, active)" .
+					 "(panda_id, title, upload_date, recorded_month, recorded_year, active)" .
 					 " VALUES " .
-				 	 "(:urlCode, :baseFileName, :title, :length, :uploaded, :recorded, :thumbnailID, :views, :active)";
+				 	 "(:pandaId, :title, :uploadDate, :recordedMonth, :recordedYear, :active)";
 
 		$this->prep = $this->dbh->prepare($this->sql);
-		$this->prep->bindValue(":urlCode", $video->getUrlCode(), \PDO::PARAM_STR);
-		$this->prep->bindValue(":baseFileName", $video->getBaseFileName(), \PDO::PARAM_STR);
+		$this->prep->bindValue(":pandaId", $video->getPandaId(), \PDO::PARAM_STR);
 		$this->prep->bindValue(":title", $video->getTitle(), \PDO::PARAM_STR);
-		$this->prep->bindValue(":length", $video->getLength(), \PDO::PARAM_INT);
-		$this->prep->bindValue(":uploaded", $video->getUploaded(), \PDO::PARAM_INT);
-		$this->prep->bindValue(":recorded", $video->getRecorded(), \PDO::PARAM_INT);
-		$this->prep->bindValue(":thumbnailID", $video->getThumbnailFileName(), \PDO::PARAM_STR);
-		$this->prep->bindValue(":views", $video->getViews(), \PDO::PARAM_INT);
+		$this->prep->bindValue(":uploadDate", $video->getUploadDate(), \PDO::PARAM_INT);
+		$this->prep->bindValue(":recordedMonth", $video->getRecordedMonth(), \PDO::PARAM_INT);
+		$this->prep->bindValue(":recordedYear", $video->getRecordedYear(), \PDO::PARAM_INT);
 		$this->prep->bindValue(":active", $video->getActive(), \PDO::PARAM_BOOL);
 
 		$this->prep->execute();
 
-		return ($this->prep->rowCount() > 0) ? $this->dbh->lastInsertId() : -1;
+		$video->setId(($this->prep->rowCount() > 0) ? $this->dbh->lastInsertId() : -1);
+
+		return $video;
 	}
 
 	public function remove($id)
@@ -55,7 +58,7 @@ class VideoDAO extends BaseDOA
 	}
 
 	/**
-	 * @param $userID The user of the scout or coach
+	 * @param $userID int The user of the scout or coach
 	 * @returns array<\tapeplay\server\model\Video>
 	 */
 	public function getSavedVideos($userID)
