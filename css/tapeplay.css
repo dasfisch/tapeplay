@@ -983,12 +983,22 @@ a {
     margin-bottom: 30px;
 }
 
+#tapeplay #main #leftCol.helpCenter #answers p {
+    color: #333;
+    font-size: 16px;
+    line-height: 24px;
+    margin-bottom: 30px;
+}
+
 #tapeplay #main #leftCol .advertising .header,
-#tapeplay #main #leftCol .dosanddonts .header,
-#tapeplay #main #leftCol.helpCenter #answers .header {
+#tapeplay #main #leftCol .dosanddonts .header {
     color: #333;
     font-size: 18px;
     margin-bottom: 7px;
+}
+
+#tapeplay #main #leftCol.helpCenter #answers .header {
+    font-size: 30px;
 }
 
 #tapeplay #main #leftCol.helpCenter #questions {

@@ -1,25 +1,25 @@
 <div id="main">
     <div id="leftCol" class="helpCenter">
-        <h2>Do's and Dont's:<br/>The Rules of Video</h2>
+        <h2>Frequently Asked Questions</h2>
         <div id="questions">
-            <a>What is TapePlay?</a>
+            <a href="#whatIs">What is TapePlay?</a>
             <br/>
-            <a>Is TapePlay free?</a>
+            <a href="#freedom">Is TapePlay free?</a>
             <br/>
-            <a>How is my account information used?</a>
+            <a href="#myInfoUsage">How is my account information used?</a>
             <br/>
-            <a>What are the recommended settings for uploading a video?</a>
+            <a href="#videoSettings">What are the recommended settings for uploading a video?</a>
             <br/>
-            <a>How do I upload a video?</a>
+            <a href="#upload">How do I upload a video?</a>
             <br/>
-            <a>What should I do if something goes wrong or doesn't work?</a>
+            <a href="#uhoh">What should I do if something goes wrong or doesn't work?</a>
             <br/>
-            <a>Can I use TapePlay for my business or commercial use?</a>
+            <a href="#commercialNeeds">Can I use TapePlay for my business or commercial purposes?</a>
             <br/>
-            <a>How do I get coaches to watch my videos?</a>
+            <a href="#myVideos">How do I get coaches to watch my videos?</a>
         </div>
         <div id="answers">
-            <p class="header">What is TapePlay?</p>
+            <p class="header" id="whatIs">What is TapePlay?</p>
             <p>
                 TapePlay is a video sharing site built to transform recruiting.
                 <br/>
@@ -31,9 +31,9 @@
                 used to require hours of sifting through stacks of DVDs now takes
                 minutes.
             </p>
-            <p class="header">Is TapePlay free?</p>
+            <p class="header" id="freedom">Is TapePlay free?</p>
             <p>
-                TapePlay is a free for public and Player accounts.
+                TapePlay is free for public and Player accounts.
                 <br /><br/>
                 For coaches and scouts, there is a $199 annual subscription fee
                 which opens up all of TapePlay's best features like <strong>VideoNotes</strong>.
@@ -41,7 +41,7 @@
                 Overall, the site is primarily supported by advertising, including
                 video and visual marketing collateral.
             </p>
-            <p class="header">How is my account information used?</p>
+            <p class="header" id="myInfoUsage">How is my account information used?</p>
             <p>
                 We will never sell your account information.
                 <br/><br/>
@@ -49,7 +49,7 @@
                 advertising and updates on TapePlay. We will never share your individual
                 information with advertisers or any other third party.
             </p>
-            <p class="header">What are the recommended settings for uploading a video?</p>
+            <p class="header" id="videoSettings">What are the recommended settings for uploading a video?</p>
             <p>
                 We prefer you upload your video in its original format and in the highest
                 quality possible.
@@ -65,7 +65,7 @@
                 Want a quick overview of what may be an issue with your video's formatting?
                 Pay attention to any warnings or error messages while you're uploading a video.
             </p>
-            <p class="header">How do I upload a video?</p>
+            <p class="header" id="upload">How do I upload a video?</p>
             <p>
                 Remember, you have to be an athlete aiming to play at the next level in
                 order to upload a video. The only other people who can upload a video are
@@ -87,7 +87,7 @@
                 <br/><br />
                 It's that simple.
             </p>
-            <p class="header">What should I do if something goes wrong or doesn't work?</p>
+            <p class="header" id="uhoh">What should I do if something goes wrong or doesn't work?</p>
             <p>
                 If your problem doesn't work after multiple attempts, try holding down the Shift
                 button on your keyboard and pushing the reload button on your browser. This will
@@ -98,9 +98,9 @@
                 <br/>
                 <a hre="mailto:help@tapeplay.com">help@tapeplay.com</a>
             </p>
-            <p class="header">Can I use TapePlay for my business or commercial use?</p>
+            <p class="header" id="commercialNeeds">Can I use TapePlay for my business or commercial purposes?</p>
             <p>
-                No, TapePlay is for noncommercial use only.
+                No, TapePlay is for noncommercial purposes only.
                 <br/><br/>
                 Do not use TapePlay as a hosting service for your business or to promote a
                 product or service. If you do, we're going to have to kick you to the curb.
@@ -110,7 +110,7 @@
                 <br /><Br />
                 <a href="advertising@tapeplay.com">advertising@tapeplay.com</a>
             </p>
-            <p class="header">How do I get coaches to watch my videos?</p>
+            <p class="header" id="myVideos">How do I get coaches to watch my videos?</p>
             <p>
                 Besides posting videos of your best games ever, it's all about your video titles
                 and descriptions. The more detailed you are, the better chance a coach or scout
@@ -119,6 +119,20 @@
                 Make your video titles clear, direct and accurate. And never ever be misleading.
                 Being misleading leads to people thinking your deceptive.
             </p>
+        </div>
+    </div>
+    <div id="rightCol" class="helpCenter">
+        <div id="header">Get Connected</div>
+        <div id="icons">
+            <div class="shareImg facebook"></div>
+            <div class="shareImg myspace"></div>
+            <div class="shareImg twitter"></div>
+            <div class="shareImg linkedin"></div>
+            <div class="shareImg xanga"></div>
+            <div class="shareImg bebo"></div>
+        </div>
+        <div class="adSmall">
+            advertisement
         </div>
     </div>
 </div>
