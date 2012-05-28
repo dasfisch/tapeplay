@@ -670,7 +670,7 @@ a {
 }
 
 #tapeplay #main #leftCol #single {
-    margin-bottom: 30px;
+    margin-bottom: 40px;
     overflow: hidden;
 }
 
@@ -689,6 +689,7 @@ a {
 #tapeplay #main #leftCol #single .info h2 {
     color: #666;
     font-size: 28px;
+    margin-bottom: 0px;
 }
 
 #tapeplay #main #leftCol #single .info .position {
@@ -700,8 +701,8 @@ a {
 #tapeplay #main #leftCol #single .info .title,
 #tapeplay #main #leftCol #single .info .date {
     color: #666;
-    font-size: 16px;
-    margin: 0px;
+    font-size: 15px;
+    margin-bottom: 0px;
 }
 
 #tapeplay #main #leftCol label {
@@ -721,12 +722,12 @@ a {
 }
 
 #tapeplay #main #leftCol .inputField.last {
-    margin-bottom: 15px;
+    margin-bottom: 20px;
 }
 
 #tapeplay #main #leftCol .addAnother {
     float: left;
-    margin-bottom: 25px;
+    margin-bottom: 55px;
     width: 100%;
 }
 
@@ -737,7 +738,7 @@ a {
 
 #tapeplay #main #rightCol {
     float: left;
-    width: 220px;
+    width: 219px;
 }
 
 #tapeplay #main #rightCol #copy {
@@ -747,7 +748,8 @@ a {
 }
 
 #tapeplay #main #rightCol #copy p {
-    font-size: 14px;
+    color: #333;
+    font-size: 18px;
     margin-bottom: 7px;
 }
 
@@ -756,7 +758,7 @@ a {
 }
 
 #tapeplay #main #rightCol #copy .inputFieldSmall .middle {
-    width: 213px;
+    width: 210px;
 }
 
 #tapeplay #main #rightCol #copy .inputFieldSmall .middle .standard {
@@ -770,8 +772,9 @@ a {
 }
 
 #tapeplay #main #rightCol #share p {
-    font-size: 14px;
-    margin-bottom: 15px;
+    color: #333;
+    font-size: 18px;
+    margin-bottom: 7px;
 }
 
 #tapeplay #main #rightCol #share .shareImg {
