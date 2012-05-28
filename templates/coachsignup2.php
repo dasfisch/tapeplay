@@ -1,5 +1,5 @@
 <div id="main">
-    <h2>School Information Page</h2>
+    <h2>School Info</h2>
     <p class="facebookLogin">Hey there, Coach! So, what school are you with?</p>
     <form id="coachForm" name="login" action="" method="post">
         <div class="input">
@@ -105,7 +105,7 @@
             <div class="bottomLeft whiteBg"></div>
             <div class="bottomRight whiteBg"></div>
             <div class="middle">
-                <input type="submit" value="Log In" id="login" class="large black" />
+                <input type="submit" value="Continue" id="continue" class="large black" />
             </div>
         </div>
         <div class="option step">
