@@ -1,6 +1,6 @@
 <div id="main">
     <div id="leftCol" class="helpCenter">
-        <h2>About TapePlay</h2>
+        <h2>Help Center</h2>
         <div class="help">
             <h3>Get Started</h3>
             <p>
@@ -12,15 +12,21 @@
         </div>
         <div class="help">
             <h3>Frequently Asked Questions</h3>
-            <p>Visit our FAQs</p>
+            <p>
+                If you need help, please visit our FAQs. There you'll find answers to many common questions
+                about using TapePlay.
+            </p>
         </div>
         <div class="help">
             <h3>Do's and Dont's</h3>
-            <p>Click here</p>
+            <p>
+                Find out the rules of video on TapePlay. Click here to see what you can and can’t do when
+                uploading a video.
+            </p>
         </div>
         <div class="help">
             <h3>Advertising</h3>
-            <p>Learn more</p>
+            <p>Get access to one of the most highly engaged audiences around with TapePlay. Learn more.</p>
         </div>
     </div>
     <div id="rightCol" class="helpCenter">
