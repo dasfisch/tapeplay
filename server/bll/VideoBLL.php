@@ -71,14 +71,16 @@ class VideoBLL extends BaseBLL
 	 */
 	private function getEncoding(array $encodings, $type)
 	{
-		// get default template for the source tag
-		$html = \PandaUtil::$SOURCE_TAG;
+		$html = "";
 
 		// loop through encodings and get the correct match
-		foreach($encodings as $encoding)
+		foreach ($encodings as $encoding)
 		{
 			if ($encoding->profile_name == $type)
 			{
+				// get default template for the source tag
+				$html = \PandaUtil::$SOURCE_TAG;
+
 				// place the video location here
 				$html = str_replace("{source}", \PandaUtil::$S3_BUCKET_URL . $encoding->path . $encoding->extname, $html);
 

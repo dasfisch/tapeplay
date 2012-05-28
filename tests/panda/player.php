@@ -26,7 +26,7 @@ use tapeplay\server\bll\Panda;
 
 	// get HTML for incoming video id
 	$playerBLL = new VideoBLL();
-	print $playerBLL->getFullVideoHTML("6c3539e69f3b5346a98b0935d874f0d7");
+	print $playerBLL->getFullVideoHTML($video_id);
 
 ?>
 
