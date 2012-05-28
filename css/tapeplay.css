@@ -963,7 +963,7 @@ a {
 
 #tapeplay #main #leftCol .dosanddonts h3 {
     font-size: 24px;
-    margin-bottom: 10px;
+    margin-bottom: 30px;
 }
 
 #tapeplay #main #leftCol .help p {
@@ -976,15 +976,15 @@ a {
 #tapeplay #main #leftCol .dosanddonts p,
 #tapeplay #main #leftCol.helpCenter p {
     color: #333;
-    font-size: 18px;
+    font-size: 14px;
     margin-bottom: 30px;
 }
 
 #tapeplay #main #leftCol .advertising .header,
 #tapeplay #main #leftCol .dosanddonts .header,
 #tapeplay #main #leftCol.helpCenter #answers .header {
-    color: #000;
-    font-size: 16px;
+    color: #333;
+    font-size: 18px;
     margin-bottom: 7px;
 }
 

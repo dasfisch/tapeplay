@@ -1,11 +1,11 @@
 <div id="main">
     <div id="leftCol" class="helpCenter">
-        <h2>Do's and Dont's:<br/>The Rules of Video</h2>
+        <h2>Do's and Dont's</h2>
         <div class="dosanddonts">
             <h3>The Do's</h3>
-            <p class="header">Comply with NCAA rules. (Unless you are a professional athlete)</p>
+            <p class="header">Comply with the NCAA rules. (Unless you are a professional athlete.)</p>
             <p>
-                If you’re not a professional athlete, your uploaded video(s) must be restricted to
+                If you're not a professional athlete, your uploaded video(s) must be restricted to
                 regularly scheduled (regular-season) high school, preparatory school or two-year college
                 contests which the institution made no prior arrangements for recording.
             </p>
@@ -34,12 +34,12 @@
                 <br />
                 <a href="mailto:advertising@tapeplay.com">advertising@tapeplay.com</a>
             </p>
-            <p class="header">Don't spam. Everyone hates spam. So, don't be that guy (or that girl).</p>
+            <p class="header">Don't spam. Everyone hates spam. So, don't be that guy (or girl).</p>
             <p>
-                Don’t create misleading descriptions or titles in order to increase views. Don’t post large
+                Don't create misleading descriptions or titles in order to increase views. Don't post large
                 amounts of untargeted, unwanted or repetitive content.
                 <br /><br />
-                This will just annoy the people you’re trying to impress and get you banned from the site
+                This will just annoy the people you're trying to impress and get you banned from the site
                 so save yourself the trouble.
             </p>
             <p class="header">Your video cannot violate any of our other content restrictions.</p>
@@ -60,7 +60,7 @@
                 <br /><br />
                 DO NOT upload videos that violate any law.
                 <br /><br />
-                If you have any questions regarding these Do’s And Don’ts, please contact us.
+                If you have any questions regarding these Do's And Don'ts, please contact us.
                 <a href="contact@tapeplay.com">contact@tapeplay.com</a>
             </p>
         </div>
