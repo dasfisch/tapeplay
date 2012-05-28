@@ -9,12 +9,12 @@
             </p>
             <p>
                 In short, they're paying attention. And we keep immaculate records that allow us
-                to narrow your marketing campaign by all the different types of criteria. So connect
-                with your audience by targeting things, such as:
+                to narrow your marketing campaign by all the different types of criteria. So,
+                connect with your audience by targeting things like:
             </p>
             <p class="header">Demographic</p>
             <p>
-                Base on user's age, sex, or a combination of the two.
+                Based on the user's age, sex or combination of the two.
             </p>
             <p class="header">Geographic</p>
             <p>
@@ -23,7 +23,7 @@
             <p class="header">Interests</p>
             <p>
                 Target ads through user viewing history which demonstrates interest in a particular
-                category of content, such as Men's Football or Women's Basketball.
+                category of content, such as Football or Women's Basketball.
             </p>
             <p class="header">User Type</p>
             <p>
@@ -35,11 +35,11 @@
             </p>
             <p class="header">Remarketing</p>
             <p>
-                Market to viewers who have previously viewed your own site.
+                Market to viewers who have previously visited your own site.
             </p>
             <p>
-                We've done our homework. Now, let us create a customized marketing campaign
-                that suits your business needs.
+                We've done our homework. Now let us create a customized marketing package that suits
+                your business needs.
             </p>
             <p>
                 <a href="mailto:advertising@tapeplay.com">advertising@tapeplay.com</a>
