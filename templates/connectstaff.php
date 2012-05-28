@@ -16,7 +16,7 @@
                 <div class="bottomLeft whiteBg"></div>
                 <div class="bottomRight whiteBg"></div>
                 <div class="middle">
-                    <input type="submit" value="Connect" id="connect" class="tiny orange" />
+                    <input type="submit" value="Add" id="add" class="tiny orange" />
                 </div>
             </div>
             <div class="status">

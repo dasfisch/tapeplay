@@ -1319,8 +1319,9 @@ a {
 }
 
 #tapeplay #main #accountLeft.connect p {
-    color: #666;
-    font-size: 14px;
+    color: #333;
+    font-size: 18px;
+    line-height: 22px;
     margin-bottom: 30px;
 }
 
@@ -1335,6 +1336,7 @@ a {
 }
 
 #tapeplay #main #accountLeft.connect .chunk .info h4 {
+    color: #666;
     font-size: 30px;
 }
 
