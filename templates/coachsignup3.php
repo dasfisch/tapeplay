@@ -4,13 +4,13 @@
         You're almost done! Once you click submit, you'll have a one year subscription
         and access to every TapePlay video.
     </p>
-    <h3>Access Fee: $199</h3>
+    <h3>Annual Fee: $199</h3>
     <form id="coachForm" name="login" action="" method="post">
         <div class="input">
             <div class="inputField">
                 <div class="left"></div>
                 <div class="middle">
-                    <input type="text" class="standard" id="school" name="school" value="School Name" />
+                    <input type="text" class="standard" id="name" name="name" value="Name On Card" />
                 </div>
                 <div class="right"></div>
             </div>
@@ -20,13 +20,14 @@
             <div class="inputField">
                 <div class="left"></div>
                 <div class="middle">
-                    <input type="text" class="standard" id="school" name="school" value="School Name" />
+                    <input type="text" class="standard" id="cardnumber" name="cardnumber" value="Card Number" />
                 </div>
                 <div class="right"></div>
             </div>
             <p class="error">* Enter valid credit card number.</p>
         </div>
         <div id="creditCardDrops">
+            <p class="expiration">Expiration Date:</p>
             <div class="option dropdown">
                 <div class="sportSelect">
                     <div class="dropper">
@@ -73,6 +74,7 @@
             <p class="error">* Enter month and year.</p>
         </div>
         <div class="input cvv2">
+            <a class="what">What's the CVV?</a>
             <div class="inputField">
                 <div class="left"></div>
                 <div class="middle">
@@ -82,13 +84,14 @@
             </div>
             <p class="error">* Enter your school's name.</p>
         </div>
+        <p class="submission italic">When you click submit, your transaction will be processed.</p>
         <div class="bigButton black">
             <div class="topLeft whiteBg"></div>
             <div class="topRight whiteBg"></div>
             <div class="bottomLeft whiteBg"></div>
             <div class="bottomRight whiteBg"></div>
             <div class="middle">
-                <input type="submit" value="Log In" id="login" class="large black" />
+                <input type="submit" value="Submit" id="submit" class="large black" />
             </div>
         </div>
         <div class="option step">

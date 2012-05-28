@@ -649,6 +649,11 @@ a {
     width: 950px;
 }
 
+#tapeplay #main h3 {
+    font-size: 32px;
+    margin-bottom: 40px;
+}
+
 /* Email A Video */
 #tapeplay #main #leftCol {
     border-right: 1px solid #CCC;
@@ -798,7 +803,7 @@ a {
 }
 
 #tapeplay #main .input {
-    margin-bottom: 50px;
+    margin-bottom: 20px;
     overflow: hidden;
     width: 100%;
 }
@@ -1217,8 +1222,25 @@ a {
     width: 400px;
 }
 
+#tapeplay #main #coachForm .input.cvv2 a {
+    display: block;
+    margin-bottom: 7px;
+}
+
 #tapeplay #main #coachForm .input.cvv2 .inputField .middle {
     width: 140px;
+}
+
+#tapeplay #main .submission {
+    color: #666;
+    font-size: 16px;
+    margin-bottom: 15px;
+}
+
+#tapeplay #main #coachForm #creditCardDrops .expiration {
+    color: #333;
+    font-size: 15px;
+    margin-bottom: 15px;
 }
 
 /* Confirmation */
