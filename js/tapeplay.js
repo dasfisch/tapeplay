@@ -123,4 +123,20 @@ jQuery(document).ready(function(){
     var adWidth = windowWidth - 1010;
 
     jQuery('#ad').width(adWidth);
+
+    jQuery("input:text").each(function () {
+        var v = this.value;
+
+        jQuery(this).blur(function () {
+            // if input is empty, reset value to default
+            if (this.value.length == 0) {
+                this.value = v;
+            }
+        })
+        .focus(function () {
+            // when input is focused, clear its contents
+            this.value = "";
+            jQuery(this).css('color', '#333333');
+        });
+    });
 });
