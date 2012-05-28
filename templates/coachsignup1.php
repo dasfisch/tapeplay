@@ -6,23 +6,31 @@
             <div class="inputField">
                 <div class="left"></div>
                 <div class="middle">
-                    <input type="text" class="standard" id="fistName" name="fistName" value="First Name" />
+                    <input type="text" class="standard" id="name" name="name" value="First & Last Name" />
                 </div>
                 <div class="right"></div>
             </div>
-            <p class="error">* Enter your first name here.</p>
-            <p class="error lower">Do not use numbers.</p>
+            <p class="asterisk error">*</p>
+            <p class="error">
+                Enter your first name here.
+                <br />
+                Do not use numbers.
+            </p>
         </div>
         <div class="input">
             <div class="inputField">
                 <div class="left"></div>
                 <div class="middle">
-                    <input type="text" class="standard" id="lastName" name="lastName" value="Last Name" />
+                    <input type="text" class="standard" id="email" name="email" value="Email Address" />
                 </div>
                 <div class="right"></div>
             </div>
-            <p class="error">* Enter your last name here.</p>
-            <p class="error lower">Do not use numbers.</p>
+            <p class="asterisk error">*</p>
+            <p class="error">
+                Enter your last name here.
+                <br />
+                Do not use numbers.
+            </p>
         </div>
         <div class="input">
             <div class="inputField">
@@ -32,7 +40,10 @@
                 </div>
                 <div class="right"></div>
             </div>
-            <p class="error">* Your password must be at least 6 characters.</p>
+            <p class="asterisk error">*</p>
+            <p class="error">
+                Your password must be at least 6 characters.
+            </p>
         </div>
         <div class="input">
             <div class="inputField">
@@ -42,7 +53,10 @@
                 </div>
                 <div class="right"></div>
             </div>
-            <p class="error">* Passwords do not match!</p>
+            <p class="asterisk error">*</p>
+            <p class="error">
+                Your passwords do not match!
+            </p>
         </div>
         <div class="input last">
             <div class="inputField">
@@ -57,8 +71,23 @@
         <div class="option dropdown">
             <div class="sportSelect">
                 <div class="dropper">
+                    <div class="inputField">
+                        <div class="left"></div>
+                        <div class="middle">
+                            <p class="value"></p>
+                        </div>
+                        <div class="right">
+                            <div class="arrow"></div>
+                        </div>
+                        <ul class="potentials">
+                            <?php for($i = date('Y', strtotime('now')); $i > 1919; $i--): ?>
+                                <li><?php echo $i; ?></li>
+                            <?php endfor; ?>
+                        </ul>
+                    </div>
+                    <!-- WTF Am I going to do here?
                     <div class="leftMedium"></div>
-                    <div class="middleMedium">
+                    <div class="middleMedium birthYear">
                         <p class="value">Birth Year</p>
                     </div>
                     <div class="rightMedium"></div>
@@ -66,16 +95,16 @@
                         <?php for($i = date('Y', strtotime('now')); $i > 1919; $i--): ?>
                             <li><?php echo $i; ?></li>
                         <?php endfor; ?>
-                    </ul>
+
+                    </ul> -->
                 </div>
-                <div class="arrowSmall"></div>
             </div>
         </div>
         <div class="option dropdown">
             <div class="sportSelect">
                 <div class="dropper">
                     <div class="leftMedium"></div>
-                    <div class="middleMedium">
+                    <div class="middleMedium sex">
                         <p class="value">Sex</p>
                     </div>
                     <div class="rightMedium"></div>
@@ -95,8 +124,12 @@
                 </div>
                 <div class="right"></div>
             </div>
-            <p class="error">* Enter your last name here.</p><Br/>
-            <p class="error lower">Do not use numbers.</p>
+            <p class="asterisk error">*</p>
+            <p class="error">
+                Enter your last name here.
+                <br />
+                Do not use numbers.
+            </p>
         </div>
         <div class="option check">
             <div class="checkbox">
@@ -114,7 +147,7 @@
             <div class="bottomLeft whiteBg"></div>
             <div class="bottomRight whiteBg"></div>
             <div class="middle">
-                <input type="submit" value="Log In" id="login" class="large black" />
+                <input type="submit" value="Join" id="join" class="large black" />
             </div>
         </div>
         <div class="option step">

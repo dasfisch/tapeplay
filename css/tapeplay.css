@@ -792,13 +792,13 @@ a {
 }
 
 #tapeplay #main .facebookLogin {
-    color: #666;
-    font-size: 14px;
+    color: #333;
+    font-size: 18px;
     margin-bottom: 30px;
 }
 
 #tapeplay #main .input {
-    margin-bottom: 45px;
+    margin-bottom: 50px;
     overflow: hidden;
     width: 100%;
 }
@@ -822,18 +822,27 @@ a {
     width: 600px;
 }
 
-#tapeplay #main .input .error {
+#tapeplay #main .input .error,
+#tapeplay #main #coachForm .option.zip .error {
     color: #f00;
     float: left;
-    font-size: 14px;
-    font-weight: bold;
+    font-size: 18px;
     padding-top: 10px;
-    width: 300px;
+    width: 250px;
+}
+
+#tapeplay #main .input .asterisk,
+#tapeplay #main #coachForm .option.zip .asterisk {
+    color: #f00;
+    float: left;
+    font-size: 36px;
+    padding-top: 10px;
+    width: 20px;
 }
 
 #tapeplay #main .option {
     float: left;
-    margin-bottom: 30px;
+    margin-bottom: 50px;
     overflow: hidden;
     /*width: 100%;*/
 }
@@ -1111,7 +1120,7 @@ a {
 
 /* Coach Sign-up */
 #tapeplay #main #coachForm .option {
-    font-size: 16px;
+    font-size: 18px;
 }
 
 #tapeplay #main #coachForm .option .sportSelect {
@@ -1120,6 +1129,14 @@ a {
 
 #tapeplay #main #coachForm .option .sportSelect .dropper .middleMedium {
     width: 150px;
+}
+
+#tapeplay #main #coachForm .option .sportSelect .dropper .middleMedium.birthYear {
+    width: 200px;
+}
+
+#tapeplay #main #coachForm .option .sportSelect .dropper .middleMedium.sex {
+    width: 125px;
 }
 
 #tapeplay #main #coachForm .option .sportSelect .dropper .middleMedium p {
@@ -1151,8 +1168,12 @@ a {
     width: 500px;
 }
 
-#tapeplay #main #coachForm .option.zip p {
-    width: 200px;
+#tapeplay #main #coachForm .option.zip .error {
+    width: 240px !important;
+}
+
+#tapeplay #main #coachForm .option.zip .asterisk.error {
+    width: 20px !important;
 }
 
 #tapeplay #main #coachForm .option.zip .inputField {
@@ -1882,7 +1903,7 @@ a {
 .inputField .middle .standard {
     background-color: #fdfdfd;
     border: none;
-    color: #888;
+    color: #b2b2b2;
     font-family: arial, sans-serif;
     font-size: 40px;
     height: 60px;
@@ -2195,7 +2216,7 @@ a {
 }
 
 .option .checkbox .label {
-    color: #666;
+    color: #333;
     float: left;
     font-size: 12px;
     padding-top: 5px;
