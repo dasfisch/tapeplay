@@ -131,6 +131,7 @@ jQuery(document).ready(function(){
             // if input is empty, reset value to default
             if (this.value.length == 0) {
                 this.value = v;
+                jQuery(this).css('color', '#b2b2b2');
             }
         })
         .focus(function () {
@@ -138,5 +139,9 @@ jQuery(document).ready(function(){
             this.value = "";
             jQuery(this).css('color', '#333333');
         });
+    });
+
+    jQuery('.plusCircle').click(function() {
+
     });
 });

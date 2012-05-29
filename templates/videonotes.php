@@ -1,6 +1,6 @@
 <div id="main">
     <div id="accountLeft">
-        <h2 class="videoNoteInfo">My VideoNotes</h2>
+        <h2 class="videoNotes">My VideoNotes</h2>
         <p class="videoNoteInfo">
             Here are your VideoNotes - a powerful recruiting tool that allows you
             to add time stamps and notes when you share videos. To view your entire
@@ -160,7 +160,7 @@
             <div class="topRight whiteBg"></div>
             <div class="bottomLeft whiteBg"></div>
             <div class="bottomRight whiteBg"></div>
-            <div class="middle large">
+            <div class="middle shift">
                 <h3>Share VideoNotes</h3>
                 <p>Connect staff &amp; add time stamps to videos</p>
             </div>

@@ -17,7 +17,7 @@
             <div class="topRight whiteBg"></div>
             <div class="bottomLeft whiteBg"></div>
             <div class="bottomRight whiteBg"></div>
-            <div class="middle large">
+            <div class="middle shift">
                 <h3>Share VideoNotes</h3>
                 <p>Connect staff &amp; add time stamps to videos</p>
             </div>
@@ -28,7 +28,7 @@
             <div class="bottomLeft whiteBg"></div>
             <div class="bottomRight whiteBg"></div>
             <div class="middle large">
-                <h3>Search Players</h3>
+                <input type="submit" value="Search Players" id="serachPlayers" class="large black" />
             </div>
         </div>
         <div class="ad250x250">

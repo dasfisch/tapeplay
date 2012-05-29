@@ -27,8 +27,9 @@
                 </div>
                 <input type="file" class="uploader" onchange="this.form.fakeupload.value = this.value;" />
             </div>
+            <p class="asterisk error">*</p>
             <p class="error">
-                * We're sorry but you cannot upload this type of file. Video files must be AAC,
+                We're sorry but you cannot upload this type of file. Video files must be AAC,
                 AVI, 3GP, MOV, MP3, MP4, MPEG, OGG, WAV, WEBM, WMA, or WMV.
             </p>
         </div>
