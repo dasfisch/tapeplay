@@ -22,7 +22,10 @@ EOD;
 		modes: [
 			{ type: "html5" },
 			{ type: "flash", src: "/media/playback/player.swf" },
-			{ type: "download" }]
+			{ type: "download" }],
+		skin: "/media/playback/skin/tapeplayer.zip",
+		dock: false,
+		"controlbar.position": "over"
 	});
 </script>
 EOD;

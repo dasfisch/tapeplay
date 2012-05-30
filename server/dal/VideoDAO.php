@@ -11,22 +11,38 @@ use tapeplay\server\model\SearchFilter;
 
 class VideoDAO extends BaseDOA
 {
-	public function get($id)
+	public function get($videoId)
 	{
+		$this->sql = "SELECT *, " .
+				"(SELECT COUNT(*) FROM video_views WHERE video_id = :videoId) as views, " .
+				"(SELECT COUNT(*) FROM video_saves WHERE video_id = :videoId) as saves " .
+				"FROM videos " .
+				"WHERE id = :videoId";
 
+		print $this->sql;
+		$this->prep = $this->dbh->prepare($this->sql);
+		$this->prep->bindValue(":videoId", $videoId, \PDO::PARAM_INT);
+
+		$this->prep->execute();
+
+		$loadedVideo = new Video();
+		$loadedVideo = Video::create($this->prep->fetch());
+
+		return $loadedVideo;
 	}
 
 	/**
 	 * @param \tapeplay\server\model\Video $video Video that we want to save
 	 * @return \tapeplay\server\model\Video Returns video with new id
 	 */
-	public function insert(Video $video)
+	public function insertVideo(Video $video)
 	{
 		$this->sql = "INSERT INTO videos " .
-					 "(panda_id, title, upload_date, recorded_month, recorded_year, active)" .
-					 " VALUES " .
-				 	 "(:pandaId, :title, :uploadDate, :recordedMonth, :recordedYear, :active)";
+				"(panda_id, title, uploaded_date, recorded_month, recorded_year, active)" .
+				" VALUES " .
+				"(:pandaId, :title, :uploadDate, :recordedMonth, :recordedYear, :active)";
 
+		print $this->sql;
 		$this->prep = $this->dbh->prepare($this->sql);
 		$this->prep->bindValue(":pandaId", $video->getPandaId(), \PDO::PARAM_STR);
 		$this->prep->bindValue(":title", $video->getTitle(), \PDO::PARAM_STR);
@@ -45,6 +61,36 @@ class VideoDAO extends BaseDOA
 	public function remove($id)
 	{
 
+	}
+
+	public function insertVideoSave($userId, $videoId)
+	{
+		$this->sql = "INSERT INTO video_saves " .
+				"(user_id, video_id)" .
+				" VALUES " .
+				"(:userId, :videoID)";
+
+		$this->prep = $this->dbh->prepare($this->sql);
+
+		$this->prep->bindValue(":userId", $userId, \PDO::PARAM_INT);
+		$this->prep->bindValue(":videoId", $videoId, \PDO::PARAM_INT);
+
+		$this->prep->execute();
+	}
+
+	public function insertVideoView($userId, $videoId)
+	{
+		$this->sql = "INSERT INTO video_views " .
+				"(user_id, video_id)" .
+				" VALUES " .
+				"(:userId, :videoID)";
+
+		$this->prep = $this->dbh->prepare($this->sql);
+
+		$this->prep->bindValue(":userId", $userId, \PDO::PARAM_INT);
+		$this->prep->bindValue(":videoId", $videoId, \PDO::PARAM_INT);
+
+		$this->prep->execute();
 	}
 
 	/**

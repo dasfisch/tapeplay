@@ -63,7 +63,7 @@ class UserDAO extends BaseDOA
 		try
 		{
 			$this->sql = "INSERT INTO users " .
-					"(first_name, last_name, email, hash, zipcode, gender, birthdate, last_login, account_type)" .
+					"(first_name, last_name, email, hash, zipcode, gender, birth_date, last_login, account_type)" .
 					" VALUES " .
 					"(:firstName, :lastName, :email, :hash, :zipcode, :gender, :birthDate, :lastLogin, :accountType)";
 

@@ -25,9 +25,45 @@ class VideoBLL extends BaseBLL
 	 * @param \tapeplay\server\model\Video $video The video that needs to be inserted
 	 * @return int The id of the video that was inserted.  -1 if insert fails
 	 */
-	public function insert(Video $video)
+	public function get($videoId)
 	{
-		return $this->dal->insert($video);
+		$video = new Video();
+		$video = $this->dal->get($videoId);
+
+		return $video;
+	}
+
+	public function getVideoSaves()
+	{
+
+	}
+
+	public function getVideoHits()
+	{
+
+	}
+
+	/**
+	 * @param \tapeplay\server\model\Video $video The video that needs to be inserted
+	 * @return int The id of the video that was inserted.  -1 if insert fails
+	 */
+	public function insertVideo(Video $video)
+	{
+		return $this->dal->insertVideo($video);
+	}
+
+	/**
+	 * @param $userId int The user who is saving this video
+	 * @param $videoId int The video that is being saved
+	 */
+	public function insertVideoSave($userId, $videoId)
+	{
+		$this->dal->insertVideoSave($userId, $videoId);
+	}
+
+	public function insertVideoView($userId, $videoId)
+	{
+		$this->dal->insertVideoView($userId, $videoId);
 	}
 
 	/**

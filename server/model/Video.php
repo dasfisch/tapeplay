@@ -4,6 +4,22 @@ namespace tapeplay\server\model;
 
 class Video
 {
+	public static function create($arr)
+	{
+		$user = new Video();
+
+		$user->setId($arr["id"]);
+		$user->setPandaId($arr["panda_id"]);
+		$user->setTitle($arr["title"]);
+		$user->setUploadDate($arr["upload_date"]);
+		$user->setRecordedMonth($arr["recorded_month"]);
+		$user->setRecordedYear($arr["recorded_year"]);
+		$user->setActive($arr["active"]);
+		$user->setViews($arr["views"]);
+
+		return $user;
+	}
+
 	private $_id;
 	private $_pandaId;
 	private $_title;
