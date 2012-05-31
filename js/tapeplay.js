@@ -19,7 +19,11 @@ jQuery(document).ready(function(){
     jQuery('.checkbox').click(function(){
         var showing = jQuery(this).attr('showing');
 
-        showing = typeof(showing) === 'undefined' ? 'false' : 'true';
+        console.log(showing );
+
+        if(typeof(showing) === 'undefined') {
+            showing = 'false';
+        }
 
         if(showing == 'false') {
             jQuery(this).children('.box').children('.checkMark').show();

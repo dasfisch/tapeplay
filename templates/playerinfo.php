@@ -19,7 +19,7 @@
         </div>
         <form id="playerInfoForm" name="playerInfoForm" action="" method="post">
             <div class="input">
-                <p>Pick Sport</p>
+                <p class="label">Pick Sport</p>
                 <div class="sportSelect">
                     <div class="dropper">
                         <div class="leftMedium"></div>
@@ -155,7 +155,7 @@
                 </ul>
             </div>
             <div class="input">
-                <p>School/Team Info</p>
+                <p class="label">School/Team Info</p>
                 <div class="inputField">
                     <div class="left"></div>
                     <div class="middle">
@@ -172,7 +172,7 @@
                 </div>
             </div>
             <div class="input graduation">
-                <p>Graduation Date (optional)</p>
+                <p class="label">Graduation Date <span class="regular">(optional)</span></p>
                 <div class="sportSelect">
                     <div class="dropper">
                         <div class="leftMedium"></div>
@@ -205,7 +205,7 @@
                 </div>
             </div>
             <div class="input">
-                <p>Statistics (optional):</p>
+                <p class="label">Statistics <span class="regular">(optional)</span>:</p>
                 <ul id="stats">
                     <li>
                         <p>Games played:</p>
@@ -309,7 +309,7 @@
                 <div class="bottomLeft whiteBg"></div>
                 <div class="bottomRight whiteBg"></div>
                 <div class="middle">
-                    <input type="submit" value="Log In" id="login" class="large black" />
+                    <input type="submit" value="Submit" id="submit" class="large black" />
                 </div>
             </div>
             <div class="option step">
