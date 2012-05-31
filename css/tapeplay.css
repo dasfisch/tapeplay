@@ -274,9 +274,14 @@ a {
     width: 640px;
 }
 
-#tapeplay #landing #leftCol #search  {
+#tapeplay #landing #leftCol #search {
     margin-bottom: 15px;
     overflow: hidden;
+}
+
+#tapeplay #landing #leftCol .resultTotal {
+    color: #666;
+    font-size: 14px;
 }
 
 #tapeplay #landing #leftCol #search .inputField .middle {
@@ -322,7 +327,7 @@ a {
     float: left;
     height: 100px;
     margin-right: 15px;
-    width: 150px;
+    width: 125px;
 }
 
 #tapeplay #landing #leftCol #results .result .info {
@@ -331,19 +336,19 @@ a {
 
 #tapeplay #landing #leftCol #results .result .info h2 {
     color: #666;
-    font-size: 28px;
+    font-size: 30px;
 }
 
 #tapeplay #landing #leftCol #results .result .info .position {
     color: #666;
-    font-size: 12px;
+    font-size: 15px;
     margin-bottom: 25px;
 }
 
 #tapeplay #landing #leftCol #results .result .info .title,
 #tapeplay #landing #leftCol #results .result .info .date {
     color: #666;
-    font-size: 16px;
+    font-size: 15px;
 }
 
 #tapeplay #landing #leftCol #results .result .info p {
@@ -359,7 +364,8 @@ a {
 #tapeplay #landing #rightCol h2 {
     background-color: #e18a07;
     color: #fff;
-    font-size: 18px;
+    font-size: 21px;
+    font-weight: bold;
     padding: 10px;
     text-align: center;
 }
@@ -371,7 +377,8 @@ a {
 }
 
 #tapeplay #landing #rightCol .criterium .option {
-    margin-bottom: 7px;
+    height: 17px;
+    margin-bottom: 9px;
     overflow: hidden;
 }
 
@@ -383,6 +390,13 @@ a {
     color: #aaa;
     float: left;
     font-size: 12px;
+}
+
+#tapeplay #landing #rightCol .criterium .option .x {
+    color: #e18a07;
+    font-size: 15px;
+    margin-right: 3px;
+    width: 9px;
 }
 
 #tapeplay #landing #rightCol .criterium .option .slider {
@@ -397,18 +411,25 @@ a {
 }
 
 #tapeplay #landing #rightCol .criterium .option .values .minVal {
+    color: #000;
     float: left;
-    font-size: 12px;
+    font-size: 13px;
 }
 
 #tapeplay #landing #rightCol .criterium .option .values .maxVal {
+    color: #000;
     float: right;
-    font-size: 12px;
+    font-size: 13px;
 }
 
+#tapeplay #landing #rightCol .criterium .option .value {
+    font-size: 15px;
+    margin-top: 1px;
+}
 
 #tapeplay #landing #rightCol .criterium .option .value.showing {
-    color: #333;
+    color: #000;
+    font-size: 15px;
 }
 
 /* Single Video Page */

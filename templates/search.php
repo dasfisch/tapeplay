@@ -17,7 +17,7 @@
                 </div>
             </div>
         </div>
-        <p>188 results</p>
+        <p class="resultTotal">188 results</p>
         <div id="results">
             <div class="result">
                 <img src="/" class="resultImage" />
@@ -83,7 +83,7 @@
                 <p class="value showing">High School</p>
             </div>
             <div class="option">
-                <p class="x">&nbsp;</p>
+                <p class="x">x</p>
                 <p class="value">College</p>
             </div>
             <div class="option last">
@@ -112,7 +112,7 @@
                 <p class="value showing">Shooting Guard (2)</p>
             </div>
             <div class="option">
-                <p class="x">&nbsp;</p>
+                <p class="x">x</p>
                 <p class="value">Small Forward (3)</p>
             </div>
             <div class="option">
