@@ -3,13 +3,13 @@
     <head>
         <title>TapePlay</title>
 
-        <link rel="stylesheet" href="css/reset.css" type="text/css" />
-        <link rel="stylesheet" href="css/tapeplay.css" type="text/css" />
-        <link rel="stylesheet" href="css/jquery.css" type="text/css" />
+        <link rel="stylesheet" href="/css/reset.css" type="text/css" />
+        <link rel="stylesheet" href="/css/tapeplay.css" type="text/css" />
+        <link rel="stylesheet" href="/css/jquery.css" type="text/css" />
 
-        <script type="text/javascript" src="js/jquery.js"></script>
-        <script type="text/javascript" src="js/jquery-ui.js"></script>
-        <script type="text/javascript" src="js/tapeplay.js"></script>
+        <script type="text/javascript" src="/js/jquery.js"></script>
+        <script type="text/javascript" src="/js/jquery-ui.js"></script>
+        <script type="text/javascript" src="/js/tapeplay.js"></script>
     </head>
     <body id="tapeplay">
         <div id="header">
