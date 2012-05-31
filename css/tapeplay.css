@@ -1593,7 +1593,8 @@ a {
 }
 
 #tapeplay #main #accountLeft #notes .note {
-
+    float: left;
+    width: 400px;
 }
 
 #tapeplay #main #accountLeft #notes .note .top {
@@ -1602,12 +1603,29 @@ a {
     width: 100%;
 }
 
+#tapeplay #main #accountLeft #notes .note .top .info {
+    float: left;
+}
+
+#tapeplay #main #accountLeft #notes .note .top .info h3 {
+    color: #666;
+    font-size: 30px;
+    margin-bottom: 28px;
+}
+
+#tapeplay #main #accountLeft #notes .note .top .info .date,
+#tapeplay #main #accountLeft #notes .note .top .info .position,
+#tapeplay #main #accountLeft #notes .note .top .info .title {
+    color: #666;
+    font-size: 15px;
+}
+
 #tapeplay #main #accountLeft #notes .note .top .resultImage {
     border: 1px solid black;
     float: left;
     height: 100px;
     margin-right: 15px;
-    width: 150px;
+    width: 125px;
 }
 
 #tapeplay #main #accountLeft #notes .note .accordion {
@@ -1668,6 +1686,7 @@ a {
 
 #tapeplay #main #accountLeft #notes .note .accordion .singleNote .single .italic {
     color: #666;
+    font-size: 18px;
     font-style: italic;
 }
 

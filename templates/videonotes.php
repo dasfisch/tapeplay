@@ -23,7 +23,7 @@
                         <div class="time">@5:15</div>
                         <p>
                             <span class="new">New Comments!</span>
-                            <a>Collapse</a>
+                            <a class="collapse">Collapse</a>
                         </p>
                     </div>
                     <div class="singleNote">
@@ -67,7 +67,7 @@
                         <div class="time">@5:15</div>
                         <p>
                             <span class="new">New Comments!</span>
-                            <a>Collapse</a>
+                            <a class="collapse">Collapse</a>
                         </p>
                     </div>
                     <div class="singleNote">
@@ -111,7 +111,7 @@
                         <div class="time">@5:15</div>
                         <p>
                             <span class="new">New Comments!</span>
-                            <a>Collapse</a>
+                            <a class="collapse">Collapse</a>
                         </p>
                     </div>
                     <div class="singleNote">

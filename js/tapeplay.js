@@ -46,7 +46,15 @@ jQuery(document).ready(function(){
     });
 
     jQuery('.accordion .header').click(function() {
-        jQuery(this).next().slideToggle('slow');
+        var clicked = jQuery(this);
+
+        jQuery(this).next().slideToggle('slow', function() {
+            var curText = clicked.children('p').children('.collapse').html();
+
+            curText = (curText == 'Collapse') ? 'Expand' : 'Collapse';
+
+            clicked.children('p').children('.collapse').html(curText);
+        });
 
         return false;
     }).next().hide();
