@@ -828,7 +828,7 @@ a {
 }
 
 #tapeplay #main .input {
-    margin-bottom: 20px;
+    margin-bottom: 40px;
     overflow: hidden;
     width: 100%;
 }
@@ -2321,10 +2321,9 @@ a {
 .option .checkbox .label {
     color: #333;
     float: left;
-    font-size: 12px;
+    font-size: 13px;
     padding-top: 5px;
 }
-
 
 /* Pagination */
 .pagination {
