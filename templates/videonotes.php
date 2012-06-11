@@ -13,7 +13,7 @@
                     <img src="/" class="resultImage" />
                     <div class="info">
                         <h3>First Last Name</h3>
-                        <p class="position">Chicago, IL</p>
+                        <p class="position">Position</p>
                         <p class="title">Video Title</p>
                         <p class="date"><?php echo date('F, Y', strtotime('now')); ?></p>
                     </div>

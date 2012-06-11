@@ -15,7 +15,7 @@
             <div class="inputField">
                 <div class="left"></div>
                 <div class="middle upload">
-                    <input type="text" class="standard" id="fakeupload" name="fakeupload" value="Select a File" />
+                    <input type="text" class="standard" id="fakeupload" name="fakeupload" value="Browse Files" />
                 </div>
                 <div class="right"></div>
             </div>
@@ -92,11 +92,11 @@
             <div class="bottomLeft whiteBg"></div>
             <div class="bottomRight whiteBg"></div>
             <div class="middle">
-                <input type="submit" value="Log In" id="login" class="large black" />
+                <input type="submit" value="Upload" id="upload" class="large black" />
             </div>
         </div>
         <div class="option step">
-            Step 1 of 3
+            Step 2 of 3
         </div>
     </form>
 </div>

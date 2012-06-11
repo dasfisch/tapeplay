@@ -1730,8 +1730,9 @@ a {
 
 /* Video Upload */
 #tapeplay #main .uploadNote {
-    color: #666;
-    font-size: 14px;
+    color: #333;
+    font-size: 18px;
+    line-height: 22px;
     margin-bottom: 15px;
 }
 
@@ -1741,6 +1742,10 @@ a {
 
 #tapeplay #main #uploadForm .input.lessPadding {
     margin-bottom: 15px;
+}
+
+#tapeplay #main #uploadForm .input.lessPadding p {
+    margin-bottom: 10px;
 }
 
 #tapeplay #main #uploadForm .input .inputField {
@@ -1757,6 +1762,7 @@ a {
 
 #tapeplay #main #uploadForm .input .sportSelect {
     float: left;
+    margin-bottom: 100px;
     overflow: hidden;
     width: 200px;
 }
