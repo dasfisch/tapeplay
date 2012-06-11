@@ -29,13 +29,13 @@
                     <div class="box">
                         <div class="checkMark"></div>
                     </div>
-                    <div class="label">high School</div>
+                    <div class="label">High School</div>
                 </div>
                 <div class="checkbox">
                     <div class="box">
                         <div class="checkMark"></div>
                     </div>
-                    <div class="label">Collegiate</div>
+                    <div class="label">College</div>
                 </div>
                 <div class="checkbox">
                     <div class="box">
