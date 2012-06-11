@@ -23,7 +23,7 @@
             <p class="error">* Enter your title.</p>
         </div>
         <div id="options">
-            <div class="option">
+            <div class="option scoutSingle">
                 <p class="header">Recruit Level (Check all that apply):</p>
                 <div class="checkbox">
                     <div class="box">
@@ -80,7 +80,7 @@
             <div class="bottomLeft whiteBg"></div>
             <div class="bottomRight whiteBg"></div>
             <div class="middle">
-                <input type="submit" value="Log In" id="login" class="large black" />
+                <input type="submit" value="Continue" id="continue" class="large black" />
             </div>
         </div>
         <div class="option step">
