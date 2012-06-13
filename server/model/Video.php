@@ -16,6 +16,7 @@ class Video
 		$user->setRecordedYear($arr["recorded_year"]);
 		$user->setActive($arr["active"]);
 		$user->setViews($arr["views"]);
+		$user->setSaves($arr["saves"]);
 
 		return $user;
 	}
@@ -30,6 +31,7 @@ class Video
 	private $_views;
 	private $_active;
 	private $_comments;
+	private $_saves;
 
 
 	public function setActive($active)
@@ -130,6 +132,16 @@ class Video
 	public function getUploadDate()
 	{
 		return $this->_uploadDate;
+	}
+
+	public function setSaves($saves)
+	{
+		$this->_saves = $saves;
+	}
+
+	public function getSaves()
+	{
+		return $this->_saves;
 	}
 }
 

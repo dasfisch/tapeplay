@@ -1,13 +1,13 @@
 <?php
 
-require_once ("bll/ProfileBLL.php");
+require_once ("bll/UserBLL.php");
 require_once ("enum/SchoolPositionEnum.php");
 
-use tapeplay\server\bll\ProfileBLL;
+use tapeplay\server\bll\CoachBLL;
 use tapeplay\server\model\Coach;
 use tapeplay\server\model\School;
 
-$bll = new ProfileBLL();
+$bll = new CoachBLL();
 
 print "Inserting new coach...<br/>";
 
@@ -20,5 +20,5 @@ $coach->setSchool($school);
 $coach->setSchoolPosition(SchoolPositionEnum::$HEAD_COACH);
 $coach->setUserId(1);
 
-$id = $bll->createCoach($coach);
+$id = $bll->create($coach);
 echo "Coach was inserted.  ID is " . $id;

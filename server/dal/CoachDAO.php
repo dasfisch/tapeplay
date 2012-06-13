@@ -13,7 +13,25 @@ use tapeplay\server\model\Coach;
 class CoachDAO extends BaseDOA
 {
 
-	public function createCoach(Coach $coach)
+	public function get($id)
+	{
+		try
+		{
+			$this->sql = "SELECT * FROM coaches c INNER JOIN users u ON c.user_id = u.id LEFT JOIN schools s ON c.school_id = s.id WHERE c.id = :id";
+			$this->prep = $this->dbh->prepare($this->sql);
+			$this->prep->bindValue(":id", $id, \PDO::PARAM_INT);
+			$this->prep->execute();
+		}
+		catch (\PDOException $exception)
+		{
+			\TPErrorHandling::handlePDOException($exception->errorInfo);
+			return null;
+		}
+
+		return Coach::create($this->prep->fetch());
+	}
+
+	public function create(Coach $coach)
 	{
 		$this->sql = "INSERT INTO coaches " .
 				"(school_id, school_position, user_id)" .

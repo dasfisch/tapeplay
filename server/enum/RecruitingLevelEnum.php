@@ -2,7 +2,7 @@
 
 class RecruitingLevelEnum
 {
-	public static $HIGH_SCHOOL = 0;
-	public static $COLLEGE = 1;
-	public static $PROFESSIONAL = 2;
+	public static $HIGH_SCHOOL = 1;
+	public static $COLLEGE = 2;
+	public static $PROFESSIONAL = 23;
 }

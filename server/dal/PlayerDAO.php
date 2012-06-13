@@ -13,6 +13,24 @@ require "model/Player.php";
  */
 class PlayerDAO extends BaseDOA
 {
+	public function get($id)
+	{
+		try
+		{
+			$this->sql = "SELECT * FROM players p INNER JOIN users u ON p.user_id = u.id LEFT JOIN schools s ON p.school_id = s.id WHERE p.id = :id";
+			$this->prep = $this->dbh->prepare($this->sql);
+			$this->prep->bindValue(":id", $id, \PDO::PARAM_INT);
+			$this->prep->execute();
+		}
+		catch (\PDOException $exception)
+		{
+			\TPErrorHandling::handlePDOException($exception->errorInfo);
+			return null;
+		}
+
+		return Player::create($this->prep->fetch());
+	}
+
 	public function insert(Player $player)
 	{
 		$this->sql = "INSERT INTO players " .
