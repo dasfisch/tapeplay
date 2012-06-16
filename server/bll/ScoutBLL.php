@@ -25,14 +25,32 @@ class ScoutBLL extends BaseBLL
 	// Public Methods (API)
 	//////////////////////////////////////////////////////////
 
+	/**
+	 * @param $id int The id of the scout that is requested.
+	 * @return Scout|null The requested scout object.
+	 */
 	public function get($id)
 	{
 		return $this->dal->get($id);
 	}
 
-	public function create(Scout $scout)
+	/**
+	 * @param \tapeplay\server\model\Scout $scout The scout to insert
+	 * @return \tapeplay\server\model\Scout|null The scout object with its new id.
+	 */
+	public function insert(Scout $scout)
 	{
-		return $this->dal->create($scout);
+		return $this->dal->insert($scout);
+	}
+
+	/**
+	 * Updates the scout.
+	 * @param \tapeplay\server\model\Scout $scout The scout that needs to be updated.
+	 * @return int The number of rows affected (should be 1).
+	 */
+	public function update(Scout $scout)
+	{
+		return $this->dal->update($scout);
 	}
 
 }

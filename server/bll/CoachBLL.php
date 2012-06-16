@@ -26,21 +26,33 @@ class CoachBLL extends BaseBLL
 	//////////////////////////////////////////////////////////
 
 	/**
+	 * Retrieves the coach object based on coach id sent.
 	 * @param $id int The ID of the coach that we want to grab.
 	 * @return Coach The coach that matches the ID.
 	 */
 	public function get($id)
-		{
-			return $this->dal->get($id);
-		}
+	{
+		return $this->dal->get($id);
+	}
 
 	/**
+	 * Inserts coach information into the database.
 	 * @param Coach $coach  The coach that we want to insert
 	 * @return Coach The completed coach.
 	 */
-	public function create(Coach $coach)
+	public function insert(Coach $coach)
 	{
-		return $this->dal->create($coach);
+		return $this->dal->insert($coach);
+	}
+
+	/**
+	 * Updates the coach.
+	 * @param Coach $coach The coach that needs to be updated.
+	 * @return int The number of rows affected (should be 1).
+	 */
+	public function update(Coach $coach)
+	{
+		return $this->dal->update($coach);
 	}
 
 }

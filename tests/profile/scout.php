@@ -16,5 +16,5 @@ $scout->setRecrutingLevel(RecruitingLevelEnum::$PROFESSIONAL);
 $scout->setTitle("Master Recruiter");
 $scout->setUserId(2);
 
-$id = $bll->create($scout);
+$id = $bll->insert($scout);
 echo "Scout was inserted.  ID is " . $id;

@@ -20,5 +20,5 @@ $coach->setSchool($school);
 $coach->setSchoolPosition(SchoolPositionEnum::$HEAD_COACH);
 $coach->setUserId(1);
 
-$id = $bll->create($coach);
+$id = $bll->update($coach);
 echo "Coach was inserted.  ID is " . $id;
