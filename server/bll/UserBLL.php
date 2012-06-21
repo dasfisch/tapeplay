@@ -18,13 +18,18 @@ use tapeplay\server\model\UserSummary;
 /**
  * Manages all logic associated with the user's profile.
  */
-class ProfileBLL extends BaseBLL
+class UserBLL extends BaseBLL
 {
 	private static $SALT = "We've done four already but now we're steady and then they went: One, two, three, four";
 
 	function __construct()
 	{
 		$this->dal = new UserDAO();
+	}
+
+	public function getFull($id)
+	{
+		return $this->dal->getFull($id);
 	}
 
 	/**
@@ -35,7 +40,7 @@ class ProfileBLL extends BaseBLL
 	public function authenticate($username, $password)
 	{
 		// create md5 hash to pass to dal
-		$hash = md5($username . ProfileBLL::$SALT . $password);
+		$hash = md5($username . UserBLL::$SALT . $password);
 
 		$row = $this->dal->authenticate($hash);
 

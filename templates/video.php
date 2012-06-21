@@ -2,9 +2,9 @@
     <div id="video">
         <div id="primaryInfo">
             <div id="left">
-                <h2>First Name Last Name</h2>
-                <p class="title">Video Title</p>
-                <p class="date">April, 2011</p>
+                <h2>{$player->getFirstName()} {$player->getLastName()}</h2>
+                <p class="title">{$video->getTitle()}</p>
+                <p class="date">{$video->getRecordedMonth()} / {$video->getRecordedYear()}</p>
             </div>
             <div id="right">
                 <p>Back to search results</p>
@@ -13,9 +13,9 @@
         <div id="player"></div>
         <div id="videoInfo">
             <ul id="left">
-                <li class="basic"><span class="bold">24</span> views</li>
-                <li class="basic"><span class="bold">24</span> saves</li>
-                <li class="basic"><span class="italic">Uploaded June 15th, 2011</span></li>
+                <li class="basic"><span class="bold">{$video->getViews()}</span> views</li>
+                <li class="basic"><span class="bold">{$video->getSaves()}</span> saves</li>
+                <li class="basic"><span class="italic">Uploaded {$video->getUploadDate()}</span></li>
             </ul>
             <ul id="right">
                 <li class="link bubble">
@@ -71,9 +71,9 @@
             <div id="info">
                 <div id="top">
                     <div id="person">
-                        <h3>#12 First Name Last Name</h3>
-                        <p>Position, Height</p>
-                        <p>Grade/Age, School</p>
+                        <h3>#{$player->getNumber()} {$player->getFirstName()} {$player->getLastName()}</h3>
+                        <p>{$player->getPosition()}, {$player->getHeight()}</p>
+                        <p>Grade/Age, {$player->getSchool()->getName()}</p>
                         <p>City, State</p>
                         <p>Coach's Name</p>
                     </div>

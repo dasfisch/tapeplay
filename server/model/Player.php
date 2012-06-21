@@ -14,6 +14,41 @@ use tapeplay\server\model\User;
 
 class Player extends User
 {
+	public static function create($arr)
+	{
+		$player = new Player();
+
+		// set user attributes
+		$player->setUserId($arr["id"]);
+		$player->setFirstName($arr["first_name"]);
+		$player->setLastName($arr["last_name"]);
+		$player->setEmail($arr["email"]);
+		$player->setHash($arr["hash"]);
+		$player->setZipcode($arr["zipcode"]);
+		$player->setGender($arr["gender"]);
+		$player->setBirthDate($arr["birth_date"]);
+		$player->setLastLogin($arr["last_login"]);
+		$player->setAccountType($arr["account_type"]);
+
+		// set player attributes
+		$player->setNumber($arr["number"]);
+		$player->setHeight($arr["height"]);
+		$player->setGradeLevel($arr["grade_level"]);
+		$player->setVideoAccess($arr["video_access"]);
+		$player->setPosition($arr["position"]);
+
+		// set school
+		$school = new School();
+		$school->setName($arr["name"]);
+		$school->setCity($arr["city"]);
+		$school->setState($arr["state"]);
+		$school->setDivision($arr["division"]);
+
+		$player->setSchool($school);
+
+		return $player;
+	}
+
 	private $_id;
 	private $_number;
 	private $_guardianSignup;

@@ -9,5 +9,5 @@
 
 if($video) {
   $smarty->assign('video', $video);
-  $smarty->display('views/video.php);
+  $smarty->display('views/video.php');
 }

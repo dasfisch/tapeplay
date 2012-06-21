@@ -5,13 +5,13 @@ namespace tapeplay\server\bll;
 require_once("bll/BaseBLL.php");
 require_once("bll/Panda.php");
 require_once("dal/VideoDAO.php");
-require_once("model/Video.php");
 require_once("utility/PandaUtil.php");
 require_once("enum/PandaProfileTypes.php");
 
+use tapeplay\server\bll\Panda;
 use tapeplay\server\dal\VideoDAO;
 use tapeplay\server\model\Video;
-use tapeplay\server\bll\Panda;
+use tapeplay\server\model\SearchFilter;
 
 class VideoBLL extends BaseBLL
 {
@@ -22,8 +22,9 @@ class VideoBLL extends BaseBLL
 	}
 
 	/**
-	 * @param \tapeplay\server\model\Video $video The video that needs to be inserted
-	 * @return int The id of the video that was inserted.  -1 if insert fails
+	 * Fetches a video based on the id passed in.
+	 * @param $videoId int the id of the video we need to retrieve
+	 * @return \tapeplay\server\model\Video The video that matches the id
 	 */
 	public function get($videoId)
 	{
@@ -33,14 +34,44 @@ class VideoBLL extends BaseBLL
 		return $video;
 	}
 
-	public function getVideoSaves()
+	/**
+	 * Returns the videos associated with player id passed in.
+	 * @param $playerId int The player id
+	 * @return array|null The list of videos that this player has uploaded
+	 */
+	public function getPlayerVideos($playerId)
 	{
-
+		return $this->dal->getPlayerVideos($playerId);
 	}
 
-	public function getVideoHits()
+	/**
+	 * Returns a list of videos that this user has viewed.
+	 * @param $userId int The requested user.
+	 * @return array|null The list of videos this user has saved.
+	 */
+	public function getVideoSaves($userId)
 	{
+		return $this->dal->getSavedVideos($userId);
+	}
 
+	/**
+	 * Returns the list of videos that this user has viewed.
+	 * @param $userId int The requested user.
+	 * @return array|null The list of videos viewed by the user.
+	 */
+	public function getViewedVideos($userId)
+	{
+		return $this->dal->getViewedVideos($userId);
+	}
+
+	/**
+	 * Searches the videos for any videos matching the criteria set within the passed filter.
+	 * @param $filter \tapeplay\server\model\SearchFilter The filter to use for searching videos.
+	 * @return array The list of videos that match the filter.
+	 */
+	public function search(SearchFilter $filter)
+	{
+		return $this->dal->search($filter);
 	}
 
 	/**
@@ -49,21 +80,27 @@ class VideoBLL extends BaseBLL
 	 */
 	public function insertVideo(Video $video)
 	{
-		return $this->dal->insertVideo($video);
+		return $this->dal->insert($video);
 	}
 
 	/**
-	 * @param $userId int The user who is saving this video
-	 * @param $videoId int The video that is being saved
+	 * Insert a record of the user saving the video.
+	 * @param $userId int
+	 * @param $videoId int
 	 */
-	public function insertVideoSave($userId, $videoId)
+	public function insertSave($userId, $videoId)
 	{
-		$this->dal->insertVideoSave($userId, $videoId);
+		$this->dal->insertSave($userId, $videoId);
 	}
 
-	public function insertVideoView($userId, $videoId)
+	/**
+	 * Insert a record of the user viewing the video.
+	 * @param $userId int
+	 * @param $videoId int
+	 */
+	public function insertView($userId, $videoId)
 	{
-		$this->dal->insertVideoView($userId, $videoId);
+		$this->dal->insertView($userId, $videoId);
 	}
 
 	/**

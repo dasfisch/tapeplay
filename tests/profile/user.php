@@ -1,14 +1,14 @@
 <?php
 
-require_once ("bll/ProfileBLL.php");
+require_once ("bll/UserBLL.php");
 require_once ("enum/AccountTypeEnum.php");
 require_once ("model/User.php");
 
-use tapeplay\server\bll\ProfileBLL;
+use tapeplay\server\bll\UserBLL;
 use tapeplay\server\model\User;
 use tapeplay\server\model\UserSummary;
 
-$bll = new ProfileBLL();
+$bll = new UserBLL();
 
 $user = new User();
 

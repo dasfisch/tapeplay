@@ -14,10 +14,10 @@ if (true)
 	print "Inserting new video...<br/>";
 
 	$video->setId(-1);
-	$video->setTitle("Sample iTunes Video");
-	$video->setPandaId("6e60c43cac49d8e387c650283c270595"); // iTunes Sample Video
-	$video->setRecordedMonth(1);
-	$video->setRecordedYear(2008);
+	$video->setTitle("Sample iTunes Video II");
+	$video->setPandaId("ba5dc5411fa485fa43056f4f3e18d600"); // iTunes Sample Video
+	$video->setRecordedMonth(2);
+	$video->setRecordedYear(2012);
 	$video->setUploadDate(time());
 	$video->setActive(true);
 

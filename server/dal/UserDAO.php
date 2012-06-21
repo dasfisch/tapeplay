@@ -39,9 +39,9 @@ class UserDAO extends BaseDOA
 	{
 		try
 		{
-			$this->sql = "SELECT * FROM users WHERE hash = :hash";
+			$this->sql = "SELECT * FROM users WHERE id = :id";
 			$this->prep = $this->dbh->prepare($this->sql);
-			$this->prep->bindValue(":id", $hash, \PDO::PARAM_STR);
+			$this->prep->bindValue(":id", $hash, \PDO::PARAM_INT);
 			$this->prep->execute();
 		}
 		catch (\PDOException $exception)

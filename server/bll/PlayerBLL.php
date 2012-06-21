@@ -16,6 +16,11 @@ class PlayerBLL extends BaseBLL
 		$this->dal = new PlayerDAO();
 	}
 
+	public function get($id)
+	{
+		$player = $this->dal->get($id);
+	}
+
 	public function insert(Player $player, $userID)
 	{
 		return $this->dal->insert($player, $userID);
