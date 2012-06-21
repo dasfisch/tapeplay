@@ -25,7 +25,15 @@
                         <div class="topLeft"></div>
                         <div class="topRight"></div>
                         <div class="middle">
-                            <p>There is supposed to be a bunch of <a>text</a> in here!</p>
+                            <p>
+                                Embed video (copy &amp; paste link):
+                                <br/>
+                                <a>http://tapeplay.com/asd8f69j</a>
+                            </p>
+                            <p>Email this video: <a>click here</a></p>
+                            <p>
+                                <span class="postVideo">Post video:</span> <span class="smallShare fbBlackSmall"></span> <span class="smallShare myBlackSmall"></span> <span class="smallShare twBlackSmall"></span> <span class="smallShare inBlackSmall"></span>
+                            </p>
                         </div>
                         <div class="bottomLeft"></div>
                         <div class="bottomRight"></div>
@@ -38,7 +46,7 @@
                         <div class="topLeft"></div>
                         <div class="topRight"></div>
                         <div class="middle">
-                            <p>There is supposed to be a bunch of <a>text</a> in here!</p>
+                            <p><span class="bold">Success!</span> This video has beens saved to your account.</p>
                         </div>
                         <div class="bottomLeft"></div>
                         <div class="bottomRight"></div>

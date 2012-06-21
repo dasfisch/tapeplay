@@ -436,13 +436,13 @@ a {
 #tapeplay #landing #video {
     margin-bottom: 50px;
     overflow: hidden;
-    width: 890px;
+    width: 960px;
 }
 
 #tapeplay #landing #video #player {
     background-color: #000;
     height: 400px;
-    width: 100%;
+    width: 890px;
 }
 
 #tapeplay #landing #video #primaryInfo {
@@ -478,6 +478,7 @@ a {
     background-color: #f4f4f4;
     margin-bottom: 30px;
     padding: 20px 40px 34px 40px;
+    width: 810px;
 }
 
 #tapeplay #landing #video #videoInfo ul li {
@@ -508,6 +509,21 @@ a {
     margin-right: 40px;
 }
 
+#tapeplay #landing #video #videoInfo #right .link .infoBubble .middle .smallShare {
+    background-position: bottom center;
+    background-repeat: no-repeat;
+    float: left;
+    height: 19px;
+    margin-right: 15px;
+}
+
+#tapeplay #landing #video #videoInfo #right .link .infoBubble .middle .postVideo {
+    float: left;
+    margin-right: 15px;
+    position: relative;
+    top: 3px;
+}
+
 #tapeplay #landing #video #videoInfo #right .link.last {
     margin-right: 0px;
 }
@@ -518,7 +534,7 @@ a {
 
 #tapeplay #landing #video #leftCol #info {
     background-color: #f4f4f4;
-    margin-bottom: 20px;
+    margin-bottom: 50px;
     padding: 20px 40px;
 }
 
@@ -543,7 +559,7 @@ a {
 #tapeplay #landing #video #leftCol #info #top #person p {
     color: #666;
     margin: 0px 0px 4px 0px;
-    padding: 0px;
+    padding: 1px;
 }
 
 #tapeplay #landing #video #leftCol #info #top #level {
@@ -580,7 +596,7 @@ a {
 #tapeplay #landing #video #leftCol #info #bottom .stats li {
     color: #666;
     font-size: 12px;
-    margin-bottom: 3px;
+    margin-bottom: 5px;
 }
 
 #tapeplay #landing #video #leftCol #moreVideos {
@@ -2418,6 +2434,26 @@ a {
     background-image: url('/media/images/social/bebo-icon.png');
 }
 
+.fbBlackSmall {
+    background-image: url('/media/images/social/facebook-icon-small.png');
+    width: 10px;
+}
+
+.myBlackSmall {
+    background-image: url('/media/images/social/myspace-icon-small.png');
+    width: 16px;
+}
+
+.twBlackSmall {
+    background-image: url('/media/images/social/twitter-icon-small.png');
+    width: 13px;
+}
+
+.inBlackSmall {
+    background-image: url('/media/images/social/linkedin-icon-small.png');
+    width: 14px;
+}
+
 /* Add Another */
 .addAnother {
     cursor: pointer;
@@ -2656,6 +2692,7 @@ a {
 .infoBubble .middle p {
     color: #666;
     font-size: 12px;
+    margin-bottom: 5px;
 }
 
 .infoBubble .middle p a {
