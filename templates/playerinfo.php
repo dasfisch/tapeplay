@@ -159,14 +159,14 @@
                 <div class="inputField">
                     <div class="left"></div>
                     <div class="middle">
-                        <input type="text" class="standard" id="number" name="number" value="School Name"" />
+                        <input type="text" class="standard" id="schoolName" name="schoolName" value="School Name"" />
                     </div>
                     <div class="right"></div>
                 </div>
                 <div class="inputField">
                     <div class="left"></div>
                     <div class="middle">
-                        <input type="text" class="standard" id="number" name="number" value="Head Coach's Name"" />
+                        <input type="text" class="standard" id="headCoachName" name="headCoachName" value="Head Coach's Name"" />
                     </div>
                     <div class="right"></div>
                 </div>

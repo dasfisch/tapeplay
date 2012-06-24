@@ -6,12 +6,9 @@ require_once("model/Video.php");
 require_once("model/VideoNote.php");
 require_once("model/SearchFilter.php");
 
-use tapeplay\server\bll\VideoBLL;
-use tapeplay\server\model\Video;
-use tapeplay\server\model\VideoNote;
-use tapeplay\server\model\SearchFilter;
+use tapeplay\server\bll\UserBLL;
 
-$bll = new VideoBLL();
+$userBLL = new UserBLL();
 
 $smarty = new Smarty();
 $smarty->setTemplateDir("./templates");
@@ -33,35 +30,7 @@ if (isset($_GET["method"]))
 {
 	switch ($_GET["method"])
 	{
-		case 'notes': // http://www.tapeplay.com/videos/notes
-			/**
-			 * Get video based on video_id; needs some validation;
-			 * Get Notes based on video_id; needs some validation;
-			 */
-
-			$video = $bll->search($_GET["id"]);
-			;
-
-			//$smarty->assign('notes', $notes);
-			$smarty->assign("video", $video);
-			$smarty->display("videonotes.php");
-
-			break;
-		case 'upload': //http://www.tapeplay.com/videos/browse
-
-			$smarty->display("videoupload.php");
-
-			break;
-		default: // http://www.tapeplay.com/videos/view
-			/**
-			 * Get first 20 videos (or whatever);
-			 * Display them;
-			 */
-			$filter = new SearchFilter();
-			$videos = $bll->search($filter);
-
-			$smarty->assign("videos", $videos);
-			$smarty->display("video.php");
+		case 'signgup': // http://www.tapeplay.com/signup/player/step1
 
 			break;
 	}

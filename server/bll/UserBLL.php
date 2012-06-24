@@ -47,27 +47,15 @@ class UserBLL extends BaseBLL
 
 	}
 
-	public function createUser(User $user)
+	public function create(User $user)
 	{
 		return $this->dal->create($user);
 	}
 
-	public function createCoach(Coach $coach)
+	public function resetPassword($userId)
 	{
-		//return $this->dal->createPlayer($coach);
-	}
-
-	public function createScout(Scout $scout)
-	{
-		//return $this->dal->createScout($scout);
-	}
-
-	/**
-	 * @param $partial string The portion of the query that has been entered into the text input box.
-	 */
-	public function getSchoolsByName($partial)
-	{
-		//return $this->dal->getSchoolsByName($partial);
+		// TODO: Reset this bitch's password
+		return true;
 	}
 
 	//////////////////////////////////////////////////////////
