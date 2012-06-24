@@ -5,22 +5,35 @@
         public $header;
 
         public function __construct() {
-            $this->_configuration = new Configuration('general.conf', '/etc/config/tapeplay/');
+            $this->configuration = new Configuration('general.conf', '/etc/config/tapeplay/');
             $this->_request = new Request();
 
             $this->before();
         }
 
-        protected static function before() {
+        protected function before() {
             $this->header = '';
 
             $validator = new InputFilter();
 
             $this->_get = $validator->process($_GET);
-            $this->_post = (isset($_POST) && isset($_POST['hash']) && $validator->validatePostHash($_POST['hash'])) ? $validator->process($_POST) : null;
+            $this->_post = (isset($_POST) && isset($_POST['hash']) && $validator->validatePostHash($_POST['hash'])) ?
+                            $validator->process($_POST) : null;
         }
 
-        protected static function after() {
+        protected function after() {
 
+        }
+
+        public function open($file='', $location='') {
+            if(empty($location)) {
+                $location = $this->configuration->base['controller_location'];
+            }
+
+            if(file_exists($location.$file.'.php')) {
+                include($location.$file.'.php');
+            } else {
+                Throw new Exception('File does not exist');
+            }
         }
     }
