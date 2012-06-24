@@ -1,12 +1,12 @@
 <?php
     ini_set('display_errors', 'On');
-    
+
     include('constants.php');
 
     include_once('general/controller.php');
     include_once('general/configuration.php');
-//    include_once('general/factory.php');
-    include_once('general/request.php');
+    include_once('general/factory.php');
+//    include_once('general/request.php');
     include_once('general/route.php');
     include_once('general/tapeplay.smarty.php');
 
