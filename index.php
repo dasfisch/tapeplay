@@ -1,5 +1,7 @@
 <?php
     ini_set('display_errors', 'On');
+    
+    include('constants.php');
 
     include_once('general/controller.php');
     include_once('general/configuration.php');
