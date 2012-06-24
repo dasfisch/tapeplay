@@ -5,7 +5,7 @@
         public $header;
 
         public function __construct() {
-            $this->configuration = new Configuration('general.conf', '/etc/config/tapeplay/');
+            $this->configuration = new Configuration('general.conf', CONFIG_LOCATION);
             $this->_request = new Request();
 
             $this->before();
