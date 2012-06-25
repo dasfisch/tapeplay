@@ -19,12 +19,7 @@
      *
      */
     $smarty = new TapePlaySmarty();
-
-$smarty->setTemplateDir('_smarty/_templates/');
-$smarty->setCompileDir('_smarty/_templates_c/');
-$smarty->setConfigDir('_smarty/_configs/');
-$smarty->setCacheDir('_smarty/_cache/');
-
+    
     if(isset($asdf)) {
         switch($asdf) {
             case 'notes':
