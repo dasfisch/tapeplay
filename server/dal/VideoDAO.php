@@ -4,9 +4,11 @@ namespace tapeplay\server\dal;
 
 require_once("dal/BaseDOA.php");
 require_once("model/Video.php");
+require_once("model/VideoSummary.php");
 require_once("model/SearchFilter.php");
 
 use tapeplay\server\model\Video;
+use tapeplay\server\model\VideoSummary;
 use tapeplay\server\model\SearchFilter;
 
 class VideoDAO extends BaseDOA
