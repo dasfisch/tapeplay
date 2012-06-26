@@ -147,11 +147,35 @@ class VideoDAO extends BaseDOA
 	 * @param \tapeplay\server\model\SearchFilter $filter
 	 * @return array The list of videos that match the filter.
 	 */
-	public function search(SearchFilter $filter)
+	public function search(SearchFilter $filter, $page=1, $limit=20, $getUser=true)
 	{
 		try
 		{
-			$this->sql = "SELECT * FROM videos";
+            $startLimit = ($page * $limit) - $limit;
+
+			$this->sql = "SELECT
+                                vid.*, COUNT(view.id) AS views, COUNT(saves.id) AS saves, users.*
+                            FROM
+                                videos vid
+                            JOIN
+                                player_videos pv
+                                    ON
+                                        pv.video_id=vid.id
+                            JOIN
+                                users users
+                                    ON
+                                        users.id=pv.player_id
+                            LEFT JOIN
+                                video_views view
+                                    ON
+                                        view.video_id=vid.id
+                            LEFT JOIN
+                                video_saves saves
+                                    ON
+                                        saves.video_id=vid.id
+                            GROUP BY
+                                vid.id
+                            LIMIT ".$startLimit.",".$limit;
 			$this->prep = $this->dbh->prepare($this->sql);
 			//$this->prep->bindValue(":id", $id, \PDO::PARAM_INT);
 			$this->prep->execute();

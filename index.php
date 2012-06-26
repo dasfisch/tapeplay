@@ -5,15 +5,21 @@
 
     include_once('general/controller.php');
     include_once('general/configuration.php');
-    include_once('general/factory.php');
-//    include_once('general/request.php');
+//    include_once('general/factory.php');
+    include_once('general/request.php');
     include_once('general/route.php');
     include_once('general/tapeplay.smarty.php');
 
+    global $controller, $route;
+
     $controller = new Controller();
     $route = new Route();
+    $smarty = new TapePlaySmarty();
 
     $isLoggedIn = true;
+
+    $limit = 10;
+    $page = (isset($_GET['page']) && $_GET['page'] > 0) ? $_GET['page'] : 1;
 
     try {
         if($isLoggedIn) {
@@ -25,7 +31,7 @@
              */
             if(isset($route->class)) {
                 //open the class file
-                $controller->open('videos');
+                $controller->open($route->class);
             } else {
                 //open the home page
             }

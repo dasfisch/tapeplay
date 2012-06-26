@@ -1,15 +1,7 @@
 <div id="main">
     <div id="leftCol">
-        <h2 id="title">Email Video</h2>
-        <div id="single">
-            <img src="/" class="resultImage" />
-            <div class="info">
-                <h2>First Last Name</h2>
-                <p class="position">Position, Height</p>
-                <p class="title">Video Title</p>
-                <p class="date"><?php echo date('F, Y', strtotime('now')); ?></p>
-            </div>
-        </div>
+        <h2 id="title">Share TapePlay</h2>
+        <p>Tell your teammates, coaches, and friends to check us out.</p>
         <form id="emailFriend" action="" method="post">
             <label for="from">From</label>
             <div class="inputField">
@@ -39,28 +31,14 @@
                 <div class="bottomLeft whiteBg"></div>
                 <div class="bottomRight whiteBg"></div>
                 <div class="middle">
-                    <input type="submit" value="Share" id="sendSearch" class="large black" />
+                    <input type="submit" value="Send" id="sendSearch" class="large black" />
                 </div>
             </div>
         </form>
     </div>
     <div id="rightCol">
-        <div id="copy">
-            <p>Copy the link to share:</p>
-            <div class="inputFieldSmall">
-                <div class="left"></div>
-                <div class="middle">
-                    <input type="text" class="standard" id="from" name="from" value="Full Name" />
-                </div>
-                <div class="right"></div>
-            </div>
-        </div>
         <div id="share">
-            <p>Other ways to share...</p>
-            <div class="shareImg facebook"></div>
-            <div class="shareImg myspace"></div>
-            <div class="shareImg twitter"></div>
-            <div class="shareImg linkedin"></div>
+            {include file='common/sidebar/share.tpl'}
         </div>
     </div>
 </div>

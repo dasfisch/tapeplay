@@ -21,8 +21,8 @@ class BaseDOA
 		// TODO: Pull these from configuration file
 		$host = "localhost";
 		$dbname = "dev_tapeplay";
-		$username = "tp_user_12";
-		$password = "tapeplay!";
+		$username = "root";
+		$password = "n3uraxis";
 
 		try
 		{

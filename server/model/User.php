@@ -18,7 +18,7 @@ class User
 		$user->setHash($arr["hash"]);
 		$user->setZipcode($arr["zipcode"]);
 		$user->setGender($arr["gender"]);
-		$user->setBirthDate($arr["birthdate"]);
+		$user->setBirthDate($arr["birth_date"]);
 		$user->setLastLogin($arr["last_login"]);
 		$user->setAccountType($arr["account_type"]);
 

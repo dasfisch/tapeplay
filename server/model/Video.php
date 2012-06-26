@@ -2,23 +2,29 @@
 
 namespace tapeplay\server\model;
 
+include('User.php');
+
 class Video
 {
 	public static function create($arr)
 	{
-		$user = new Video();
+        $user = new User();
+        $video = new Video();
 
-		$user->setId($arr["id"]);
-		$user->setPandaId($arr["panda_id"]);
-		$user->setTitle($arr["title"]);
-		$user->setUploadDate($arr["upload_date"]);
-		$user->setRecordedMonth($arr["recorded_month"]);
-		$user->setRecordedYear($arr["recorded_year"]);
-		$user->setActive($arr["active"]);
-		$user->setViews($arr["views"]);
-		$user->setSaves($arr["saves"]);
+        $video->setId($arr["id"]);
+        $video->setPandaId($arr["panda_id"]);
+        $video->setTitle($arr["title"]);
+        $video->setUploadDate($arr["uploaded_date"]);
+        $video->setRecordedMonth($arr["recorded_month"]);
+        $video->setRecordedYear($arr["recorded_year"]);
+        $video->setActive($arr["active"]);
+        $video->setViews($arr["views"]);
+        $video->setSaves($arr["saves"]);
+        $video->setPrivacy($arr['is_private']);
 
-		return $user;
+        $video->setUser($user->create($arr));
+
+		return $video;
 	}
 
 	private $_id;
@@ -32,6 +38,30 @@ class Video
 	private $_active;
 	private $_comments;
 	private $_saves;
+    private $_privacy;
+    private $_user;
+
+    /**
+     * We should bring this down to two methods. The magic methods
+     * will make our lives easier.
+     *
+     * This way we can just do the following:
+     *
+     * $this->_id = 23;
+     * echo $this->_id;
+     *
+     * Or we can do as regular methods:
+     *
+     * $this->set('_id', 23);
+     * $this->get('_id');
+     */
+//    public function __set($name, $value) {
+//        $this->$name = $value;
+//    }
+//
+//    public function __get($name) {
+//        return $this->$name;
+//    }
 
 
 	public function setActive($active)
@@ -134,15 +164,33 @@ class Video
 		return $this->_uploadDate;
 	}
 
-	public function setSaves($saves)
-	{
-		$this->_saves = $saves;
-	}
+    public function setSaves($saves)
+   	{
+   		$this->_saves = $saves;
+   	}
 
-	public function getSaves()
-	{
-		return $this->_saves;
-	}
+   	public function getSaves()
+   	{
+   		return $this->_saves;
+   	}
+
+    public function setPrivacy($privacy)
+   	{
+   		$this->_privacy = ($privacy === 1) ? true : false;
+   	}
+
+   	public function getPrivacy()
+   	{
+   		return $this->_privacy;
+   	}
+
+    public function setUser($user)
+   	{
+   		$this->_user = $user;
+   	}
+
+   	public function getUser()
+   	{
+   		return $this->_user;
+   	}
 }
-
-?>

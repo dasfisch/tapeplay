@@ -11,7 +11,8 @@ class SearchFilter
 	private $_gradeLevel;
 	private $_position;
 	private $_height;
-
+    private $_limit;
+    private $_page;
 
 	public function setGradeLevel($gradeLevel)
 	{
