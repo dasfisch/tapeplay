@@ -42,9 +42,8 @@ class UserBLL extends BaseBLL
 		// create md5 hash to pass to dal
 		$hash = md5($username . UserBLL::$SALT . $password);
 
-		$row = $this->dal->authenticate($hash);
-
-
+		// returns a user id
+		return $this->dal->authenticate($hash);
 	}
 
 	public function create(User $user)
