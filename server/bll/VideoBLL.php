@@ -92,24 +92,8 @@ class VideoBLL extends BaseBLL
 	 */
 	public function search(SearchFilter $filter)
 	{
-		$v1 = new VideoSummary();
-		$v1->setFirstName("Michael");
-		$v1->setLastName("Jordan");
-		$v1->setPosition("SG");
-		$v1->setHeight("6'6");
-		$v1->setVideoImage("https://s3.amazonaws.com/tpvideosdev/ba5dc5411fa485fa43056f4f3e18d600_1.jpg");
-		$v1->setVideoId("ba5dc5411fa485fa43056f4f3e18d600");
-
-		$v2 = new VideoSummary();
-		$v2->setFirstName("Scottie");
-		$v2->setLastName("Pippen");
-		$v2->setPosition("SF");
-		$v2->setHeight("6'6");
-		$v2->setVideoImage("https://s3.amazonaws.com/tpvideosdev/b93c9758c0865632b5f14ebec7802f88_3.jpg");
-		$v2->setVideoId("b93c9758c0865632b5f14ebec7802f88");
-
-		$arr = array($v1, $v2);
-		return $arr;
+//		$arr = array($v1, $v2);
+		return $this->dal->search($filter);
 		//return $this->dal->search($filter);
 	}
 

@@ -6,9 +6,9 @@
         public $protocol;
         public $url;
 
-        public function __construct() {
+        public function __construct($routes) {
             $this->getCurrentUrl();
-            $this->_setParams();
+            $this->_setParams($routes);
             $this->_route();
         }
 
@@ -44,10 +44,11 @@
             $this->url = $url;
         }
 
-        private function _setParams() {
+        private function _setParams($routes) {
             $params = array_filter(explode('/', $_SERVER['REQUEST_URI']));
 
-            $this->class = isset($params[1]) && !empty($params[1]) ? $params[1] : null;
-            $this->method= isset($params[2]) && !empty($params[2]) ? $params[2] : null;
+            foreach($routes as $key=>$route) {
+                $this->$key = $route;
+            }
         }
     }

@@ -20,13 +20,7 @@
         </div>
     </div>
     <div id="rightCol" class="helpCenter">
-        <div id="header">Get Connected</div>
-        <div id="icons">
-            {include file='common/sidebar/share.tpl'}
-        </div>
-        <div class="adSmall">
-            advertisement
-        </div>
+        {include file='common/sidebar/share.tpl'}
     </div>
 </div>
 <div id="ad"></div>

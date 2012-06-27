@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.10, created on 2012-06-25 13:23:57
+<?php /* Smarty version Smarty-3.1.10, created on 2012-06-27 14:34:06
          compiled from "_smarty/_templates/videos/videoBrowse.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:10655083774fe75074a49e70-38294200%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '42effd186dee71d65b43598d43d4e5db49ce804a' => 
     array (
       0 => '_smarty/_templates/videos/videoBrowse.tpl',
-      1 => 1340584345,
+      1 => 1340752074,
       2 => 'file',
     ),
   ),
@@ -128,7 +128,8 @@ $_smarty_tpl->tpl_vars['video']->_loop = true;
         <div class="criterium">
             <div class="option">
                 <p class="x">x</p>
-                <p class="value showing"> Point Guard (1)</p>
+                <p class="value showing">Point Guard (1)</p>
+                <input type="hidden" class="" value="" />
             </div>
             <div class="option">
                 <p class="x">x</p>

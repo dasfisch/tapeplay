@@ -394,7 +394,10 @@ a {
 
 #tapeplay #landing #rightCol .criterium .option .x {
     color: #e18a07;
+    cursor: pointer;
+    display: block;
     font-size: 15px;
+    height: 9px;
     margin-right: 3px;
     width: 9px;
 }
@@ -423,6 +426,7 @@ a {
 }
 
 #tapeplay #landing #rightCol .criterium .option .value {
+    cursor: pointer;
     font-size: 15px;
     margin-top: 1px;
 }

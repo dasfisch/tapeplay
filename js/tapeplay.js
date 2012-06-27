@@ -156,4 +156,19 @@ jQuery(document).ready(function(){
     jQuery('.plusCircle').click(function() {
 
     });
+
+    jQuery('.x').click(function() {
+        jQuery(this).html('');
+        jQuery(this).siblings('.showing').removeClass('showing');
+    });
+
+    jQuery('.option .value').click(function() {
+        if(jQuery(this).hasClass('showing')) {
+            jQuery(this).prev('.x').html('');
+            jQuery(this).removeClass('showing');
+        } else {
+            jQuery(this).prev('.x').html('x');
+            jQuery(this).addClass('showing');
+        }
+    });
 });

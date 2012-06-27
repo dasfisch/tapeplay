@@ -92,7 +92,8 @@
         <div class="criterium">
             <div class="option">
                 <p class="x">x</p>
-                <p class="value showing"> Point Guard (1)</p>
+                <p class="value showing">Point Guard (1)</p>
+                <input type="hidden" class="" value="" />
             </div>
             <div class="option">
                 <p class="x">x</p>

@@ -13,7 +13,7 @@
     global $controller, $route;
 
     $controller = new Controller();
-    $route = new Route();
+    $route = new Route($_GET);
     $smarty = new TapePlaySmarty();
 
     $isLoggedIn = true;

@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.10, created on 2012-06-25 13:28:58
+<?php /* Smarty version Smarty-3.1.10, created on 2012-06-25 22:53:46
          compiled from "_smarty/_templates/company/about.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:17772724584fe8adeab4fb04-47150714%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '0e175f48e218cae788f7d93ed577783bb30c3230' => 
     array (
       0 => '_smarty/_templates/company/about.tpl',
-      1 => 1340648825,
+      1 => 1340682825,
       2 => 'file',
     ),
   ),
@@ -15,9 +15,9 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
-  'has_nocache_code' => false,
   'version' => 'Smarty-3.1.10',
   'unifunc' => 'content_4fe8adeab74515_34467126',
+  'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_4fe8adeab74515_34467126')) {function content_4fe8adeab74515_34467126($_smarty_tpl) {?><div id="main">
     <div id="leftCol" class="helpCenter">
@@ -41,18 +41,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
         </div>
     </div>
     <div id="rightCol" class="helpCenter">
-        <div id="header">Get Connected</div>
-        <div id="icons">
-            <div class="shareImg facebook"></div>
-            <div class="shareImg myspace"></div>
-            <div class="shareImg twitter"></div>
-            <div class="shareImg linkedin"></div>
-            <div class="shareImg xanga"></div>
-            <div class="shareImg bebo"></div>
-        </div>
-        <div class="adSmall">
-            advertisement
-        </div>
+        <?php echo $_smarty_tpl->getSubTemplate ('common/sidebar/share.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
+
     </div>
 </div>
 <div id="ad"></div><?php }} ?>
