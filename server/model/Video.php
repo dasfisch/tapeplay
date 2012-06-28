@@ -2,7 +2,7 @@
 
 namespace tapeplay\server\model;
 
-include('User.php');
+require_once('User.php');
 
 class Video
 {

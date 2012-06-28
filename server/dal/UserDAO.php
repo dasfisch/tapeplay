@@ -58,7 +58,7 @@ class UserDAO extends BaseDOA
 	 * @param \tapeplay\server\model\User $user Inserts passed user into database
 	 * @return User The user that was passed in
 	 */
-	public function create(User $user)
+	public function insert(User $user)
 	{
 		try
 		{

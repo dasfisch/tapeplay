@@ -26,7 +26,7 @@ $user->setLastLogin(1225886400);
 $user->setAccountType(AccountTypeEnum::$PLAYER);
 
 $newlyCreatedUser = new User();
-$newlyCreatedUser = $bll->create($user);
+$newlyCreatedUser = $bll->insert($user);
 
 if ($newlyCreatedUser)
 	echo "User was inserted. " . $newlyCreatedUser->getUserId() . " is the new ID for " . $newlyCreatedUser->getFirstName();

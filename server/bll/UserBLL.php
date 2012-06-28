@@ -46,9 +46,9 @@ class UserBLL extends BaseBLL
 		return $this->dal->authenticate($hash);
 	}
 
-	public function create(User $user)
+	public function insert(User $user)
 	{
-		return $this->dal->create($user);
+		return $this->dal->insert($user);
 	}
 
 	public function resetPassword($userId)
