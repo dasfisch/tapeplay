@@ -1,7 +1,7 @@
 <div id="main">
     <h2>Scout Sign Up</h2>
     <p class="facebookLogin">Have a Facebook account? <span class="facebookConnect"></span></p>
-    <form id="coachForm" name="login" action="{$baseUrl}/user/personal" method="post">
+    <form id="coachForm" name="login" action="{$baseUrl}/user/personal/" method="post">
         <div class="input">
             <div class="inputField">
                 <div class="left"></div>

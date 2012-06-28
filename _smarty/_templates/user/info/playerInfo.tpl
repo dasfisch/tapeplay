@@ -17,7 +17,7 @@
                 <p class="bottom italic">Video file name</p>
             </div>
         </div>
-        <form id="playerInfoForm" name="playerInfoForm" action="{$baseUrl}/user/info" method="post">
+        <form id="playerInfoForm" name="playerInfoForm" action="{$baseUrl}/user/info/" method="post">
             <div class="input">
                 <p class="label">Pick Sport</p>
                 <div class="sportSelect">
