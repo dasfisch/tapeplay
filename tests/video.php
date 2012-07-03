@@ -22,7 +22,7 @@ if (true)
 	$video->setActive(true);
 
 	$newVideo = new Video();
-	$newVideo = $bll->insertVideo($video);
+	$newVideo = $bll->insert($video);
 
 	echo "Video was inserted.  ID is " . $newVideo->getId();
 }

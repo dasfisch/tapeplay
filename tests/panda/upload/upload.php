@@ -43,7 +43,7 @@ if ($_POST["processed"] == "1")
 
 		// set options for <widget> parameter below
 		var html_5_options = {};
-		var flash_options = {};
+		var flash_options = {button_image_url : "/tests/panda/upload/assets/choose_file_button.png"};
 
 		function uploadSuccessful_Handler()
 		{
@@ -82,7 +82,7 @@ if ($_POST["processed"] == "1")
 		<!-- field where the video ID will be stored after the upload -->
 		<input type="hidden" id="returned_video_id" name="panda_video_id"/>
 
-		<script>
+		<script type="text/javascript">
 			// creates the uploader component with the customized options
 			jQuery("#returned_video_id").pandaUploader(panda_access_details, {
 				onsuccess:uploadSuccessful_Handler,

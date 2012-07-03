@@ -14,7 +14,7 @@
     use tapeplay\server\bll\VideoBLL;
     use tapeplay\server\model\Video;
 
-    $bll = new VideoBLL();
+    $userBLL = new VideoBLL();
 
     global $controller, $route, $smarty;
 

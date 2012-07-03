@@ -101,9 +101,11 @@ class VideoBLL extends BaseBLL
 	 * @param \tapeplay\server\model\Video $video The video that needs to be inserted
 	 * @return int The id of the video that was inserted.  -1 if insert fails
 	 */
-	public function insertVideo(Video $video)
+	public function insert(Video $video)
 	{
-		return $this->dal->insert($video);
+		$videoId = $this->dal->insert($video);
+
+		return $videoId;
 	}
 
 	/**

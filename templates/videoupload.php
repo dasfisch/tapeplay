@@ -23,7 +23,7 @@
                 <div class="topRight whiteBg"></div>
                 <div class="bottomRight whiteBg"></div>
                 <div class="middle">
-                    <input type="submit" value="Upload" id="upload" class="large black" />
+                    <input type="submit" value="Upload" id="uploadVideoButton" name="uploadVideoButton" class="large black" />
                 </div>
                 <input type="file" class="uploader" onchange="this.form.fakeupload.value = this.value;" />
             </div>
