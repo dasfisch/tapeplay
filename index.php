@@ -1,4 +1,5 @@
 <?php
+	session_start();
     ini_set('display_errors', 'On');
 
     include('constants.php');
@@ -12,13 +13,18 @@
     include_once('general/request.php');
     include_once('general/route.php');
     include_once('general/tapeplay.smarty.php');
+	include_once('server/bll/UserBLL.php');
 
-    global $controller, $route, $smarty, $userBll;
+	use tapeplay\server\bll\UserBLL;
+
+    global $controller, $route, $smarty, $userBLL;
 
     $controller = new Controller();
     $route = new Route($_GET);
     $smarty = new TapePlaySmarty();
-    $userBll = new UserBLL();
+	$userBLL = new UserBLL();
+
+    $isLoggedIn = true;
 
     $limit = 10;
     $page = (isset($_GET['page']) && $_GET['page'] > 0) ? $_GET['page'] : 1;

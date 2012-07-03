@@ -2,6 +2,8 @@
 
 namespace tapeplay\server\model;
 
+require_once('User.php');
+
 class Video
 {
 	public static function create($arr)

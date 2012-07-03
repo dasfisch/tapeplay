@@ -14,10 +14,14 @@
     use tapeplay\server\model\SearchFilter;
     use tapeplay\server\model\Video;
 
+<<<<<<< HEAD
     require_once("bll/PlayerBLL.php");
     require_once("bll/VideoBLL.php");
 
     $bll = new VideoBLL();
+=======
+    $userBLL = new VideoBLL();
+>>>>>>> d30f804d6db6bae07dc9ae8a309239e7e34d2247
 
     global $controller, $route, $smarty;
 

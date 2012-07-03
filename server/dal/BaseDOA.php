@@ -19,10 +19,10 @@ class BaseDOA
 	public function __construct()
 	{
 		// TODO: Pull these from configuration file
-		$host = "localhost";
-		$dbname = "dev_tapeplay";
-		$username = "root";
-		$password = "n3uraxis";
+		$host = DB_HOST;
+		$dbname = DB_NAME;
+		$username = DB_USER;
+		$password = DB_PASS;
 
 		try
 		{

@@ -59,6 +59,10 @@ class Player extends User
 	private $_sport;
 	private $_stats; // array<Stat>
 	private $_school;
+	private $_weight;
+	private $_coachName;
+	private $_graduationMonth;
+	private $_graduationYear;
 
 	public function setGradeLevel($gradeLevel)
 	{
@@ -158,5 +162,45 @@ class Player extends User
 	public function getVideoAccess()
 	{
 		return $this->_videoAccess;
+	}
+
+	public function setWeight($weight)
+	{
+		$this->_weight = $weight;
+	}
+
+	public function getWeight()
+	{
+		return $this->_weight;
+	}
+
+	public function setCoachName($coachName)
+	{
+		$this->_coachName = $coachName;
+	}
+
+	public function getCoachName()
+	{
+		return $this->_coachName;
+	}
+
+	public function setGraduationMonth($graduationMonth)
+	{
+		$this->_graduationMonth = $graduationMonth;
+	}
+
+	public function getGraduationMonth()
+	{
+		return $this->_graduationMonth;
+	}
+
+	public function setGraduationYear($graduationYear)
+	{
+		$this->_graduationYear = $graduationYear;
+	}
+
+	public function getGraduationYear()
+	{
+		return $this->_graduationYear;
 	}
 }
