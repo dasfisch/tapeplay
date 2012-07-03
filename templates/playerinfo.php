@@ -81,9 +81,9 @@
                                 </div>
                                 <div class="rightMedium"></div>
                                 <ul class="potentials">
-                                    <li>Women's Soccer</li>
-                                    <li>Women's Basketball</li>
-                                    <li>Women's Hockey</li>
+                                    <?php for($i = 6; $i < 20; $i++): ?>
+                                        <li><?php echo $i; ?></li>
+                                    <?php endfor; ?>
                                 </ul>
                             </div>
                             <div class="arrowSmall"></div>
@@ -126,18 +126,18 @@
                     </li>
                     <li>
                         <div class="onTop">
-                            <div class="height">
+                            <div class="height2">
                                 <div class="sportSelect">
                                     <div class="dropper">
                                         <div class="leftMedium"></div>
                                         <div class="middleMedium middle">
-                                            <p class="value">Grade</p>
-                                            <input type="hidden" name="grade" class="dropVal" value="" />
+                                            <p class="value">Height</p>
+                                            <input type="hidden" name="height" class="dropVal" value="" />
                                         </div>
                                         <div class="rightMedium"></div>
                                         <ul class="potentials">
-                                            <?php for($i = 6; $i < 20; $i++): ?>
-                                                <li><?php echo $i; ?></li>
+                                            <?php for($i = 48; $i < 96; $i++): ?>
+                                                <li><?php echo $i; ?>"</li>
                                             <?php endfor; ?>
                                         </ul>
                                     </div>

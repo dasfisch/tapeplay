@@ -60,6 +60,7 @@
                     <div class="leftMedium"></div>
                     <div class="middleMedium middle">
                         <p class="value">Birth Year</p>
+                        <input type="hidden" name="birthYear" class="dropVal" value="" />
                     </div>
                     <div class="rightMedium"></div>
                     <ul class="potentials">
@@ -77,6 +78,7 @@
                     <div class="leftMedium"></div>
                     <div class="middleMedium middle">
                         <p class="value">Sex</p>
+                        <input type="hidden" name="sex" class="dropVal" value="" />
                     </div>
                     <div class="rightMedium"></div>
                     <ul class="potentials">

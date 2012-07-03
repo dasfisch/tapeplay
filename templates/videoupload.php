@@ -51,6 +51,7 @@
                     <div class="leftMedium"></div>
                     <div class="middleMedium middle">
                         <p class="value">Video Month</p>
+                        <input type="hidden" name="videoMonthUpload" class="dropVal" value="" />
                     </div>
                     <div class="rightMedium"></div>
                     <ul class="potentials">
@@ -75,6 +76,7 @@
                     <div class="leftMedium"></div>
                     <div class="middleMedium middle">
                         <p class="value">Video Year</p>
+                        <input type="hidden" name="videoYearUpload" class="dropVal" value="" />
                     </div>
                     <div class="rightMedium"></div>
                     <ul class="potentials">
