@@ -12,6 +12,7 @@ jQuery(document).ready(function(){
 
     jQuery('.potentials li').click(function(){
         jQuery(this).parentsUntil('.sportSelect').children('.dropper .middle').children('.value').html(jQuery(this).html());
+        jQuery(this).parentsUntil('.sportSelect').children('.dropper .middle').children('.dropVal').val(jQuery(this).html());
 
         jQuery('.potentials').slideUp();
     });

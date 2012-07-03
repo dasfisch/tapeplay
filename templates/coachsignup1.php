@@ -75,6 +75,7 @@
                         <div class="left"></div>
                         <div class="middle">
                             <p class="value"></p>
+                            <input type="hidden" name="value" class="value" />
                         </div>
                         <div class="right">
                             <div class="arrow"></div>
@@ -104,8 +105,9 @@
             <div class="sportSelect">
                 <div class="dropper">
                     <div class="leftMedium"></div>
-                    <div class="middleMedium medium sex">
+                    <div class="middleMedium middle sex">
                         <p class="value">Sex</p>
+                        <input type="hidden" name="sex" class="dropVal" value="" />
                     </div>
                     <div class="rightMedium"></div>
                     <ul class="potentials">

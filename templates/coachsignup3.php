@@ -34,6 +34,7 @@
                         <div class="leftMedium"></div>
                         <div class="middleMedium middle">
                             <p class="value">Month</p>
+                            <input type="hidden" name="month" class="dropVal" value="" />
                         </div>
                         <div class="rightMedium"></div>
                         <ul class="potentials">
@@ -60,6 +61,7 @@
                         <div class="leftMedium"></div>
                         <div class="middleMedium middle">
                             <p class="value">Year</p>
+                            <input type="hidden" name="year" class="dropVal" value="" />
                         </div>
                         <div class="rightMedium"></div>
                         <ul class="potentials">

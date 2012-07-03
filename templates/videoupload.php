@@ -49,7 +49,7 @@
             <div class="sportSelect">
                 <div class="dropper">
                     <div class="leftMedium"></div>
-                    <div class="middleMedium medium">
+                    <div class="middleMedium middle">
                         <p class="value">Video Month</p>
                     </div>
                     <div class="rightMedium"></div>

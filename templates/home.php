@@ -57,6 +57,7 @@
                                 <div class="leftSmall"></div>
                                 <div class="middleSmall middle">
                                     <p class="value">Select</p>
+                                    <input type="hidden" name="grade" class="dropVal" value="" />
                                 </div>
                                 <div class="rightSmall"></div>
                                 <ul class="potentials">
@@ -108,6 +109,7 @@
                                 <div class="leftSmall"></div>
                                 <div class="middleSmall middle">
                                     <p class="value">Select</p>
+                                    <input type="hidden" name="height" class="dropVal" value="" />
                                 </div>
                                 <div class="rightSmall"></div>
                                 <ul class="potentials">
