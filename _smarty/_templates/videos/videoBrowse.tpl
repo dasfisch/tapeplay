@@ -49,15 +49,17 @@
                         </div>
                     </div>
                 {else}
-                    <div class="result">
-                        <img src="/" class="resultImage" />
-                        <div class="info">
-                            <h2>{$video->getUser()->getFirstName()} {$video->getUser()->getLastName()}</h2>
-                            <p class="position">Chicago, IL</p>
-                            <p class="title">Video Title</p>
-                            <p class="date"><?php echo date('F, Y', strtotime('now')); ?></p>
+                    <a href="{#baseUrl#}videos/view/{$video->getId()}/">
+                        <div class="result">
+                            <img src="/" class="resultImage" />
+                            <div class="info">
+                                <h2>{$video->getUser()->getFirstName()} {$video->getUser()->getLastName()}</h2>
+                                <p class="position">Chicago, IL</p>
+                                <p class="title">Video Title</p>
+                                <p class="date"><?php echo date('F, Y', strtotime('now')); ?></p>
+                            </div>
                         </div>
-                    </div>
+                    </a>
                 {/if}
             {/foreach}
         </div>
@@ -93,34 +95,39 @@
             <div class="option">
                 <p class="x">x</p>
                 <p class="value showing">Point Guard (1)</p>
-                <input type="hidden" class="" value="" />
+                <input type="hidden" name="position" value="PG" />
             </div>
             <div class="option">
                 <p class="x">x</p>
                 <p class="value showing">Shooting Guard (2)</p>
+                <input type="hidden" name="position" value="SG" />
             </div>
             <div class="option">
                 <p class="x">x</p>
                 <p class="value">Small Forward (3)</p>
+                <input type="hidden" name="position" value="SF" />
             </div>
             <div class="option">
                 <p class="x">&nbsp;</p>
                 <p class="value">Power Forward (4)</p>
+                <input type="hidden" name="position" value="PF" />
             </div>
             <div class="option last">
                 <p class="x">x</p>
                 <p class="value showing">Center (5)</p>
+                <input type="hidden" name="position" value="C" />
             </div>
         </div>
         <div class="criterium">
             <div class="option">
                 <p class="x">x</p>
                 <p class="value">Height</p>
-                <p class="slider"></p>
                 <p class="values">
                     <span class="minVal">4' 11"</span>
                     <span class="maxVal">7' 11"</span>
                 </p>
+                <input type="hidden" value="55" name="min_height" />
+                <input type="hidden" value="95" name="max_height" />
             </div>
         </div>
     </div>

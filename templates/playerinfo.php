@@ -23,7 +23,7 @@
                 <div class="sportSelect">
                     <div class="dropper">
                         <div class="leftMedium"></div>
-                        <div class="middleMedium">
+                        <div class="middleMedium medium">
                             <p class="value">Pick Your Sport</p>
                         </div>
                         <div class="rightMedium"></div>
@@ -74,7 +74,7 @@
                         <div class="sportSelect">
                             <div class="dropper">
                                 <div class="leftMedium"></div>
-                                <div class="middleMedium">
+                                <div class="middleMedium medium">
                                     <p class="value">Grade</p>
                                 </div>
                                 <div class="rightMedium"></div>
@@ -128,7 +128,7 @@
                                 <div class="sportSelect">
                                     <div class="dropper">
                                         <div class="leftMedium"></div>
-                                        <div class="middleMedium">
+                                        <div class="middleMedium medium">
                                             <p class="value">Grade</p>
                                         </div>
                                         <div class="rightMedium"></div>
@@ -176,7 +176,7 @@
                 <div class="sportSelect">
                     <div class="dropper">
                         <div class="leftMedium"></div>
-                        <div class="middleMedium">
+                        <div class="middleMedium medium">
                             <p class="value">Grade</p>
                         </div>
                         <div class="rightMedium"></div>
@@ -191,7 +191,7 @@
                 <div class="sportSelect">
                     <div class="dropper">
                         <div class="leftMedium"></div>
-                        <div class="middleMedium">
+                        <div class="middleMedium medium">
                             <p class="value">Grade</p>
                         </div>
                         <div class="rightMedium"></div>

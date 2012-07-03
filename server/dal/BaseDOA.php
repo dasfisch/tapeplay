@@ -52,4 +52,25 @@ class BaseDOA
 		$this->dbh = null;
 	}
 
+    protected function _setWhere($filter) {
+        foreach($filter as $key=>$single) {
+            if($key !== 'method') {
+                $wheres[$key] = $single;
+            } else {
+                $alias = $single;
+            }
+        }
+
+        $count = count($wheres);
+        $i = 0;
+        $where = ' WHERE ';
+
+        foreach($wheres as $key=>$single) {
+            $where .= ($i < ($count - 1)) ? $alias.'.'.$key.'='.$single.' AND ' : $alias.'.'.$key.'=  '.$single;
+
+            $i++;
+        }
+
+        return $where;
+    }
 }

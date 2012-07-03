@@ -2,8 +2,6 @@
 
 namespace tapeplay\server\model;
 
-include('User.php');
-
 class Video
 {
 	public static function create($arr)
@@ -11,7 +9,7 @@ class Video
         $user = new User();
         $video = new Video();
 
-        $video->setId($arr["id"]);
+        $video->setId($arr["0"]);
         $video->setPandaId($arr["panda_id"]);
         $video->setTitle($arr["title"]);
         $video->setUploadDate($arr["uploaded_date"]);

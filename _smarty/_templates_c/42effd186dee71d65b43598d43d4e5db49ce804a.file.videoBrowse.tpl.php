@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.10, created on 2012-06-27 14:34:06
+<?php /* Smarty version Smarty-3.1.10, created on 2012-06-28 20:51:37
          compiled from "_smarty/_templates/videos/videoBrowse.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:10655083774fe75074a49e70-38294200%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '42effd186dee71d65b43598d43d4e5db49ce804a' => 
     array (
       0 => '_smarty/_templates/videos/videoBrowse.tpl',
-      1 => 1340752074,
+      1 => 1340934696,
       2 => 'file',
     ),
   ),
@@ -83,17 +83,21 @@ $_smarty_tpl->tpl_vars['video']->_loop = true;
                         </div>
                     </div>
                 <?php }else{ ?>
-                    <div class="result">
-                        <img src="/" class="resultImage" />
-                        <div class="info">
-                            <h2><?php echo $_smarty_tpl->tpl_vars['video']->value->getUser()->getFirstName();?>
+                    <a href="<?php echo $_smarty_tpl->getConfigVariable('baseUrl');?>
+videos/view/<?php echo $_smarty_tpl->tpl_vars['video']->value->getId();?>
+/">
+                        <div class="result">
+                            <img src="/" class="resultImage" />
+                            <div class="info">
+                                <h2><?php echo $_smarty_tpl->tpl_vars['video']->value->getUser()->getFirstName();?>
  <?php echo $_smarty_tpl->tpl_vars['video']->value->getUser()->getLastName();?>
 </h2>
-                            <p class="position">Chicago, IL</p>
-                            <p class="title">Video Title</p>
-                            <p class="date"><<?php ?>?php echo date('F, Y', strtotime('now')); ?<?php ?>></p>
+                                <p class="position">Chicago, IL</p>
+                                <p class="title">Video Title</p>
+                                <p class="date"><<?php ?>?php echo date('F, Y', strtotime('now')); ?<?php ?>></p>
+                            </div>
                         </div>
-                    </div>
+                    </a>
                 <?php }?>
             <?php } ?>
         </div>
@@ -129,34 +133,39 @@ $_smarty_tpl->tpl_vars['video']->_loop = true;
             <div class="option">
                 <p class="x">x</p>
                 <p class="value showing">Point Guard (1)</p>
-                <input type="hidden" class="" value="" />
+                <input type="hidden" name="position" value="PG" />
             </div>
             <div class="option">
                 <p class="x">x</p>
                 <p class="value showing">Shooting Guard (2)</p>
+                <input type="hidden" name="position" value="SG" />
             </div>
             <div class="option">
                 <p class="x">x</p>
                 <p class="value">Small Forward (3)</p>
+                <input type="hidden" name="position" value="SF" />
             </div>
             <div class="option">
                 <p class="x">&nbsp;</p>
                 <p class="value">Power Forward (4)</p>
+                <input type="hidden" name="position" value="PF" />
             </div>
             <div class="option last">
                 <p class="x">x</p>
                 <p class="value showing">Center (5)</p>
+                <input type="hidden" name="position" value="C" />
             </div>
         </div>
         <div class="criterium">
             <div class="option">
                 <p class="x">x</p>
                 <p class="value">Height</p>
-                <p class="slider"></p>
                 <p class="values">
                     <span class="minVal">4' 11"</span>
                     <span class="maxVal">7' 11"</span>
                 </p>
+                <input type="hidden" value="55" name="min_height" />
+                <input type="hidden" value="95" name="max_height" />
             </div>
         </div>
     </div>

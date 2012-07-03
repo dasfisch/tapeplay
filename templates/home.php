@@ -55,7 +55,7 @@
                         <div class="sportSelect">
                             <div class="dropper">
                                 <div class="leftSmall"></div>
-                                <div class="middleSmall">
+                                <div class="middleSmall middle">
                                     <p class="value">Select</p>
                                 </div>
                                 <div class="rightSmall"></div>
@@ -106,7 +106,7 @@
                         <div class="sportSelect">
                             <div class="dropper">
                                 <div class="leftSmall"></div>
-                                <div class="middleSmall">
+                                <div class="middleSmall middle">
                                     <p class="value">Select</p>
                                 </div>
                                 <div class="rightSmall"></div>

@@ -3,6 +3,9 @@
 
     include('constants.php');
 
+    use \tapeplay\server\bll\UserBLL;
+
+    include_once('bll/UserBLL.php');
     include_once('general/controller.php');
     include_once('general/configuration.php');
 //    include_once('general/factory.php');
@@ -10,31 +13,28 @@
     include_once('general/route.php');
     include_once('general/tapeplay.smarty.php');
 
-    global $controller, $route;
+    global $controller, $route, $smarty, $userBll;
 
     $controller = new Controller();
     $route = new Route($_GET);
     $smarty = new TapePlaySmarty();
-
-    $isLoggedIn = true;
+    $userBll = new UserBLL();
 
     $limit = 10;
     $page = (isset($_GET['page']) && $_GET['page'] > 0) ? $_GET['page'] : 1;
 
     try {
-        if($isLoggedIn) {
-            /**
-             * ALL MENTIONS OF __CLASS__ MEAN THE CONTROLLER FILE
-             *
-             * Open the controller if the __CLASS__ parameter is set in the $_GET;
-             * Otherwise, open up the index template
-             */
-            if(isset($route->class)) {
-                //open the class file
-                $controller->open($route->class);
-            } else {
-                //open the home page
-            }
+        /**
+         * ALL MENTIONS OF __CLASS__ MEAN THE CONTROLLER FILE
+         *
+         * Open the controller if the __CLASS__ parameter is set in the $_GET;
+         * Otherwise, open up the index template
+         */
+        if(isset($route->class)) {
+            //open the class file
+            $controller->open($route->class);
+        } else {
+            //open the home page
         }
     } catch(Exception $e) {
         echo '<pre>';

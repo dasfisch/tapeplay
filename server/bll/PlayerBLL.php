@@ -4,9 +4,11 @@ namespace tapeplay\server\bll;
 
 require_once ("dal/PlayerDAO.php");
 require_once ("bll/BaseBLL.php");
+require_once ("bll/StatsBLL.php");
 require_once ("model/Player.php");
 
 use tapeplay\server\dal\PlayerDAO;
+use tapeplay\server\bll\StatsBLL;
 use tapeplay\server\model\Player;
 
 class PlayerBLL extends BaseBLL
@@ -18,7 +20,14 @@ class PlayerBLL extends BaseBLL
 
 	public function get($id)
 	{
+        $statsBLL = new StatsBLL();
+        $stats = $statsBLL->getPlayerStats($id);
+
 		$player = $this->dal->get($id);
+
+        $player->setStats($stats);
+
+        return $player;
 	}
 
 	public function insert(Player $player, $userID)
@@ -31,5 +40,3 @@ class PlayerBLL extends BaseBLL
 		$this->dal->update($player);
 	}
 }
-
-?>

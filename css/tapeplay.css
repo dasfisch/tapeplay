@@ -408,6 +408,12 @@ a {
     width: 91%;
 }
 
+#tapeplay #landing #rightCol .criterium .option .height {
+    float: right;
+    margin: 10px 0px;
+    width: 91%;
+}
+
 #tapeplay #landing #rightCol .criterium .option .values {
     float: right;
     width: 92%;

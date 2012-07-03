@@ -20,7 +20,9 @@
                         <div id="beta"></div>
                         <div id="dropper">
                             <div id="values">
-                                <p id="value">Women's Basketball</p>
+                                <div class="medium">
+                                    <p id="value">Women's Basketball</p>
+                                </div>
                                 <ul id="potentials">
                                     <li>Women's Baseketball</li>
                                     <li>Men's Baseketball</li>

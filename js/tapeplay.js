@@ -11,7 +11,7 @@ jQuery(document).ready(function(){
     });
 
     jQuery('.potentials li').click(function(){
-        jQuery(this).parentsUntil('.sportSelect').children('.dropper .middleMedium').children('.value').html(jQuery(this).html());
+        jQuery(this).parentsUntil('.sportSelect').children('.dropper .middle').children('.value').html(jQuery(this).html());
 
         jQuery('.potentials').slideUp();
     });
@@ -169,6 +169,17 @@ jQuery(document).ready(function(){
         } else {
             jQuery(this).prev('.x').html('x');
             jQuery(this).addClass('showing');
+        }
+    });
+
+    jQuery('.height').slider({
+        min: 55,
+        max: 95,
+        range: true,
+        step: 1,
+        values: [55, 95],
+        slide: function() {
+//            jQuery(this).siblings('.')
         }
     });
 });

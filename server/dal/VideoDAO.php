@@ -155,14 +155,16 @@ class VideoDAO extends BaseDOA
 		{
             $startLimit = ($page * $limit) - $limit;
 
+            $where = $this->_setWhere($filter);
+
 			$this->sql = "SELECT
-                                vid.*, COUNT(view.id) AS views, COUNT(saves.id) AS saves, users.*
+                                videos.*, COUNT(view.id) AS views, COUNT(saves.id) AS saves, users.*
                             FROM
-                                videos vid
+                                videos videos
                             JOIN
                                 player_videos pv
                                     ON
-                                        pv.video_id=vid.id
+                                        pv.video_id=videos.id
                             JOIN
                                 users users
                                     ON
@@ -170,14 +172,16 @@ class VideoDAO extends BaseDOA
                             LEFT JOIN
                                 video_views view
                                     ON
-                                        view.video_id=vid.id
+                                        view.video_id=videos.id
                             LEFT JOIN
                                 video_saves saves
                                     ON
-                                        saves.video_id=vid.id
+                                        saves.video_id=videos.id
+                            ".$where."
                             GROUP BY
-                                vid.id
+                                videos.id
                             LIMIT ".$startLimit.",".$limit;
+echo $this->sql;
 			$this->prep = $this->dbh->prepare($this->sql);
 			//$this->prep->bindValue(":id", $id, \PDO::PARAM_INT);
 			$this->prep->execute();

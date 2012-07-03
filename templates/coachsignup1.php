@@ -104,7 +104,7 @@
             <div class="sportSelect">
                 <div class="dropper">
                     <div class="leftMedium"></div>
-                    <div class="middleMedium sex">
+                    <div class="middleMedium medium sex">
                         <p class="value">Sex</p>
                     </div>
                     <div class="rightMedium"></div>

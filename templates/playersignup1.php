@@ -58,7 +58,7 @@
             <div class="sportSelect">
                 <div class="dropper">
                     <div class="leftMedium"></div>
-                    <div class="middleMedium">
+                    <div class="middleMedium medium">
                         <p class="value">Birth Year</p>
                     </div>
                     <div class="rightMedium"></div>
@@ -75,7 +75,7 @@
             <div class="sportSelect">
                 <div class="dropper">
                     <div class="leftMedium"></div>
-                    <div class="middleMedium">
+                    <div class="middleMedium medium">
                         <p class="value">Sex</p>
                     </div>
                     <div class="rightMedium"></div>

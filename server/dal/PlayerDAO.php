@@ -7,7 +7,7 @@ require_once("dal/BaseDOA.php");
 use tapeplay\server\model\Player;
 use tapeplay\server\model\SearchFilter;
 
-require "model/Player.php";
+require_once "model/Player.php";
 /**
  * Contains all database access for managing a player.
  */
@@ -17,7 +17,20 @@ class PlayerDAO extends BaseDOA
 	{
 		try
 		{
-			$this->sql = "SELECT * FROM players p INNER JOIN users u ON p.user_id = u.id LEFT JOIN schools s ON p.school_id = s.id WHERE p.id = :id";
+			$this->sql = "SELECT
+                                users.*, players.*, schools.*
+                            FROM
+                                users users
+                            JOIN
+                                players players
+                                    ON
+                                        players.user_id=users.id
+                            JOIN
+                                schools schools
+                                    ON
+                                        schools.id=players.school_id
+                            WHERE
+                                users.id=:id";
 			$this->prep = $this->dbh->prepare($this->sql);
 			$this->prep->bindValue(":id", $id, \PDO::PARAM_INT);
 			$this->prep->execute();
@@ -102,5 +115,3 @@ class PlayerDAO extends BaseDOA
 
 
 }
-
-?>

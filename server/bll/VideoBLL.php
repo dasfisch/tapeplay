@@ -97,6 +97,10 @@ class VideoBLL extends BaseBLL
 		//return $this->dal->search($filter);
 	}
 
+    public function getOne(SearchFilter $filter) {
+        return $this->dal->search($filter);
+    }
+
 	/**
 	 * @param \tapeplay\server\model\Video $video The video that needs to be inserted
 	 * @return int The id of the video that was inserted.  -1 if insert fails

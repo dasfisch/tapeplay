@@ -8,26 +8,18 @@
  */
     //all include, globals (not opposed to not using globals)
 
-    require_once ("bll/VideoBLL.php");
-
-    use tapeplay\server\model\SearchFilter;
+    use tapeplay\server\bll\PlayerBLL;
+    use tapeplay\server\bll\StatsBLL;
     use tapeplay\server\bll\VideoBLL;
+    use tapeplay\server\model\SearchFilter;
     use tapeplay\server\model\Video;
+
+    require_once("bll/PlayerBLL.php");
+    require_once("bll/VideoBLL.php");
 
     $bll = new VideoBLL();
 
     global $controller, $route, $smarty;
-
-    /**
-     * This will be the catcher; part of the rewrite rules;
-     *
-     * The url will be like this:
-     *      http://www.tapeplay.com/__CLASS__/__METHOD__/__ID__?params....
-     *          eg: http://www.tapeplay.com/videos/view/23
-     *              http://www.tapeplay.com/videos/view/23?utm=google.com&etc=soforth
-     *              http://www.tapeplay.com/videos/notes
-     *
-     */
 
     if(isset($route->method)) {
         switch($route->method) {
@@ -42,7 +34,26 @@
                 $smarty->assign('notes', $notes);
                 $smarty->assign('video', $video);
 
-                $msarty->display('videoNotes');
+                $smarty->display('videoNotes');
+
+                break;
+            case 'view':
+                $search = new SearchFilter();
+
+                $playerBll = new PlayerBLL();
+                $videoBll = new VideoBLL();
+
+                $search->id = $_GET['id'];
+                $search->method = $route->class;
+
+                $video = $videoBll->search($search);
+                $player = $playerBll->get($video[0]->getUser()->getUserId());
+
+                $smarty->assign('player', $player);
+                $smarty->assign('video', $video[0]);
+                $smarty->assign('file', 'videos/single.tpl');
+
+                $smarty->display('index.tpl');
 
                 break;
             default:

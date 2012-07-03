@@ -4,48 +4,71 @@ namespace tapeplay\server\model;
 
 class Stat
 {
-	private $id;
-	private $sport;
-	private $statName;
-	private $statValidation;
+	private $_id;
+	private $_sport;
+	private $_statName;
+	private $_statValidation;
+    private $_statValue;
+
+    public function create($statistics) {
+        $stat = new Stat();
+
+        $stat->setId($statistics[1]);
+        $stat->setSport($statistics['name']);
+        $stat->setStatName($statistics['stat_name']);
+        $stat->setStatValidation($statistics['regex']);
+        $stat->setStatValue($statistics['value']);
+
+        return $stat;
+    }
 
 	public function setId($id)
 	{
-		$this->id = $id;
+		$this->_id = $id;
 	}
 
 	public function getId()
 	{
-		return $this->id;
+		return $this->_id;
 	}
 
-	public function setSport($sport)
-	{
-		$this->sport = $sport;
-	}
+    public function setSport($sport)
+   	{
+   		$this->_sport = $sport;
+   	}
 
-	public function getSport()
-	{
-		return $this->sport;
-	}
+   	public function getSport()
+   	{
+   		return $this->_sport;
+   	}
 
 	public function setStatName($statName)
 	{
-		$this->statName = $statName;
+		$this->_statName = $statName;
 	}
 
 	public function getStatName()
 	{
-		return $this->statName;
+		return $this->_statName;
 	}
 
-	public function setStatValidation($statValidation)
-	{
-		$this->statValidation = $statValidation;
-	}
+    public function setStatValidation($statValidation)
+   	{
+   		$this->_statValidation = $statValidation;
+   	}
 
-	public function getStatValidation()
-	{
-		return $this->statValidation;
-	}
+   	public function getStatValidation()
+   	{
+   		return $this->_statValidation;
+   	}
+
+    public function setStatValue($statistic)
+   	{
+   		$this->_statValue = $statistic;
+   	}
+
+   	public function getStatValue()
+   	{
+   		return $this->_statValue;
+   	}
 }

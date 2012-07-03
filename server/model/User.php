@@ -1,5 +1,4 @@
 <?php
-
 namespace tapeplay\server\model;
 
 /**
@@ -9,6 +8,7 @@ class User
 {
 	public static function create($arr)
 	{
+        $school = new School();
 		$user = new User();
 
 		$user->setUserId($arr["id"]);
@@ -18,13 +18,15 @@ class User
 		$user->setHash($arr["hash"]);
 		$user->setZipcode($arr["zipcode"]);
 		$user->setGender($arr["gender"]);
-		$user->setBirthDate($arr["birth_date"]);
+        $user->setBirthDate($arr["birth_date"]);
+        $user->setAge($arr["birth_date"]);
 		$user->setLastLogin($arr["last_login"]);
 		$user->setAccountType($arr["account_type"]);
 
 		return $user;
 	}
 
+    protected  $_age;
 	protected  $_userId;
 	protected  $_firstName;
 	protected  $_lastName;
@@ -50,7 +52,7 @@ class User
 
 	public function setBirthDate($birthDate)
 	{
-		$this->_birthDate = $birthDate;
+		$this->_birthDate = date('Y', $birthDate);
 	}
 
 	public function getBirthDate()
@@ -147,4 +149,13 @@ class User
 	{
 		return $this->_optIns;
 	}
+
+    public function setAge($birthDate) {
+        $this->_age = (int)date('Y', strtotime('now')) - (int)date('Y', $birthDate);
+    }
+
+    public function getAge() {
+        echo 'called '.$this->_age;
+        return $this->_age;
+    }
 }
