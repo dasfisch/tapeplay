@@ -1,4 +1,5 @@
 <?php
+    namespace tapeplay\server\general;
 
     class Controller {
         public $configuration;

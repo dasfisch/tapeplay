@@ -2,7 +2,7 @@
     <div id="video">
         <div id="primaryInfo">
             <div id="left">
-                <h2>{$video->getUser()->getFirstName()} {$video->getUser()->getLastName()}</h2>
+                <h2>{$player->getFirstName()} {$player->getLastName()}</h2>
                 <p class="title">{$video->getTitle()}</p>
                 <p class="date">{$video->getRecordedMonth()} / {$video->getRecordedYear()}</p>
             </div>
@@ -98,39 +98,47 @@
             </div>
             <div id="moreVideos">
                 <h2>More videos from [name]</h2>
-                <div class="result">
-                    <img src="/" class="resultImage" />
-                    <div class="info">
-                        <h4>Title</h4>
-                        <p class="name">First Name Last Name</p>
-                        <p class="date"><?php echo date('F, Y', strtotime('now')); ?></p>
-                    </div>
-                </div>
-                <div class="result opaque">
-                    <a class="infoOpen">
-                        <img src="/" class="resultImage locked" />
-                        <div class="info">
-                            <h4>Title</h4>
-                            <p class="name">First Name Last Name</p>
-                            <p class="date"><?php echo date('F, Y', strtotime('now')); ?></p>
+                {foreach from=$videos item=video}
+                    {if $video->getPrivacy() == true}
+                        <div class="result opaque">
+                            <div class="infoOpen">
+                                <img src="/" class="resultImage locked" />
+                                <div class="info">
+                                    <h4>{$video->getTitle()}</h4>
+                                    <p class="title">{$player->getFirstName()} {$player->getLastName()}</p>
+                                    <p class="date">{$video->getUploadedDate()}</p>
+                                </div>
+                            </div>
+                            <div class="infoBubble">
+                                <div class="topLeft"></div>
+                                <div class="topRight"></div>
+                                <div class="middle">
+                                    <p>
+                                        <strong>We're sorry.</strong> Only account holders can view this video.
+                                        <br /><br />
+                                        Want to view this video?
+                                        <br />
+                                        <a>Join</a> or <a>log in</a>.
+                                    </p>
+                                </div>
+                                <div class="directionBottomRight"></div>
+                                <div class="bottomRight"></div>
+                                <div class="direction"></div>
+                            </div>
                         </div>
-                    </a>
-                    <div class="infoBubble">
-                        <div class="topLeft"></div>
-                        <div class="topRight"></div>
-                        <div class="middle">
-                            <p>
-                                <strong>We're sorry.</strong> Only account holders can view this video.
-                                <br /><br />
-                                Want to view this video?
-                                <br />
-                                <a>Join</a> or <a>log in</a>.
-                            </p>
-                        </div>
-                        <div class="bottomLeft"></div>
-                        <div class="directionBottomRight"></div>
-                    </div>
-                </div>
+                    {else}
+                        <a href="{#baseUrl#}videos/view/{$video->getId()}/">
+                            <div class="result">
+                                <img src="/" class="resultImage" />
+                                <div class="info">
+                                    <h4>{$video->getTitle()}</h4>
+                                    <p class="title">{$player->getFirstName()} {$player->getLastName()}</p>
+                                    <p class="date">{$video->getUploadDate()}</p>
+                                </div>
+                            </div>
+                        </a>
+                    {/if}
+                {/foreach}
             </div>
         </div>
         <div id="rightCol">

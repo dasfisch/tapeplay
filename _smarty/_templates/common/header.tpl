@@ -21,10 +21,20 @@
                         <div id="beta"></div>
                         <div id="dropper">
                             <div id="values">
-                                <p id="value">Women's Basketball</p>
+                                <p id="value">
+                                    {if isset($sport)}
+                                        {$sport}
+                                    {else}
+                                        Women's Baskeyball
+                                    {/if}
+                                </p>
                                 <ul id="potentials">
-                                    <li>Women's Baseketball</li>
-                                    <li>Men's Baseketball</li>
+                                    {foreach from=$sports item=single}
+                                        <li>
+                                            {$single->getSportName()}
+                                            <input type="hidden" class="sportId" value="{$single->getId()}" />
+                                        </li>
+                                    {/foreach}
                                 </ul>
                             </div>
                             <div id="arrow"></div>
@@ -34,13 +44,13 @@
                 <div id="right">
                     <ul id="links">
                         <li>
-                            <a href="">Join<span class="fbSmall"></span></a>
+                            <a href="{#baseUrl#}">Join<span class="fbSmall"></span></a>
                         </li>
                         <li>
-                            <a href="">Log In</a>
+                            <a href="{#baseUrl#}">Log In</a>
                         </li>
                         <li>
-                            <a href="" class="infoOpen leftShift">Upload</a>
+                            <a href="{#baseUrl#}" class="infoOpen leftShift">Upload</a>
                             <div class="infoBubble">
                                 <div class="topLeft black"></div>
                                 <div class="directionTopRight"></div>

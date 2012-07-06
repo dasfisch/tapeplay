@@ -27,7 +27,7 @@
                             <div class="info">
                                 <h2>{$video->getUser()->getFirstName()} {$video->getUser()->getLastName()}</h2>
                                 <p class="position"></p>
-                                <p class="title">Video Title</p>
+                                <p class="title">{$video->getTitle()}</p>
                                 <p class="date"><?php echo date('F, Y', strtotime('now')); ?></p>
                             </div>
                         </div>
@@ -55,7 +55,7 @@
                             <div class="info">
                                 <h2>{$video->getUser()->getFirstName()} {$video->getUser()->getLastName()}</h2>
                                 <p class="position">Chicago, IL</p>
-                                <p class="title">Video Title</p>
+                                <p class="title">{$video->getTitle()}</p>
                                 <p class="date"><?php echo date('F, Y', strtotime('now')); ?></p>
                             </div>
                         </div>

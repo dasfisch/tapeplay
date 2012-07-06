@@ -155,7 +155,6 @@ class User
     }
 
     public function getAge() {
-        echo 'called '.$this->_age;
         return $this->_age;
     }
 }

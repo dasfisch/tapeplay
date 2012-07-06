@@ -1,4 +1,6 @@
 <?php
+    namespace tapeplay\server\general;
+
     class Route {
         public $baseUrl;
         public $class;

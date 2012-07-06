@@ -13,6 +13,7 @@ class SearchFilter
 	private $_height;
     private $_limit;
     private $_page;
+    private $_userId;
 
 	public function setGradeLevel($gradeLevel)
 	{
@@ -62,3 +63,14 @@ class SearchFilter
         return $this->$name;
     }
 }
+
+//    {if $player->getGradeLevel() < 13}
+//        <h4>Hs</h4>
+//        <p>High School Athlete</p>
+//    {elseif $player->getGradeLevel() <= 17}
+//        <h4>Co</h4>
+//        <p>College Athlete</p>
+//    {else}
+//        <h4>Pr</h4>
+//        <p>Professional Athlete</p>
+//    {/if}

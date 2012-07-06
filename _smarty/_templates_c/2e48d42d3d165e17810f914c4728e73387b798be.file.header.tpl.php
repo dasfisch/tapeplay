@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.10, created on 2012-06-24 17:50:10
+<?php /* Smarty version Smarty-3.1.10, created on 2012-07-05 18:05:18
          compiled from "_smarty/_templates/common/header.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:11214827914fe799a25b6b20-81343857%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '2e48d42d3d165e17810f914c4728e73387b798be' => 
     array (
       0 => '_smarty/_templates/common/header.tpl',
-      1 => 1340578148,
+      1 => 1341529517,
       2 => 'file',
     ),
   ),
@@ -15,9 +15,15 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
-  'has_nocache_code' => false,
   'version' => 'Smarty-3.1.10',
   'unifunc' => 'content_4fe799a25b9d92_09775747',
+  'variables' => 
+  array (
+    'sport' => 0,
+    'sports' => 0,
+    'single' => 0,
+  ),
+  'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_4fe799a25b9d92_09775747')) {function content_4fe799a25b9d92_09775747($_smarty_tpl) {?><!DOCTYPE HTML>
 <html>
@@ -30,7 +36,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 
         <script type="text/javascript" src="/js/jquery.js"></script>
         <script type="text/javascript" src="/js/jquery-ui.js"></script>
-        <script type="text/javascript" src="/js/tapeplay.js"></script>
+		<script type="text/javascript" src="/js/tapeplay.js"></script>
+        <script type="text/javascript" src="/js/jquery.panda.min.js"></script>
     </head>
     <body id="tapeplay">
         <div id="header">
@@ -41,10 +48,27 @@ $_valid = $_smarty_tpl->decodeProperties(array (
                         <div id="beta"></div>
                         <div id="dropper">
                             <div id="values">
-                                <p id="value">Women's Basketball</p>
+                                <p id="value">
+                                    <?php if (isset($_smarty_tpl->tpl_vars['sport']->value)){?>
+                                        <?php echo $_smarty_tpl->tpl_vars['sport']->value;?>
+
+                                    <?php }else{ ?>
+                                        Women's Baskeyball
+                                    <?php }?>
+                                </p>
                                 <ul id="potentials">
-                                    <li>Women's Baseketball</li>
-                                    <li>Men's Baseketball</li>
+                                    <?php  $_smarty_tpl->tpl_vars['single'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['single']->_loop = false;
+ $_from = $_smarty_tpl->tpl_vars['sports']->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
+foreach ($_from as $_smarty_tpl->tpl_vars['single']->key => $_smarty_tpl->tpl_vars['single']->value){
+$_smarty_tpl->tpl_vars['single']->_loop = true;
+?>
+                                        <li>
+                                            <?php echo $_smarty_tpl->tpl_vars['single']->value->getSportName();?>
+
+                                            <input type="hidden" class="sportId" value="<?php echo $_smarty_tpl->tpl_vars['single']->value->getId();?>
+" />
+                                        </li>
+                                    <?php } ?>
                                 </ul>
                             </div>
                             <div id="arrow"></div>
@@ -54,13 +78,16 @@ $_valid = $_smarty_tpl->decodeProperties(array (
                 <div id="right">
                     <ul id="links">
                         <li>
-                            <a href="">Join<span class="fbSmall"></span></a>
+                            <a href="<?php echo $_smarty_tpl->getConfigVariable('baseUrl');?>
+">Join<span class="fbSmall"></span></a>
                         </li>
                         <li>
-                            <a href="">Log In</a>
+                            <a href="<?php echo $_smarty_tpl->getConfigVariable('baseUrl');?>
+">Log In</a>
                         </li>
                         <li>
-                            <a href="" class="infoOpen leftShift">Upload</a>
+                            <a href="<?php echo $_smarty_tpl->getConfigVariable('baseUrl');?>
+" class="infoOpen leftShift">Upload</a>
                             <div class="infoBubble">
                                 <div class="topLeft black"></div>
                                 <div class="directionTopRight"></div>

@@ -8,6 +8,16 @@ class Sport
 	private $sportName;
 	private $active;
 
+    public function create($args) {
+        $sport = new Sport();
+
+        $sport->setSportName($args['name']);
+        $sport->setId($args['id']);
+        $sport->setActive($args['active']);
+
+        return $sport;
+    }
+
 	public function setSportName($sportName)
 	{
 		$this->sportName = $sportName;
