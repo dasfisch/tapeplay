@@ -1,21 +1,31 @@
 <?php
+    namespace tapeplay\server;
+
 	session_start();
     ini_set('display_errors', 'On');
 
     include('constants.php');
 
-    include_once('bll/UserBLL.php');
     include_once('general/controller.php');
     include_once('general/configuration.php');
 //    include_once('general/factory.php');
     include_once('general/request.php');
     include_once('general/route.php');
     include_once('general/tapeplay.smarty.php');
-	include_once('server/bll/UserBLL.php');
 
+    include_once('model/SearchFilter.php');
+
+    include_once('bll/UserBLL.php');
+    include_once('bll/SportBLL.php');
+
+    use tapeplay\server\bll\SportBLL;
 	use tapeplay\server\bll\UserBLL;
+    use tapeplay\server\general\Controller;
+    use tapeplay\server\general\Route;
+    use tapeplay\server\general\TapePlaySmarty;
+    use tapeplay\server\model\SearchFilter;
 
-    global $controller, $route, $smarty, $userBLL;
+    global $controller, $route, $smarty, $sport, $userBLL;
 
     $controller = new Controller();
     $route = new Route($_GET);
@@ -23,11 +33,24 @@
 	$userBLL = new UserBLL();
 
     $isLoggedIn = true;
+    $sport = null;
 
     $limit = 10;
     $page = (isset($_GET['page']) && $_GET['page'] > 0) ? $_GET['page'] : 1;
 
+    $search = new SearchFilter();
+
+    if(isset($_SESSION['sport'])) {
+        $sport = $search->name = $_SESSION['sport'];
+    }
+
+    $sportBll = new SportBLL();
+    $sports = $sportBll->get($search);
+
     try {
+        $smarty->assign('sports', $sports);
+        $smarty->assign('currentSport', $sport);
+
         /**
          * ALL MENTIONS OF __CLASS__ MEAN THE CONTROLLER FILE
          *
@@ -39,6 +62,7 @@
             $controller->open($route->class);
         } else {
             //open the home page
+            $controller->open('home');
         }
     } catch(Exception $e) {
         echo '<pre>';

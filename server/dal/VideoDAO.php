@@ -204,7 +204,7 @@ class VideoDAO extends BaseDOA
                             GROUP BY
                                 videos.id
                             LIMIT ".$startLimit.",".$limit;
-echo $this->sql;
+
 			$this->prep = $this->dbh->prepare($this->sql);
 			//$this->prep->bindValue(":id", $id, \PDO::PARAM_INT);
 			$this->prep->execute();
@@ -282,5 +282,3 @@ echo $this->sql;
 		return $videoList;
 	}
 }
-
-?>

@@ -53,22 +53,28 @@ class BaseDOA
 	}
 
     protected function _setWhere($filter) {
+        $alias = null;
+        $where = null;
+        $wheres = null;
+
         foreach($filter as $key=>$single) {
             if($key !== 'method') {
                 $wheres[$key] = $single;
             } else {
-                $alias = $single;
+                $alias = $single.'.';
             }
         }
 
         $count = count($wheres);
-        $i = 0;
-        $where = ' WHERE ';
+        if($count > 0) {
+            $i = 0;
+            $where = ' WHERE ';
 
-        foreach($wheres as $key=>$single) {
-            $where .= ($i < ($count - 1)) ? $alias.'.'.$key.'='.$single.' AND ' : $alias.'.'.$key.'=  '.$single;
+            foreach($wheres as $key=>$single) {
+                $where .= ($i < ($count - 1)) ? $alias.$key.'='.$single.' AND ' : $alias.$key.'=  '.$single;
 
-            $i++;
+                $i++;
+            }
         }
 
         return $where;

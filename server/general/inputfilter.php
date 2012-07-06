@@ -1,4 +1,5 @@
 <?php
+    namespace tapeplay\server\general;
 
 /** @class: InputFilter (PHP5-Strict with comments)
   * @project: PHP Input Filter

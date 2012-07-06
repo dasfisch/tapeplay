@@ -1,7 +1,6 @@
 <?php
 
 namespace tapeplay\server\dal;
-namespace tapeplay\server\model;
 
 require_once("dal/BaseDOA.php");
 require_once("model/Stat.php");

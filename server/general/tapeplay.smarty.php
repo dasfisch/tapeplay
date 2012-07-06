@@ -1,5 +1,9 @@
 <?php
+    namespace tapeplay\server\general;
+
     include("Smarty.class.php");
+
+    use Smarty;
 
 	class TapePlaySmarty extends Smarty {
 		public $configVars;

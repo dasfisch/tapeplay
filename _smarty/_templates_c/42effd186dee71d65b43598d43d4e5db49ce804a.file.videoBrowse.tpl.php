@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.10, created on 2012-06-28 20:51:37
+<?php /* Smarty version Smarty-3.1.10, created on 2012-07-05 08:50:43
          compiled from "_smarty/_templates/videos/videoBrowse.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:10655083774fe75074a49e70-38294200%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '42effd186dee71d65b43598d43d4e5db49ce804a' => 
     array (
       0 => '_smarty/_templates/videos/videoBrowse.tpl',
-      1 => 1340934696,
+      1 => 1341496237,
       2 => 'file',
     ),
   ),
@@ -61,7 +61,8 @@ $_smarty_tpl->tpl_vars['video']->_loop = true;
  <?php echo $_smarty_tpl->tpl_vars['video']->value->getUser()->getLastName();?>
 </h2>
                                 <p class="position"></p>
-                                <p class="title">Video Title</p>
+                                <p class="title"><?php echo $_smarty_tpl->tpl_vars['video']->value->getTitle();?>
+</p>
                                 <p class="date"><<?php ?>?php echo date('F, Y', strtotime('now')); ?<?php ?>></p>
                             </div>
                         </div>
@@ -93,7 +94,8 @@ videos/view/<?php echo $_smarty_tpl->tpl_vars['video']->value->getId();?>
  <?php echo $_smarty_tpl->tpl_vars['video']->value->getUser()->getLastName();?>
 </h2>
                                 <p class="position">Chicago, IL</p>
-                                <p class="title">Video Title</p>
+                                <p class="title"><?php echo $_smarty_tpl->tpl_vars['video']->value->getTitle();?>
+</p>
                                 <p class="date"><<?php ?>?php echo date('F, Y', strtotime('now')); ?<?php ?>></p>
                             </div>
                         </div>

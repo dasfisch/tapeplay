@@ -1,12 +1,11 @@
 <?php
-
 namespace tapeplay\server\bll;
 
 require_once("dal/StatsDAO.php");
 require_once("bll/BaseBLL.php");
 
 use tapeplay\server\bll\BaseBLL;
-use tapeplay\server\model\StatsDAO; //why the fuck is this coming from model???
+use tapeplay\server\dal\StatsDAO;
 use tapeplay\server\model\Stat;
 
 /**

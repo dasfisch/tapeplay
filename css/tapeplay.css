@@ -58,6 +58,7 @@ a {
 
 #tapeplay #header #left #sportSelect #dropper #values #potentials {
     display: none;
+    position: relative;
 }
 
 #tapeplay #header #left #sportSelect #dropper #arrow {

@@ -14,16 +14,10 @@
     use tapeplay\server\model\SearchFilter;
     use tapeplay\server\model\Video;
 
-<<<<<<< HEAD
     require_once("bll/PlayerBLL.php");
     require_once("bll/VideoBLL.php");
 
-    $bll = new VideoBLL();
-=======
-    $userBLL = new VideoBLL();
->>>>>>> d30f804d6db6bae07dc9ae8a309239e7e34d2247
-
-    global $controller, $route, $smarty;
+    global $controller, $route, $smarty, $userBLL;
 
     if(isset($route->method)) {
         switch($route->method) {
@@ -53,8 +47,16 @@
                 $video = $videoBll->search($search);
                 $player = $playerBll->get($video[0]->getUser()->getUserId());
 
+                $search = new SearchFilter();
+
+                $search->id = $player->getUserId();
+                $search->method = 'users';
+
+                $videos = $videoBll->search($search);
+
                 $smarty->assign('player', $player);
                 $smarty->assign('video', $video[0]);
+                $smarty->assign('videos', $videos);
                 $smarty->assign('file', 'videos/single.tpl');
 
                 $smarty->display('index.tpl');

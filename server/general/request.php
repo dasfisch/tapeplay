@@ -1,4 +1,6 @@
 <?php
+    namespace tapeplay\server\general;
+
     include_once('general/inputfilter.php');
 
     class Request {
