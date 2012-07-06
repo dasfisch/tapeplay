@@ -30,7 +30,7 @@
 	<div class="sportSelect">
 		<div class="dropper">
 			<div class="leftMedium"></div>
-			<div class="middleMedium">
+			<div class="middleMedium middle">
 				<p class="value">Pick Your Sport</p>
 			</div>
 			<div class="rightMedium"></div>
@@ -82,8 +82,9 @@
 			<div class="sportSelect">
 				<div class="dropper">
 					<div class="leftMedium"></div>
-					<div class="middleMedium">
-						<p class="value">Grade</p>
+					<div class="middleMedium middle">
+						<p class="value">Sport</p>
+						<input type="hidden" name="sport" class="dropVal" value="" />
 					</div>
 					<div class="rightMedium"></div>
 					<ul class="potentials">
@@ -137,8 +138,9 @@
 					<div class="sportSelect">
 						<div class="dropper">
 							<div class="leftMedium"></div>
-							<div class="middleMedium">
+							<div class="middleMedium middle">
 								<p class="value">Grade</p>
+								<input type="hidden" name="gradeLevel" class="dropVal" value="" />
 							</div>
 							<div class="rightMedium"></div>
 							<ul class="potentials">
@@ -189,6 +191,7 @@
 			<div class="leftMedium"></div>
 			<div class="middleMedium">
 				<p class="value">Month</p>
+				<input type="hidden" name="graduationMonth" class="dropVal" value="" />
 			</div>
 			<div class="rightMedium"></div>
 			<ul class="potentials">
@@ -211,8 +214,9 @@
 	<div class="sportSelect">
 		<div class="dropper">
 			<div class="leftMedium"></div>
-			<div class="middleMedium">
+			<div class="middleMedium middle">
 				<p class="value">Year</p>
+				<input type="hidden" name="graduationYear" class="dropVal" value="" />
 			</div>
 			<div class="rightMedium"></div>
 			<ul class="potentials">

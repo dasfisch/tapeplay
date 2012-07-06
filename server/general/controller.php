@@ -1,6 +1,8 @@
 <?php
     namespace tapeplay\server\general;
 
+    use Exception;
+
     class Controller {
         public $configuration;
         public $header;
