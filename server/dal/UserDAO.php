@@ -63,9 +63,9 @@ class UserDAO extends BaseDOA
 		try
 		{
 			$this->sql = "INSERT INTO users " .
-					"(first_name, last_name, email, hash, zipcode, gender, birth_date, last_login, account_type)" .
+					"(first_name, last_name, email, hash, zipcode, gender, birth_year, last_login, account_type)" .
 					" VALUES " .
-					"(:firstName, :lastName, :email, :hash, :zipcode, :gender, :birthDate, :lastLogin, :accountType)";
+					"(:firstName, :lastName, :email, :hash, :zipcode, :gender, :birthYear, :lastLogin, :accountType)";
 
 			$this->prep = $this->dbh->prepare($this->sql);
 			$this->prep->bindValue(":firstName", $user->getFirstName(), \PDO::PARAM_STR);
@@ -74,7 +74,7 @@ class UserDAO extends BaseDOA
 			$this->prep->bindValue(":hash", $user->getHash(), \PDO::PARAM_STR);
 			$this->prep->bindValue(":zipcode", $user->getZipcode(), \PDO::PARAM_STR);
 			$this->prep->bindValue(":gender", $user->getGender(), \PDO::PARAM_STR);
-			$this->prep->bindValue(":birthDate", $user->getBirthDate(), \PDO::PARAM_INT);
+			$this->prep->bindValue(":birthYear", $user->getBirthYear(), \PDO::PARAM_INT);
 			$this->prep->bindValue(":lastLogin", $user->getLastLogin(), \PDO::PARAM_INT);
 			$this->prep->bindValue(":accountType", $user->getAccountType(), \PDO::PARAM_INT);
 
@@ -103,7 +103,7 @@ class UserDAO extends BaseDOA
 		{
 			$this->sql = "UPDATE users " .
 					" SET " .
-					"(first_name:firstName, :lastName, :email, :password, :zipcode, :gender, :birthDate, :lastLogin, :accountType)" .
+					"(first_name:firstName, :lastName, :email, :password, :zipcode, :gender, :birthYear, :lastLogin, :accountType)" .
 					" WHERE " .
 					"id = :id";
 
@@ -115,7 +115,7 @@ class UserDAO extends BaseDOA
 			$this->prep->bindValue(":password", $user->getHash(), \PDO::PARAM_STR);
 			$this->prep->bindValue(":zipcode", $user->getZipcode(), \PDO::PARAM_STR);
 			$this->prep->bindValue(":gender", $user->getGender(), \PDO::PARAM_STR);
-			$this->prep->bindValue(":birthDate", $user->getBirthDate(), \PDO::PARAM_INT);
+			$this->prep->bindValue(":birthYear", $user->getBirthYear(), \PDO::PARAM_INT);
 			$this->prep->bindValue(":lastLogin", $user->getLastLogin(), \PDO::PARAM_INT);
 			$this->prep->bindValue(":accountType", $user->getAccountType(), \PDO::PARAM_INT);
 

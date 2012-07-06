@@ -113,14 +113,7 @@ if (isset($route->method))
 			}
 			else
 			{
-				$thisYear = date('Y', strtotime('now'));
-				$tenYearsBeforeNow = $thisYear - 10;
-				$yearList = "";
-				for ($i = $thisYear; $i > $tenYearsBeforeNow; $i--)
-					$yearList .= "<li>" . $i . "</li>";
-
 				$smarty->assign("baseURL", $baseURL);
-				$smarty->assign("yearList", $yearList);
 				$smarty->assign("file", "user/signup/signup.tpl");
 				$smarty->display("index.tpl");
 			}
@@ -141,12 +134,10 @@ if (isset($route->method))
 				$user->setHash($_POST["password"]);
 				$user->setEmail($_POST["email"]);
 				$user->setLastLogin(time());
-				$user->setBirthDate(1980);
-				$user->setGender("M");
-
-				//$user->setBirthDate($_POST["birthYear"]);
-				//$user->setGender($_POST["gender"]);
+				$user->setBirthYear($_POST["birthYear"]);
+				$user->setGender($_POST["gender"]);
 				$user->setZipcode($_POST["zipcode"]);
+				$user->setAccountType($accountType);
 
 				// insert user, grab newly-created id and assign to session
 				$userId = $userBLL->insert($user);
@@ -204,8 +195,17 @@ if (isset($route->method))
 						$template = "user/personal/playerPersonal.tpl";
 				}
 
+				$thisYear = date('Y', strtotime('now'));
+				$thirteenYearsBeforeNow = $thisYear - 13;
+				$fiftyYearsBeforeNow = $thisYear - 50;
+
+				$birthYears = "";
+				for ($i = $thirteenYearsBeforeNow; $i > $fiftyYearsBeforeNow; $i--)
+					$birthYears .= "<li>" . $i . "</li>";
+
 				// now display the template based on above selection
 				$smarty->assign("baseURL", $baseURL);
+				$smarty->assign("birthYears", $birthYears);
 				$smarty->assign('file', $template);
 				$smarty->display("index.tpl");
 			}
@@ -224,12 +224,12 @@ if (isset($route->method))
 
 				$video->setPandaId($_POST["panda_video_id"]); // panda id
 				$video->setTitle($_POST["title"]);
-				$video->setRecordedMonth(2);
-				$video->setRecordedYear(2011);
+				$video->setRecordedMonth($_POST["videoMonth"]);
+				$video->setRecordedYear($_POST["videoYear"]);
 				$video->setUploadDate(time()); // default to NOW
 
 				$videoBLL = new VideoBLL();
-				$videoId = $videoBLL->insert($video);
+				$videoId = $videoBLL->insert($video, $player);
 
 				if ($videoId > 0)
 				{

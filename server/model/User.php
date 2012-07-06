@@ -18,7 +18,7 @@ class User
 		$user->setHash($arr["hash"]);
 		$user->setZipcode($arr["zipcode"]);
 		$user->setGender($arr["gender"]);
-        $user->setBirthDate($arr["birth_date"]);
+        $user->setBirthYear($arr["birth_date"]);
         $user->setAge($arr["birth_date"]);
 		$user->setLastLogin($arr["last_login"]);
 		$user->setAccountType($arr["account_type"]);
@@ -34,7 +34,7 @@ class User
 	protected  $_hash;
 	protected  $_zipcode;
 	protected  $_gender;
-	protected  $_birthDate;
+	protected  $_birthYear;
 	protected  $_lastLogin;
 	protected  $_accountType;
 	protected  $_optIns;
@@ -50,14 +50,14 @@ class User
 		return $this->_accountType;
 	}
 
-	public function setBirthDate($birthDate)
+	public function setBirthYear($birthDate)
 	{
-		$this->_birthDate = date('Y', $birthDate);
+		$this->_birthYear = $birthDate;
 	}
 
-	public function getBirthDate()
+	public function getBirthYear()
 	{
-		return $this->_birthDate;
+		return $this->_birthYear;
 	}
 
 	public function setEmail($email)

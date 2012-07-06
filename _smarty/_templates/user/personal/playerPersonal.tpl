@@ -48,7 +48,7 @@
             <div class="inputField">
                 <div class="left"></div>
                 <div class="middle">
-                    <input type="text" class="standard" id="email" name="email" value="" />
+                    <input type="text" class="standard" id="email" name="email" value="Email" />
                 </div>
                 <div class="right"></div>
             </div>
@@ -64,7 +64,7 @@
                     </div>
                     <div class="rightMedium"></div>
                     <ul class="potentials">
-                        {$yearList}
+                        {$birthYears}
                     </ul>
                 </div>
                 <div class="arrowSmall"></div>

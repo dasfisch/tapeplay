@@ -20,7 +20,7 @@ class Scout extends User
 		$scout->setHash($arr["hash"]);
 		$scout->setZipcode($arr["zipcode"]);
 		$scout->setGender($arr["gender"]);
-		$scout->setBirthDate($arr["birth_date"]);
+		$scout->setBirthYear($arr["birth_date"]);
 		$scout->setLastLogin($arr["last_login"]);
 		$scout->setAccountType($arr["account_type"]);
 

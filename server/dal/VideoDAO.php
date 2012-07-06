@@ -76,9 +76,8 @@ class VideoDAO extends BaseDOA
 		$this->sql = "INSERT INTO videos " .
 				"(panda_id, title, uploaded_date, recorded_month, recorded_year, active)" .
 				" VALUES " .
-				"(:pandaId, :title, :uploadDate, :recordedMonth, :recordedYear, :active)";
+				"(:pandaId, :title, :uploadDate, :recordedMonth, :recordedYear, :active);";
 
-		print $this->sql;
 		$this->prep = $this->dbh->prepare($this->sql);
 		$this->prep->bindValue(":pandaId", $video->getPandaId(), \PDO::PARAM_STR);
 		$this->prep->bindValue(":title", $video->getTitle(), \PDO::PARAM_STR);
@@ -110,7 +109,7 @@ class VideoDAO extends BaseDOA
 		$this->sql = "INSERT INTO video_saves " .
 				"(user_id, video_id)" .
 				" VALUES " .
-				"(:userId, :videoID)";
+				"(:userId, :videoID);";
 
 		$this->prep = $this->dbh->prepare($this->sql);
 
@@ -131,7 +130,7 @@ class VideoDAO extends BaseDOA
 		$this->sql = "INSERT INTO video_views " .
 				"(user_id, video_id)" .
 				" VALUES " .
-				"(:userId, :videoID)";
+				"(:userId, :videoId);";
 
 		$this->prep = $this->dbh->prepare($this->sql);
 
@@ -142,6 +141,30 @@ class VideoDAO extends BaseDOA
 
 		return $this->prep->rowCount();
 	}
+
+	/**
+	 * Inserts a link for the incoming player and incoming video
+	 * @param $videoId int
+	 * @param $playerId int
+	 * @return int The number of rows affected (should be 1)
+	 */
+		public function linkVideoToPlayer($videoId, $playerId)
+		{
+			$this->sql = "INSERT INTO player_videos" .
+					" (player_id, video_id)" .
+					" VALUES " .
+					" (:playerId, :videoId);";
+
+			print $this->sql;
+			$this->prep = $this->dbh->prepare($this->sql);
+
+			$this->prep->bindValue(":playerId", $playerId, \PDO::PARAM_INT);
+			$this->prep->bindValue(":videoId", $videoId, \PDO::PARAM_INT);
+
+			$this->prep->execute();
+
+			return $this->prep->rowCount();
+		}
 
 
 	/**

@@ -21,7 +21,7 @@ $user->setEmail("airness@mj.com");
 $user->setHash("HASH GOES HERE");
 $user->setZipcode("60601");
 $user->setGender("M");
-$user->setBirthDate(1225886400);
+$user->setBirthYear(1225886400);
 $user->setLastLogin(1225886400);
 $user->setAccountType(AccountTypeEnum::$PLAYER);
 
