@@ -39,7 +39,7 @@
 
 				// set options for <widget> parameter below
 				var html_5_options = {};
-				var flash_options = {}
+				var flash_options = {};
 
 				function uploadSuccessful_Handler()
 				{
