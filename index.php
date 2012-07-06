@@ -4,8 +4,6 @@
 
     include('constants.php');
 
-    use \tapeplay\server\bll\UserBLL;
-
     include_once('bll/UserBLL.php');
     include_once('general/controller.php');
     include_once('general/configuration.php');

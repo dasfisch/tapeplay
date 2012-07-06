@@ -4,6 +4,6 @@
   ),
   'vars' => 
   array (
-    'home' => 'http://localhost:4000/',
+    'home' => 'http://tapeplay.localhost/',
   ),
 ); ?>

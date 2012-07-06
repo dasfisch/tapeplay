@@ -1,6 +1,6 @@
 <div id="main">
     <div id="accountLeft">
-        <h2>Welcome, Coach</h2>
+        <h2>Welcome, Scout</h2>
         <div class="accordion">
             <div class="header">
                 <div class="title">Saved Videos (7)</div>
