@@ -30,9 +30,14 @@ class PlayerBLL extends BaseBLL
         return $player;
 	}
 
-	public function insert(Player $player, $userID)
+	/**
+	 * Creates a player object that is linked to the user ID sent.
+	 * @param $userID int The ID of the user associated with this player
+	 * @return int The ID of the inserted player
+	 */
+	public function insert($userID)
 	{
-		return $this->dal->insert($player, $userID);
+		return $this->dal->insert($userID);
 	}
 
 	public function update(Player $player)

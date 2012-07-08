@@ -30,10 +30,10 @@
     $controller = new Controller();
     $route = new Route($_GET);
     $smarty = new TapePlaySmarty();
-	$userBLL = new UserBLL();
 
     $isLoggedIn = true;
     $sport = null;
+	$user_id = -1;
 
     $limit = 10;
     $page = (isset($_GET['page']) && $_GET['page'] > 0) ? $_GET['page'] : 1;
@@ -43,6 +43,13 @@
     if(isset($_SESSION['sport'])) {
         $sport = $search->name = $_SESSION['sport'];
     }
+
+	// setup User BLL
+	$userBLL = new UserBLL();
+	if(isset($_SESSION['user_id'])) {
+		// load up user for BLL if we have a session for it
+		$userBLL->loadUser($_SESSION['user_id']);
+	}
 
     $sportBll = new SportBLL();
     $sports = $sportBll->get($search);

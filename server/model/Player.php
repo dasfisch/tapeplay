@@ -26,8 +26,7 @@ class Player extends User
 		$player->setHash($arr["hash"]);
 		$player->setZipcode($arr["zipcode"]);
 		$player->setGender($arr["gender"]);
-        $player->setBirthDate($arr["birth_date"]);
-        $player->setAge($arr["birth_date"]);
+		$player->setAge($arr["birth_date"]);
 		$player->setLastLogin($arr["last_login"]);
 		$player->setAccountType($arr["account_type"]);
 
@@ -64,6 +63,27 @@ class Player extends User
 	private $_coachName;
 	private $_graduationMonth;
 	private $_graduationYear;
+	private $_status;
+
+	function __construct(User $user = null)
+	{
+		if ($user)
+		{
+			// set all user properties in this player
+			$this->setUserId($user->getUserId());
+			$user->setFirstName($user->getFirstName());
+			$user->setLastName($user->getLastName());
+			$user->setEmail($user->getEmail());
+			$user->setHash($user->getHash());
+			$user->setZipcode($user->getZipcode());
+			$user->setGender($user->getGender());
+			$user->setBirthYear($user->getBirthYear());
+			$user->setAge($user->getAge());
+			$user->setLastLogin($user->getLastLogin());
+			$user->setAccountType($user->getAccountType());
+		}
+	}
+
 
 	public function setGradeLevel($gradeLevel)
 	{
@@ -203,5 +223,15 @@ class Player extends User
 	public function getGraduationYear()
 	{
 		return $this->_graduationYear;
+	}
+
+	public function setStatus($status)
+	{
+		$this->_status = $status;
+	}
+
+	public function getStatus()
+	{
+		return $this->_status;
 	}
 }

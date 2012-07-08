@@ -8,6 +8,7 @@ require_once("enum/AccountTypeEnum.php");
 require_once("bll/Panda.php");
 require_once("bll/UserBLL.php");
 require_once("bll/VideoBLL.php");
+require_once("bll/PlayerBLL.php");
 require_once("model/Video.php");
 require_once("model/User.php");
 require_once("model/Player.php");
@@ -20,6 +21,7 @@ require_once("model/School.php");
 use tapeplay\server\bll\Panda;
 use tapeplay\server\bll\VideoBLL;
 use tapeplay\server\bll\UserBLL;
+use tapeplay\server\bll\PlayerBLL;
 use tapeplay\server\model\User;
 use tapeplay\server\model\Player;
 use tapeplay\server\model\Coach;
@@ -144,6 +146,7 @@ if (isset($route->method))
 
 				if ($userId > 0)
 				{
+					// store User ID in session
 					$_SESSION["userId"] = $userId;
 
 					// determine which page to load
@@ -229,7 +232,7 @@ if (isset($route->method))
 				$video->setUploadDate(time()); // default to NOW
 
 				$videoBLL = new VideoBLL();
-				$videoId = $videoBLL->insert($video, $player);
+				$videoId = $videoBLL->insert($video, $userBLL->getUser()->getId());
 
 				if ($videoId > 0)
 				{

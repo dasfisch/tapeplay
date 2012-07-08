@@ -44,26 +44,25 @@ class PlayerDAO extends BaseDOA
 		return Player::create($this->prep->fetch());
 	}
 
-	public function insert(Player $player)
+	/**
+	 * Inserts player to get player id.  Only links user id.
+	 * @param $userId int
+	 * @return int The ID of the user that as created.
+	 */
+	public function insert($userId)
 	{
 		$this->sql = "INSERT INTO players " .
-				"(number, height, grade_level, video_access, position, user_id, school_id)" .
+				"(user_id)" .
 				" VALUES " .
-				"(:number, :height, :gradeLevel, :videoAccess, :position, :userId, :schoolId)";
+				"(:userId)";
 
 		$this->prep = $this->dbh->prepare($this->sql);
-		$this->prep->bindValue(":number", $player->getNumber(), \PDO::PARAM_INT);
-		$this->prep->bindValue(":height", $player->getHeight(), \PDO::PARAM_INT);
-		$this->prep->bindValue(":gradeLevel", $player->getGradeLevel(), \PDO::PARAM_INT);
-		$this->prep->bindValue(":videoAccess", $player->getVideoAccess(), \PDO::PARAM_INT);
-		$this->prep->bindValue(":position", $player->getPosition(), \PDO::PARAM_INT);
-		$this->prep->bindValue(":schoolId", $player->getSchool()->getId(), \PDO::PARAM_INT);
-		$this->prep->bindValue(":userId", $player->getUserId(), \PDO::PARAM_INT);
+		$this->prep->bindValue(":userId", $userId, \PDO::PARAM_INT);
 
 		$this->prep->execute();
 
 		// return the player with his id
-		$player->setId(($this->prep->rowCount() > 0) ? $this->dbh->lastInsertId() : -1);
+		return ($this->prep->rowCount() > 0) ? $this->dbh->lastInsertId() : -1;
 	}
 
 	function update(Player $player)

@@ -21,21 +21,12 @@ use tapeplay\server\model\School;
  */
 class UserDAO extends BaseDOA
 {
-
 	/**
-	 * Fetches the base information for a user.
-	 * @param $id int The id of the user
-	 */
-	public function getSummary($id)
-	{
-
-	}
-
-	/**
-	 * @param $hash string The hash of the current user
+	 * Returns a Player, Coach, or Scout object based on account type
+	 * @param $userId int The ID of the user.
 	 * @return \tapeplay\server\model\User The retrieved user
 	 */
-	public function getFull($hash)
+	public function getPlayerUser($userId)
 	{
 		try
 		{
@@ -50,9 +41,44 @@ class UserDAO extends BaseDOA
 			return null;
 		}
 
-		return User::create($this->prep->fetch());
+		return Player::create($this->prep->fetch());
 	}
 
+	public function getCoachUser($userId)
+	{
+		try
+		{
+			$this->sql = "SELECT * FROM users WHERE id = :id";
+			$this->prep = $this->dbh->prepare($this->sql);
+			$this->prep->bindValue(":id", $hash, \PDO::PARAM_INT);
+			$this->prep->execute();
+		}
+		catch (\PDOException $exception)
+		{
+			\TPErrorHandling::handlePDOException($exception->errorInfo);
+			return null;
+		}
+
+		return Coach::create($this->prep->fetch());
+	}
+
+	public function getScoutUser($userId)
+		{
+			try
+			{
+				$this->sql = "SELECT * FROM users WHERE id = :id";
+				$this->prep = $this->dbh->prepare($this->sql);
+				$this->prep->bindValue(":id", $hash, \PDO::PARAM_INT);
+				$this->prep->execute();
+			}
+			catch (\PDOException $exception)
+			{
+				\TPErrorHandling::handlePDOException($exception->errorInfo);
+				return null;
+			}
+
+			return Scout::create($this->prep->fetch());;
+		}
 	/**
 	 * Inserts the base user information.
 	 * @param \tapeplay\server\model\User $user Inserts passed user into database
@@ -88,9 +114,7 @@ class UserDAO extends BaseDOA
 		}
 
 		// assign the user to this id
-		$user->setUserId(($this->prep->rowCount() > 0) ? $this->dbh->lastInsertId() : -1);
-
-		return $user;
+		return ($this->prep->rowCount() > 0) ? $this->dbh->lastInsertId() : -1;
 	}
 
 	/**
@@ -142,13 +166,13 @@ class UserDAO extends BaseDOA
 	/**
 	 * Uses the password to get an MD5 password hash to compare to the hashes in the database.
 	 * @param $hash string The password of the user.
-	 * @return int The row from the user.
+	 * @return array Returns the id and account type for this user.
 	 */
 	public function authenticate($hash)
 	{
 		$user = new User();
 
-		$this->sql = "SELECT id FROM users WHERE hash = :hash";
+		$this->sql = "SELECT id, account_type FROM users WHERE hash = :hash";
 		$this->prep = $this->dbh->prepare($this->sql);
 		$this->prep->setFetchMode(\PDO::FETCH_INTO, $user);
 		$this->prep->bindValue(":hash", $hash, \PDO::PARAM_STR);
@@ -157,11 +181,11 @@ class UserDAO extends BaseDOA
 		if ($this->prep->rowCount() > 0)
 		{
 			$row = $this->prep->fetch();
-			return $row["id"];
+			return $row;
 		}
 		else
 		{
-			return -1;
+			return null;
 		}
 	}
 
