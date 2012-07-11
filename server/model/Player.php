@@ -18,6 +18,9 @@ class Player extends User
 	{
 		$player = new Player();
 
+        //on a get, I need to figure out the sql to get the player_id back properly
+        $arr["player_id"] = isset($arr["player_id"]) ? $arr["player_id"] : 1;
+
 		// set user attributes
 		$player->setUserId($arr["id"]);
 		$player->setFirstName($arr["first_name"]);
@@ -40,22 +43,22 @@ class Player extends User
 		$player->setPosition($arr["position"]);
 		$player->setPosition($arr["weight"]);
 		$player->setPosition($arr["coach_name"]);
-		$player->setPosition($arr["graduationMonth"]);
-		$player->setPosition($arr["graduationYear"]);
+		$player->setPosition($arr["graduation_month"]);
+		$player->setPosition($arr["graduation_year"]);
 
 		// set school
 		$school = new School();
 		$school->setId($arr["school_id"]);
-		$school->setName($arr["school_name"]);
-		$school->setCity($arr["school_city"]);
-		$school->setState($arr["school_state"]);
-		$school->setDivision($arr["school_division"]);
+		$school->setName($arr["name"]);
+		$school->setCity($arr["city"]);
+		$school->setState($arr["state"]);
+		$school->setDivision($arr["division"]);
 
 		$player->setSchool($school);
 
 		$sport = new Sport();
-		$sport->setId($arr["sport_id"]);
-		$sport->setSportName($arr["sport_name"]);
+		$sport->setId($arr["id"]);
+		$sport->setSportName($arr["name"]);
 
 		return $player;
 	}

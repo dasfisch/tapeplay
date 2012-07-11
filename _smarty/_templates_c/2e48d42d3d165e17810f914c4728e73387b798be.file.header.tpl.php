@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.10, created on 2012-07-08 18:58:05
+<?php /* Smarty version Smarty-3.1.10, created on 2012-07-10 22:11:34
          compiled from "_smarty/_templates/common/header.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:11214827914fe799a25b6b20-81343857%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '2e48d42d3d165e17810f914c4728e73387b798be' => 
     array (
       0 => '_smarty/_templates/common/header.tpl',
-      1 => 1341791844,
+      1 => 1341976050,
       2 => 'file',
     ),
   ),
@@ -82,15 +82,15 @@ $_smarty_tpl->tpl_vars['single']->_loop = true;
                     <ul id="links">
                         <li>
                             <a href="<?php echo $_smarty_tpl->getConfigVariable('baseUrl');?>
-">Join<span class="fbSmall"></span></a>
+/user/signup/">Join<span class="fbSmall"></span></a>
                         </li>
                         <li>
                             <a href="<?php echo $_smarty_tpl->getConfigVariable('baseUrl');?>
-">Log In</a>
+/user/login/">Log In</a>
                         </li>
                         <li>
                             <a href="<?php echo $_smarty_tpl->getConfigVariable('baseUrl');?>
-" class="infoOpen leftShift">Upload</a>
+/user/upload/" class="infoOpen leftShift">Upload</a>
                             <div class="infoBubble">
                                 <div class="topLeft black"></div>
                                 <div class="directionTopRight"></div>
@@ -111,10 +111,12 @@ $_smarty_tpl->tpl_vars['single']->_loop = true;
                             </div>
                         </li>
                         <li>
-                            <a href="">Browse</a>
+                            <a href="<?php echo $_smarty_tpl->getConfigVariable('baseUrl');?>
+/videos/browse/">Browse</a>
                         </li>
                         <li>
-                            <a href="">Help</a>
+                            <a href="<?php echo $_smarty_tpl->getConfigVariable('baseUrl');?>
+/company/faq/">Help</a>
                         </li>
                     </ul>
                 </div>

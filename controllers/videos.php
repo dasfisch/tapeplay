@@ -58,7 +58,7 @@
 
                 $search = new SearchFilter();
 
-                $search->id = $player->getUserId();
+                $search->id = $player->getId();
                 $search->method = 'users';
 
                 $videos = $videoBll->search($search);

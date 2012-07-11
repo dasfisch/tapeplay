@@ -158,7 +158,6 @@ class VideoDAO extends BaseDOA
 					" VALUES " .
 					" (:playerId, :videoId);";
 
-			print $this->sql;
 			$this->prep = $this->dbh->prepare($this->sql);
 
 			$this->prep->bindValue(":playerId", $playerId, \PDO::PARAM_INT);
@@ -188,7 +187,10 @@ class VideoDAO extends BaseDOA
 //                            : ' WHERE usersport.sport_id='.$sport;
 
 			$this->sql = "SELECT
-                                videos.*, COUNT(view.id) AS views, COUNT(saves.id) AS saves, users.*, players.*
+                                videos.*,
+                                (SELECT COUNT(*) FROM video_views WHERE video_id = videos.id) AS views,
+                                (SELECT COUNT(*) FROM video_saves WHERE video_id = videos.id) AS saves,
+                                users.*, players.*
                             FROM
                                 videos videos
                             JOIN
@@ -211,7 +213,7 @@ class VideoDAO extends BaseDOA
                             GROUP BY
                                 videos.id
                             LIMIT ".$startLimit.",".$limit;
-echo $this->sql;
+            
 			$this->prep = $this->dbh->prepare($this->sql);
 			//$this->prep->bindValue(":id", $id, \PDO::PARAM_INT);
 			$this->prep->execute();
