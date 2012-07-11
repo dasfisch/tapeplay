@@ -9,6 +9,8 @@
         public $url;
 
         public function __construct($routes) {
+            $this->configuration = new Configuration('general.conf', CONFIG_LOCATION);
+
             $this->getCurrentUrl();
             $this->_setParams($routes);
             $this->_route();

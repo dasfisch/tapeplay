@@ -123,15 +123,19 @@ class VideoBLL extends BaseBLL
 		$this->dal->insertSave($userId, $videoId);
 	}
 
+    public function checkForPreviousSave($videoId, $userId) {
+        $this->dal->getOneSavedVideo($videoId, $userId);
+    }
+
 	/**
 	 * Insert a record of the user viewing the video.
 	 * @param $userId int
 	 * @param $videoId int
 	 */
-	public function insertView($userId, $videoId)
-	{
-		$this->dal->insertView($userId, $videoId);
-	}
+    public function insertView($videoId, $userId=null)
+   	{
+   		$this->dal->insertView($videoId, $userId);
+   	}
 
 	/**
 	 * Returns all HTML/JS necessary to display the video.

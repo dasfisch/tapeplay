@@ -10,14 +10,18 @@
                 <p>Back to search results</p>
             </div>
         </div>
+        <!--<div id="player">{$videoPlayer}</div>-->
         <div id="player"></div>
         <div id="videoInfo">
             <ul id="left">
                 <li class="basic"><span class="bold">{$video->getViews()}</span> views</li>
                 <li class="basic"><span class="bold">{$video->getSaves()}</span> saves</li>
-                <li class="basic"><span class="italic">Uploaded {$video->getUploadDate()}</span></li>
+                <li class="basic"><span class="italic">Uploaded {$video->getUploadDate()|date_format:"%B %d, %Y %I:%M %p"}</span></li>
             </ul>
             <ul id="right">
+                <input type="hidden" id="hash" value="{$hash}" />
+                <input type="hidden" id="user-id" value="2" />
+                <input type="hidden" id="video-id" value="{$video->getId()}" />
                 <li class="link bubble">
                     <a class="infoOpen">Share</a>
                     <div class="infoBubble">
@@ -40,7 +44,7 @@
                     </div>
                 </li>
                 <li class="link">
-                    <a class="infoOpen">Save</a>
+                    <a id="save">Save</a>
                     <div class="infoBubble">
                         <div class="directionTopMiddle"></div>
                         <div class="topLeft"></div>
@@ -53,7 +57,7 @@
                     </div>
                 </li>
                 <li class="link last">
-                    <a class="infoOpen">Report Video</a>
+                    <a id="report">Report Video</a>
                     <div class="infoBubble">
                         <div class="directionTopMiddle"></div>
                         <div class="topLeft"></div>
@@ -142,7 +146,9 @@
             </div>
         </div>
         <div id="rightCol">
-            <div id="sideAd"></div>
+            <div id="sideAd">
+                <p>Hello</p>
+            </div>
             <div id="facebook"></div>
         </div>
     </div>

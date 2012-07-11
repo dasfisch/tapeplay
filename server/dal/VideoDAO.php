@@ -10,6 +10,7 @@ require_once("model/SearchFilter.php");
 use tapeplay\server\model\Video;
 use tapeplay\server\model\VideoSummary;
 use tapeplay\server\model\SearchFilter;
+use \Exception;
 
 class VideoDAO extends BaseDOA
 {
@@ -106,12 +107,12 @@ class VideoDAO extends BaseDOA
 	 * @param $videoId int The video that was saved.
 	 * @returns int The number of rows affected (should be 1)
 	 */
-	public function insertSave($userId, $videoId)
+	public function insertSave($videoId, $userId)
 	{
 		$this->sql = "INSERT INTO video_saves " .
 				"(user_id, video_id)" .
 				" VALUES " .
-				"(:userId, :videoID);";
+				"(:userId, :videoId);";
 
 		$this->prep = $this->dbh->prepare($this->sql);
 
@@ -127,7 +128,7 @@ class VideoDAO extends BaseDOA
 	 * @param $videoId int The video that was viewed.
 	 * @returns int The number of rows affected (should be 1)
 	 */
-	public function insertView($userId, $videoId)
+	public function insertView($videoId, $userId=null)
 	{
 		$this->sql = "INSERT INTO video_views " .
 				"(user_id, video_id)" .
@@ -181,19 +182,23 @@ class VideoDAO extends BaseDOA
             $startLimit = ($page * $limit) - $limit;
 
             $where = $this->_setWhere($filter);
+//
+//            $where .= (isset($where) && !empty($where))
+//                            ? ' AND usersport.sport_id='.$sport
+//                            : ' WHERE usersport.sport_id='.$sport;
 
 			$this->sql = "SELECT
-                                videos.*, COUNT(view.id) AS views, COUNT(saves.id) AS saves, users.*
+                                videos.*, COUNT(view.id) AS views, COUNT(saves.id) AS saves, users.*, players.*
                             FROM
                                 videos videos
                             JOIN
-                                player_videos pv
+                                players players
                                     ON
-                                        pv.video_id=videos.id
+                                        players.id=videos.player_id
                             JOIN
                                 users users
                                     ON
-                                        users.id=pv.player_id
+                                        users.id=players.id
                             LEFT JOIN
                                 video_views view
                                     ON
@@ -254,6 +259,32 @@ echo $this->sql;
 
 		return $videoList;
 	}
+
+    /**
+     * @param $videoId
+     * @param $userId
+     */
+    public function getOneSavedVideo($videoId, $userId) {
+        try
+      		{
+            $this->sql = "SELECT * FROM video_saves WHERE user_id=:userId AND video_id=:videoId";
+
+            $this->prep = $this->dbh->prepare($this->sql);
+            $this->prep->bindValue(":userId", $userId, \PDO::PARAM_INT);
+            $this->prep->bindValue(":videoId", $videoId, \PDO::PARAM_INT);
+
+            $this->prep->execute();
+        }
+        catch (\PDOException $exception)
+        {
+            \TPErrorHandling::handlePDOException($exception->errorInfo);
+            return null;
+        }
+
+        while($row = $this->prep->fetch()) {
+            Throw new Exception('You have already saved this video!');
+        }
+    }
 
 	/**
 	 * Retrieves all videos viewed by the requested user.

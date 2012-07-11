@@ -9,6 +9,7 @@
     include_once('general/controller.php');
     include_once('general/configuration.php');
 //    include_once('general/factory.php');
+    include_once('general/inputfilter.php');
     include_once('general/request.php');
     include_once('general/route.php');
     include_once('general/tapeplay.smarty.php');
@@ -21,15 +22,20 @@
     use tapeplay\server\bll\SportBLL;
 	use tapeplay\server\bll\UserBLL;
     use tapeplay\server\general\Controller;
+    use tapeplay\server\general\InputFilter;
     use tapeplay\server\general\Route;
     use tapeplay\server\general\TapePlaySmarty;
     use tapeplay\server\model\SearchFilter;
 
-    global $controller, $route, $smarty, $sport, $userBLL;
+    global $controller, $get, $inputFilter, $post, $route, $smarty, $sport, $userBLL;
 
     $controller = new Controller();
+    $inputFilter = new InputFilter();
     $route = new Route($_GET);
     $smarty = new TapePlaySmarty();
+
+    $get = $inputFilter->process($_GET);
+    $post = $inputFilter->process($_POST);
 
     $isLoggedIn = true;
     $sport = null;
@@ -41,7 +47,11 @@
     $search = new SearchFilter();
 
     if(isset($_SESSION['sport'])) {
-        $sport = $search->name = $_SESSION['sport'];
+        $sport = $_SESSION['sport'];
+    }
+
+    if(isset($_POST['chosenSport']) && !empty($_POST['chosenSport'])) {
+        $sport = $_SESSION['sport'] = $_POST['chosenSport'];
     }
 
 	// setup User BLL

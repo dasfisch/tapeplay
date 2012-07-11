@@ -21,21 +21,24 @@
                         <div id="beta"></div>
                         <div id="dropper">
                             <div id="values">
-                                <p id="value">
-                                    {if isset($sport)}
-                                        {$sport}
-                                    {else}
-                                        Women's Baskeyball
-                                    {/if}
-                                </p>
-                                <ul id="potentials">
-                                    {foreach from=$sports item=single}
-                                        <li>
-                                            {$single->getSportName()}
-                                            <input type="hidden" class="sportId" value="{$single->getId()}" />
-                                        </li>
-                                    {/foreach}
-                                </ul>
+                                <form name="sportChooser" id="sportChooser" method="post">
+                                    <input type="hidden" class="chosenSport" name="chosenSport" id="chosenSport" />
+                                    <p id="value">
+                                        {if isset($sport)}
+                                            {$sport}
+                                        {else}
+                                            Women's Baskeyball
+                                        {/if}
+                                    </p>
+                                    <ul id="potentials">
+                                        {foreach from=$sports item=single}
+                                            <li>
+                                                {$single->getSportName()}
+                                                <input type="hidden" class="sportId" value="{$single->getId()}" />
+                                            </li>
+                                        {/foreach}
+                                    </ul>
+                                </form>
                             </div>
                             <div id="arrow"></div>
                         </div>

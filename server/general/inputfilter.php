@@ -41,6 +41,8 @@ class InputFilter {
 		$this->tagsMethod = $tagsMethod;
 		$this->attrMethod = $attrMethod;
 		$this->xssAuto = $xssAuto;
+
+        $this->configuration = new Configuration('general.conf', CONFIG_LOCATION);
 	}
 
 	/**
@@ -310,4 +312,37 @@ class InputFilter {
 		else mysql_real_escape_string($string);
 		return $string;
 	}
+
+    public function validateHash($hash) {
+        //get user's IP
+        $ip = $_SERVER['REMOTE_ADDR'];
+
+        //get file name; will always be index.php
+        $script = $_SERVER['SCRIPT_FILENAME'];
+
+        //Salt
+        $salt = $this->configuration->information['salt'];
+
+        $testable = md5(md5($ip.$script.$salt).$salt);
+
+        if(strcmp($hash, $testable) === 0) {
+            return true;
+        }
+
+        return false;
+    }
+
+    public function createHash() {
+        //get user's IP
+        $ip = $_SERVER['REMOTE_ADDR'];
+
+        //get file name; will always be index.php
+        $script = $_SERVER['SCRIPT_FILENAME'];
+
+        //Salt
+        $salt = $this->configuration->information['salt'];
+
+        //hash the hash and salt of the ip, scriptName, and salt; paranoid?
+        return md5(md5($ip.$script.$salt).$salt);
+    }
 }

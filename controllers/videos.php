@@ -17,7 +17,7 @@
     require_once("bll/PlayerBLL.php");
     require_once("bll/VideoBLL.php");
 
-    global $controller, $route, $smarty, $userBLL;
+    global $controller, $inputFilter, $route, $smarty, $sport, $userBLL;
 
     if(isset($route->method)) {
         switch($route->method) {
@@ -47,6 +47,15 @@
                 $video = $videoBll->search($search);
                 $player = $playerBll->get($video[0]->getUser()->getUserId());
 
+                $videoPlayer = $videoBll->getFullVideoHTML($video[0]->getPandaId());
+
+                //set a view
+                try {
+                    $view = $videoBll->insertView($video[0]->getId());
+                } catch(Exception $e) {
+                    //do something...but what...?
+                }
+
                 $search = new SearchFilter();
 
                 $search->id = $player->getUserId();
@@ -54,8 +63,10 @@
 
                 $videos = $videoBll->search($search);
 
+                $smarty->assign('hash', $inputFilter->createHash());
                 $smarty->assign('player', $player);
                 $smarty->assign('video', $video[0]);
+                $smarty->assign('videoPlayer', $videoPlayer);
                 $smarty->assign('videos', $videos);
                 $smarty->assign('file', 'videos/single.tpl');
 
@@ -85,7 +96,12 @@
          */
         $video = new VideoBLL();
 
-        $videos = $video->search(new SearchFilter());
+        $search = new SearchFilter();
+
+        $search->sport_id = $sport;
+        $search->method = 'videos';
+
+        $videos = $video->search($search);
 
 //        echo '<pre>';
 //        var_dump($videos[0]->v);

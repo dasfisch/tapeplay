@@ -5,5 +5,6 @@
   'vars' => 
   array (
     'home' => 'http://tapeplay.localhost/',
+    'baseUrl' => 'http://localhost:3500/',
   ),
 ); ?>
