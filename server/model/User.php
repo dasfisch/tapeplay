@@ -22,6 +22,7 @@ class User
         $user->setAge($arr["birth_year"]);
 		$user->setLastLogin($arr["last_login"]);
 		$user->setAccountType($arr["account_type"]);
+		$user->setStatus($arr["status"]);
 
 		return $user;
 	}

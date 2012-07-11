@@ -83,16 +83,17 @@ class Player extends User
 		{
 			// set all user properties in this player
 			$this->setUserId($user->getUserId());
-			$user->setFirstName($user->getFirstName());
-			$user->setLastName($user->getLastName());
-			$user->setEmail($user->getEmail());
-			$user->setHash($user->getHash());
-			$user->setZipcode($user->getZipcode());
-			$user->setGender($user->getGender());
-			$user->setBirthYear($user->getBirthYear());
-			$user->setAge($user->getAge());
-			$user->setLastLogin($user->getLastLogin());
-			$user->setAccountType($user->getAccountType());
+			$this->setFirstName($user->getFirstName());
+			$this->setLastName($user->getLastName());
+			$this->setEmail($user->getEmail());
+			$this->setHash($user->getHash());
+			$this->setZipcode($user->getZipcode());
+			$this->setGender($user->getGender());
+			$this->setBirthYear($user->getBirthYear());
+			$this->setAge($user->getAge());
+			$this->setLastLogin($user->getLastLogin());
+			$this->setAccountType($user->getAccountType());
+			$this->setStatus($user->getStatus());
 		}
 	}
 

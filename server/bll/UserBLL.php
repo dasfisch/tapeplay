@@ -57,6 +57,7 @@ class UserBLL extends BaseBLL
 	public function setUser($user)
 	{
 		$this->_user = $user;
+		print "setting account type to " . $user->getAccountType();
 		$this->_accountType = $user->getAccountType();
 
 		// anytime the user is set, update the session

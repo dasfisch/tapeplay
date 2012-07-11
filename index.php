@@ -62,9 +62,7 @@
 		// load up user for BLL if we have a session for it
 		$userBLL->loadUser();
 	}
-
-	// load account type, if present
-	if(isset($_SESSION['accountType'])) {
+	else if(isset($_SESSION['accountType'])) {
 		$userBLL->setAccountType($_SESSION['accountType']);
 	}
 
