@@ -20,7 +20,7 @@
             $validator = new InputFilter();
 
             $this->_get = $validator->process($_GET);
-            $this->_post = (isset($_POST) && isset($_POST['hash']) && $validator->validatePostHash($_POST['hash'])) ?
+            $this->_post = (isset($_POST) && isset($_POST['hash']) && $validator->validateHash($_POST['hash'])) ?
                             $validator->process($_POST) : null;
         }
 

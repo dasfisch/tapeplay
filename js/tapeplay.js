@@ -1,8 +1,13 @@
+var infoBubbleOpen = false;
+
 jQuery(document).ready(function(){
-    var infoBubbleOpen = false;
     var showing = false;
 
     jQuery('#arrow').click(function(){
+        jQuery('#potentials').slideDown();
+    });
+
+    jQuery('#sportSelect').click(function(){
         jQuery('#potentials').slideDown();
     });
 
@@ -10,7 +15,16 @@ jQuery(document).ready(function(){
         jQuery(this).siblings('.dropper').children('.potentials').slideDown();
     });
 
-    jQuery('.potentials li').click(function(){
+    jQuery('#potentials li').click(function() {
+        var sportId = jQuery(this).children('.sportId').val();
+        var form = jQuery('#sportChooser');
+
+        form.children('#chosenSport').val(sportId);
+
+        form.submit();
+    });
+
+    jQuery('.potentials li').click(function() {
         jQuery(this).parentsUntil('.sportSelect').children('.dropper .middle').children('.value').html(jQuery(this).html());
         jQuery(this).parentsUntil('.sportSelect').children('.dropper .middle').children('.dropVal').val(jQuery(this).html());
 
@@ -20,18 +34,18 @@ jQuery(document).ready(function(){
     jQuery('.checkbox').click(function(){
         var showing = jQuery(this).attr('showing');
 
-        console.log(showing );
-
         if(typeof(showing) === 'undefined') {
             showing = 'false';
         }
 
         if(showing == 'false') {
             jQuery(this).children('.box').children('.checkMark').show();
+            jQuery(this).children('.checkValue').val('true');
 
             jQuery(this).attr('showing', 'true');
         } else {
             jQuery(this).children('.box').children('.checkMark').hide();
+            jQuery(this).children('.checkValue').val('');
 
             jQuery(this).attr('showing', 'false');
         }
@@ -92,41 +106,13 @@ jQuery(document).ready(function(){
 
     jQuery('.infoOpen').hover(
         function() {
-            var thePosition = 0;
-
-            if(infoBubbleOpen === true) {
-                jQuery('.infoBubble').fadeOut();
-            }
-
-            var position = jQuery(this).position();
-
-            var bubble = jQuery(this).next('.infoBubble');
-            var bubbleWidth = bubble.width();
-            var thisHeight = jQuery(this).height();
-            var thisWidth = jQuery(this).width();
-
-            if(jQuery(this).hasClass('leftShift')) {
-                thePosition = position.left - bubbleWidth;
-            } else if(jQuery(this).hasClass('rightShift')) {
-
-            } else {
-                thePosition = position.left - (bubbleWidth * .5) + (thisWidth * .5);
-            }
-
-            bubble
-                    .css('left', thePosition)
-                    .css('top', position.top + thisHeight + 12)
-                    .show();
-
-            infoBubbleOpen = true;
+            openBubble(jQuery(this));
         },
         function() {
             var _this = jQuery(this);
 
             jQuery(document).click(function() {
                 _this.next('.infoBubble').fadeOut();
-
-                //infoBubbleOpen = false;
             });
         }
     );
@@ -183,4 +169,65 @@ jQuery(document).ready(function(){
 //            jQuery(this).siblings('.')
         }
     });
+
+    jQuery('#save').click(function() {
+        var _this = jQuery(this);
+
+        jQuery.post(
+            '/ajax/save/',
+            {
+                hash: jQuery('#hash').val(),
+                user: jQuery('#user-id').val(),
+                video: jQuery('#video-id').val()
+            },
+            function(data) {
+                var text = '';
+
+                if(data.response == '') {
+                    text = _this.siblings('.infoBubble').children('.middle').children('p').html();
+                } else {
+                    text = data;
+                }
+
+                _this.siblings('.infoBubble').children('.middle').children('p').html(text);
+
+                openBubble(_this);
+
+                setTimeout(function(){
+                    _this.siblings('.infoBubble').fadeOut();
+                }, 1500);
+            }
+        );
+    })
 });
+
+function openBubble(obj) {
+    console.log(obj);
+    var thePosition = 0;
+
+    if(infoBubbleOpen === true) {
+        jQuery('.infoBubble').fadeOut();
+    }
+
+    var position = obj.position();
+
+    var bubble = obj.next('.infoBubble');
+    var bubbleWidth = bubble.width();
+    var thisHeight = obj.height();
+    var thisWidth = obj.width();
+
+    if(obj.hasClass('leftShift')) {
+        thePosition = position.left - bubbleWidth;
+    } else if(obj.hasClass('rightShift')) {
+
+    } else {
+        thePosition = position.left - (bubbleWidth * .5) + (thisWidth * .5);
+    }
+    console.log(bubble);
+    bubble
+            .css('left', thePosition)
+            .css('top', position.top + thisHeight + 12)
+            .show();
+
+    infoBubbleOpen = true;
+}

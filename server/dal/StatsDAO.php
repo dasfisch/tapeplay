@@ -22,7 +22,9 @@ class StatsDAO extends BaseDOA
 	{
         try
         {
-          $this->sql = 'SELECT
+            $stats = null;
+
+            $this->sql = 'SELECT
                                 stats.*, sports.*, stat_val.*, ps.value
                             FROM
                                 stats stats

@@ -57,8 +57,18 @@ a {
 }
 
 #tapeplay #header #left #sportSelect #dropper #values #potentials {
+    background-color: #000;
     display: none;
     position: relative;
+}
+
+#tapeplay #header #left #sportSelect #dropper #values #value {
+    margin-bottom: 7px;
+}
+
+#tapeplay #header #left #sportSelect #dropper #values #potentials li {
+    cursor: pointer;
+    padding-bottom: 7px;
 }
 
 #tapeplay #header #left #sportSelect #dropper #arrow {
@@ -459,7 +469,7 @@ a {
 #tapeplay #landing #video #primaryInfo {
     margin-bottom: 20px;
     overflow: hidden;
-    width: 100%;
+    width: 890px;
 }
 
 #tapeplay #landing #video #primaryInfo #left {

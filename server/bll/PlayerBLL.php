@@ -25,7 +25,7 @@ class PlayerBLL extends BaseBLL
 
 		$player = $this->dal->get($id);
 
-        $player->setStats($stats);
+        $player->setStats((array)$stats);
 
         return $player;
 	}

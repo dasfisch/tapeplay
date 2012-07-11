@@ -25,6 +25,7 @@
         </div>
         <div class="option">
             <div class="checkbox">
+                <input type="hidden" name="" value="" class="checkValue" />
                 <div class="box">
                     <div class="checkMark"></div>
                 </div>

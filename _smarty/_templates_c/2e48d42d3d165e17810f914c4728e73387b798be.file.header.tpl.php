@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.10, created on 2012-07-05 18:05:18
+<?php /* Smarty version Smarty-3.1.10, created on 2012-07-08 18:58:05
          compiled from "_smarty/_templates/common/header.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:11214827914fe799a25b6b20-81343857%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '2e48d42d3d165e17810f914c4728e73387b798be' => 
     array (
       0 => '_smarty/_templates/common/header.tpl',
-      1 => 1341529517,
+      1 => 1341791844,
       2 => 'file',
     ),
   ),
@@ -48,28 +48,31 @@ $_valid = $_smarty_tpl->decodeProperties(array (
                         <div id="beta"></div>
                         <div id="dropper">
                             <div id="values">
-                                <p id="value">
-                                    <?php if (isset($_smarty_tpl->tpl_vars['sport']->value)){?>
-                                        <?php echo $_smarty_tpl->tpl_vars['sport']->value;?>
+                                <form name="sportChooser" id="sportChooser" method="post">
+                                    <input type="hidden" class="chosenSport" name="chosenSport" id="chosenSport" />
+                                    <p id="value">
+                                        <?php if (isset($_smarty_tpl->tpl_vars['sport']->value)){?>
+                                            <?php echo $_smarty_tpl->tpl_vars['sport']->value;?>
 
-                                    <?php }else{ ?>
-                                        Women's Baskeyball
-                                    <?php }?>
-                                </p>
-                                <ul id="potentials">
-                                    <?php  $_smarty_tpl->tpl_vars['single'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['single']->_loop = false;
+                                        <?php }else{ ?>
+                                            Women's Baskeyball
+                                        <?php }?>
+                                    </p>
+                                    <ul id="potentials">
+                                        <?php  $_smarty_tpl->tpl_vars['single'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['single']->_loop = false;
  $_from = $_smarty_tpl->tpl_vars['sports']->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
 foreach ($_from as $_smarty_tpl->tpl_vars['single']->key => $_smarty_tpl->tpl_vars['single']->value){
 $_smarty_tpl->tpl_vars['single']->_loop = true;
 ?>
-                                        <li>
-                                            <?php echo $_smarty_tpl->tpl_vars['single']->value->getSportName();?>
+                                            <li>
+                                                <?php echo $_smarty_tpl->tpl_vars['single']->value->getSportName();?>
 
-                                            <input type="hidden" class="sportId" value="<?php echo $_smarty_tpl->tpl_vars['single']->value->getId();?>
+                                                <input type="hidden" class="sportId" value="<?php echo $_smarty_tpl->tpl_vars['single']->value->getId();?>
 " />
-                                        </li>
-                                    <?php } ?>
-                                </ul>
+                                            </li>
+                                        <?php } ?>
+                                    </ul>
+                                </form>
                             </div>
                             <div id="arrow"></div>
                         </div>
