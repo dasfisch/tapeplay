@@ -46,9 +46,16 @@
 
 	// setup User BLL
 	$userBLL = new UserBLL();
-	if(isset($_SESSION['user_id'])) {
+
+	// load user from session, if present
+	if(isset($_SESSION['user'])) {
 		// load up user for BLL if we have a session for it
-		$userBLL->loadUser($_SESSION['user_id']);
+		$userBLL->loadUser();
+	}
+
+	// load account type, if present
+	if(isset($_SESSION['accountType'])) {
+		$userBLL->setAccountType($_SESSION['accountType']);
 	}
 
     $sportBll = new SportBLL();
@@ -71,7 +78,7 @@
             //open the home page
             $controller->open('home');
         }
-    } catch(Exception $e) {
+    } catch(\Exception $e) {
         echo '<pre>';
         var_dump($e);
         exit;

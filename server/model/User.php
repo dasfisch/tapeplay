@@ -38,6 +38,7 @@ class User
 	protected  $_lastLogin;
 	protected  $_accountType;
 	protected  $_optIns;
+	protected  $_status;
 
 
 	public function setAccountType($accountType)
@@ -157,4 +158,14 @@ class User
     public function getAge() {
         return $this->_age;
     }
+
+	public function setStatus($status)
+	{
+		$this->_status = $status;
+	}
+
+	public function getStatus()
+	{
+		return $this->_status;
+	}
 }

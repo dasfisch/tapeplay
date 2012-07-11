@@ -26,32 +26,42 @@ class Player extends User
 		$player->setHash($arr["hash"]);
 		$player->setZipcode($arr["zipcode"]);
 		$player->setGender($arr["gender"]);
-		$player->setAge($arr["birth_date"]);
+		$player->setAge($arr["birth_year"]);
 		$player->setLastLogin($arr["last_login"]);
 		$player->setAccountType($arr["account_type"]);
+		$player->setStatus($arr["status"]);
 
 		// set player attributes
+		$player->setId($arr["player_id"]);
 		$player->setNumber($arr["number"]);
 		$player->setHeight($arr["height"]);
 		$player->setGradeLevel($arr["grade_level"]);
 		$player->setVideoAccess($arr["video_access"]);
 		$player->setPosition($arr["position"]);
+		$player->setPosition($arr["weight"]);
+		$player->setPosition($arr["coach_name"]);
+		$player->setPosition($arr["graduationMonth"]);
+		$player->setPosition($arr["graduationYear"]);
 
 		// set school
 		$school = new School();
-		$school->setName($arr["name"]);
-		$school->setCity($arr["city"]);
-		$school->setState($arr["state"]);
-		$school->setDivision($arr["division"]);
+		$school->setId($arr["school_id"]);
+		$school->setName($arr["school_name"]);
+		$school->setCity($arr["school_city"]);
+		$school->setState($arr["school_state"]);
+		$school->setDivision($arr["school_division"]);
 
 		$player->setSchool($school);
+
+		$sport = new Sport();
+		$sport->setId($arr["sport_id"]);
+		$sport->setSportName($arr["sport_name"]);
 
 		return $player;
 	}
 
 	private $_id;
 	private $_number;
-	private $_guardianSignup;
 	private $_position;
 	private $_gradeLevel;
 	private $_height;
@@ -63,10 +73,12 @@ class Player extends User
 	private $_coachName;
 	private $_graduationMonth;
 	private $_graduationYear;
-	private $_status;
 
 	function __construct(User $user = null)
 	{
+		$this->setSport(new Sport());
+		$this->setSchool(new School());
+
 		if ($user)
 		{
 			// set all user properties in this player
@@ -93,16 +105,6 @@ class Player extends User
 	public function getGradeLevel()
 	{
 		return $this->_gradeLevel;
-	}
-
-	public function setGuardianSignup($guardianSignup)
-	{
-		$this->_guardianSignup = $guardianSignup;
-	}
-
-	public function getGuardianSignup()
-	{
-		return $this->_guardianSignup;
 	}
 
 	public function setHeight($height)
@@ -223,15 +225,5 @@ class Player extends User
 	public function getGraduationYear()
 	{
 		return $this->_graduationYear;
-	}
-
-	public function setStatus($status)
-	{
-		$this->_status = $status;
-	}
-
-	public function getStatus()
-	{
-		return $this->_status;
 	}
 }

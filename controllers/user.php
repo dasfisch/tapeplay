@@ -46,9 +46,6 @@ else
 	$posted = false;
 }
 
-// check for account type in session
-$accountType = (isset($_SESSION["accountType"]) ? $_SESSION["accountType"] : "");
-
 // setup form postback url
 $baseURL = $_SERVER['REQUEST_URI'];
 
@@ -61,23 +58,50 @@ if (isset($route->method))
 
 			if ($posted)
 			{
-				// fetch user id from database
-				$userId = $userBLL->authenticate($_POST["username"], $_POST["password"]);
-
-				if ($userId > 0)
+				if ($userBLL->authenticate($_POST["username"], $_POST["password"]))
 				{
-					// we are authenticated
+					// we are authenticated - grab user from db
 
-					// store user id in session
-					$_SESSION["userId"] = $userId;
+					// check step that user is on to make sure they have completed login
+					$status = $userBLL->getUser()->getStatus();
+					$accountType = $userBLL->getAccountType();
+					switch ($status)
+					{
+						case AccountStatusEnum::$STEP1: // need to transfer to step 2
+							if ($accountType == AccountTypeEnum::$PLAYER)
+							{
+								Util::setHeader("user/upload/");
+							}
+							else if ($accountType == AccountTypeEnum::$COACH || $accountType == AccountTypeEnum::$SCOUT)
+							{
+								Util::setHeader("user/info/");
+							}
+							break;
 
-					//transfer to welcome page
-					Util::setHeader("account/welcome/");
+						case AccountStatusEnum::$STEP2:
+							print "step2";
+							if ($accountType == AccountTypeEnum::$PLAYER)
+							{
+								print "step 2";
+								Util::setHeader("user/info/");
+							}
+							else if ($accountType == AccountTypeEnum::$COACH || $accountType == AccountTypeEnum::$SCOUT)
+							{
+								Util::setHeader("user/payment/");
+							}
+							break;
+
+						default:
+							print "default";
+						Util::setHeader("account/welcome/");
+					}
+
 				}
 				else
 				{
 					// authentication failed
-					$smarty->display("user/login/login.tpl");
+					$smarty->assign("file", "user/login/login.tpl");
+					$smarty->display("index.tpl");
 				}
 			}
 			else
@@ -125,32 +149,30 @@ if (isset($route->method))
 			// check for the need to process the incoming information
 			if ($posted)
 			{
+				// create hash
+				$hash = $userBLL->createHash($_POST["email"], $_POST["password"]);
 				// create user object based on data entered
-
 				$user = new User();
-				$user->setAccountType($_POST["accountType"]);
-
-				// common data
+				$user->setAccountType($userBLL->getAccountType());
 				$user->setFirstName($_POST["firstName"]);
 				$user->setLastName($_POST["lastName"]);
-				$user->setHash($_POST["password"]);
+				$user->setHash($hash);
 				$user->setEmail($_POST["email"]);
 				$user->setLastLogin(time());
 				$user->setBirthYear($_POST["birthYear"]);
 				$user->setGender($_POST["gender"]);
 				$user->setZipcode($_POST["zipcode"]);
-				$user->setAccountType($accountType);
 
 				// insert user, grab newly-created id and assign to session
 				$userId = $userBLL->insert($user);
 
 				if ($userId > 0)
 				{
-					// store User ID in session
-					$_SESSION["userId"] = $userId;
+					// update status
+					$userBLL->updateStatus(\AccountStatusEnum::$STEP1);
 
 					// determine which page to load
-					switch ($accountType)
+					switch ($userBLL->getAccountType())
 					{
 						case AccountTypeEnum::$PLAYER:
 							Util::setHeader("user/upload/");
@@ -181,7 +203,7 @@ if (isset($route->method))
 			else
 			{
 				// determine which page to load
-				switch ($accountType)
+				switch ($userBLL->getAccountType())
 				{
 					case AccountTypeEnum::$PLAYER:
 						$template = "user/personal/playerPersonal.tpl";
@@ -236,6 +258,9 @@ if (isset($route->method))
 
 				if ($videoId > 0)
 				{
+					// update status
+					$userBLL->updateStatus(\AccountStatusEnum::$STEP2);
+
 					// insert succeeded - go to info page
 					Util::setHeader("user/info/");
 				}
@@ -266,40 +291,53 @@ if (isset($route->method))
 			// check for the need to process the incoming information
 			if ($posted)
 			{
-				switch ($accountType)
+				print "here" . $userBLL->getAccountType();
+				switch ($userBLL->getAccountType())
 				{
 					case AccountTypeEnum::$COACH:
 						// TODO: Process coach information
+
+						// update status to most recently completed step
+						$userBLL->updateStatus(\AccountStatusEnum::$STEP2);
+
 						Util::setHeader("user/payment/");
 						break;
 					case AccountTypeEnum::$SCOUT:
 						// TODO: Process scout information
+
+						// update status to most recently completed step
+						$userBLL->updateStatus(\AccountStatusEnum::$STEP2);
 
 						// send to payment page
 						Util::setHeader("user/payment/");
 						break;
 					case AccountTypeEnum::$PLAYER:
 
-						$player = new Player();
-
 						// get player basics and add
-						$player->setNumber($_POST["number"]);
-						$player->setGradeLevel(9);
-						$player->setPosition("SG");
-						$player->setHeight(55);
-						$player->setWeight($_POST["weight"]);
-						$player->setCoachName($_POST["headCoachName"]);
-						$player->setGraduationMonth(3);
-						$player->setGraduationYear(2013);
+						$userBLL->getUser()->setNumber($_POST["number"]);
+						$userBLL->getUser()->setGradeLevel($_POST["gradeLevel"]);
+						$userBLL->getUser()->setPosition("SG");
+						$userBLL->getUser()->setHeight(55);
+						$userBLL->getUser()->setWeight($_POST["weight"]);
+						$userBLL->getUser()->setCoachName($_POST["headCoachName"]);
+						$userBLL->getUser()->setGraduationMonth($_POST["graduationMonth"]);
+						$userBLL->getUser()->setGraduationYear($_POST["graduationYear"]);
 
 						// create school and assign to player
 						$school = new School();
 						$school->setId($_POST["schoolId"]);
-						$player->setSchool($school);
+						$userBLL->getUser()->setSchool($school);
 
+						$playerBLL = new PlayerBLL();
 
-						// this is the last step in the player signup process.  send to welcome page
-						Util::setHeader("account/welcome/");
+						if ($playerBLL->update($userBLL->getUser()))
+						{
+							// update status to most recently completed step
+							$userBLL->updateStatus(\AccountStatusEnum::$STEP3);
+
+							// this is the last step in the player signup process.  send to welcome page
+							Util::setHeader("account/welcome/");
+						}
 						break;
 				}
 			}
@@ -307,7 +345,7 @@ if (isset($route->method))
 			{
 				// determine which page to load
 				$template = "user/info/playerInfo.tpl";
-				switch ($accountType)
+				switch ($userBLL->getAccountType())
 				{
 					case AccountTypeEnum::$COACH:
 						$template = "user/info/coachInfo.tpl";
@@ -345,6 +383,9 @@ if (isset($route->method))
 				$success = true;
 				if ($success)
 				{
+					// update status to most recently completed step
+					$userBLL->updateStatus(\AccountStatusEnum::$STEP3);
+
 					// payment was successful
 					Util::setHeader("/user/confirm/");
 				}

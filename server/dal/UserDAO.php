@@ -30,9 +30,15 @@ class UserDAO extends BaseDOA
 	{
 		try
 		{
-			$this->sql = "SELECT * FROM users WHERE id = :id";
+			$this->sql = "SELECT u.*, " .
+					" p.id AS player_id, p.number, p.height, p.grade_level, p.video_access, p.position, p.weight, p.coach_name, p.graduation_month, p.graduation_year, " .
+					" s.id AS school_id, s.name as school_name, s.city as school_city, s.state as school_state, s.division AS school_division, " .
+					" sp.id AS sport_id, sp.name AS sport_name " .
+					" FROM users u INNER JOIN players p ON u.id = p.user_id LEFT JOIN schools s ON s.id = p.school_id LEFT JOIN sports sp ON sp.id = p.sport_id " .
+					" WHERE u.id = :id";
+
 			$this->prep = $this->dbh->prepare($this->sql);
-			$this->prep->bindValue(":id", $hash, \PDO::PARAM_INT);
+			$this->prep->bindValue(":id", $userId, \PDO::PARAM_INT);
 			$this->prep->execute();
 		}
 		catch (\PDOException $exception)
@@ -48,9 +54,13 @@ class UserDAO extends BaseDOA
 	{
 		try
 		{
-			$this->sql = "SELECT * FROM users WHERE id = :id";
+			$this->sql = "SELECT u.*, " .
+					" c.id AS coach_id, c.school_position, c.collegiate_level, c.association, " .
+					" s.id AS school_id, s.name as school_name, s.city as school_city, s.state as school_state, s.division AS school_division " .
+					" FROM users u INNER JOIN coaches c ON u.id = c.user_id LEFT JOIN schools s ON c.school_id = s.id" .
+					" WHERE u.id = :id";
 			$this->prep = $this->dbh->prepare($this->sql);
-			$this->prep->bindValue(":id", $hash, \PDO::PARAM_INT);
+			$this->prep->bindValue(":id", $userId, \PDO::PARAM_INT);
 			$this->prep->execute();
 		}
 		catch (\PDOException $exception)
@@ -63,22 +73,26 @@ class UserDAO extends BaseDOA
 	}
 
 	public function getScoutUser($userId)
+	{
+		try
 		{
-			try
-			{
-				$this->sql = "SELECT * FROM users WHERE id = :id";
-				$this->prep = $this->dbh->prepare($this->sql);
-				$this->prep->bindValue(":id", $hash, \PDO::PARAM_INT);
-				$this->prep->execute();
-			}
-			catch (\PDOException $exception)
-			{
-				\TPErrorHandling::handlePDOException($exception->errorInfo);
-				return null;
-			}
-
-			return Scout::create($this->prep->fetch());;
+			$this->sql = "SELECT u.*, " .
+					"s.*" .
+					" FROM users u INNER JOIN scouts s ON u.id = s.user_id " .
+					"WHERE u.id = :id";
+			$this->prep = $this->dbh->prepare($this->sql);
+			$this->prep->bindValue(":id", $userId, \PDO::PARAM_INT);
+			$this->prep->execute();
 		}
+		catch (\PDOException $exception)
+		{
+			\TPErrorHandling::handlePDOException($exception->errorInfo);
+			return null;
+		}
+
+		return Scout::create($this->prep->fetch());
+	}
+
 	/**
 	 * Inserts the base user information.
 	 * @param \tapeplay\server\model\User $user Inserts passed user into database
@@ -174,7 +188,6 @@ class UserDAO extends BaseDOA
 
 		$this->sql = "SELECT id, account_type FROM users WHERE hash = :hash";
 		$this->prep = $this->dbh->prepare($this->sql);
-		$this->prep->setFetchMode(\PDO::FETCH_INTO, $user);
 		$this->prep->bindValue(":hash", $hash, \PDO::PARAM_STR);
 		$this->prep->execute();
 
@@ -224,5 +237,30 @@ class UserDAO extends BaseDOA
 	public function getRelatedUsers($id)
 	{
 
+	}
+
+	public function updateStatus($userId, $status)
+	{
+		try
+		{
+			$this->sql = "UPDATE users " .
+					" SET " .
+					"status = :status" .
+					" WHERE " .
+					"id = :id";
+
+			$this->prep = $this->dbh->prepare($this->sql);
+			$this->prep->bindValue(":id", $userId, \PDO::PARAM_INT);
+			$this->prep->bindValue(":status", $status, \PDO::PARAM_INT);
+
+			$this->prep->execute();
+		}
+		catch (\PDOException $exception)
+		{
+			\TPErrorHandling::handlePDOException($exception->errorInfo);
+			return false;
+		}
+
+		return ($this->prep->rowCount() > 0);
 	}
 }

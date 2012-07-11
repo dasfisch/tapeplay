@@ -10,6 +10,8 @@ require_once("model/User.php");
 require_once("model/Player.php");
 require_once("model/UserSummary.php");
 require_once("enum/AccountTypeEnum.php");
+require_once("enum/AccountStatusEnum.php");
+require_once("utility/Util.php");
 
 use tapeplay\server\dal\UserDAO;
 use tapeplay\server\model\Coach;
@@ -34,7 +36,7 @@ class UserBLL extends BaseBLL
 	// Private Fields
 	//////////////////////////////////////////////////////////
 
-	private $_isAuthenticated = false;
+	private $_accountType = "";
 	private $_user; // could be player, scout, or coach object
 
 
@@ -42,19 +44,23 @@ class UserBLL extends BaseBLL
 	// Public Properties
 	//////////////////////////////////////////////////////////
 
-	public function setIsAuthenticated($isAuthenticated)
+	public function setAccountType($accountType)
 	{
-		$this->_isAuthenticated = $isAuthenticated;
+		$this->_accountType = $accountType;
 	}
 
-	public function getIsAuthenticated()
+	public function getAccountType()
 	{
-		return $this->_isAuthenticated;
+		return $this->_accountType;
 	}
 
 	public function setUser($user)
 	{
 		$this->_user = $user;
+		$this->_accountType = $user->getAccountType();
+
+		// anytime the user is set, update the session
+		$_SESSION["user"] = serialize($user);
 	}
 
 	public function getUser()
@@ -70,8 +76,6 @@ class UserBLL extends BaseBLL
 	function __construct()
 	{
 		$this->dal = new UserDAO();
-
-		$this->_user = new User();
 	}
 
 
@@ -79,55 +83,60 @@ class UserBLL extends BaseBLL
 	// Public Methods
 	//////////////////////////////////////////////////////////
 
-	/**
-	 * @param $id int The ID of the user that we are retrieving from session.
-	 * @return User Returns player, coach or scout, based on account type of user
-	 */
-	public function loadUser($id)
+	public function createHash($username, $password)
 	{
-		switch ($_SESSION['account_type'])
-		{
-			case \AccountTypeEnum::$PLAYER:
-				$this->setUser($this->dal->getPlayerUser($id));
-				break;
+		return md5($username . UserBLL::$SALT . $password);
+	}
 
-			case \AccountTypeEnum::$COACH:
-				$this->setUser($this->dal->getCoachUser($id));
-				break;
+	public function loadUser()
+	{
+		// grab user from session
+		$this->setUser(unserialize($_SESSION['user']));
 
-			case \AccountTypeEnum::$SCOUT:
-				$this->setUser($this->dal->getScoutUser($id));
-				break;
-		}
+		// TODO: Do we need to do anything else?
 	}
 
 	/**
 	 * Passes a hash to the db to try and retrieve a user with a matching hash.
-	 * @param $username
+	 * @param $email
 	 * @param $password
-	 * @return int
+	 * @return bool
 	 */
-	public function authenticate($username, $password)
+	public function authenticate($email, $password)
 	{
 		// create md5 hash to pass to dal
-		$hash = md5($username . UserBLL::$SALT . $password);
+		$hash = $this->createHash($email, $password);
 
 		// returns a user id
 		$arr = $this->dal->authenticate($hash);
 
 		if ($arr)
 		{
-			// set session variables
-			$_SESSION["user_id"] = $arr["id"];
-			$_SESSION["account_type"] = $arr["account_type"];
+			$userId = $arr["id"];
 
-			return $arr["id"];
+			// load up appropriate user extension based on account type
+			switch ($arr["account_type"])
+			{
+				case \AccountTypeEnum::$PLAYER:
+					$this->setUser($this->dal->getPlayerUser($userId));
+					break;
+
+				case \AccountTypeEnum::$COACH:
+					$this->setUser($this->dal->getCoachUser($userId));
+					break;
+
+				case \AccountTypeEnum::$SCOUT:
+					$this->setUser($this->dal->getScoutUser($userId));
+					break;
+			}
+
+			return true;
 		}
 		else
 		{
-			return -1;
+			// auth failed
+			return false;
 		}
-
 	}
 
 	public function insert(User $user)
@@ -153,6 +162,9 @@ class UserBLL extends BaseBLL
 
 				// set BLL "user" to be this player
 				$this->setUser($player);
+
+				// everything went well - send email to user
+				\Util::sendEmail(\EmailEnum::$JOIN, $user->getEmail());
 			}
 		}
 
@@ -168,6 +180,15 @@ class UserBLL extends BaseBLL
 	public function logout()
 	{
 		// TODO: Implement logout logic
+	}
+
+	/**
+	 * @param $status int The status to update user to
+	 * @return bool True if successful, false otherwise
+	 */
+	public function updateStatus($status)
+	{
+		return $this->dal->updateStatus($this->getUser()->getUserId(), $status);
 	}
 
 

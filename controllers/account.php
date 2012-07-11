@@ -20,9 +20,6 @@ else
 	$posted = false;
 }
 
-// check for account type in session
-$accountType = (isset($_SESSION["accountType"]) ? $_SESSION["accountType"] : "");
-
 // setup form postback url
 $baseURL = $_SERVER['REQUEST_URI'];
 
@@ -39,7 +36,7 @@ if (isset($route->method))
 			else
 			{
 				// determine which page to load
-				$template = "user/login";
+				$template = "user/login/";
 
 				switch ($accountType)
 				{

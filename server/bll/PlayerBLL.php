@@ -42,6 +42,6 @@ class PlayerBLL extends BaseBLL
 
 	public function update(Player $player)
 	{
-		$this->dal->update($player);
+		return $this->dal->update($player);
 	}
 }

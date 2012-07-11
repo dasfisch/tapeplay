@@ -108,13 +108,7 @@ class VideoBLL extends BaseBLL
 	 */
 	public function insert(Video $video, $playerId)
 	{
-		$video = $this->dal->insert($video);
-
-		if ($video->getId() > 0)
-		{
-			// link video id to player
-			$this->dal->linkVideoToPlayer($video->getId(), $playerId);
-		}
+		$video = $this->dal->insert($video, $playerId);
 
 		return $video;
 	}

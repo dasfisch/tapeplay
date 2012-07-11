@@ -68,20 +68,36 @@ class PlayerDAO extends BaseDOA
 	function update(Player $player)
 	{
 		$this->sql = "UPDATE players SET " .
-				"number = :number, guardian_signup = :guardian_signup, school_id = :school_id, height = :height, grade_level = :grade_level, video_access = :video_access, user_id = :user_id" .
+				" number = :number, " .
+				" height = :height, " .
+				" grade_level = :grade_level, " .
+				" video_access = :video_access, " .
+				" position= :position, " .
+				" weight = :weight, " .
+				" coach_name = :coachName, " .
+				" graduation_month = :graduationMonth, " .
+				" graduation_year = :graduationYear, " .
+				" school_id = :schoolId, " .
+				" sport_id = :sportId " .
 				" WHERE id = :id";
+
 		$this->prep = $this->dbh->prepare($this->sql);
 		$this->prep->bindValue(":id", $player->getId(), \PDO::PARAM_INT);
 		$this->prep->bindValue(":number", $player->getNumber(), \PDO::PARAM_INT);
-		$this->prep->bindValue(":school_id", $player->getSchool()->getId(), \PDO::PARAM_INT);
 		$this->prep->bindValue(":height", $player->getHeight(), \PDO::PARAM_INT);
 		$this->prep->bindValue(":grade_level", $player->getGradeLevel(), \PDO::PARAM_STR);
 		$this->prep->bindValue(":video_access", $player->getVideoAccess(), \PDO::PARAM_INT);
-		$this->prep->bindValue(":user_id", $player->getUserId(), \PDO::PARAM_INT);
+		$this->prep->bindValue(":position", $player->getPosition(), \PDO::PARAM_STR);
+		$this->prep->bindValue(":weight", $player->getWeight(), \PDO::PARAM_INT);
+		$this->prep->bindValue(":coachName", $player->getCoachName(), \PDO::PARAM_STR);
+		$this->prep->bindValue(":graduationMonth", $player->getGraduationMonth(), \PDO::PARAM_INT);
+		$this->prep->bindValue(":graduationYear", $player->getGraduationYear(), \PDO::PARAM_INT);
+		$this->prep->bindValue(":schoolId", $player->getSchool()->getId(), \PDO::PARAM_INT);
+		$this->prep->bindValue(":sportId", $player->getSport()->getId(), \PDO::PARAM_INT);
 
 		$this->prep->execute();
 
-		return ($this->prep->rowCount() > 0) ? $this->dbh->lastInsertId() : -1;
+		return $this->prep->rowCount() > 0;
 	}
 
 	/**

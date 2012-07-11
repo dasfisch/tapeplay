@@ -32,6 +32,7 @@
 			<div class="leftMedium"></div>
 			<div class="middleMedium middle">
 				<p class="value">Pick Your Sport</p>
+				<input type="hidden" name="sport" class="dropVal" value="" />
 			</div>
 			<div class="rightMedium"></div>
 			<ul class="potentials">
@@ -56,7 +57,7 @@
 		</li>
 		<li>
 			<div class="option">
-				<p class="header">Position</p>
+				<p class="header">Level</p>
 
 				<div class="checkbox">
 					<div class="box">
@@ -80,21 +81,25 @@
 		</li>
 		<li>
 			<div class="sportSelect">
-				<div class="dropper">
-					<div class="leftMedium"></div>
-					<div class="middleMedium middle">
-						<p class="value">Sport</p>
-						<input type="hidden" name="sport" class="dropVal" value="" />
+				<p class="label">Grade</p>
+				<div class="sportSelect">
+						<div class="dropper">
+							<div class="leftMedium"></div>
+							<div class="middleMedium middle">
+								<p class="value">Grade</p>
+								<input type="hidden" name="gradeLevel" class="dropVal" value="" />
+							</div>
+							<div class="rightMedium"></div>
+							<ul class="potentials">
+								<li>8</li>
+								<li>9</li>
+								<li>10</li>
+								<li>11</li>
+								<li>12</li>
+							</ul>
+						</div>
+						<div class="arrowSmall"></div>
 					</div>
-					<div class="rightMedium"></div>
-					<ul class="potentials">
-						<li>Women's Soccer</li>
-						<li>Women's Basketball</li>
-						<li>Women's Hockey</li>
-					</ul>
-				</div>
-				<div class="arrowSmall"></div>
-			</div>
 		</li>
 		<li>
 			<div class="option">
@@ -140,13 +145,14 @@
 							<div class="leftMedium"></div>
 							<div class="middleMedium middle">
 								<p class="value">Grade</p>
-								<input type="hidden" name="gradeLevel" class="dropVal" value="" />
+								<input type="hidden" name="height" class="dropVal" value="" />
 							</div>
 							<div class="rightMedium"></div>
 							<ul class="potentials">
-								<li>Women's Soccer</li>
-								<li>Women's Basketball</li>
-								<li>Women's Hockey</li>
+								<li>Freshman</li>
+								<li>Sophomore</li>
+								<li>Junior</li>
+								<li>Senior</li>
 							</ul>
 						</div>
 						<div class="arrowSmall"></div>
@@ -189,7 +195,7 @@
 	<div class="sportSelect">
 		<div class="dropper">
 			<div class="leftMedium"></div>
-			<div class="middleMedium">
+			<div class="middleMedium middle">
 				<p class="value">Month</p>
 				<input type="hidden" name="graduationMonth" class="dropVal" value="" />
 			</div>

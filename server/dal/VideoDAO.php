@@ -69,14 +69,15 @@ class VideoDAO extends BaseDOA
 	/**
 	 * Inserts a video into db and returns the video with its new id.
 	 * @param \tapeplay\server\model\Video $video Video that we want to save
+	 * @param $playerId int The player associated with this video
 	 * @return \tapeplay\server\model\Video Returns video with new id
 	 */
-	public function insert(Video $video)
+	public function insert(Video $video, $playerId)
 	{
 		$this->sql = "INSERT INTO videos " .
-				"(panda_id, title, uploaded_date, recorded_month, recorded_year, active)" .
+				"(panda_id, title, uploaded_date, recorded_month, recorded_year, active, player_id)" .
 				" VALUES " .
-				"(:pandaId, :title, :uploadDate, :recordedMonth, :recordedYear, :active);";
+				"(:pandaId, :title, :uploadDate, :recordedMonth, :recordedYear, :active, :playerId);";
 
 		$this->prep = $this->dbh->prepare($this->sql);
 		$this->prep->bindValue(":pandaId", $video->getPandaId(), \PDO::PARAM_STR);
@@ -85,6 +86,7 @@ class VideoDAO extends BaseDOA
 		$this->prep->bindValue(":recordedMonth", $video->getRecordedMonth(), \PDO::PARAM_INT);
 		$this->prep->bindValue(":recordedYear", $video->getRecordedYear(), \PDO::PARAM_INT);
 		$this->prep->bindValue(":active", $video->getActive(), \PDO::PARAM_BOOL);
+		$this->prep->bindValue(":playerId", $playerId, \PDO::PARAM_INT);
 
 		$this->prep->execute();
 
@@ -204,7 +206,7 @@ class VideoDAO extends BaseDOA
                             GROUP BY
                                 videos.id
                             LIMIT ".$startLimit.",".$limit;
-
+echo $this->sql;
 			$this->prep = $this->dbh->prepare($this->sql);
 			//$this->prep->bindValue(":id", $id, \PDO::PARAM_INT);
 			$this->prep->execute();
@@ -282,3 +284,5 @@ class VideoDAO extends BaseDOA
 		return $videoList;
 	}
 }
+
+?>

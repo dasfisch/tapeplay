@@ -44,13 +44,13 @@
                 <div id="right">
                     <ul id="links">
                         <li>
-                            <a href="{#baseUrl#}">Join<span class="fbSmall"></span></a>
+                            <a href="{#baseUrl#}/user/signup/">Join<span class="fbSmall"></span></a>
                         </li>
                         <li>
-                            <a href="{#baseUrl#}">Log In</a>
+                            <a href="{#baseUrl#}/user/login/">Log In</a>
                         </li>
                         <li>
-                            <a href="{#baseUrl#}" class="infoOpen leftShift">Upload</a>
+                            <a href="{#baseUrl#}/user/upload/" class="infoOpen leftShift">Upload</a>
                             <div class="infoBubble">
                                 <div class="topLeft black"></div>
                                 <div class="directionTopRight"></div>
@@ -71,10 +71,10 @@
                             </div>
                         </li>
                         <li>
-                            <a href="">Browse</a>
+                            <a href="{#baseUrl#}/videos/browse/">Browse</a>
                         </li>
                         <li>
-                            <a href="">Help</a>
+                            <a href="{#baseUrl#}/company/faq/">Help</a>
                         </li>
                     </ul>
                 </div>
