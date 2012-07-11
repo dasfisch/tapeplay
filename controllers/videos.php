@@ -75,19 +75,27 @@
                 break;
             default:
                 /**
-                 * Get first 20 videos (or whatever);
-                 * Display them;
+                 * If method isn't set, do a default action;
+                 * I think that the best will be a basic view all.
                  */
                 $video = new VideoBLL();
 
-                $video->search(new SearchFilter());
+                $search = new SearchFilter();
 
-                $smarty->assign('videos', $video);
+                $search->sport_id = $sport;
+                $search->method = 'videos';
+
+                $videos = $video->search($search);
+
+        //        echo '<pre>';
+        //        var_dump($videos[0]->v);
+        //        exit;
+
+                $smarty->assign('videoCount', count($videos));
+                $smarty->assign('videos', $videos);
                 $smarty->assign('file', 'videos/videoBrowse.tpl');
 
                 $smarty->display('index.tpl');
-
-                break;
         }
     } else {
         /**
