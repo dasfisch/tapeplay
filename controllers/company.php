@@ -41,6 +41,24 @@
                 $smarty->display('index.tpl');
 
                 break;
+            case 'faq':
+                $smarty->assign('file', 'company/faq.tpl');
+
+                $smarty->display('index.tpl');
+
+                break;
+            case 'getstarted':
+                $smarty->assign('file', 'company/getstarted.tpl');
+
+                $smarty->display('index.tpl');
+
+                break;
+            case 'guidelines':
+                $smarty->assign('file', 'company/dosandonts.tpl');
+
+                $smarty->display('index.tpl');
+
+                break;
             case 'share':
                 $smarty->assign('file', 'company/share.tpl');
 

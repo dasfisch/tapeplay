@@ -1029,7 +1029,8 @@ a {
     margin-bottom: 10px;
 }
 
-#tapeplay #main #leftCol .dosanddonts h3 {
+#tapeplay #main #leftCol .dosanddonts h3,
+#tapeplay #main #leftCol .getstarted h3 {
     font-size: 24px;
     margin-bottom: 30px;
 }
@@ -1042,11 +1043,16 @@ a {
 
 #tapeplay #main #leftCol .advertising p,
 #tapeplay #main #leftCol .dosanddonts p,
+#tapeplay #main #leftCol .getstarted p,
 #tapeplay #main #leftCol.helpCenter p {
     color: #333;
     font-size: 16px;
     line-height: 24px;
     margin-bottom: 30px;
+}
+
+#tapeplay #main #leftCol .getstarted p .italic {
+    font-size: 16px;
 }
 
 #tapeplay #main #leftCol.helpCenter #answers p {
