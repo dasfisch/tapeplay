@@ -172,6 +172,20 @@ class VideoBLL extends BaseBLL
 	}
 
 	/**
+	 * Returns the email address associated with the requested video id.
+	 * @param $pandaId string The video id in question
+	 * @return string The email of the user associated with this video
+	 */
+	public function getUserEmailByPandaId($pandaId)
+	{
+		return $this->dal->getUserEmailByPandaId($pandaId);
+	}
+
+	//////////////////////////////////////////////////////////
+	// Private Methods
+	//////////////////////////////////////////////////////////
+
+	/**
 	 * @param array $encodings The list of encodings retrieved for the video.
 	 * @param $type string The name of the encoding that we want to retrieve.
 	 * @return string The encoding that matches the requested one.
