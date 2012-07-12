@@ -41,10 +41,10 @@ class Player extends User
 		$player->setGradeLevel($arr["grade_level"]);
 		$player->setVideoAccess($arr["video_access"]);
 		$player->setPosition($arr["position"]);
-		$player->setPosition($arr["weight"]);
-		$player->setPosition($arr["coach_name"]);
-		$player->setPosition($arr["graduation_month"]);
-		$player->setPosition($arr["graduation_year"]);
+		$player->setWeight($arr["weight"]);
+		$player->setCoachName($arr["coach_name"]);
+		$player->setGraduationMonth($arr["graduation_month"]);
+		$player->setGraduationYear($arr["graduation_year"]);
 
 		// set school
 		$school = new School();
@@ -77,7 +77,7 @@ class Player extends User
 	private $_graduationMonth;
 	private $_graduationYear;
 
-	function __construct(User $user = null)
+	function    __construct(User $user = null)
 	{
 		$this->setSport(new Sport());
 		$this->setSchool(new School());

@@ -18,9 +18,9 @@ class SportDAO extends BaseDOA
 	 * Fetches the sport details
 	 * @param $id The id of the sport
 	 */
-	function get(SearchFilter $search)
+	function get(SearchFilter $filter)
 	{
-        $where = $this->_setWhere($search);
+        $where = !is_null($filter->getWhere()) ? $this->_setWhere($filter->getWhere()) : null;
 
 		$this->sql = "SELECT
 		                    *

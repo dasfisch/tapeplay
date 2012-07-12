@@ -8,7 +8,12 @@
  */
     //all include, globals (not opposed to not using globals)
     
-    global $controller, $route, $smarty;
+    global $controller, $route, $smarty, $sport;
 
-    $smarty->assign('file', 'index/index.tpl');
-    $smarty->display('index.tpl');
+    if(isset($sport) && $sport != '') {
+        $smarty->assign('file', 'index/home.tpl');
+        $smarty->display('home.tpl');
+    } else {
+        $smarty->assign('file', 'index/index.tpl');
+        $smarty->display('index.tpl');
+    }

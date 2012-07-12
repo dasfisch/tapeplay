@@ -92,9 +92,7 @@ class VideoBLL extends BaseBLL
 	 */
 	public function search(SearchFilter $filter)
 	{
-//		$arr = array($v1, $v2);
 		return $this->dal->search($filter);
-		//return $this->dal->search($filter);
 	}
 
     public function getOne(SearchFilter $filter) {
@@ -148,6 +146,9 @@ class VideoBLL extends BaseBLL
 
 		// grab the encodings from the REST resources
 		$encodings = json_decode(@$panda->get("/videos/" . $videoID . "/encodings.json"));
+        if(!isset($encodings) || empty($encodings) || $encodings == '') {
+            return;
+        }
 
 		// get video width and height based on first encoding
 		$width = $encodings[0]->width;

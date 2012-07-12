@@ -23,4 +23,12 @@ class SportBLL extends BaseBLL
 	{
 		return $this->dal->get($search);
 	}
+
+    public function getNameFromId($id, $sports) {
+        foreach($sports as $key=>$sport) {
+            if($id == $sport->getId()) {
+                return $sport->getSportName();
+            }
+        }
+    }
 }

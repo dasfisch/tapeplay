@@ -51,12 +51,14 @@ jQuery(document).ready(function(){
         }
     });
 
-    jQuery('.slider').slider({
-        range: true,
-        min: 0,
-        max: 500,
-        values: [ 75, 300 ],
-    });
+    if(jQuery('.slider').length > 0) {
+        jQuery('.slider').slider({
+            range: true,
+            min: 0,
+            max: 500,
+            values: [ 75, 300 ],
+        });
+    }
 
     jQuery('#password').blur(function(){
         if(jQuery(this).val() === '') {
@@ -159,16 +161,18 @@ jQuery(document).ready(function(){
         }
     });
 
-    jQuery('.height').slider({
-        min: 55,
-        max: 95,
-        range: true,
-        step: 1,
-        values: [55, 95],
-        slide: function() {
-//            jQuery(this).siblings('.')
-        }
-    });
+    if(jQuery('.height').length > 0) {
+        jQuery('.height').slider({
+            min: 55,
+            max: 95,
+            range: true,
+            step: 1,
+            values: [55, 95],
+            slide: function() {
+    //            jQuery(this).siblings('.')
+            }
+        });
+    }
 
     jQuery('#save').click(function() {
         var _this = jQuery(this);
@@ -202,11 +206,10 @@ jQuery(document).ready(function(){
 });
 
 function openBubble(obj) {
-    console.log(obj);
-    var thePosition = 0;
+    var thePosition = {top: 0, left: 0};
 
     if(infoBubbleOpen === true) {
-        jQuery('.infoBubble').fadeOut();
+        jQuery('.infoBubble').hide();
     }
 
     var position = obj.position();
@@ -217,17 +220,43 @@ function openBubble(obj) {
     var thisWidth = obj.width();
 
     if(obj.hasClass('leftShift')) {
-        thePosition = position.left - bubbleWidth;
+        thePosition.left = position.left - bubbleWidth;
     } else if(obj.hasClass('rightShift')) {
 
     } else {
-        thePosition = position.left - (bubbleWidth * .5) + (thisWidth * .5);
+        thePosition.left = position.left - (bubbleWidth * .5) + (thisWidth * .5);
     }
-    console.log(bubble);
+
+    thePosition.top = position.top + thisHeight + 12;
+
+    /**
+     * @TODO: Positioning;
+     */
+//    if(bubble.hasClass('topCentered')) {
+//        thePosition.top = obj.parents().next().height() / 2;
+//    } else {
+//        thePosition.top = position.top + thisHeight + 12;
+//    }
+//
+//    if(bubble.hasClass('topCentered')) {
+//        thePosition.left = thisWidth / 2;
+//    } else {
+//        thePosition.top = position.top + thisHeight + 12;
+//    }
+
     bubble
-            .css('left', thePosition)
-            .css('top', position.top + thisHeight + 12)
+            .css('left', thePosition.left)
+            .css('top', thePosition.top)
             .show();
+
+    /**
+     * @TODO: figure out good way to hide the bubble on mouseout
+     */
+//    bubble.mouseout(function() {
+//       setTimeout(function() {
+//           bubble.fadeOut();
+//       }, 500);
+//    });
 
     infoBubbleOpen = true;
 }

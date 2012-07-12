@@ -173,24 +173,35 @@ class VideoDAO extends BaseDOA
 	 * Searches the videos for any videos matching the criteria set within the passed filter.
 	 * @param \tapeplay\server\model\SearchFilter $filter
 	 * @return array The list of videos that match the filter.
+     *
+     * @TODO: WE NEEDS TO ENSURE WE ARE DOING alias.column AS _aliasName_, otherwise we are getting
+     * collision in PDO. Need to talk to Tony, asap.
 	 */
-	public function search(SearchFilter $filter, $page=1, $limit=20, $getUser=true)
+	public function search(SearchFilter $filter)
 	{
 		try
 		{
+            $limit = $filter->limit;
+            $page = $filter->page;
+
             $startLimit = ($page * $limit) - $limit;
 
-            $where = $this->_setWhere($filter);
-//
-//            $where .= (isset($where) && !empty($where))
-//                            ? ' AND usersport.sport_id='.$sport
-//                            : ' WHERE usersport.sport_id='.$sport;
+            $where = !is_null($filter->getWhere()) ? $this->_setWhere($filter->getWhere()) : null;
+            $like = !is_null($filter->getLike()) ? $this->_setLike($filter->getLike()) : null;
+
+            if((isset($where) && $where != '') && isset($like) && $like != '') {
+                $where.= ' AND ';
+            }
 
 			$this->sql = "SELECT
                                 videos.*,
+                                (SELECT COUNT(*) FROM videos ".$where." ".$like.") AS videoCount,
                                 (SELECT COUNT(*) FROM video_views WHERE video_id = videos.id) AS views,
                                 (SELECT COUNT(*) FROM video_saves WHERE video_id = videos.id) AS saves,
-                                users.*, players.*
+                                users.*,
+                                players.*,
+                                schools.*,
+                                sports.*
                             FROM
                                 videos videos
                             JOIN
@@ -201,6 +212,14 @@ class VideoDAO extends BaseDOA
                                 users users
                                     ON
                                         users.id=players.id
+                            JOIN
+                                sports sports
+                                    ON
+                                        sports.id=players.sport_id
+                            JOIN
+                                schools schools
+                                    ON
+                                        schools.id=players.school_id
                             LEFT JOIN
                                 video_views view
                                     ON
@@ -210,6 +229,7 @@ class VideoDAO extends BaseDOA
                                     ON
                                         saves.video_id=videos.id
                             ".$where."
+                            ".$like."
                             GROUP BY
                                 videos.id
                             LIMIT ".$startLimit.",".$limit;

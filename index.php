@@ -47,11 +47,11 @@
     $search = new SearchFilter();
 
     if(isset($_SESSION['sport'])) {
-        $sport = $_SESSION['sport'];
+        $sport['id'] = $_SESSION['sport'];
     }
 
     if(isset($_POST['chosenSport']) && !empty($_POST['chosenSport'])) {
-        $sport = $_SESSION['sport'] = $_POST['chosenSport'];
+        $sport['id'] = $_SESSION['sport'] = $_POST['chosenSport'];
     }
 
 	// setup User BLL
@@ -70,6 +70,9 @@
     $sports = $sportBll->get($search);
 
     try {
+        $sport['name'] = $sportBll->getNameFromId($sport['id'], $sports);
+
+        $smarty->assign('sport', $sport);
         $smarty->assign('sports', $sports);
         $smarty->assign('currentSport', $sport);
 

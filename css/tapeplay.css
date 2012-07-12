@@ -47,27 +47,45 @@ a {
     color: white;
     float: left;
     margin-top: 5px;
+    width: 310px;
 }
 
-#tapeplay #header #left #sportSelect #dropper {}
+#tapeplay #header #left #sportSelect #dropper {
+    float: left;
+}
 
 #tapeplay #header #left #sportSelect #dropper #values {
+    cursor: pointer;
     float: left;
     margin-right: 5px;
 }
 
 #tapeplay #header #left #sportSelect #dropper #values #potentials {
     background-color: #000;
+    cursor: pointer;
     display: none;
+    float: left;
+    height: 200px;
+    overflow: auto;
+    padding: 10px;
     position: relative;
+    z-index: 1000;
 }
 
 #tapeplay #header #left #sportSelect #dropper #values #value {
+    cursor: pointer;
+    float: left;
+    font-size: 20px;
+    font-weight: bold;
     margin-bottom: 7px;
+    margin-right: 10px;
+    padding-left: 10px;
 }
 
 #tapeplay #header #left #sportSelect #dropper #values #potentials li {
     cursor: pointer;
+    font-size: 20px;
+    font-weight: bold;
     padding-bottom: 7px;
 }
 
@@ -85,8 +103,10 @@ a {
     background-repeat: no-repeat;
     float: left;
     height: 14px;
+    left: 10px;
     margin-bottom: 4px;
-    width: 100px;
+    position: relative;
+    width: 100%;
 }
 
 #tapeplay #header #right {
@@ -1014,6 +1034,14 @@ a {
     width: 350px;
 }
 
+#tapeplay #main #showMore .bigButton {
+    height: 80px;
+}
+
+#tapeplay #main #showMore .bigButton .middle .large {
+    margin-top: 24px;
+}
+
 /* Help Center And About Pages */
 #tapeplay #main #leftCol.helpCenter {
     border: none;
@@ -1078,6 +1106,7 @@ a {
     margin-bottom: 30px;
 }
 
+#tapeplay #landing #rightCol #header,
 #tapeplay #main #rightCol #header {
     background-color: #999;
     background-image: none;
@@ -1091,11 +1120,13 @@ a {
     width: 160px;
 }
 
+#tapeplay #landing #rightCol #icons,
 #tapeplay #main #rightCol #icons {
     margin-bottom: 50px;
     overflow: hidden;
 }
 
+#tapeplay #landing #rightCol #icons .shareImg,
 #tapeplay #main #rightCol #icons .shareImg {
     -webkit-border-radius: 40px;
     -moz-border-radius: 40px;
@@ -2689,6 +2720,15 @@ a {
     width: 5px;
 }
 
+.infoBubble .directionTopLeft {
+    background-image: url('/media/images/pop_up_corners/pop_top-lt-point.png');
+    height: 12px;
+    left: -1px;
+    position: absolute;
+    top: -10px;
+    width: 12px;
+}
+
 .infoBubble .directionTopRight {
     background-image: url('/media/images/pop_up_corners/pop_top-rt-point.png');
     height: 12px;
@@ -2726,4 +2766,18 @@ a {
     color: #e18a07 !important;
     cursor: pointer;
     font-size: 12px;
+}
+
+/* Errors for Queries */
+h2.nothing {
+    color: #f00 !important;
+    font-size: 32px !important;
+    font-weight: bold !important;
+    margin-bottom: 7px !important;
+}
+
+p.nothing {
+    font-size: 18px !important;
+    margin: 0px !important;
+    padding: 0px !important;
 }

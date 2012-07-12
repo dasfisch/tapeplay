@@ -101,7 +101,7 @@ if (isset($route->method))
 				{
 					// authentication failed
 					$smarty->assign("file", "user/login/login.tpl");
-					$smarty->display("index.tpl");
+					$smarty->display("home.tpl");
 				}
 			}
 			else
@@ -110,7 +110,7 @@ if (isset($route->method))
 				{
 					$smarty->assign("baseURL", $baseURL);
 					$smarty->assign("file", "user/login/login.tpl");
-					$smarty->display("index.tpl");
+					$smarty->display("home.tpl");
 				}
 				else
 				{
@@ -141,7 +141,7 @@ if (isset($route->method))
 			{
 				$smarty->assign("baseURL", $baseURL);
 				$smarty->assign("file", "user/signup/signup.tpl");
-				$smarty->display("index.tpl");
+				$smarty->display("home.tpl");
 			}
 			break;
 
@@ -196,7 +196,7 @@ if (isset($route->method))
 					// user was not created.  show current page again.
 					$smarty->assign("baseURL", $baseURL);
 					$smarty->assign('file', "user/personal/");
-					$smarty->display("index.tpl");
+					$smarty->display("home.tpl");
 					//
 				}
 			}
@@ -232,7 +232,7 @@ if (isset($route->method))
 				$smarty->assign("baseURL", $baseURL);
 				$smarty->assign("birthYears", $birthYears);
 				$smarty->assign('file', $template);
-				$smarty->display("index.tpl");
+				$smarty->display("home.tpl");
 			}
 
 			break;
@@ -281,7 +281,7 @@ if (isset($route->method))
 				$smarty->assign("videoYears", $videoYears);
 				$smarty->assign("baseURL", $baseURL);
 				$smarty->assign("file", "user/upload/upload.tpl");
-				$smarty->display("index.tpl");
+				$smarty->display("home.tpl");
 			}
 
 			break;
@@ -369,7 +369,7 @@ if (isset($route->method))
 
 				$smarty->assign("baseURL", $baseURL);
 				$smarty->assign('file', $template);
-				$smarty->display("index.tpl");
+				$smarty->display("home.tpl");
 			}
 			break;
 
@@ -394,7 +394,7 @@ if (isset($route->method))
 					// payment failed, return to payment template
 					$smarty->assign("baseURL", $baseURL);
 					$smarty->assign("file", "user/payment/payment.tpl");
-					$smarty->display("index.tpl");
+					$smarty->display("home.tpl");
 				}
 			}
 			else
@@ -402,7 +402,7 @@ if (isset($route->method))
 				// newly-loaded page - load payment template
 				$smarty->assign("baseURL", $baseURL);
 				$smarty->assign("file", "user/payment/payment.tpl");
-				$smarty->display("index.tpl");
+				$smarty->display("home.tpl");
 			}
 			break;
 
@@ -425,7 +425,7 @@ if (isset($route->method))
 				// load up the confirmation page
 				$smarty->assign("baseURL", $baseURL);
 				$smarty->assign("file", "user/confirm/confirm.tpl");
-				$smarty->display("index.tpl");
+				$smarty->display("home.tpl");
 			}
 
 			break;
@@ -433,7 +433,7 @@ if (isset($route->method))
 		default: // just redirect to login
 			$smarty->assign("baseURL", $baseURL);
 			$smarty->assign("file", "user/login/login.tpl");
-			$smarty->display("index.tpl");
+			$smarty->display("home.tpl");
 			break;
 	}
 }
@@ -444,5 +444,5 @@ else
 	 * I think that the best will be a basic view all.
 	 */
 	$smarty->assign('file', 'user/login/login.tpl');
-	$smarty->display('index.tpl');
+	$smarty->display('home.tpl');
 }

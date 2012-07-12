@@ -2,13 +2,13 @@
 
 namespace tapeplay\server\model;
 
-require_once('User.php');
+require_once('Player.php');
 
 class Video
 {
 	public static function create($arr)
 	{
-        $user = new User();
+        $player = new Player();
         $video = new Video();
 
         $video->setId($arr["0"]);
@@ -22,7 +22,9 @@ class Video
         $video->setSaves($arr["saves"]);
         $video->setPrivacy($arr['is_private']);
 
-        $video->setUser($user->create($arr));
+        $video->setPlayer($player->create($arr));
+
+        $video->count = $arr['videoCount'];
 
 		return $video;
 	}
@@ -39,7 +41,7 @@ class Video
 	private $_comments;
 	private $_saves;
     private $_privacy;
-    private $_user;
+    private $_player;
 
     /**
      * We should bring this down to two methods. The magic methods
@@ -176,7 +178,7 @@ class Video
 
     public function setPrivacy($privacy)
    	{
-   		$this->_privacy = ($privacy === 1) ? true : false;
+   		$this->_privacy = ((int)$privacy === 1) ? true : false;
    	}
 
    	public function getPrivacy()
@@ -184,13 +186,13 @@ class Video
    		return $this->_privacy;
    	}
 
-    public function setUser($user)
+    public function setPlayer($user)
    	{
-   		$this->_user = $user;
+   		$this->_player = $user;
    	}
 
-   	public function getUser()
+   	public function getPlayer()
    	{
-   		return $this->_user;
+   		return $this->_player;
    	}
 }

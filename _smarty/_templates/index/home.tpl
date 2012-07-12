@@ -1,25 +1,4 @@
-<?php /* Smarty version Smarty-3.1.10, created on 2012-07-10 22:11:35
-         compiled from "_smarty/_templates/index/index.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:6246152794ff5f899e14435-83260148%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
-$_valid = $_smarty_tpl->decodeProperties(array (
-  'file_dependency' => 
-  array (
-    'bb2ee059d5ad876c90857028f76d8650c840399d' => 
-    array (
-      0 => '_smarty/_templates/index/index.tpl',
-      1 => 1341976050,
-      2 => 'file',
-    ),
-  ),
-  'nocache_hash' => '6246152794ff5f899e14435-83260148',
-  'function' => 
-  array (
-  ),
-  'version' => 'Smarty-3.1.10',
-  'unifunc' => 'content_4ff5f899e59322_26528742',
-  'has_nocache_code' => false,
-),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_4ff5f899e59322_26528742')) {function content_4ff5f899e59322_26528742($_smarty_tpl) {?><div id="landing">
+<div id="landing">
     <div id="centerAd">Hello Ad</div>
     <h1>Video makes the world go round.</h1>
     <h3>The world's evolved. So has recruiting.</h3>
@@ -75,16 +54,16 @@ $_valid = $_smarty_tpl->decodeProperties(array (
                         <p class="header">Grade</p>
                         <div class="sportSelect">
                             <div class="dropper">
-                                <div class="leftSmall"></div>
-                                <div class="middleSmall middle">
+                                <div class="leftMedium"></div>
+                                <div class="middleMedium middle">
                                     <p class="value">Select</p>
                                     <input type="hidden" name="grade" class="dropVal" value="" />
                                 </div>
-                                <div class="rightSmall"></div>
+                                <div class="rightMedium"></div>
                                 <ul class="potentials">
-                                    <<?php ?>?php for($i = 6; $i < 20; $i++): ?<?php ?>>
-                                        <li><<?php ?>?php echo $i; ?<?php ?>></li>
-                                    <<?php ?>?php endfor; ?<?php ?>>
+                                    <?php for($i = 6; $i < 20; $i++): ?>
+                                        <li><?php echo $i; ?></li>
+                                    <?php endfor; ?>
                                 </ul>
                             </div>
                             <div class="arrowSmall"></div>
@@ -127,16 +106,16 @@ $_valid = $_smarty_tpl->decodeProperties(array (
                         <p class="header">Height</p>
                         <div class="sportSelect">
                             <div class="dropper">
-                                <div class="leftSmall"></div>
-                                <div class="middleSmall middle">
+                                <div class="leftMedium"></div>
+                                <div class="middleMedium middle">
                                     <p class="value">Select</p>
                                     <input type="hidden" name="height" class="dropVal" value="" />
                                 </div>
-                                <div class="rightSmall"></div>
+                                <div class="rightMedium"></div>
                                 <ul class="potentials">
-                                    <<?php ?>?php for($i = 48; $i < 96; $i++): ?<?php ?>>
-                                        <li><<?php ?>?php echo $i; ?<?php ?>>"</li>
-                                    <<?php ?>?php endfor; ?<?php ?>>
+                                    <?php for($i = 48; $i < 96; $i++): ?>
+                                        <li><?php echo $i; ?>"</li>
+                                    <?php endfor; ?>
                                 </ul>
                             </div>
                             <div class="arrowSmall"></div>
@@ -149,4 +128,4 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 </div>
 <div id="ad">
     <h1>Ad</h1>
-</div><?php }} ?>
+</div>

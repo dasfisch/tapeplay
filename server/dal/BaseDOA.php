@@ -53,13 +53,17 @@ class BaseDOA
 	}
 
     protected function _setWhere($filter) {
+        if(empty($filter)) {
+            return;
+        }
+
         $alias = null;
         $where = null;
         $wheres = null;
 
         foreach($filter as $key=>$single) {
             if($key !== 'method') {
-                $wheres[$key] = $single;
+                $wheres[$key] = is_int($single) ? (int)$single : '"'.$single.'"';
             } else {
                 $alias = $single.'.';
             }
@@ -78,5 +82,37 @@ class BaseDOA
         }
 
         return $where;
+    }
+
+    protected function _setLike($filter) {
+        if(empty($filter)) {
+            return;
+        }
+
+        $alias = null;
+        $like = null;
+        $likes = null;
+
+        foreach($filter as $key=>$single) {
+            if($key !== 'method') {
+                $likes[$key] = $single;
+            } else {
+                $alias = $single.'.';
+            }
+        }
+
+        $count = count($likes);
+        if($count > 0) {
+            $i = 0;
+            $like = '';
+
+            foreach($likes as $key=>$single) {
+                $like .= ($i < ($count - 1)) ? $alias.$key.' LIKE "%'.$single.'%" AND ' : $alias.$key.' LIKE "%'.$single.'%"';
+
+                $i++;
+            }
+        }
+
+        return $like;
     }
 }

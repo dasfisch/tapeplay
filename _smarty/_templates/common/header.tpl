@@ -24,12 +24,9 @@
                                 <form name="sportChooser" id="sportChooser" method="post">
                                     <input type="hidden" class="chosenSport" name="chosenSport" id="chosenSport" />
                                     <p id="value">
-                                        {if isset($sport)}
-                                            {$sport}
-                                        {else}
-                                            Women's Baskeyball
-                                        {/if}
+                                        {$sport.name}
                                     </p>
+                                    <div id="arrow"></div>
                                     <ul id="potentials">
                                         {foreach from=$sports item=single}
                                             <li>
@@ -40,20 +37,19 @@
                                     </ul>
                                 </form>
                             </div>
-                            <div id="arrow"></div>
                         </div>
                     </div>
                 </div>
                 <div id="right">
                     <ul id="links">
                         <li>
-                            <a href="{#baseUrl#}/user/signup/">Join<span class="fbSmall"></span></a>
+                            <a href="{#baseUrl#}user/signup/">Join<span class="fbSmall"></span></a>
                         </li>
                         <li>
-                            <a href="{#baseUrl#}/user/login/">Log In</a>
+                            <a href="{#baseUrl#}user/login/">Log In</a>
                         </li>
                         <li>
-                            <a href="{#baseUrl#}/user/upload/" class="infoOpen leftShift">Upload</a>
+                            <a href="{#baseUrl#}user/upload/" class="infoOpen leftShift">Upload</a>
                             <div class="infoBubble">
                                 <div class="topLeft black"></div>
                                 <div class="directionTopRight"></div>
@@ -74,10 +70,10 @@
                             </div>
                         </li>
                         <li>
-                            <a href="{#baseUrl#}/videos/browse/">Browse</a>
+                            <a href="{#baseUrl#}videos/browse/">Browse</a>
                         </li>
                         <li>
-                            <a href="{#baseUrl#}/company/faq/">Help</a>
+                            <a href="{#baseUrl#}company/faq/">Help</a>
                         </li>
                     </ul>
                 </div>

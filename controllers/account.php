@@ -56,7 +56,7 @@ if (isset($route->method))
 				// now display the template based on above selection
 				$smarty->assign("baseURL", $baseURL);
 				$smarty->assign('file', $template);
-				$smarty->display("index.tpl");
+				$smarty->display("home.tpl");
 			}
 
 			break;

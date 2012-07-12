@@ -17,17 +17,41 @@
     require_once("bll/PlayerBLL.php");
     require_once("bll/VideoBLL.php");
 
-    global $controller, $inputFilter, $route, $smarty, $sport, $userBLL;
+    global $controller, $get, $inputFilter, $post, $route, $smarty, $sport, $userBLL;
+
+    $limit = (isset($get['size']) && (int)$get['size'] > 0) ? $get['size'] : 10;
+    $page = (isset($get['page']) && (int)$get['page'] > 0) ? $get['page'] : 1;
+
+    $smarty->assign('currentUrl', $route->getCurrentUrl());
 
     if(isset($route->method)) {
         switch($route->method) {
+            case 'browse':
+                $search = new SearchFilter();
+                $videoBll = new VideoBLL();
+
+                $search->page = $page;
+                $search->limit = 15;
+
+                $search->setWhere('method', $route->class);
+                $search->setWhere('sport_id', (int)$sport['id']);
+
+                $videos = $videoBll->search($search);
+
+                $smarty->assign('page', $page);
+                $smarty->assign('videos', $videos);
+                $smarty->assign('file', 'videos/browse.tpl');
+
+                $smarty->display('home.tpl');
+
+                break;
             case 'notes':
                 /**
                  * Get video based on video_id; needs some validation;
                  * Get Notes based on video_id; needs some validation;
                  */
-                $video = new Video($_GET['id']);
-                $videoNotes = new Notes($_GET['id']);
+                $video = new Video((int)$get['id']);
+                $videoNotes = new Notes((int)$get['id']);
 
                 $smarty->assign('notes', $notes);
                 $smarty->assign('video', $video);
@@ -36,16 +60,15 @@
 
                 break;
             case 'view':
-                $search = new SearchFilter();
-
                 $playerBll = new PlayerBLL();
+                $search = new SearchFilter();
                 $videoBll = new VideoBLL();
 
-                $search->id = $_GET['id'];
-                $search->method = $route->class;
+                $search->setWhere('id', (int)$get['id']);
+                $search->setWhere('method', $route->class);
 
                 $video = $videoBll->search($search);
-                $player = $playerBll->get($video[0]->getUser()->getUserId());
+                $player = $video[0]->getPlayer();
 
                 $videoPlayer = $videoBll->getFullVideoHTML($video[0]->getPandaId());
 
@@ -58,8 +81,8 @@
 
                 $search = new SearchFilter();
 
-                $search->id = $player->getId();
-                $search->method = 'users';
+                $search->setWhere('player_id', $player->getId());
+                $search->setWhere('method', $route->class);
 
                 $videos = $videoBll->search($search);
 
@@ -70,20 +93,25 @@
                 $smarty->assign('videos', $videos);
                 $smarty->assign('file', 'videos/single.tpl');
 
-                $smarty->display('index.tpl');
+                $smarty->display('home.tpl');
 
                 break;
-            default:
+            case 'search':
                 /**
                  * If method isn't set, do a default action;
                  * I think that the best will be a basic view all.
                  */
+                $search = new SearchFilter();
                 $video = new VideoBLL();
 
-                $search = new SearchFilter();
+                if(isset($post['searchVal']) && $post['searchVal'] != '') {
+                    $search->setLike('title', $post['searchVal']);
+                }
 
-                $search->sport_id = $sport;
-                $search->method = 'videos';
+                $search->setWhere('sport_id', (int)$sport['id']);
+                $search->setWhere('method', 'videos');
+                $search->page = $page;
+                $search->limit = $limit;
 
                 $videos = $video->search($search);
 
@@ -91,33 +119,64 @@
         //        var_dump($videos[0]->v);
         //        exit;
 
+                $smarty->assign('page', $page);
+                $smarty->assign('pages', ceil($videos[0]->count / $search->limit));
                 $smarty->assign('videoCount', count($videos));
                 $smarty->assign('videos', $videos);
-                $smarty->assign('file', 'videos/videoBrowse.tpl');
+                $smarty->assign('file', 'videos/videoSearch.tpl');
 
-                $smarty->display('index.tpl');
+                $smarty->display('home.tpl');
+
+                break;
+            default:
+                /**
+                 * If method isn't set, do a default action;
+                 * I think that the best will be a basic view all.
+                 */
+                $search = new SearchFilter();
+                $video = new VideoBLL();
+
+                $search->setWhere('sport_id', (int)$sport);
+                $search->setWhere('method', 'videos');
+
+                $videos = $video->search($search);
+
+        //        echo '<pre>';
+        //        var_dump($videos[0]->v);
+        //        exit;
+
+                $smarty->assign('page', $page);
+                $smarty->assign('pages', ceil(count($videos) / 20));
+                $smarty->assign('videoCount', count($videos));
+                $smarty->assign('videos', $videos);
+                $smarty->assign('file', 'videos/videoSearch.tpl');
+
+                $smarty->display('home.tpl');
+
+                break;
         }
     } else {
         /**
          * If method isn't set, do a default action;
          * I think that the best will be a basic view all.
          */
+        $search = new SearchFilter();
         $video = new VideoBLL();
 
-        $search = new SearchFilter();
+        $search->setWhere('sport_id', (int)$sport['id']);
+        $search->setWhere('method', 'videos');
 
-        $search->sport_id = $sport;
-        $search->method = 'videos';
+        if(isset($post['searchVal']) && $post['searchVal'] != '') {
+            $search->setLike('title', $post['searchVal']);
+        }
 
         $videos = $video->search($search);
 
-//        echo '<pre>';
-//        var_dump($videos[0]->v);
-//        exit;
-
+        $smarty->assign('page', $page);
+        $smarty->assign('pages', ceil(count($videos) / 20));
         $smarty->assign('videoCount', count($videos));
         $smarty->assign('videos', $videos);
-        $smarty->assign('file', 'videos/videoBrowse.tpl');
+        $smarty->assign('file', 'videos/videoSearch.tpl');
 
-        $smarty->display('index.tpl');
+        $smarty->display('home.tpl');
     }

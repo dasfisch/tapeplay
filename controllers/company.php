@@ -26,49 +26,49 @@
             case 'about':
                 $smarty->assign('file', 'company/about.tpl');
 
-                $smarty->display('index.tpl');
+                $smarty->display('home.tpl');
 
                 break;
             case 'advertising':
                 $smarty->assign('file', 'company/advertising.tpl');
 
-                $smarty->display('index.tpl');
+                $smarty->display('home.tpl');
 
                 break;
             case 'advertising':
                 $smarty->assign('file', 'company/advertising.tpl');
 
-                $smarty->display('index.tpl');
+                $smarty->display('home.tpl');
 
                 break;
             case 'faq':
                 $smarty->assign('file', 'company/faq.tpl');
 
-                $smarty->display('index.tpl');
+                $smarty->display('home.tpl');
 
                 break;
             case 'getstarted':
                 $smarty->assign('file', 'company/getstarted.tpl');
 
-                $smarty->display('index.tpl');
+                $smarty->display('home.tpl');
 
                 break;
             case 'guidelines':
                 $smarty->assign('file', 'company/dosandonts.tpl');
 
-                $smarty->display('index.tpl');
+                $smarty->display('home.tpl');
 
                 break;
             case 'share':
                 $smarty->assign('file', 'company/share.tpl');
 
-                $smarty->display('index.tpl');
+                $smarty->display('home.tpl');
 
                 break;
             default:
                 $smarty->assign('file', 'company/about.tpl');
 
-                $smarty->display('index.tpl');
+                $smarty->display('home.tpl');
 
                 break;
         }
