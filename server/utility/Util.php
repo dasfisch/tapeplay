@@ -25,7 +25,7 @@ class Util
 	 *
 	 * @return bool True if email succeeded, false otherwise
 	 */
-	public static function sendEmail($emailType, $to)
+	public static function sendEmail($emailType, $to, $videoId = -1)
 	{
 		global $controller, $sport;
 
@@ -58,6 +58,10 @@ class Util
 		$message = str_replace("{BASE_URL}", $controller->configuration->URLs['baseUrl'], $message);
 		$message = str_replace("{EMAIL_TYPE}", $emailType, $message);
 		$message = str_replace("{SPORT_NAME}", $sport, $message);
+		$message = str_replace("{VIDEO_ID}", $videoId, $message);
+		$message = str_replace("{FULL_YEAR}", date('Y'), $message);
+		$message = str_replace("{COACH_FEE}", $controller->configuration->information['coachFee'], $message);
+		$message = str_replace("{SCOUT_FEE}", $controller->configuration->information['scoutFee'], $message);
 
 		// send email
 		return mail($to, $subject, $message, $headers);
