@@ -19,7 +19,7 @@
             $this->_file = $folder.$file;
 
             if(!file_exists($this->_file)) {
-                Throw new Exception('The file '.$this->file.' does not exist!', 800);
+                Throw new Exception('The file '.$this->_file.' does not exist!', 800);
             }
 
             $values = parse_ini_file($this->_file, $section);
