@@ -1,4 +1,6 @@
 <?php
+    use \Exception;
+
     class Factory {
         private static $_myConf;
         private static $_singletons = array();

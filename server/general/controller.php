@@ -1,7 +1,7 @@
 <?php
     namespace tapeplay\server\general;
 
-    use Exception;
+    use \Exception;
 
     class Controller {
         public $configuration;
