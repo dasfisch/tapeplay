@@ -27,7 +27,9 @@
                         <a href="/about/policy">Privacy Policy</a>
                     </div>
                 </div>
-                <div id="continue">Continue</div>
+                <div id="continue">
+                    <input type="submit" value="Continue" />
+                </div>
             </div>
         </form>
     </div>
