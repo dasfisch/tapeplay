@@ -1,8 +1,8 @@
-CREATE DATABASE  IF NOT EXISTS `dev_tapeplay` /*!40100 DEFAULT CHARACTER SET latin1 */;
-USE `dev_tapeplay`;
+CREATE DATABASE  IF NOT EXISTS `tapeplay` /*!40100 DEFAULT CHARACTER SET latin1 */;
+USE `tapeplay`;
 -- MySQL dump 10.13  Distrib 5.1.40, for Win32 (ia32)
 --
--- Host: localhost    Database: dev_tapeplay
+-- Host: localhost    Database: tapeplay
 -- ------------------------------------------------------
 -- Server version	5.5.8
 
