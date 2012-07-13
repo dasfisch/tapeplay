@@ -10,12 +10,15 @@
                 <div id="pickSport">Pick Sport:</div>
                 <div id="dropper">
                     <div id="values">
-                        <p id="value">Women's Basketball</p>
+                        <p id="value">
+                            {$sports.0->getSportName()}
+                            <input type="hidden" class="sportId" name="chosenSport" value="{$sports.0->getId()}" />
+                        </p>
                         <ul id="potentials">
                             {foreach from=$sports item=single}
                                 <li>
                                     {$single->getSportName()}
-                                    <input type="hidden" class="sportId" value="{$single->getId()}" />
+                                    <input type="hidden" class="sportId" name="chosenSport" value="{$single->getId()}" />
                                 </li>
                             {/foreach}
                         </ul>
@@ -27,9 +30,7 @@
                         <a href="/about/policy">Privacy Policy</a>
                     </div>
                 </div>
-                <div id="continue">
-                    <input type="submit" value="Continue" />
-                </div>
+                <input type="submit" value="Continue" id="continue" />
             </div>
         </form>
     </div>

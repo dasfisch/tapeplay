@@ -134,6 +134,7 @@ a {
 
 #tapeplay #main #sportSelect #continue {
     background-image: url('/media/images/tapePlay_continueButton.jpg');
+    border: none;
     float: left;
     height: 100px;
     text-indent: -9999px;
