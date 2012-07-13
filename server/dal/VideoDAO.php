@@ -128,7 +128,7 @@ class VideoDAO extends BaseDOA
 	 * @param $videoId int The video that was viewed.
 	 * @returns int The number of rows affected (should be 1)
 	 */
-	public function insertView($videoId, $userId=null)
+	public function insertView($videoId, $userId = null)
 	{
 		$this->sql = "INSERT INTO video_views " .
 				"(user_id, video_id)" .
@@ -151,22 +151,23 @@ class VideoDAO extends BaseDOA
 	 * @param $playerId int
 	 * @return int The number of rows affected (should be 1)
 	 */
-		public function linkVideoToPlayer($videoId, $playerId)
-		{
-			$this->sql = "INSERT INTO player_videos" .
-					" (player_id, video_id)" .
-					" VALUES " .
-					" (:playerId, :videoId);";
+	public function linkVideoToPlayer($videoId, $playerId)
+	{
+		$this->sql = "INSERT INTO player_videos" .
+				" (player_id, video_id)" .
+				" VALUES " .
+				" (:playerId, :videoId);";
 
-			$this->prep = $this->dbh->prepare($this->sql);
+        $this->prep = $this->dbh->prepare($this->sql);
+		$this->prep = $this->dbh->prepare($this->sql);
 
-			$this->prep->bindValue(":playerId", $playerId, \PDO::PARAM_INT);
-			$this->prep->bindValue(":videoId", $videoId, \PDO::PARAM_INT);
+		$this->prep->bindValue(":playerId", $playerId, \PDO::PARAM_INT);
+		$this->prep->bindValue(":videoId", $videoId, \PDO::PARAM_INT);
 
-			$this->prep->execute();
+		$this->prep->execute();
 
-			return $this->prep->rowCount();
-		}
+		return $this->prep->rowCount();
+	}
 
 
 	/**
@@ -282,31 +283,33 @@ class VideoDAO extends BaseDOA
 		return $videoList;
 	}
 
-    /**
-     * @param $videoId
-     * @param $userId
-     */
-    public function getOneSavedVideo($videoId, $userId) {
-        try
-      		{
-            $this->sql = "SELECT * FROM video_saves WHERE user_id=:userId AND video_id=:videoId";
+	/**
+	 * @param $videoId
+	 * @param $userId
+	 */
+	public function getOneSavedVideo($videoId, $userId)
+	{
+		try
+		{
+			$this->sql = "SELECT * FROM video_saves WHERE user_id=:userId AND video_id=:videoId";
 
-            $this->prep = $this->dbh->prepare($this->sql);
-            $this->prep->bindValue(":userId", $userId, \PDO::PARAM_INT);
-            $this->prep->bindValue(":videoId", $videoId, \PDO::PARAM_INT);
+			$this->prep = $this->dbh->prepare($this->sql);
+			$this->prep->bindValue(":userId", $userId, \PDO::PARAM_INT);
+			$this->prep->bindValue(":videoId", $videoId, \PDO::PARAM_INT);
 
-            $this->prep->execute();
-        }
-        catch (\PDOException $exception)
-        {
-            \TPErrorHandling::handlePDOException($exception->errorInfo);
-            return null;
-        }
+			$this->prep->execute();
+		}
+		catch (\PDOException $exception)
+		{
+			\TPErrorHandling::handlePDOException($exception->errorInfo);
+			return null;
+		}
 
-        while($row = $this->prep->fetch()) {
-            Throw new Exception('You have already saved this video!');
-        }
-    }
+		while ($row = $this->prep->fetch())
+		{
+			Throw new Exception('You have already saved this video!');
+		}
+	}
 
 	/**
 	 * Retrieves all videos viewed by the requested user.
@@ -335,6 +338,27 @@ class VideoDAO extends BaseDOA
 		}
 
 		return $videoList;
+	}
+
+	public function getUserEmailByPandaId($pandaId)
+	{
+		try
+		{
+			$this->sql = "select u.email from videos v INNER JOIN players p ON v.player_id = p.id INNER JOIN users u ON p.user_id = u.id WHERE v.panda_id = :pandaId";
+			$this->prep = $this->dbh->prepare($this->sql);
+			$this->prep->bindValue(":pandaId", $pandaId, \PDO::PARAM_STR);
+			$this->prep->execute();
+		}
+		catch (\PDOException $exception)
+		{
+			\TPErrorHandling::handlePDOException($exception->errorInfo);
+			return null;
+		}
+
+		$row = $this->prep->fetch();
+
+		// return the email address
+		return $row[0];
 	}
 }
 
