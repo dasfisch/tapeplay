@@ -24,7 +24,7 @@ switch ($event)
 		$email = $videoBLL->getUserEmailByPandaId($videoId);
 
 		// send out the email!
-		Util::sendEmail(EmailEnum::$JOIN, $email);
+		Util::sendEmail(EmailEnum::$VIDEO_PUBLISH, $email, $videoId);
 		break;
 
 	case PandaNotificationTypes::$ENCODING_PROGRESS:

@@ -77,7 +77,7 @@ class PlayerDAO extends BaseDOA
 	function update(Player $player)
 	{
 		$this->sql = "UPDATE players SET " .
-				"number = :number, guardian_signup = :guardian_signup, school_id = :school_id, height = :height, grade_level = :grade_level, video_access = :video_access, user_id = :user_id" .
+				"number = :number, school_id = :school_id, height = :height, grade_level = :grade_level, video_access = :video_access, user_id = :user_id" .
 				" WHERE id = :id";
 		$this->prep = $this->dbh->prepare($this->sql);
 		$this->prep->bindValue(":id", $player->getId(), \PDO::PARAM_INT);
