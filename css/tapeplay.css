@@ -2363,13 +2363,15 @@ a {
 }
 
 .sportSelect .dropper .potentials {
+    background-color: white;
+    border: 1px solid #CCC;
     clear: both;
     display: none;
     font-size: 12px;
+    height: 200px;
+    overflow: auto;
     width: inherit;
     padding: 0px 2px;
-    background-color: white;
-    border: 1px solid #CCC;
 }
 
 .sportSelect .arrowSmall {

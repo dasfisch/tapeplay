@@ -77,30 +77,6 @@
                             </div>
                             <div class="label">Point Guard</div>
                         </div>
-                        <div class="checkbox">
-                            <div class="box">
-                                <div class="checkMark"></div>
-                            </div>
-                            <div class="label">Shooting Guard</div>
-                        </div>
-                        <div class="checkbox">
-                            <div class="box">
-                                <div class="checkMark"></div>
-                            </div>
-                            <div class="label">Small Forward</div>
-                        </div>
-                        <div class="checkbox">
-                            <div class="box">
-                                <div class="checkMark"></div>
-                            </div>
-                            <div class="label">Power Forward</div>
-                        </div>
-                        <div class="checkbox">
-                            <div class="box">
-                                <div class="checkMark"></div>
-                            </div>
-                            <div class="label">Center</div>
-                        </div>
                     </div>
                     <div class="option">
                         <p class="header">Height</p>
@@ -113,9 +89,9 @@
                                 </div>
                                 <div class="rightMedium"></div>
                                 <ul class="potentials">
-                                    <?php for($i = 48; $i < 96; $i++): ?>
-                                        <li><?php echo $i; ?>"</li>
-                                    <?php endfor; ?>
+                                    {section name=i start=48 loop=96 step=1}
+                                        <li>{$smarty.section.i.index}</li>
+                                    {/section}
                                 </ul>
                             </div>
                             <div class="arrowSmall"></div>

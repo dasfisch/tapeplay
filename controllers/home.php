@@ -10,7 +10,7 @@
     
     global $controller, $route, $smarty, $sport;
 
-    if(isset($sport['id']) && (int)$sport['id'] > 0) {
+    if(isset($sport['id']) && $sport['id'] > 0) {
         $smarty->assign('file', 'index/home.tpl');
         $smarty->display('home.tpl');
     } else {

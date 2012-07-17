@@ -42,16 +42,16 @@
 	$user_id = -1;
 
     $limit = 10;
-    $page = (isset($_GET['page']) && $_GET['page'] > 0) ? $_GET['page'] : 1;
+    $page = (isset($get['page']) && $get['page'] > 0) ? $get['page'] : 1;
 
     $search = new SearchFilter();
 
     if(isset($_SESSION['sport'])) {
-        $sport['id'] = $_SESSION['sport'];
+        $sport = $_SESSION['sport'];
     }
 
-    if(isset($_POST['chosenSport']) && !empty($_POST['chosenSport'])) {
-        $sport['id'] = $_SESSION['sport'] = $_POST['chosenSport'];
+    if(isset($post['chosenSport']) && !empty($post['chosenSport'])) {
+        $sport['id'] = $_SESSION['sport']['id'] = intval($post['chosenSport']);
     }
 
 	// setup User BLL
