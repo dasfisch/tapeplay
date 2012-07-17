@@ -291,7 +291,7 @@ if (isset($route->method))
 			// check for the need to process the incoming information
 			if ($posted)
 			{
-				print "here" . $userBLL->getAccountType();
+
 				switch ($userBLL->getAccountType())
 				{
 					case AccountTypeEnum::$COACH:
