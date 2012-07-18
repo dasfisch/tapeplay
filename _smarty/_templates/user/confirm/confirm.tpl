@@ -1,6 +1,6 @@
 <div id="main">
     <h2>Confirmation</h2>
-	<form id="confirmForm" name="confirmForm" action="{$baseUrl}/user/confirm/" method="post">
+	<form id="confirmForm" name="confirmForm" action="{#baseUrl#}user/confirm/" method="post">
     <p class="confirmation">Nice work! An order receipt has been sent to your email address!</p>
     <div id="explore">
         <p>Ready to explore?</p>

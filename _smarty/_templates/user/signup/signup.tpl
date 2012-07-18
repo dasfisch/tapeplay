@@ -1,5 +1,5 @@
 <div id="main">
-	<form id="accountTypeForm" name="accountTypeForm" method="POST" action="{$baseUrl}/user/signup/">
+	<form id="accountTypeForm" name="accountTypeForm" method="POST" action="{#baseUrl#}user/signup/">
 	<h2>Which account is right for you?</h2>
 
 	<div class="tallAccount white">

@@ -5,7 +5,7 @@
         and access to every TapePlay video.
     </p>
     <h3>Annual Fee: $199</h3>
-    <form id="coachForm" name="login" action="{$baseUrl}/user/payment/" method="post">
+    <form id="coachForm" name="login" action="{#baseUrl#}user/payment/" method="post">
         <div class="input">
             <div class="inputField">
                 <div class="left"></div>
