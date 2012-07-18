@@ -25,11 +25,11 @@
         </div>
         <div class="option">
             <div class="checkbox">
-                <input type="hidden" name="" value="" class="checkValue" />
                 <div class="box">
                     <div class="checkMark"></div>
                 </div>
                 <div class="label">Remember me</div>
+                <input type="checkbox" class="hidden" name="remember_me" />
             </div>
             <p class="forgot"><a href="">Forgot your password?</a></p>
         </div>

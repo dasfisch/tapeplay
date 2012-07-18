@@ -57,7 +57,6 @@
 		</li>
 		<li>
 			<div class="option">
-				<input type="hidden" name="level" value="" class="checkValue" />
 				<p class="header">Level</p>
 
 				<div class="checkbox">
@@ -107,7 +106,6 @@
 				<p class="header">Position</p>
 
 				<div class="checkbox">
-					<input type="hidden" name="position" value="" class="checkValue" />
 					<div class="box">
 						<div class="checkMark"></div>
 					</div>

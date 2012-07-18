@@ -20,9 +20,9 @@ class StatsBLL extends BaseBLL
 		$this->dal = new StatsDAO();
 	}
 
-	public function getStats($id)
+	public function getStatsBySport($id)
 	{
-		return $this->dal->getFull($id);
+		return $this->dal->getStatsBySport($id);
 	}
 
     public function getPlayerStats($playerId) {

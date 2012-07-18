@@ -3,7 +3,7 @@
     <h1>Video makes the world go round.</h1>
     <h3>The world's evolved. So has recruiting.</h3>
     <div id="searchForm">
-        <form id="search" action="/search" method="post">
+        <form id="search" action="{#baseUrl#}videos/search/" method="post">
             <div class="inputField">
                 <div class="left"></div>
                 <div class="middle">
@@ -21,11 +21,6 @@
                 </div>
             </div>
 
-            <input type="hidden" name="level" id="level" value="" />
-            <input type="hidden" name="grade" id="grade" value="" />
-            <input type="hidden" name="position" id="position" value="" />
-            <input type="hidden" name="height" id="height" value="" />
-
             <div id="advance">
                 <p class="italic">Add more search criteria</p>
                 <div id="options">
@@ -36,18 +31,21 @@
                                 <div class="checkMark"></div>
                             </div>
                             <div class="label">High School</div>
+                            <input type="checkbox" class="hidden" name="school_level[]" value="high_school" />
                         </div>
                         <div class="checkbox">
                             <div class="box">
                                 <div class="checkMark"></div>
                             </div>
                             <div class="label">College</div>
+                            <input type="checkbox" class="hidden" name="school_level[]" value="college" />
                         </div>
                         <div class="checkbox">
                             <div class="box">
                                 <div class="checkMark"></div>
                             </div>
                             <div class="label">Professional</div>
+                            <input type="checkbox" class="hidden" name="school_level[]" value="professional" />
                         </div>
                     </div>
                     <div class="option">
@@ -61,9 +59,9 @@
                                 </div>
                                 <div class="rightMedium"></div>
                                 <ul class="potentials">
-                                    <?php for($i = 6; $i < 20; $i++): ?>
-                                        <li><?php echo $i; ?></li>
-                                    <?php endfor; ?>
+                                    {section name=i start=6 loop=26 step=1}
+                                        <li>{$smarty.section.i.index}</li>
+                                    {/section}
                                 </ul>
                             </div>
                             <div class="arrowSmall"></div>
@@ -71,12 +69,15 @@
                     </div>
                     <div class="option">
                         <p class="header">Position</p>
-                        <div class="checkbox">
-                            <div class="box">
-                                <div class="checkMark"></div>
+                        {foreach from=$stats item=stat}
+                            <div class="checkbox">
+                                <div class="box">
+                                    <div class="checkMark"></div>
+                                </div>
+                                <div class="label">{$stat->getStatName()}</div>
+                                <input type="checkbox" class="hidden" name="position_id[]" value="{$stat->getId()}" />
                             </div>
-                            <div class="label">Point Guard</div>
-                        </div>
+                        {/foreach}
                     </div>
                     <div class="option">
                         <p class="header">Height</p>

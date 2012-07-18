@@ -17,7 +17,7 @@ class Stat
         $stat->setSport($statistics['name']);
         $stat->setStatName($statistics['stat_name']);
         $stat->setStatValidation($statistics['regex']);
-        $stat->setStatValue($statistics['value']);
+        $stat->setStatValue(isset($statistics['value']) ? $statistics['value']: null);
 
         return $stat;
     }

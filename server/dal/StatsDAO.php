@@ -13,6 +13,37 @@ use tapeplay\server\model\Stat;
  */
 class StatsDAO extends BaseDOA
 {
+    public function getStatsBySport($sportId) {
+        try {
+            if(!is_int($sportId) || $sportId <= 0) {
+                Throw new Exception('This is not a valid sport ID!', 666);
+            }
+
+            $this->sql = 'SELECT
+                                  stats.*, validation.*
+                              FROM
+                                  stats stats
+                              LEFT JOIN
+                                  stat_validations validation
+                                      ON
+                                          validation.id=stats.stat_validation_id
+                              WHERE
+                                  stats.sport_id=:id';
+
+            $this->prep = $this->dbh->prepare($this->sql);
+            $this->prep->bindValue(":id", $sportId, \PDO::PARAM_INT);
+            $this->prep->execute();
+
+            while($value = $this->prep->fetch()) {
+                $stats[] = Stat::create($value);
+            }
+
+            return $stats;
+        } catch(\PDOException $e) {
+            \TPErrorHandling::handlePDOException($e->errorInfo);
+            return null;
+        }
+    }
 
 	/**
 	 * Fetches the sport details

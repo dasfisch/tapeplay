@@ -97,6 +97,10 @@
 
                 break;
             case 'search':
+                echo '<pre>';
+                var_dump($post);
+                exit;
+
                 /**
                  * If method isn't set, do a default action;
                  * I think that the best will be a basic view all.

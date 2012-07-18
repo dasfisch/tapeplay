@@ -40,12 +40,16 @@ jQuery(document).ready(function(){
 
         if(showing == 'false') {
             jQuery(this).children('.box').children('.checkMark').show();
-            jQuery(this).children('.checkValue').val('true');
+//            jQuery(this).children('.checkValue').val('true');
+
+            jQuery(this).children('input').attr('checked', true);
 
             jQuery(this).attr('showing', 'true');
         } else {
             jQuery(this).children('.box').children('.checkMark').hide();
             jQuery(this).children('.checkValue').val('');
+
+            jQuery(this).children('input').attr('checked', false);
 
             jQuery(this).attr('showing', 'false');
         }
