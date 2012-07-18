@@ -13,7 +13,7 @@
 		leagues, etc.
 	</p>
 
-	<form id="uploadForm" name="login" action="{$baseUrl}/user/upload/" method="post">
+	<form id="uploadForm" name="login" action="{#baseUrl#}user/upload/" method="post">
 		<div id="progressMeter" class="panda_upload_progress"></div>
 		<div id="uploadInputs" class="input">
 			<!-- file selector -->

@@ -1,7 +1,7 @@
 <div id="main">
     <h2>Log In</h2>
     <p class="facebookLogin">Have a Facebook account? <span class="facebookConnect"></span></p>
-    <form id="loginForm" name="login" action="{$baseUrl}/user/login/" method="post">
+    <form id="loginForm" name="login" action="{#baseUrl#}user/login/" method="post">
         <div class="input">
             <div class="inputField">
                 <div class="left"></div>

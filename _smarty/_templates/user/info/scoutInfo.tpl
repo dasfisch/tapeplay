@@ -1,7 +1,7 @@
 <div id="main">
     <h2>Organization Information</h2>
     <p class="facebookLogin">Hey there, Scout! So, what organization are you with?</p>
-    <form id="coachForm" name="login" action="{$baseUrl}/user/info/" method="post">
+    <form id="coachForm" name="login" action="{#baseUrl#}user/info/" method="post">
         <div class="input">
             <div class="inputField">
                 <div class="left"></div>
