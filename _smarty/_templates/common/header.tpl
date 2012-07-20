@@ -46,7 +46,7 @@
                             <a href="{#baseUrl#}user/signup/">Join<span class="fbSmall"></span></a>
                         </li>
                         <li>
-                            <a href="{#baseUrl#}user/login/">Log In</a>
+                            <a href="{#baseUrl#}user/{$loginAction}/">{$loginText}</a>
                         </li>
                         <li>
                             <a href="{#baseUrl#}user/upload/" class="infoOpen leftShift">Upload</a>

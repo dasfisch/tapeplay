@@ -40,6 +40,7 @@ class User
 	protected  $_accountType;
 	protected  $_optIns;
 	protected  $_status;
+	protected  $_savedVideos;
 
 
 	public function setAccountType($accountType)
@@ -168,5 +169,15 @@ class User
 	public function getStatus()
 	{
 		return $this->_status;
+	}
+
+	public function setSavedVideos($savedVideos)
+	{
+		$this->_savedVideos = $savedVideos;
+	}
+
+	public function getSavedVideos()
+	{
+		return $this->_savedVideos;
 	}
 }

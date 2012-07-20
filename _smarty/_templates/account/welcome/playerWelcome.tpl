@@ -3,17 +3,18 @@
         <h2>Welcome, Player</h2>
         <div class="accordion">
             <div class="header">
-                <div class="title">Saved Videos (7)</div>
+                <div class="title">Saved Videos ({$savedVideoNumber})</div>
                 <div class="arrow"></div>
             </div>
             <div class="body">
+
+			{foreach $savedVideos as $video}
                 <div class="chunk">
                     <img src="/" class="resultImage" />
                     <div class="info">
-                        <h4>First Last Name</h4>
-                        <p class="position">Chicago, IL</p>
-                        <p class="title">Video Title</p>
-                        <p class="date">April, 2012</p>
+                        <h4>{$video->getFirstName()} {$video->getLastName()}</h4>
+                        <p class="title">{$video->getTitle()}</p>
+                        <p class="date">{$video->getUploadYear()}, {$video->getUploadMonth()}</p>
                     </div>
                     <div class="bigButton orange">
                         <div class="topLeft whiteBg"></div>
@@ -21,64 +22,11 @@
                         <div class="bottomLeft whiteBg"></div>
                         <div class="bottomRight whiteBg"></div>
                         <div class="middle">
-                            <input type="submit" value="Remove" id="remove" class="tiny orange" />
+                            <input type="submit" value="Remove" id="remove" name="remove" class="tiny orange" />
                         </div>
                     </div>
                 </div>
-                <div class="chunk">
-                    <img src="/" class="resultImage" />
-                    <div class="info">
-                        <h4>First Last Name</h4>
-                        <p class="position">Chicago, IL</p>
-                        <p class="title">Video Title</p>
-                        <p class="date">April, 2012</p>
-                    </div>
-                    <div class="bigButton orange">
-                        <div class="topLeft whiteBg"></div>
-                        <div class="topRight whiteBg"></div>
-                        <div class="bottomLeft whiteBg"></div>
-                        <div class="bottomRight whiteBg"></div>
-                        <div class="middle">
-                            <input type="submit" value="Remove" id="remove" class="tiny orange" />
-                        </div>
-                    </div>
-                </div>
-                <div class="chunk">
-                    <img src="/" class="resultImage" />
-                    <div class="info">
-                        <h4>First Last Name</h4>
-                        <p class="position">Chicago, IL</p>
-                        <p class="title">Video Title</p>
-                        <p class="date">April, 2012</p>
-                    </div>
-                    <div class="bigButton orange">
-                        <div class="topLeft whiteBg"></div>
-                        <div class="topRight whiteBg"></div>
-                        <div class="bottomLeft whiteBg"></div>
-                        <div class="bottomRight whiteBg"></div>
-                        <div class="middle">
-                            <input type="submit" value="Remove" id="remove" class="tiny orange" />
-                        </div>
-                    </div>
-                </div>
-                <div class="chunk">
-                    <img src="/" class="resultImage" />
-                    <div class="info">
-                        <h4>First Last Name</h4>
-                        <p class="position">Chicago, IL</p>
-                        <p class="title">Video Title</p>
-                        <p class="date">April, 2012</p>
-                    </div>
-                    <div class="bigButton orange">
-                        <div class="topLeft whiteBg"></div>
-                        <div class="topRight whiteBg"></div>
-                        <div class="bottomLeft whiteBg"></div>
-                        <div class="bottomRight whiteBg"></div>
-                        <div class="middle">
-                            <input type="submit" value="Remove" id="remove" class="tiny orange" />
-                        </div>
-                    </div>
-                </div>
+			{/foreach}
             </div>
         </div>
         <div class="accordion">
@@ -93,11 +41,12 @@
                         <div class="inputField hidden">
                             <div class="left"></div>
                             <div class="middle">
-                                <input type="text" class="standard" id="email" name="email" value="Email Address" />
+                                <input type="text" class="standard" id="firstName" name="firstName" value="{$firstName}" />
+								<input type="text" class="standard" id="lastName" name="lastName" value="{$lastName}" />
                             </div>
                             <div class="right"></div>
                         </div>
-                        <p>Sebastian Frohm</p>
+                        <p>{$firstName} {$lastName}</p>
                     </div>
                     <div class="bigButton orange">
                         <div class="topLeft whiteBg"></div>
@@ -119,11 +68,11 @@
                         <div class="inputField hidden">
                             <div class="left"></div>
                             <div class="middle">
-                                <input type="text" class="standard" id="lastName" name="lastName" value="Sebastian Frohm" />
+                                <input type="text" class="standard" id="email" name="email" value="{$email}" />
                             </div>
                             <div class="right"></div>
                         </div>
-                        <p>Sebastian Frohm</p>
+                        <p>{$email}</p>
                     </div>
                     <div class="bigButton orange">
                         <div class="topLeft whiteBg"></div>
@@ -145,11 +94,11 @@
                         <div class="inputField hidden">
                             <div class="left"></div>
                             <div class="middle">
-                                <input type="password" class="standard" id="password" name="password" value="mypassword" />
+                                <input type="password" class="standard" id="password" name="password" value="" />
                             </div>
                             <div class="right"></div>
                         </div>
-                        <p>Sebastian Frohm</p>
+                        <p>*********</p>
                     </div>
                     <div class="bigButton orange">
                         <div class="topLeft whiteBg"></div>
@@ -167,15 +116,17 @@
                 </div>
                 <div class="chunk">
                     <div class="accountInfo">
-                        <h4>Name</h4>
+                        <h4>Birth Year / Sex / Zip Code</h4>
                         <div class="inputField hidden">
                             <div class="left"></div>
                             <div class="middle">
-                                <input type="text" class="standard" id="lastName" name="lastName" value="Sebastian Frohm" />
+                                <input type="text" class="standard" id="birthYear" name="birthYear" value="{$birthYear}" />
+								<input type="text" class="standard" id="gender" name="gender" value="{$gender}" />
+								<input type="text" class="standard" id="zipcode" name="zipcode" value="{$zipcode}" />
                             </div>
                             <div class="right"></div>
                         </div>
-                        <p>Sebastian Frohm</p>
+                        <p>{$birthYear} / {$gender} / {$zipcode}</p>
                     </div>
                     <div class="bigButton orange">
                         <div class="topLeft whiteBg"></div>
@@ -309,16 +260,16 @@
             <div class="body">
                 <div class="chunk">
                     <p class="check">
-                        <input type="checkbox" name="recommendations" id="recommendations" />
-                        <label for="recommendations">Allow TapePlay to import my Facebook info</label>
+                        <input type="checkbox" name="allowFacebook" id="allowFacebook" />
+                        <label for="allowFacebook">Allow TapePlay to import my Facebook info</label>
                     </p>
                     <p class="check">
-                        <input type="checkbox" name="recommendations" id="recommendations" />
-                        <label for="recommendations">Use my account info for relevant advertising. <a>Why?</a></label>
+                        <input type="checkbox" name="relevantAdvertising" id="relevantAdvertising" />
+                        <label for="relevantAdvertising">Use my account info for relevant advertising. <a>Why?</a></label>
                     </p>
                     <p class="check">
-                        <input type="checkbox" name="recommendations" id="recommendations" />
-                        <label for="recommendations">Send me recommendations about how to use TapePlay</label>
+                        <input type="checkbox" name="sendRecommendations" id="sendRecommendations" />
+                        <label for="sendRecommendations">Send me recommendations about how to use TapePlay</label>
                     </p>
                 </div>
             </div>

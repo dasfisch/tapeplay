@@ -20,9 +20,6 @@ else
 	$posted = false;
 }
 
-// setup form postback url
-$baseURL = $_SERVER['REQUEST_URI'];
-
 if (isset($route->method))
 {
 	switch ($route->method)
@@ -38,7 +35,7 @@ if (isset($route->method))
 				// determine which page to load
 				$template = "user/login/";
 
-				switch ($accountType)
+				switch ($userBLL->getAccountType())
 				{
 					case AccountTypeEnum::$PLAYER:
 						$template = "account/welcome/playerWelcome.tpl";
@@ -54,7 +51,8 @@ if (isset($route->method))
 				}
 
 				// now display the template based on above selection
-				$smarty->assign("baseURL", $baseURL);
+				$smarty->assign("savedVideoNumber", sizeof($userBLL->getUser()->getSavedVideos()));
+				$smarty->assign("user", $user->BLL->getUser());
 				$smarty->assign('file', $template);
 				$smarty->display("home.tpl");
 			}

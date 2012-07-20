@@ -46,9 +46,6 @@ else
 	$posted = false;
 }
 
-// setup form postback url
-$baseURL = $_SERVER['REQUEST_URI'];
-
 // check for method so we can see which page to load
 if (isset($route->method))
 {
@@ -93,7 +90,7 @@ if (isset($route->method))
 
 						default:
 							print "default";
-						Util::setHeader("account/welcome/");
+							Util::setHeader("account/welcome/");
 					}
 
 				}
@@ -119,6 +116,15 @@ if (isset($route->method))
 			}
 			break;
 
+		case UserMethods::$LOGOUT: // http://www.tapeplay.com/user/logout/
+
+			// need to log user out of system
+			$userBLL->setUser(null);
+
+			// redirect to another page (home page)
+			Util::setHeader("user/login/");
+
+			break;
 		case UserMethods::$SIGNUP: // http://www.tapeplay.com/user/signup/
 			if ($posted)
 			{
@@ -329,9 +335,14 @@ if (isset($route->method))
 						{
 							// update status to most recently completed step
 							$userBLL->updateStatus(\AccountStatusEnum::$STEP3);
-
+							print "here";
 							// this is the last step in the player signup process.  send to welcome page
-							Util::setHeader("account/welcome/");
+							//Util::setHeader("account/welcome/");
+						}
+						else
+						{
+							$smarty->assign('file', "user/info/playerInfo.tpl");
+							$smarty->display("home.tpl");
 						}
 						break;
 				}
