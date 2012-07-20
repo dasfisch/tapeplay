@@ -29,7 +29,7 @@ class Player extends User
 		$player->setHash($arr["hash"]);
 		$player->setZipcode($arr["zipcode"]);
 		$player->setGender($arr["gender"]);
-		$player->setAge($arr["birth_year"]);
+		$player->setBirthYear($arr["birth_year"]);
 		$player->setLastLogin($arr["last_login"]);
 		$player->setAccountType($arr["account_type"]);
 		$player->setStatus($arr["status"]);

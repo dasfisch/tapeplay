@@ -52,7 +52,8 @@ if (isset($route->method))
 
 				// now display the template based on above selection
 				$smarty->assign("savedVideoNumber", sizeof($userBLL->getUser()->getSavedVideos()));
-				$smarty->assign("user", $user->BLL->getUser());
+				$smarty->assign("savedVideos", $userBLL->getUser()->getSavedVideos());
+				$smarty->assign("user", $userBLL->getUser());
 				$smarty->assign('file', $template);
 				$smarty->display("home.tpl");
 			}

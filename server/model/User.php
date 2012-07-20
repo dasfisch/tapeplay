@@ -53,9 +53,9 @@ class User
 		return $this->_accountType;
 	}
 
-	public function setBirthYear($birthDate)
+	public function setBirthYear($birthYear)
 	{
-		$this->_birthYear = $birthDate;
+		$this->_birthYear = $birthYear;
 	}
 
 	public function getBirthYear()

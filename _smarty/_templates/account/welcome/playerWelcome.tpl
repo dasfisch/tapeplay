@@ -41,12 +41,12 @@
                         <div class="inputField hidden">
                             <div class="left"></div>
                             <div class="middle">
-                                <input type="text" class="standard" id="firstName" name="firstName" value="{$firstName}" />
-								<input type="text" class="standard" id="lastName" name="lastName" value="{$lastName}" />
+                                <input type="text" class="standard" id="firstName" name="firstName" value="{$user->getFirstName()}" />
+								<input type="text" class="standard" id="lastName" name="lastName" value="{$user->getLastName()}" />
                             </div>
                             <div class="right"></div>
                         </div>
-                        <p>{$firstName} {$lastName}</p>
+                        <p>{$user->getFirstName()} {$user->getLastName()}</p>
                     </div>
                     <div class="bigButton orange">
                         <div class="topLeft whiteBg"></div>
@@ -68,11 +68,11 @@
                         <div class="inputField hidden">
                             <div class="left"></div>
                             <div class="middle">
-                                <input type="text" class="standard" id="email" name="email" value="{$email}" />
+                                <input type="text" class="standard" id="email" name="email" value="{$user->getEmail()}" />
                             </div>
                             <div class="right"></div>
                         </div>
-                        <p>{$email}</p>
+                        <p>{$user->getEmail()}</p>
                     </div>
                     <div class="bigButton orange">
                         <div class="topLeft whiteBg"></div>
@@ -126,7 +126,7 @@
                             </div>
                             <div class="right"></div>
                         </div>
-                        <p>{$birthYear} / {$gender} / {$zipcode}</p>
+                        <p>{$user->getBirthYear()} / {$user->getGender()} / {$user->getZipcode()}</p>
                     </div>
                     <div class="bigButton orange">
                         <div class="topLeft whiteBg"></div>
