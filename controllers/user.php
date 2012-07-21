@@ -421,6 +421,13 @@ if (isset($route->method))
 
 			break;
 
+        case UserMethods::$LOGOUT:
+            $userBLL->logout();
+
+            //redirect user to current page
+
+            break;
+
 		default: // just redirect to login
 			$smarty->assign("file", "user/login/login.tpl");
 			$smarty->display("home.tpl");

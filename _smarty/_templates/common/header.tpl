@@ -42,32 +42,45 @@
                 </div>
                 <div id="right">
                     <ul id="links">
+                        {if isset($user) && !empty($user)}
+                            <li>
+                                <a href="{#baseUrl#}account/welcome/">Profile</a>
+                            </li>
+                            <li>
+                                <a href="{#baseUrl#}user/logout/">Logout</a>
+                            </li>
+                        {else}
+                            <li>
+                                <a href="{#baseUrl#}user/signup/">Join<span class="fbSmall"></span></a>
+                            </li>
+                            <li>
+                                <a href="{#baseUrl#}user/login/">Log In</a>
+                            </li>
+                        {/if}
                         <li>
-                            <a href="{#baseUrl#}user/signup/">Join<span class="fbSmall"></span></a>
-                        </li>
-                        <li>
-                            <a href="{#baseUrl#}user/login/">Log In</a>
-                        </li>
-                        <li>
-                            <a href="{#baseUrl#}user/upload/" class="infoOpen leftShift">Upload</a>
-                            <div class="infoBubble">
-                                <div class="topLeft black"></div>
-                                <div class="directionTopRight"></div>
-                                <div class="middle">
-                                    <p>
-                                        <strong>Players</strong> must be logged into their accounts to
-                                        upload a video. <a>Log in</a>.
-                                        <br /><br />
-                                        Don't have an account yet? <a>Sign up</a>.
-                                        <br /><br />
-                                        <strong>Coaches and Scouts</strong> cannot upload videos. We're
-                                        sure you're very talented, but we're not interested. Sorry.
-                                    </p>
+                            {if isset($user) && !empty($user) && $user->getAccountType() == 1}
+                                <a href="{#baseUrl#}user/upload/" class="infoOpen leftShift">Upload</a>
+                            {else}
+                                <a>Upload</a>
+                                <div class="infoBubble">
+                                    <div class="topLeft black"></div>
+                                    <div class="directionTopRight"></div>
+                                    <div class="middle">
+                                        <p>
+                                            <strong>Players</strong> must be logged into their accounts to
+                                            upload a video. <a>Log in</a>.
+                                            <br /><br />
+                                            Don't have an account yet? <a>Sign up</a>.
+                                            <br /><br />
+                                            <strong>Coaches and Scouts</strong> cannot upload videos. We're
+                                            sure you're very talented, but we're not interested. Sorry.
+                                        </p>
+                                    </div>
+                                    <div class="bottomLeft"></div>
+                                    <div class="bottomRight"></div>
+                                    <div class="direction"></div>
                                 </div>
-                                <div class="bottomLeft"></div>
-                                <div class="bottomRight"></div>
-                                <div class="direction"></div>
-                            </div>
+                            {/if}
                         </li>
                         <li>
                             <a href="{#baseUrl#}videos/browse/">Browse</a>

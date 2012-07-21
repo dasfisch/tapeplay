@@ -37,8 +37,10 @@ if (isset($route->method))
 			{
 				// determine which page to load
 				$template = "user/login/";
-
-				switch ($accountType)
+echo $userBLL->getUser()->getAccountType().' is the account type<pre>';
+                var_dump($userBLL->getUser());
+                exit;
+				switch ($userBLL->getUser()->getAccountType())
 				{
 					case AccountTypeEnum::$PLAYER:
 						$template = "account/welcome/playerWelcome.tpl";

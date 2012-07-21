@@ -75,6 +75,7 @@
         $smarty->assign('sport', $sport);
         $smarty->assign('sports', $sports);
         $smarty->assign('currentSport', $sport);
+        $smarty->assign('user', $userBLL->getUser());
 
         /**
          * ALL MENTIONS OF __CLASS__ MEAN THE CONTROLLER FILE

@@ -31,7 +31,7 @@ a {
 #tapeplay #header #left {
     float: left;
     overflow: hidden;
-    width: 70%;
+    width: 66%;
 }
 
 #tapeplay #header #left h1 {
@@ -111,7 +111,7 @@ a {
 
 #tapeplay #header #right {
     float: left;
-    width: 30%;
+    width: 33%;
 }
 
 #tapeplay #header #right #links {

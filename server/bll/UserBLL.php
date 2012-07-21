@@ -180,6 +180,11 @@ class UserBLL extends BaseBLL
 	public function logout()
 	{
 		// TODO: Implement logout logic
+        unset($_SESSION['user']);
+        session_unset();
+        session_destroy();
+
+        header('location:');
 	}
 
 	/**
