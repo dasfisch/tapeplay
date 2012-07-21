@@ -422,9 +422,7 @@ if (isset($route->method))
 			break;
 
         case UserMethods::$LOGOUT:
-            $userBLL->logout();
 
-            //redirect user to current page
 
             break;
 

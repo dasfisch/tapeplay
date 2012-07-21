@@ -21,9 +21,10 @@ class Coach extends User
 		$coach->setHash($arr["hash"]);
 		$coach->setZipcode($arr["zipcode"]);
 		$coach->setGender($arr["gender"]);
-		$coach->setBirthYear($arr["birth_date"]);
+		$coach->setBirthYear($arr["birth_year"]);
 		$coach->setLastLogin($arr["last_login"]);
 		$coach->setAccountType($arr["account_type"]);
+		$coach->setStatus($arr["status"]);
 
 		// set coach attributes
 		$coach->setSchoolPosition($arr["school_position"]);

@@ -30,6 +30,7 @@ class Player extends User
 		$player->setZipcode($arr["zipcode"]);
 		$player->setGender($arr["gender"]);
 		$player->setAge($arr["birth_year"]);
+//        $player->setBirthYear($arr["birth_year"]);
 		$player->setLastLogin($arr["last_login"]);
 		$player->setAccountType($arr["account_type"]);
 		$player->setStatus($arr["status"]);
@@ -38,7 +39,8 @@ class Player extends User
 		$player->setId($arr["player_id"]);
 		$player->setNumber($arr["number"]);
 		$player->setHeight($arr["height"]);
-		$player->setGradeLevel($arr["grade_level"]);
+        $player->setGradeLevel($arr["grade_level"]);
+        $player->setPlayingLevel($arr["grade_level"]);
 		$player->setVideoAccess($arr["video_access"]);
 		$player->setPosition($arr["position"]);
 		$player->setWeight($arr["weight"]);
@@ -48,17 +50,19 @@ class Player extends User
 
 		// set school
 		$school = new School();
-		$school->setId($arr["school_id"]);
-		$school->setName($arr["name"]);
-		$school->setCity($arr["city"]);
-		$school->setState($arr["state"]);
-		$school->setDivision($arr["division"]);
+		$school->setId($arr["schoolId"]);
+		$school->setName($arr["schoolName"]);
+		$school->setCity($arr["schoolCity"]);
+		$school->setState($arr["schoolState"]);
+		$school->setDivision($arr["schoolDivision"]);
 
 		$player->setSchool($school);
 
 		$sport = new Sport();
-		$sport->setId($arr["id"]);
-		$sport->setSportName($arr["name"]);
+		$sport->setId($arr["sport_id"]);
+		$sport->setSportName($arr["sport_name"]);
+
+        $player->setSport($sport);
 
 		return $player;
 	}
@@ -76,8 +80,9 @@ class Player extends User
 	private $_coachName;
 	private $_graduationMonth;
 	private $_graduationYear;
+    private $_playingLevel;
 
-	function    __construct(User $user = null)
+	function __construct(User $user = null)
 	{
 		$this->setSport(new Sport());
 		$this->setSchool(new School());
@@ -110,6 +115,22 @@ class Player extends User
 	{
 		return $this->_gradeLevel;
 	}
+
+    public function setPlayingLevel($gradeLevel) {
+        if($gradeLevel < 9) {
+            $this->_playingLevel = 'Grade School';
+        } elseif($gradeLevel < 13) {
+            $this->_playingLevel = 'High School';
+        } elseif($gradeLevel < 17) {
+            $this->_playingLevel = 'College';
+        } else {
+            $this->_playingLevel = 'Professional';
+        }
+    }
+
+    public function getPlayingLevel() {
+        return $this->_playingLevel;
+    }
 
 	public function setHeight($height)
 	{

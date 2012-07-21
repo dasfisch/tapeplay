@@ -22,7 +22,9 @@ class Video
         $video->setSaves($arr["saves"]);
         $video->setPrivacy($arr['is_private']);
 
-        $video->setPlayer($player->create($arr));
+        if(isset($arr['first_name'])) {
+            $video->setPlayer($player->create($arr));
+        }
 
         $video->count = $arr['videoCount'];
 

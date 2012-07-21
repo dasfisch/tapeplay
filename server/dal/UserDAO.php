@@ -30,12 +30,29 @@ class UserDAO extends BaseDOA
 	{
 		try
 		{
-			$this->sql = "SELECT u.*, " .
-					" p.id AS player_id, p.number, p.height, p.grade_level, p.video_access, p.position, p.weight, p.coach_name, p.graduation_month, p.graduation_year, " .
-					" s.id AS school_id, s.name as school_name, s.city as school_city, s.state as school_state, s.division AS school_division, " .
-					" sp.id AS sport_id, sp.name AS sport_name " .
-					" FROM users u INNER JOIN players p ON u.id = p.user_id LEFT JOIN schools s ON s.id = p.school_id LEFT JOIN sports sp ON sp.id = p.sport_id " .
-					" WHERE u.id = :id";
+            $this->sql = 'SELECT
+                                u.*,
+                                p.id AS player_id, p.number, p.height, p.grade_level, p.video_access,
+                                p.position, p.weight, p.coach_name, p.graduation_month, p.graduation_year,
+                                s.id AS schoolId, s.name as schoolName, s.city as schoolCity,
+                                s.state as schoolState, s.division AS schoolDivision,
+                                sp.id AS sport_id,
+                                sp.name AS sport_name
+                            FROM
+                                users u
+                            INNER JOIN
+                                players p
+                                    ON
+                                        p.user_id=u.id
+                            LEFT JOIN
+                                schools s
+                                    ON
+                                        p.school_id=s.id
+                            LEFT JOIN
+                                sports sp
+                                    ON
+                                        sp.id = p.sport_id
+                            WHERE u.id = :id';
 
 			$this->prep = $this->dbh->prepare($this->sql);
 			$this->prep->bindValue(":id", $userId, \PDO::PARAM_INT);
@@ -47,7 +64,19 @@ class UserDAO extends BaseDOA
 			return null;
 		}
 
-		return Player::create($this->prep->fetch());
+        return Player::create($this->prep->fetch());
+
+        /**
+         * @TODO: Need to figure out how to have multiple sports;
+         * Logic needs to go for updates.
+         */
+//        while($row = $this->prep->fetch()) {
+//            echo '<pre>';
+//            var_dump($row);
+//            echo '</pre>';
+//        }
+//
+//        exit;
 	}
 
 	public function getCoachUser($userId)

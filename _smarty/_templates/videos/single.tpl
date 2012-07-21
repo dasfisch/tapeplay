@@ -20,7 +20,7 @@
             </ul>
             <ul id="right">
                 <input type="hidden" id="hash" value="{$hash}" />
-                <input type="hidden" id="user-id" value="2" />
+                <input type="hidden" id="user-id" value="{$user->getUserId()}" />
                 <input type="hidden" id="video-id" value="{$video->getId()}" />
                 <li class="link bubble">
                     <a class="infoOpen">Share</a>

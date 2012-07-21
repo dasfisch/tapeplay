@@ -201,8 +201,14 @@ class VideoDAO extends BaseDOA
                                 (SELECT COUNT(*) FROM video_saves WHERE video_id = videos.id) AS saves,
                                 users.*,
                                 players.*,
-                                schools.*,
-                                sports.*
+                                schools.id AS schoolId,
+                                schools.name AS schoolName,
+                                schools.city AS schoolCity,
+                                schools.state AS schoolState,
+                                schools.division AS schoolDivision,
+                                sports.id AS sport_id,
+                                sports.name AS sport_name,
+                                sports.active AS sport_active
                             FROM
                                 videos videos
                             JOIN
@@ -263,7 +269,16 @@ class VideoDAO extends BaseDOA
 	{
 		try
 		{
-			$this->sql = "SELECT * FROM videos v INNER JOIN video_saves vs ON v.id = vs.video_id WHERE vs.user_id = :userId";
+			$this->sql = "SELECT
+			                    videos.id
+                            FROM
+                                videos videos
+                            INNER JOIN
+                                video_saves vs
+                                    ON
+                                        vs.video_id = videos.id
+                            WHERE
+                                vs.user_id = :userId";
 			$this->prep = $this->dbh->prepare($this->sql);
 			$this->prep->bindValue(":userId", $userId, \PDO::PARAM_INT);
 			$this->prep->execute();
@@ -274,11 +289,21 @@ class VideoDAO extends BaseDOA
 			return null;
 		}
 
-		$videoList = array();
-		while ($row = $this->prep->fetch())
-		{
-			array_push($videoList, Video::create($row));
-		}
+        $search = new SearchFilter();
+
+        while($row = $this->prep->fetch()) {
+            $ids[] = (int)$row['id'];
+        }
+
+        $search->setWhere('videos.id', $ids);
+
+        return $this->search($search);
+
+//		$videoList = array();
+//		while ($row = $this->prep->fetch())
+//		{
+//			array_push($videoList, Video::create($row));
+//		}
 
 		return $videoList;
 	}
@@ -361,5 +386,3 @@ class VideoDAO extends BaseDOA
 		return $row[0];
 	}
 }
-
-?>

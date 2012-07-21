@@ -63,7 +63,13 @@ class BaseDOA
 
         foreach($filter as $key=>$single) {
             if($key !== 'method') {
-                $wheres[$key] = is_int($single) ? (int)$single : '"'.$single.'"';
+                if(is_array($single)) {
+                    foreach($single as $singKey=>$sing) {
+                        $wheres[$key][] = is_int($sing) ? (int)$sing : '"'.$sing.'"';
+                    }
+                } else {
+                    $wheres[$key] = is_int($single) ? (int)$single : '"'.$single.'"';
+                }
             } else {
                 $alias = $single.'.';
             }
@@ -75,7 +81,13 @@ class BaseDOA
             $where = ' WHERE ';
 
             foreach($wheres as $key=>$single) {
-                $where .= ($i < ($count - 1)) ? $alias.$key.'='.$single.' AND ' : $alias.$key.'=  '.$single;
+                if(is_array($single)) {
+                    foreach($single as $singKey=>$sing) {
+                        $where .= ($i < ($count - 1)) ? $alias.$key.'='.$sing.' AND ' : $alias.$key.'=  '.$sing;
+                    }
+                } else {
+                    $where .= ($i < ($count - 1)) ? $alias.$key.'='.$single.' AND ' : $alias.$key.'=  '.$single;
+                }
 
                 $i++;
             }

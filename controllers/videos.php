@@ -23,6 +23,7 @@
     $page = (isset($get['page']) && (int)$get['page'] > 0) ? $get['page'] : 1;
 
     $smarty->assign('currentUrl', $route->getCurrentUrl());
+    $smarty->assign('user', $userBLL->getUser());
 
     if(isset($route->method)) {
         switch($route->method) {

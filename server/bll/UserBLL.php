@@ -4,6 +4,7 @@ namespace tapeplay\server\bll;
 
 require_once("dal/UserDAO.php");
 require_once("bll/BaseBLL.php");
+require_once("bll/VideoBLL.php");
 require_once("model/Coach.php");
 require_once("model/Scout.php");
 require_once("model/User.php");
@@ -14,6 +15,7 @@ require_once("enum/AccountStatusEnum.php");
 require_once("utility/Util.php");
 
 use tapeplay\server\dal\UserDAO;
+use tapeplay\server\bll\VideoBLL;
 use tapeplay\server\model\Coach;
 use tapeplay\server\model\Scout;
 use tapeplay\server\model\User;
@@ -57,10 +59,19 @@ class UserBLL extends BaseBLL
 	public function setUser($user)
 	{
 		$this->_user = $user;
-		$this->_accountType = $user->getAccountType();
 
-		// anytime the user is set, update the session
-		$_SESSION["user"] = serialize($user);
+		if ($user)
+		{
+			$this->_accountType = $user->getAccountType();
+
+			// anytime the user is set, update the session
+			$_SESSION["user"] = serialize($user);
+		}
+		else
+		{
+			// user is null - unset session var
+			unset($_SESSION["user"]);
+		}
 	}
 
 	public function getUser()
@@ -82,6 +93,11 @@ class UserBLL extends BaseBLL
 	//////////////////////////////////////////////////////////
 	// Public Methods
 	//////////////////////////////////////////////////////////
+
+	public function isAuthenticated()
+	{
+		return $this->_user != null;
+	}
 
 	public function createHash($username, $password)
 	{
@@ -119,6 +135,11 @@ class UserBLL extends BaseBLL
 			{
 				case \AccountTypeEnum::$PLAYER:
 					$this->setUser($this->dal->getPlayerUser($userId));
+
+					// grab saved videos
+					$videoBLL = new VideoBLL();
+					$this->getUser()->setSavedVideos($videoBLL->getVideoSaves($this->getUser()->getUserId()));
+
 					break;
 
 				case \AccountTypeEnum::$COACH:
@@ -183,8 +204,6 @@ class UserBLL extends BaseBLL
         unset($_SESSION['user']);
         session_unset();
         session_destroy();
-
-        header('location:');
 	}
 
 	/**

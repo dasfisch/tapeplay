@@ -1,7 +1,11 @@
 <?php
+use tapeplay\server\bll\StatsBLL;
+use tapeplay\server\bll\VideoBLL;
 
 require_once ("enum/controllers/AccountMethods.php");
 require_once ("enum/AccountTypeEnum.php");
+require_once("bll/StatsBLL.php");
+require_once("bll/VideoBLL.php");
 
 global $controller, $route, $smarty, $userBLL;
 
@@ -20,9 +24,6 @@ else
 	$posted = false;
 }
 
-// setup form postback url
-$baseURL = $_SERVER['REQUEST_URI'];
-
 if (isset($route->method))
 {
 	switch ($route->method)
@@ -37,10 +38,8 @@ if (isset($route->method))
 			{
 				// determine which page to load
 				$template = "user/login/";
-echo $userBLL->getUser()->getAccountType().' is the account type<pre>';
-                var_dump($userBLL->getUser());
-                exit;
-				switch ($userBLL->getUser()->getAccountType())
+
+				switch ($userBLL->getAccountType())
 				{
 					case AccountTypeEnum::$PLAYER:
 						$template = "account/welcome/playerWelcome.tpl";
@@ -55,9 +54,23 @@ echo $userBLL->getUser()->getAccountType().' is the account type<pre>';
 						break;
 				}
 
+                $user = $userBLL->getUser();
+
+                $videoBll = new VideoBLL();
+                $videos = $videoBll->getVideoSaves($user->getUserId());
+
+                $statsBll = new StatsBLL();
+                $stats = $statsBll->getPlayerStats((int)$user->getId());
+
 				// now display the template based on above selection
-				$smarty->assign("baseURL", $baseURL);
+				$smarty->assign("savedVideoNumber", $videos[0]->count);
+                $smarty->assign("savedVideos", $videos);
+                $smarty->assign("stats", $stats);
+                $smarty->assign("statCount", count($stats));
+                $smarty->assign("modder", ceil(count($stats) / 3));
+				$smarty->assign("user", $user);
 				$smarty->assign('file', $template);
+
 				$smarty->display("home.tpl");
 			}
 

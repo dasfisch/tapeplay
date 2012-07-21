@@ -54,17 +54,18 @@
                                 <a href="{#baseUrl#}user/signup/">Join<span class="fbSmall"></span></a>
                             </li>
                             <li>
-                                <a href="{#baseUrl#}user/login/">Log In</a>
+                                <a href="{#baseUrl#}user/{$loginAction}/">{$loginText}</a>
                             </li>
                         {/if}
                         <li>
                             {if isset($user) && !empty($user) && $user->getAccountType() == 1}
                                 <a href="{#baseUrl#}user/upload/" class="infoOpen leftShift">Upload</a>
                             {else}
-                                <a>Upload</a>
+                                <a class="infoOpen">Upload</a>
                                 <div class="infoBubble">
                                     <div class="topLeft black"></div>
-                                    <div class="directionTopRight"></div>
+                                    <div class="topRight black"></div>
+                                    <div class="directionTopMiddle"></div>
                                     <div class="middle">
                                         <p>
                                             <strong>Players</strong> must be logged into their accounts to

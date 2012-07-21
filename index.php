@@ -75,8 +75,9 @@
         $smarty->assign('sport', $sport);
         $smarty->assign('sports', $sports);
         $smarty->assign('currentSport', $sport);
-        $smarty->assign('user', $userBLL->getUser());
 
+		$smarty->assign('loginText', $userBLL->isAuthenticated() ? "Log out" : "Login");
+		$smarty->assign('loginAction', $userBLL->isAuthenticated() ? "logout" : "login");
         /**
          * ALL MENTIONS OF __CLASS__ MEAN THE CONTROLLER FILE
          *

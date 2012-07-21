@@ -1524,7 +1524,6 @@ a {
 }
 
 #tapeplay #main #accountLeft .accordion .body {
-    height: 400px;
     overflow: auto;
 }
 
@@ -1589,16 +1588,41 @@ a {
 }
 
 #tapeplay #main #accountLeft .accordion .body .chunk .accountInfo p {
-    font-size: 60px;
+    font-size: 16px;
 }
 
 #tapeplay #main #accountLeft .accordion .body .chunk .accountInfo .inputField .middle {
     width: 430px;
 }
 
+#tapeplay #main #accountLeft .accordion .body .chunk .accountInfo #statistics {
+
+}
+
+#tapeplay #main #accountLeft .accordion .body .chunk .accountInfo #statistics li {
+    float: left;
+    margin-right: 30px;
+}
+
+#tapeplay #main #accountLeft .accordion .body .chunk .accountInfo #statistics #stats li .stat {
+    overflow: hidden;
+}
+
+#tapeplay #main #accountLeft .accordion .body .chunk .accountInfo #statistics #stats li .stat p {
+    float: left;
+    font-size: 12px;
+    margin-bottom: 7px;
+}
+
+#tapeplay #main #accountLeft .accordion .body .chunk .accountInfo #statistics #stats li .stat p {
+    float: left;
+    font-size: 12px;
+    margin-bottom: 7px;
+}
+
 #tapeplay #main #accountLeft .accordion .body .chunk .bigButton {
     margin-right: 7px;
-    margin-top: 40px;
+    margin-top: 5px;
 }
 
 #tapeplay #main #accountLeft .accordion .body .chunk .status {
