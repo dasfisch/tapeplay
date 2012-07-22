@@ -135,6 +135,7 @@ a {
     background-image: url('/media/images/facebook-icon.png');
     background-repeat: no-repeat;
     height: 15px;
+    font-size:17px;
     width: 15px;
 }
 
@@ -816,7 +817,7 @@ a {
 }
 
 #tapeplay #main #rightCol {
-    float: left;
+    float: right;
     width: 219px;
 }
 
@@ -875,7 +876,7 @@ a {
 #tapeplay #main h2 {
     color: #e18a07;
     font-size: 48px;
-    margin-bottom: 25px;
+    margin-bottom: 15px;
 }
 
 #tapeplay #main .facebookLogin {
@@ -1045,7 +1046,7 @@ a {
 /* Help Center And About Pages */
 #tapeplay #main #leftCol.helpCenter {
     border: none;
-    width: 700px;
+    width: 670px;
 }
 
 #tapeplay #main #leftCol .help {
@@ -1074,8 +1075,8 @@ a {
 #tapeplay #main #leftCol .getstarted p,
 #tapeplay #main #leftCol.helpCenter p {
     color: #333;
-    font-size: 16px;
-    line-height: 24px;
+    font-size: 18px;
+    line-height: 140%;
     margin-bottom: 30px;
 }
 
