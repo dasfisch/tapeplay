@@ -222,6 +222,7 @@ class UserDAO extends BaseDOA
 		if ($this->prep->rowCount() > 0)
 		{
 			$row = $this->prep->fetch();
+
 			return $row;
 		}
 		else

@@ -32,12 +32,14 @@
                         </div>
                     </div>
                 {else}
-                    <div class="result">
-                        <img src="{#pandaBase#}{$video->getPandaId()}{#pandaImageExt#}" class="resultImage" />
-                        <p class="name">{$video->getPlayer()->getFirstName()} {$video->getPlayer()->getLastName()}</p>
-                        <p>{$video->getPlayer()->getPosition()}, {$video->getPlayer()->getHeight()}"</p>
-                        <p>{$video->getUploadDate()|date_format:"%B %Y"}</p>
-                    </div>
+                    <a href="{#baseUrl#}videos/view/{$video->getId()}/">
+                        <div class="result">
+                            <img src="{#pandaBase#}{$video->getPandaId()}{#pandaImageExt#}" class="resultImage" />
+                            <p class="name">{$video->getPlayer()->getFirstName()} {$video->getPlayer()->getLastName()}</p>
+                            <p>{$video->getPlayer()->getPosition()}, {$video->getPlayer()->getHeight()}"</p>
+                            <p>{$video->getUploadDate()|date_format:"%B %Y"}</p>
+                        </div>
+                    </a>
                 {/if}
             {/foreach}
         {else}

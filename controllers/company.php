@@ -65,6 +65,12 @@
                 $smarty->display('home.tpl');
 
                 break;
+            case 'help':
+                $smarty->assign('file', 'company/helpcenter.tpl');
+
+                $smarty->display('home.tpl');
+
+                break;
             default:
                 $smarty->assign('file', 'company/about.tpl');
 

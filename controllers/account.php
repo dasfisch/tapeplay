@@ -26,6 +26,10 @@ else
 	$posted = false;
 }
 
+if(!$userBLL->getUser()) {
+    header('Location:'.$controller->configuration->URLs['baseUrl'].'user/login/');
+}
+
 if (isset($route->method))
 {
 	switch ($route->method)

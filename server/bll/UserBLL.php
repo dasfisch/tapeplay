@@ -65,6 +65,8 @@ class UserBLL extends BaseBLL
 			$this->_accountType = $user->getAccountType();
 
 			// anytime the user is set, update the session
+            unset($_SESSION['user']);
+
 			$_SESSION["user"] = serialize($user);
 		}
 		else

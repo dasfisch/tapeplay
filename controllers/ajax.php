@@ -1,7 +1,9 @@
 <?php
+    use tapeplay\server\bll\PlayerBLL;
     use tapeplay\server\bll\SchoolBLL;
     use tapeplay\server\bll\VideoBLL;
 
+    require_once("bll/PlayerBLL.php");
     require_once("bll/SchoolBLL.php");
     require_once("bll/VideoBLL.php");
 
@@ -50,12 +52,18 @@
                     $user = $userBLL->getUser();
                     $user->getSchool()->setId($post['value']);
 
-                    echo '<pre>';
-                    var_dump($user);
-                    exit;
+                    $playerBll = new PlayerBLL();
+                    $result = $playerBll->update($user);
+                    if($result === true) {
+                        $userBLL->setUser($user);
+
+                        echo 200;
+                    } else {
+                        echo 600;
+                    }
                 } else {
-                    echo '<pre>';
-                    var_dump($post);
+                    echo 'not in here';
+                    echo 600;
                 }
 
                 break;

@@ -2628,12 +2628,20 @@ a {
     poorly named; for some reason disappears when
     class is called ad300x250; something in chrome?
 */
+.ad_200x200 {
+    background-color: #000;
+    float: left;
+    height: 200px;
+    width: 200px;
+}
+
 .ad250x250 {
     background-color: #000;
     float: left;
     height: 250px;
     width: 300px;
 }
+
 .ad_300x250 {
 	background-color: #000;
     float: left;
@@ -2673,6 +2681,7 @@ a {
 
 .error {
     color: #f00;
+    display: none;
     float: left;
     font-size: 14px;
     font-weight: bold;

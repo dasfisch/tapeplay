@@ -87,7 +87,7 @@
                             <a href="{#baseUrl#}videos/browse/">Browse</a>
                         </li>
                         <li>
-                            <a href="{#baseUrl#}company/faq/">Help</a>
+                            <a href="{#baseUrl#}company/help/">Help</a>
                         </li>
                     </ul>
                 </div>

@@ -97,19 +97,37 @@ jQuery(document).ready(function(){
         p.toggleClass('hidden');
 
         if(inputField.hasClass('hidden')) {
+            var schoolId = _this.siblings('.accountInfo').children('.inputField').children('.middle').children('.passer').val();
+            var schoolName = _this.siblings('.accountInfo').children('.inputField').children('.middle').children('#schoolSearchInput').val();
+
             jQuery.post(
                 '/ajax/profileupdate/',
                 {
                     hash: jQuery('#hash').val(),
                     member: _this.attr('id'),
-                    value: _this.siblings('.accountInfo').children('.inputField').children('.middle').children('.passer').val()
+                    value: schoolId
                 },
                 function(data) {
+                    console.log(data)
+                    if(data == 200) {
+                        _this.siblings('.accountInfo').children('p').html(schoolName);
 
+                        _this.parents('.chunk').children('.bigButton').children('.middle').children('.edit').html('Edit');
+
+                        _this.parents('.chunk').children('.status').removeClass('hidden');
+
+                        setTimeout(
+                            function() {
+                                _this.parents('.chunk').children('.status').fadeOut();
+                            },
+                            2000
+                        );
+                    } else {
+
+                    }
                 }
             );
 
-            jQuery(this).parents('.chunk').children('.bigButton').children('.middle').children('.edit').html('Edit');
 //            jQuery(this).parents('.chunk').children('.bigButton').removeClass('formEdit');
         } else {
             jQuery(this).parents('.chunk').children('.bigButton').children('.middle').children('.edit').html('Done');

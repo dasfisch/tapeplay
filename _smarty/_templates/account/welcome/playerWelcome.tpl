@@ -95,8 +95,8 @@
                             <span class="edit">Edit</span>
                         </div>
                     </div>
-                    <div class="status">
-                        <div class="greenCheckMark hidden"></div>
+                    <div class="status hidden">
+                        <div class="greenCheckMark"></div>
                         <!--<span>Success!</span>-->
                     </div>
                 </div>
@@ -121,8 +121,8 @@
                             <span class="edit">Edit</span>
                         </div>
                     </div>
-                    <div class="status">
-                        <div class="greenCheckMark hidden"></div>
+                    <div class="status hidden">
+                        <div class="greenCheckMark"></div>
                         <!--<span>Success!</span>-->
                     </div>
                 </div>
@@ -147,8 +147,8 @@
                             <span class="deactivate">Edit</span>
                         </div>
                     </div>
-                    <div class="status">
-                        <div class="greenCheckMark hidden"></div>
+                    <div class="status hidden">
+                        <div class="greenCheckMark"></div>
                         <!--<span>Success!</span>-->
                     </div>
                 </div>
@@ -229,8 +229,8 @@
                             <span class="edit">Edit</span>
                         </div>
                     </div>
-                    <div class="status">
-                        <div class="greenCheckMark hidden"></div>
+                    <div class="status hidden">
+                        <div class="greenCheckMark"></div>
                         <!--<span>Success!</span>-->
                     </div>
                 </div>
@@ -255,8 +255,8 @@
                             <span class="edit">Edit</span>
                         </div>
                     </div>
-                    <div class="status">
-                        <div class="greenCheckMark hidden"></div>
+                    <div class="status hidden">
+                        <div class="greenCheckMark"></div>
                         <!--<span>Success!</span>-->
                     </div>
                 </div>
@@ -282,8 +282,8 @@
                             <span class="edit">Edit</span>
                         </div>
                     </div>
-                    <div class="status">
-                        <div class="greenCheckMark hidden"></div>
+                    <div class="status hidden">
+                        <div class="greenCheckMark"></div>
                         <!--<span>Success!</span>-->
                     </div>
                 </div>
@@ -308,8 +308,8 @@
                             <span class="edit">Edit</span>
                         </div>
                     </div>
-                    <div class="status">
-                        <div class="greenCheckMark hidden"></div>
+                    <div class="status hidden">
+                        <div class="greenCheckMark"></div>
                         <!--<span>Success!</span>-->
                     </div>
                 </div>
@@ -360,8 +360,8 @@
                             <span class="edit">Edit</span>
                         </div>
                     </div>
-                    <div class="status">
-                        <div class="greenCheckMark hidden"></div>
+                    <div class="status hidden">
+                        <div class="greenCheckMark"></div>
                         <!--<span>Success!</span>-->
                     </div>
                 </div>

@@ -7,6 +7,6 @@
     <div class="shareImg xanga"></div>
     <div class="shareImg bebo"></div>
 </div>
-<div class="ad_300x250">
+<div class="ad_200x200">
     advertisement
 </div>
