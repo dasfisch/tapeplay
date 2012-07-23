@@ -39,7 +39,12 @@ if (isset($route->method))
 			else
 			{
 				// determine which page to load
-				$template = "user/login/";
+				$template = "user/login";
+
+                /**
+                 * @TODO: On user creation, player does not get created due to lack of sport;
+                 * make column null true.
+                 */
 
 				switch ($userBLL->getAccountType())
 				{
@@ -56,17 +61,20 @@ if (isset($route->method))
 						break;
 				}
 
+//                echo $template;exit;
+
                 $user = $userBLL->getUser();
 
                 $videoBll = new VideoBLL();
                 $videos = $videoBll->getVideoSaves($user->getUserId());
+                $videoCount = (isset($videos[0]->count) && (int)$videos[0]->count > 0) ? (int)$videos[0]->count : 0;
 
                 $statsBll = new StatsBLL();
                 $stats = $statsBll->getPlayerStats((int)$user->getId());
 
 				// now display the template based on above selection
                 $smarty->assign('hash', $inputFilter->createHash());
-				$smarty->assign("savedVideoNumber", $videos[0]->count);
+				$smarty->assign("savedVideoNumber", $videoCount);
                 $smarty->assign("savedVideos", $videos);
                 $smarty->assign("stats", $stats);
                 $smarty->assign("statCount", count($stats));
