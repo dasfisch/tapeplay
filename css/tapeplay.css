@@ -9,6 +9,10 @@ a {
     text-decoration: none;
 }
 
+.clear {
+	clear:both;
+}
+
 /* Intro Page */
 #tapeplay {
     font-family: arial, sans-serif;
@@ -887,7 +891,7 @@ a {
 }
 
 #tapeplay #main .input {
-    margin-bottom: 15px;
+    margin-bottom: 40px;
     overflow: hidden;
     width: 100%;
 }
@@ -920,9 +924,25 @@ a {
 #tapeplay #main #coachForm .option.zip .error {
     color: #f00;
     float: left;
-    font-size: 18px;
+    font-size: 16px;
+    font-weight:normal;
     padding-top: 10px;
     width: 250px;
+}
+
+#tapeplay #main .input .error a,
+#tapeplay #main .input .error a:visited {
+	color: #f00;
+}
+
+#tapeplay #main .input .error .asterisk {
+	font-size:36px;
+	font-weight:bold;
+	line-height:12px;
+}
+
+.forgot {
+	margin-top:1em;
 }
 
 #tapeplay #main .input .asterisk,
