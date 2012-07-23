@@ -86,6 +86,8 @@ jQuery(document).ready(function(){
 //    }).next().hide();
 
     jQuery('.formEdit').click(function() {
+        var _this = jQuery(this);
+
         var inputField = jQuery(this).siblings('.accountInfo').children('.inputField');
         var dropDown = jQuery(this).siblings('.accountInfo').children('.sportSelect');
         var p = jQuery(this).siblings('.accountInfo').children('p')
@@ -95,16 +97,18 @@ jQuery(document).ready(function(){
         p.toggleClass('hidden');
 
         if(inputField.hasClass('hidden')) {
-//            jQuery.post(
-//                '/ajax/profileupdate',
-//                {
-//                    member: jQuery(this).attr('id'),
-//                    value: jQuery(this).siblings('.accountInfo')
-//                },
-//                function() {
-//
-//                }
-//            );
+            jQuery.post(
+                '/ajax/profileupdate/',
+                {
+                    hash: jQuery('#hash').val(),
+                    member: _this.attr('id'),
+                    value: _this.siblings('.accountInfo').children('.inputField').children('.middle').children('.passer').val()
+                },
+                function(data) {
+
+                }
+            );
+
             jQuery(this).parents('.chunk').children('.bigButton').children('.middle').children('.edit').html('Edit');
 //            jQuery(this).parents('.chunk').children('.bigButton').removeClass('formEdit');
         } else {
@@ -254,7 +258,7 @@ jQuery(document).ready(function(){
         select: function(event, ui) {
 
             jQuery(this).html(ui.item.label);
-            jQuery('#newSchool').val(ui.item.id);
+            jQuery(this).siblings('.passer').val(ui.item.id);
         }
     });
 });

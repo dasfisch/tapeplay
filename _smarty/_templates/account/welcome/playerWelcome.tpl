@@ -267,7 +267,7 @@
                             <div class="left"></div>
                             <div class="middle">
                                 <input type="text" class="standard small" id="schoolSearchInput" name="schoolSearchInput" value="{$user->getSchool()->getName()}" />
-                                <input type="hidden" id="newSchool" value="" />
+                                <input type="hidden" class="passer" value="" />
                             </div>
                             <div class="right"></div>
                         </div>

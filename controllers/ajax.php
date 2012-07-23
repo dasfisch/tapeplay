@@ -45,6 +45,20 @@
                 }
 
                 break;
+            case 'profileupdate':
+                if(isset($post['value']) && (int)$post['value'] > 0) {
+                    $user = $userBLL->getUser();
+                    $user->getSchool()->setId($post['value']);
+
+                    echo '<pre>';
+                    var_dump($user);
+                    exit;
+                } else {
+                    echo '<pre>';
+                    var_dump($post);
+                }
+
+                break;
         }
     } else {
         echo 'redirect '.$get['hash'];
