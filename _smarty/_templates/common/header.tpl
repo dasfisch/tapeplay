@@ -54,7 +54,7 @@
                                 <a href="{#baseUrl#}user/signup/">Join<span class="fbSmall"></span></a>
                             </li>
                             <li>
-                                <a href="{#baseUrl#}user/{$loginAction}/">{$loginText}</a>
+                                <a href="{#baseUrl#}user/login/">Login</a>
                             </li>
                         {/if}
                         <li>
