@@ -7,7 +7,7 @@
                 <p class="date">{$video->getRecordedMonth()} / {$video->getRecordedYear()}</p>
             </div>
             <div id="right">
-                <p>Back to search results</p>
+                <a href="{#baseUrl#}videos/search/">Back to search results</a>
             </div>
         </div>
         <!--<div id="player">{$videoPlayer}</div>-->
@@ -20,7 +20,7 @@
             </ul>
             <ul id="right">
                 <input type="hidden" id="hash" value="{$hash}" />
-                <input type="hidden" id="user-id" value="{$user->getUserId()}" />
+                <input type="hidden" id="user-id" value="{$userId}" />
                 <input type="hidden" id="video-id" value="{$video->getId()}" />
                 <li class="link bubble">
                     <a class="infoOpen">Share</a>
@@ -44,28 +44,48 @@
                     </div>
                 </li>
                 <li class="link">
-                    <a id="save">Save</a>
-                    <div class="infoBubble">
-                        <div class="directionTopMiddle"></div>
-                        <div class="topLeft"></div>
-                        <div class="topRight"></div>
-                        <div class="middle">
-                            <p><span class="bold">Success!</span> This video has beens saved to your account.</p>
+                    {if isset($user) && !empty($user)}
+                        <a id="save">Save</a>
+                        <div class="infoBubble">
+                            <div class="directionTopMiddle"></div>
+                            <div class="topLeft"></div>
+                            <div class="topRight"></div>
+                            <div class="middle">
+                                <p><span class="bold">Success!</span> This video has beens saved to your account.</p>
+                            </div>
+                            <div class="bottomLeft"></div>
+                            <div class="bottomRight"></div>
                         </div>
-                        <div class="bottomLeft"></div>
-                        <div class="bottomRight"></div>
-                    </div>
+                    {else}
+                        <a class="infoOpen">Save</a>
+                        <div class="infoBubble">
+                            <div class="directionTopMiddle"></div>
+                            <div class="topLeft"></div>
+                            <div class="topRight"></div>
+                            <div class="middle">
+                                <p>
+                                    <span class="bold">We're sorry.</span> Only account holders can save videos.</p>
+                                </p>
+                                <p>Please <a href="{#baseUrl#}user/join/">join</a>  or <a href="{#baseUrl#}user/login/">log in</a> now.</p>
+                            </div>
+                            <div class="bottomLeft"></div>
+                            <div class="bottomRight"></div>
+                        </div>
+                    {/if}
                 </li>
                 <li class="link last">
-                    <a id="report">Report Video</a>
+                    <a class="infoOpen">Report Video</a>
                     <div class="infoBubble">
                         <div class="directionTopMiddle"></div>
                         <div class="topLeft"></div>
                         <div class="topRight"></div>
                         <div class="middle">
-                            <p>There is supposed to be a bunch of <a>text</a> in here!</p>
+                            <p>
+                                Should we review this video to determine if it's appropriate?<Br/>
+                                <a id="report">Yes</a> or <a class="close">No</a>
+                            </p>
                         </div>
-                        <div class="bottomLeft black"></div>
+                        <div class="bottomLeft"></div>
                         <div class="bottomRight"></div>
                     </div>
                 </li>

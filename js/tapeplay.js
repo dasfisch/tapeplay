@@ -154,8 +154,10 @@ jQuery(document).ready(function(){
         function() {
             var _this = jQuery(this);
 
-            jQuery(document).click(function() {
-                _this.next('.infoBubble').fadeOut();
+            jQuery(document).click(function(event) {
+                if(jQuery(event.target).parents('.infoBubble').length <= 0) {
+                    _this.next('.infoBubble').fadeOut();
+                }
             });
         }
     );
@@ -240,9 +242,38 @@ jQuery(document).ready(function(){
 
                 setTimeout(function(){
                     _this.siblings('.infoBubble').fadeOut();
-                }, 1500);
+                }, 3000);
             }
         );
+    });
+
+    jQuery('#report').click(function() {
+        var _this = jQuery(this);
+
+        jQuery.post(
+            '/ajax/report/',
+            {
+                hash: jQuery('#hash').val(),
+                video: jQuery('#video-id').val()
+            },
+            function(data) {
+                var text = '';
+
+                console.log(_this.parents('.infoBubble').siblings('.infoOpen'))
+
+                text = data;
+
+                _this.parents('.infoBubble').children('.middle').children('p').html(text);
+
+                setTimeout(function(){
+                    _this.parents('.infoBubble').fadeOut();
+                }, 3000);
+            }
+        );
+    });
+
+    jQuery('.close').click(function() {
+        jQuery('.infoBubble').fadeOut();
     });
 
     jQuery('#schoolSearchInput').autocomplete({

@@ -23,6 +23,9 @@
                         $videoBll->checkForPreviousSave($videoId, $userId);
 
                         $result = $videoBll->insertSave((int)$videoId, (int)$userId);
+                        if(isset($result)) {
+                            echo 'This video was saved to your <a href="'.$controller->configuration->URLs['baseUrl'].'account/welcome/">profile</a>!';
+                        }
                     } catch(Exception $e) {
                         echo $e->getMessage();
                     }
@@ -31,6 +34,27 @@
                 exit;
 
                 default;
+            case 'report':
+                if(isset($post['video'])) {
+                    $to = $controller->configuration->errorReporting['reportEmail'];
+
+                    $subject = 'Someone reported an issue!';
+
+                    $body = 'Someone reported <a href="'.$controller->configuration->URLs['baseUrl'].'videos/view/'.$post['video'].'">this video</a>!
+                                Please verify it violates our privacy policy, and, if it does, please contact our administrators to remove it!"';
+
+                    $headers = "Content-type: text/html\r\n";
+
+                    if (mail($to, $subject, $body, $headers)) {
+                        echo '<p>Thanks. We will review this video and determine if it is inappropriate for this site.</p>';
+                    } else {
+                        echo '<p>There was an error! Please try again!</p>';
+                    }
+                } else {
+                    echo 'I don\'t know what you are trying to do, but you shouldn\'t be doing it!';
+                }
+
+                break;
             case 'schools':
                 if(isset($post['schoolName'])) {
                     $schoolBLL = new SchoolBLL();

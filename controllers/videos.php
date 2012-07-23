@@ -22,8 +22,13 @@
     $limit = (isset($get['size']) && (int)$get['size'] > 0) ? $get['size'] : 10;
     $page = (isset($get['page']) && (int)$get['page'] > 0) ? $get['page'] : 1;
 
+    $user = $userBLL->getUser();
+    $user = isset($user) ? $user : null;
+    $userId = isset($user) ? $user->getUserId() : null;
+
     $smarty->assign('currentUrl', $route->getCurrentUrl());
-    $smarty->assign('user', $userBLL->getUser());
+    $smarty->assign('user', $user);
+    $smarty->assign('userId', $userId);
 
     if(isset($route->method)) {
         switch($route->method) {
