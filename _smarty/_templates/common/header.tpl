@@ -69,9 +69,9 @@
                                     <div class="middle">
                                         <p>
                                             <strong>Players</strong> must be logged into their accounts to
-                                            upload a video. <a>Log in</a>.
+                                            upload a video. <a href="{#baseUrl#}user/login/">Log in</a>.
                                             <br /><br />
-                                            Don't have an account yet? <a>Sign up</a>.
+                                            Don't have an account yet? <a href="{#baseUrl#}user/signup/">Sign up</a>.
                                             <br /><br />
                                             <strong>Coaches and Scouts</strong> cannot upload videos. We're
                                             sure you're very talented, but we're not interested. Sorry.
