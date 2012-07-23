@@ -304,7 +304,7 @@ a {
 
 #tapeplay #landing #leftCol {
     margin-right: 3%;
-    margin-bottom: 15px;s
+    margin-bottom: 40px;
     overflow: hidden;
     padding-right: 3%;
     width: 640px;
@@ -433,6 +433,7 @@ a {
     cursor: pointer;
     display: block;
     font-size: 15px;
+    font-weight:bold;
     height: 9px;
     margin-right: 3px;
     width: 9px;
@@ -892,7 +893,7 @@ a {
 }
 
 #tapeplay #main .input {
-    margin-bottom: 40px;
+    margin-bottom: 20px;
     overflow: hidden;
     width: 100%;
 }
@@ -922,7 +923,8 @@ a {
 }
 
 #tapeplay #main .input .error,
-#tapeplay #main #coachForm .option.zip .error {
+#tapeplay #main #coachForm .option.zip .error,
+#tapeplay #main #coachForm .option .error {
     color: #f00;
     float: left;
     font-size: 16px;
@@ -936,12 +938,22 @@ a {
 	color: #f00;
 }
 
-#tapeplay #main .input .error .asterisk {
+#tapeplay #main .input .error .asterisk,
+#tapeplay #main #coachForm .option .error .asterisk {
 	font-size:36px;
 	font-weight:bold;
-	line-height:12px;
+	line-height:10px;
 }
 
+/*#tapeplay #main #coachForm .option.check .error {
+	padding:0;
+}*/
+#tapeplay #main #coachForm .option.check .error .asterisk {
+	display:inline-block;
+	height:10px;
+	padding-top:10px;
+	line-height:5px;
+}
 .forgot {
 	margin-top:1em;
 }
@@ -1306,12 +1318,12 @@ a {
 }
 
 #tapeplay #main #coachForm .option .error {
-    color: red;
+/*    color: red;
     float: left;
     font-size: 14px;
     font-weight: bold;
     padding-top: 10px;
-    width: 300px;
+    width: 300px;*/
 }
 
 #tapeplay #main #coachForm .option.check .error {
@@ -1882,6 +1894,10 @@ a {
 
 #tapeplay #main #uploadForm .input.lessPadding {
     margin-bottom: 15px;
+}
+
+#tapeplay #main #uploadForm .input.lessPadding p {
+	padding-bottom:10px;
 }
 
 #tapeplay #main #uploadForm .input.lessPadding p {
@@ -2618,6 +2634,12 @@ a {
     height: 250px;
     width: 300px;
 }
+.ad_300x250 {
+	background-color: #000;
+    float: left;
+    height: 250px;
+    width: 300px;
+}
 
 /* Checkmarks */
 .greenCheckMark {
@@ -2640,7 +2662,7 @@ a {
 
 /* Spacing */
 .lower {
-    padding-left: 9px;
+    padding-left: 21px;
 }
 
 /* Message */
