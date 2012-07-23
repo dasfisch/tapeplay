@@ -1092,6 +1092,11 @@ a {
     margin-bottom: 30px;
 }
 
+#leftCol.helpCenter li {
+	line-height:1em;
+	padding:4px 0px;
+}
+
 #tapeplay #main #leftCol .advertising .header,
 #tapeplay #main #leftCol .dosanddonts .header {
     color: #333;
@@ -1102,6 +1107,7 @@ a {
 
 #tapeplay #main #leftCol.helpCenter #answers .header {
     font-size: 30px;
+    line-height:1em;
 }
 
 #tapeplay #main #leftCol.helpCenter #questions {
@@ -2382,8 +2388,8 @@ a {
     border: none;
     color: #888;
     font-family: arial, sans-serif;
-    font-size: 12px;
-    height: 21px;
+    font-size: 14px;
+    height: 30px;
     padding: 0px 10px;
     width: 100%;
 }
