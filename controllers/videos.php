@@ -86,7 +86,7 @@
                 $videos = $videoBll->search($search);
 
                 $statsBll = new StatsBLL();
-                $stats = $statsBll->getPlayerStats($player->getId(), (int)$user->getSport()->getSportId());
+                $stats = $statsBll->getPlayerStats($player->getId(), (int)$player->getSport()->getId());
 
                 $modder = (ceil(count($stats) / 3) > 1) ? ceil(count($stats) / 3) : 2;
 
