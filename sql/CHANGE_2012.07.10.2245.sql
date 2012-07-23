@@ -2,17 +2,17 @@ SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL';
 
-ALTER TABLE `tapeplay`.`players` CHANGE COLUMN `graduation_year` `graduation_year` SMALLINT(5) UNSIGNED NULL DEFAULT NULL  ;
+ALTER TABLE `dev_tapeplay`.`players` CHANGE COLUMN `graduation_year` `graduation_year` SMALLINT(5) UNSIGNED NULL DEFAULT NULL  ;
 
-ALTER TABLE `tapeplay`.`player_stats` 
+ALTER TABLE `dev_tapeplay`.`player_stats` 
 DROP PRIMARY KEY 
 , ADD PRIMARY KEY (`player_id`, `stat_id`) ;
 
-ALTER TABLE `tapeplay`.`user_opt_ins` 
+ALTER TABLE `dev_tapeplay`.`user_opt_ins` 
 DROP PRIMARY KEY 
 , ADD PRIMARY KEY (`opt_in_id`, `user_id`) ;
 
-ALTER TABLE `tapeplay`.`user_sports` 
+ALTER TABLE `dev_tapeplay`.`user_sports` 
 DROP PRIMARY KEY 
 , ADD PRIMARY KEY (`user_id`, `sport_id`) ;
 

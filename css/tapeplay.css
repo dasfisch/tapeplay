@@ -9,6 +9,10 @@ a {
     text-decoration: none;
 }
 
+.clear {
+	clear:both;
+}
+
 /* Intro Page */
 #tapeplay {
     font-family: arial, sans-serif;
@@ -135,6 +139,7 @@ a {
     background-image: url('/media/images/facebook-icon.png');
     background-repeat: no-repeat;
     height: 15px;
+    font-size:17px;
     width: 15px;
 }
 
@@ -817,7 +822,7 @@ a {
 }
 
 #tapeplay #main #rightCol {
-    float: left;
+    float: right;
     width: 219px;
 }
 
@@ -876,7 +881,8 @@ a {
 #tapeplay #main h2 {
     color: #e18a07;
     font-size: 48px;
-    margin-bottom: 25px;
+    font-weight:bold;
+    margin-bottom: 15px;
 }
 
 #tapeplay #main .facebookLogin {
@@ -886,7 +892,7 @@ a {
 }
 
 #tapeplay #main .input {
-    margin-bottom: 15px;
+    margin-bottom: 40px;
     overflow: hidden;
     width: 100%;
 }
@@ -919,9 +925,25 @@ a {
 #tapeplay #main #coachForm .option.zip .error {
     color: #f00;
     float: left;
-    font-size: 18px;
+    font-size: 16px;
+    font-weight:normal;
     padding-top: 10px;
     width: 250px;
+}
+
+#tapeplay #main .input .error a,
+#tapeplay #main .input .error a:visited {
+	color: #f00;
+}
+
+#tapeplay #main .input .error .asterisk {
+	font-size:36px;
+	font-weight:bold;
+	line-height:12px;
+}
+
+.forgot {
+	margin-top:1em;
 }
 
 #tapeplay #main .input .asterisk,
@@ -1046,7 +1068,7 @@ a {
 /* Help Center And About Pages */
 #tapeplay #main #leftCol.helpCenter {
     border: none;
-    width: 700px;
+    width: 670px;
 }
 
 #tapeplay #main #leftCol .help {
@@ -1075,8 +1097,8 @@ a {
 #tapeplay #main #leftCol .getstarted p,
 #tapeplay #main #leftCol.helpCenter p {
     color: #333;
-    font-size: 16px;
-    line-height: 24px;
+    font-size: 18px;
+    line-height: 140%;
     margin-bottom: 30px;
 }
 
@@ -1091,6 +1113,11 @@ a {
     margin-bottom: 30px;
 }
 
+#leftCol.helpCenter li {
+	line-height:1em;
+	padding:4px 0px;
+}
+
 #tapeplay #main #leftCol .advertising .header,
 #tapeplay #main #leftCol .dosanddonts .header {
     color: #333;
@@ -1101,6 +1128,7 @@ a {
 
 #tapeplay #main #leftCol.helpCenter #answers .header {
     font-size: 30px;
+    line-height:1em;
 }
 
 #tapeplay #main #leftCol.helpCenter #questions {
@@ -1589,7 +1617,7 @@ a {
 }
 
 #tapeplay #main #accountLeft .accordion .body .chunk .accountInfo p {
-    font-size: 16px;
+    font-size: 15px;
 }
 
 #tapeplay #main #accountLeft .accordion .body .chunk .accountInfo .inputField .middle {
@@ -2394,8 +2422,8 @@ a {
     border: none;
     color: #888;
     font-family: arial, sans-serif;
-    font-size: 12px;
-    height: 21px;
+    font-size: 14px;
+    height: 30px;
     padding: 0px 10px;
     width: 100%;
 }

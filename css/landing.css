@@ -7,6 +7,8 @@ a {
 
 }
 
+
+.clear {clear:both;}
 /* Intro Page: */
 #tapeplay {
     width: 960px;
@@ -89,10 +91,11 @@ a {
     display: none;
     float: left;
     height: 300px;
-    overflow: auto;
+    overflow-y: auto;
+    overflow-x: hidden;
     position: relative;
     width: 450px;
-    z-index: 1000;
+    z-index: 10000;
 }
 
 #tapeplay #main #sportSelect #dropper #values #potentials li {
@@ -150,13 +153,16 @@ a {
 #tapeplay #footer.landing {
     background-image: url('/media/images/tapePlay_footerBackground.gif');
     background-repeat: repeat-x;
+    background-position:0px bottom;
     bottom: 0px;
     color: #fff;
-    overflow: hidden;
-    padding: 15px;
     position: absolute;
     width: 100%;
     z-index: 1000;
+}
+
+#footer .wrapper {
+	padding:15px;
 }
 
 #tapeplay #footer.landing .col {
