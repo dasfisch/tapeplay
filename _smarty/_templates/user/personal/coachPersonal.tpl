@@ -10,8 +10,8 @@
                 </div>
                 <div class="right"></div>
             </div>
-            <p class="asterisk error">*</p>
             <p class="error">
+            <span class="asterisk">*</span>
                 Enter your first name here.
                 <br />
                 Do not use numbers.

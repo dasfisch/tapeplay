@@ -922,7 +922,8 @@ a {
 }
 
 #tapeplay #main .input .error,
-#tapeplay #main #coachForm .option.zip .error {
+#tapeplay #main #coachForm .option.zip .error,
+#tapeplay #main #coachForm .option .error {
     color: #f00;
     float: left;
     font-size: 16px;
@@ -936,12 +937,22 @@ a {
 	color: #f00;
 }
 
-#tapeplay #main .input .error .asterisk {
+#tapeplay #main .input .error .asterisk,
+#tapeplay #main #coachForm .option .error .asterisk {
 	font-size:36px;
 	font-weight:bold;
-	line-height:12px;
+	line-height:10px;
 }
 
+/*#tapeplay #main #coachForm .option.check .error {
+	padding:0;
+}*/
+#tapeplay #main #coachForm .option.check .error .asterisk {
+	display:inline-block;
+	height:10px;
+	padding-top:10px;
+	line-height:5px;
+}
 .forgot {
 	margin-top:1em;
 }
@@ -1306,12 +1317,12 @@ a {
 }
 
 #tapeplay #main #coachForm .option .error {
-    color: red;
+/*    color: red;
     float: left;
     font-size: 14px;
     font-weight: bold;
     padding-top: 10px;
-    width: 300px;
+    width: 300px;*/
 }
 
 #tapeplay #main #coachForm .option.check .error {
@@ -2640,7 +2651,7 @@ a {
 
 /* Spacing */
 .lower {
-    padding-left: 9px;
+    padding-left: 21px;
 }
 
 /* Message */

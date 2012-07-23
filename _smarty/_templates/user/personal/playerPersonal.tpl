@@ -6,14 +6,14 @@
             <div class="inputField">
                 <div class="left"></div>
                 <div class="middle">
-                    <input type="text" class="standard" id="firstName" name="firstName" value="First Name" />
+                    <input type="text" class="standard" id="firstName" name="firstName" value="First & Last Name" />
                 </div>
                 <div class="right"></div>
             </div>
-            <p class="error">* Enter your first name here.</p>
+            <p class="error"><span class="asterisk">*</span> Enter your first and last name here.</p>
             <p class="error lower">Do not use numbers.</p>
         </div>
-        <div class="input">
+        <!--<div class="input">
             <div class="inputField">
                 <div class="left"></div>
                 <div class="middle">
@@ -21,30 +21,10 @@
                 </div>
                 <div class="right"></div>
             </div>
-            <p class="error">* Enter your last name here.</p>
+            <p class="error"><span class="asterisk">*</span> Enter your last name here.</p>
             <p class="error lower">Do not use numbers.</p>
-        </div>
+        </div>-->
         <div class="input">
-            <div class="inputField">
-                <div class="left"></div>
-                <div class="middle">
-                    <input type="text" class="standard" id="password" name="password" value="Password" />
-                </div>
-                <div class="right"></div>
-            </div>
-            <p class="error">* Your password must be at least 6 characters.</p>
-        </div>
-        <div class="input">
-            <div class="inputField">
-                <div class="left"></div>
-                <div class="middle">
-                    <input type="text" class="standard" id="passwordConfirm" name="passwordConfirm" value="Confirm Password" />
-                </div>
-                <div class="right"></div>
-            </div>
-            <p class="error">* Passwords do not match!</p>
-        </div>
-        <div class="input last">
             <div class="inputField">
                 <div class="left"></div>
                 <div class="middle">
@@ -52,8 +32,29 @@
                 </div>
                 <div class="right"></div>
             </div>
-            <p class="error"></p>
+            <p class="error"><span class="asterisk">*</span> Enter valid email address.</p>
+            <p class="error lower">Example: abc@generic.com</p>
         </div>
+        <div class="input">
+            <div class="inputField">
+                <div class="left"></div>
+                <div class="middle">
+                    <input type="text" class="standard" id="password" name="password" value="Password (at least six characters)" />
+                </div>
+                <div class="right"></div>
+            </div>
+            <p class="error"><span class="asterisk">*</span> Your password must be at least 6 characters.</p>
+        </div>
+<!--        <div class="input">
+            <div class="inputField">
+                <div class="left"></div>
+                <div class="middle">
+                    <input type="text" class="standard" id="passwordConfirm" name="passwordConfirm" value="Confirm Password" />
+                </div>
+                <div class="right"></div>
+            </div>
+            <p class="error"><span class="asterisk">*</span> Passwords do not match!</p>
+        </div> -->
         <div class="option dropdown">
             <div class="sportSelect">
                 <div class="dropper">
@@ -95,8 +96,9 @@
                 </div>
                 <div class="right"></div>
             </div>
-            <p class="error">* Enter your last name here.</p><Br/>
-            <p class="error lower">Do not use numbers.</p>
+            <p class="error"><span class="asterisk">*</span> Enter birth year.</p><Br/>
+            <p class="error lower">Enter sex.</p>
+            <p class="error lower">Enter valid 5&ndash;digit zip code.
         </div>
         <div class="option check">
             <div class="checkbox">
@@ -105,13 +107,11 @@
                 </div>
 
                 <div class="label">
-                    I agree to the <a>Terms and Condition</a> and <a>Privacy Policy</a>
+                   I agree to the <a>Terms and Condition</a> and <a>Privacy Policy</a>
                 </div>
             </div>
-            <p class="error">
-                * We appreciate your interest, however, in order to use our site, you must
-                be 13 years of age or older.
-            </p>
+            <p class="error">* Please agree with our Terms of Use.</p>
+            
         </div>
         <div class="option check">
             <div class="checkbox">
@@ -122,7 +122,10 @@
                     By checking this box, I certify I am at least 13 years of age or older.
                 </div>
             </div>
-            <p class="error">* Please agree with our Terms of Use.</p>
+            <p class="error">
+               * We appreciate your interest, however, in order to use our site, you must
+	                be 13 years of age or older.
+	        </p>
         </div>
         <div class="bigButton black">
             <div class="topLeft whiteBg"></div>
