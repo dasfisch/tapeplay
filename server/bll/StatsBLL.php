@@ -25,7 +25,7 @@ class StatsBLL extends BaseBLL
 		return $this->dal->getStatsBySport($id);
 	}
 
-    public function getPlayerStats($playerId) {
-        return $this->dal->getStatsByPlayer($playerId);
+    public function getPlayerStats($playerId, $sport) {
+        return $this->dal->getStatsByPlayer($playerId, $sport);
     }
 }

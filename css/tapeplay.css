@@ -849,6 +849,7 @@ a {
 
 #tapeplay #main #rightCol #copy .inputFieldSmall .middle .standard {
     color: #e18a07;
+    height: 20px;
     padding: 0px;
     width: 100%;
 }
@@ -1038,13 +1039,13 @@ a {
     float: left;
     margin: 0px 50px 50px 0px;
     position: relative;
-    width: 125;
+    width: 125px;
 }
 
 #tapeplay #main #results .result .resultImage {
     height: 95px;
     margin-bottom: 7px;
-    position: relative;
+    position: absolute;
     width: 125px;
     z-index: 1;
 }
@@ -2536,12 +2537,13 @@ a {
     background-image: url('/media/images/thumb-lock.png');
     background-position: center;
     background-repeat: no-repeat;
+    border: 0;
     filter: alpha(opacity=80); /* For IE8 and earlier */
     height: 95px;
     opacity: 0.8;
     position: relative;
     width: 125px;
-    z-index: 1000;
+    z-index: 1000 !important;
 }
 
 .opaque {

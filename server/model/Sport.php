@@ -47,4 +47,8 @@ class Sport
 	{
 		return $this->active;
 	}
+
+    public function __isset($name) {
+        return isset($this->$name);
+    }
 }

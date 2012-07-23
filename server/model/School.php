@@ -82,4 +82,8 @@ class School
 
         return $json;
     }
+
+    public function __isset($name) {
+        return isset($this->$name);
+    }
 }

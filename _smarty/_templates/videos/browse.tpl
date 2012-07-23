@@ -9,7 +9,8 @@
                 {if $video->getPrivacy() == true}
                     <div class="result">
                         <a class="infoOpen">
-                            <img src="{#pandaBase#}{$video->getPandaId()}{#pandaImageExt#}" class="resultImage locked" />
+                            <img src="{#pandaBase#}{$video->getPandaId()}{#pandaImageExt#}" class="resultImage" />
+                            <img class="locked" />
                             <p class="name">{$video->getPlayer()->getFirstName()} {$video->getPlayer()->getLastName()}</p>
                             <p>{$video->getPlayer()->getPosition()}, {$video->getPlayer()->getHeight()}"</p>
                             <p>{$video->getUploadDate()|date_format:"%B %Y"}</p>

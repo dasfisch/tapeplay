@@ -38,8 +38,10 @@ class Player extends User
 		// set player attributes
 		$player->setId($arr["player_id"]);
 		$player->setNumber($arr["number"]);
-		$player->setHeight($arr["height"]);
+        $player->setConvertedHeight($arr["height"]);
+        $player->setHeight($arr["height"]);
         $player->setGradeLevel($arr["grade_level"]);
+        $player->setOrdinalGradeLevel($arr["grade_level"]);
         $player->setPlayingLevel($arr["grade_level"]);
 		$player->setVideoAccess($arr["video_access"]);
 		$player->setPosition($arr["position"]);
@@ -71,6 +73,8 @@ class Player extends User
 	private $_number;
 	private $_position;
 	private $_gradeLevel;
+    private $_ordGradeLevel;
+    private $_convertedHeight;
 	private $_height;
 	private $_videoAccess;
 	private $_sport;
@@ -116,6 +120,16 @@ class Player extends User
 		return $this->_gradeLevel;
 	}
 
+    public function setOrdinalGradeLevel($gradeLevel)
+   	{
+   		$this->_ordGradeLevel = $gradeLevel. gmdate("S", (((abs($gradeLevel) + 9) % 10) + ((abs($gradeLevel / 10) % 10) == 1) * 10) * 86400);
+   	}
+
+   	public function getOrdinalGradeLevel()
+   	{
+   		return $this->_ordGradeLevel;
+   	}
+
     public function setPlayingLevel($gradeLevel) {
         if($gradeLevel < 9) {
             $this->_playingLevel = 'Grade School';
@@ -132,15 +146,30 @@ class Player extends User
         return $this->_playingLevel;
     }
 
-	public function setHeight($height)
-	{
-		$this->_height = $height;
-	}
+    public function setHeight($height)
+   	{
+   		$this->_height = $height;
+   	}
 
-	public function getHeight()
-	{
-		return $this->_height;
-	}
+   	public function getHeight()
+   	{
+   		return $this->_height;
+   	}
+
+    public function setConvertedHeight($height)
+   	{
+        $feet = $height % 12;
+        $inches = $height - ($feet * 12);
+
+        $final = $feet.'\' '.$inches.'"';
+
+        $this->_convertedHeight = $final;
+   	}
+
+   	public function getConvertedHeight()
+   	{
+   		return $this->_convertedHeight;
+   	}
 
 	public function setId($id)
 	{
@@ -251,4 +280,8 @@ class Player extends User
 	{
 		return $this->_graduationYear;
 	}
+
+    public function __isset($name) {
+        return isset($this->$name);
+    }
 }

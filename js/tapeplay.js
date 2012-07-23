@@ -306,9 +306,17 @@ jQuery(document).ready(function(){
         },
         select: function(event, ui) {
 
-            jQuery(this).html(ui.item.label);
+            jQuery(this).html(ui.appitem.label);
             jQuery(this).siblings('.passer').val(ui.item.id);
         }
+    });
+
+    jQuery('.addAnother').click(function() {
+        var _this = jQuery(this).siblings('.copy').first();
+
+        console.log(_this);
+
+        _this.after(_this.clone());
     });
 });
 

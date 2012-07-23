@@ -1,11 +1,4 @@
 <?php
-/**
- * Created by JetBrains PhpStorm.
- * User: dasfisch
- * Date: 5/15/12
- * Time: 4:26 PM
- * To change this template use File | Settings | File Templates.
- */
     //all include, globals (not opposed to not using globals)
 
     use tapeplay\server\bll\PlayerBLL;
@@ -93,7 +86,7 @@
                 $videos = $videoBll->search($search);
 
                 $statsBll = new StatsBLL();
-                $stats = $statsBll->getPlayerStats($player->getId());
+                $stats = $statsBll->getPlayerStats($player->getId(), (int)$user->getSport()->getSportId());
 
                 $modder = (ceil(count($stats) / 3) > 1) ? ceil(count($stats) / 3) : 2;
 
@@ -140,6 +133,85 @@
                 $smarty->assign('file', 'videos/videoSearch.tpl');
 
                 $smarty->display('home.tpl');
+
+                break;
+            case 'email':
+                if(isset($get['id']) && (int)$get['id'] > 0) {
+                    $message = '';
+
+                    $search = new SearchFilter();
+                    $videoBll = new VideoBLL();
+
+                    $search->setWhere('id', $get['id']);
+                    $search->setWhere('method', 'videos');
+
+                    $video = $videoBll->search($search);
+
+                    if(isset($post) && isset($post['hash']) && $inputFilter->validateHash($post['hash'])) {
+                        $failed = array();
+                        $sent = array();
+
+                        $statsBll = new StatsBLL();
+                        $stats = $statsBll->getPlayerStats((int)$video[0]->getPlayer()->getUserId(), (int)$video[0]->getPlayer()->getSport()->getId());
+
+                        $modder = (ceil(count($stats) / 3) > 1) ? ceil(count($stats) / 3) : 2;
+
+//                        echo '<pre>';
+//                        var_dump($video[0]);
+//                        exit;
+
+                        /**
+                         * generate email template
+                         */
+
+                        $headers = 'MIME-Version: 1.0' . "\r\n";
+                        $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
+                        $headers .= "From: TapePlay Admin <digital-no-reply@tapeplay.com>\r\n";
+
+                        $subject = 'The Next Big Thing';
+
+                        $smarty->assign('from', $post['from']);
+                        $smarty->assign("modder", $modder);
+                        $smarty->assign("statCount", count($stats));
+                        $smarty->assign('stats', $stats);
+                        $smarty->assign('video', $video[0]);
+
+                        $body = $smarty->fetch('emails/video.tpl', false);
+
+                        foreach($post['email'] as $key=>$email) {
+                            if(in_array($email, $sent)){
+                                continue;
+                            }
+
+                            if(mail($email, $subject, $body, $headers)) {
+                                $sent[] = $email;
+                            } else {
+                                $failed[] = $email;
+                            }
+                        }
+
+                        if(count($failed) == 0) {
+                            $message = '<h3 class="success">Success! Everyone got the email!</h3>';
+                        } else {
+                            $message = '<h3 class="error">The following email addresses did not receive the email:</h3><ul>';
+
+                            foreach($failed as $key=>$fail) {
+                                $message .= '<li>'.$fail.'</li>';
+                            }
+
+                            $message .= '</ul>';
+                        }
+                    }
+
+                    $smarty->assign('file', 'videos/emailvideo.tpl');
+                    $smarty->assign('hash', $inputFilter->createHash());
+                    $smarty->assign('message', $message);
+                    $smarty->assign('video', $video[0]);
+
+                    $smarty->display('home.tpl');
+                } else {
+                    header('Location:'.$controller->configuration->URLs['baseUrl'].'videos/browse/');
+                }
 
                 break;
             default:

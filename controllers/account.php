@@ -74,7 +74,7 @@ if (isset($route->method))
                 $videoCount = (isset($videos[0]->count) && (int)$videos[0]->count > 0) ? (int)$videos[0]->count : 0;
 
                 $statsBll = new StatsBLL();
-                $stats = $statsBll->getPlayerStats((int)$user->getId());
+                $stats = $statsBll->getPlayerStats((int)$user->getId(), (int)$user->getSport()->getSportId());
 
 				// now display the template based on above selection
                 $smarty->assign('hash', $inputFilter->createHash());

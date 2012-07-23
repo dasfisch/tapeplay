@@ -21,9 +21,10 @@ class PlayerBLL extends BaseBLL
 	public function get($id)
 	{
         $statsBLL = new StatsBLL();
-        $stats = $statsBLL->getPlayerStats($id);
 
-		$player = $this->dal->get($id);
+        $player = $this->dal->get($id);
+
+        $stats = $statsBLL->getPlayerStats($id, (int)$player->getSport()->getSportId());
 
         $player->setStats((array)$stats);
 

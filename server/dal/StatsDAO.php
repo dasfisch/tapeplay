@@ -49,7 +49,7 @@ class StatsDAO extends BaseDOA
 	 * Fetches the sport details
 	 * @param $id The id of the sport
 	 */
-	function getStatsByPlayer($playerId)
+	function getStatsByPlayer($playerId, $sportId)
 	{
         try
         {
@@ -72,10 +72,13 @@ class StatsDAO extends BaseDOA
                                     ON
                                         stat_val.id=stats.stat_validation_id
                             WHERE
-                                ps.player_id=:id';
+                                ps.player_id=:id
+                            AND
+                                sports.id=:sport_id';
 
             $this->prep = $this->dbh->prepare($this->sql);
             $this->prep->bindValue(":id", $playerId, \PDO::PARAM_INT);
+            $this->prep->bindValue(":sport_id", $sportId, \PDO::PARAM_INT);
             $this->prep->execute();
 
             while($value = $this->prep->fetch()) {
