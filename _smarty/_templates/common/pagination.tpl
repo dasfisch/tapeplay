@@ -13,5 +13,8 @@
             <li><a href="{$currentUrl}?page={$pages}">...</a></li>
         {/if}
     </ul>
-    <a href="{$currentUrl}?page={$pages}">&raquo;</a>
+    <div class="previous">
+        <a href="{$currentUrl}?page={$pages}">&raquo;</a>
+    </div>
+    
 </div>
