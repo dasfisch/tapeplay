@@ -1045,7 +1045,7 @@ a {
 #tapeplay #main #results .result .resultImage {
     height: 95px;
     margin-bottom: 7px;
-    position: absolute;
+    position: relative;
     width: 125px;
     z-index: 1;
 }
