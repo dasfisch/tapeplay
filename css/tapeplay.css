@@ -1897,6 +1897,10 @@ a {
 }
 
 #tapeplay #main #uploadForm .input.lessPadding p {
+	padding-bottom:10px;
+}
+
+#tapeplay #main #uploadForm .input.lessPadding p {
     margin-bottom: 10px;
 }
 

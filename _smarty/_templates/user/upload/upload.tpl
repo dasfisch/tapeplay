@@ -2,15 +2,11 @@
 	<h2>Video File Upload</h2>
 
 	<p class="uploadNote">
-		<span class="bold">For professional recruits</span>, upload highlight tapes,
-		game footage, and so on. Whatever makes you look good.
+		Upload highlight tapes, game footage, and so on. Stay away from backyard footage–street games, summer leagues, etc. See what <a href="#">makes a good video</a>.
 	</p>
 
 	<p class="uploadNote last">
-		<span class="bold">For college recruits</span>, you have to adhere to the NCAA
-		rules. That means you must only upload videos of regularly scheduled (regular
-		season) game footage. Stay away from backyard footage - street games, summer
-		leagues, etc.
+		<span class="bold">For college recruits</span>, you should adhere to the NCAA rules. That means only footage from regular season games–competition and highlight tapes, but no skills tapes.
 	</p>
 
 	<form id="uploadForm" name="login" action="{#baseUrl#}user/upload/" method="post">
@@ -129,7 +125,7 @@
 			<div class="bottomLeft whiteBg"></div>
 			<div class="bottomRight whiteBg"></div>
 			<div class="middle">
-				<input type="submit" value="Upload" id="submitButton" name="submitButton" class="large black"
+				<input type="submit" value="Continue" id="submitButton" name="submitButton" class="large black"
 					   disabled="disabled"/>
 			</div>
 		</div>
