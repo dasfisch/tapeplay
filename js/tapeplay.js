@@ -235,7 +235,7 @@ jQuery(document).ready(function(){
                     response( jQuery.map( eval(data), function( item ) {
                         return {
                             label: item.name,
-                            value: item.id
+                            id: item.id
                         }
                     }));
 
@@ -252,9 +252,9 @@ jQuery(document).ready(function(){
             );
         },
         select: function(event, ui) {
-            console.log(event);
-            jQuery('#schoolSearchInput').html(ui.item.label);
-            jQuery('#newSchool').val(ui.item.value);
+
+            jQuery(this).html(ui.item.label);
+            jQuery('#newSchool').val(ui.item.id);
         }
     });
 });

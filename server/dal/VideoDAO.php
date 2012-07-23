@@ -295,17 +295,19 @@ class VideoDAO extends BaseDOA
             $ids[] = (int)$row['id'];
         }
 
-        $search->setWhere('videos.id', $ids);
+        if(isset($ids) && count($ids) > 0) {
+            $search->setWhere('videos.id', $ids);
 
-        return $this->search($search);
+            return $this->search($search);
+        }
 
 //		$videoList = array();
 //		while ($row = $this->prep->fetch())
 //		{
 //			array_push($videoList, Video::create($row));
 //		}
-
-		return $videoList;
+//
+//		return $videoList;
 	}
 
 	/**

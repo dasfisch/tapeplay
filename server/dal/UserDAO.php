@@ -148,7 +148,6 @@ class UserDAO extends BaseDOA
 			$this->prep->bindValue(":accountType", $user->getAccountType(), \PDO::PARAM_INT);
 
 			$this->prep->execute();
-
 		}
 		catch (\PDOException $exception)
 		{
