@@ -19,9 +19,10 @@ class SchoolDAO extends BaseDOA
 	public function getSchoolsByName($partial)
 	{
 
-		$this->sql = "SELECT TOP 10 * FROM schools WHERE name LIKE '%:partial%'";
+		$this->sql = "SELECT * FROM schools WHERE name LIKE :partial LIMIT 0,10";
+
 		$this->prep = $this->dbh->prepare($this->sql);
-		$this->prep->bindValue(":partial", $partial, \PDO::PARAM_STR);
+		$this->prep->bindValue(":partial", '%'.$partial.'%', \PDO::PARAM_STR);
 
 		$this->prep->execute();
 

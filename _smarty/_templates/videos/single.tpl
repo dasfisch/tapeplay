@@ -87,62 +87,68 @@
                     </div>
                 </div>
                 <div id="bottom">
-                    {assign var=i value=0}
-                    {foreach from=$player->getStats() item=stat}
-                        {if $i % 4 == 0}
-                            <ul class="stats">
+                    <ul class="stats">
+                        {if isset($stats) && count($stats) > 0}
+                            {assign var=i value=0}
+                            {foreach from=$stats item=stat}
+                                {if $i % $modder == 0 || $i == 0 || $i == ($statCount - 1)}
+                                    <li>
+                                {/if}
+                                        {$stat->getStatName()}: {$stat->getStatValue()}
+                                {if ($i%$modder == 4 && $i > $modder)}
+                                    </li>
+                                {/if}
+                                {$i = $i+1}
+                            {/foreach}
                         {/if}
-                                <li>{$stat->getStatName()}: {$stat->getStatValue()}</li>
-                        {if $i % 4 == 1}
-                            </ul>
-                        {/if}
-                        {$i = $i+1}
-                    {/foreach}
+                    </ul>
                 </div>
             </div>
             <div id="moreVideos">
                 <h2>More videos from [name]</h2>
-                {foreach from=$videos item=video}
-                    {if $video->getPrivacy() == true}
-                        <div class="result infoOpen">
-                            <div class="opaque">
-                                <img src="{#pandaBase#}{$video->getPandaId()}{#pandaImageExt#}" class="resultImage locked" />
-                                <div class="info">
-                                    <h4>{$video->getTitle()}</h4>
-                                    <p class="title">{$player->getFirstName()} {$player->getLastName()}</p>
-                                    <p class="date">{$video->getUploadDate()}</p>
+                {if isset($videos) && count($videos) > 0}
+                    {foreach from=$videos item=video}
+                        {if $video->getPrivacy() == true}
+                            <div class="result infoOpen">
+                                <div class="opaque">
+                                    <img src="{#pandaBase#}{$video->getPandaId()}{#pandaImageExt#}" class="resultImage locked" />
+                                    <div class="info">
+                                        <h4>{$video->getTitle()}</h4>
+                                        <p class="title">{$player->getFirstName()} {$player->getLastName()}</p>
+                                        <p class="date">{$video->getUploadDate()}</p>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="infoBubble leftCentered">
-                            <div class="topLeft"></div>
-                            <div class="topRight"></div>
-                            <div class="middle">
-                                <p>
-                                    <strong>We're sorry.</strong> Only account holders can view this video.
-                                    <br /><br />
-                                    Want to view this video?
-                                    <br />
-                                    <a>Join</a> or <a>log in</a>.
-                                </p>
-                            </div>
-                            <div class="directionTopLeft"></div>
-                            <div class="bottomRight"></div>
-                            <div class="direction"></div>
-                        </div>
-                    {else}
-                        <a href="{#baseUrl#}videos/view/{$video->getId()}/">
-                            <div class="result">
-                                <img src="{#pandaBase#}{$video->getPandaId()}{#pandaImageExt#}" class="resultImage" />
-                                <div class="info">
-                                    <h4>{$video->getTitle()}</h4>
-                                    <p class="title">{$player->getFirstName()} {$player->getLastName()}</p>
-                                    <p class="date">{$video->getUploadDate()}</p>
+                            <div class="infoBubble leftCentered">
+                                <div class="topLeft"></div>
+                                <div class="topRight"></div>
+                                <div class="middle">
+                                    <p>
+                                        <strong>We're sorry.</strong> Only account holders can view this video.
+                                        <br /><br />
+                                        Want to view this video?
+                                        <br />
+                                        <a>Join</a> or <a>log in</a>.
+                                    </p>
                                 </div>
+                                <div class="directionTopLeft"></div>
+                                <div class="bottomRight"></div>
+                                <div class="direction"></div>
                             </div>
-                        </a>
-                    {/if}
-                {/foreach}
+                        {else}
+                            <a href="{#baseUrl#}videos/view/{$video->getId()}/">
+                                <div class="result">
+                                    <img src="{#pandaBase#}{$video->getPandaId()}{#pandaImageExt#}" class="resultImage" />
+                                    <div class="info">
+                                        <h4>{$video->getTitle()}</h4>
+                                        <p class="title">{$player->getFirstName()} {$player->getLastName()}</p>
+                                        <p class="date">{$video->getUploadDate()}</p>
+                                    </div>
+                                </div>
+                            </a>
+                        {/if}
+                    {/foreach}
+                {/if}
             </div>
         </div>
         <div id="rightCol">

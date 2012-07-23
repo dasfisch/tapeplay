@@ -2,6 +2,7 @@
     <div id="accountLeft">
         <h2>Welcome, Player</h2>
         <div class="accordion">
+            <input type="hidden" id="hash" value="{$hash}" />
             <div class="header">
                 <div class="title">Saved Videos ({$savedVideoNumber})</div>
                 <div class="arrow"></div>
@@ -11,7 +12,7 @@
                 {if $video->getPrivacy() == true}
                     <div class="result opaque">
                         <div class="infoOpen">
-                            <img src="{#pandaBase#}{$video->getPandaId()}{#pandaImageExt#}" class="resultImage locked" />
+                            <img src="{#pandaBase#}{$video->getPandaId()}{#pandaImageExt#}.jpg" class="resultImage locked" />
                             <div class="info">
                                 <h2>{$video->getPlayer()->getFirstName()} {$video->getPlayer()->getLastName()}</h2>
                                 <p class="position"></p>
@@ -39,7 +40,7 @@
                 {else}
                     <a href="{#baseUrl#}videos/view/{$video->getId()}/">
                         <div class="chunk">
-                            <img src="{#pandaBase#}{$video->getPandaId()}{#pandaImageExt#}" class="resultImage" />
+                            <img src="{#pandaBase#}{$video->getPandaId()}{#pandaImageExt#}.jpg" class="resultImage" />
                             <div class="info">
                                 <h4>{$video->getPlayer()->getFirstName()} {$video->getPlayer()->getLastName()}</h4>
                                 <p class="title">{$video->getTitle()}</p>
@@ -69,17 +70,23 @@
                 <div class="chunk">
                     <div class="accountInfo">
                         <h4>Name</h4>
-                        <div class="inputField hidden">
+                        <div class="inputField bottom hidden">
                             <div class="left"></div>
                             <div class="middle">
                                 <input type="text" class="standard" id="firstName" name="firstName" value="{$user->getFirstName()}" />
+                            </div>
+                            <div class="right"></div>
+                        </div>
+                        <div class="inputField hidden">
+                            <div class="left"></div>
+                            <div class="middle">
 								<input type="text" class="standard" id="lastName" name="lastName" value="{$user->getLastName()}" />
                             </div>
                             <div class="right"></div>
                         </div>
                         <p>{$user->getFirstName()} {$user->getLastName()}</p>
                     </div>
-                    <div class="bigButton orange">
+                    <div class="bigButton orange formEdit" id="name">
                         <div class="topLeft whiteBg"></div>
                         <div class="topRight whiteBg"></div>
                         <div class="bottomLeft whiteBg"></div>
@@ -89,8 +96,8 @@
                         </div>
                     </div>
                     <div class="status">
-                        <div class="greenCheckMark"></div>
-                        <span>Success!</span>
+                        <div class="greenCheckMark hidden"></div>
+                        <!--<span>Success!</span>-->
                     </div>
                 </div>
                 <div class="chunk">
@@ -105,7 +112,7 @@
                         </div>
                         <p>{$user->getEmail()}</p>
                     </div>
-                    <div class="bigButton orange">
+                    <div class="bigButton orange formEdit" id="email">
                         <div class="topLeft whiteBg"></div>
                         <div class="topRight whiteBg"></div>
                         <div class="bottomLeft whiteBg"></div>
@@ -115,8 +122,8 @@
                         </div>
                     </div>
                     <div class="status">
-                        <div class="greenCheckMark"></div>
-                        <span>Success!</span>
+                        <div class="greenCheckMark hidden"></div>
+                        <!--<span>Success!</span>-->
                     </div>
                 </div>
                 <div class="chunk">
@@ -131,7 +138,7 @@
                         </div>
                         <p>*********</p>
                     </div>
-                    <div class="bigButton orange">
+                    <div class="bigButton orange formEdit" id="password">
                         <div class="topLeft whiteBg"></div>
                         <div class="topRight whiteBg"></div>
                         <div class="bottomLeft whiteBg"></div>
@@ -141,8 +148,8 @@
                         </div>
                     </div>
                     <div class="status">
-                        <div class="greenCheckMark"></div>
-                        <span>Success!</span>
+                        <div class="greenCheckMark hidden"></div>
+                        <!--<span>Success!</span>-->
                     </div>
                 </div>
                 <div class="chunk">
@@ -159,7 +166,7 @@
                         </div>
                         <p>{$user->getBirthYear()} / {$user->getGender()} / {$user->getZipcode()}</p>-->
                     </div>
-                    <div class="bigButton orange">
+                    <div class="bigButton orange" id="deactivate">
                         <div class="topLeft whiteBg"></div>
                         <div class="topRight whiteBg"></div>
                         <div class="bottomLeft whiteBg"></div>
@@ -180,16 +187,40 @@
                 <div class="chunk">
                     <div class="accountInfo">
                         <h4>Number / Level / Grade</h4>
-                        <div class="inputField hidden">
+                        <div class="inputField numLevGrad hidden">
                             <div class="left"></div>
-                            <div class="middle">
-                                <input type="text" class="standard small" id="schoolName" name="schoolName" value="{$user->getSchool()->getName()}" />
+                            <div class="middle small">
+                                <input type="text" class="standard small" id="number" name="number" value="{$user->getNumber()}" />
+                            </div>
+                            <div class="right"></div>
+                        </div>
+                        <div class="sportSelect numLevGradDrop hidden">
+                            <div class="dropper">
+                                <div class="leftMedium"></div>
+                                <div class="middleMedium middle">
+                                    <p class="value">{$user->getPlayingLevel()}</p>
+                                    <input type="hidden" name="height" class="dropVal" value="" />
+                                </div>
+                                <div class="rightMedium"></div>
+                                <ul class="potentials">
+                                    <li>Grade School</li>
+                                    <li>High School</li>
+                                    <li>College</li>
+                                    <li>Professional</li>
+                                </ul>
+                            </div>
+                            <div class="arrowSmall"></div>
+                        </div>
+                        <div class="inputField numLevGrad hidden">
+                            <div class="left"></div>
+                            <div class="middle small">
+                                <input type="text" class="standard small" id="grade" name="grade" value="{$user->getGradeLevel()}" />
                             </div>
                             <div class="right"></div>
                         </div>
                         <p>#{$user->getNumber()} / {$user->getPlayingLevel()} / {$user->getGradeLevel()}</p>
                     </div>
-                    <div class="bigButton orange">
+                    <div class="bigButton orange formEdit" id="number-level">
                         <div class="topLeft whiteBg"></div>
                         <div class="topRight whiteBg"></div>
                         <div class="bottomLeft whiteBg"></div>
@@ -199,8 +230,8 @@
                         </div>
                     </div>
                     <div class="status">
-                        <div class="greenCheckMark"></div>
-                        <span>Success!</span>
+                        <div class="greenCheckMark hidden"></div>
+                        <!--<span>Success!</span>-->
                     </div>
                 </div>
                 <div class="chunk">
@@ -215,7 +246,7 @@
                         </div>
                         <p>{$user->getPosition()} / {$user->getHeight()}</p>
                     </div>
-                    <div class="bigButton orange">
+                    <div class="bigButton orange formEdit" id="height-position">
                         <div class="topLeft whiteBg"></div>
                         <div class="topRight whiteBg"></div>
                         <div class="bottomLeft whiteBg"></div>
@@ -225,8 +256,8 @@
                         </div>
                     </div>
                     <div class="status">
-                        <div class="greenCheckMark"></div>
-                        <span>Success!</span>
+                        <div class="greenCheckMark hidden"></div>
+                        <!--<span>Success!</span>-->
                     </div>
                 </div>
                 <div class="chunk">
@@ -235,13 +266,14 @@
                         <div class="inputField hidden">
                             <div class="left"></div>
                             <div class="middle">
-                                <input type="text" class="standard small" id="schoolName" name="schoolName" value="{$user->getSchool()->getName()}" />
+                                <input type="text" class="standard small" id="schoolSearchInput" name="schoolSearchInput" value="{$user->getSchool()->getName()}" />
+                                <input type="hidden" id="newSchool" value="" />
                             </div>
                             <div class="right"></div>
                         </div>
                         <p>{$user->getSchool()->getName()}</p>
                     </div>
-                    <div class="bigButton orange">
+                    <div class="bigButton orange formEdit" id="school">
                         <div class="topLeft whiteBg"></div>
                         <div class="topRight whiteBg"></div>
                         <div class="bottomLeft whiteBg"></div>
@@ -251,8 +283,8 @@
                         </div>
                     </div>
                     <div class="status">
-                        <div class="greenCheckMark"></div>
-                        <span>Success!</span>
+                        <div class="greenCheckMark hidden"></div>
+                        <!--<span>Success!</span>-->
                     </div>
                 </div>
                 <div class="chunk">
@@ -267,7 +299,7 @@
                         </div>
                         <p>{$user->getCoachName()}</p>
                     </div>
-                    <div class="bigButton orange">
+                    <div class="bigButton orange formEdit" id="coach">
                         <div class="topLeft whiteBg"></div>
                         <div class="topRight whiteBg"></div>
                         <div class="bottomLeft whiteBg"></div>
@@ -277,8 +309,8 @@
                         </div>
                     </div>
                     <div class="status">
-                        <div class="greenCheckMark"></div>
-                        <span>Success!</span>
+                        <div class="greenCheckMark hidden"></div>
+                        <!--<span>Success!</span>-->
                     </div>
                 </div>
                 <div class="chunk">
@@ -288,7 +320,7 @@
                             <ul id="stats">
                                 {assign var=i value=0}
                                 {foreach from=$stats item=stat}
-                                    {if $i%$modder == 0 || $i == 0 || $i == ($statCount - 1)}
+                                    {if $i%$modder == 0 || $i == 0}
                                         <li>
                                     {/if}
                                             <div class="stat">
@@ -304,7 +336,7 @@
                                                 </div>
                                                 <div class="right"></div>
                                             </div>
-                                    {if ($i%$modder == 0 && $i > $modder) || $i == ($statCount - 2)}
+                                    {if ($i%$modder == 4 && $i > $modder)}
                                         </li>
                                     {/if}
                                     {$i=$i+1}
@@ -329,8 +361,8 @@
                         </div>
                     </div>
                     <div class="status">
-                        <div class="greenCheckMark"></div>
-                        <span>Success!</span>
+                        <div class="greenCheckMark hidden"></div>
+                        <!--<span>Success!</span>-->
                     </div>
                 </div>
             </div>

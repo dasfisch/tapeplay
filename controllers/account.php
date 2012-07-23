@@ -1,13 +1,15 @@
 <?php
+use tapeplay\server\bll\SchoolBLL;
 use tapeplay\server\bll\StatsBLL;
 use tapeplay\server\bll\VideoBLL;
 
 require_once ("enum/controllers/AccountMethods.php");
 require_once ("enum/AccountTypeEnum.php");
+require_once("bll/SchoolBLL.php");
 require_once("bll/StatsBLL.php");
 require_once("bll/VideoBLL.php");
 
-global $controller, $route, $smarty, $userBLL;
+global $controller, $inputFilter, $route, $smarty, $userBLL;
 
 
 // check for request method to see if we are posting data
@@ -63,6 +65,7 @@ if (isset($route->method))
                 $stats = $statsBll->getPlayerStats((int)$user->getId());
 
 				// now display the template based on above selection
+                $smarty->assign('hash', $inputFilter->createHash());
 				$smarty->assign("savedVideoNumber", $videos[0]->count);
                 $smarty->assign("savedVideos", $videos);
                 $smarty->assign("stats", $stats);

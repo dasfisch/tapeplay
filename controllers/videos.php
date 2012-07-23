@@ -87,9 +87,17 @@
 
                 $videos = $videoBll->search($search);
 
+                $statsBll = new StatsBLL();
+                $stats = $statsBll->getPlayerStats($player->getId());
+
+                $modder = (ceil(count($stats) / 3) > 1) ? ceil(count($stats) / 3) : 2;
+
                 $smarty->assign('hash', $inputFilter->createHash());
                 $smarty->assign('player', $player);
                 $smarty->assign('video', $video[0]);
+                $smarty->assign("modder", $modder);
+                $smarty->assign("statCount", count($stats));
+                $smarty->assign('stats', $stats);
                 $smarty->assign('videoPlayer', $videoPlayer);
                 $smarty->assign('videos', $videos);
                 $smarty->assign('file', 'videos/single.tpl');

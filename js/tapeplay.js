@@ -1,4 +1,5 @@
 var infoBubbleOpen = false;
+var timeout = {};
 
 jQuery(document).ready(function(){
     var showing = false;
@@ -70,32 +71,46 @@ jQuery(document).ready(function(){
         }
     });
 
-    jQuery('.accordion .header').click(function() {
-        var clicked = jQuery(this);
+//    jQuery('.accordion .header').click(function() {
+//        var clicked = jQuery(this);
+//
+//        jQuery(this).next().slideToggle('slow', function() {
+//            var curText = clicked.children('p').children('.collapse').html();
+//
+//            curText = (curText == 'Collapse') ? 'Expand' : 'Collapse';
+//
+//            clicked.children('p').children('.collapse').html(curText);
+//        });
+//
+//        return false;
+//    }).next().hide();
 
-        jQuery(this).next().slideToggle('slow', function() {
-            var curText = clicked.children('p').children('.collapse').html();
-
-            curText = (curText == 'Collapse') ? 'Expand' : 'Collapse';
-
-            clicked.children('p').children('.collapse').html(curText);
-        });
-
-        return false;
-    }).next().hide();
-
-    jQuery('.edit').click(function() {
-        var inputField = jQuery(this).parentsUntil('.chunk').siblings('.accountInfo').children('.inputField');
-        var p = jQuery(this).parentsUntil('.chunk').siblings('.accountInfo').children('p')
-
-        if(inputField.hasClass('hidden')) {
-            jQuery(this).html('Done');
-        } else {
-            jQuery(this).html('Edit');
-        }
+    jQuery('.formEdit').click(function() {
+        var inputField = jQuery(this).siblings('.accountInfo').children('.inputField');
+        var dropDown = jQuery(this).siblings('.accountInfo').children('.sportSelect');
+        var p = jQuery(this).siblings('.accountInfo').children('p')
 
         inputField.toggleClass('hidden');
+        dropDown.toggleClass('hidden');
         p.toggleClass('hidden');
+
+        if(inputField.hasClass('hidden')) {
+//            jQuery.post(
+//                '/ajax/profileupdate',
+//                {
+//                    member: jQuery(this).attr('id'),
+//                    value: jQuery(this).siblings('.accountInfo')
+//                },
+//                function() {
+//
+//                }
+//            );
+            jQuery(this).parents('.chunk').children('.bigButton').children('.middle').children('.edit').html('Edit');
+//            jQuery(this).parents('.chunk').children('.bigButton').removeClass('formEdit');
+        } else {
+            jQuery(this).parents('.chunk').children('.bigButton').children('.middle').children('.edit').html('Done');
+//            jQuery(this).parents('.chunk').children('.bigButton').addClass('formEdit');
+        }
     });
 
     if(jQuery('#main').length > 0) {
@@ -206,7 +221,42 @@ jQuery(document).ready(function(){
                 }, 1500);
             }
         );
-    })
+    });
+
+    jQuery('#schoolSearchInput').autocomplete({
+        source: function( request, response ) {
+            jQuery.post(
+                "/ajax/schools/",
+                {
+                    hash: jQuery('#hash').val(),
+                    schoolName: jQuery('#schoolSearchInput').val()
+                },
+                function( data ) {
+                    response( jQuery.map( eval(data), function( item ) {
+                        return {
+                            label: item.name,
+                            value: item.id
+                        }
+                    }));
+
+                    jQuery('.ui-autocomplete').css(
+                        {
+                            'border': '1px solid #ccc',
+                            'border-top': 'none',
+                            'top': '1178px',
+                            'left': '70px',
+                            'width': '454px'
+                        }
+                    );
+                }
+            );
+        },
+        select: function(event, ui) {
+            console.log(event);
+            jQuery('#schoolSearchInput').html(ui.item.label);
+            jQuery('#newSchool').val(ui.item.value);
+        }
+    });
 });
 
 function openBubble(obj) {

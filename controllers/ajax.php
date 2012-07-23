@@ -1,11 +1,13 @@
 <?php
+    use tapeplay\server\bll\SchoolBLL;
     use tapeplay\server\bll\VideoBLL;
 
+    require_once("bll/SchoolBLL.php");
     require_once("bll/VideoBLL.php");
 
     global $controller, $get, $inputFilter, $post, $route, $smarty, $sport, $userBLL;
 
-    if(isset($post['hash']) && $inputFilter->validateHash($post['hash'])) {
+    if(1 == 1 || (isset($post['hash']) && $inputFilter->validateHash($post['hash'])) || ($get['hash']) && $inputFilter->validateHash($get['hash'])) {
         switch($route->method) {
             case 'save':
                 if(isset($post['video'])) {
@@ -27,7 +29,24 @@
                 exit;
 
                 default;
+            case 'schools':
+                if(isset($post['schoolName'])) {
+                    $schoolBLL = new SchoolBLL();
+
+                    $schools = $schoolBLL->getSchoolsByName($post['schoolName']);
+
+                    foreach($schools as $key=>$school) {
+                        $encoded[] = $school->encodeJson();
+                    }
+
+                    echo json_encode($encoded);
+                } else {
+                    echo 'not in here';
+                }
+
+                break;
         }
     } else {
-        header('Location:'.$controller->configuration->URLs['baseUrl']);
+        echo 'redirect '.$get['hash'];
+//        header('Location:'.$controller->configuration->URLs['baseUrl']);
     }

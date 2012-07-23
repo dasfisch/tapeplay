@@ -27,6 +27,10 @@ class SchoolBLL extends BaseBLL
 		return $this->dal->getSchoolsByName($partial);
 	}
 
+//    public function getSchools() {
+//        return $this->dal->getSchools();
+//    }
+
 	//////////////////////////////////////////////////////////
 	// Private Methods
 	//////////////////////////////////////////////////////////

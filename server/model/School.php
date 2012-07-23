@@ -72,4 +72,14 @@ class School
 	{
 		return $this->state;
 	}
+
+    public function encodeJSON()
+    {
+        foreach ($this as $key => $value)
+        {
+            $json->$key = $value;
+        }
+
+        return $json;
+    }
 }
