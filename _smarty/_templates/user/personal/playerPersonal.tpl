@@ -6,14 +6,14 @@
             <div class="inputField">
                 <div class="left"></div>
                 <div class="middle">
-                    <input type="text" class="standard" id="firstName" name="firstName" value="First & Last Name" />
+                    <input type="text" class="standard" id="firstName" name="firstName" value="First Name" />
                 </div>
                 <div class="right"></div>
             </div>
-            <p class="error"><span class="asterisk">*</span> Enter your first and last name here.</p>
+            <p class="error"><span class="asterisk">*</span> Enter your first name here.</p>
             <p class="error lower">Do not use numbers.</p>
         </div>
-        <!--<div class="input">
+        <div class="input">
             <div class="inputField">
                 <div class="left"></div>
                 <div class="middle">
@@ -23,7 +23,7 @@
             </div>
             <p class="error"><span class="asterisk">*</span> Enter your last name here.</p>
             <p class="error lower">Do not use numbers.</p>
-        </div>-->
+        </div>
         <div class="input">
             <div class="inputField">
                 <div class="left"></div>
