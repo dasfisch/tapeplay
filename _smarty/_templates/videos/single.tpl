@@ -66,7 +66,7 @@
                                 <p>
                                     <span class="bold">We're sorry.</span> Only account holders can save videos.</p>
                                 </p>
-                                <p>Please <a href="{#baseUrl#}user/join/">join</a>  or <a href="{#baseUrl#}user/login/">log in</a> now.</p>
+                                <p>Please <a href="{#baseUrl#}user/signup/">join</a>  or <a href="{#baseUrl#}user/login/">log in</a> now.</p>
                             </div>
                             <div class="bottomLeft"></div>
                             <div class="bottomRight"></div>
