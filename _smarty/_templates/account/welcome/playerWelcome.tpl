@@ -336,7 +336,7 @@
                                                 </div>
                                                 <div class="right"></div>
                                             </div>
-                                    {if ($i%$modder == 4 && $i > $modder)}
+                                    {if ($i%$modder == $modder - 1 && $i > $modder) || $i == ($statCount - 1)}
                                         </li>
                                     {/if}
                                     {$i=$i+1}

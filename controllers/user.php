@@ -10,6 +10,7 @@ require_once("bll/UserBLL.php");
 require_once("bll/VideoBLL.php");
 require_once("bll/PlayerBLL.php");
 require_once("bll/SportBLL.php");
+require_once("bll/StatsBLL.php");
 require_once("model/Video.php");
 require_once("model/User.php");
 require_once("model/Player.php");
@@ -24,6 +25,7 @@ use tapeplay\server\bll\VideoBLL;
 use tapeplay\server\bll\UserBLL;
 use tapeplay\server\bll\PlayerBLL;
 use tapeplay\server\bll\SportBLL;
+use tapeplay\server\bll\StatsBLL;
 use tapeplay\server\model\User;
 use tapeplay\server\model\Player;
 use tapeplay\server\model\Coach;
@@ -324,8 +326,13 @@ if (isset($route->method))
 						break;
 					case AccountTypeEnum::$PLAYER:
 
+                        echo '<Pre>';
+                        var_dump($post);
+                        exit;
+
 						// get player basics and add
-						$userBLL->getUser()->setNumber($post["number"]);
+                        $userBLL->getUser()->setNumber($post["number"]);
+                        $userBLL->getUser()->setSchoolId($post["schoolId"]);
 						$userBLL->getUser()->setGradeLevel($post["gradeLevel"]);
 						$userBLL->getUser()->setPosition($post['position']);
 						$userBLL->getUser()->setHeight($post['height']);
@@ -370,14 +377,18 @@ if (isset($route->method))
 					case AccountTypeEnum::$PLAYER:
 						$template = "user/info/playerInfo.tpl";
 
-						$gradYears = "";
-						$thisYear = date('Y', strtotime('now'));
-						$fiveYearsFromNow = $thisYear + 5;
+                        $startYear = date('Y', strtotime('now'));
 
-						for ($i = $thisYear; $i <= $fiveYearsFromNow; $i++)
-							$gradYears .= "<li>" . $i . "</li>";
+                        $statsBll = new \tapeplay\server\bll\StatsBLL();
+                        $stats = $statsBll->getStatsBySport((int)$_SESSION['postSport']);
 
-						$smarty->assign("graduationYears", $gradYears);
+                        $modder = (ceil(count($stats) / 3) > 1) ? ceil(count($stats) / 3) : 2;
+
+						$smarty->assign("startYear", $startYear);
+                        $smarty->assign('statCount', count($stats));
+                        $smarty->assign('modder', $modder);
+                        $smarty->assign('stats', $stats);
+
 						break;
 				}
 

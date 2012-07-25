@@ -2065,6 +2065,12 @@ a {
     width: 19%;
 }
 
+#tapeplay #main #playerInfo .input #stats li .single {
+    float: left;
+    overflow: hidden;
+    width: 100%;
+}
+
 #tapeplay #main #playerInfo .input .sportSelect {
     float: left;
 }
@@ -2089,6 +2095,8 @@ a {
     font-size: 13px;
     margin-right: 7px;
     padding-top: 4px;
+    text-align: right;
+    width: 60%;
 }
 
 #tapeplay #main #playerInfo .input #stats li .inputFieldSmall {
@@ -2414,6 +2422,7 @@ a {
     background-image: url('/media/images/form/stats-box-mid.gif');
     background-repeat: repeat-x;
     float: left;
+    font-size: 12px;
     height: 21px;
 }
 
@@ -2451,8 +2460,6 @@ a {
     border: none;
     color: #888;
     font-family: arial, sans-serif;
-    font-size: 14px;
-    height: 30px;
     padding: 0px 10px;
     width: 100%;
 }

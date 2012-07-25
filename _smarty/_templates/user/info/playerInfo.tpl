@@ -165,7 +165,8 @@
 	<div class="inputField">
 		<div class="left"></div>
 		<div class="middle">
-			<input type="text" class="standard" id="schoolName" name="schoolName" value="School Name"" />
+            <input type="text" class="standard small" id="schoolSearchInput" name="schoolSearchInput" value="School Name" />
+            <input type="hidden" class="passer" name="schoolId" value="" />
 		</div>
 		<div class="right"></div>
 	</div>
@@ -189,18 +190,54 @@
 			</div>
 			<div class="rightMedium"></div>
 			<ul class="potentials">
-				<li>January</li>
-				<li>February</li>
-				<li>March</li>
-				<li>April</li>
-				<li>May</li>
-				<li>June</li>
-				<li>July</li>
-				<li>August</li>
-				<li>September</li>
-				<li>October</li>
-				<li>November</li>
-				<li>December</li>
+				<li>
+                    January
+                    <input type="hidden" class="value" value="1" />
+                </li>
+				<li>
+                    February
+                    <input type="hidden" class="value" value="2" />
+                </li>
+				<li>
+                    March
+                    <input type="hidden" class="value" value="3" />
+                </li>
+				<li>
+                    April
+                    <input type="hidden" class="value" value="4" />
+                </li>
+				<li>
+                    May
+                    <input type="hidden" class="value" value="5" />
+                </li>
+				<li>
+                    June
+                    <input type="hidden" class="value" value="6" />
+                </li>
+				<li>
+                    July
+                    <input type="hidden" class="value" value="7" />
+                </li>
+				<li>
+                    August
+                    <input type="hidden" class="value" value="8" />
+                </li>
+				<li>
+                    September
+                    <input type="hidden" class="value" value="9" />
+                </li>
+				<li>
+                    October
+                    <input type="hidden" class="value" value="10" />
+                </li>
+				<li>
+                    November
+                    <input type="hidden" class="value" value="11" />
+                </li>
+				<li>
+                    December
+                    <input type="hidden" class="value" value="12" />
+                </li>
 			</ul>
 		</div>
 		<div class="arrowSmall"></div>
@@ -214,121 +251,43 @@
 			</div>
 			<div class="rightMedium"></div>
 			<ul class="potentials">
-			{$graduationYears}
+                {section name=i start=$startYear loop=$startYear+5 step=1}
+                    <li>
+                        {$smarty.section.i.index}
+                        <input type="hidden" class="value" value="{$smarty.section.i.index}" />
+                    </li>
+                {/section}
 			</ul>
 		</div>
 		<div class="arrowSmall"></div>
 	</div>
 </div>
 <div class="input">
-	<p class="label">Statistics <span class="regular">(optional)</span>:</p>
-	<ul id="stats">
-		<li>
-			<p>Games played:</p>
-
-			<div class="inputFieldSmall">
-				<div class="left"></div>
-				<div class="middle">
-					<input type="text" class="standard" id="from" name="from" value="Full Name"/>
-				</div>
-				<div class="right"></div>
-			</div>
-			<p>Games played:</p>
-
-			<div class="inputFieldSmall">
-				<div class="left"></div>
-				<div class="middle">
-					<input type="text" class="standard" id="from" name="from" value="Full Name"/>
-				</div>
-				<div class="right"></div>
-			</div>
-			<p>Games played:</p>
-
-			<div class="inputFieldSmall">
-				<div class="left"></div>
-				<div class="middle">
-					<input type="text" class="standard" id="from" name="from" value="Full Name"/>
-				</div>
-				<div class="right"></div>
-			</div>
-			<p>Games played:</p>
-
-			<div class="inputFieldSmall">
-				<div class="left"></div>
-				<div class="middle">
-					<input type="text" class="standard" id="from" name="from" value="Full Name"/>
-				</div>
-				<div class="right"></div>
-			</div>
-		</li>
-		<li>
-			<p>Games played:</p>
-
-			<div class="inputFieldSmall">
-				<div class="left"></div>
-				<div class="middle">
-					<input type="text" class="standard" id="from" name="from" value="Full Name"/>
-				</div>
-				<div class="right"></div>
-			</div>
-			<p>Games played:</p>
-
-			<div class="inputFieldSmall">
-				<div class="left"></div>
-				<div class="middle">
-					<input type="text" class="standard" id="from" name="from" value="Full Name"/>
-				</div>
-				<div class="right"></div>
-			</div>
-			<p>Games played:</p>
-
-			<div class="inputFieldSmall">
-				<div class="left"></div>
-				<div class="middle">
-					<input type="text" class="standard" id="from" name="from" value="Full Name"/>
-				</div>
-				<div class="right"></div>
-			</div>
-			<p>Games played:</p>
-
-			<div class="inputFieldSmall">
-				<div class="left"></div>
-				<div class="middle">
-					<input type="text" class="standard" id="from" name="from" value="Full Name"/>
-				</div>
-				<div class="right"></div>
-			</div>
-		</li>
-		<li>
-			<p>Games played:</p>
-
-			<div class="inputFieldSmall">
-				<div class="left"></div>
-				<div class="middle">
-					<input type="text" class="standard" id="from" name="from" value="Full Name"/>
-				</div>
-				<div class="right"></div>
-			</div>
-			<p>Games played:</p>
-
-			<div class="inputFieldSmall">
-				<div class="left"></div>
-				<div class="middle">
-					<input type="text" class="standard" id="from" name="from" value="Full Name"/>
-				</div>
-				<div class="right"></div>
-			</div>
-			<p>Games played:</p>
-
-			<div class="inputFieldSmall">
-				<div class="left"></div>
-				<div class="middle">
-					<input type="text" class="standard" id="from" name="from" value="Full Name"/>
-				</div>
-				<div class="right"></div>
-			</div>
-		</li>
-	</ul>
+    {if isset($stats) && count($stats) > 0}
+        <p class="label">Statistics <span class="regular">(optional)</span>:</p>
+       	<ul id="stats">
+            {assign var=i value=0}
+            {foreach from=$stats item=stat}
+                {if $i % $modder == 0 || $i == 0}
+                    <li>
+                {/if}
+                        <div class="single">
+                            <p>{$stat->getStatName()}</p>
+                            <div class="inputFieldSmall">
+                                <div class="left"></div>
+                                <div class="middle">
+                                    <input type="text" class="standard" id="stat" name="stat[{$stat->getId()}]" value=""/>
+                                </div>
+                                <div class="right"></div>
+                            </div>
+                        </div>
+                {if ($i%$modder == $modder - 1 && $i > $modder) || $i == ($statCount - 1)}
+                    </li>
+                {/if}
+                {$i = $i+1}
+            {/foreach}
+        </ul>
+    {/if}
 </div>
 <div class="bigButton black">
 	<div class="topLeft whiteBg"></div>

@@ -13,10 +13,10 @@ class Stat
     public function create($statistics) {
         $stat = new Stat();
 
-        $stat->setId($statistics[1]);
-        $stat->setSport($statistics['name']);
+        $stat->setId($statistics['stat_id']);
+//        $stat->setSport($statistics['stat_name']);
         $stat->setStatName($statistics['stat_name']);
-        $stat->setStatValidation($statistics['regex']);
+        $stat->setStatValidation($statistics['validation_regex']);
         $stat->setStatValue(isset($statistics['value']) ? $statistics['value']: null);
 
         return $stat;

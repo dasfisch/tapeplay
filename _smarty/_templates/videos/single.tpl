@@ -107,21 +107,21 @@
                     </div>
                 </div>
                 <div id="bottom">
-                    <ul class="stats">
-                        {if isset($stats) && count($stats) > 0}
+                    {if isset($stats) && count($stats) > 0}
+                        <ul class="stats">
                             {assign var=i value=0}
                             {foreach from=$stats item=stat}
-                                {if $i % $modder == 0 || $i == 0 || $i == ($statCount - 1)}
+                                {if $i % $modder == 0 || $i == 0}
                                     <li>
                                 {/if}
                                         {$stat->getStatName()}: {$stat->getStatValue()}
-                                {if ($i%$modder == 4 && $i > $modder)}
+                                {if ($i%$modder == $modder - 1 && $i > $modder) || $i == ($statCount - 1)}
                                     </li>
                                 {/if}
                                 {$i = $i+1}
                             {/foreach}
-                        {/if}
-                    </ul>
+                        </ul>
+                    {/if}
                 </div>
             </div>
             <div id="moreVideos">
