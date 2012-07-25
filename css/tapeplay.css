@@ -1920,13 +1920,17 @@ a {
 #tapeplay #main #uploadForm .input .sportSelect {
     float: left;
     margin-bottom: 100px;
+    margin-right: 20px;
     overflow: hidden;
-    width: 200px;
 }
 
 #tapeplay #main #uploadForm .input .sportSelect .middleMedium {
     color: #999;
     width: 125px;
+}
+
+#tapeplay #main #uploadForm .input .sportSelect .larger {
+    width: 193px;
 }
 
 /* Player info update page */
@@ -2006,6 +2010,12 @@ a {
     font-weight: normal;
 }
 
+#tapeplay #main #playerInfo .input #basicInfo .potentials li {
+    display: block;
+    height: 12px;
+    width: 100%;
+}
+
 #tapeplay #main #playerInfo .input #basicInfo li {
     border-right: 1px solid #f0f0f0;
     color: #666;
@@ -2013,6 +2023,7 @@ a {
     float: left;
     height: 200px;
     margin-right: 25px;
+    overflow: auto;
     padding-right: 20px;
     width: 15%;
 }
@@ -2406,6 +2417,7 @@ a {
     height: 21px;
 }
 
+.middleMedium,
 .sportSelect .dropper .middleMedium {
     background-image: url('/media/images/form/img_drop-small-box-mid.gif');
     float: left;
@@ -2753,7 +2765,8 @@ a {
     display: none;
 }
 
-.uploader {
+.uploader,
+#tapeplay #main #uploadForm .input .bigButton input[type="file"]  {
     -moz-opacity:0;
     cursor: pointer;
     filter:alpha(opacity:0);

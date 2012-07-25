@@ -76,9 +76,15 @@ class VideoDAO extends BaseDOA
 	public function insert(Video $video, $playerId)
 	{
 		$this->sql = "INSERT INTO videos " .
-				"(panda_id, title, uploaded_date, recorded_month, recorded_year, active, player_id)" .
+				"(panda_id, title, uploaded_date, recorded_month, recorded_year, active, player_id, sport_id)" .
 				" VALUES " .
-				"(:pandaId, :title, :uploadDate, :recordedMonth, :recordedYear, :active, :playerId);";
+				"(:pandaId, :title, :uploadDate, :recordedMonth, :recordedYear, :active, :playerId, :sportId);";
+
+//
+//        echo '<pre>';
+//        var_dump($video);
+//        var_dump($playerId);
+//        exit;
 
 		$this->prep = $this->dbh->prepare($this->sql);
 		$this->prep->bindValue(":pandaId", $video->getPandaId(), \PDO::PARAM_STR);
@@ -87,7 +93,8 @@ class VideoDAO extends BaseDOA
 		$this->prep->bindValue(":recordedMonth", $video->getRecordedMonth(), \PDO::PARAM_INT);
 		$this->prep->bindValue(":recordedYear", $video->getRecordedYear(), \PDO::PARAM_INT);
 		$this->prep->bindValue(":active", $video->getActive(), \PDO::PARAM_BOOL);
-		$this->prep->bindValue(":playerId", $playerId, \PDO::PARAM_INT);
+        $this->prep->bindValue(":playerId", $playerId, \PDO::PARAM_INT);
+        $this->prep->bindValue(":sportId", $video->getSportId(), \PDO::PARAM_INT);
 
 		$this->prep->execute();
 

@@ -199,7 +199,7 @@
                                 <div class="leftMedium"></div>
                                 <div class="middleMedium middle">
                                     <p class="value">{$user->getPlayingLevel()}</p>
-                                    <input type="hidden" name="height" class="dropVal" value="" />
+                                    <input type="hidden" name="playingLevel" class="dropVal" value="" />
                                 </div>
                                 <div class="rightMedium"></div>
                                 <ul class="potentials">

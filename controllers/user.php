@@ -9,6 +9,7 @@ require_once("bll/Panda.php");
 require_once("bll/UserBLL.php");
 require_once("bll/VideoBLL.php");
 require_once("bll/PlayerBLL.php");
+require_once("bll/SportBLL.php");
 require_once("model/Video.php");
 require_once("model/User.php");
 require_once("model/Player.php");
@@ -22,14 +23,16 @@ use tapeplay\server\bll\Panda;
 use tapeplay\server\bll\VideoBLL;
 use tapeplay\server\bll\UserBLL;
 use tapeplay\server\bll\PlayerBLL;
+use tapeplay\server\bll\SportBLL;
 use tapeplay\server\model\User;
 use tapeplay\server\model\Player;
 use tapeplay\server\model\Coach;
 use tapeplay\server\model\Scout;
 use tapeplay\server\model\Video;
 use tapeplay\server\model\School;
+use \tapeplay\server\model\SearchFilter;
 
-global $controller, $route, $smarty, $userBLL;
+global $controller, $post, $route, $smarty, $userBLL;
 
 
 // check for request method to see if we are posting data
@@ -46,9 +49,6 @@ else
 	$posted = false;
 }
 
-// setup form postback url
-$baseURL = $_SERVER['REQUEST_URI'];
-
 // check for method so we can see which page to load
 if (isset($route->method))
 {
@@ -56,9 +56,9 @@ if (isset($route->method))
 	{
 		case UserMethods::$LOGIN: // http://www.tapeplay.com/user/login/
 
-			if ($posted)
+			if ($posted && (!isset($post['chosenSport']) || $post['chosenSport'] == ''))
 			{
-				if ($userBLL->authenticate($_POST["username"], $_POST["password"]))
+				if ($userBLL->authenticate($post["username"], $post["password"]))
 				{
 					// we are authenticated - grab user from db
 
@@ -120,7 +120,7 @@ if (isset($route->method))
 			break;
 
 		case UserMethods::$SIGNUP: // http://www.tapeplay.com/user/signup/
-			if ($posted)
+			if ($posted && (!isset($post['chosenSport']) || $post['chosenSport'] == ''))
 			{
 				// get current account type
 				if (isset($_POST["playerButton"]))
@@ -145,7 +145,7 @@ if (isset($route->method))
 
 		case UserMethods::$PERSONAL: // http://www.tapeplay.com/user/personal/
 			// check for the need to process the incoming information
-			if ($posted)
+			if ($posted && (!isset($post['chosenSport']) || $post['chosenSport'] == ''))
 			{
 				// create hash
 				$hash = $userBLL->createHash($_POST["email"], $_POST["password"]);
@@ -234,11 +234,14 @@ if (isset($route->method))
 			break;
 
 		case UserMethods::$UPLOAD: // http://www.tapeplay.com/user/upload/
+            if(!$userBLL->getUser()) {
+                header('Location:'.$controller->configuration->URLs['baseUrl'].'user/login/');
+            }
 
 			// need instance of Panda
 			$panda = new Panda();
 
-			if ($posted)
+			if ($posted && (!isset($post['chosenSport']) || $post['chosenSport'] == ''))
 			{
 				// TODO: Process uploaded video
 				$video = new Video();
@@ -248,14 +251,17 @@ if (isset($route->method))
 				$video->setRecordedMonth($_POST["videoMonth"]);
 				$video->setRecordedYear($_POST["videoYear"]);
 				$video->setUploadDate(time()); // default to NOW
+                $video->setSportId($post['sport_id']);
 
 				$videoBLL = new VideoBLL();
-				$videoId = $videoBLL->insert($video, $userBLL->getUser()->getId());
+				$videoId = $videoBLL->insert($video, (int)$userBLL->getUser()->getId());
 
 				if ($videoId > 0)
 				{
 					// update status
 					$userBLL->updateStatus(\AccountStatusEnum::$STEP2);
+
+                    $_SESSION['postSport'] = $post['sport_id'];
 
 					// insert succeeded - go to info page
 					Util::setHeader("user/info/");
@@ -268,23 +274,33 @@ if (isset($route->method))
 
 				// get video years
 				$videoYears = "";
-				for ($i = date('Y', strtotime('now')); $i > 1980; $i--)
+				for ($i = date('Y', strtotime('now')); $i > 1980; $i--) {
 					$videoYears .= "<li>" . $i . "</li>";
+                }
+
+                $sportBll = new SportBLL();
+                $search = new SearchFilter();
+
+                $sports = $sportBll->get($search);
 
 				// send user to upload page
 				$smarty->assign("pandaAccessDetails", $pandaAccessDetails);
 				$smarty->assign("APIURL", $panda->getAPIURL());
 				$smarty->assign("videoYears", $videoYears);
 				$smarty->assign("file", "user/upload/upload.tpl");
+                $smarty->assign('sports', $sports);
 				$smarty->display("home.tpl");
 			}
 
 			break;
 
 		case UserMethods::$INFO: // http://www.tapeplay.com/user/info/
+            if(!$userBLL->getUser()) {
+                header('Location:'.$controller->configuration->URLs['baseUrl'].'user/login/');
+            }
 
 			// check for the need to process the incoming information
-			if ($posted)
+			if ($posted && (!isset($post['chosenSport']) || $post['chosenSport'] == ''))
 			{
 
 				switch ($userBLL->getAccountType())
@@ -309,14 +325,14 @@ if (isset($route->method))
 					case AccountTypeEnum::$PLAYER:
 
 						// get player basics and add
-						$userBLL->getUser()->setNumber($_POST["number"]);
-						$userBLL->getUser()->setGradeLevel($_POST["gradeLevel"]);
-						$userBLL->getUser()->setPosition("SG");
-						$userBLL->getUser()->setHeight(55);
-						$userBLL->getUser()->setWeight($_POST["weight"]);
-						$userBLL->getUser()->setCoachName($_POST["headCoachName"]);
-						$userBLL->getUser()->setGraduationMonth($_POST["graduationMonth"]);
-						$userBLL->getUser()->setGraduationYear($_POST["graduationYear"]);
+						$userBLL->getUser()->setNumber($post["number"]);
+						$userBLL->getUser()->setGradeLevel($post["gradeLevel"]);
+						$userBLL->getUser()->setPosition($post['position']);
+						$userBLL->getUser()->setHeight($post['height']);
+						$userBLL->getUser()->setWeight($post["weight"]);
+						$userBLL->getUser()->setCoachName($post["headCoachName"]);
+						$userBLL->getUser()->setGraduationMonth($post["graduationMonth"]);
+						$userBLL->getUser()->setGraduationYear($post["graduationYear"]);
 
 						// create school and assign to player
 						$school = new School();
@@ -332,7 +348,10 @@ if (isset($route->method))
 
 							// this is the last step in the player signup process.  send to welcome page
 							Util::setHeader("account/welcome/");
+
+                            exit;
 						}
+
 						break;
 				}
 			}
@@ -363,13 +382,19 @@ if (isset($route->method))
 				}
 
 				$smarty->assign('file', $template);
+                $smarty->assign('postSport', $_SESSION['postSport']);
+                $smarty->assign('userId', $userBLL->getUser()->getId());
+
 				$smarty->display("home.tpl");
 			}
 			break;
 
 		case UserMethods::$PAYMENT: // http://www.tapeplay.com/user/payment/
+            if(!$userBLL->getUser()) {
+                header('Location:'.$controller->configuration->URLs['baseUrl'].'user/login/');
+            }
 
-			if ($posted)
+			if ($posted && (!isset($post['chosenSport']) || $post['chosenSport'] == ''))
 			{
 				// TODO: Process payment & send to confirm or show error
 
@@ -399,8 +424,11 @@ if (isset($route->method))
 			break;
 
 		case UserMethods::$CONFIRM: // http://www.tapeplay.com/user/confirm/
+            if(!$userBLL->getUser()) {
+                header('Location:'.$controller->configuration->URLs['baseUrl'].'user/login/');
+            }
 
-			if ($posted)
+			if ($posted && (!isset($post['chosenSport']) || $post['chosenSport'] == ''))
 			{
 				// get template based on button selected
 				$url = "account/welcome/";
@@ -422,7 +450,13 @@ if (isset($route->method))
 			break;
 
         case UserMethods::$LOGOUT:
+            if(!$userBLL->getUser()) {
+                header('Location:'.$controller->configuration->URLs['baseUrl'].'user/login/');
+            }
 
+            $userBLL->logout();
+
+            Util::setHeader($baseURL);
 
             break;
 

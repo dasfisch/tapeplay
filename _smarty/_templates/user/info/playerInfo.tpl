@@ -24,26 +24,8 @@
 	</div>
 </div>
 <form id="playerInfoForm" name="playerInfoForm" action="{#baseUrl#}user/info/" method="post">
-<div class="input">
-	<p class="label">Pick Sport</p>
-
-	<div class="sportSelect">
-		<div class="dropper">
-			<div class="leftMedium"></div>
-			<div class="middleMedium middle">
-				<p class="value">Pick Your Sport</p>
-				<input type="hidden" name="sport" class="dropVal" value="" />
-			</div>
-			<div class="rightMedium"></div>
-			<ul class="potentials">
-				<li>Women's Soccer</li>
-				<li>Women's Basketball</li>
-				<li>Women's Hockey</li>
-			</ul>
-		</div>
-		<div class="arrowSmall"></div>
-	</div>
-</div>
+<input type="hidden" name="sport" value="{$postSport}" />
+<input type="hidden" name="user_id" value="{$userId}" />
 <div class="input">
 	<ul id="basicInfo">
 		<li>
@@ -83,23 +65,24 @@
 			<div class="sportSelect">
 				<p class="label">Grade</p>
 				<div class="sportSelect">
-						<div class="dropper">
-							<div class="leftMedium"></div>
-							<div class="middleMedium middle">
-								<p class="value">Grade</p>
-								<input type="hidden" name="gradeLevel" class="dropVal" value="" />
-							</div>
-							<div class="rightMedium"></div>
-							<ul class="potentials">
-								<li>8</li>
-								<li>9</li>
-								<li>10</li>
-								<li>11</li>
-								<li>12</li>
-							</ul>
-						</div>
-						<div class="arrowSmall"></div>
-					</div>
+                    <div class="dropper">
+                        <div class="leftMedium"></div>
+                        <div class="middleMedium middle">
+                            <p class="value">Grade</p>
+                            <input type="hidden" name="gradeLevel" class="dropVal" value="" />
+                        </div>
+                        <div class="rightMedium"></div>
+                        <ul class="potentials">
+                            <li>8</li>
+                            <li>9</li>
+                            <li>10</li>
+                            <li>11</li>
+                            <li>12</li>
+                        </ul>
+                    </div>
+                    <div class="arrowSmall"></div>
+                </div>
+            </div>
 		</li>
 		<li>
 			<div class="option">
@@ -110,18 +93,21 @@
 						<div class="checkMark"></div>
 					</div>
 					<div class="label">Point Guard</div>
+                    <input type="checkbox" class="checkValue hidden" name="remember_me" />
 				</div>
 				<div class="checkbox">
 					<div class="box">
 						<div class="checkMark"></div>
 					</div>
 					<div class="label">Shooting Guard</div>
+                    <input type="checkbox" class="checkValue hidden" name="remember_me" />
 				</div>
 				<div class="checkbox">
 					<div class="box">
 						<div class="checkMark"></div>
 					</div>
 					<div class="label">Small Forward</div>
+                    <input type="checkbox" class="checkValue hidden" name="remember_me" />
 				</div>
 				<div class="checkbox">
 					<div class="box">
@@ -144,15 +130,17 @@
 						<div class="dropper">
 							<div class="leftMedium"></div>
 							<div class="middleMedium middle">
-								<p class="value">Grade</p>
+								<p class="value">Height</p>
 								<input type="hidden" name="height" class="dropVal" value="" />
 							</div>
 							<div class="rightMedium"></div>
 							<ul class="potentials">
-								<li>Freshman</li>
-								<li>Sophomore</li>
-								<li>Junior</li>
-								<li>Senior</li>
+                                {section name=i loop=96 start=48 step=1}
+                                    <li>
+                                        {$smarty.section.i.index}
+                                        <input type="hidden" class="value" value="{$smarty.section.i.index}" />
+                                    </li>
+                                {/section}
 							</ul>
 						</div>
 						<div class="arrowSmall"></div>

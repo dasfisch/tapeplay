@@ -18,6 +18,7 @@ jQuery(document).ready(function(){
 
     jQuery('#potentials li').click(function() {
         var sportId = jQuery(this).children('.sportId').val();
+
         var form = jQuery('#sportChooser');
 
         form.children('#chosenSport').val(sportId);
@@ -25,7 +26,21 @@ jQuery(document).ready(function(){
         form.submit();
     });
 
+    jQuery('.special li').click(function() {
+        var sportId = jQuery(this).children('.sportId').val();
+
+        console.log(sportId);
+
+        jQuery('#sport_id').val(sportId);
+
+        jQuery('.potentials').slideUp();
+    });
+
     jQuery('.potentials li').click(function() {
+        if(jQuery(event.target).parents('.potentials').hasClass('special')) {
+            return;
+        }
+
         jQuery(this).parentsUntil('.sportSelect').children('.dropper .middle').children('.value').html(jQuery(this).html());
         jQuery(this).parentsUntil('.sportSelect').children('.dropper .middle').children('.dropVal').val(jQuery(this).html());
 
@@ -41,7 +56,7 @@ jQuery(document).ready(function(){
 
         if(showing == 'false') {
             jQuery(this).children('.box').children('.checkMark').show();
-//            jQuery(this).children('.checkValue').val('true');
+            jQuery(this).children('.checkValue').val('true');
 
             jQuery(this).children('input').attr('checked', true);
 
@@ -204,8 +219,8 @@ jQuery(document).ready(function(){
         }
     });
 
-    if(jQuery('.height').length > 0) {
-        jQuery('.height').slider({
+    if(jQuery('.heightSlider').length > 0) {
+        jQuery('.heightSlider').slider({
             min: 55,
             max: 95,
             range: true,
