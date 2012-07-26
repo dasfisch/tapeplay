@@ -2,39 +2,45 @@
 
 //all include, globals (not opposed to not using globals)
 require_once("utility/Util.php");
+
+require_once("enum/AccountTypeEnum.php");
 require_once("enum/PandaVerbTypes.php");
 require_once("enum/controllers/UserMethods.php");
-require_once("enum/AccountTypeEnum.php");
+
 require_once("bll/Panda.php");
+require_once("bll/PlayerBLL.php");
 require_once("bll/UserBLL.php");
 require_once("bll/VideoBLL.php");
-require_once("bll/PlayerBLL.php");
+
 require_once("bll/SportBLL.php");
 require_once("bll/StatsBLL.php");
-require_once("model/Video.php");
-require_once("model/User.php");
-require_once("model/Sport.php");
-require_once("model/Player.php");
+
 require_once("model/Coach.php");
-require_once("model/Scout.php");
-require_once("model/VideoNote.php");
-require_once("model/SearchFilter.php");
+require_once("model/Player.php");
 require_once("model/School.php");
+require_once("model/Scout.php");
+require_once("model/SearchFilter.php");
+require_once("model/Sport.php");
+require_once("model/User.php");
+require_once("model/Video.php");
+require_once("model/VideoNote.php");
 
 use tapeplay\server\bll\Panda;
-use tapeplay\server\bll\VideoBLL;
-use tapeplay\server\bll\UserBLL;
 use tapeplay\server\bll\PlayerBLL;
+use tapeplay\server\bll\SchoolBLL;
 use tapeplay\server\bll\SportBLL;
 use tapeplay\server\bll\StatsBLL;
-use tapeplay\server\model\User;
-use tapeplay\server\model\Player;
+use tapeplay\server\bll\UserBLL;
+use tapeplay\server\bll\VideoBLL;
+
 use tapeplay\server\model\Coach;
-use tapeplay\server\model\Scout;
-use tapeplay\server\model\Sport;
-use tapeplay\server\model\Video;
+use tapeplay\server\model\Player;
 use tapeplay\server\model\School;
-use \tapeplay\server\model\SearchFilter;
+use tapeplay\server\model\Scout;
+use tapeplay\server\model\SearchFilter;
+use tapeplay\server\model\Sport;
+use tapeplay\server\model\User;
+use tapeplay\server\model\Video;
 
 global $controller, $post, $route, $smarty, $userBLL;
 
@@ -385,12 +391,20 @@ if (isset($route->method))
 						$userBLL->getUser()->setGraduationYear($post["graduationYear"]);
 
 						// create school and assign to player
-						$school = new School();
-						$school->setId($post["schoolId"]);
+						$schoolBll = new SchoolBLL();
+                        $school = $schoolBll->getSchoolById($post["schoolId"]);
+
 						$userBLL->getUser()->setSchool($school);
 
-                        $sport = new Sport();
-                        $sport->setId($post['sport']);
+                        //create sport and assign to player
+                        $sportBll = new SportBLL();
+
+                        $search = new SearchFilter();
+                        $search->setWhere('id', $post['sport']);
+                        $search->setWhere('method', 'sports');
+
+                        $sport = $sportBll->get($search);
+                        
                         $userBLL->getUser()->setSport($sport);
 
 						$playerBLL = new PlayerBLL();

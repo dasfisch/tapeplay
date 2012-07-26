@@ -18,7 +18,6 @@ class SchoolDAO extends BaseDOA
 	 */
 	public function getSchoolsByName($partial)
 	{
-
 		$this->sql = "SELECT * FROM schools WHERE name LIKE :partial LIMIT 0,10";
 
 		$this->prep = $this->dbh->prepare($this->sql);
@@ -34,4 +33,21 @@ class SchoolDAO extends BaseDOA
 
 		return $schoolList;
 	}
+
+    public function getSchoolById($schoolId) {
+        $this->sql = "SELECT * FROM schools WHERE id=:id LIMIT 0,10";
+
+        $this->prep = $this->dbh->prepare($this->sql);
+        $this->prep->bindValue(":id", $id, \PDO::PARAM_STR);
+
+        $this->prep->execute();
+
+        $schoolList = array();
+        while ($row = $this->prep->fetch())
+        {
+            array_push($schoolList, School::create($row));
+        }
+
+        return $schoolList;
+    }
 }

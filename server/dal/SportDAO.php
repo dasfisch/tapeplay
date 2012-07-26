@@ -25,7 +25,7 @@ class SportDAO extends BaseDOA
 		$this->sql = "SELECT
 		                    *
                         FROM
-                            sports"
+                            sports sports"
                         .$where;
 
 		$this->prep = $this->dbh->prepare($this->sql);
