@@ -313,7 +313,7 @@ if (isset($route->method))
 
                     $_SESSION['postSport'] = $userBLL->getUser()->getSport()->getId() != $post['sport_id'] ? (int)$post['sport_id'] : (int)$userBLL->getUser()->getSport()->getId();
                     $_SESSION['last_video'] = $userBLL->getLastInsertID();
-                    
+
                     if(!$userBLL->getUser()->getSport()->getId() == $post['sport_id']) {
                         // insert succeeded - go to info page
                         Util::setHeader("user/info/");

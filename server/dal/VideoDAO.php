@@ -80,12 +80,6 @@ class VideoDAO extends BaseDOA
 				" VALUES " .
 				"(:pandaId, :title, :uploadDate, :recordedMonth, :recordedYear, :active, :playerId, :sportId);";
 
-//
-//        echo '<pre>';
-//        var_dump($video);
-//        var_dump($playerId);
-//        exit;
-
 		$this->prep = $this->dbh->prepare($this->sql);
 		$this->prep->bindValue(":pandaId", $video->getPandaId(), \PDO::PARAM_STR);
 		$this->prep->bindValue(":title", $video->getTitle(), \PDO::PARAM_STR);

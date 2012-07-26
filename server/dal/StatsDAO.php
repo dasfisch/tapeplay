@@ -37,7 +37,7 @@ class StatsDAO extends BaseDOA
                                           validation.id=stats.stat_validation_id
                               WHERE
                                   stats.sport_id=:id';
-echo $this->sql.' '.$sportId;
+            
             $this->prep = $this->dbh->prepare($this->sql);
             $this->prep->bindValue(":id", $sportId, \PDO::PARAM_INT);
             $this->prep->execute();
