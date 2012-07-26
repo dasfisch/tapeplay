@@ -10,8 +10,7 @@
                 <a href="{#baseUrl#}videos/search/">Back to search results</a>
             </div>
         </div>
-        <!--<div id="player">{$videoPlayer}</div>-->
-        <div id="player"></div>
+        <div id="player">{$videoPlayer}</div>
         <div id="videoInfo">
             <ul id="left">
                 <li class="basic"><span class="bold">{$video->getViews()}</span> views</li>

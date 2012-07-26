@@ -404,7 +404,7 @@ if (isset($route->method))
                         $search->setWhere('method', 'sports');
 
                         $sport = $sportBll->get($search);
-                        
+
                         $userBLL->getUser()->setSport($sport);
 
 						$playerBLL = new PlayerBLL();
