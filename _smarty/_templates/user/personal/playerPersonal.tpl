@@ -72,8 +72,7 @@
             </div>
         </div>
         <div class="option dropdown">
-            <div class="
-            tSelect">
+            <div class="sportSelect">
                 <div class="dropper">
                     <div class="leftMedium"></div>
                     <div class="middleMedium middle">

@@ -642,9 +642,15 @@ a {
 
 #tapeplay #landing #video #leftCol #info #bottom .stats li {
     color: #666;
+    float: left;
     font-size: 12px;
     margin-bottom: 5px;
     width: 33%;
+}
+
+#tapeplay #landing #video #leftCol #info #bottom .stats li p {
+    margin-bottom: 7px;
+    padding: 0px;
 }
 
 #tapeplay #landing #video #leftCol #moreVideos {
@@ -2707,6 +2713,19 @@ a {
     font-size: 14px;
     font-weight: bold;
     padding-top: 10px;
+}
+
+.errorMessage {
+    color: #f00;
+    float: left;
+    font-size: 22px;
+    font-weight: bold;
+    padding-top: 10px;
+    width: 100%;
+}
+.successMessage {
+    color: #0f0;
+    font-size: 22px;
 }
 
 .option.step {

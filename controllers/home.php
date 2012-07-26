@@ -11,7 +11,15 @@
 
     include('bll/StatsBLL.php');
     
-    global $controller, $post, $route, $smarty, $sport;
+    global $controller, $post, $route, $smarty, $sport, $userBLL;
+
+    $user = $userBLL->getUser();
+    $user = isset($user) ? $user : null;
+    $userId = isset($user) ? $user->getUserId() : null;
+
+    $smarty->assign('currentUrl', $route->getCurrentUrl());
+    $smarty->assign('user', $user);
+    $smarty->assign('userId', $userId);
 
     if(isset($sport['id']) && $sport['id'] > 0) {
         $statsBll = new StatsBLL();

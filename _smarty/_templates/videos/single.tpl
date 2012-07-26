@@ -114,7 +114,7 @@
                                 {if $i % $modder == 0 || $i == 0}
                                     <li>
                                 {/if}
-                                        {$stat->getStatName()}: {$stat->getStatValue()}
+                                        <p>{$stat->getStatName()}: {$stat->getStatValue()}</p>
                                 {if ($i%$modder == $modder - 1 && $i > $modder) || $i == ($statCount - 1)}
                                     </li>
                                 {/if}

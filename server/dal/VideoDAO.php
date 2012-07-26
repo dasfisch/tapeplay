@@ -196,6 +196,7 @@ class VideoDAO extends BaseDOA
 
             $where = !is_null($filter->getWhere()) ? $this->_setWhere($filter->getWhere()) : null;
             $like = !is_null($filter->getLike()) ? $this->_setLike($filter->getLike()) : null;
+            $sort = !is_null($filter->getSort()) ? $this->_setSort($filter->getSort()) : null;
 
             if((isset($where) && $where != '') && isset($like) && $like != '') {
                 $where.= ' AND ';
@@ -218,19 +219,19 @@ class VideoDAO extends BaseDOA
                                 sports.active AS sport_active
                             FROM
                                 videos videos
-                            JOIN
+                            LEFT JOIN
                                 players players
                                     ON
                                         players.id=videos.player_id
-                            JOIN
+                            LEFT JOIN
                                 users users
                                     ON
-                                        users.id=players.id
-                            JOIN
+                                        users.id=players.user_id
+                            LEFT JOIN
                                 sports sports
                                     ON
                                         sports.id=players.sport_id
-                            JOIN
+                            LEFT JOIN
                                 schools schools
                                     ON
                                         schools.id=players.school_id
@@ -246,6 +247,7 @@ class VideoDAO extends BaseDOA
                             ".$like."
                             GROUP BY
                                 videos.id
+                            ".$sort."
                             LIMIT ".$startLimit.",".$limit;
 
 			$this->prep = $this->dbh->prepare($this->sql);

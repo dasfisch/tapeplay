@@ -127,4 +127,18 @@ class BaseDOA
 
         return $like;
     }
+
+    protected function _setSort($filter) {
+        if(empty($filter)) {
+            return;
+        }
+
+        $alias = isset($filter['method']) && !empty($filter['method']) ? $filter['method'].'.' : '';
+        $name = isset($filter['name']) && !empty($filter['name']) ? $filter['name'] : '';
+        $order = isset($filter['order']) && !empty($filter['order']) ? ' '.$filter['order'] : '';
+
+        $sort = 'ORDER BY '.$alias.$name.$order;
+
+        return $sort;
+    }
 }

@@ -89,19 +89,19 @@ jQuery(document).ready(function(){
         }
     });
 
-//    jQuery('.accordion .header').click(function() {
-//        var clicked = jQuery(this);
-//
-//        jQuery(this).next().slideToggle('slow', function() {
-//            var curText = clicked.children('p').children('.collapse').html();
-//
-//            curText = (curText == 'Collapse') ? 'Expand' : 'Collapse';
-//
-//            clicked.children('p').children('.collapse').html(curText);
-//        });
-//
-//        return false;
-//    }).next().hide();
+    jQuery('.accordion .header').click(function() {
+        var clicked = jQuery(this);
+
+        jQuery(this).next().slideToggle('slow', function() {
+            var curText = clicked.children('p').children('.collapse').html();
+
+            curText = (curText == 'Collapse') ? 'Expand' : 'Collapse';
+
+            clicked.children('p').children('.collapse').html(curText);
+        });
+
+        return false;
+    }).next().hide();
 
     jQuery('.formEdit').click(function() {
         var _this = jQuery(this);
