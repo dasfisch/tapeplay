@@ -21,6 +21,7 @@ class Video
         $video->setViews($arr["views"]);
         $video->setSaves($arr["saves"]);
         $video->setPrivacy($arr['is_private']);
+        $video->setSportId($arr['sport_id']);
 
         if(isset($arr['first_name'])) {
             $video->setPlayer($player->create($arr));
@@ -42,6 +43,7 @@ class Video
 	private $_active;
 	private $_comments;
 	private $_saves;
+    private $_sportId;
     private $_privacy;
     private $_player;
 
@@ -196,5 +198,15 @@ class Video
    	public function getPlayer()
    	{
    		return $this->_player;
+   	}
+
+    public function setSportId($sportId)
+   	{
+   		$this->_sportId = $sportId;
+   	}
+
+   	public function getSportId()
+   	{
+   		return $this->_sportId;
    	}
 }

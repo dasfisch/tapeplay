@@ -13,20 +13,37 @@
 		<div id="progressMeter" class="panda_upload_progress"></div>
 		<div id="uploadInputs" class="input">
 			<!-- file selector -->
-			<div id="upload_button"></div>
+			<!--<div id="upload_button"></div>
 
-			<!-- filename of the selected file (optional) -->
+			<!-- filename of the selected file (optional)
 			<input type="hidden" id="upload_filename" class="panda_upload_filename" disabled="disabled"/>
 
-			<!-- field where the video ID will be stored after the upload -->
-			<input type="hidden" id="returned_video_id" name="panda_video_id"/>
+			<!-- field where the video ID will be stored after the upload
+			<input type="hidden" id="returned_video_id" name="panda_video_id"/>-->
 
-			<p class="asterisk error">*</p>
+            <div class="inputField">
+                <div class="left"></div>
+                <div class="middle upload">
+                    <input type="text" class="standard" id="fakeupload" name="fakeupload" value="Browse Files" />
+                </div>
+                <div class="right"></div>
+            </div>
+            <div class="bigButton black">
+                <div class="topRight whiteBg"></div>
+                <div class="bottomRight whiteBg"></div>
+                <div class="middle">
+                    <input type="submit" value="Upload" id="upload_button" name="upload_button" class="large black" />
+                </div>
+                <!--<input type="file" class="uploader" onchange="this.form.fakeupload.value = this.value;" />-->
 
-			<p class="error">
-				We're sorry but you cannot upload this type of file. Video files must be AAC,
-				AVI, 3GP, MOV, MP3, MP4, MPEG, OGG, WAV, WEBM, WMA, or WMV.
-			</p>
+                <input type="hidden" class="uploader" onchange="this.form.fakeupload.value = this.value;" id="returned_video_id" name="panda_video_id"/>
+                <input type="hidden" id="upload_filename" class="panda_upload_filename" disabled="disabled"/>
+            </div>
+            <p class="asterisk error">*</p>
+            <p class="error">
+                We're sorry but you cannot upload this type of file. Video files must be AAC,
+                AVI, 3GP, MOV, MP3, MP4, MPEG, OGG, WAV, WEBM, WMA, or WMV.
+            </p>
 
 			<script type="text/javascript">
 
@@ -39,7 +56,7 @@
 
 				function uploadSuccessful_Handler()
 				{
-					alert("Yay! Video ID " + $('input[id=returned_video_id]').val() + " uploaded...");
+					alert("Yay! Video ID " + $('#returned_video_id').val() + " uploaded...");
 
 					// enable the submit button
 					$("input[id=submitButton]").removeAttr("disabled");
@@ -53,15 +70,14 @@
 
 				// creates the uploader component with the customized options
 				jQuery("#returned_video_id").pandaUploader(panda_access_details, {
-					onsuccess:uploadSuccessful_Handler,
-					onchange:newFileSelected_Handler,
-					upload_progress_id:'progressMeter',
-					api_url:'{$APIURL}',
-					uploader_dir:'.',
-					upload_strategy:new PandaUploader.UploadOnSelect(),
-					widget:new PandaUploader.SmartWidget(html_5_options, flash_options),
-					allowed_extensions:['aac', 'avi', '3gp', 'flv', 'mov', 'mp3', 'mp4', 'mpeg', 'ogg', 'wav', 'webm', 'wma', 'wmv'],
-					file_size_limit:'250MB'
+					onsuccess: uploadSuccessful_Handler,
+					upload_progress_id: 'progressMeter',
+					api_url: '{$APIURL}',
+					uploader_dir: '.',
+					upload_strategy: new PandaUploader.UploadOnSelect(),
+					widget: new PandaUploader.SmartWidget(html_5_options, flash_options),
+					allowed_extensions: ['aac', 'avi', '3gp', 'flv', 'mov', 'mp3', 'mp4', 'mpeg', 'ogg', 'wav', 'webm', 'wma', 'wmv'],
+					file_size_limit: '250MB'
 				});
 			</script>
 		</div>
@@ -118,6 +134,25 @@
 				</div>
 				<div class="arrowSmall"></div>
 			</div>
+           	<div class="sportSelect">
+           		<div class="dropper">
+           			<div class="leftMedium"></div>
+           			<div class="middleMedium middle larger">
+           				<p class="value">Pick Your Sport</p>
+           				<input type="hidden" name="sport_id" id="sport_id" class="dropVal" value="0" />
+           			</div>
+           			<div class="rightMedium"></div>
+           			<ul class="potentials special">
+                       {foreach item=single from=$sports}
+                           <li>
+                               {$single->getSportName()}
+                               <input type="hidden" class="sportId" value="{$single->getId()}" />
+                           </li>
+                       {/foreach}
+           			</ul>
+           		</div>
+           		<div class="arrowSmall"></div>
+           	</div>
 		</div>
 		<div class="bigButton black">
 			<div class="topLeft whiteBg"></div>

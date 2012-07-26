@@ -18,6 +18,7 @@ jQuery(document).ready(function(){
 
     jQuery('#potentials li').click(function() {
         var sportId = jQuery(this).children('.sportId').val();
+
         var form = jQuery('#sportChooser');
 
         form.children('#chosenSport').val(sportId);
@@ -25,9 +26,27 @@ jQuery(document).ready(function(){
         form.submit();
     });
 
+    jQuery('.special li').click(function() {
+        var sportId = jQuery(this).children('.sportId').val();
+        var label = jQuery(this).remove('input').html();
+
+        jQuery('#sport_id').val(sportId);
+
+        jQuery(this).parentsUntil('.sportSelect').children('.dropper .middle').children('.value').html(label);
+
+        jQuery('.potentials').slideUp();
+    });
+
     jQuery('.potentials li').click(function() {
-        jQuery(this).parentsUntil('.sportSelect').children('.dropper .middle').children('.value').html(jQuery(this).html());
-        jQuery(this).parentsUntil('.sportSelect').children('.dropper .middle').children('.dropVal').val(jQuery(this).html());
+        if(jQuery(event.target).parents('.potentials').hasClass('special')) {
+            return;
+        }
+
+        var label = jQuery(this).remove('input').html();
+        var value = jQuery(this).children('.value').val();
+
+        jQuery(this).parentsUntil('.sportSelect').children('.dropper .middle').children('.value').html(label);
+        jQuery(this).parentsUntil('.sportSelect').children('.dropper .middle').children('.dropVal').val(value);
 
         jQuery('.potentials').slideUp();
     });
@@ -41,7 +60,7 @@ jQuery(document).ready(function(){
 
         if(showing == 'false') {
             jQuery(this).children('.box').children('.checkMark').show();
-//            jQuery(this).children('.checkValue').val('true');
+            jQuery(this).children('.checkValue').val('true');
 
             jQuery(this).children('input').attr('checked', true);
 
@@ -71,19 +90,19 @@ jQuery(document).ready(function(){
         }
     });
 
-//    jQuery('.accordion .header').click(function() {
-//        var clicked = jQuery(this);
-//
-//        jQuery(this).next().slideToggle('slow', function() {
-//            var curText = clicked.children('p').children('.collapse').html();
-//
-//            curText = (curText == 'Collapse') ? 'Expand' : 'Collapse';
-//
-//            clicked.children('p').children('.collapse').html(curText);
-//        });
-//
-//        return false;
-//    }).next().hide();
+    jQuery('.accordion .header').click(function() {
+        var clicked = jQuery(this);
+
+        jQuery(this).next().slideToggle('slow', function() {
+            var curText = clicked.children('p').children('.collapse').html();
+
+            curText = (curText == 'Collapse') ? 'Expand' : 'Collapse';
+
+            clicked.children('p').children('.collapse').html(curText);
+        });
+
+        return false;
+    }).next().hide();
 
     jQuery('.formEdit').click(function() {
         var _this = jQuery(this);
@@ -204,8 +223,8 @@ jQuery(document).ready(function(){
         }
     });
 
-    if(jQuery('.height').length > 0) {
-        jQuery('.height').slider({
+    if(jQuery('.heightSlider').length > 0) {
+        jQuery('.heightSlider').slider({
             min: 55,
             max: 95,
             range: true,
@@ -259,8 +278,6 @@ jQuery(document).ready(function(){
             function(data) {
                 var text = '';
 
-                console.log(_this.parents('.infoBubble').siblings('.infoOpen'))
-
                 text = data;
 
                 _this.parents('.infoBubble').children('.middle').children('p').html(text);
@@ -292,13 +309,20 @@ jQuery(document).ready(function(){
                         }
                     }));
 
+                    var position = jQuery('#schoolSearchInput').parents('.inputField').position();
+
+                    var left = position.left;
+                    var top = position.top;
+                    var height = jQuery('#schoolSearchInput').parents('.inputField').height();
+                    var width = jQuery('#schoolSearchInput').parents('.inputField').width();
+
                     jQuery('.ui-autocomplete').css(
                         {
                             'border': '1px solid #ccc',
                             'border-top': 'none',
-                            'top': '1178px',
-                            'left': '70px',
-                            'width': '454px'
+                            'top': top + height,
+                            'left': left,
+                            'width': width + 'px'
                         }
                     );
                 }
@@ -306,15 +330,13 @@ jQuery(document).ready(function(){
         },
         select: function(event, ui) {
 
-            jQuery(this).html(ui.appitem.label);
+            jQuery(this).html(ui.item.label);
             jQuery(this).siblings('.passer').val(ui.item.id);
         }
     });
 
     jQuery('.addAnother').click(function() {
         var _this = jQuery(this).siblings('.copy').first();
-
-        console.log(_this);
 
         _this.after(_this.clone());
     });

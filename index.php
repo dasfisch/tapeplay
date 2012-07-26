@@ -38,6 +38,12 @@
     $post = $inputFilter->process($_POST);
 
     $isLoggedIn = true;
+    $message = (isset($_SESSION['message']['message']) && !empty($_SESSION['message']['message']) && $_SESSION['message']['message'] != '')
+                    ? $_SESSION['message']['message']
+                    : null;
+
+    unset($_SESSION['message']);
+
     $sport = null;
 	$user_id = -1;
 
@@ -75,6 +81,7 @@
         $smarty->assign('sport', $sport);
         $smarty->assign('sports', $sports);
         $smarty->assign('currentSport', $sport);
+        $smarty->assign('message', $message);
 
 		$smarty->assign('loginText', $userBLL->isAuthenticated() ? "Log out" : "Login");
 		$smarty->assign('loginAction', $userBLL->isAuthenticated() ? "logout" : "login");

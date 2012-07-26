@@ -259,7 +259,7 @@
                                                                                                             <font face="Arial, Helvetica, sans-serif" size="2" color="#666666" style="font-size:13px; line-height:18px;">
                                                                                                     {/if}
                                                                                                                 {$stat->getStatName()}: {$stat->getStatValue()}
-                                                                                                    {if ($i%$modder == 4 && $i > $modder)}
+                                                                                                    {if ($i%$modder == $modder - 1 && $i > $modder) || $i == ($statCount - 1)}
                                                                                                             </font>
                                                                                                         </td>
                                                                                                         <td width="3%" style="font-size:0; line-height:0;">

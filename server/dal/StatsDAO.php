@@ -7,6 +7,7 @@ require_once("model/Stat.php");
 
 use tapeplay\server\dal\BaseDOA;
 use tapeplay\server\model\Stat;
+use \Exception;
 
 /**
  * Manages all db access for anything sport-related
@@ -15,12 +16,19 @@ class StatsDAO extends BaseDOA
 {
     public function getStatsBySport($sportId) {
         try {
-            if(!is_int($sportId) || $sportId <= 0) {
-                Throw new Exception('This is not a valid sport ID!', 666);
-            }
+//            if(!is_int($sportId) || $sportId <= 0) {
+//                Throw new Exception('This is not a valid sport ID!', 666);
+//            }
 
             $this->sql = 'SELECT
-                                  stats.*, validation.*
+                                  stats.id AS stat_id,
+                                  stats.stat_name AS stat_name,
+                                  stats.sort AS stat_sort,
+                                  stats.stat_validation_id AS stat_validation_id,
+                                  stats.stat_category_id AS stat_category_id,
+                                  validation.id AS validation_id,
+                                  validation.name AS validation_name,
+                                  validation.regex AS validation_regex
                               FROM
                                   stats stats
                               LEFT JOIN
@@ -29,7 +37,7 @@ class StatsDAO extends BaseDOA
                                           validation.id=stats.stat_validation_id
                               WHERE
                                   stats.sport_id=:id';
-
+            
             $this->prep = $this->dbh->prepare($this->sql);
             $this->prep->bindValue(":id", $sportId, \PDO::PARAM_INT);
             $this->prep->execute();
@@ -56,7 +64,15 @@ class StatsDAO extends BaseDOA
             $stats = null;
 
             $this->sql = 'SELECT
-                                stats.*, sports.*, stat_val.*, ps.value
+                                  stats.id AS stat_id,
+                                  stats.stat_name AS stat_name,
+                                  stats.sort AS stat_sort,
+                                  stats.stat_validation_id AS stat_validation_id,
+                                  stats.stat_category_id AS stat_category_id,
+                                  stat_val.id AS validation_id,
+                                  stat_val.name AS validation_name,
+                                  stat_val.regex AS validation_regex,
+                                  sports.*, ps.value
                             FROM
                                 stats stats
                             LEFT JOIN

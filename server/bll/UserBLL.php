@@ -202,10 +202,9 @@ class UserBLL extends BaseBLL
 
 	public function logout()
 	{
-		// TODO: Implement logout logic
+        // We can only destroy the user; we cna't destroy the session as it holds sport data;
+        // Possibly switch sports to cookies?
         unset($_SESSION['user']);
-        session_unset();
-        session_destroy();
 	}
 
 	/**

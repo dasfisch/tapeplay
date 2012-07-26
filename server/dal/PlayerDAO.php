@@ -58,21 +58,48 @@ class PlayerDAO extends BaseDOA
 	 * @param $userId int
 	 * @return int The ID of the user that as created.
 	 */
-	public function insert($userId)
-	{
-		$this->sql = "INSERT INTO players
-						(user_id)
-						VALUES
-						(:userId);";
+    public function insert($userId)
+   	{
+   		$this->sql = "INSERT INTO players
+   						(user_id)
+   						VALUES
+   						(:userId);";
 
-		$this->prep = $this->dbh->prepare($this->sql);
-		$this->prep->bindValue(":userId", $userId, \PDO::PARAM_INT);
+   		$this->prep = $this->dbh->prepare($this->sql);
+   		$this->prep->bindValue(":userId", $userId, \PDO::PARAM_INT);
 
-		$this->prep->execute();
+   		$this->prep->execute();
 
-		// return the player with his id
-		return ($this->prep->rowCount() > 0) ? $this->dbh->lastInsertId() : -1;
-	}
+   		// return the player with his id
+   		return ($this->prep->rowCount() > 0) ? $this->dbh->lastInsertId() : -1;
+   	}
+
+    public function insertPlayerStat($playerId, $statId, $statValue)
+   	{
+   		$this->sql = "INSERT INTO
+                            player_stats
+   						(
+   						    player_id,
+   						    stat_id,
+   						    value
+                        )
+   						VALUES
+   						(
+   						    :playerId,
+   						    :statId,
+   						    :value
+                        );";
+
+   		$this->prep = $this->dbh->prepare($this->sql);
+        $this->prep->bindValue(":playerId", $playerId, \PDO::PARAM_INT);
+        $this->prep->bindValue(":statId", $statId, \PDO::PARAM_INT);
+        $this->prep->bindValue(":value", $statValue, \PDO::PARAM_INT);
+
+   		$this->prep->execute();
+
+   		// return the player with his id
+   		return ($this->prep->rowCount() > 0) ? $this->dbh->lastInsertId() : -1;
+   	}
 
 	function update(Player $player)
 	{
@@ -106,9 +133,9 @@ class PlayerDAO extends BaseDOA
 		$this->prep->bindValue(":schoolId", $player->getSchool()->getId(), \PDO::PARAM_INT);
 		$this->prep->bindValue(":sportId", $player->getSport()->getId(), \PDO::PARAM_INT);
 
-		$this->prep->execute();
+		return $this->prep->execute();
 
-		return ($this->prep->rowCount() > 0);
+//		return ($this->prep->rowCount() > 0);
 	}
 
 	/**

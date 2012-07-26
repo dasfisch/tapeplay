@@ -199,7 +199,7 @@
                                 <div class="leftMedium"></div>
                                 <div class="middleMedium middle">
                                     <p class="value">{$user->getPlayingLevel()}</p>
-                                    <input type="hidden" name="height" class="dropVal" value="" />
+                                    <input type="hidden" name="playingLevel" class="dropVal" value="" />
                                 </div>
                                 <div class="rightMedium"></div>
                                 <ul class="potentials">
@@ -336,7 +336,7 @@
                                                 </div>
                                                 <div class="right"></div>
                                             </div>
-                                    {if ($i%$modder == 4 && $i > $modder)}
+                                    {if ($i%$modder == $modder - 1 && $i > $modder) || $i == ($statCount - 1)}
                                         </li>
                                     {/if}
                                     {$i=$i+1}

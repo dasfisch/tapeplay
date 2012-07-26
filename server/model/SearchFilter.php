@@ -16,6 +16,7 @@ class SearchFilter
     private $_userId;
 
     private $_like;
+    private $_sort;
     private $_where;
 
     public function __construct() {
@@ -77,6 +78,14 @@ class SearchFilter
 
     public function setWhere($key, $value) {
         $this->_where[$key] = $value;
+    }
+
+    public function getSort($key=null) {
+        return (isset($key) && !empty($key)) ? $this->_sort[$key] : $this->_sort;
+    }
+
+    public function setSort($key, $value) {
+        $this->_sort[$key] = $value;
     }
 
     public function __set($name, $value) {

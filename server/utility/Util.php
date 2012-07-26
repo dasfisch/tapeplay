@@ -16,6 +16,8 @@ class Util
 		$fullURL = $controller->configuration->URLs['baseUrl'] . $relURL;
 
 		header("Location: " . $fullURL);
+
+        exit;
 	}
 
 	/**

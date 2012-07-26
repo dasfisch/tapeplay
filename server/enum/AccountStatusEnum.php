@@ -2,8 +2,8 @@
 
 class AccountStatusEnum
 {
-	public static $STEP1 = 1;
-	public static $STEP2 = 2;
-	public static $STEP3 = 3;
-	public static $COMPLETE = 4;
+	public static $STEP1 = 0; //hasn't even started
+	public static $STEP2 = 1; //completed basic registration
+	public static $STEP3 = 2; //completed video upload
+	public static $COMPLETE = 3; //completed stats; profile is complete
 }
