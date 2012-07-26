@@ -28,10 +28,11 @@ jQuery(document).ready(function(){
 
     jQuery('.special li').click(function() {
         var sportId = jQuery(this).children('.sportId').val();
-
-        console.log(sportId);
+        var label = jQuery(this).remove('input').html();
 
         jQuery('#sport_id').val(sportId);
+
+        jQuery(this).parentsUntil('.sportSelect').children('.dropper .middle').children('.value').html(label);
 
         jQuery('.potentials').slideUp();
     });
@@ -277,8 +278,6 @@ jQuery(document).ready(function(){
             function(data) {
                 var text = '';
 
-                console.log(_this.parents('.infoBubble').siblings('.infoOpen'))
-
                 text = data;
 
                 _this.parents('.infoBubble').children('.middle').children('p').html(text);
@@ -338,8 +337,6 @@ jQuery(document).ready(function(){
 
     jQuery('.addAnother').click(function() {
         var _this = jQuery(this).siblings('.copy').first();
-
-        console.log(_this);
 
         _this.after(_this.clone());
     });

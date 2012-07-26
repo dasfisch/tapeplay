@@ -294,9 +294,9 @@ if (isset($route->method))
                 $video->setSportId($post['sport_id']);
 
 				$videoBLL = new VideoBLL();
-				$videoId = $videoBLL->insert($video, (int)$userBLL->getUser()->getId());
+				$video = $videoBLL->insert($video, (int)$userBLL->getUser()->getId());
 
-				if ($videoId > 0)
+				if ($video->getId() > 0)
 				{
                     if(!$user->getStatus() == \AccountStatusEnum::$COMPLETE) {
                         // update status
@@ -311,9 +311,9 @@ if (isset($route->method))
                      * For now, disallow multiple sports
                      */
 
-                    $_SESSION['postSport'] = $userBLL->getUser()->getSport()->getId() == $post['sport_id'] ? $post['sport_id'] : $userBLL->getUser()->getSport()->getId();
+                    $_SESSION['postSport'] = $userBLL->getUser()->getSport()->getId() != $post['sport_id'] ? (int)$post['sport_id'] : (int)$userBLL->getUser()->getSport()->getId();
                     $_SESSION['last_video'] = $userBLL->getLastInsertID();
-
+                    
                     if(!$userBLL->getUser()->getSport()->getId() == $post['sport_id']) {
                         // insert succeeded - go to info page
                         Util::setHeader("user/info/");
@@ -465,7 +465,7 @@ if (isset($route->method))
                         $startYear = date('Y', strtotime('now'));
 
                         $statsBll = new StatsBLL();
-                        $stats = $statsBll->getStatsBySport((int)$_SESSION['postSport']);
+                        $stats = $statsBll->getStatsBySport($_SESSION['postSport']);
 
                         if(!isset($_SESSION['last_video']) || (int)$_SESSION['last_video'] <= 0) {
                             $video = null;

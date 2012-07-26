@@ -7,6 +7,7 @@ require_once("model/Stat.php");
 
 use tapeplay\server\dal\BaseDOA;
 use tapeplay\server\model\Stat;
+use \Exception;
 
 /**
  * Manages all db access for anything sport-related
@@ -15,9 +16,9 @@ class StatsDAO extends BaseDOA
 {
     public function getStatsBySport($sportId) {
         try {
-            if(!is_int($sportId) || $sportId <= 0) {
-                Throw new Exception('This is not a valid sport ID!', 666);
-            }
+//            if(!is_int($sportId) || $sportId <= 0) {
+//                Throw new Exception('This is not a valid sport ID!', 666);
+//            }
 
             $this->sql = 'SELECT
                                   stats.id AS stat_id,
@@ -36,7 +37,7 @@ class StatsDAO extends BaseDOA
                                           validation.id=stats.stat_validation_id
                               WHERE
                                   stats.sport_id=:id';
-
+echo $this->sql.' '.$sportId;
             $this->prep = $this->dbh->prepare($this->sql);
             $this->prep->bindValue(":id", $sportId, \PDO::PARAM_INT);
             $this->prep->execute();
