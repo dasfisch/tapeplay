@@ -24,7 +24,7 @@
         <ul class="footerList">
             <li class="header">Cool Stuff</li>
             <li><a href="{#baseUrl#}blog/">Blog</a></li>
-            <li><a href="{#baseUrl#}merchandise/">Merchandise</a></li>
+            <li><a href="http://www.printfection.com/tapeplay/">Merchandise</a></li>
         </ul>
     </div>
     <div class="bottom">
