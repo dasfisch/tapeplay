@@ -9,6 +9,9 @@ require_once("enum/controllers/UserMethods.php");
 
 require_once("bll/Panda.php");
 require_once("bll/PlayerBLL.php");
+require_once("bll/SchoolBLL.php");
+require_once("bll/SportBLL.php");
+require_once("bll/StatBLL.php");
 require_once("bll/UserBLL.php");
 require_once("bll/VideoBLL.php");
 
