@@ -1,6 +1,6 @@
 <div id="main">
     <div id="accountLeft">
-        <h2>Welcome, Player</h2>
+        <h2>Welcome, {$user->getFirstName()} {$user->getLastName()}</h2>
         <div class="accordion">
             <input type="hidden" id="hash" value="{$hash}" />
             <div class="header">
@@ -73,14 +73,14 @@
                         <div class="inputField bottom hidden">
                             <div class="left"></div>
                             <div class="middle">
-                                <input type="text" class="standard" id="firstName" name="firstName" value="{$user->getFirstName()}" />
+                                <input type="text" class="standard" id="first_name" name="first_name" value="{$user->getFirstName()}" />
                             </div>
                             <div class="right"></div>
                         </div>
                         <div class="inputField hidden">
                             <div class="left"></div>
                             <div class="middle">
-								<input type="text" class="standard" id="lastName" name="lastName" value="{$user->getLastName()}" />
+								<input type="text" class="standard" id="last_name" name="last_name" value="{$user->getLastName()}" />
                             </div>
                             <div class="right"></div>
                         </div>
@@ -246,7 +246,7 @@
                         </div>
                         <p>{$user->getPosition()} / {$user->getHeight()}</p>
                     </div>
-                    <div class="bigButton orange formEdit" id="height-position">
+                    <div class="bigButton orange schoolEdit" id="height-position">
                         <div class="topLeft whiteBg"></div>
                         <div class="topRight whiteBg"></div>
                         <div class="bottomLeft whiteBg"></div>
@@ -415,7 +415,7 @@
         </div>
     </div>
     <div id="accountRight">
-        <div class="bigButton orange">
+        <!--<div class="bigButton orange">
             <div class="newTriangleCorner"></div>
             <div class="topLeft whiteBg"></div>
             <div class="topRight whiteBg"></div>
@@ -433,6 +433,16 @@
             <div class="bottomRight whiteBg"></div>
             <div class="middle">
                 <input type="submit" value="Search Players" id="serachPlayers" class="large black" />
+            </div>
+        </div>-->
+        <div class="bigButton black">
+            <div class="topLeft whiteBg"></div>
+            <div class="topRight whiteBg"></div>
+            <div class="bottomLeft whiteBg"></div>
+            <div class="bottomRight whiteBg"></div>
+            <div class="middle">
+                <a href="{#baseUrl#}user/upload/" class="large black">Upload Video</a>
+
             </div>
         </div>
         <div class="ad250x250">

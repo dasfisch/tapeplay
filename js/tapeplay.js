@@ -106,10 +106,42 @@ jQuery(document).ready(function(){
 
     jQuery('.formEdit').click(function() {
         var _this = jQuery(this);
+        var inputs = _this.siblings('.accountInfo').find('input');
 
         var inputField = jQuery(this).siblings('.accountInfo').children('.inputField');
         var dropDown = jQuery(this).siblings('.accountInfo').children('.sportSelect');
-        var p = jQuery(this).siblings('.accountInfo').children('p')
+        var p = jQuery(this).siblings('.accountInfo').children('p');
+
+        var keys = {};
+        var values = {};
+
+        inputField.toggleClass('hidden');
+        dropDown.toggleClass('hidden');
+        p.toggleClass('hidden');
+
+        if(inputField.hasClass('hidden')) {
+            _this.parents('.chunk').children('.bigButton').children('.middle').children('.edit').html('Edit');
+        } else {
+            _this.parents('.chunk').children('.bigButton').children('.middle').children('.edit').html('Done');
+
+            jQuery(inputs).each(function(i) {
+                console.log(jQuery(this));
+
+                keys = jQuery(this).attr('id');
+            });
+            console.log(keys);
+//            jQuery(this).parents('.chunk').children('.bigButton').addClass('formEdit');
+        }
+
+        console.log(inputs);
+    });
+
+    jQuery('.schoolEdit').click(function() {
+        var _this = jQuery(this);
+
+        var inputField = jQuery(this).siblings('.accountInfo').children('.inputField');
+        var dropDown = jQuery(this).siblings('.accountInfo').children('.sportSelect');
+        var p = jQuery(this).siblings('.accountInfo').children('p');
 
         inputField.toggleClass('hidden');
         dropDown.toggleClass('hidden');
