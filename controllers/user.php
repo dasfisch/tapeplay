@@ -397,7 +397,7 @@ if (isset($route->method))
 						$schoolBll = new SchoolBLL();
                         $school = $schoolBll->getSchoolById($post["schoolId"]);
 
-						$userBLL->getUser()->setSchool($school);
+						$userBLL->getUser()->setSchool($school[0]);
 
                         //create sport and assign to player
                         $sportBll = new SportBLL();
@@ -408,7 +408,7 @@ if (isset($route->method))
 
                         $sport = $sportBll->get($search);
 
-                        $userBLL->getUser()->setSport($sport);
+                        $userBLL->getUser()->setSport($sport[0]);
 
 						$playerBLL = new PlayerBLL();
 
