@@ -16,7 +16,9 @@
         <div id="header">
             <div id="holder">
                 <div id="left">
-                    <h1>TapePlay</h1>
+                    <a href="{#baseUrl#}">
+                        <h1>TapePlay</h1>
+                    </a>
                     <div id="sportSelect">
                         <div id="beta"></div>
                         <div id="dropper">
