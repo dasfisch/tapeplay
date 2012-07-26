@@ -470,30 +470,32 @@ if (isset($route->method))
                         $statsBll = new StatsBLL();
                         $stats = $statsBll->getStatsBySport($_SESSION['postSport']);
 
+                        $video = null;
+
+                        $videoBLL = new VideoBLL();
+
+                        $search = new SearchFilter();
+
+                        $search->setSort('name', 'uploaded_date');
+                        $search->setSort('method', 'videos');
+                        $search->setSort('order', 'DESC');
+                        $search->setWhere('method', 'videos');
+
+                        $search->limit = 1;
+                        $search->page = 1;
+
                         if(!isset($_SESSION['last_video']) || (int)$_SESSION['last_video'] <= 0) {
-                            $video = null;
-
-                            $videoBLL = new VideoBLL();
-
-                            $search = new SearchFilter();
-
-                            $search->setSort('name', 'uploaded_date');
-                            $search->setSort('method', 'videos');
-                            $search->setSort('order', 'DESC');
-
                             $search->setWhere('player_id', $user->getId());
-                            $search->setWhere('method', 'videos');
+                        } else {
+                            $search->setWhere('id', $_SESSION['last_video']);
+                        }
 
-                            $search->limit = 1;
-                            $search->page = 1;
+                        try {
+                            $video = $videoBLL->search($search);
 
-                            try {
-                                $video = $videoBLL->search($search);
+                            $smarty->assign('video', $video[0]);
+                        } catch(Exception $e) {
 
-                                $smarty->assign('video', $video[0]);
-                            } catch(Exception $e) {
-
-                            }
                         }
 
                         $modder = (ceil(count($stats) / 3) > 1) ? ceil(count($stats) / 3) : 2;
