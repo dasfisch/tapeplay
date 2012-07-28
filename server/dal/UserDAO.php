@@ -8,6 +8,7 @@ require_once("model/Player.php");
 require_once("model/Scout.php");
 require_once("model/User.php");
 require_once("model/School.php");
+require_once("model/SearchFilter.php");
 require_once("model/UserSummary.php");
 
 use tapeplay\server\model\User;
@@ -15,6 +16,7 @@ use tapeplay\server\model\Coach;
 use tapeplay\server\model\Player;
 use tapeplay\server\model\Scout;
 use tapeplay\server\model\School;
+use tapeplay\server\model\SearchFilter;
 
 /**
  * Manages all db access for anything user-related.
@@ -78,6 +80,63 @@ class UserDAO extends BaseDOA
 //
 //        exit;
 	}
+
+    public function searchUser(SearchFilter $filter)
+   	{
+   		try
+   		{
+            $limit = $filter->limit;
+            $page = $filter->page;
+
+            $startLimit = ($page * $limit) - $limit;
+
+            $where = !is_null($filter->getWhere()) ? $this->_setWhere($filter->getWhere()) : null;
+            $like = !is_null($filter->getLike()) ? $this->_setLike($filter->getLike()) : null;
+            $groupBy = '';
+            $sort = !is_null($filter->getSort()) ? $this->_setSort($filter->getSort()) : null;
+
+            if((isset($where) && $where != '') && isset($like) && $like != '') {
+               $where.= ' AND ';
+            }
+
+            $this->sql = 'SELECT
+                                users.id,
+                                users.first_name,
+                                users.last_name,
+                                users.email,
+                                users.hash,
+                                users.zipcode,
+                                users.gender,
+                                users.birth_year,
+                                users.last_login,
+                                users.account_type,
+                                users.status
+                            FROM
+                                users users
+                            '.$where.'
+                            '.$like.'
+                            '.$groupBy.'
+                            '.$sort.'
+                            LIMIT '.$startLimit.','.$limit;
+
+            $this->prep = $this->dbh->prepare($this->sql);
+            //$this->prep->bindValue(":id", $id, \PDO::PARAM_INT);
+            $this->prep->execute();
+        }
+        catch (\PDOException $exception)
+        {
+            \TPErrorHandling::handlePDOException($exception->errorInfo);
+            return null;
+        }
+
+        $userList = array();
+        while ($row = $this->prep->fetch())
+        {
+            array_push($userList, User::create($row));
+        }
+
+        return $userList;
+    }
 
 	public function getCoachUser($userId)
 	{

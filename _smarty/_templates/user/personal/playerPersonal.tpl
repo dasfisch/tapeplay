@@ -1,6 +1,7 @@
 <div id="main">
     <h2>Player Sign Up</h2>
     <p class="facebookLogin">Have a Facebook account? <span class="facebookConnect"></span></p>
+    {include file='common/message.tpl'}
     <form id="coachForm" name="login" action="{#baseUrl#}user/personal/" method="post">
         <div class="input">
             <div class="inputField">

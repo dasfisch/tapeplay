@@ -32,6 +32,8 @@ class SportDAO extends BaseDOA
 		//$this->prep->bindValue(":id", $id, \PDO::PARAM_INT); //make sure this works like where maker
 		$this->prep->execute();
 
+        $sports = array();
+
         while($value = $this->prep->fetch()) {
             $sports[] = Sport::create($value);
         }

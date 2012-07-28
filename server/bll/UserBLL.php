@@ -2,13 +2,14 @@
 
 namespace tapeplay\server\bll;
 
-require_once("dal/UserDAO.php");
 require_once("bll/BaseBLL.php");
+require_once("dal/UserDAO.php");
 require_once("bll/VideoBLL.php");
 require_once("model/Coach.php");
-require_once("model/Scout.php");
-require_once("model/User.php");
 require_once("model/Player.php");
+require_once("model/Scout.php");
+require_once("model/SearchFilter.php");
+require_once("model/User.php");
 require_once("model/UserSummary.php");
 require_once("enum/AccountTypeEnum.php");
 require_once("enum/AccountStatusEnum.php");
@@ -17,9 +18,10 @@ require_once("utility/Util.php");
 use tapeplay\server\dal\UserDAO;
 use tapeplay\server\bll\VideoBLL;
 use tapeplay\server\model\Coach;
-use tapeplay\server\model\Scout;
-use tapeplay\server\model\User;
 use tapeplay\server\model\Player;
+use tapeplay\server\model\Scout;
+use tapeplay\server\model\SearchFilter;
+use tapeplay\server\model\User;
 use tapeplay\server\model\UserSummary;
 
 /**
@@ -193,6 +195,10 @@ class UserBLL extends BaseBLL
 
 		return $userId;
 	}
+
+    public function search(SearchFilter $search) {
+        return $this->dal->searchUser($search);
+    }
 
 	public function resetPassword($userId)
 	{

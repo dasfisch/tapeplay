@@ -50,13 +50,15 @@ class Player extends User
 		$player->setGraduationMonth($arr["graduation_month"]);
 		$player->setGraduationYear($arr["graduation_year"]);
 
-		// set school
-		$school = new School();
-		$school->setId($arr["schoolId"]);
-		$school->setName($arr["schoolName"]);
-		$school->setCity($arr["schoolCity"]);
-		$school->setState($arr["schoolState"]);
-		$school->setDivision($arr["schoolDivision"]);
+		// set school, if the user has one associated with them
+        if(isset($arr['schoolId'])) {
+            $school = new School();
+            $school->setId($arr["schoolId"]);
+            $school->setName($arr["schoolName"]);
+            $school->setCity($arr["schoolCity"]);
+            $school->setState($arr["schoolState"]);
+            $school->setDivision($arr["schoolDivision"]);
+        }
 
 		$player->setSchool($school);
 
@@ -208,7 +210,7 @@ class Player extends User
 
 	public function getSchool()
 	{
-		return $this->_school;
+		return (isset($this->_school) && !empty($this->_school)) ? $this->_school : null;
 	}
 
 	public function setSport(Sport $sport)

@@ -52,6 +52,10 @@ class BaseDOA
 		$this->dbh = null;
 	}
 
+    /**
+     * @TODO: Go through next three methods, and ensure the set up of the queries runs
+     * through $this->prep->bindParam();
+     */
     protected function _setWhere($filter) {
         if(empty($filter)) {
             return;

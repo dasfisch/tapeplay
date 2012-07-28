@@ -190,8 +190,24 @@ if (isset($route->method))
 			// check for the need to process the incoming information
 			if ($posted && (!isset($post['chosenSport']) || $post['chosenSport'] == ''))
 			{
+                $search = new SearchFilter();
+
+                $search->setWhere('email', $post['email']);
+                $search->setWhere('method', 'users');
+
+                $search->page = 1;
+                $search->limit = 1;
+
+                $users = $userBLL->search($search);
+                if(isset($users) && !empty($users)) {
+                    $_SESSION['message']['message'] = 'A user with this email already exists!';
+                    $_SESSION['message']['type'] = 'error';
+
+                    Util::setHeader('user/personal/');
+                }
+
 				// create hash
-				$hash = $userBLL->createHash($_POST["email"], $_POST["password"]);
+				$hash = $userBLL->createHash($post["email"], $post["password"]);
 				// create user object based on data entered
 				$user = new User();
 				$user->setAccountType($userBLL->getAccountType());
@@ -393,11 +409,13 @@ if (isset($route->method))
 						$userBLL->getUser()->setGraduationMonth($post["graduationMonth"]);
 						$userBLL->getUser()->setGraduationYear($post["graduationYear"]);
 
-						// create school and assign to player
-						$schoolBll = new SchoolBLL();
-                        $school = $schoolBll->getSchoolById($post["schoolId"]);
+                        if(isset($post['schoolId']) && $post['schoolId'] != '') {
+                            // create school and assign to player
+                            $schoolBll = new SchoolBLL();
+                            $school = $schoolBll->getSchoolById($post["schoolId"]);
 
-						$userBLL->getUser()->setSchool($school[0]);
+                            $userBLL->getUser()->setSchool($school[0]);
+                        }
 
                         //create sport and assign to player
                         $sportBll = new SportBLL();
