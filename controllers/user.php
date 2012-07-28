@@ -376,7 +376,6 @@ if (isset($route->method))
 			// check for the need to process the incoming information
 			if ($posted && (!isset($post['chosenSport']) || $post['chosenSport'] == ''))
 			{
-
 				switch ($userBLL->getAccountType())
 				{
 					case AccountTypeEnum::$COACH:
@@ -400,7 +399,6 @@ if (isset($route->method))
 
 						// get player basics and add
                         $userBLL->getUser()->setNumber($post["number"]);
-                        $userBLL->getUser()->getSchool()->setId((int)$post["schoolId"]);
 						$userBLL->getUser()->setGradeLevel($post["gradeLevel"]);
 						$userBLL->getUser()->setPosition($post['position']);
 						$userBLL->getUser()->setHeight($post['height']);
@@ -408,6 +406,10 @@ if (isset($route->method))
 						$userBLL->getUser()->setCoachName($post["headCoachName"]);
 						$userBLL->getUser()->setGraduationMonth($post["graduationMonth"]);
 						$userBLL->getUser()->setGraduationYear($post["graduationYear"]);
+
+                        if(isset($post['schoolId']) && (int)$post["schoolId"] > 0) {
+                            $userBLL->getUser()->getSchool()->setId((int)$post["schoolId"]);
+                        }
 
                         if(isset($post['schoolId']) && $post['schoolId'] != '') {
                             // create school and assign to player

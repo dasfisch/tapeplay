@@ -266,12 +266,14 @@
                         <div class="inputField hidden">
                             <div class="left"></div>
                             <div class="middle">
-                                <input type="text" class="standard small" id="schoolSearchInput" name="schoolSearchInput" value="{$user->getSchool()->getName()}" />
+                                {assign var=school value=$user->getSchool()->getName()}
+                                <input type="text" class="standard small" id="schoolName" name="schoolName"
+                                       value="{if isset($school) && $school != ''}{$school}{else}Please select a school!{/if}" />
                                 <input type="hidden" class="passer" value="" />
                             </div>
                             <div class="right"></div>
                         </div>
-                        <p>{$user->getSchool()->getName()}</p>
+                        <p>{if isset($school) && $school != ''}{$school}{else}Please select a school!{/if}</p>
                     </div>
                     <div class="bigButton orange formEdit" id="school">
                         <div class="topLeft whiteBg"></div>

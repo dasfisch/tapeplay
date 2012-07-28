@@ -51,16 +51,16 @@ class Player extends User
 		$player->setGraduationYear($arr["graduation_year"]);
 
 		// set school, if the user has one associated with them
-        if(isset($arr['schoolId'])) {
+        if(isset($arr['schoolId']) && (int)$arr['schoolId'] > 0) {
             $school = new School();
             $school->setId($arr["schoolId"]);
             $school->setName($arr["schoolName"]);
             $school->setCity($arr["schoolCity"]);
             $school->setState($arr["schoolState"]);
             $school->setDivision($arr["schoolDivision"]);
-        }
 
-		$player->setSchool($school);
+            $player->setSchool($school);
+        }
 
 		$sport = new Sport();
 		$sport->setId($arr["sport_id"]);
