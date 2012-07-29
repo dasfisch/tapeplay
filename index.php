@@ -37,15 +37,18 @@
     $get = $inputFilter->process($_GET);
     $post = $inputFilter->process($_POST);
 
-    $isLoggedIn = true;
-    $message = (isset($_SESSION['message']['message']) && !empty($_SESSION['message']['message']) && $_SESSION['message']['message'] != '')
-                    ? $_SESSION['message']['message']
-                    : null;
-
-    unset($_SESSION['message']);
-
+    $message = new \stdClass();
     $sport = null;
 	$user_id = -1;
+
+    $isLoggedIn = true;
+
+    if(isset($_SESSION['message']['message']) && !empty($_SESSION['message']['message']) && $_SESSION['message']['message'] != '') {
+        $message->message = $_SESSION['message']['message'];
+        $message->type = $_SESSION['message']['type'];
+    }
+
+    unset($_SESSION['message']);
 
     $limit = 10;
     $page = (isset($get['page']) && $get['page'] > 0) ? $get['page'] : 1;

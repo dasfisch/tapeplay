@@ -9,6 +9,9 @@ require_once("enum/controllers/UserMethods.php");
 
 require_once("bll/Panda.php");
 require_once("bll/PlayerBLL.php");
+require_once("bll/SchoolBLL.php");
+require_once("bll/SportBLL.php");
+require_once("bll/StatsBLL.php");
 require_once("bll/UserBLL.php");
 require_once("bll/VideoBLL.php");
 
@@ -187,8 +190,24 @@ if (isset($route->method))
 			// check for the need to process the incoming information
 			if ($posted && (!isset($post['chosenSport']) || $post['chosenSport'] == ''))
 			{
+                $search = new SearchFilter();
+
+                $search->setWhere('email', $post['email']);
+                $search->setWhere('method', 'users');
+
+                $search->page = 1;
+                $search->limit = 1;
+
+                $users = $userBLL->search($search);
+                if(isset($users) && !empty($users)) {
+                    $_SESSION['message']['message'] = 'A user with this email already exists!';
+                    $_SESSION['message']['type'] = 'error';
+
+                    Util::setHeader('user/personal/');
+                }
+
 				// create hash
-				$hash = $userBLL->createHash($_POST["email"], $_POST["password"]);
+				$hash = $userBLL->createHash($post["email"], $post["password"]);
 				// create user object based on data entered
 				$user = new User();
 				$user->setAccountType($userBLL->getAccountType());
@@ -357,7 +376,6 @@ if (isset($route->method))
 			// check for the need to process the incoming information
 			if ($posted && (!isset($post['chosenSport']) || $post['chosenSport'] == ''))
 			{
-
 				switch ($userBLL->getAccountType())
 				{
 					case AccountTypeEnum::$COACH:
@@ -381,7 +399,6 @@ if (isset($route->method))
 
 						// get player basics and add
                         $userBLL->getUser()->setNumber($post["number"]);
-                        $userBLL->getUser()->getSchool()->setId((int)$post["schoolId"]);
 						$userBLL->getUser()->setGradeLevel($post["gradeLevel"]);
 						$userBLL->getUser()->setPosition($post['position']);
 						$userBLL->getUser()->setHeight($post['height']);
@@ -390,11 +407,17 @@ if (isset($route->method))
 						$userBLL->getUser()->setGraduationMonth($post["graduationMonth"]);
 						$userBLL->getUser()->setGraduationYear($post["graduationYear"]);
 
-						// create school and assign to player
-						$schoolBll = new SchoolBLL();
-                        $school = $schoolBll->getSchoolById($post["schoolId"]);
+                        if(isset($post['schoolId']) && (int)$post["schoolId"] > 0) {
+                            $userBLL->getUser()->getSchool()->setId((int)$post["schoolId"]);
+                        }
 
-						$userBLL->getUser()->setSchool($school);
+                        if(isset($post['schoolId']) && $post['schoolId'] != '') {
+                            // create school and assign to player
+                            $schoolBll = new SchoolBLL();
+                            $school = $schoolBll->getSchoolById($post["schoolId"]);
+
+                            $userBLL->getUser()->setSchool($school[0]);
+                        }
 
                         //create sport and assign to player
                         $sportBll = new SportBLL();
@@ -405,7 +428,7 @@ if (isset($route->method))
 
                         $sport = $sportBll->get($search);
 
-                        $userBLL->getUser()->setSport($sport);
+                        $userBLL->getUser()->setSport($sport[0]);
 
 						$playerBLL = new PlayerBLL();
 
@@ -467,30 +490,32 @@ if (isset($route->method))
                         $statsBll = new StatsBLL();
                         $stats = $statsBll->getStatsBySport($_SESSION['postSport']);
 
+                        $video = null;
+
+                        $videoBLL = new VideoBLL();
+
+                        $search = new SearchFilter();
+
+                        $search->setSort('name', 'uploaded_date');
+                        $search->setSort('method', 'videos');
+                        $search->setSort('order', 'DESC');
+                        $search->setWhere('method', 'videos');
+
+                        $search->limit = 1;
+                        $search->page = 1;
+
                         if(!isset($_SESSION['last_video']) || (int)$_SESSION['last_video'] <= 0) {
-                            $video = null;
-
-                            $videoBLL = new VideoBLL();
-
-                            $search = new SearchFilter();
-
-                            $search->setSort('name', 'uploaded_date');
-                            $search->setSort('method', 'videos');
-                            $search->setSort('order', 'DESC');
-
                             $search->setWhere('player_id', $user->getId());
-                            $search->setWhere('method', 'videos');
+                        } else {
+                            $search->setWhere('id', $_SESSION['last_video']);
+                        }
 
-                            $search->limit = 1;
-                            $search->page = 1;
+                        try {
+                            $video = $videoBLL->search($search);
 
-                            try {
-                                $video = $videoBLL->search($search);
+                            $smarty->assign('video', $video[0]);
+                        } catch(Exception $e) {
 
-                                $smarty->assign('video', $video[0]);
-                            } catch(Exception $e) {
-
-                            }
                         }
 
                         $modder = (ceil(count($stats) / 3) > 1) ? ceil(count($stats) / 3) : 2;

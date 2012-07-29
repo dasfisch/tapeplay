@@ -38,7 +38,7 @@ class SchoolDAO extends BaseDOA
         $this->sql = "SELECT * FROM schools WHERE id=:id LIMIT 0,10";
 
         $this->prep = $this->dbh->prepare($this->sql);
-        $this->prep->bindValue(":id", $id, \PDO::PARAM_STR);
+        $this->prep->bindValue(":id", $schoolId, \PDO::PARAM_STR);
 
         $this->prep->execute();
 
