@@ -96,16 +96,23 @@
 				text-decoration:none;
 			}
 			
+			#footer-navigation {
+				margin-top:21px;
+			}
+			
 			#footer-navigation li {
 				border-left:solid 1px #454545;
 				float:left;
-				height:112px;
-				padding-left:55px;
+				height:96px;
+				line-height:24px;
+				padding:16px 0 0 55px;
 				width:195px;
 			}
 			
 			#footer-navigation li:first-child {
 				border:none;
+				padding-left:20px;
+				width:230px;
 			}
 			
 			#footer-navigation dt {
@@ -122,6 +129,13 @@
 			#footer-navigation a {
 				font-size:13px;
 			}
+			
+			#footer-terms {
+				color:#ffffff;
+				font-size:11px;
+				padding-top:35px;
+				text-align:center;
+			}
 			/*
 			 * Global Styles
 			 */
@@ -132,6 +146,10 @@
 			
 			.right {
 				float:right;
+			}
+			
+			.clear {
+				clear:both;
 			}
    		</style>
     </head>
@@ -205,7 +223,7 @@
 							</dl>
 						</li>
 					</ul>
-					
+					<div class="clear"></div>
 					<div id="footer-terms">
 						<ul>
 							<li><a href="#">Terms of Use</a> | <a href="#">Privacy Policy</a></li>

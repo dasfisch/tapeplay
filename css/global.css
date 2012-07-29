@@ -1,0 +1,192 @@
+html,body {
+	margin:0;
+	padding:0;
+	height:100%; /* needed for container min-height */
+	font-family:Arial, Helvetica, Verdana, sans-serif
+}
+
+#content-wrapper div, h1, h2, h3, h4, h5, h6, p, blockquote, 
+pre, img, dl, dt, dd, ol, ul, li, fieldset, form, label, 
+legend, table {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font-weight:normal;
+	vertical-align: baseline;
+}
+
+/*
+ * Layout
+ */
+
+#container {
+	position:relative; /* needed for footer positioning*/
+	margin:0;
+	width:100%;
+	background:#c66a13;
+	
+	height:auto !important; /* real browsers */
+	height:100%; /* IE6: treated as min-height*/
+
+	min-height:100%; /* real browsers */
+}
+
+#header {
+	height:75px;
+	background:#000000 url("/media/images/header-bg.gif") repeat-x 0px 0px;
+}
+
+#header-wrapper {
+	width:1010px;
+}
+
+#content {
+	background:#ffffff;
+	padding-bottom:215px; /* bottom padding for footer */
+	width:1010px;
+}
+
+#content-wrapper {
+	color:#333333;
+	font-size:18px;
+	padding:48px 36px;
+}
+
+#footer {
+	position:absolute;
+	height:215px;
+	width:100%;
+	bottom:0; /* stick to bottom */
+	background:#000000 url("/media/images/tapePlay_footerBackground.gif") repeat-x 0px 0px;
+}
+
+#footer-wrapper {
+	width:1010px;
+}
+
+#logo {
+	background:transparent url(/media/images/logo_126x69.png) no-repeat 0px 0px;
+	height:69px;
+	margin:3px 0px 0px 20px;
+	padding:0;
+	text-indent:-9999em;
+	width:126px;
+}
+
+#logo img {
+	visibility:hidden;
+}
+
+#content-left-column {
+	width:670px;
+}
+
+/*
+ * Navigation Styles
+ */
+
+#navigation, #footer-navigation, #footer-navigation dl, #footer-navigation dd, 
+#footer-navigation dt, #footer-terms ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+
+#navigation li {
+	float:left;
+	padding:30px 18px 0px;
+}
+
+#navigation a, #navigation a:visited, #navigation a:hover {
+	color:#ffffff;
+	font-size:17px;
+	font-weight:bold;
+	text-decoration:none;
+}
+
+#footer-navigation {
+	margin-top:21px;
+}
+
+#footer-navigation li {
+	border-left:solid 1px #454545;
+	float:left;
+	height:96px;
+	line-height:24px;
+	padding:16px 0 0 55px;
+	width:195px;
+}
+
+#footer-navigation li:first-child {
+	border:none;
+	padding-left:20px;
+	width:230px;
+}
+
+#footer-navigation dt {
+	color:#999999;
+	font-size:17px;
+	font-weight:bold;
+}
+
+#footer-wrapper a, #footer-wrapper a:visited, #footer-wrapper a:hover {
+	color:#ffffff;
+	text-decoration:none;
+}
+
+#footer-navigation a {
+	font-size:13px;
+}
+
+#footer-terms {
+	color:#ffffff;
+	font-size:11px;
+	padding-top:35px;
+	text-align:center;
+}
+/*
+ * Global Styles
+ */
+
+.left {
+	float:left;
+}
+
+.right {
+	float:right;
+}
+
+.clear {
+	clear:both;
+}
+
+/* 
+ * Presentation
+ */
+
+a, a:visited, a:hover {
+	color:#e39117;
+	text-decoration:none;
+}
+
+h1 {
+	color:#e18a07;
+	font-size:48px;
+	margin-bottom:30px;
+}
+
+h2 {
+	color:#000000;
+	font-size:30px;
+	margin-bottom:18px;
+	padding-top:12px;
+}
+
+h1 + h2 {
+	padding-top:0px;
+}
+
+p {
+	margin-bottom:30px;
+}
