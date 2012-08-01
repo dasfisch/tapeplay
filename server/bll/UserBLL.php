@@ -200,6 +200,10 @@ class UserBLL extends BaseBLL
         return $this->dal->searchUser($search);
     }
 
+    public function update($user) {
+        return $this->dal->update($user);
+    }
+
 	public function resetPassword($userId)
 	{
 		// TODO: Reset this bitch's password

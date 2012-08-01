@@ -104,36 +104,134 @@ jQuery(document).ready(function(){
         return false;
     }).next().hide();
 
-    jQuery('.formEdit').click(function() {
+    jQuery('.userEdit').click(function() {
         var _this = jQuery(this);
+
         var inputs = _this.siblings('.accountInfo').find('input');
 
         var inputField = jQuery(this).siblings('.accountInfo').children('.inputField');
         var dropDown = jQuery(this).siblings('.accountInfo').children('.sportSelect');
         var p = jQuery(this).siblings('.accountInfo').children('p');
 
-        var keys = {};
-        var values = {};
+        var keys = [];
+        var post = {};
 
         inputField.toggleClass('hidden');
         dropDown.toggleClass('hidden');
         p.toggleClass('hidden');
 
         if(inputField.hasClass('hidden')) {
-            _this.parents('.chunk').children('.bigButton').children('.middle').children('.edit').html('Edit');
+            jQuery(inputs).each(function(i) {
+                var key = {};
+
+                key.name = jQuery(this).attr('id');
+                key.value = jQuery(this).val();
+
+                keys[i] = (key);
+            });
+
+            post.hash = jQuery('#hash').val();
+            post.data = keys;
+            jQuery.post(
+                '/ajax/userupdate/',
+                post,
+                function(data) {
+                    if(data == 200) {
+                        var newValue = '';
+
+                        for(var i in keys) {
+                            newValue += (i < (keys.length - 1)) ? keys[i].value + " " : keys[i].value;
+                        }
+
+                        _this.siblings('.accountInfo').children('p').html(newValue);
+
+                        _this.parents('.chunk').children('.bigButton').children('.middle').children('.edit').html('Edit');
+
+                        _this.parents('.chunk').children('.status').removeClass('hidden').show();
+
+                        setTimeout(
+                            function() {
+                                _this.parents('.chunk').children('.status').fadeOut();
+                            },
+                            2000
+                        );
+                    } else {
+
+                    }
+                }
+            );
         } else {
             _this.parents('.chunk').children('.bigButton').children('.middle').children('.edit').html('Done');
+        }
+    });
 
+    jQuery('.playerEdit').click(function() {
+        var _this = jQuery(this);
+
+        var inputs = _this.siblings('.accountInfo').find('input');
+
+        var inputField = jQuery(this).siblings('.accountInfo').children('.inputField');
+        var dropDown = jQuery(this).siblings('.accountInfo').children('.sportSelect');
+        var p = jQuery(this).siblings('.accountInfo').children('p');
+
+        var keys = [];
+        var post = {};
+
+        inputField.toggleClass('hidden');
+        dropDown.toggleClass('hidden');
+        p.toggleClass('hidden');
+
+        if(inputField.hasClass('hidden')) {
             jQuery(inputs).each(function(i) {
+                var key = {};
+
                 console.log(jQuery(this));
 
-                keys = jQuery(this).attr('id');
-            });
-            console.log(keys);
-//            jQuery(this).parents('.chunk').children('.bigButton').addClass('formEdit');
-        }
+                if(jQuery(this).val() != '' && jQuery(this).val() != 'true' && typeof(jQuery(this)) !== 'undefined') {
+                    key.name = jQuery(this).attr('id');
+                    key.value = jQuery(this).val();
 
-        console.log(inputs);
+                    keys[i] = (key);
+                }
+            });
+
+            post.hash = jQuery('#hash').val();
+            post.data = keys;
+
+            console.log(post);
+            return;
+
+            jQuery.post(
+                '/ajax/profileupdate/',
+                post,
+                function(data) {
+                    if(data == 200) {
+                        var newValue = '';
+
+                        for(var i in keys) {
+                            newValue += (i < (keys.length - 1)) ? keys[i].value + " " : keys[i].value;
+                        }
+
+                        _this.siblings('.accountInfo').children('p').html(newValue);
+
+                        _this.parents('.chunk').children('.bigButton').children('.middle').children('.edit').html('Edit');
+
+                        _this.parents('.chunk').children('.status').removeClass('hidden').show();
+
+                        setTimeout(
+                            function() {
+                                _this.parents('.chunk').children('.status').fadeOut();
+                            },
+                            2000
+                        );
+                    } else {
+
+                    }
+                }
+            );
+        } else {
+            _this.parents('.chunk').children('.bigButton').children('.middle').children('.edit').html('Done');
+        }
     });
 
     jQuery('.schoolEdit').click(function() {
@@ -152,7 +250,7 @@ jQuery(document).ready(function(){
             var schoolName = _this.siblings('.accountInfo').children('.inputField').children('.middle').children('#schoolSearchInput').val();
 
             jQuery.post(
-                '/ajax/profileupdate/',
+                '/ajax/schoolupdate/',
                 {
                     hash: jQuery('#hash').val(),
                     member: _this.attr('id'),

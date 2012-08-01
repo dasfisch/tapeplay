@@ -46,7 +46,7 @@
                     <ul id="links">
                         {if isset($user) && !empty($user)}
                             <li>
-                                <a href="{#baseUrl#}account/welcome/">Profile</a>
+                                <a href="{#baseUrl#}account/welcome/">My Account</a>
                             </li>
                             <li>
                                 <a href="{#baseUrl#}user/logout/">Logout</a>

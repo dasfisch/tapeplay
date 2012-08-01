@@ -224,25 +224,31 @@ class UserDAO extends BaseDOA
 	 */
 	public function update(User $user)
 	{
+        $user->setGender('M');
+        $user->setBirthYear(1987);
+
 		try
 		{
 			$this->sql = "UPDATE users " .
 					" SET " .
-					"(first_name:firstName, :lastName, :email, :password, :zipcode, :gender, :birthYear, :lastLogin, :accountType)" .
+					"first_name=:firstName,
+					last_name=:lastName, email=:email, hash=:password,
+					zipcode=:zipcode, gender=:gender, birth_year=:birthYear,
+					last_login=:lastLogin, account_type=:accountType" .
 					" WHERE " .
 					"id = :id";
 
 			$this->prep = $this->dbh->prepare($this->sql);
-			$this->prep->bindValue(":id", $user->getUserId(), \PDO::PARAM_INT);
+			$this->prep->bindValue(":id", (int)$user->getUserId(), \PDO::PARAM_INT);
 			$this->prep->bindValue(":firstName", $user->getFirstName(), \PDO::PARAM_STR);
 			$this->prep->bindValue(":lastName", $user->getLastName(), \PDO::PARAM_STR);
 			$this->prep->bindValue(":email", $user->getEmail(), \PDO::PARAM_STR);
 			$this->prep->bindValue(":password", $user->getHash(), \PDO::PARAM_STR);
 			$this->prep->bindValue(":zipcode", $user->getZipcode(), \PDO::PARAM_STR);
 			$this->prep->bindValue(":gender", $user->getGender(), \PDO::PARAM_STR);
-			$this->prep->bindValue(":birthYear", $user->getBirthYear(), \PDO::PARAM_INT);
-			$this->prep->bindValue(":lastLogin", $user->getLastLogin(), \PDO::PARAM_INT);
-			$this->prep->bindValue(":accountType", $user->getAccountType(), \PDO::PARAM_INT);
+			$this->prep->bindValue(":birthYear", (int)$user->getBirthYear(), \PDO::PARAM_INT);
+			$this->prep->bindValue(":lastLogin", (int)$user->getLastLogin(), \PDO::PARAM_INT);
+			$this->prep->bindValue(":accountType", (int)$user->getAccountType(), \PDO::PARAM_INT);
 
 			$this->prep->execute();
 		}

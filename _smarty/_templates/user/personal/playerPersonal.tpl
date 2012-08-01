@@ -108,7 +108,7 @@
                 </div>
 
                 <div class="label">
-                   I agree to the <a>Terms and Condition</a> and <a>Privacy Policy</a>
+                   I agree to the <a>Terms of Use</a> and <a>Privacy Policy</a>
                 </div>
             </div>
             <p class="error">* Please agree with our Terms of Use.</p>

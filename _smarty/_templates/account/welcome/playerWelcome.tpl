@@ -73,20 +73,20 @@
                         <div class="inputField bottom hidden">
                             <div class="left"></div>
                             <div class="middle">
-                                <input type="text" class="standard" id="first_name" name="first_name" value="{$user->getFirstName()}" />
+                                <input type="text" class="standard" id="_firstName" name="first_name" value="{$user->getFirstName()}" />
                             </div>
                             <div class="right"></div>
                         </div>
                         <div class="inputField hidden">
                             <div class="left"></div>
                             <div class="middle">
-								<input type="text" class="standard" id="last_name" name="last_name" value="{$user->getLastName()}" />
+								<input type="text" class="standard" id="_lastName" name="last_name" value="{$user->getLastName()}" />
                             </div>
                             <div class="right"></div>
                         </div>
                         <p>{$user->getFirstName()} {$user->getLastName()}</p>
                     </div>
-                    <div class="bigButton orange formEdit" id="name">
+                    <div class="bigButton orange userEdit" id="name">
                         <div class="topLeft whiteBg"></div>
                         <div class="topRight whiteBg"></div>
                         <div class="bottomLeft whiteBg"></div>
@@ -106,13 +106,13 @@
                         <div class="inputField hidden">
                             <div class="left"></div>
                             <div class="middle">
-                                <input type="text" class="standard" id="email" name="email" value="{$user->getEmail()}" />
+                                <input type="text" class="standard" id="_email" name="email" value="{$user->getEmail()}" />
                             </div>
                             <div class="right"></div>
                         </div>
                         <p>{$user->getEmail()}</p>
                     </div>
-                    <div class="bigButton orange formEdit" id="email">
+                    <div class="bigButton orange userEdit">
                         <div class="topLeft whiteBg"></div>
                         <div class="topRight whiteBg"></div>
                         <div class="bottomLeft whiteBg"></div>
@@ -132,13 +132,13 @@
                         <div class="inputField hidden">
                             <div class="left"></div>
                             <div class="middle">
-                                <input type="password" class="standard" id="password" name="password" value="" />
+                                <input type="password" class="standard" id="_hash" name="password" value="" />
                             </div>
                             <div class="right"></div>
                         </div>
                         <p>*********</p>
                     </div>
-                    <div class="bigButton orange formEdit" id="password">
+                    <div class="bigButton orange userEdit">
                         <div class="topLeft whiteBg"></div>
                         <div class="topRight whiteBg"></div>
                         <div class="bottomLeft whiteBg"></div>
@@ -190,16 +190,17 @@
                         <div class="inputField numLevGrad hidden">
                             <div class="left"></div>
                             <div class="middle small">
-                                <input type="text" class="standard small" id="number" name="number" value="{$user->getNumber()}" />
+                                <input type="text" class="standard small" id="_number" name="number" value="{$user->getNumber()}" />
                             </div>
                             <div class="right"></div>
                         </div>
+                        <!-- Playing Level is not something set by the user; Why? -->
                         <div class="sportSelect numLevGradDrop hidden">
                             <div class="dropper">
                                 <div class="leftMedium"></div>
                                 <div class="middleMedium middle">
                                     <p class="value">{$user->getPlayingLevel()}</p>
-                                    <input type="hidden" name="playingLevel" class="dropVal" value="" />
+                                    <input type="hidden" name="_playingLevel" id="_playingLevel" class="dropVal" value="" />
                                 </div>
                                 <div class="rightMedium"></div>
                                 <ul class="potentials">
@@ -214,13 +215,13 @@
                         <div class="inputField numLevGrad hidden">
                             <div class="left"></div>
                             <div class="middle small">
-                                <input type="text" class="standard small" id="grade" name="grade" value="{$user->getGradeLevel()}" />
+                                <input type="text" class="standard small" id="_gradeLevel" name="grade" value="{$user->getGradeLevel()}" />
                             </div>
                             <div class="right"></div>
                         </div>
                         <p>#{$user->getNumber()} / {$user->getPlayingLevel()} / {$user->getGradeLevel()}</p>
                     </div>
-                    <div class="bigButton orange formEdit" id="number-level">
+                    <div class="bigButton orange playerEdit" id="number-level">
                         <div class="topLeft whiteBg"></div>
                         <div class="topRight whiteBg"></div>
                         <div class="bottomLeft whiteBg"></div>
@@ -237,16 +238,69 @@
                 <div class="chunk">
                     <div class="accountInfo">
                         <h4>Position / Height</h4>
-                        <div class="inputField hidden">
-                            <div class="left"></div>
-                            <div class="middle">
-                                <input type="text" class="standard small" id="schoolName" name="schoolName" value="{$user->getSchool()->getName()}" />
+                        <div class="inputField option hidden">
+                            <div class="checkbox">
+                                <div class="box">
+                                    <div class="checkMark"></div>
+                                </div>
+                                <div class="label">Point Guard</div>
+                                <input type="checkbox" class="checkValue hidden" name="position" value="PG" />
                             </div>
-                            <div class="right"></div>
+                            <div class="checkbox">
+                                <div class="box">
+                                    <div class="checkMark"></div>
+                                </div>
+                                <div class="label">Shooting Guard</div>
+                                <input type="checkbox" class="checkValue hidden" name="position" value="SG" />
+                            </div>
+                            <div class="checkbox">
+                                <div class="box">
+                                    <div class="checkMark"></div>
+                                </div>
+                                <div class="label">Small Forward</div>
+                                <input type="checkbox" class="checkValue hidden" name="position" value="SF" />
+                            </div>
+                            <div class="checkbox">
+                                <div class="box">
+                                    <div class="checkMark"></div>
+                                </div>
+                                <div class="label">Power Forward</div>
+                                <input type="checkbox" class="checkValue hidden" name="position" value="PF" />
+                            </div>
+                            <div class="checkbox">
+                                <div class="box">
+                                    <div class="checkMark"></div>
+                                </div>
+                                <div class="label">Center</div>
+                                <input type="checkbox" class="checkValue hidden" name="position" value="C" />
+                            </div>
+                        </div>
+                        <div class="inputField hidden">
+                            <div class="height">
+                                <div class="sportSelect">
+                                    <div class="dropper">
+                                        <div class="leftMedium"></div>
+                                        <div class="middleMedium middle">
+                                            <p class="value">Height</p>
+                                            <input type="hidden" name="height" class="dropVal" value="" />
+                                        </div>
+                                        <div class="rightMedium"></div>
+                                        <ul class="potentials">
+                                            {section name=i loop=96 start=48 step=1}
+                                                <li>
+                                                    {$smarty.section.i.index}
+                                                    <input type="hidden" class="value" value="{$smarty.section.i.index}" />
+                                                </li>
+                                            {/section}
+                                        </ul>
+                                    </div>
+                                    <div class="arrowSmall"></div>
+                                </div>
+                            </div>
                         </div>
                         <p>{$user->getPosition()} / {$user->getHeight()}</p>
                     </div>
-                    <div class="bigButton orange schoolEdit" id="height-position">
+                    <div class="bigButton orange playerEdit" id="height-position">
                         <div class="topLeft whiteBg"></div>
                         <div class="topRight whiteBg"></div>
                         <div class="bottomLeft whiteBg"></div>
@@ -267,7 +321,7 @@
                             <div class="left"></div>
                             <div class="middle">
                                 {assign var=school value=$user->getSchool()->getName()}
-                                <input type="text" class="standard small" id="schoolName" name="schoolName"
+                                <input type="text" class="standard small" id="schoolSearchInput" name="schoolName"
                                        value="{if isset($school) && $school != ''}{$school}{else}Please select a school!{/if}" />
                                 <input type="hidden" class="passer" value="" />
                             </div>
@@ -275,7 +329,7 @@
                         </div>
                         <p>{if isset($school) && $school != ''}{$school}{else}Please select a school!{/if}</p>
                     </div>
-                    <div class="bigButton orange formEdit" id="school">
+                    <div class="bigButton orange schoolEdit" id="school">
                         <div class="topLeft whiteBg"></div>
                         <div class="topRight whiteBg"></div>
                         <div class="bottomLeft whiteBg"></div>
@@ -295,13 +349,13 @@
                         <div class="inputField hidden">
                             <div class="left"></div>
                             <div class="middle">
-                                <input type="text" class="standard small" id="schoolName" name="schoolName" value="{$user->getSchool()->getName()}" />
+                                <input type="text" class="standard small" id="_coachName" name="coachName" value="{$user->getCoachName()}" />
                             </div>
                             <div class="right"></div>
                         </div>
                         <p>{$user->getCoachName()}</p>
                     </div>
-                    <div class="bigButton orange formEdit" id="coach">
+                    <div class="bigButton orange playerEdit" id="coach">
                         <div class="topLeft whiteBg"></div>
                         <div class="topRight whiteBg"></div>
                         <div class="bottomLeft whiteBg"></div>
@@ -334,7 +388,7 @@
                                             <div class="inputField hidden">
                                                 <div class="left"></div>
                                                 <div class="middle">
-                                                    <input type="text" class="standard small" id="schoolName" name="schoolName" value="{$stat->getStatValue()}" />
+                                                    <input type="text" class="standard small" id="_stat" name="schoolName" value="{$stat->getStatValue()}" />
                                                 </div>
                                                 <div class="right"></div>
                                             </div>
