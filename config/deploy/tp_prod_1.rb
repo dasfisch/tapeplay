@@ -3,7 +3,7 @@ set(:user) { "tapeplayer" }
 
 ssh_options[:keys] = [File.join(ENV["HOME"], ".ssh", "tapeplayer")]
 
-set(:domain) { "ec2-50-19-56-168.compute-1.amazonaws.com" }
+set(:domain) { "ec2-23-23-87-163.compute-1.amazonaws.com" }
 set(:application) { "tapeplay" }
 set(:repository) { "ssh://git@barable.com:30000/home/git/repos/tapeplay.git" }
 

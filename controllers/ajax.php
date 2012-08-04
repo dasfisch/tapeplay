@@ -1,10 +1,12 @@
 <?php
+    use tapeplay\server\bll\UserBLL;
     use tapeplay\server\bll\PlayerBLL;
     use tapeplay\server\bll\SchoolBLL;
     use tapeplay\server\bll\VideoBLL;
 
     require_once("bll/PlayerBLL.php");
     require_once("bll/SchoolBLL.php");
+    require_once("bll/UserBLL.php");
     require_once("bll/VideoBLL.php");
 
     global $controller, $get, $inputFilter, $post, $route, $smarty, $sport, $userBLL;
@@ -71,7 +73,7 @@
                 }
 
                 break;
-            case 'profileupdate':
+            case 'schoolupdate':
                 if(isset($post['value']) && (int)$post['value'] > 0) {
                     $user = $userBLL->getUser();
                     $user->getSchool()->setId($post['value']);
@@ -88,6 +90,62 @@
                 } else {
                     echo 'not in here';
                     echo 600;
+                }
+
+                break;
+            case 'userupdate':
+                if(isset($post) && !empty($post)) {
+                    unset($post['hash']);
+
+                    $user = $userBLL->getUser();
+
+                    foreach($post['data'] as $data) {
+                        $methodName = 'set'.ucfirst(substr($data['name'], 1, strlen($data['name'])));
+
+                        if($data['name'] != '_hash') {
+                            $user->$methodName($data['value']);
+                        } else {
+                            $user->setHash($userBLL->createHash($user->getEmail(), $data['value']));
+                        }
+                    }
+
+                    $result = $userBLL->update($user);
+                    if($result === true) {
+                        $userBLL->setUser($user);
+
+                        echo 200;
+                    } else {
+                        echo 600;
+                    }
+                }
+
+                break;
+            case 'profileupdate':
+                if(isset($post) && !empty($post)) {
+                    unset($post['hash']);
+
+                    $user = $userBLL->getUser();
+
+                    foreach($post['data'] as $data) {
+                        $methodName = 'set'.ucfirst(substr($data['name'], 1, strlen($data['name'])));
+
+                        if($data['name'] != '_hash') {
+                            $user->$methodName($data['value']);
+                        } else {
+                            $user->setHash($userBLL->createHash($user->getEmail(), $data['value']));
+                        }
+                    }
+
+                    $playerBll = new PlayerBLL();
+
+                    $result = $playerBll->update($user);
+                    if($result === true) {
+                        $userBLL->setUser($user);
+
+                        echo 200;
+                    } else {
+                        echo 600;
+                    }
                 }
 
                 break;

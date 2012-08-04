@@ -1671,14 +1671,28 @@ a {
 }
 
 #tapeplay #main #accountLeft .accordion .body .chunk .accountInfo .numLevGrad {
-    margin-right: 15px;
+    margin-right: 20px;
 }
 
 #tapeplay #main #accountLeft .accordion .body .chunk .accountInfo .numLevGradDrop {
     float: left;
     margin-right: 15px;
     overflow: hidden;
-    width: 115px;
+    width: 150px;
+}
+
+#tapeplay #main #accountLeft .accordion .body .chunk .accountInfo .inputField .height {
+    overflow: hidden;
+    width: 200px;
+}
+
+#tapeplay #main #accountLeft .accordion .body .chunk .accountInfo .inputField.option {
+    overflow: hidden;
+    width: 200px;
+}
+
+#tapeplay #main #accountLeft .accordion .body .chunk .accountInfo .inputField .height .middle {
+    width: 60px;
 }
 
 #tapeplay #main #accountLeft .accordion .body .chunk .bigButton {
@@ -2397,7 +2411,7 @@ a {
 
 /* Dropdown */
 .sportSelect {
-
+    overflow: hidden;
 }
 
 
@@ -2480,6 +2494,16 @@ a {
     overflow: auto;
     width: inherit;
     padding: 0px 2px;
+}
+
+.sportSelect .dropper .potentials li {
+    cursor: pointer;
+    font-size: 14px;
+    padding: 7px;
+}
+
+.sportSelect .dropper .potentials li:hover {
+    background-color: #FF9933;
 }
 
 .sportSelect .arrowSmall {
