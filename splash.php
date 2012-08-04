@@ -10,55 +10,67 @@
         <script type="text/javascript" src="/js/jquery-main.js"></script>
 		<script type="text/javascript" src="/js/tapeplay.js"></script>
         <script type="text/javascript" src="/js/jquery.panda.min.js"></script>
-        
     </head>
     
-    <body>
+    <body class="splash">
     	
       	<div id="container">
 
-			<div id="header">
-				<div id="header-wrapper">
+			<div id="content">
+				<div id="content-wrapper">
 					
-					<div class="left">
-						<h1 id="logo"><a href="#" title="TapePlay Home Page"><img src="/media/images/logo_126x69.png" alt="TapePlay Logo" height="69" width="126" /> TapePlay</a></h1>
-						<form action="#">
+					<div id="splash_header">
+						<div class="left">
+							<img src="media/images/logo_large_286x157.jpg" alt="TapePlay Beta"/>
+						</div>
+						<div class="left">
+							<h1>(beta)</h1>
+							<h2>Video makes the world go round.</h2>
+							<h3>The world&rsquo;s evolved. So has recruiting.</h3>
+						</div>
+					</div>
+					
+					<div class="clear"></div>
+					
+					<div id="splash_content">
+						<label>PICK SPORT:</label>
+						<form action="#" class="left">
 							<fieldset>
-								<select class="select-1">
+								<select class="select-4">
 									<option selected="selected">Women&rsquo;s Basketball</option>
 									<option>Men&rsquo;s Basketball</option>
 									<option>Baseball</option>
 									<option>Fastpitch</option>
-									<option>Hockey</option>
 									<option>Men&rsquo;s Basketball</option>
 									<option>Baseball</option>
 									<option>Fastpitch</option>
-									<option>Hockey</option>
 									<option>Men&rsquo;s Basketball</option>
 									<option>Baseball</option>
 									<option>Fastpitch</option>
-									<option>Hockey</option>
 									<option>Men&rsquo;s Basketball</option>
 									<option>Baseball</option>
 									<option>Fastpitch</option>
-									<option>Hockey</option>
+									<option>Men&rsquo;s Basketball</option>
+									<option>Baseball</option>
+									<option>Fastpitch</option>
+									<option>Baseball</option>
+									<option>Fastpitch</option>
+									<option>Men&rsquo;s Basketball</option>
+									<option>Baseball</option>
+									<option>Fastpitch</option>
 								</select>
 							</fieldset>
 						</form>
-					</div>
-					
-					<div class="right">
-						<ul id="navigation">
-							<li><a href="#">Join</a></li>
-							<li><a href="#">Login</a></li>
-							<li><a href="#">Upload</a></li>
-							<li><a href="#">Browse</a></li>
-							<li><a href="#">Help</a></li>
+						<a href="#" class="button_gray_large left" title="continue">Continue</a>
+						<div class="clear"></div>
+						<ul class="login-menu">
+							<li><a href="#">Privacy Policy</a></li>
+							<li><a href="#">Get Started</a></li>
+							<li><a href="#">Log In</a></li>
 						</ul>
 					</div>
-					
-				</div> <!-- END HEADER WRAPPER -->
-			</div> <!-- END HEADER -->
-			
-			<div id="content">
-				<div id="content-wrapper">
+<?php
+
+include_once('templates/templates/parts/footer.php');
+
+?>

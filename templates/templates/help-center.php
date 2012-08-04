@@ -27,5 +27,7 @@
 </div>
 
 <div id="content-right-column" class="right">
-	
+	<?php
+		include_once('templates/templates/parts/right_connected.php');
+	?>
 </div>

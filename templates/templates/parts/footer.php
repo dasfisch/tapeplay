@@ -9,22 +9,22 @@
 						<li>
 							<dl>
 								<dt>The Basics</dt>
-								<dd><a href="#">Getting Started</a></dd>
-								<dd><a href="#">Community Guidelines</a></dd>
+								<dd><a href="/home.php?page=get-started">Getting Started</a></dd>
+								<dd><a href="/home.php?page=community-guidelines">Community Guidelines</a></dd>
 							</dl>
 						</li>
 						<li>
 							<dl>
 								<dt>Business Info</dt>
-								<dd><a href="#">Advertising</a></dd>
-								<dd><a href="#">Contact Us</a></dd>
+								<dd><a href="/home.php?page=advertising">Advertising</a></dd>
+								<dd><a href="/home.php?page=contact-us">Contact Us</a></dd>
 							</dl>
 						</li>
 						<li>
 							<dl>
 								<dt>For the Curious</dt>
-								<dd><a href="#">Frequently Asked Questions</a></dd>
-								<dd><a href="#">About TapePlay</a></dd>
+								<dd><a href="/home.php?page=faq">Frequently Asked Questions</a></dd>
+								<dd><a href="/home.php?page=about-us">About TapePlay</a></dd>
 							</dl>
 						</li>
 						<li>
@@ -38,7 +38,7 @@
 					<div class="clear"></div>
 					<div id="footer-terms">
 						<ul>
-							<li><a href="#">Terms of Use</a> | <a href="#">Privacy Policy</a></li>
+							<li><a href="/home.php?page=terms-of-service">Terms of Use</a> | <a href="/home.php?page=privacy-policy">Privacy Policy</a></li>
 							<li>&copy; 2011 TapePlay, LLC. All Rights Reserved </li>
 						</ul>
 					</div>

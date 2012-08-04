@@ -21,6 +21,5 @@ include_once('templates/templates/parts/footer.php');
 
 ?>
 
-
 <!-- </body>
 </html> -->
