@@ -188,6 +188,10 @@ ol, ul {
 	float:right;
 }
 
+.center {
+	text-align:center;
+}
+
 .clear:before,
 .clear:after {
     content:"";
@@ -335,6 +339,15 @@ fieldset li {
 	padding:38px 52px;
 }
 
+.button_orange_large, .button_orange_large:visited, .button_orange_large:hover {
+	background-color:#e18a07;
+	color:#ffffff;
+	display:block;
+	font-size:36px;
+	margin-left:20px;
+	padding:38px;
+}
+
 .button_round {
 	-moz-border-radius:5px; 
   	-ms-border-radius:5px; 
@@ -362,13 +375,20 @@ form .error-alert {
 	padding:10px 0 0 20px;
 	width:300px;
 }
+
 form fieldset + .error-alert {
 	background-position:0px 6px;
 	padding-top:0px;
 	width:450px;
 } 
+
 .error-alert ul {
 	margin-bottom:0px;
+}
+
+.error-alert a, .error-alert a:visited, .error-alert a:hover {
+	color:#ff0000;
+	text-decoration:underline;
 }
 /* Checkbox */
 .checkbox {
@@ -709,4 +729,92 @@ fieldset + fieldset {
 	font-size:30px;
 	margin:18px 0 64px 0;
 	text-align:center;
+}
+
+.player, .coach, .scout {
+	padding:32px 36px 16px;
+	position:relative;
+}
+
+.player, .coach {
+	float:left;
+	height:570px;
+	width:366px;
+}
+
+.player {
+	border:solid 1px #e5e5e5;
+	color:#333333;
+}
+
+.player h2 {
+	color:#333333;
+}
+
+.player .fee {
+	background-color:#e18a07;
+	color:#ffffff;
+}
+
+.coach {
+	background-color:#000000;
+	border:solid 1px #000000;
+	color:#ffffff;
+	margin-left:20px;
+}
+
+.coach h2 {
+	color:#ffffff;
+}
+
+.coach .fee {
+	background-color:#ffffff;
+	color:#e18a07;
+}
+
+.scout {
+	background-color:#f2f2f2;
+	border:solid 1px #e5e5e5;
+	margin-top:20px;
+	padding-right:375px;
+	width:487px;
+}
+
+.scout .fee {
+	background-color:#000000;
+	color:#ffffff;
+}
+
+.player .button, .coach .button, .scout .button {
+	bottom:16px;
+	display:inline-block;
+	float:none;
+    font-size: 36px;
+    margin-left: 0px;
+    padding: 38px;
+    position:absolute;
+}
+
+.coach .button_black_large {
+	background-color:#ffffff;
+	color:#000000;
+}
+
+.player .button, .coach .button {
+	left:120px;
+}
+
+.scout .button {
+	right:115px;
+	bottom:inherit;
+	top:42px;
+}
+
+.fee {
+	position:absolute;
+	right:0px;
+	text-align:center;
+	text-transform:uppercase;
+	top:0px;
+	width:60px;
 }

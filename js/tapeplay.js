@@ -1,20 +1,16 @@
-/**
- * @author Tim Steele
- * 
- * Scripts for style refresh
- */
-
 jQuery(document).ready(function(){
-	$((jQuery('.checkbox').get(0)).parentNode).bind('click', function(event) {
-		event.preventDefault();
-		if ($(this).hasClass('on')) {
-			$(this).removeClass('on');
-			$(this).children('input').attr('checked',false);
-		} else {
-			$(this).addClass('on');
-			$(this).children('input').attr('checked',true);
-		}
-	})
+	if (jQuery('.checkbox').get(0)) {
+		$((jQuery('.checkbox').get(0)).parentNode).bind('click', function(event) {
+			event.preventDefault();
+			if ($(this).hasClass('on')) {
+				$(this).removeClass('on');
+				$(this).children('input').attr('checked',false);
+			} else {
+				$(this).addClass('on');
+				$(this).children('input').attr('checked',true);
+			}
+		})
+	}
 });
 
 var infoBubbleOpen = false;

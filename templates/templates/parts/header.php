@@ -52,11 +52,11 @@
 					
 					<div class="right">
 						<ul id="navigation">
-							<li><a href="#">Join</a></li>
-							<li><a href="#">Login</a></li>
+							<li><a href="/home.php?page=join">Join</a></li>
+							<li><a href="/home.php?page=login">Login</a></li>
 							<li><a href="#">Upload</a></li>
 							<li><a href="#">Browse</a></li>
-							<li><a href="#">Help</a></li>
+							<li><a href="/home.php?page=help-center">Help</a></li>
 						</ul>
 					</div>
 					
