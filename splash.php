@@ -61,9 +61,9 @@
 								</select>
 							</fieldset>
 						</form>
-						<a href="#" class="button_gray_large left" title="continue">Continue</a>
+						<a href="#" class="button_gray_large button_round left" title="continue">Continue</a>
 						<div class="clear"></div>
-						<ul class="login-menu">
+						<ul class="login-menu font15">
 							<li><a href="#">Privacy Policy</a></li>
 							<li><a href="#">Get Started</a></li>
 							<li><a href="#">Log In</a></li>

@@ -72,28 +72,22 @@
 	font-size:15px;
 	line-height:18px;
 }
-.select-2-holder{margin:0 0 305px;}
-.select-2-holder form{
-	margin:0;
-	padding:0;
-}
-.select-2-holder form .select-2{width:97px;}
-.select-2-holder .name-box{
+form .select-2{width:97px;}
+.name-box{
 	display:block;
 	margin:0 0 15px;
 }
-.select-3-holder{margin:0 0 37px;}
-.select-3-holder form{
-	margin:0;
-	padding:0;
-}
-.select-3-holder form .select-3{width:270px;}
-.select-3-holder .name-box{
-	display:block;
-	margin:0 0 13px;
+
+form .select-3{
+	width:270px;
 }
 
 form .select-4{width:520px;}
+
+form .select-11{
+	width:125px;
+}
+
 /* hide original element */
 .jcf-hidden {
 	display: block !important;
@@ -233,6 +227,13 @@ form .select-4{width:520px;}
 	border:1px solid #efefef;
 	background:#fff;
 }
+
+.drop-select-3.select-options .drop-list{
+	width:200px !important;
+	height:269px !important;
+	border:1px solid #efefef;
+	background:#fff;
+}
 .drop-select-4.select-options .drop-list{
 	width:445px !important;
 }
@@ -327,6 +328,7 @@ form .select-4{width:520px;}
 	height:188px !important;
 }
 .drop-select-2 .scrollable-area-wrapper {
+	background-color:#ffffff;
 	position: relative;
 	overflow: hidden;
 	width:97px !important;
@@ -368,16 +370,6 @@ form .select-4{width:520px;}
 	width:18px !important;
 	padding:0 5px 0 3px;
 	height:101px !important;
-	border:1px solid #efefef;
-}
-.drop-select-3 .scrollable-area-wrapper .vscrollbar {
-	position: absolute;
-	top: 0;
-	right: 0;
-	width:38px !important;
-	padding:0 11px 0 9px;
-	height:269px !important;
-	background:#fff;
 	border:1px solid #efefef;
 }
 .drop-select-4 .scrollable-area-wrapper .vscrollbar {

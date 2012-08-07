@@ -1,5 +1,8 @@
 <!DOCTYPE HTML>
-<html id="www-tapeplay-com">
+<!--[if lte IE 7]> <html class="ie7" id="www-tapeplay-com"> <![endif]-->  
+<!--[if IE 8]>     <html class="ie8" id="www-tapeplay-com"> <![endif]-->  
+<!--[if IE 9]>     <html class="ie9" id="www-tapeplay-com"> <![endif]-->  
+<!--[if !IE]><!--> <html id="www-tapeplay-com">             <!--<![endif]-->  
     <head>
         <title>Test</title>
         <link rel="stylesheet" href="/css/jquery.css" type="text/css" />

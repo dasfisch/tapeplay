@@ -1,3 +1,22 @@
+/**
+ * @author Tim Steele
+ * 
+ * Scripts for style refresh
+ */
+
+jQuery(document).ready(function(){
+	$((jQuery('.checkbox').get(0)).parentNode).bind('click', function(event) {
+		event.preventDefault();
+		if ($(this).hasClass('on')) {
+			$(this).removeClass('on');
+			$(this).children('input').attr('checked',false);
+		} else {
+			$(this).addClass('on');
+			$(this).children('input').attr('checked',true);
+		}
+	})
+});
+
 var infoBubbleOpen = false;
 var timeout = {};
 
@@ -51,29 +70,29 @@ jQuery(document).ready(function(){
         jQuery('.potentials').slideUp();
     });
 
-    jQuery('.checkbox').click(function(){
-        var showing = jQuery(this).attr('showing');
-
-        if(typeof(showing) === 'undefined') {
-            showing = 'false';
-        }
-
-        if(showing == 'false') {
-            jQuery(this).children('.box').children('.checkMark').show();
-            jQuery(this).children('.checkValue').val('true');
-
-            jQuery(this).children('input').attr('checked', true);
-
-            jQuery(this).attr('showing', 'true');
-        } else {
-            jQuery(this).children('.box').children('.checkMark').hide();
-            jQuery(this).children('.checkValue').val('');
-
-            jQuery(this).children('input').attr('checked', false);
-
-            jQuery(this).attr('showing', 'false');
-        }
-    });
+    // jQuery('.checkbox').click(function(){
+        // var showing = jQuery(this).attr('showing');
+// 
+        // if(typeof(showing) === 'undefined') {
+            // showing = 'false';
+        // }
+// 
+        // if(showing == 'false') {
+            // jQuery(this).children('.box').children('.checkMark').show();
+            // jQuery(this).children('.checkValue').val('true');
+// 
+            // jQuery(this).children('input').attr('checked', true);
+// 
+            // jQuery(this).attr('showing', 'true');
+        // } else {
+            // jQuery(this).children('.box').children('.checkMark').hide();
+            // jQuery(this).children('.checkValue').val('');
+// 
+            // jQuery(this).children('input').attr('checked', false);
+// 
+            // jQuery(this).attr('showing', 'false');
+        // }
+    // });
 
     if(jQuery('.slider').length > 0) {
         jQuery('.slider').slider({

@@ -2516,14 +2516,14 @@ a {
 }
 
 /* Checkbox */
-.option .checkbox {
+.checkbox {
     cursor: pointer;
     float: left;
     margin-bottom: 5px;
     width: 100%;
 }
 
-.option .checkbox .box {
+.checkbox .box {
     background-color: #fff;
     background-image: url('/media/images/form/checkbox.gif');
     float: left;
@@ -2533,7 +2533,7 @@ a {
     width: 20px;
 }
 
-.option .checkbox .box .checkMark {
+.checkbox .box .checkMark {
     background-image: url('/media/images/form/orangecheck.png');
     background-repeat: no-repeat;
     display: none;
@@ -2541,7 +2541,7 @@ a {
     width: 20px;
 }
 
-.option .checkbox .label {
+.checkbox .label {
     color: #333;
     float: left;
     font-size: 13px;

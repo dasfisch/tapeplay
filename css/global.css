@@ -55,7 +55,7 @@ ol, ul {
 	color:#333333;
 	font-size:18px;
 	line-height:24px;
-	padding:48px 36px;
+	padding:24px 20px;
 }
 
 #footer {
@@ -85,11 +85,12 @@ ol, ul {
 }
 
 #content-left-column {
+	margin-top:24px;
 	width:670px;
 }
 
 #content-right-column {
-	margin-left:45px;
+	margin:24px 0px 0px 45px;
 	width:200px;
 }
 
@@ -170,6 +171,11 @@ ol, ul {
 	padding-top:35px;
 	text-align:center;
 }
+
+.four-column > li {
+	float:left;
+	width:25%;
+}
 /*
  * Global Styles
  */
@@ -182,8 +188,13 @@ ol, ul {
 	float:right;
 }
 
-.clear {
-	clear:both;
+.clear:before,
+.clear:after {
+    content:"";
+    display:table;
+}
+.clear:after {
+    clear:both;
 }
 
 .bold {
@@ -231,6 +242,15 @@ h3 {
 	font-weight:bold;
 }
 
+h4 {
+	font-size:18px;
+	margin-bottom:42px;
+}
+
+h1 + h4 {
+	margin-top:-24px;
+}
+
 h1 + h2 {
 	padding-top:0px;
 }
@@ -271,11 +291,31 @@ ul.lower-alpha {
 	font-size:15px;
 }
 
+.background_gray {
+	background-color:#f2f2f2;
+}
+
 /*
  * Form Elements
  */
 .width750 {
 	width:750px;
+}
+
+.width600 {
+	width:600px;
+}
+
+.width240 {
+	width:240px;
+}
+
+fieldset ul {
+	margin-bottom:0px;
+}
+
+fieldset li {
+	padding-bottom:6px;
 }
 
 .button_gray_large, .button_gray_large:visited, .button_gray_large:hover {
@@ -285,6 +325,17 @@ ul.lower-alpha {
 	font-size:36px;
 	margin-left:20px;
 	padding:38px;
+}
+
+.button_black_large, .button_black_large:visited, .button_black_large:hover {
+	background-color:#000000;
+	color:#ffffff;
+	display:block;
+	font-size:36px;
+	padding:38px 52px;
+}
+
+.button_round {
 	-moz-border-radius:5px; 
   	-ms-border-radius:5px; 
   	-o-border-radius:5px; 
@@ -292,28 +343,68 @@ ul.lower-alpha {
   	border-radius:5px;
 }
 
-.input_custom-text {
-	
+
+.input-field + .input-field {
+	margin-top:20px;
+}
+
+.form-steps {
+	color:#666666;
+	font-size:18px;
+	line-height:100px;
+	margin-left:20px;
+}
+
+form .error-alert {
+	background:transparent url(/media/images/icon_error-alert.png) no-repeat 0px 16px;
+	color:#ff0000;
+	float:right;
+	padding:10px 0 0 20px;
+	width:300px;
+}
+form fieldset + .error-alert {
+	background-position:0px 6px;
+	padding-top:0px;
+	width:450px;
 } 
-
-.input_text100 {
-	height:100px;
+.error-alert ul {
+	margin-bottom:0px;
+}
+/* Checkbox */
+.checkbox {
+	background-image: url('/media/images/form/checkbox.gif');
+    cursor: pointer;
+    float: left;
+    height: 20px;
+    margin-right:10px;
+    width: 20px;
 }
 
-.custom-input_left {
-	background:transparent url(/media/images/form/input-text_left-repeat.gif) repeat-y 0px 0px;
-	height:100%;
-	position:relative;
-	float:left;
-	width:20px;
+.checkbox + input {
+	display:none;
 }
 
-.custom-input_top {
-	background:transparent url(/media/images/form/input-text_top-left.gif) no-repeat 0px 0px;
-	height:20px;
-	position:absolute;
-	top:0px;
-	width:20px;
+.check {
+	background-image: url('/media/images/form/orangecheck.png');
+    background-repeat: no-repeat;
+    display: none;
+    height: 20px;
+    width: 20px;
+}
+
+.on .checkbox .check {
+	display:block;
+}
+
+legend {
+	font-size:17px;
+	font-weight:bold;
+	padding-bottom:15px;
+}
+
+
+fieldset + fieldset {
+	margin-top:40px;
 }
 
 /*
@@ -362,7 +453,7 @@ ul.lower-alpha {
 }
 
 /*
- * AD 200x200 WiDGET
+ * AD WiDGET
  */
 
 .ad_200x200 {
@@ -370,7 +461,159 @@ ul.lower-alpha {
 	height:200px;
 	margin-top:80px;	
 	width:200px;
+}
 
+.ad_970x250 {
+	background-color:#000000;
+	height:250px;
+	width:970px;
+	
+}
+
+/*
+ * CUSTOM INPUT BOX
+ */
+
+.input_custom-text {
+	height:100%;
+	padding-left:20px;
+	padding-right:20px;
+}
+
+.input_custom-text.width750 {
+	width:710px;
+}
+
+ .custom-input_partial {
+ 	position:relative;
+ 	float:left;
+ 	height:100%;
+ }
+
+.custom-input_center {
+	height:100%;
+	width:100%;
+}
+
+.custom-input_left {
+	/* Layout Styles */
+	margin-left:-100%;
+	right:20px;
+	width:20px;
+	/* Presentation Styles */
+	background:transparent url(/media/images/form/input-text_left-repeat.gif) repeat-y 0px 0px;
+}
+
+.custom-input_right {
+	/* Layout Styles */
+	width:20px;
+	margin-right:-20px;
+	/* Presentation Styles */
+	background:transparent url(/media/images/form/input-text_right-repeat.gif) repeat-y 0px 0px;
+}
+
+.input_text100 {
+	height:100px;
+}
+
+.input_text100 input {
+	font-size:40px;
+}
+
+.input_text80 {
+	height:80px;
+}
+
+.input_text80 input {
+	font-size:32px;
+}
+
+.input_text36 {
+	height:36px;
+}
+
+.input_text36 input {
+	font-size:15px;
+}
+
+.custom-input_top {
+	background:transparent no-repeat 0px 0px;
+	height:20px;
+	left:0px;
+	position:absolute;
+	top:0px;
+	width:20px;
+}
+
+.custom-input_bottom {
+	bottom:0px;
+	background:transparent no-repeat 0px 0px;
+	height:20px;
+	left:0px;
+	position:absolute;
+	width:20px;
+}
+
+.custom-input_left .custom-input_top {
+	background-image:url(/media/images/form/input-text_top-left.gif);
+}
+
+.custom-input_left .custom-input_bottom {
+	background-image:url(/media/images/form/input-text_bottom-left.gif);
+}
+
+.custom-input_right .custom-input_top {
+	background-image:url(/media/images/form/input-text_top-right.gif);
+}
+
+.custom-input_right .custom-input_bottom {
+	background-image:url(/media/images/form/input-text_bottom-right.gif);
+}
+
+.custom-input_center .custom-input_top {
+	background:transparent url(/media/images/form/input-text_top-repeat.gif) repeat-x 0px 0px;
+	display:block;
+	width:100%;
+	z-index:100;
+}
+
+.custom-input_center .custom-input_bottom {
+	background:transparent url(/media/images/form/input-text_bottom-repeat.gif) repeat-x 0px 0px;
+	display:block;
+	width:100%;
+	z-index:100;
+}
+
+.custom-input_center input {
+	background:none;
+	border:none;
+	color:#b2b2b2;
+	height:100%;
+	position:relative;
+	width:100%;
+	vertical-align:middle;
+	z-index:110;
+}
+
+.custom-input_center input:focus {
+	outline:none;
+}
+
+.ie8 .input_text100 .custom-input_center input {
+	line-height:100px;
+}
+
+.ie8 .input_text80 .custom-input_center input {
+	line-height:80px;
+}
+
+.ie8 .input_text32 .custom-input_center input {
+	line-height:32px;
+}
+
+.ie7 .custom-input_center input  {
+	border:solid 1px #ffffff;
+	padding:20px 0px;
 }
 
 /*
@@ -425,7 +668,6 @@ ul.lower-alpha {
 	margin-left:-2px;
 }
 #splash_content .login-menu {
-	font-size:15px;
 	line-height:15px;
 	margin-top:20px;
 	width:520px;
@@ -444,4 +686,27 @@ ul.lower-alpha {
 
 #splash_content .login-menu a, #splash_content .login-menu a:visited, #splash_content .login-menu a:hover {
 	color:#ffffff;
+}
+
+.background_gray {
+	padding:20px;
+}
+
+.background_gray.width750 {
+	width:710px;
+}
+
+.sub_home h1 {
+	color:#000000;
+	font-size:54px;
+	font-weight:bold;
+	margin:48px 0px 0px;
+	text-align:center;
+}
+
+.sub_home h2 {
+	color:#666666;
+	font-size:30px;
+	margin:18px 0 64px 0;
+	text-align:center;
 }
