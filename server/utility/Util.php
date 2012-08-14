@@ -27,7 +27,7 @@ class Util
 	 *
 	 * @return bool True if email succeeded, false otherwise
 	 */
-	public static function sendEmail($emailType, $to, $videoId = -1)
+	/**public static function sendEmail($emailType, $to, $videoId = -1)
 	{
 		global $controller, $sport;
 
@@ -67,5 +67,43 @@ class Util
 
 		// send email
 		return mail($to, $subject, $message, $headers);
-	}
+	}*/
+
+    public static function sendEmail($emailType, $to, $subject, $template, $args=array()) {
+        $sent = array();
+        $failed = array();
+
+        /**
+         * generate email template
+         */
+        $headers = 'MIME-Version: 1.0' . "\r\n";
+        $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
+        $headers .= "From: TapePlay Admin <digital-no-reply@tapeplay.com>\r\n";
+
+        if(count($args > 1)) {
+            foreach($args as $key=>$arg) {
+                $smarty->assign($key, $arg);
+            }
+        }
+
+        $body = $smarty->fetch($template, false);
+
+        foreach($to as $key=>$email) {
+            if(in_array($email, $sent)){
+                continue;
+            }
+
+            if(mail($email, $subject, $body, $headers)) {
+                $sent[] = $email;
+            } else {
+                $failed[] = $email;
+            }
+        }
+
+        if(count($failed) == 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

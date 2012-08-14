@@ -156,14 +156,9 @@
 
                         $modder = (ceil(count($stats) / 3) > 1) ? ceil(count($stats) / 3) : 2;
 
-//                        echo '<pre>';
-//                        var_dump($video[0]);
-//                        exit;
-
                         /**
                          * generate email template
                          */
-
                         $headers = 'MIME-Version: 1.0' . "\r\n";
                         $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
                         $headers .= "From: TapePlay Admin <digital-no-reply@tapeplay.com>\r\n";
