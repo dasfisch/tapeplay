@@ -14,7 +14,7 @@
 		</div>
 		<div id="player">
 
-			<video id="videoPlayer" width="{$videoDisplayInfo->getWidth()}" height="{$videoDisplayInfo->getHeight()}">
+			<video id="videoPlayer" width="890" height="455">
 				<source src="{$videoDisplayInfo->getMp4Source()}"
 						type="video/mp4"/>
 				<source src="{$videoDisplayInfo->getWebmSource()}"

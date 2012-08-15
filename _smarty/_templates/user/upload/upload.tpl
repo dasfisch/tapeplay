@@ -10,9 +10,9 @@
 	</p>
 
 	<form id="uploadForm" name="login" action="{#baseUrl#}user/upload/" method="post">
-		<div id="progressArea" style="vertical-align: middle;height:">
+		<div id="progressArea" style="vertical-align: middle;height:30px;">
 			<div id="progressMeter" class="panda_upload_progress" style="float:left;"></div>
-			<div id="uploadComplete" style="float:left;visibility: hidden;">Upload Complete!</div>
+			<div id="uploadComplete" class="successMessage" style="float:left;visibility: hidden; margin-left:15px;">Upload Complete!</div>
 		</div>
 		<div id="uploadInputs" class="input">
             <div id="localUploadFile" class="inputField">

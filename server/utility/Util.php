@@ -73,6 +73,8 @@ class Util
         $sent = array();
         $failed = array();
 
+		global $smarty;
+
         /**
          * generate email template
          */
@@ -85,6 +87,9 @@ class Util
                 $smarty->assign($key, $arg);
             }
         }
+
+		// full year will always be included
+		$smarty->assign("fullYear", date('Y'));
 
         $body = $smarty->fetch($template, false);
 

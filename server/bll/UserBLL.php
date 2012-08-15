@@ -166,6 +166,8 @@ class UserBLL extends BaseBLL
 
 	public function insert(User $user)
 	{
+		global $sport;
+
 		$userId = $this->dal->insert($user);
 
 		// make sure user was created
@@ -189,7 +191,11 @@ class UserBLL extends BaseBLL
 				$this->setUser($player);
 
 				// everything went well - send email to user
-				\Util::sendEmail(\EmailEnum::$PLAYER_JOIN, $user->getEmail());
+				$args = array(
+				    "sport" => $sport,
+				);
+
+				\Util::sendEmail(\EmailEnum::$PLAYER_JOIN, $user->getEmail(), "Welcome To TapePlay", "emails/player-join.tpl", $args);
 			}
 		}
 

@@ -52,7 +52,7 @@ if (true)
 </head>
 <body>
 <?php
-	print $bll->getFullVideoHTML($newVideo->getPandaId());
+	print $bll->getVideoDisplayInfo($newVideo->getPandaId());
 ?>
 
 </body>
