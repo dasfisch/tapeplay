@@ -11,12 +11,15 @@
 
     global $controller, $get, $inputFilter, $post, $route, $smarty, $sport, $userBLL;
 
-    if(1 == 1 || (isset($post['hash']) && $inputFilter->validateHash($post['hash'])) || ($get['hash']) && $inputFilter->validateHash($get['hash'])) {
+    if((isset($post['hash']) && $inputFilter->validateHash($post['hash'])) || ($get['hash']) && $inputFilter->validateHash($get['hash'])) {
         switch($route->method) {
             case 'save':
                 if(isset($post['video'])) {
                     try {
                         $userId = (isset($post['user']) && (int)$post['user'] > 0) ? (int)$post['user'] : null;
+                        if(is_null($userId)) {
+                            Throw new Exception('This is not a valid user id!', 600);
+                        }
 
                         $videoId = $post['video'];
 
@@ -36,6 +39,31 @@
                 exit;
 
                 default;
+            case 'removevideo':
+                if(isset($post['video'])) {
+                    try {
+                        $userId = (isset($post['user']) && (int)$post['user'] > 0) ? (int)$post['user'] : null;
+
+                        echo $userId.' '.$post['video'].' video ';
+
+                        if(is_null($userId)) {
+                            Throw new Exception('This is not a valid user id!', 600);
+                        }
+
+                        $videoId = $post['video'];
+
+                        $videoBll = new VideoBLL();
+
+                        $result = $videoBll->removeSavedVideo((int)$userId, (int)$videoId);
+                        if(isset($result)) {
+                            echo 'This video was removed from your <a href="'.$controller->configuration->URLs['baseUrl'].'account/welcome/">profile</a>!';
+                        }
+                    } catch(Exception $e) {
+                        echo $e->getMessage();
+                    }
+                }
+
+                break;
             case 'report':
                 if(isset($post['video'])) {
                     $to = $controller->configuration->errorReporting['reportEmail'];
@@ -56,6 +84,8 @@
                     echo 'I don\'t know what you are trying to do, but you shouldn\'t be doing it!';
                 }
 
+                exit;
+
                 break;
             case 'schools':
                 if(isset($post['schoolName'])) {
@@ -71,6 +101,8 @@
                 } else {
                     echo 'not in here';
                 }
+
+                exit;
 
                 break;
             case 'schoolupdate':
@@ -91,6 +123,8 @@
                     echo 'not in here';
                     echo 600;
                 }
+
+                exit;
 
                 break;
             case 'userupdate':
@@ -118,6 +152,8 @@
                         echo 600;
                     }
                 }
+
+                exit;
 
                 break;
             case 'profileupdate':
@@ -147,6 +183,8 @@
                         echo 600;
                     }
                 }
+
+                exit;
 
                 break;
         }
