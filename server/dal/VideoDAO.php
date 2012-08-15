@@ -120,8 +120,25 @@ class VideoDAO extends BaseDOA
 		$this->prep->bindValue(":userId", $userId, \PDO::PARAM_INT);
 		$this->prep->bindValue(":videoId", $videoId, \PDO::PARAM_INT);
 
-		$this->prep->execute();
+		return $this->prep->execute();
 	}
+
+    public function removeSave($userId, $videoId) {
+        $this->sql = 'DELETE
+                        FROM
+                            video_saves
+                        WHERE
+                            user_id=:user_id
+                                AND
+                            video_id=:video_id';
+
+        $this->prep = $this->dbh->prepare($this->sql);
+
+        $this->prep->bindValue(":user_id", $userId, \PDO::PARAM_INT);
+        $this->prep->bindValue(":video_id", $videoId, \PDO::PARAM_INT);
+
+        return $this->prep->execute();
+    }
 
 	/**
 	 * Inserts a view from a user.

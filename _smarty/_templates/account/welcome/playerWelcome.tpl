@@ -3,9 +3,10 @@
         <h2>Welcome, {$user->getFirstName()} {$user->getLastName()}</h2>
         <div class="accordion">
             <input type="hidden" id="hash" value="{$hash}" />
+            <input type="hidden" id="user-id" value="{$user->getUserId()}" />
             <div class="header">
                 <div class="title">Saved Videos ({$savedVideoNumber})</div>
-                <div class="arrow"></div>
+                <div class="arrow down"></div>
             </div>
             <div class="body">
 			{foreach $savedVideos as $video}
@@ -36,27 +37,37 @@
                             <div class="bottomRight"></div>
                             <div class="direction"></div>
                         </div>
+                        <div class="bigButton orange" id="removeVideo">
+                            <div class="topLeft whiteBg"></div>
+                            <div class="topRight whiteBg"></div>
+                            <div class="bottomLeft whiteBg"></div>
+                            <div class="bottomRight whiteBg"></div>
+                            <div class="middle">
+                                <input type="submit" value="Remove" id="remove" name="remove" class="tiny orange" />
+                            </div>
+                        </div>
                     </div>
                 {else}
-                    <a href="{#baseUrl#}videos/view/{$video->getId()}/">
-                        <div class="chunk">
+                    <div class="result">
+                        <a href="{#baseUrl#}videos/view/{$video->getId()}/">
                             <img src="{#pandaBase#}{$video->getPandaId()}{#pandaImageExt#}.jpg" class="resultImage" />
                             <div class="info">
                                 <h4>{$video->getPlayer()->getFirstName()} {$video->getPlayer()->getLastName()}</h4>
                                 <p class="title">{$video->getTitle()}</p>
                                 <p class="date">{$video->getUploadDate()|date_format:"B%, %Y"}</p>
                             </div>
-                            <div class="bigButton orange">
-                                <div class="topLeft whiteBg"></div>
-                                <div class="topRight whiteBg"></div>
-                                <div class="bottomLeft whiteBg"></div>
-                                <div class="bottomRight whiteBg"></div>
-                                <div class="middle">
-                                    <input type="submit" value="Remove" id="remove" name="remove" class="tiny orange" />
-                                </div>
+                        </a>
+                        <div class="bigButton orange" id="removeVideo">
+                            <div class="topLeft whiteBg"></div>
+                            <div class="topRight whiteBg"></div>
+                            <div class="bottomLeft whiteBg"></div>
+                            <div class="bottomRight whiteBg"></div>
+                            <div class="middle">
+                                <input type="submit" value="Remove" id="remove" name="remove" class="tiny orange" />
                             </div>
                         </div>
-                    </a>
+                        <input type="hidden" class="video-id" value="{$video->getId()}" />
+                    </div>
                 {/if}
 			{/foreach}
             </div>
@@ -64,7 +75,7 @@
         <div class="accordion">
             <div class="header">
                 <div class="title">Account</div>
-                <div class="arrow"></div>
+                <div class="arrow down"></div>
             </div>
             <div class="body">
                 <div class="chunk">
@@ -181,7 +192,7 @@
         <div class="accordion">
             <div class="header">
                 <div class="title">{$user->getSport()->getSportName()}</div>
-                <div class="arrow"></div>
+                <div class="arrow down"></div>
             </div>
             <div class="body">
                 <div class="chunk">
@@ -426,7 +437,7 @@
         <div class="accordion">
             <div class="header">
                 <div class="title">Privacy</div>
-                <div class="arrow"></div>
+                <div class="arrow down"></div>
             </div>
             <div class="body">
                 <div class="chunk">

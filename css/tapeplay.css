@@ -1564,11 +1564,18 @@ a {
 }
 
 #tapeplay #main #accountLeft .accordion .header .arrow {
-    background-image: url('/media/images/arrows/acct-close-arrow.png');
     float: right;
     height: 14px;
     margin-top: 7px;
     width: 14px;
+}
+
+#tapeplay #main #accountLeft .accordion .header .arrow.down {
+    background-image: url('/media/images/arrows/acct-close-arrow.png');
+}
+
+#tapeplay #main #accountLeft .accordion .header .arrow.up {
+    background-image: url('/media/images/arrows/acct-open-arrow.png');
 }
 
 #tapeplay #main #accountLeft .accordion .body {

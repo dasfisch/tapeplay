@@ -123,6 +123,10 @@ class VideoBLL extends BaseBLL
 		$this->dal->insertSave($userId, $videoId);
 	}
 
+    public function removeSavedVideo($userId, $videoId) {
+        $this->dal->removeSave($userId, $videoId);
+    }
+
     public function checkForPreviousSave($videoId, $userId) {
         $this->dal->getOneSavedVideo($videoId, $userId);
     }

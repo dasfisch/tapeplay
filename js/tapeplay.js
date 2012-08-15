@@ -108,6 +108,8 @@ jQuery(document).ready(function(){
     jQuery('.accordion .header').click(function() {
         var clicked = jQuery(this);
 
+        clicked.children('.arrow').toggleClass('down').toggleClass('up');
+
         jQuery(this).next().slideToggle('slow', function() {
             var curText = clicked.children('p').children('.collapse').html();
 
@@ -390,6 +392,38 @@ jQuery(document).ready(function(){
                 hash: jQuery('#hash').val(),
                 user: jQuery('#user-id').val(),
                 video: jQuery('#video-id').val()
+            },
+            function(data) {
+                console.log(data);
+
+                var text = '';
+
+                if(data.response == '') {
+                    text = _this.siblings('.infoBubble').children('.middle').children('p').html();
+                } else {
+                    text = data;
+                }
+
+                _this.siblings('.infoBubble').children('.middle').children('p').html(text);
+
+                openBubble(_this);
+
+                setTimeout(function(){
+                    _this.siblings('.infoBubble').fadeOut();
+                }, 3000);
+            }
+        );
+    });
+
+    jQuery('#removeVideo').click(function() {
+        var _this = jQuery(this);
+
+        jQuery.post(
+            '/ajax/removevideo/',
+            {
+                hash: jQuery('#hash').val(),
+                user: jQuery('#user-id').val(),
+                video: _this.next(jQuery('#video-id')).val()
             },
             function(data) {
                 var text = '';
