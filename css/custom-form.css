@@ -180,8 +180,11 @@ form .select-11{
 	color:#000;
 	padding:30px 19px 32px;
 	background:#fff;
+	text-align:left;
 	white-space:nowrap;
 }
+
+
 .select-select-4.select-area .select-opener{
 	position: relative;
 	float: right;
