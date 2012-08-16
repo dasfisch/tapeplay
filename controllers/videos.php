@@ -69,7 +69,7 @@
                 $video = $videoBll->search($search);
                 $player = $video[0]->getPlayer();
 
-                $videoPlayer = $videoBll->getFullVideoHTML($video[0]->getPandaId());
+                $videoDisplayInfo = $videoBll->getVideoDisplayInfo($video[0]->getPandaId());
 
                 //set a view
                 try {
@@ -96,7 +96,7 @@
                 $smarty->assign("modder", $modder);
                 $smarty->assign("statCount", count($stats));
                 $smarty->assign('stats', $stats);
-                $smarty->assign('videoPlayer', $videoPlayer);
+                $smarty->assign('videoDisplayInfo', $videoDisplayInfo);
                 $smarty->assign('videos', $videos);
                 $smarty->assign('file', 'videos/single.tpl');
 

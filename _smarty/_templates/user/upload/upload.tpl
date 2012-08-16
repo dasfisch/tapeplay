@@ -10,25 +10,19 @@
 	</p>
 
 	<form id="uploadForm" name="login" action="{#baseUrl#}user/upload/" method="post">
-		<div id="progressMeter" class="panda_upload_progress"></div>
+		<div id="progressArea" style="vertical-align: middle;height:30px;">
+			<div id="progressMeter" class="panda_upload_progress" style="float:left;"></div>
+			<div id="uploadComplete" class="successMessage" style="float:left;visibility: hidden; margin-left:15px;">Upload Complete!</div>
+		</div>
 		<div id="uploadInputs" class="input">
-			<!-- file selector -->
-			<!--<div id="upload_button"></div>
-
-			<!-- filename of the selected file (optional)
-			<input type="hidden" id="upload_filename" class="panda_upload_filename" disabled="disabled"/>
-
-			<!-- field where the video ID will be stored after the upload
-			<input type="hidden" id="returned_video_id" name="panda_video_id"/>-->
-
-            <div class="inputField">
+            <div id="localUploadFile" class="inputField">
                 <div class="left"></div>
                 <div class="middle upload">
                     <input type="text" class="standard" id="fakeupload" name="fakeupload" value="Browse Files" />
                 </div>
                 <div class="right"></div>
             </div>
-            <div class="bigButton black">
+            <div id="localUploadButton" class="bigButton black">
                 <div class="topRight whiteBg"></div>
                 <div class="bottomRight whiteBg"></div>
                 <div class="middle">
@@ -56,21 +50,24 @@
 
 				function uploadSuccessful_Handler()
 				{
-					alert("Yay! Video ID " + $('#returned_video_id').val() + " uploaded...");
-
 					// enable the submit button
 					$("input[id=submitButton]").removeAttr("disabled");
+
+					// tell user video upload is complete
+					$("#uploadComplete").css("visibility", "visible");
 				}
 
 				function newFileSelected_Handler()
 				{
 					// need to hide upload inputs
-					$("#uploadInputs").css("visibility", "hidden");
+					$("#localUploadFile").css("display", "none");
+					$("#localUploadButton").css("display", "none");
 				}
 
 				// creates the uploader component with the customized options
 				jQuery("#returned_video_id").pandaUploader(panda_access_details, {
 					onsuccess: uploadSuccessful_Handler,
+					onchange: newFileSelected_Handler,
 					upload_progress_id: 'progressMeter',
 					api_url: '{$APIURL}',
 					uploader_dir: '.',

@@ -11,6 +11,7 @@
         <script type="text/javascript" src="/js/jquery-ui.js"></script>
 		<script type="text/javascript" src="/js/tapeplay.js"></script>
         <script type="text/javascript" src="/js/jquery.panda.min.js"></script>
+		<script type="text/javascript" src="/js/jwplayer.js"></script>
     </head>
     <body id="tapeplay">
         <div id="header">
