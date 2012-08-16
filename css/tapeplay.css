@@ -1663,14 +1663,29 @@ a {
     margin-right: 30px;
 }
 
-#tapeplay #main #accountLeft .accordion .body .chunk .accountInfo #statistics #stats li .stat {
+#tapeplay #main #accountLeft .accordion .body .chunk .accountInfo #statistics #stats li .stat,
+#tapeplay #main #accountLeft .accordion .body .chunk .accountInfo #statistics #stats li .statHidden {
+
     overflow: hidden;
 }
 
-#tapeplay #main #accountLeft .accordion .body .chunk .accountInfo #statistics #stats li .stat p {
+#tapeplay #main #accountLeft .accordion .body .chunk .accountInfo #statistics #stats li .stat p,
+#tapeplay #main #accountLeft .accordion .body .chunk .accountInfo #statistics #stats li .statHidden p {
     float: left;
     font-size: 12px;
-    margin-bottom: 7px;
+    margin-bottom: 15px;
+    margin-right: 5px;
+    position: relative;
+    top: 6px;
+}
+
+#tapeplay #main #accountLeft .accordion .body .chunk .accountInfo #statistics #stats li .statHidden .inputFieldSmall {
+    float: right;
+}
+
+#tapeplay #main #accountLeft .accordion .body .chunk .accountInfo #statistics #stats li .statHidden .inputFieldSmall input {
+    padding: 0px;
+    width: 15px;
 }
 
 #tapeplay #main #accountLeft .accordion .body .chunk .accountInfo .bottom {

@@ -396,12 +396,17 @@
                                                     <span class="bold">{$stat->getStatValue()}</span>
                                                 </p>
                                             </div>
-                                            <div class="inputField hidden">
-                                                <div class="left"></div>
-                                                <div class="middle">
-                                                    <input type="text" class="standard small" id="_stat" name="schoolName" value="{$stat->getStatValue()}" />
+                                            <div class="statHidden hidden">
+                                                <p>
+                                                    {$stat->getStatName()}:
+                                                </p>
+                                                <div class="inputFieldSmall">
+                                                    <div class="left"></div>
+                                                    <div class="middle">
+                                                        <input type="text" class="standard small" id="stat" name="stat[]" value="{$stat->getStatValue()}" />
+                                                    </div>
+                                                    <div class="right"></div>
                                                 </div>
-                                                <div class="right"></div>
                                             </div>
                                     {if ($i%$modder == $modder - 1 && $i > $modder) || $i == ($statCount - 1)}
                                         </li>
@@ -410,15 +415,8 @@
                                 {/foreach}
                             </ul>
                         </div>
-                        <div class="inputField hidden">
-                            <div class="left"></div>
-                            <div class="middle">
-                                <input type="text" class="standard small" id="schoolName" name="schoolName" value="{$user->getSchool()->getName()}" />
-                            </div>
-                            <div class="right"></div>
-                        </div>
                     </div>
-                    <div class="bigButton orange">
+                    <div class="bigButton orange" id="statButton">
                         <div class="topLeft whiteBg"></div>
                         <div class="topRight whiteBg"></div>
                         <div class="bottomLeft whiteBg"></div>
@@ -509,7 +507,6 @@
             <div class="bottomRight whiteBg"></div>
             <div class="middle">
                 <a href="{#baseUrl#}user/upload/" class="large black">Upload Video</a>
-
             </div>
         </div>
         <div class="ad250x250">
