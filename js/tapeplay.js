@@ -31,14 +31,10 @@ jQuery(document).ready(function(){
         jQuery(this).siblings('.dropper').children('.potentials').slideDown();
     });
 
-    jQuery('#potentials li').click(function() {
-        var sportId = jQuery(this).children('.sportId').val();
+    jQuery('#chosenSport').change(function() {
+        console.log('the')
 
-        var form = jQuery('#sportChooser');
-
-        form.children('#chosenSport').val(sportId);
-
-        form.submit();
+        jQuery('#sportChooser').submit();
     });
 
     jQuery('.special li').click(function() {

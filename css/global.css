@@ -28,7 +28,7 @@ ol, ul {
 	position:relative; /* needed for footer positioning*/
 	margin:0;
 	width:100%;
-	background:transparent url(/media/images/ads/ad_this-will-your-game_590x865.jpg)no-repeat 1010px 75px;
+	background:transparent url(/media/images/ads/ad_this-will-your-game_590x865.jpg) no-repeat 1010px 75px;
 	
 	height:auto !important; /* real browsers */
 	height:100%; /* IE6: treated as min-height*/
@@ -324,11 +324,12 @@ fieldset li {
 
 .button_gray_large, .button_gray_large:visited, .button_gray_large:hover {
 	background-color:#666666;
+	border:none;
 	color:#ffffff;
 	display:block;
 	font-size:36px;
 	margin-left:20px;
-	padding:38px;
+	padding:28px 38px;
 }
 
 .button_black_large, .button_black_large:visited, .button_black_large:hover {

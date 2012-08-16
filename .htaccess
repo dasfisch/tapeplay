@@ -3,5 +3,9 @@ RewriteRule ^([a-z]+)$ $1/ [R=301]
 RewriteRule ^([a-z]+)/$ index.php?class=$1 [L,QSA] 
 RewriteRule ^([a-z]+)/([a-z]+)$ $1/$2/ [R=301] 
 RewriteRule ^([a-z]+)/([a-z]+)/$ index.php?class=$1&method=$2 [L,QSA]
+<<<<<<< HEAD
 RewriteRule ^([a-z]+)/([a-z]+)/([0-9]+)$ $1/$2/$3/ [R=301]
+=======
+RewriteRule ^([a-z]+)/([a-z]+)/([0-9]+)$ $1/$2/$3/ [R=301] 
+>>>>>>> 2f388f12a36b7a6ff64c19af17048a30caff342f
 RewriteRule ^([a-z]+)/([a-z]+)/([0-9]+)/$ index.php?class=$1&method=$2&id=$3 [L,QSA]
