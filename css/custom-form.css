@@ -196,6 +196,7 @@ form .select-11{
 	white-space: nowrap;
 	position: absolute;
 	overflow: hidden;
+	z-index:1000000;
 }
 .select-options .drop-holder {
 	overflow: hidden;
