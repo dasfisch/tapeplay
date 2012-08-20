@@ -16,13 +16,13 @@
 	<h2>Do&rsquo;s and Don&rsquo;ts</h2>
 	
 	<p>
-		Find out the rules of video on TapePlay. <a href="#" title="Do's and Dont's">Click here</a> to see what you can and can&rsquo;t do when uploading a video.
+		Find out the rules of video on TapePlay. <a href="{#baseUrl#}company/guidelines/" title="Do's and Dont's">Click here</a> to see what you can and can&rsquo;t do when uploading a video.
 	</p>
 	
 	<h2>Advertising</h2>
 	
 	<p>
-		Get access to one of the most highly engaged audiences around with TapePlay. <a href="#" title="Advertising">Learn more</a>.
+		Get access to one of the most highly engaged audiences around with TapePlay. <a href="{#baseUrl#}company/advertising" title="Advertising">Learn more</a>.
 	</p>
 </div>
 

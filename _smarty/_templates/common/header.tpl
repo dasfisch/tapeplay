@@ -41,11 +41,25 @@
 					</div>
 					<div class="right">
 						<ul id="navigation">
-							<li><a href="{#baseUrl#}user/join/">Join</a></li>
-							<li><a href="{#baseUrl#}user/login/">Login</a></li>
+						
+							{if isset($user) && !empty($user)}
+	                            <li>
+	                                <a href="{#baseUrl#}account/welcome/">My Account</a>
+	                            </li>
+	                            <li>
+	                                <a href="{#baseUrl#}user/logout/">Logout</a>
+	                            </li>
+	                        {else}
+	                            <li>
+	                                <a href="{#baseUrl#}user/signup/">Join<span class="fbSmall"></span></a>
+	                            </li>
+	                            <li>
+	                                <a href="{#baseUrl#}user/login/">Login</a>
+	                            </li>
+	                        {/if}
 							<li><a href="#">Upload</a></li>
 							<li><a href="#">Browse</a></li>
-							<li><a href="{#baseUrl#}company/helpcenter/">Help</a></li>
+							<li><a href="{#baseUrl#}company/help/">Help</a></li>
 						</ul>
 					</div>
 				</div> <!-- END HEADER WRAPPER -->
