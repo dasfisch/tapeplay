@@ -45,7 +45,7 @@
 							<li><a href="{#baseUrl#}user/login/">Login</a></li>
 							<li><a href="#">Upload</a></li>
 							<li><a href="#">Browse</a></li>
-							<li><a href="/home.php?page=help-center">Help</a></li>
+							<li><a href="{#baseUrl#}company/helpcenter/">Help</a></li>
 						</ul>
 					</div>
 				</div> <!-- END HEADER WRAPPER -->
