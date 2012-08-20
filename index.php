@@ -94,7 +94,7 @@
          * Open the controller if the __CLASS__ parameter is set in the $_GET;
          * Otherwise, open up the index template
          */
-        if(isset($route->class)) {
+        if(isset($route->class) && isset($sport) && isset($sport['name'])) {
             //open the class file
             $controller->open($route->class);
         } else {
