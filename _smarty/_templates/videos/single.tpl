@@ -1,11 +1,9 @@
-<div id="landing">
+<div id="content-left-column">
 	<div id="video">
 		<div id="primaryInfo">
 			<div id="left">
 				<h2>{$player->getFirstName()} {$player->getLastName()}</h2>
-
 				<p class="title">{$video->getTitle()}</p>
-
 				<p class="date">{$video->getRecordedMonth()} / {$video->getRecordedYear()}</p>
 			</div>
 			<div id="right">
@@ -14,33 +12,12 @@
 		</div>
 		<div id="player">
 
-			<video id="videoPlayer" width="890" height="455">
-				<source src="{$videoDisplayInfo->getMp4Source()}"
-						type="video/mp4"/>
-				<source src="{$videoDisplayInfo->getWebmSource()}"
-						type="video/webm"/>
-			</video>
-			<script type='text/javascript'>
-				jwplayer('videoPlayer').setup({
-					modes:[
-						{ type:"html5" },
-						{ type:"flash", src:"/media/playback/player.swf" },
-						{ type:"download" }
-					],
-					skin:"/media/playback/skin/tapeplayer.zip",
-					autostart:false,
-					dock:false,
-					"controlbar.position":"over"
-				});
-			</script>
-
 		</div>
 		<div id="videoInfo">
 			<ul id="left">
 				<li class="basic"><span class="bold">{$video->getViews()}</span> views</li>
 				<li class="basic"><span class="bold">{$video->getSaves()}</span> saves</li>
-				<li class="basic"><span
-						class="italic">Uploaded {$video->getUploadDate()|date_format:"%B %d, %Y %I:%M %p"}</span></li>
+				<li class="basic"><span class="italic">Uploaded {$video->getUploadDate()|date_format:"%B %d, %Y %I:%M %p"}</span></li>
 			</ul>
 			<ul id="right">
 				<input type="hidden" id="hash" value="{$hash}"/>
@@ -224,7 +201,4 @@
 			<div id="facebook"></div>
 		</div>
 	</div>
-</div>
-<div id="ad">
-	<h1>Ad</h1>
 </div>
