@@ -1,4 +1,4 @@
-<div id="content-left-column" class="left">
+<div id="content-left-column" class="left about">
 	<h1>Get Started</h1>
 	
 	<h2>Players</h2>
@@ -6,7 +6,7 @@
 	<ol class="bullets">
 		<li class="bold">
 			<p>
-				<span class="bold">Create an account.</span> It&rsquo;s completely free. <a href="#" title="Create an account">Click here</a>.
+				<span class="bold">Create an account.</span> It&rsquo;s completely free. <a href="{#baseUrl#}user/join/" title="Create an account">Click here</a>.
 			</p>
 		</li>
 		<li class="bold">
@@ -27,12 +27,12 @@
 		</li>
 	</ol>
 	
-	<h2>Coaches</h2>
+	<h2>Coaches and Scouts</h2>
 	
 	<ol class="bullets">
 		<li class="bold">
 			<p>
-				<span class="bold">Create an account.</span> <a href="#" title="Create an account">Click here</a>.
+				<span class="bold">Create an account.</span> <a href="{#baseUrl#}user/join/" title="Create an account">Click here</a>.
 			</p>
 		</li>
 		<li class="bold">

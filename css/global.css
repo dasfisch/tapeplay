@@ -1036,10 +1036,6 @@ fieldset + fieldset {
     font-size: 12px;
 }
 
-.bold {
-    font-weight: bold;
-}
-
 /* Info Bubble */
 .infoBubble {
     background-color: #fff;
@@ -1135,6 +1131,7 @@ fieldset + fieldset {
     color: #666;
     font-size: 12px;
     margin-bottom: 5px;
+    padding-left: 0px;
 }
 
 .infoBubble .middle p a {
@@ -1155,6 +1152,46 @@ p.nothing {
     font-size: 18px !important;
     margin: 0px !important;
     padding: 0px !important;
+}
+
+/* Pagination */
+.pagination {
+    float: left;
+    font-size: 16px;
+    font-weight: bold;
+    margin: 0 auto;
+    padding-left: 20px;
+    width: 60%;
+}
+
+.pagination .previous {
+    float: left;
+    margin-right: 15px;
+    padding-top: 7px;
+}
+
+.pagination .pages {
+    margin: 0px;
+}
+
+.pagination .pages li {
+    border: 1px solid #CCC;
+    display: inline;
+    float: left;
+    height: 23px;
+    margin-right: 15px;
+    padding-top: 8px;
+    width: 30px;
+    text-align: center;
+}
+
+.pagination .next {
+    float: left;
+    padding-top: 7px;
+}
+
+#content-wrapper #content-left-column {
+    line-height: normal;
 }
 
 /**
@@ -1229,6 +1266,12 @@ p.nothing {
 /**
     Video Search Page
 */
+
+#content-wrapper #content-left-column .infoBubble .middle p {
+    margin-bottom: 5px;
+    padding: 0px;
+}
+
 #content-wrapper #content-left-column #search {
     margin-bottom: 15px;
     overflow: hidden;
@@ -1346,6 +1389,7 @@ p.nothing {
 #content-wrapper #content-left-column #video #primaryInfo #left p {
     color: #666;
     font-size: 18px;
+    margin: 0px;
     padding: 0px;
 }
 
@@ -1455,14 +1499,15 @@ p.nothing {
 #content-wrapper #content-left-column #video #leftCol #info #top #level {
     background-color: #e18a07;
     float: right;
-    height: 60px;
-    padding: 2px 5px;
+    height: 66px;
+    padding: 0px 5px;
     width: 55px;
 }
 
 #content-wrapper #content-left-column #video #leftCol #info #top #level h4 {
     color: white;
     font-size: 38px;
+    margin: 0px;
     padding: 0px;
     margin: 0px;
 }
@@ -1470,7 +1515,8 @@ p.nothing {
 #content-wrapper #content-left-column #video #leftCol #info #top #level p {
     color: white;
     font-size: 9px;
-    padding-left: 3px;
+    margin: 0px;
+    padding-left: 2px;
 }
 
 #content-wrapper #content-left-column #video #leftCol #info #bottom {
@@ -1561,4 +1607,36 @@ p.nothing {
 
 #content-wrapper #content-left-column #video #leftCol #moreVideos .result .info .name {
     margin: 0px 0px 5px 0px;
+}
+
+/**
+    About Pages
+*/
+#content-wrapper #content-left-column.about h2 {
+    color: #E39117;
+    font-size: 32px;
+}
+#content-wrapper #content-left-column.about p {
+    font-size: 18px;
+    margin-bottom: 25px;
+    padding: 0px;
+}
+
+#content-wrapper #content-left-column.about #answers .header {
+    font-size: 28px;
+    margin-bottom: 10px;
+}
+
+#content-wrapper #content-left-column .bullets {
+    overflow: hidden;
+}
+
+#content-wrapper #content-left-column .bullets li {
+    margin-left: 25px;
+}
+
+#content-wrapper #content-left-column .bullets li p {
+    font-size: 18px;
+    margin: 25px;
+    padding: 0px;
 }

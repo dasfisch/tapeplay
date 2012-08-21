@@ -11,7 +11,25 @@
 			</div>
 		</div>
 		<div id="player">
-
+            <video id="videoPlayer" width="890" height="455">
+                <source src="{$videoDisplayInfo->getMp4Source()}"
+                        type="video/mp4"/>
+                <source src="{$videoDisplayInfo->getWebmSource()}"
+                        type="video/webm"/>
+            </video>
+            <script type='text/javascript'>
+                jwplayer('videoPlayer').setup({
+                    modes:[
+                        { type:"html5" },
+                        { type:"flash", src:"/media/playback/player.swf" },
+                        { type:"download" }
+                    ],
+                    skin:"/media/playback/skin/tapeplayer.zip",
+                    autostart:false,
+                    dock:false,
+                    "controlbar.position":"over"
+                });
+            </script>
 		</div>
 		<div id="videoInfo">
 			<ul id="left">
