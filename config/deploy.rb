@@ -34,5 +34,6 @@ namespace :deploy do
 	end
 
 	task :after_symlink do
+		move_deploy
 	end
 end

@@ -24,11 +24,11 @@
 	                        {/foreach}
 						</select>
 					</fieldset>
-                    <div class="bigButton black">
+                    <div class="bigButton grey">
                         <div class="topRight whiteBg"></div>
                         <div class="bottomRight whiteBg"></div>
                         <div class="middle">
-                            <input type="submit" value="Continue" id="continue" class="large black" />
+                            <input type="submit" value="Continue" id="continue" class="large grey" />
                         </div>
                     </div>
 				</form>
