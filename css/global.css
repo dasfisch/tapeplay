@@ -131,6 +131,10 @@ ol, ul {
 	text-decoration:none;
 }
 
+#navigation li .infoBubble .middle p a {
+    font-size: 12px;
+}
+
 #footer-navigation {
 	margin-top:21px;
 }
