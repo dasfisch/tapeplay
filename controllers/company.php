@@ -35,8 +35,8 @@
                 $smarty->display('home.tpl');
 
                 break;
-            case 'advertising':
-                $smarty->assign('file', 'company/advertising.tpl');
+            case 'contact':
+                $smarty->assign('file', 'company/contact.tpl');
 
                 $smarty->display('home.tpl');
 
