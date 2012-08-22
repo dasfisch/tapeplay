@@ -62,7 +62,7 @@
 														</td>
 													</tr>
 													<tr><td style="font-size:0; line-height:0;"><img src="{#baseUrl#}media/images/none.gif" width="1" height="24" alt="image" /></td></tr>
-													<tr><td style="font-size:0; line-height:0;"><a href="{#baseUrl#}videos/{VIDEO_ID}"><img align="left" vspace="0" hspace="0" border="0" src="{#baseUrl#}email/{EMAIL_TYPE}/btn-check-it-out.gif" width="244" height="81" alt="Check it out" /></a></td></tr>
+													<tr><td style="font-size:0; line-height:0;"><a href="{#baseUrl#}videos/{$videoId}"><img align="left" vspace="0" hspace="0" border="0" src="{#baseUrl#}email/{EMAIL_TYPE}/btn-check-it-out.gif" width="244" height="81" alt="Check it out" /></a></td></tr>
 												</table>
 											</td>
 										</tr>
@@ -111,7 +111,7 @@
 										</tr>
 										<tr><td style="font-size:0; line-height:0;"><img src="{#baseUrl#}media/images/none.gif" width="1" height="11" alt="image" /></td></tr>
 										<tr>
-											<td align="center" style="font-size:10px; line-height:13px; text-align:center;"><font face="Arial, Helvetica, sans-serif" size="1" color="#000000" style="font-size:10px; line-height:13px;">&copy;&nbsp;{FULL_YEAR} All Rights Reserved. <a href="{BASE_URL}" style="color:#000000; text-decoration:none;"><font color="#000000">TapePlay.com </font></a> is a registered trademark </font></td>
+											<td align="center" style="font-size:10px; line-height:13px; text-align:center;"><font face="Arial, Helvetica, sans-serif" size="1" color="#000000" style="font-size:10px; line-height:13px;">&copy;&nbsp;{$fullYear} All Rights Reserved. <a href="{#baseUrl#}" style="color:#000000; text-decoration:none;"><font color="#000000">TapePlay.com </font></a> is a registered trademark </font></td>
 										</tr>
 										<tr><td style="font-size:0; line-height:0;"><img src="{#baseUrl#}media/images/none.gif" width="1" height="70" alt="image" /></td></tr>
 									</table>
