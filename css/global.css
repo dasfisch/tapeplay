@@ -1284,11 +1284,11 @@ p.nothing {
     width: 418px;
 }
 
-#content-wrapper #content-left-column p {
+/*#content-wrapper #content-left-column p {
     font-size: 12px;
     margin-bottom: 20px;
     padding-left: 25px;
-}
+}*/
 
 #content-wrapper #content-left-column #results {
     width: 610px;
@@ -1490,6 +1490,7 @@ p.nothing {
 
 #content-wrapper #content-left-column #video #leftCol #info #top #person p {
     color: #666;
+    font-size: 12px;
     margin: 0px 0px 4px 0px;
     padding: 1px;
 }
