@@ -41,7 +41,7 @@
 					</div>
 					<div class="right">
 						<ul id="navigation">
-						
+
 							{if isset($user) && !empty($user)}
 	                            <li>
 	                                <a href="{#baseUrl#}account/welcome/">My Account</a>
@@ -57,7 +57,7 @@
 	                                <a href="{#baseUrl#}user/login/">Login</a>
 	                            </li>
 	                        {/if}
-							<li><a href="#">Upload</a></li>
+							<li><a href="{#baseUrl#}videos/upload/">Upload</a></li>
 							<li><a href="{#baseUrl#}videos/browse/">Browse</a></li>
 							<li><a href="{#baseUrl#}company/help/">Help</a></li>
 						</ul>
