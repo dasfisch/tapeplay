@@ -1,62 +1,5 @@
-<div id="main">
-    <h2>Player Sign Up</h2>
-    <p class="facebookLogin">Have a Facebook account? <span class="facebookConnect"></span></p>
-    {include file='common/message.tpl'}
-    <form id="coachForm" name="login" action="{#baseUrl#}user/personal/" method="post">
-        <div class="input">
-            <div class="inputField">
-                <div class="left"></div>
-                <div class="middle">
-                    <input type="text" class="standard" id="firstName" name="firstName" value="First Name" />
-                </div>
-                <div class="right"></div>
-            </div>
-            <p class="error"><span class="asterisk">*</span> Enter your first name here.</p>
-            <p class="error lower">Do not use numbers.</p>
-        </div>
-        <div class="input">
-            <div class="inputField">
-                <div class="left"></div>
-                <div class="middle">
-                    <input type="text" class="standard" id="lastName" name="lastName" value="Last Name" />
-                </div>
-                <div class="right"></div>
-            </div>
-            <p class="error"><span class="asterisk">*</span> Enter your last name here.</p>
-            <p class="error lower">Do not use numbers.</p>
-        </div>
-        <div class="input">
-            <div class="inputField">
-                <div class="left"></div>
-                <div class="middle">
-                    <input type="text" class="standard" id="email" name="email" value="Email" />
-                </div>
-                <div class="right"></div>
-            </div>
-            <p class="error"><span class="asterisk">*</span> Enter valid email address.</p>
-            <p class="error lower">Example: abc@generic.com</p>
-        </div>
-        <div class="input">
-            <div class="inputField">
-                <div class="left"></div>
-                <div class="middle">
-                    <input type="text" class="standard" id="password" name="password" value="Password (at least six characters)" />
-                </div>
-                <div class="right"></div>
-            </div>
-            <p class="error"><span class="asterisk">*</span> Your password must be at least 6 characters.</p>
-        </div>
-<!--        <div class="input">
-            <div class="inputField">
-                <div class="left"></div>
-                <div class="middle">
-                    <input type="text" class="standard" id="passwordConfirm" name="passwordConfirm" value="Confirm Password" />
-                </div>
-                <div class="right"></div>
-            </div>
-            <p class="error"><span class="asterisk">*</span> Passwords do not match!</p>
-        </div> -->
-        <div class="option dropdown">
+
+        <!-- <div class="option dropdown">
             <div class="sportSelect">
                 <div class="dropper">
                     <div class="leftMedium"></div>
@@ -88,60 +31,241 @@
                 </div>
                 <div class="arrowSmall"></div>
             </div>
-        </div>
-        <div class="option zip">
-            <div class="inputField">
-                <div class="left"></div>
-                <div class="middle small">
-                    <input type="text" class="standard" id="zipcode" name="zipcode" value="Zip Code" />
-                </div>
-                <div class="right"></div>
-            </div>
-            <p class="error"><span class="asterisk">*</span> Enter birth year.</p><Br/>
-            <p class="error lower">Enter sex.</p>
-            <p class="error lower">Enter valid 5&ndash;digit zip code.
-        </div>
-        <div class="option check">
-            <div class="checkbox">
-                <div class="box">
-                    <div class="checkMark"></div>
-                </div>
-
-                <div class="label">
-                   I agree to the <a>Terms of Use</a> and <a>Privacy Policy</a>
-                </div>
-            </div>
-            <p class="error">* Please agree with our Terms of Use.</p>
-            
-        </div>
-        <div class="option check">
-            <div class="checkbox">
-                <div class="box">
-                    <div class="checkMark"></div>
-                </div>
-                <div class="label">
-                    By checking this box, I certify I am at least 13 years of age or older.
-                </div>
-            </div>
-            <p class="error">
-               * We appreciate your interest, however, in order to use our site, you must
-	                be 13 years of age or older.
-	        </p>
-        </div>
-        <div class="bigButton black">
-            <div class="topLeft whiteBg"></div>
-            <div class="topRight whiteBg"></div>
-            <div class="bottomLeft whiteBg"></div>
-            <div class="bottomRight whiteBg"></div>
-            <div class="middle">
-                <input type="submit" value="Log In" id="login" class="large black" />
-            </div>
-        </div>
-        <div class="option step">
-            Step 1 of 3
-        </div>
-    </form>
-</div>
-<div id="ad">
-    ad
-</div>
+        </div> -->
+        
+<h1>Player Sign Up</h1>
+<h4>Have a Facebook account? <span class="facebookConnect"></span></h2>
+{include file='common/message.tpl'}
+<form id="coachForm" name="login" action="{#baseUrl#}user/personal/" method="post">
+	<ul class="form-fields">
+		<li class="input-field clear">
+			
+			<div class="input_custom-text input_text80 width600 left">
+				<div class="custom-input_center custom-input_partial">
+					<span class="custom-input_top"></span>
+					<input type="text" id="firstName" name="firstName" value="First Name" />
+					<span class="custom-input_bottom"></span>
+				</div>
+				
+				<div class="custom-input_left custom-input_partial">
+					<span class="custom-input_top"></span>
+					<span class="custom-input_bottom"></span>
+				</div>
+									
+				<div class="custom-input_right custom-input_partial">
+					<span class="custom-input_top"></span>
+					<span class="custom-input_bottom"></span>
+				</div>
+				
+			</div>
+			
+			<div class="error-alert">
+				<ul>
+					<li>Enter your first name.</li>
+					<li>Do not use numbers.</li>
+				</ul>
+			</div>
+			
+		</li>
+		<li class="input-field clear">
+			
+			<div class="input_custom-text input_text80 width600 left">
+				<div class="custom-input_center custom-input_partial">
+					<span class="custom-input_top"></span>
+					<input type="text" id="lastName" name="lastName" value="Last Name" />
+					<span class="custom-input_bottom"></span>
+				</div>
+				
+				<div class="custom-input_left custom-input_partial">
+					<span class="custom-input_top"></span>
+					<span class="custom-input_bottom"></span>
+				</div>
+									
+				<div class="custom-input_right custom-input_partial">
+					<span class="custom-input_top"></span>
+					<span class="custom-input_bottom"></span>
+				</div>
+				
+			</div>
+			
+			<div class="error-alert">
+				<ul>
+					<li>Enter your last name.</li>
+					<li>Do not use numbers.</li>
+				</ul>
+			</div>
+		</li>
+		<li class="input-field clear">
+			
+			<div class="input_custom-text input_text80 width600 left">
+				<div class="custom-input_center custom-input_partial">
+					<span class="custom-input_top"></span>
+					<input type="text" id="email" name="email" value="Email" />
+					<span class="custom-input_bottom"></span>
+				</div>
+				
+				<div class="custom-input_left custom-input_partial">
+					<span class="custom-input_top"></span>
+					<span class="custom-input_bottom"></span>
+				</div>
+									
+				<div class="custom-input_right custom-input_partial">
+					<span class="custom-input_top"></span>
+					<span class="custom-input_bottom"></span>
+				</div>
+				
+			</div>
+			
+			<div class="error-alert">
+				<ul>
+					<li>Enter valid email address.</li>
+					<li>Example: abc@generic.com</li>
+				</ul>
+			</div>
+		</li>
+		<li class="input-field clear">
+			
+			<div class="input_custom-text input_text80 width600 left">
+				<div class="custom-input_center custom-input_partial">
+					<span class="custom-input_top"></span>
+					<input type="text" id="password" name="password" value="Password (at least six characters)"/>
+					<span class="custom-input_bottom"></span>
+				</div>
+				
+				<div class="custom-input_left custom-input_partial">
+					<span class="custom-input_top"></span>
+					<span class="custom-input_bottom"></span>
+				</div>
+									
+				<div class="custom-input_right custom-input_partial">
+					<span class="custom-input_top"></span>
+					<span class="custom-input_bottom"></span>
+				</div>
+				
+			</div>
+			
+			<div class="error-alert">
+				<ul>
+					<li>Enter password of six characters or more.</li>
+				</ul>
+			</div>
+			
+		</li>
+		<li class="input-field clear">
+			<ul class="three-column_sign-up left">
+				<!--<li class="left">
+					<fieldset class="left">
+						<select class="select-5">
+							<option class="default">Birth Year</option>
+							<option>1996</option>
+							<option>1995</option>
+							<option>1994</option>
+							<option>1993</option>
+							<option>1992</option>
+							<option>1991</option>
+							<option>1990</option>
+							<option>1989</option>
+							<option>1988</option>
+							<option>1987</option>
+							<option>1986</option>
+							<option>1985</option>
+						</select>
+					</fieldset>
+				</li>-->
+				<li class="left"></li>
+				<li class="left">
+					<div class="input_custom-text input_text80 width240 left">
+						<div class="custom-input_center custom-input_partial">
+							<span class="custom-input_top"></span>
+							<input type="text" id="zipcode" name="zipcode" value="Zip Code" />
+							<span class="custom-input_bottom"></span>
+						</div>
+						
+						<div class="custom-input_left custom-input_partial">
+							<span class="custom-input_top"></span>
+							<span class="custom-input_bottom"></span>
+						</div>
+											
+						<div class="custom-input_right custom-input_partial">
+							<span class="custom-input_top"></span>
+							<span class="custom-input_bottom"></span>
+						</div>
+						
+					</div>
+				</li>
+			</ul>
+			<!-- <fieldset class="left">
+				<select class="select-3">
+					<option class="default">Birth Year</option>
+					<option>1996</option>
+					<option>1995</option>
+					<option>1994</option>
+					<option>1993</option>
+					<option>1992</option>
+					<option>1991</option>
+					<option>1990</option>
+					<option>1989</option>
+					<option>1988</option>
+					<option>1987</option>
+					<option>1986</option>
+					<option>1985</option>
+				</select>
+			</fieldset>
+			
+			<fieldset class="left">
+				<select class="select-3">
+					<option class="default">Sex</option>
+					<option>Male</option>
+					<option>Female</option>
+				</select>
+			</fieldset> -->
+			<div class="error-alert">
+				<ul>
+					<li>Enter birth year.</li>
+					<li>Enter sex.</li>
+					<li>Enter valid 5-digit zip code.</li>
+				</ul>
+			</div>
+		</li>
+		<li class="input-field clear">
+			<fieldset class="left">
+				<ul class="font15">
+					<li>
+						<label for="i-agree">
+							<span class="checkbox"><span class="check"></span></span>
+							<input type="checkbox" id="i-agree" name="agree" value="I Agree" /> 
+							By checking this box, I certify that I am 13 years of age or older.
+						</label>
+					</li>
+				</ul>
+			</fieldset>
+			<div class="error-alert">
+				<ul>
+					<li>We appreciate your interest; however in order to use our site you must be 13 years of age or older.</li>
+				</ul>
+			</div>
+		</li>
+		<li class="input-field clear">
+			<fieldset class="left">
+				<ul class="font15">	
+					<li>
+						<label for="terms">
+							<span class="checkbox"><span class="check"></span></span>
+							<input type="checkbox" id="terms" name="terms" value="I agree" />
+							I agree to the <a href="#">Terms and Conditions</a> and <a href="#">Privacy Policy</a>.
+						</label>
+					</li>
+				</ul>
+			</fieldset>
+			<div class="error-alert">
+				<ul>
+					<li>Please agree with our Terms of Use.</li>
+				</ul>
+			</div>
+		</li>
+		<li class="input-field clear">
+			<a href="#" class="button_black_large left button_round">Join</a> 
+			<span class="form-steps">Step 1 of 3</span>
+		</li>
+	</ul>
+</form>
