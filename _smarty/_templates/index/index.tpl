@@ -24,13 +24,7 @@
 	                        {/foreach}
 						</select>
 					</fieldset>
-                    <div class="bigButton grey">
-                        <div class="topRight whiteBg"></div>
-                        <div class="bottomRight whiteBg"></div>
-                        <div class="middle">
-                            <input type="submit" value="Continue" id="continue" class="large grey" />
-                        </div>
-                    </div>
+                    <button class="button button_black_large left button_round" type="submit" value="Continue">Continue</button>
 				</form>
 				<!--<a href="#" class="button_gray_large button_round left" title="continue">Continue</a>-->
 				<div class="clear"></div>
