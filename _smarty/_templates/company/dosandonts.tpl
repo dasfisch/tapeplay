@@ -1,4 +1,4 @@
-<div id="content-left-column" class="left">
+<div id="content-left-column" class="left about">
 	<h1>Do&rsquo;s And Don&rsquo;ts: The Rules Of Video</h1>
 	
 	<h2>The Do&rsquo;s</h2>
