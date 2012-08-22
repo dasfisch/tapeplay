@@ -1,4 +1,4 @@
-<div id="content-left-column" class="left about">
+<div id="content-left-column" class="left">
 	<h1>Advertising</h1>
 	
 	<p>
@@ -9,32 +9,32 @@
 		In short, they&rsquo;re paying attention. And we keep immaculate records that allow us to narrow your marketing campaign by all different types of criteria. So connect with your audience by targeting things like:
 	</p>
 	
-	<h4>Demographic</h4>
+	<h3>Demographic</h3>
 	<p>
 		Based on the user&rsquo;s age, sex or combination of the two.
 	</p>
 	
-	<h4>Geographic</h4>
+	<h3>Geographic</h3>
 	<p>
 		Choose by location or zip code.
 	</p>
 	
-	<h4>Interests</h4>
+	<h3>Interests</h3>
 	<p>
 		Target ads through user viewing history which demonstrates interest in a particular category of content, such as Football or Women&rsquo;s Basketball. 
 	</p>
 	
-	<h4>User Type</h4>
+	<h3>User Type</h3>
 	<p>
 		Select audiences by their user type, such as Player, Coach or Scout.
 	</p>
 	
-	<h4>Keyword & Search</h4>
+	<h3>Keyword & Search</h3>
 	<p>
 		Show video advertisements based on keywords or search results.
 	</p>
 	
-	<h4>Remarketing</h4>
+	<h3>Remarketing</h3>
 	<p>
 		Market to viewers who have previously visited your own site.
 	</p>

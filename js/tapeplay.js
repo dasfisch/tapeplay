@@ -1,6 +1,6 @@
 jQuery(document).ready(function(){
-	if (jQuery('.checkbox').get(0)) {
-		$((jQuery('.checkbox').get(0)).parentNode).bind('click', function(event) {
+	jQuery.each(jQuery('.checkbox'), function() {
+		$((jQuery(this).get(0)).parentNode).bind('click', function(event) {
 			event.preventDefault();
 			if ($(this).hasClass('on')) {
 				$(this).removeClass('on');
@@ -10,7 +10,7 @@ jQuery(document).ready(function(){
 				$(this).children('input').attr('checked',true);
 			}
 		})
-	}
+	})
 });
 
 var infoBubbleOpen = false;
