@@ -82,6 +82,10 @@ form .select-3{
 	width:270px;
 }
 
+form .select-5{
+	width:200px;
+}
+
 form .select-4{width:520px;}
 
 form .select-11{
@@ -183,8 +187,6 @@ form .select-11{
 	text-align:left;
 	white-space:nowrap;
 }
-
-
 .select-select-4.select-area .select-opener{
 	position: relative;
 	float: right;
@@ -192,6 +194,30 @@ form .select-11{
 	width:75px;
 	background:url(/media/images/bg-select-4-opener.gif) no-repeat;
 }
+.select-select-5.select-area{
+	position: relative;
+	cursor: default;
+	height:80px;
+	float: left;
+	font-size:32px;
+}
+.select-select-5.select-area .center{
+	float: left;
+	padding:21px 3px 20px;
+	width:201px;
+	color:#b2b2b2;
+	text-align:center;
+	border:1px solid #efefef;
+}
+.select-select-5.select-area .select-opener{
+	position: relative;
+	float: right;
+	height:80px;
+	width:60px;
+	border-left:1px solid #fff;
+	background:url(/media/images/bg-select-3-opener.gif) no-repeat;
+}
+
 .select-options {
 	white-space: nowrap;
 	position: absolute;
@@ -211,7 +237,8 @@ form .select-11{
 }
 .drop-select-3.select-options .drop-holder,
 .drop-select-2.select-options .drop-holder,
-.drop-select-4.select-options .drop-holder{
+.drop-select-4.select-options .drop-holder,
+.drop-select-5.select-options .drop-holder{
 	overflow: hidden;
 	height: 1%;
 	margin:1px 0 0;
@@ -231,8 +258,20 @@ form .select-11{
 	border:1px solid #efefef;
 	background:#fff;
 }
-
 .drop-select-3.select-options .drop-list{
+	width:200px !important;
+	height:269px !important;
+	border:1px solid #efefef;
+	background:#fff;
+}
+.drop-select-5.select-options .drop-list{
+	width:207px !important;
+	height:269px !important;
+	border:1px solid #efefef;
+	background:#fff;
+}
+
+.drop-select-5.select-options .drop-list{
 	width:200px !important;
 	height:269px !important;
 	border:1px solid #efefef;
@@ -273,6 +312,12 @@ form .select-11{
 	overflow:hidden;
 	font-weight:bold;
 }
+.drop-select-5.select-options ul {
+	font-size:32px;
+	line-height:34px;
+	padding:2px;
+	overflow:hidden;
+}
 .select-options ul li {
 	width: 100%;
 	float: left;
@@ -280,6 +325,7 @@ form .select-11{
 .drop-select-1.select-options ul li {padding:0 0 9px;}
 .drop-select-2.select-options ul li {padding:0 0 1px;}
 .drop-select-3.select-options ul li {padding:0 0 3px;}
+.drop-select-5.select-options ul li {padding:0 0 3px;}
 .select-options ul a {
 	text-decoration: none;
 	padding: 5px 10px;
@@ -304,6 +350,10 @@ form .select-11{
 	color: #000;
 	padding:30px 18px 32px;
 }
+.drop-select-5.select-options ul a {
+	color: #666;
+	padding:15px 15px 14px;
+}
 .select-options .item-selected a,
 .select-options a:hover {
 	text-decoration: none;
@@ -318,6 +368,8 @@ form .select-11{
 .drop-select-3.select-options a:hover{background: #efcc98;}
 .drop-select-4.select-options .item-selected a,
 .drop-select-4.select-options a:hover{background: #f9e8cd;}
+.drop-select-5.select-options .item-selected a,
+.drop-select-5.select-options a:hover{background: #efcc98;}
 /* custom scrollbars styles */
 .slide .scrollable-area-wrapper {
 	position: relative;
@@ -344,6 +396,13 @@ form .select-11{
 	width:270px !important;
 	height:271px !important;
 }
+.drop-select-5 .scrollable-area-wrapper {
+	position: relative;
+	overflow: hidden;
+	width:200px !important;
+	height:271px !important;
+}
+
 .drop-select-4 .scrollable-area-wrapper {
 	position: relative;
 	overflow: hidden;
@@ -416,6 +475,11 @@ form .select-11{
 	width:57px;
 	float: left;
 }
+.drop-select-5 .scrollable-area-wrapper .vscroll-line {
+	background:0;
+	width:38px;
+	float: left;
+}
 .scrollable-area-wrapper .vscroll-slider {
 	background: #ccc;
 	width: 20px;
@@ -445,6 +509,11 @@ form .select-11{
 	background: #3b3b3b;
 	width:57px;
 	height:115px !important;
+}
+.drop-select-5 .scrollable-area-wrapper .vscroll-slider {
+	background: #3b3b3b;
+	width: 38px;
+	height: 88px !important;
 }
 /* misc styles */
 .controls-list {

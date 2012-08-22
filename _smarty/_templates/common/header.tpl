@@ -58,7 +58,7 @@
 	                            </li>
 	                        {/if}
 							<li><a href="#">Upload</a></li>
-							<li><a href="#">Browse</a></li>
+							<li><a href="{#baseUrl#}videos/browse/">Browse</a></li>
 							<li><a href="{#baseUrl#}company/help/">Help</a></li>
 						</ul>
 					</div>

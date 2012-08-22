@@ -90,7 +90,25 @@
 		</li>
 		<li class="input-field clear">
 			<ul class="three-column_sign-up">
-				<li class="left"></li>
+				<li class="left">
+					<fieldset class="left">
+						<select class="select-5">
+							<option class="default">Birth Year</option>
+							<option>1996</option>
+							<option>1995</option>
+							<option>1994</option>
+							<option>1993</option>
+							<option>1992</option>
+							<option>1991</option>
+							<option>1990</option>
+							<option>1989</option>
+							<option>1988</option>
+							<option>1987</option>
+							<option>1986</option>
+							<option>1985</option>
+						</select>
+					</fieldset>
+				</li>
 				<li class="left"></li>
 				<li class="left">
 					<div class="input_custom-text input_text80 width240 left">
