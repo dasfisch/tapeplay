@@ -792,9 +792,9 @@ fieldset + fieldset {
 	bottom:16px;
 	display:inline-block;
 	float:none;
-    font-size: 36px;
+    font-size: 30px;
     margin-left: 0px;
-    padding: 38px;
+    padding: 21px;
     position:absolute;
 }
 
@@ -804,13 +804,15 @@ fieldset + fieldset {
 }
 
 .player .button, .coach .button {
-	left:120px;
+	left:141px;
 }
 
 .scout .button {
 	right:115px;
 	bottom:inherit;
 	top:42px;
+	padding-top:28px;
+	padding-bottom:28px;
 }
 
 .fee {

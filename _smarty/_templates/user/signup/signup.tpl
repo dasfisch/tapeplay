@@ -22,15 +22,7 @@
 			<p class="font15 bold center">
 				TapePlay is for 9th grade to pro
 			</p>
-            <div class="bigButton orange">
-                <div class="topLeft whiteBg"></div>
-                <div class="topRight whiteBg"></div>
-                <div class="bottomLeft whiteBg"></div>
-                <div class="bottomRight whiteBg"></div>
-                <div class="middle">
-                    <input type="submit" value="Sign Up" id="playerButton" name="playerButton" class="large orange"/>
-                </div>
-            </div>
+			<button class="button button_orange_large left button_round" type="submit" value="Sign Up">Sign Up</button> 
 		</div>
 		
 		<div class="coach">
@@ -50,15 +42,7 @@
 			<p>
 				To join as a coach, you&rsquo;ll need a .edu email address. 
 			</p>
-            <div class="bigButton white">
-                <div class="topLeft blackBg"></div>
-                <div class="topRight blackBg"></div>
-                <div class="bottomLeft blackBg"></div>
-                <div class="bottomRight blackBg"></div>
-                <div class="middle">
-                    <input type="submit" value="Sign Up" id="coachButton" name="coachButton" class="large white"/>
-                </div>
-            </div>
+			<button class="button button_black_large left button_round" type="submit" value="Sign Up">Sign Up</button> 
 		</div>
 		
 		<div class="clear"></div>
@@ -71,15 +55,8 @@
 			<p>
 				You&rsquo;ll have all the access that coaches do. The only difference is that you don&rsquo;t need a .edu email address. 
 			</p>
-            <div class="bigButton black">
-                <div class="topLeft whiteBg"></div>
-                <div class="topRight whiteBg"></div>
-                <div class="bottomLeft whiteBg"></div>
-                <div class="bottomRight whiteBg"></div>
-                <div class="middle">
-                    <input type="submit" value="Sign Up" id="scoutButton" name="scoutButton" class="large black"/>
-                </div>
-            </div>
+			<a class="button button_black_large left button_round" type="submit" value="Sign Up">Sign Up</a>
+
 		</div>
 	</form>
 </div>
