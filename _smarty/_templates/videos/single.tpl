@@ -7,7 +7,7 @@
 				<p class="date">{$video->getRecordedMonth()} / {$video->getRecordedYear()}</p>
 			</div>
 			<div id="right">
-				<a href="{#baseUrl#}videos/search/">Back to search results</a>
+				<a href="{#baseUrl#}videos/search/{if $goBack ==1}?back=1{/if}">Back to search results</a>
 			</div>
 		</div>
 		<div id="player">

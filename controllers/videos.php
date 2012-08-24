@@ -59,6 +59,8 @@
 
                 break;
             case 'view':
+                $goBack = isset($_SESSION['search']) && !empty($_SESSION['search']) ? 1 : 0;
+
                 $playerBll = new PlayerBLL();
                 $search = new SearchFilter();
                 $videoBll = new VideoBLL();
@@ -90,12 +92,13 @@
 
                 $modder = (ceil(count($stats) / 3) > 1) ? ceil(count($stats) / 3) : 2;
 
+                $smarty->assign('goBack', $goBack);
                 $smarty->assign('hash', $inputFilter->createHash());
-                $smarty->assign('player', $player);
-                $smarty->assign('video', $video[0]);
                 $smarty->assign("modder", $modder);
+                $smarty->assign('player', $player);
                 $smarty->assign("statCount", count($stats));
                 $smarty->assign('stats', $stats);
+                $smarty->assign('video', $video[0]);
                 $smarty->assign('videoDisplayInfo', $videoDisplayInfo);
                 $smarty->assign('videos', $videos);
                 $smarty->assign('file', 'videos/single.tpl');
@@ -113,21 +116,26 @@
 
                 if(isset($post['searchVal']) && $post['searchVal'] != '') {
                     $search->setLike('title', $post['searchVal']);
+
+                    $_SESSION['search'] = serialize($search);
+                } else {
+                    if(isset($_SESSION['search']) && !empty($_SESSION['search']) && isset($get['back']) && $get['back'] == '1') {
+                        $search = unserialize($_SESSION['search']);
+                    }
                 }
 
                 $search->setWhere('sport_id', (int)$sport['id']);
                 $search->setWhere('method', 'videos');
+
                 $search->page = $page;
                 $search->limit = $limit;
 
                 $videos = $video->search($search);
 
-        //        echo '<pre>';
-        //        var_dump($videos[0]->v);
-        //        exit;
+                $pages = (isset($videos[0]) && !empty($videos[0])) ? ceil($videos[0]->count / $search->limit) : null;
 
                 $smarty->assign('page', $page);
-                $smarty->assign('pages', ceil($videos[0]->count / $search->limit));
+                $smarty->assign('pages', $pages);
                 $smarty->assign('videoCount', count($videos));
                 $smarty->assign('videos', $videos);
                 $smarty->assign('file', 'videos/videoSearch.tpl');
