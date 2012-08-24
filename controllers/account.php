@@ -1,15 +1,20 @@
 <?php
+require_once ("enum/controllers/AccountMethods.php");
+require_once ("enum/AccountTypeEnum.php");
+
+require_once("bll/SchoolBLL.php");
+require_once("bll/StatsBLL.php");
+require_once("bll/UserBLL.php");
+require_once("bll/VideoBLL.php");
+require_once("model/SearchFilter.php");
+
 use tapeplay\server\bll\SchoolBLL;
 use tapeplay\server\bll\StatsBLL;
 use tapeplay\server\bll\VideoBLL;
+use tapeplay\server\bll\UserBLL;
+use tapeplay\server\model\SearchFilter;
 
-require_once ("enum/controllers/AccountMethods.php");
-require_once ("enum/AccountTypeEnum.php");
-require_once("bll/SchoolBLL.php");
-require_once("bll/StatsBLL.php");
-require_once("bll/VideoBLL.php");
-
-global $controller, $inputFilter, $route, $smarty, $userBLL;
+global $controller, $dataValidator, $get, $inputFilter, $post, $route, $smarty, $userBLL;
 
 
 // check for request method to see if we are posting data
@@ -26,15 +31,14 @@ else
 	$posted = false;
 }
 
-if(!$userBLL->getUser()) {
-    header('Location:'.$controller->configuration->URLs['baseUrl'].'user/login/');
-}
-
 if (isset($route->method))
 {
 	switch ($route->method)
 	{
 		case AccountMethods::$WELCOME: // http://www.tapeplay.com/account/welcome
+            if(!$userBLL->getUser()) {
+                header('Location:'.$controller->configuration->URLs['baseUrl'].'user/login/');
+            }
 
 			if ($posted)
 			{
@@ -90,7 +94,112 @@ if (isset($route->method))
 			}
 
 			break;
+        case AccountMethods::$FORGOT_PASSWORD:
+            $template = 'account/forgotpassword.tpl';
 
+            if(isset($post['email']) && $post['email'] != '') {
+
+                try {
+                    $message = new stdClass();
+
+                    $dataValidator->checkEmail($post['email']);
+
+                    $search = new SearchFilter();
+
+                    $search->setWhere('email', $post['email']);
+
+                    $userBll = new UserBLL();
+                    $user = $userBll->search($search);
+                    if(isset($user) && !empty($user)) {
+                        $hash = md5(base64_encode(implode($user)));
+
+                        $headers = 'MIME-Version: 1.0' . "\r\n";
+                        $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
+                        $headers .= "From: TapePlay Admin <digital-no-reply@tapeplay.com>\r\n";
+
+                        $subject = 'Here\'s Your Password Reset';
+
+                        $url = $controller->configuration->URLs['baseUrl'].'account/password/?auth='.$hash.'&email='.$post['email'];
+
+                        $body = '
+                                <div>
+                                    <h3>Here\'s your passoword</h3>
+                                    <p>
+                                        Don\'t worry. It happens to the best of us. Just go <a href="'.$url.'">here</a>,
+                                        and complete the form. That\'s it!
+                                    </p>
+                                </div>';
+
+                        if(!mail($post['email'], $subject, $body, $headers)) {
+                            $message->message = $post['email'];
+                            $message->type = 'error';
+                        } else {
+                            $template = 'account/passwordreset.tpl';
+
+                            $smarty->assign('file', $template);
+
+                            $smarty->display('home.tpl');
+                        }
+
+                    } else {
+                        $message->message = $post['email'].' is not a registered email address!';
+                        $message->type = 'error';
+                    }
+                } catch(Exception $e) {
+                    $message->message = $post['email'].' is not a valid email address!';
+                    $message->type = 'error';
+                }
+            }
+
+            $smarty->assign('file', $template);
+            $smarty->assign('message', $message);
+
+            $smarty->display('home.tpl');
+
+            break;
+        case 'password':
+            if(isset($get['auth']) && $get['auth'] != '' && isset($get['email']) && $get['email'] != '') {
+                $message = new stdClass();
+                $search = new SearchFilter();
+
+                $search->setWhere('email', $get['email']);
+
+                $userBll = new UserBLL();
+                $user = $userBll->search($search);
+
+                if(strcmp(md5(base64_encode(implode($user))), $get['auth']) === -1) {
+                    \Util::setHeader($controller->configuration->URLs['baseUrl']);
+                }
+
+                if(isset($post) && isset($post['password']) && !empty($post['password'])) {
+                    $hash = $userBLL->createHash($post["email"], $post["password"]);
+
+                    $user[0]->setHash($hash);
+                    if($userBLL->update($user[0])) {
+                       \Util::setHeader($controller->configuration->URLs['baseUrl']);
+                    } else {
+                        $message->message = 'There was an error processing your request. Please try again!';
+                        $message->type = 'error-alert';
+                    }
+                }
+
+                if(isset($user[0]) && !empty($user[0])) {
+                    $template = 'account/passwordresetform.tpl';
+
+                    $smarty->assign('file', $template);
+                    $smarty->assign('email', $get['email']);
+                    $smarty->assign('message', $message);
+                    $smarty->assign('auth', $get['auth']);
+
+                    $smarty->display('home.tpl');
+                } else {
+                    \Util::setHeader($controller->configuration->URLs['baseUrl']);
+                }
+            } else {
+                \Util::setHeader($controller->configuration->URLs['baseUrl']);
+            }
+
+            break;
 	}
 }
 else

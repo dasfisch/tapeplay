@@ -378,6 +378,7 @@ fieldset li {
 form .error-alert {
 	background:transparent url(/media/images/icon_error-alert.png) no-repeat 0px 16px;
 	color:#ff0000;
+    display: none;
 	float:right;
 	padding:10px 0 0 20px;
 	width:300px;
@@ -1644,4 +1645,37 @@ p.nothing {
     font-size: 18px;
     margin: 25px;
     padding: 0px;
+}
+
+/**
+    Forgot Password style
+*/
+#content-wrapper #forgotPassword .top {
+    overflow: hidden;
+    margin-bottom: 50px;
+}
+
+#content-wrapper #forgotPassword .top .inputField {
+    margin: 0px 15px 15px 0px;
+}
+
+#content-wrapper #forgotPassword .top .inputField .middle {
+    width: 600px;
+}
+
+#content-wrapper #forgotPassword .top .error-alert {
+    margin: 0px;
+}
+
+#content-wrapper #reset {
+    margin-bottom: 50px;
+}
+
+#content-wrapper .success .greenCheckMark {
+    margin-right: 5px;
+    margin-top: 9px;
+}
+
+#content-wrapper .success.lower  {
+    padding-left: 23px;
 }

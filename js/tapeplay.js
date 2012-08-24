@@ -1,6 +1,6 @@
 jQuery(document).ready(function(){
-	jQuery.each(jQuery('.checkbox'), function() {
-		$((jQuery(this).get(0)).parentNode).bind('click', function(event) {
+	if (jQuery('.checkbox').get(0)) {
+		$((jQuery('.checkbox').get(0)).parentNode).bind('click', function(event) {
 			event.preventDefault();
 			if ($(this).hasClass('on')) {
 				$(this).removeClass('on');
@@ -10,7 +10,7 @@ jQuery(document).ready(function(){
 				$(this).children('input').attr('checked',true);
 			}
 		})
-	})
+	}
 });
 
 var infoBubbleOpen = false;
@@ -64,24 +64,24 @@ jQuery(document).ready(function(){
 
     // jQuery('.checkbox').click(function(){
         // var showing = jQuery(this).attr('showing');
-// 
+//
         // if(typeof(showing) === 'undefined') {
             // showing = 'false';
         // }
-// 
+//
         // if(showing == 'false') {
             // jQuery(this).children('.box').children('.checkMark').show();
             // jQuery(this).children('.checkValue').val('true');
-// 
+//
             // jQuery(this).children('input').attr('checked', true);
-// 
+//
             // jQuery(this).attr('showing', 'true');
         // } else {
             // jQuery(this).children('.box').children('.checkMark').hide();
             // jQuery(this).children('.checkValue').val('');
-// 
+//
             // jQuery(this).children('input').attr('checked', false);
-// 
+//
             // jQuery(this).attr('showing', 'false');
         // }
     // });
@@ -553,6 +553,11 @@ jQuery(document).ready(function(){
         var _this = jQuery(this).siblings('.copy').first();
 
         _this.after(_this.clone());
+    });
+
+    jQuery('.pws').focus(function() {
+        jQuery(this).siblings('input[type="password"]').removeClass('hidden').focus();
+        jQuery(this).remove();
     });
 });
 

@@ -8,7 +8,7 @@
 
     include_once('general/controller.php');
     include_once('general/configuration.php');
-//    include_once('general/factory.php');
+    include_once('general/datavalidator.php');
     include_once('general/inputfilter.php');
     include_once('general/request.php');
     include_once('general/route.php');
@@ -21,15 +21,19 @@
 
     use tapeplay\server\bll\SportBLL;
 	use tapeplay\server\bll\UserBLL;
+    use tapeplay\server\general\Configuration;
     use tapeplay\server\general\Controller;
+    use tapeplay\server\general\DataValidator;
     use tapeplay\server\general\InputFilter;
     use tapeplay\server\general\Route;
     use tapeplay\server\general\TapePlaySmarty;
     use tapeplay\server\model\SearchFilter;
 
-    global $controller, $get, $inputFilter, $post, $route, $smarty, $sport, $userBLL;
+    global $configuration, $controller, $dataValidator, $get, $inputFilter, $post, $route, $smarty, $sport, $userBLL;
 
+    $configuration = new Configuration('general.conf', CONFIG_LOCATION);
     $controller = new Controller();
+    $dataValidator = new \DataValidator();
     $inputFilter = new InputFilter();
     $route = new Route($_GET);
     $smarty = new TapePlaySmarty();
@@ -94,9 +98,21 @@
          * Open the controller if the __CLASS__ parameter is set in the $_GET;
          * Otherwise, open up the index template
          */
-        if(isset($route->class) && isset($sport) && isset($sport['name'])) {
+        if(isset($route->class)) {
             //open the class file
-            $controller->open($route->class);
+            if(isset($sport) && isset($sport['name'])) {
+                $controller->open($route->class);
+            } else {
+                if($route->class == 'user' && ($route->method == 'login' || $route->method == 'signup')) {
+                    $controller->open($route->class);
+                } elseif($route->class == 'account' && ($route->method == 'password' || $route->method == 'forgot')) {
+
+                } else {
+                    \Util::setHeader($configuration->configuration->URLs['baseUrl']);
+
+                    exit;
+                }
+            }
         } else {
             //open the home page
             $controller->open('home');

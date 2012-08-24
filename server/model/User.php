@@ -180,4 +180,14 @@ class User
 	{
 		return $this->_savedVideos;
 	}
+
+    public function __toString() {
+        $val = '';
+
+        foreach($this as $key=>$val) {
+            $val .= $key.'='.$val.';';
+        }
+
+        return $val;
+    }
 }

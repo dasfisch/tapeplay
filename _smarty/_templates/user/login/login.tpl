@@ -36,7 +36,8 @@
 			<div class="input_custom-text input_text80 width600 left">
 				<div class="custom-input_center custom-input_partial">
 					<span class="custom-input_top"></span>
-					<input type="input" class="standard" id="password" name="password" value="Password" />
+                    <input type="text" class="standard pws" value="Password" />
+                    <input type="password" class="standard" id="password" name="password" class="hidden" />
 					<span class="custom-input_bottom"></span>
 				</div>
 				
@@ -76,7 +77,7 @@
 			<button type="submit" class="button_black_large left button_round">Log In</button> 
 		</li>
 		<li class="input-field clear font15">
-			<a href="#">Forgot your password?</a>
+			<a href="{#baseUrl#}account/forgot/">Forgot your password?</a>
 		</li>
 	</ul>
 </form>
