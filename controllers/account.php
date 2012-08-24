@@ -95,13 +95,12 @@ if (isset($route->method))
 
 			break;
         case AccountMethods::$FORGOT_PASSWORD:
+            $message = new stdClass();
             $template = 'account/forgotpassword.tpl';
 
             if(isset($post['email']) && $post['email'] != '') {
 
                 try {
-                    $message = new stdClass();
-
                     $dataValidator->checkEmail($post['email']);
 
                     $search = new SearchFilter();
