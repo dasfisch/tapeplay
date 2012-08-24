@@ -1,5 +1,6 @@
 <div id="main">
     <h2>Reset Your Password</h2>
+	<p>&nbsp;</p>
     <form id="loginForm" name="login" action="{#baseUrl#}user/forgot/" method="post">
         <div class="input last">
             <div class="inputField">
