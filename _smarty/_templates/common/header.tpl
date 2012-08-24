@@ -10,6 +10,7 @@
         <link rel="stylesheet" href="/css/custom-form.css" type="text/css" />
 
         <script type="text/javascript" src="/js/jquery.js"></script>
+        <script type="text/javascript" src="/js/jwplayer.js"></script>
         <script type="text/javascript" src="/js/jquery-ui.js"></script>
         <script type="text/javascript" src="/js/jquery-main.js"></script>
 		<script type="text/javascript" src="/js/tapeplay.js"></script>
