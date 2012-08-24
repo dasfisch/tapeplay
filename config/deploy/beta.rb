@@ -22,5 +22,6 @@ set :deploy_via, :copy
 set :move_deploy do
     run "rm -rf /apps/beta/www/* && cp -R /home/tapeplayer/tapeplay/current/* /apps/beta/www/"
     run "rm -rf /apps/tapeplay/www/_smarty/_configs/*"
+    run "mkdir /apps/tapeplay/www/_smarty/_templates_c/ /apps/tapeplay/www/_smarty/_configs/ /apps/tapeplay/www/_smarty/_cache/"
     run "cp -R /etc/config/tapeplay/smarty/* /apps/tapeplay/www/_smarty/_configs/"
 end
