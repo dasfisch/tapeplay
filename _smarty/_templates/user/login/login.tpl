@@ -33,6 +33,7 @@
                 <input type="checkbox" class="hidden" name="remember_me" />
             </div>
         </div>
+		<p class="forgot"><a href="/user/forgot/">Forgot your password?</a></p>
         <div class="clear"></div>
         <div class="bigButton black">
             <div class="topLeft whiteBg"></div>
@@ -44,7 +45,7 @@
             </div>
         </div>
         <div class="clear"></div>
-        <p class="forgot"><a href="">Forgot your password?</a></p>
+
     </form>
 </div>
 <div id="ad">
