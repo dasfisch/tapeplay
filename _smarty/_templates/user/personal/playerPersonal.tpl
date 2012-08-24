@@ -34,7 +34,7 @@
         </div> -->
         
 <h1>Player Sign Up</h1>
-<h4>Have a Facebook account? <span class="facebookConnect"></span></h2>
+<h4>Have a Facebook account? <span class="facebookConnect"></span></h4>
 {include file='common/message.tpl'}
 <form id="coachForm" name="login" action="{#baseUrl#}user/personal/" method="post">
 	<ul class="form-fields">
@@ -128,7 +128,8 @@
 			<div class="input_custom-text input_text80 width600 left">
 				<div class="custom-input_center custom-input_partial">
 					<span class="custom-input_top"></span>
-					<input type="text" id="password" name="password" value="Password (at least six characters)"/>
+                    <input type="text" class="standard pws" value="Password (at least six characters)" />
+                    <input type="password" class="standard" id="password" name="password" class="hidden" />
 					<span class="custom-input_bottom"></span>
 				</div>
 				
