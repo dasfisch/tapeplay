@@ -55,7 +55,7 @@ ol, ul {
 	color:#333333;
 	font-size:18px;
 	line-height:24px;
-	padding:24px 20px;
+	padding:24px 20px 24px 35px;
 }
 
 #footer {
@@ -80,6 +80,12 @@ ol, ul {
 	width:126px;
 }
 
+#logo a {
+	display:block;
+	height:100%;
+	width:100%;
+}
+
 #logo img {
 	visibility:hidden;
 }
@@ -90,7 +96,7 @@ ol, ul {
 }
 
 #content-right-column {
-	margin:24px 0px 0px 45px;
+	margin:24px 40px 0px 45px;
 	width:200px;
 }
 
@@ -127,8 +133,11 @@ ol, ul {
 #navigation a, #navigation a:visited, #navigation a:hover {
 	color:#ffffff;
 	font-size:17px;
-	font-weight:bold;
 	text-decoration:none;
+}
+
+#navigation a.active, #navigation a.active:visited, #navigation a.active:hover {
+	color:#db8600;
 }
 
 #navigation li .infoBubble .middle p a {
@@ -174,6 +183,10 @@ ol, ul {
 	font-size:11px;
 	padding-top:35px;
 	text-align:center;
+}
+
+#footer-terms li {
+	padding-bottom:5px;
 }
 
 .four-column > li {
@@ -222,6 +235,10 @@ body {
 a, a:visited, a:hover {
 	color:#e39117;
 	text-decoration:none;
+}
+
+a:hover {
+	text-decoration:underline;
 }
 
 h1 {
@@ -299,6 +316,18 @@ ul.lower-alpha {
 	font-size:15px;
 }
 
+.list-spacing-10 li {
+	padding-top:10px;
+}
+
+.list-spacing-10 li:first-child {
+	padding-top:0px;
+}
+
+.input-field + .input-field.margin-clear {
+	margin-top:5px;
+}
+
 .background_gray {
 	background-color:#f2f2f2;
 }
@@ -334,6 +363,7 @@ fieldset li {
 	font-size:36px;
 	margin-left:20px;
 	padding:28px 38px;
+	text-decoration:none;
 }
 
 .button_black_large, .button_black_large:visited, .button_black_large:hover {
@@ -343,6 +373,7 @@ fieldset li {
 	display:block;
 	font-size:36px;
 	padding:38px 52px;
+	text-decoration:none;
 }
 
 .button_orange_large, .button_orange_large:visited, .button_orange_large:hover {
@@ -352,7 +383,8 @@ fieldset li {
 	display:block;
 	font-size:36px;
 	margin-left:20px;
-	padding:38px;
+	padding:28px 38px;
+	text-decoration:none;
 }
 
 .button_round {
@@ -381,7 +413,7 @@ form .error-alert {
     display: none;
 	float:right;
 	padding:10px 0 0 20px;
-	width:300px;
+	width:290px;
 }
 
 form fieldset + .error-alert {
@@ -491,10 +523,10 @@ fieldset + fieldset {
 	width:200px;
 }
 
-.ad_970x250 {
+.ad_950x250 {
 	background-color:#000000;
 	height:250px;
-	width:970px;
+	width:950px;
 	
 }
 
@@ -508,8 +540,8 @@ fieldset + fieldset {
 	padding-right:20px;
 }
 
-.input_custom-text.width750 {
-	width:710px;
+.input_custom-text.width690 {
+	width:690px;
 }
 
  .custom-input_partial {
@@ -721,7 +753,7 @@ fieldset + fieldset {
 }
 
 .background_gray.width750 {
-	width:710px;
+	width:690px;
 }
 
 .sub_home h1 {
@@ -746,7 +778,7 @@ fieldset + fieldset {
 
 .player, .coach {
 	float:left;
-	height:570px;
+	height:530px;
 	width:366px;
 }
 
@@ -766,7 +798,7 @@ fieldset + fieldset {
 
 .coach {
 	background-color:#000000;
-	border:solid 1px #000000;
+	border:solid 1px #e5e5e5;
 	color:#ffffff;
 	margin-left:20px;
 }
@@ -784,8 +816,12 @@ fieldset + fieldset {
 	background-color:#f2f2f2;
 	border:solid 1px #e5e5e5;
 	margin-top:20px;
-	padding-right:375px;
+	padding:20px 375px 36px 36px;
 	width:487px;
+}
+
+.scout p {
+	margin-bottom:0px;
 }
 
 .scout .fee {
@@ -821,6 +857,7 @@ fieldset + fieldset {
 }
 
 .fee {
+	line-height:20px;
 	position:absolute;
 	right:0px;
 	text-align:center;
@@ -830,6 +867,10 @@ fieldset + fieldset {
 }
 
 /* COMMON ELEMENTS */
+label[for="i-agree"] {
+	color:#666666;
+}
+
 .inputField {
     float: left;
     overflow: hidden;
@@ -1639,12 +1680,6 @@ p.nothing {
 
 #content-wrapper #content-left-column .bullets li {
     margin-left: 25px;
-}
-
-#content-wrapper #content-left-column .bullets li p {
-    font-size: 18px;
-    margin: 25px;
-    padding: 0px;
 }
 
 /**
