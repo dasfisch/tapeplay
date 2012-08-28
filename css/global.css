@@ -876,6 +876,98 @@ fieldset + fieldset {
 	width:60px;
 }
 
+
+/* HOME LAUNCH */
+.beta_home h1 {
+	color: #000000;
+    font-size: 54px;
+    font-weight: bold;
+    margin: 26px 0 0;
+    text-align: center;
+}
+
+.beta_home h2 {
+	color: #666666;
+    font-size: 30px;
+    margin: 18px 0 46px;
+    text-align: center;
+}
+
+.beta-banner {height:280px;}
+
+.beta-banner .sign-up {
+	background-color:#e18a07;
+	color:#ffffff;
+	height:100%;
+	padding:0px 25px 0px;
+	text-align:center;
+	width:210px;
+}
+
+.beta-banner .sign-up p {
+	font-size:15px;
+	margin-bottom:10px;
+}
+
+.beta-banner .sign-up h3 {
+	margin-top:20px;
+}
+
+.beta-banner .button_black_large, .beta-banner .button_black_large:visited, .beta-banner .button_black_large:hover {
+	display:inline-block;
+	font-size:16px;
+	font-weight:bold;
+	padding: 12px 36px;
+}
+
+.beta-banner-footer {
+	border-top:1px dashed #ffffff;
+	margin:0px -25px;
+	padding-top:10px;
+}
+
+.beta-banner .sign-up-banner {
+	background-color:#7b7b7b;
+	height:100%;
+}
+
+.sub-home-sub-info {
+	background-color:#ededed;
+	margin-top:20px;
+	padding:30px;
+}
+
+.sub-home-sub-info .video h2 {
+	margin:0px;
+	padding:0px 0px 10px;
+	text-align:left;
+}
+.sub-home-sub-info .copy {
+	width:340px;
+}
+
+.sub-home-sub-info .info {
+	background-color:#fdfdfd;
+	padding:20px;
+}
+.sub-home-sub-info .info:first-child {
+	margin-bottom:20px;
+}
+.sub-home-sub-info .info p {
+	color:#666666;
+	font-size:15px;
+	line-height:20px;
+	margin:0px;
+}
+
+.sub-home-sub-info .form-fields {
+	margin:12px 0px 14px;
+}
+
+.sub-home-sub-info .follow-us li {
+	float:left;
+	margin-left:12px;
+}
 /* COMMON ELEMENTS */
 label[for="i-agree"] {
 	color:#666666;
