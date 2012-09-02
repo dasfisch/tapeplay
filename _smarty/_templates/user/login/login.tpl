@@ -1,5 +1,5 @@
 <h1>Log In</h1>
-<h4>Have a Facebook account?<span class="facebookConnect"></span></h2>
+<h4>&nbsp;</h2>
 
 <form id="loginForm" name="login" action="{#baseUrl#}user/login/" method="post">
 	<ul class="form-fields">
