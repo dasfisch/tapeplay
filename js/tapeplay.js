@@ -567,7 +567,6 @@ jQuery(document).ready(function(){
     	if (event.type == "blur" && ($(this).get(0)).value == ("" || ($(this).get(0)).defaultValue)) {
     		($(this).get(0)).type = "text";
     	}
-    	console.log(event);
     })
 });
 
