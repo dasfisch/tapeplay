@@ -343,8 +343,8 @@ ul.lower-alpha {
 	width:600px;
 }
 
-.width240 {
-	width:240px;
+.width185 {
+	width:185px;
 }
 
 fieldset ul {
@@ -353,6 +353,14 @@ fieldset ul {
 
 fieldset li {
 	padding-bottom:6px;
+}
+
+.three-column_sign-up li {
+	margin-left:20px;
+}
+
+.three-column_sign-up li:first-child {
+	margin-left:0px;
 }
 
 .button_gray_large, .button_gray_large:visited, .button_gray_large:hover {
