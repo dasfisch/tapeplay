@@ -72,7 +72,8 @@ else
 if(!isset($user) || !isset($userId) || empty($userId)) {
     if(isset($_SERVER['REQUEST_URI']) && $_SERVER['REQUEST_URI'] !== '/user/login/' &&
             $_SERVER['REQUEST_URI'] !== '/user/signup/' &&
-            $_SERVER['REQUEST_URI'] !== '/user/personal/') {
+            $_SERVER['REQUEST_URI'] !== '/user/personal/' &&
+			$_SERVER['REQUEST_URI'] !== '/user/forgot/') {
         Util::setHeader('user/login/');
     }
 } else {
@@ -160,6 +161,21 @@ if (isset($route->method))
 					Util::setHeader("index.php");
 				}
 			}
+			break;
+
+		case UserMethods::$FORGOT: // http://www.tapeplay.com/user/forgot/
+
+			if ($posted)
+			{
+				// TODO: Check for email address and send password to user.
+			}
+			else
+			{
+				// load up template
+				$smarty->assign("file", "user/login/forgot.tpl");
+				$smarty->display("home.tpl");
+			}
+
 			break;
 
 		case UserMethods::$SIGNUP: // http://www.tapeplay.com/user/signup/

@@ -3,6 +3,7 @@
 class UserMethods
 {
 	public static $LOGIN = "login";
+	public static $FORGOT = "forgot";
 	public static $LOGOUT = "logout";
 	public static $SIGNUP = "signup";
 	public static $PERSONAL = "personal";
