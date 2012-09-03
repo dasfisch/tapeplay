@@ -4,7 +4,10 @@
 	float:left;
 	overflow:hidden;
 }
-#header form .select-1{width:281px;}
+#header form .select-1{
+	width:281px;
+}
+
 .box ul{
 	margin:0;
 	padding:0;
@@ -14,7 +17,6 @@
 	overflow:hidden;
 	padding:0;
 }
-
 .box ul a.opener{
 	font-size:30px;
 	line-height:32px;
@@ -31,14 +33,10 @@
 }
 .box .slide{margin:1px 0 31px;}
 .box .slide .holder{overflow:hidden;}
-.box .slide ul{
-	margin:0;
-	padding:0;
-	list-style:none;
+.box .slide ul{	margin:0;	padding:0;	list-style:none;
 	overflow:hidden;
 	width:552px;
-	color:#666;
-}
+	color:#666;}
 .box .slide ul li{
 	float:left;
 	width:509px;
@@ -63,20 +61,7 @@
 	text-align:center;
 	padding:43px 0 0;
 }
-.box .slide ul .btn{
-	font-size:15px;
-	line-height:20px;
-	display:inline-block;
-	color:#fff;
-	background: url(/media/images/btn.png) no-repeat 100% 0;
-	padding:0 5px 0 0;
-}
-.btn span{
-	float: left;
-	height:21px;
-	background: url(/media/images/btn.png) no-repeat 0 -21px;
-	padding:0 2px 0 4px;
-}
+.box .slide ul .btn{	font-size:15px;	line-height:20px;	display:inline-block;	color:#fff;	background: url(/media/images/btn.png) no-repeat 100% 0;	padding:0 5px 0 0;}.btn span{	float: left;	height:21px;	background: url(/media/images/btn.png) no-repeat 0 -21px;	padding:0 2px 0 4px;}
 .box .slide ul .title{
 	color:#666;
 	font-size:30px;
@@ -97,16 +82,24 @@
 	line-height:18px;
 }
 form .select-2{width:97px;}
-/*.name-box{
+.name-box{
 	display:block;
 	margin:0 0 15px;
-}*/
+}
 
 form .select-3{
 	width:270px;
 }
 
+form .select-5{
+	width:200px;
+}
+
 form .select-4{width:520px;}
+
+form .select-11{
+	width:125px;
+}
 
 /* hide original element */
 .jcf-hidden {
@@ -147,18 +140,16 @@ form .select-4{width:520px;}
 	background:#fdfdfd;
 }
 .select-select-2.select-area .center{
-	display:block;
-	background:url(/media/images/bg-select-2-r.gif) no-repeat 100% 0;
-	margin:0 30px 0 0;
+	float: left;
+	width:52px;
 	color:#666;
 	padding:8px 9px 8px 4px;
 	text-align:center;
 	border:1px solid #efefef;
 }
 .select-select-2.select-area .select-opener{
-	position:absolute;
-	top:0;
-	right:0;
+	position: relative;
+	float: right;
 	height:36px;
 	width:29px;
 	border-left:1px solid #fff;
@@ -170,21 +161,18 @@ form .select-4{width:520px;}
 	height:80px;
 	float: left;
 	font-size:32px;
-	background:url(/media/images/bg-select-3.gif) no-repeat 0 1px;
 }
 .select-select-3.select-area .center{
-	display:block;
-	margin:0 62px 0 0;
+	float: left;
 	padding:21px 3px 20px;
+	width:201px;
 	color:#b2b2b2;
 	text-align:center;
-	background:url(/media/images/bg-select-3-r.gif) no-repeat 100% 0;
 	border:1px solid #efefef;
 }
 .select-select-3.select-area .select-opener{
-	position:absolute;
-	top:0;
-	right:0;
+	position: relative;
+	float: right;
 	height:80px;
 	width:60px;
 	border-left:1px solid #fff;
@@ -200,8 +188,8 @@ form .select-4{width:520px;}
 	font-weight:bold;
 }
 .select-select-4.select-area .center{
-	display:block;
-	margin:0 77px 0 0;
+	float: left;
+	width:406px;
 	color:#000;
 	padding:30px 19px 32px;
 	background:#fff;
@@ -209,13 +197,36 @@ form .select-4{width:520px;}
 	white-space:nowrap;
 }
 .select-select-4.select-area .select-opener{
-	position:absolute;
-	top:0;
-	right:0;
+	position: relative;
+	float: right;
 	height:100px;
 	width:75px;
 	background:url(/media/images/bg-select-4-opener.gif) no-repeat;
 }
+.select-select-5.select-area{
+	position: relative;
+	cursor: default;
+	height:80px;
+	float: left;
+	font-size:32px;
+}
+.select-select-5.select-area .center{
+	float: left;
+	padding:21px 3px 20px;
+	width:201px;
+	color:#b2b2b2;
+	text-align:center;
+	border:1px solid #efefef;
+}
+.select-select-5.select-area .select-opener{
+	position: relative;
+	float: right;
+	height:80px;
+	width:60px;
+	border-left:1px solid #fff;
+	background:url(/media/images/bg-select-3-opener.gif) no-repeat;
+}
+
 .select-options {
 	white-space: nowrap;
 	position: absolute;
@@ -235,32 +246,48 @@ form .select-4{width:520px;}
 }
 .drop-select-3.select-options .drop-holder,
 .drop-select-2.select-options .drop-holder,
-.drop-select-4.select-options .drop-holder{
+.drop-select-4.select-options .drop-holder,
+.drop-select-5.select-options .drop-holder{
 	overflow: hidden;
 	height: 1%;
 	margin:1px 0 0;
 }
 .drop-select-1.select-options .drop-list{
+	width:251px !important;
 	height:188px !important;
-	background:#000;
 }
 .drop-select-2.select-options .drop-list{
-	height:103px !important;
-	background:url(/media/images/bg-select-2-drop.gif) no-repeat 0 1px;
-}
-.drop-select-2.select-options .drop-frame{
+	width:65px !important;
 	height:101px !important;
 	border:1px solid #efefef;
-	background:url(/media/images/bg-select-2-drop-r.gif) no-repeat 100% 0;
 }
 .drop-select-3.select-options .drop-list{
-	height:271px !important;
-	background:url(/media/images/bg-select-3-drop.gif) no-repeat 0 1px;
-}
-.drop-select-3.select-options .drop-frame{
-	border:1px solid #efefef;
+	width:207px !important;
 	height:269px !important;
-	background:url(/media/images/bg-select-3-drop-r.gif) no-repeat 100% 0;
+	border:1px solid #efefef;
+	background:#fff;
+}
+.drop-select-3.select-options .drop-list{
+	width:200px !important;
+	height:269px !important;
+	border:1px solid #efefef;
+	background:#fff;
+}
+.drop-select-5.select-options .drop-list{
+	width:207px !important;
+	height:269px !important;
+	border:1px solid #efefef;
+	background:#fff;
+}
+
+.drop-select-5.select-options .drop-list{
+	width:200px !important;
+	height:269px !important;
+	border:1px solid #efefef;
+	background:#fff;
+}
+.drop-select-4.select-options .drop-list{
+	width:445px !important;
 }
 .select-options ul {
 	list-style: none;
@@ -289,10 +316,16 @@ form .select-4{width:520px;}
 	font-size:36px;
 	line-height:38px;
 	padding:0;
-	margin:0 2px 0 0;
+	margin:0 1px 0 0;
 	background:#fff;
 	overflow:hidden;
 	font-weight:bold;
+}
+.drop-select-5.select-options ul {
+	font-size:32px;
+	line-height:34px;
+	padding:2px;
+	overflow:hidden;
 }
 .select-options ul li {
 	width: 100%;
@@ -301,6 +334,7 @@ form .select-4{width:520px;}
 .drop-select-1.select-options ul li {padding:0 0 9px;}
 .drop-select-2.select-options ul li {padding:0 0 1px;}
 .drop-select-3.select-options ul li {padding:0 0 3px;}
+.drop-select-5.select-options ul li {padding:0 0 3px;}
 .select-options ul a {
 	text-decoration: none;
 	padding: 5px 10px;
@@ -327,6 +361,10 @@ form .select-4{width:520px;}
 	padding:30px 18px 32px;
 	font-weight:bold;
 }
+.drop-select-5.select-options ul a {
+	color: #666;
+	padding:15px 15px 14px;
+}
 .select-options .item-selected a,
 .select-options a:hover {
 	text-decoration: none;
@@ -341,6 +379,8 @@ form .select-4{width:520px;}
 .drop-select-3.select-options a:hover{background: #efcc98;}
 .drop-select-4.select-options .item-selected a,
 .drop-select-4.select-options a:hover{background: #f9e8cd;}
+.drop-select-5.select-options .item-selected a,
+.drop-select-5.select-options a:hover{background: #efcc98;}
 /* custom scrollbars styles */
 .slide .scrollable-area-wrapper {
 	position: relative;
@@ -351,21 +391,33 @@ form .select-4{width:520px;}
 .drop-select-1 .scrollable-area-wrapper {
 	position: relative;
 	overflow: hidden;
+	width:271px !important;
 	height:188px !important;
 }
 .drop-select-2 .scrollable-area-wrapper {
+	background-color:#ffffff;
 	position: relative;
 	overflow: hidden;
+	width:97px !important;
 	height:103px !important;
 }
 .drop-select-3 .scrollable-area-wrapper {
 	position: relative;
 	overflow: hidden;
+	width:270px !important;
 	height:271px !important;
 }
+.drop-select-5 .scrollable-area-wrapper {
+	position: relative;
+	overflow: hidden;
+	width:200px !important;
+	height:271px !important;
+}
+
 .drop-select-4 .scrollable-area-wrapper {
 	position: relative;
 	overflow: hidden;
+	width:520px !important;
 	height:300px !important;
 }
 .scrollable-area-wrapper {
@@ -383,25 +435,16 @@ form .select-4{width:520px;}
 	position: absolute;
 	top: 0;
 	right: 0;
-	width:28px !important;
+	width:18px !important;
 }
 .drop-select-2 .scrollable-area-wrapper .vscrollbar {
 	position: absolute;
 	top: 0;
 	right: 0;
-	width:29px !important;
-	padding:0 0 0 3px;
-	background:url(/media/images/bg-select-2-scrollbar.gif) no-repeat 4px 0;
+	width:18px !important;
+	padding:0 5px 0 3px;
 	height:101px !important;
-}
-.drop-select-3 .scrollable-area-wrapper .vscrollbar {
-	position: absolute;
-	top: 0;
-	right: 0;
-	width:60px !important;
-	padding:0 0 0 4px;
-	height:269px !important;
-	background:url(/media/images/bg-select-3-scrollbar.gif) no-repeat 5px 0;
+	border:1px solid #efefef;
 }
 .drop-select-4 .scrollable-area-wrapper .vscrollbar {
 	position: absolute;
@@ -426,26 +469,26 @@ form .select-4{width:520px;}
 .drop-select-1 .scrollable-area-wrapper .vscroll-line {
 	background:0;
 	width: 18px;
-	padding:0 10px 0 0;
 	float: left;
 }
 .drop-select-2 .scrollable-area-wrapper .vscroll-line {
 	background:0;
 	width: 18px;
 	float: left;
-	border:1px solid #efefef;
-	padding:0 5px 0 4px;
 }
 .drop-select-3 .scrollable-area-wrapper .vscroll-line {
 	background:0;
 	width:38px;
 	float: left;
-	padding:0 10px;
-	border:1px solid #efefef;
 }
 .drop-select-4 .scrollable-area-wrapper .vscroll-line {
 	background:0;
 	width:57px;
+	float: left;
+}
+.drop-select-5 .scrollable-area-wrapper .vscroll-line {
+	background:0;
+	width:38px;
 	float: left;
 }
 .scrollable-area-wrapper .vscroll-slider {
@@ -477,6 +520,11 @@ form .select-4{width:520px;}
 	background: #3b3b3b;
 	width:57px;
 	height:115px !important;
+}
+.drop-select-5 .scrollable-area-wrapper .vscroll-slider {
+	background: #3b3b3b;
+	width: 38px;
+	height: 88px !important;
 }
 /* misc styles */
 .controls-list {
