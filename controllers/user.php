@@ -298,7 +298,7 @@ if (isset($route->method))
 
 				$birthYears = "";
 				for ($i = $thirteenYearsBeforeNow; $i > $fiftyYearsBeforeNow; $i--)
-					$birthYears .= "<li>" . $i . "</li>";
+					$birthYears .= "<option value='".$i."'>" . $i . "</option>";
 
 				// now display the template based on above selection
 				$smarty->assign("birthYears", $birthYears);

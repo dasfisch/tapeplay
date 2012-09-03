@@ -1,7 +1,7 @@
 <h1>Reset Your Password</h1>
-    {include file='common/message.tpl'}
-<form id="passwordReset" name="passwordReset" action="{#baseUrl#}account/forgot/" method="post">
-    <ul class="form-fields">
+
+<form>
+	<ul class="form-fields">
 		<li class="input-field clear">
 			
 			<div class="input_custom-text input_text80 width600 left">
@@ -35,3 +35,4 @@
 		</li>
 	</ul>
 </form>
+

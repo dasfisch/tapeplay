@@ -1336,8 +1336,8 @@ jcf.addModule({
 		dropScrollableClass:'options-overflow',
 		dropClass:'select-options',
 		dropClassPrefix:'drop-',
-		dropStructure:'<div class="drop-holder"><div class="drop-list"><div class="drop-frame"></div></div></div>',
-		dropSelector:'div.drop-frame'
+		dropStructure:'<div class="drop-holder"><div class="drop-list"></div></div>',
+		dropSelector:'div.drop-list'
 	},
 	checkElement: function(el){
 		return (!el.size && !el.multiple);
