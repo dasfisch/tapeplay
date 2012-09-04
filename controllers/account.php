@@ -93,7 +93,7 @@ if (isset($route->method))
                 $smarty->assign("stats", $stats);
                 $smarty->assign("statCount", count($stats));
                 $smarty->assign("modder", ceil(count($stats) / 3));
-				$smarty->assign("user", $user);
+                $smarty->assign("user", $user);
 				$smarty->assign('file', $template);
 
 				$smarty->display("home.tpl");

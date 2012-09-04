@@ -2028,3 +2028,7 @@ p.nothing {
 #content-wrapper .success.lower  {
     padding-left: 23px;
 }
+
+.hidden {
+    display: none;
+}

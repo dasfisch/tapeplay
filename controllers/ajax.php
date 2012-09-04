@@ -2,12 +2,16 @@
     use tapeplay\server\bll\UserBLL;
     use tapeplay\server\bll\PlayerBLL;
     use tapeplay\server\bll\SchoolBLL;
+    use tapeplay\server\bll\StatsBLL;
     use tapeplay\server\bll\VideoBLL;
+    use tapeplay\server\model\Stat;
 
     require_once("bll/PlayerBLL.php");
     require_once("bll/SchoolBLL.php");
+    require_once("bll/StatsBLL.php");
     require_once("bll/UserBLL.php");
     require_once("bll/VideoBLL.php");
+    require_once("model/Stat.php");
 
     global $controller, $get, $inputFilter, $post, $route, $smarty, $sport, $userBLL;
 
@@ -113,6 +117,12 @@
                     $playerBll = new PlayerBLL();
                     $result = $playerBll->update($user);
                     if($result === true) {
+                        $schoolBLL = new SchoolBLL();
+
+                        $school = $schoolBLL->getSchoolById($post['value']);
+
+                        $user->setSchool($school[0]);
+
                         $userBLL->setUser($user);
 
                         echo 200;
@@ -185,6 +195,34 @@
                 }
 
                 exit;
+
+                break;
+            case 'updatestats':
+                $errors = array();
+
+                $statsBll = new StatsBLL();
+
+                foreach($post['data'] as $stat) {
+                    $id = explode('-', $stat['name']);
+                    $val = $stat['value'];
+
+                    $stat = new Stat();
+
+                    $stat->setId($id[1]);
+                    $stat->setStatValue($val);
+
+                    try {
+                        echo $statsBll->updatePlayerStat($stat, $userBLL->getUser()->getId()).'<br />';
+                    } catch(Exception $e) {
+                        $errors[] = $id;
+                    }
+                }
+
+                if(empty($errors)) {
+                    echo 200;
+                } else {
+                    echo 600;
+                }
 
                 break;
         }

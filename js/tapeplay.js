@@ -194,11 +194,11 @@ jQuery(document).ready(function(){
         dropDown.toggleClass('hidden');
         p.toggleClass('hidden');
 
+        console.log(inputField.hasClass('hidden'))
+
         if(inputField.hasClass('hidden')) {
             jQuery(inputs).each(function(i) {
                 var key = {};
-
-                console.log(jQuery(this));
 
                 if(jQuery(this).val() != '' && jQuery(this).val() != 'true' && typeof(jQuery(this)) !== 'undefined') {
                     key.name = jQuery(this).attr('id');
@@ -210,9 +210,6 @@ jQuery(document).ready(function(){
 
             post.hash = jQuery('#hash').val();
             post.data = keys;
-
-            console.log(post);
-            return;
 
             jQuery.post(
                 '/ajax/profileupdate/',
@@ -262,19 +259,24 @@ jQuery(document).ready(function(){
             jQuery(inputs).each(function(i) {
                 var key = {};
 
-                key.name = jQuery(this).attr('id');
+                key.name = jQuery(this).attr('name');
                 key.value = jQuery(this).val();
 
                 keys[i] = (key);
+
+                jQuery(this).parents('.statHidden').prev('.stat').children('p').children('span').html(key.value);
             });
 
             post.hash = jQuery('#hash').val();
             post.data = keys;
+            post.player = jQuery('#user-id').val();
 
             jQuery.post(
                 '/ajax/updatestats/',
                 post,
                 function(data) {
+                    stats.toggleClass('hidden');
+                    statHidden.toggleClass('hidden');
                     _this.parents('.chunk').children('.bigButton').children('.middle').children('.edit').html('Edit');
                 }
             );
@@ -311,6 +313,7 @@ jQuery(document).ready(function(){
                 function(data) {
                     console.log(data)
                     if(data == 200) {
+                        console.log(schoolName);
                         _this.siblings('.accountInfo').children('p').html(schoolName);
 
                         _this.parents('.chunk').children('.bigButton').children('.middle').children('.edit').html('Edit');
@@ -429,8 +432,6 @@ jQuery(document).ready(function(){
                 video: jQuery('#video-id').val()
             },
             function(data) {
-                console.log(data);
-
                 var text = '';
 
                 if(data.response == '') {

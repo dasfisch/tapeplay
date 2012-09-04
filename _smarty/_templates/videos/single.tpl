@@ -159,7 +159,7 @@
 				</div>
 			</div>
 			<div id="moreVideos">
-				<h2>More videos from [name]</h2>
+				<h2>More videos from {$player->getFirstName()} {$player->getLastName()}</h2>
 			{if isset($videos) && count($videos) > 0}
 				{foreach from=$videos item=video}
 					{if $video->getPrivacy() == true}

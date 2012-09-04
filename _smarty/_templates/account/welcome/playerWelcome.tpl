@@ -401,7 +401,7 @@
                                             <div class="inputFieldSmall">
                                                 <div class="left"></div>
                                                 <div class="middle">
-                                                    <input type="text" class="standard small" id="stat" name="stat[]" value="{$stat->getStatValue()}" />
+                                                    <input type="text" class="standard small" id="stat" name="stat-{$stat->getId()}" value="{$stat->getStatValue()}" />
                                                 </div>
                                                 <div class="right"></div>
                                             </div>
@@ -438,7 +438,7 @@
         <div class="body">
             <div class="chunk">
                 <p class="check">
-                    Who can view my vidoes?<br />
+                    Who can view my videos?<br />
                     <input type="radio" name="visibility" value="Anybody" /> <label>Anybody</label><br />
                     <input type="radio" name="visibility" value="Scouts and Coaches" /> <label>Scouts and Coaches</label><br />
                     <input type="radio" name="visibility" value="Nobody" /> <label>Nobody</label><br />

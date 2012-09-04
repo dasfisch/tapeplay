@@ -109,4 +109,28 @@ class StatsDAO extends BaseDOA
             return null;
         }
 	}
+
+    public function updatePlayerStat($stat, $userId) {
+        try {
+            $this->sql = 'UPDATE
+                                `player_stats`
+                            SET
+                                value=:value
+                            WHERE
+                                stat_id=:stat_id
+                            AND
+                                player_id=:player_id';
+
+            $this->prep = $this->dbh->prepare($this->sql);
+            $this->prep->bindValue(":value", $stat->getStatValue(), \PDO::PARAM_STR);
+            $this->prep->bindValue(":stat_id", (int)$stat->getId(), \PDO::PARAM_INT);
+            $this->prep->bindValue(":player_id", (int)$userId, \PDO::PARAM_INT);
+
+            $this->prep->execute();
+
+            return ($this->prep->rowCount() > 0);
+        } catch(\PDOException $e) {
+            \TPErrorHandling::handlePDOException($exception->errorInfo);
+        }
+    }
 }
