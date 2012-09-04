@@ -1,5 +1,5 @@
 <div id="content-left-column" class="left">
-	<h1>Advertising</h1>
+	<h1>Contact Us</h1>
 	
 	<div class="contact-us-squares left">
 		<h2>General Inquiries</h2>

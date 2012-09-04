@@ -10,7 +10,7 @@
 							<dl>
 								<dt>The Basics</dt>
 								<dd><a href="{#baseUrl#}company/getstarted/">Getting Started</a></dd>
-								<dd><a href="{#baseUrl#}company/guidelines/">Community Guidelines</a></dd>
+								<dd><a href="{#baseUrl#}company/guidelines/">Rules of Video</a></dd>
 							</dl>
 						</li>
 						<li>
@@ -39,7 +39,7 @@
 					<div id="footer-terms">
 						<ul>
 							<li><a href="{#baseUrl#}company/terms-of-service/">Terms of Use</a> | <a href="{#baseUrl#}company/privacy-policy/">Privacy Policy</a></li>
-							<li>&copy; 2011 TapePlay, LLC. All Rights Reserved </li>
+							<li>&copy; 2012 TapePlay, LLC. All Rights Reserved </li>
 						</ul>
 					</div>
 					

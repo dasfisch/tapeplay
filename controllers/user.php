@@ -224,9 +224,10 @@ if (isset($route->method))
 
 				// create hash
 				$hash = $userBLL->createHash($post["email"], $post["password"]);
+
 				// create user object based on data entered
 				$user = new User();
-				$user->setAccountType($userBLL->getAccountType());
+				$user->setAccountType(AccountTypeEnum::$PLAYER);
 				$user->setFirstName($_POST["firstName"]);
 				$user->setLastName($_POST["lastName"]);
 				$user->setHash($hash);
@@ -242,7 +243,13 @@ if (isset($route->method))
 				if ($userId > 0)
 				{
 					// update status
-					$userBLL->updateStatus(\AccountStatusEnum::$STEP2);
+                    try {
+					    $userBLL->updateStatus(\AccountStatusEnum::$STEP2);
+                    } catch(Exception $e) {
+                        echo '<pre>';
+                        var_dump($e);
+                        exit;
+                    }
 
 					// determine which page to load
 					switch ($userBLL->getAccountType())
@@ -260,6 +267,9 @@ if (isset($route->method))
 							break;
 
 						default:
+                            $_SESSION['message']['message'] = 'A user with this email already exists!';
+                            $_SESSION['message']['type'] = 'error';
+
 							Util::setHeader("user/signup/");
 							break;
 					}
@@ -298,7 +308,7 @@ if (isset($route->method))
 
 				$birthYears = "";
 				for ($i = $thirteenYearsBeforeNow; $i > $fiftyYearsBeforeNow; $i--)
-					$birthYears .= "<li>" . $i . "</li>";
+					$birthYears .= "<option value='".$i."'>" . $i . "</option>";
 
 				// now display the template based on above selection
 				$smarty->assign("birthYears", $birthYears);

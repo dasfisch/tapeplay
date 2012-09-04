@@ -36,8 +36,7 @@
 			<div class="input_custom-text input_text80 width600 left">
 				<div class="custom-input_center custom-input_partial">
 					<span class="custom-input_top"></span>
-                    <input type="text" class="standard pws" value="Password" />
-                    <input type="password" class="standard" id="password" name="password" class="hidden" />
+                    <input type="text" class="input_password" name="password" value="Password" />
 					<span class="custom-input_bottom"></span>
 				</div>
 				

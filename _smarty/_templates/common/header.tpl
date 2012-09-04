@@ -21,7 +21,7 @@
 			<div id="header">
 				<div id="header-wrapper">
 					<div class="left">
-						<h1 id="logo"><a href="#" title="TapePlay Home Page"><img src="/media/images/logo_126x69.png" alt="TapePlay Logo" height="69" width="126" /> TapePlay</a></h1>
+						<h1 id="logo"><a href="/" title="TapePlay Home Page"><img src="/media/images/logo_126x69.png" alt="TapePlay Logo" height="69" width="126" /> TapePlay</a></h1>
 						<form action="{#baseUrl#}" method="post" id="sportChooser">
 							<fieldset>
 								<select class="select-1" id="chosenSport" name="chosenSport">
@@ -83,7 +83,7 @@
                                     </div>
                                 {/if}
 							</li>
-							<li><a href="{#baseUrl#}videos/browse/">Browse</a></li>
+							<li><a class="active" href="{#baseUrl#}blog/">Blog</a></li>
 							<li><a href="{#baseUrl#}company/help/">Help</a></li>
 						</ul>
 					</div>

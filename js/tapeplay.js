@@ -1,16 +1,16 @@
 jQuery(document).ready(function(){
-	if (jQuery('.checkbox').get(0)) {
-		$((jQuery('.checkbox').get(0)).parentNode).bind('click', function(event) {
-			event.preventDefault();
-			if ($(this).hasClass('on')) {
-				$(this).removeClass('on');
-				$(this).children('input').attr('checked',false);
-			} else {
-				$(this).addClass('on');
-				$(this).children('input').attr('checked',true);
-			}
-		})
-	}
+	jQuery.each(jQuery('.checkbox'), function() {
+			$((jQuery(this).get(0)).parentNode).bind('click', function(event) {
+				event.preventDefault();
+				if ($(this).hasClass('on')) {
+					$(this).removeClass('on');
+					$(this).children('input').attr('checked',false);
+				} else {
+					$(this).addClass('on');
+					$(this).children('input').attr('checked',true);
+				}
+			})
+	})
 });
 
 var infoBubbleOpen = false;
@@ -555,10 +555,19 @@ jQuery(document).ready(function(){
         _this.after(_this.clone());
     });
 
-    jQuery('.pws').focus(function() {
-        jQuery(this).siblings('input[type="password"]').removeClass('hidden').focus();
-        jQuery(this).remove();
-    });
+    // jQuery('.pws').focus(function() {
+        // jQuery(this).siblings('input[type="password"]').removeClass('hidden').focus();
+        // jQuery(this).remove();
+    // });
+    jQuery(".input_password").bind('focus blur', function(event) {
+    	if ($(this).attr("type") == "text") {
+    		($(this).get(0)).type = 'password';
+    	}
+
+    	if (event.type == "blur" && ($(this).get(0)).value == ("" || ($(this).get(0)).defaultValue)) {
+    		($(this).get(0)).type = "text";
+    	}
+    })
 });
 
 function openBubble(obj) {

@@ -1,4 +1,4 @@
-<div id="content-left-column" class="left about">
+<div id="content-left-column" class="left">
 	<h1>Get Started</h1>
 	
 	<h2>Players</h2>
