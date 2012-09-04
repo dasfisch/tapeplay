@@ -106,7 +106,7 @@
                 if($route->class == 'user' && ($route->method == 'login' || $route->method == 'signup')) {
                     $controller->open($route->class);
                 } elseif($route->class == 'account' && ($route->method == 'password' || $route->method == 'forgot')) {
-
+                    $controller->open($route->class);
                 } else {
                     \Util::setHeader($configuration->configuration->URLs['baseUrl']);
 

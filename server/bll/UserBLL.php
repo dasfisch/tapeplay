@@ -195,7 +195,7 @@ class UserBLL extends BaseBLL
 				    "sport" => $sport,
 				);
 
-				\Util::sendEmail(\EmailEnum::$PLAYER_JOIN, $user->getEmail(), "Welcome To TapePlay", "emails/player-join.tpl", $args);
+				\Util::sendEmail(\EmailEnum::$PLAYER_JOIN, array($user->getEmail()), "Welcome To TapePlay", "emails/player-join.tpl", $args);
 			}
 		}
 

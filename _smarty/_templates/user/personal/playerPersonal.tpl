@@ -92,7 +92,7 @@
 			<div class="input_custom-text input_text80 width600 left">
 				<div class="custom-input_center custom-input_partial">
 					<span class="custom-input_top"></span>
-                    <input type="text" class="input_password" value="Password (at least six characters)" />
+                    <input type="text" class="input_password" name="password" value="Password (at least six characters)" />
 					<span class="custom-input_bottom"></span>
 				</div>
 				
@@ -119,7 +119,7 @@
 			<ul class="three-column_sign-up left">
 				<li class="left">
 					<fieldset>
-						<select class="select-5">
+						<select class="select-5" name="birthYear">
 							<option class="default">Birth Year</option>
 							{$birthYears}
 						</select>
@@ -127,10 +127,10 @@
 				</li>
 				<li class="left">
 					<fieldset>
-						<select class="select-6">
+						<select class="select-6" name="gender">
 							<option class="default">Sex</option>
-							<option value="Male">Male</option>
-							<option value="Female">Female</option>
+							<option value="m">Male</option>
+							<option value="f">Female</option>
 						</select>
 					</fieldset>
 				</li>
