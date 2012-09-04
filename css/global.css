@@ -1812,6 +1812,210 @@ p.nothing {
 }
 
 /**
+    My Account
+*/
+#content-wrapper #content-left-column .accordion {
+    margin-bottom: 7px;
+    overflow: hidden;
+    width: 100%;
+}
+
+#content-wrapper #content-left-column .accordion .header {
+    background-color: #f0f0f0;
+    cursor: pointer;
+    overflow: hidden;
+    padding: 7px;
+}
+
+#content-wrapper #content-left-column .accordion .header .title {
+    float: left;
+    font-size: 30px;
+}
+
+#content-wrapper #content-left-column .accordion .header .arrow {
+    float: right;
+    height: 14px;
+    margin-top: 7px;
+    width: 14px;
+}
+
+#content-wrapper #content-left-column .accordion .header .arrow.down {
+    background-image: url('/media/images/arrows/acct-close-arrow.png');
+}
+
+#content-wrapper #content-left-column .accordion .header .arrow.up {
+    background-image: url('/media/images/arrows/acct-open-arrow.png');
+}
+
+#content-wrapper #content-left-column .accordion .body {
+    overflow: auto;
+}
+
+#content-wrapper #content-left-column .accordion .body .chunk {
+    color: #666;
+    overflow: hidden;
+    padding: 20px 0px 20px 40px;
+}
+
+#content-wrapper #content-left-column .accordion .body .chunk.locked {
+    opacity: .3;
+}
+
+#content-wrapper #content-left-column .accordion .body .chunk.locked:hover {
+    background-color: #fff;
+}
+
+#content-wrapper #content-left-column .accordion .body .chunk .resultImage {
+    border: 1px solid #000;
+    float: left;
+    height: 100px;
+    margin-right: 15px;
+    width: 125px;
+}
+
+#content-wrapper #content-left-column .accordion .body .chunk .info {
+    float: left;
+    width: 300px;
+}
+
+#content-wrapper #content-left-column .accordion .body .chunk .info h4 {
+    color: #666;
+    font-size: 30px;
+}
+
+#content-wrapper #content-left-column .accordion .body .chunk .info .position {
+    color: #666;
+    font-size: 13px;
+    margin-bottom: 25px;
+}
+
+#content-wrapper #content-left-column .accordion .body .chunk .info .title,
+#content-wrapper #content-left-column .accordion .body .chunk .info .date {
+    color: #666;
+    font-size: 15px;
+}
+
+#content-wrapper #content-left-column .accordion .body .chunk .info p {
+    font-size: 12px;
+    margin: 0px;
+    padding: 0px;
+}
+
+#content-wrapper #content-left-column .accordion .body .chunk .accountInfo {
+    float: left;
+    width: 500px;
+}
+
+#content-wrapper #content-left-column .accordion .body .chunk .accountInfo h4 {
+    font-size: 30px;
+    margin-bottom: 7px;
+}
+
+#content-wrapper #content-left-column .accordion .body .chunk .accountInfo p {
+    font-size: 15px;
+}
+
+#content-wrapper #content-left-column .accordion .body .chunk .accountInfo .inputField .middle {
+    width: 430px;
+}
+
+#content-wrapper #content-left-column .accordion .body .chunk .accountInfo .inputField .middle.small {
+    width: 60px;
+}
+
+#content-wrapper #content-left-column .accordion .body .chunk .accountInfo #statistics {
+
+}
+
+#content-wrapper #content-left-column .accordion .body .chunk .accountInfo #statistics li {
+    float: left;
+    margin-right: 30px;
+}
+
+#content-wrapper #content-left-column .accordion .body .chunk .accountInfo #statistics #stats li .stat,
+#content-wrapper #content-left-column .accordion .body .chunk .accountInfo #statistics #stats li .statHidden {
+
+    overflow: hidden;
+}
+
+#content-wrapper #content-left-column .accordion .body .chunk .accountInfo #statistics #stats li .stat p,
+#content-wrapper #content-left-column .accordion .body .chunk .accountInfo #statistics #stats li .statHidden p {
+    float: left;
+    font-size: 12px;
+    margin-bottom: 15px;
+    margin-right: 5px;
+    position: relative;
+    top: 6px;
+}
+
+#content-wrapper #content-left-column .accordion .body .chunk .accountInfo #statistics #stats li .statHidden .inputFieldSmall {
+    float: right;
+}
+
+#content-wrapper #content-left-column .accordion .body .chunk .accountInfo #statistics #stats li .statHidden .inputFieldSmall input {
+    padding: 0px;
+    width: 15px;
+}
+
+#content-wrapper #content-left-column .accordion .body .chunk .accountInfo .bottom {
+    margin-bottom: 7px;
+}
+
+#content-wrapper #content-left-column .accordion .body .chunk .accountInfo .numLevGrad {
+    margin-right: 20px;
+}
+
+#content-wrapper #content-left-column .accordion .body .chunk .accountInfo .numLevGradDrop {
+    float: left;
+    margin-right: 15px;
+    overflow: hidden;
+    width: 150px;
+}
+
+#content-wrapper #content-left-column .accordion .body .chunk .accountInfo .inputField .height {
+    overflow: hidden;
+    width: 200px;
+}
+
+#content-wrapper #content-left-column .accordion .body .chunk .accountInfo .inputField.option {
+    overflow: hidden;
+    width: 200px;
+}
+
+#content-wrapper #content-left-column .accordion .body .chunk .accountInfo .inputField .height .middle {
+    width: 60px;
+}
+
+#content-wrapper #content-left-column .accordion .body .chunk .bigButton {
+    margin-right: 7px;
+    margin-top: 5px;
+}
+
+#content-wrapper #content-left-column .accordion .body .chunk .status {
+    font-size: 12px;
+    overflow: hidden;
+    position: relative;
+    top: 8px;
+}
+
+#content-wrapper #content-left-column .accordion .body .chunk .status span {
+    float: left;
+}
+
+#content-wrapper #content-left-column .accordion .body .chunk .bigButton .middle span {
+    cursor: pointer;
+}
+
+#content-wrapper #content-left-column .accordion .body .chunk .check {
+    margin-bottom: 7px;
+}
+
+#content-wrapper #content-left-column .accordion .body .chunk .check label {
+    font-size: 12px;
+    margin-left: 7px;
+}
+
+/**
     Forgot Password style
 */
 #content-wrapper #forgotPassword .top {

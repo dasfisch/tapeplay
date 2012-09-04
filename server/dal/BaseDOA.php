@@ -86,11 +86,10 @@ class BaseDOA
 
             foreach($wheres as $key=>$single) {
                 if(is_array($single)) {
-                    foreach($single as $singKey=>$sing) {
-                        $where .= ($i < ($count - 1)) ? $alias.$key.'='.$sing.' AND ' : $alias.$key.'=  '.$sing;
-                    }
+
+                    $where .= $alias.$key.' IN ('.implode(', ', $single).')';
                 } else {
-                    $where .= ($i < ($count - 1)) ? $alias.$key.'='.$single.' AND ' : $alias.$key.'=  '.$single;
+                    $where .= ($i < ($count - 1)) ? $alias.$key.'='.$single.' AND ' : $alias.$key.'='.$single;
                 }
 
                 $i++;
