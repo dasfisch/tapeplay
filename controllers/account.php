@@ -74,7 +74,13 @@ if (isset($route->method))
                 $user = $userBLL->getUser();
 
                 $videoBll = new VideoBLL();
-                $videos = $videoBll->getVideoSaves($user->getUserId());
+                try {
+                    $videos = $videoBll->getVideoSaves($user->getUserId());
+                } catch(Exception $e) {
+                    echo '<pre>';
+                    var_dump($e);
+                    exit;
+                }
                 $videoCount = (isset($videos[0]->count) && (int)$videos[0]->count > 0) ? (int)$videos[0]->count : 0;
 
                 $statsBll = new StatsBLL();

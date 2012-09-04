@@ -1,4 +1,4 @@
-<div id="main">
+<div id="content-left-column">
     <div id="leftCol">
         <h2 id="title">Email Video</h2>
         {$message}
@@ -65,7 +65,4 @@
             <div class="shareImg linkedin"></div>
         </div>
     </div>
-</div>
-<div id="ad">
-
 </div>
