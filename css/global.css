@@ -343,6 +343,10 @@ ul.lower-alpha {
 	width:600px;
 }
 
+.width440 {
+	width:440px;
+}
+
 .width185 {
 	width:185px;
 }
@@ -404,6 +408,11 @@ fieldset li {
     padding: 7px 12px;
     text-decoration: none;
 }
+
+.button_black_large.upload {
+	padding:28px 22px;
+}
+
 
 .button_round {
 	-moz-border-radius:5px; 

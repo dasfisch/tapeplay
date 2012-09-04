@@ -375,7 +375,7 @@ if (isset($route->method))
 				// get video years
 				$videoYears = "";
 				for ($i = date('Y', strtotime('now')); $i > 1980; $i--) {
-					$videoYears .= "<li>" . $i . "</li>";
+					$videoYears .= "<option value='".$i ."'>" . $i . "</li>";
                 }
 
                 $sportBll = new SportBLL();

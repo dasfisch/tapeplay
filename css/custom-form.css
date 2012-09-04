@@ -111,6 +111,12 @@ form .select-5{
 form .select-6{
 	width:150px;
 }
+form .select-7{
+	width:275px;
+}
+form .select-8{
+	width:250px;
+}
 /* hide original element */
 .jcf-hidden {
 	display: block !important;
@@ -277,6 +283,64 @@ form .select-6{
 	border-left:1px solid #fff;
 	background:url(/media/images/bg-select-3-opener.gif) no-repeat;
 }
+.select-select-7.select-area{
+	position: relative;
+	cursor: default;
+	height:80px;
+	float: left;
+	font-size:32px;
+	background:url(/media/images/bg-select-3.gif) no-repeat 0 1px;
+}
+.select-select-7.select-area .center{
+	display:block;
+	margin:0 62px 0 0;
+	padding:21px 3px 20px;
+	color:#b2b2b2;
+	text-align:center;
+	background:url(/media/images/bg-select-3-r.gif) no-repeat 100% 0;
+	border:1px solid #efefef;
+	white-space:nowrap;
+	height:35px;
+	line-height:35px;
+}
+.select-select-7.select-area .select-opener{
+	position:absolute;
+	top:0;
+	right:0;
+	height:80px;
+	width:60px;
+	border-left:1px solid #fff;
+	background:url(/media/images/bg-select-3-opener.gif) no-repeat;
+}
+.select-select-8.select-area{
+	position: relative;
+	cursor: default;
+	height:80px;
+	float: left;
+	font-size:32px;
+	background:url(/media/images/bg-select-3.gif) no-repeat 0 1px;
+}
+.select-select-8.select-area .center{
+	display:block;
+	margin:0 62px 0 0;
+	padding:21px 3px 20px;
+	color:#b2b2b2;
+	text-align:center;
+	background:url(/media/images/bg-select-3-r.gif) no-repeat 100% 0;
+	border:1px solid #efefef;
+	white-space:nowrap;
+	height:35px;
+	line-height:35px;
+}
+.select-select-8.select-area .select-opener{
+	position:absolute;
+	top:0;
+	right:0;
+	height:80px;
+	width:60px;
+	border-left:1px solid #fff;
+	background:url(/media/images/bg-select-3-opener.gif) no-repeat;
+}
 .select-options {
 	white-space: nowrap;
 	position: absolute;
@@ -341,6 +405,24 @@ form .select-6{
 	height:140px !important;
 	background:url(/media/images/bg-select-3-drop-r.gif) no-repeat 100% 0;
 }
+.drop-select-7.select-options .drop-list{
+	height:271px !important;
+	background:url(/media/images/bg-select-3-drop.gif) no-repeat 0 1px;
+}
+.drop-select-7.select-options .drop-frame{
+	border:1px solid #efefef;
+	height:269px !important;
+	background:url(/media/images/bg-select-3-drop-r.gif) no-repeat 100% 0;
+}
+.drop-select-8.select-options .drop-list{
+	height:271px !important;
+	background:url(/media/images/bg-select-3-drop.gif) no-repeat 0 1px;
+}
+.drop-select-8.select-options .drop-frame{
+	border:1px solid #efefef;
+	height:269px !important;
+	background:url(/media/images/bg-select-3-drop-r.gif) no-repeat 100% 0;
+}
 .select-options ul {
 	list-style: none;
 	padding: 0;
@@ -385,6 +467,18 @@ form .select-6{
 	padding:2px;
 	overflow:hidden;
 }
+.drop-select-7.select-options ul {
+	font-size:32px;
+	line-height:34px;
+	padding:2px;
+	overflow:hidden;
+}
+.drop-select-8.select-options ul {
+	font-size:32px;
+	line-height:34px;
+	padding:2px;
+	overflow:hidden;
+}
 .select-options ul li {
 	width: 100%;
 	float: left;
@@ -394,6 +488,8 @@ form .select-6{
 .drop-select-3.select-options ul li {padding:0 0 3px;}
 .drop-select-5.select-options ul li {padding:0 0 3px;}
 .drop-select-6.select-options ul li {padding:0 0 3px;}
+.drop-select-7.select-options ul li {padding:0 0 3px;}
+.drop-select-8.select-options ul li {padding:0 0 3px;}
 .select-options ul a {
 	text-decoration: none;
 	padding: 5px 10px;
@@ -428,6 +524,14 @@ form .select-6{
 	color: #666;
 	padding:15px 15px 14px;
 }
+.drop-select-7.select-options ul a {
+	color: #666;
+	padding:15px 15px 14px;
+}
+.drop-select-8.select-options ul a {
+	color: #666;
+	padding:15px 15px 14px;
+}
 .select-options .item-selected a,
 .select-options a:hover {
 	text-decoration: none;
@@ -446,6 +550,10 @@ form .select-6{
 .drop-select-5.select-options a:hover{background: #efcc98;}
 .drop-select-6.select-options .item-selected a,
 .drop-select-6.select-options a:hover{background: #efcc98;}
+.drop-select-7.select-options .item-selected a,
+.drop-select-7.select-options a:hover{background: #efcc98;}
+.drop-select-8.select-options .item-selected a,
+.drop-select-8.select-options a:hover{background: #efcc98;}
 /* custom scrollbars styles */
 .slide .scrollable-area-wrapper {
 	position: relative;
@@ -479,6 +587,16 @@ form .select-6{
 	height:271px !important;
 }
 .drop-select-6 .scrollable-area-wrapper {
+	position: relative;
+	overflow: hidden;
+	height:271px !important;
+}
+.drop-select-7 .scrollable-area-wrapper {
+	position: relative;
+	overflow: hidden;
+	height:271px !important;
+}
+.drop-select-8 .scrollable-area-wrapper {
 	position: relative;
 	overflow: hidden;
 	height:271px !important;
@@ -544,6 +662,24 @@ form .select-6{
 	height:269px !important;
 	background:url(/media/images/bg-select-3-scrollbar.gif) no-repeat 5px 0;
 }
+.drop-select-7 .scrollable-area-wrapper .vscrollbar {
+	position: absolute;
+	top: 0;
+	right: 0;
+	width:60px !important;
+	padding:0 0 0 4px;
+	height:269px !important;
+	background:url(/media/images/bg-select-3-scrollbar.gif) no-repeat 5px 0;
+}
+.drop-select-8 .scrollable-area-wrapper .vscrollbar {
+	position: absolute;
+	top: 0;
+	right: 0;
+	width:60px !important;
+	padding:0 0 0 4px;
+	height:269px !important;
+	background:url(/media/images/bg-select-3-scrollbar.gif) no-repeat 5px 0;
+}
 .scrollable-area-wrapper .vscroll-up,
 .scrollable-area-wrapper .vscroll-down {display:none;}
 .scrollable-area-wrapper .vscroll-line {
@@ -595,6 +731,20 @@ form .select-6{
 	padding:0 10px;
 	border:1px solid #efefef;
 }
+.drop-select-7 .scrollable-area-wrapper .vscroll-line {
+	background:0;
+	width:38px;
+	float: left;
+	padding:0 10px;
+	border:1px solid #efefef;
+}
+.drop-select-8 .scrollable-area-wrapper .vscroll-line {
+	background:0;
+	width:38px;
+	float: left;
+	padding:0 10px;
+	border:1px solid #efefef;
+}
 .scrollable-area-wrapper .vscroll-slider {
 	background: #ccc;
 	width: 20px;
@@ -631,6 +781,16 @@ form .select-6{
 	height: 88px !important;
 }
 .drop-select-6 .scrollable-area-wrapper .vscroll-slider {
+	background: #3b3b3b;
+	width: 38px;
+	height: 88px !important;
+}
+.drop-select-7 .scrollable-area-wrapper .vscroll-slider {
+	background: #3b3b3b;
+	width: 38px;
+	height: 88px !important;
+}
+.drop-select-8 .scrollable-area-wrapper .vscroll-slider {
 	background: #3b3b3b;
 	width: 38px;
 	height: 88px !important;
