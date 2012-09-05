@@ -44,22 +44,22 @@
 						<ul id="navigation">
 							{if isset($user) && !empty($user)}
 	                            <li>
-	                                <a href="{#baseUrl#}account/welcome/">My Account</a>
+	                                <a class="{if {$smarty.server.REQUEST_URI} == '/account/welcome/'}active{/if}" href="{#baseUrl#}account/welcome/">My Account</a>
 	                            </li>
 	                            <li>
-	                                <a href="{#baseUrl#}user/logout/">Logout</a>
+	                                <a class="{if {$smarty.server.REQUEST_URI} == '/user/logout/'}active{/if}" href="{#baseUrl#}user/logout/">Logout</a>
 	                            </li>
 	                        {else}
 	                            <li>
-	                                <a href="{#baseUrl#}user/signup/">Join<span class="fbSmall"></span></a>
+	                                <a class="{if {$smarty.server.REQUEST_URI} == '/user/signup/'}active{/if}" href="{#baseUrl#}user/signup/">Join<span class="fbSmall"></span></a>
 	                            </li>
 	                            <li>
-	                                <a href="{#baseUrl#}user/login/">Login</a>
+	                                <a class="{if {$smarty.server.REQUEST_URI} == '/user/login/'}active{/if}" href="{#baseUrl#}user/login/">Login</a>
 	                            </li>
 	                        {/if}
                             <li>
                                 {if isset($user) && !empty($user) && $user->getAccountType() == 1}
-                                    <a href="{#baseUrl#}user/upload/" class="infoOpen">Upload</a>
+                                    <a href="{#baseUrl#}user/upload/" class="infoOpen {if {$smarty.server.REQUEST_URI} == '/user/upload/'}active{/if}">Upload</a>
                                 {else}
                                     <a class="infoOpen">Upload</a>
                                         <div class="infoBubble">
@@ -83,8 +83,8 @@
                                     </div>
                                 {/if}
 							</li>
-							<li><a class="active" href="{#baseUrl#}blog/">Blog</a></li>
-							<li><a href="{#baseUrl#}company/help/">Help</a></li>
+							<li><a href="{#baseUrl#}blog/">Blog</a></li>
+							<li><a class="{if {$smarty.server.REQUEST_URI} == '/company/help/'}active{/if}" href="{#baseUrl#}company/help/">Help</a></li>
 						</ul>
 					</div>
 				</div> <!-- END HEADER WRAPPER -->
