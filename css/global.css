@@ -343,6 +343,10 @@ ul.lower-alpha {
 	width:600px;
 }
 
+.width440 {
+	width:440px;
+}
+
 .width185 {
 	width:185px;
 }
@@ -404,6 +408,11 @@ fieldset li {
     padding: 7px 12px;
     text-decoration: none;
 }
+
+.button_black_large.upload {
+	padding:28px 22px;
+}
+
 
 .button_round {
 	-moz-border-radius:5px; 
@@ -694,6 +703,16 @@ fieldset + fieldset {
 	padding:20px 0px;
 }
 
+.upload + input[type="file"] {
+	opacity:0;
+	filter: alpha(opacity=0);
+	-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+	height:80px;
+	width:644px;
+	margin-left:-644px;
+	position:relative;
+	z-index:1000000;
+}
 /*
  * SPLASH PAGE
  */
