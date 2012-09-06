@@ -1,7 +1,7 @@
 <div class="beta_home">
 	<h1>Let&rsquo;s get you noticed.</h1>
 	<h2>The world&rsquo;s evolved. So has recruiting.</h2>
-	
+
 	<div class="beta-banner">
 		<div class="left sign-up">
 			<h3>Dear Players:</h3>
@@ -12,21 +12,39 @@
 			<p class="button">
 				<a class="button button_black_large button_round" href="#">Join</a>
 			</p>
-			
+
 			<p class="beta-banner-footer clear">
 				TapePlay is for 9th grade to pro
 			</p>
-		</div> 
+		</div>
 		<div class="right sign-up-banner">
 			<img src="/media/images/beta_home-page-banner.jpg" />
 		</div>
 	</div>
-	
+
 	<div class="sub-home-sub-info">
 		<div class="left video">
 			<h2>See How TapePlay Works</h2>
-			<div>
-				<img src="/media/images/placeholder_beta-home-page-video.jpg" />
+			<div id="player">
+				<video id="videoPlayer" width="522" height="302">
+					<source src="{$videoDisplayInfo->getMp4Source()}"
+							type="video/mp4"/>
+					<source src="{$videoDisplayInfo->getWebmSource()}"
+							type="video/webm"/>
+				</video>
+				<script type='text/javascript'>
+					jwplayer('videoPlayer').setup({
+						modes:[
+							{ type:"html5" },
+							{ type:"flash", src:"/media/playback/player.swf" },
+							{ type:"download" }
+						],
+						skin:"/media/playback/skin/tapeplayer.zip",
+						autostart:false,
+						dock:false,
+						"controlbar.position":"over"
+					});
+				</script>
 			</div>
 		</div>
 		<div class="right copy">
@@ -41,26 +59,26 @@
 				<form>
 					<ul class="form-fields">
 						<li class="input-field clear">
-							
+
 							<div class="input_custom-text input_text36 left">
 								<div class="custom-input_center custom-input_partial">
 									<span class="custom-input_top"></span>
 									<input type="text" name="search" value="Enter Email Address"/>
 									<span class="custom-input_bottom"></span>
 								</div>
-								
+
 								<div class="custom-input_left custom-input_partial">
 									<span class="custom-input_top"></span>
 									<span class="custom-input_bottom"></span>
 								</div>
-													
+
 								<div class="custom-input_right custom-input_partial">
 									<span class="custom-input_top"></span>
 									<span class="custom-input_bottom"></span>
 								</div>
-								
+
 							</div>
-							
+
 							<button type="submit" value="Submit" class="button_black_small left">Submit</button>
 						</li>
 					</ul>

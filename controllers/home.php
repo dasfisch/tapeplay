@@ -7,10 +7,12 @@
  * To change this template use File | Settings | File Templates.
  */
     //all include, globals (not opposed to not using globals)
-    use tapeplay\server\bll\StatsBLL;
 
     include('bll/StatsBLL.php');
-    
+
+	use tapeplay\server\bll\StatsBLL;
+	use tapeplay\server\bll\VideoBLL;
+
     global $controller, $post, $route, $smarty, $sport, $userBLL;
 
     $user = $userBLL->getUser();
@@ -26,7 +28,12 @@
 
         $stats = $statsBll->getStatsBySport($sport['id']);
 
+		// grab video for "how-to"
+		$videoBll = new VideoBLL();
+		$videoDisplayInfo = $videoBll->getVideoDisplayInfo($controller->configuration->information['howTapeplayWorksVideoId']);
+
         $smarty->assign('stats', $stats);
+		$smarty->assign('videoDisplayInfo', $videoDisplayInfo);
         $smarty->assign('file', 'index/home.tpl');
         $smarty->display('home.tpl');
     } else {

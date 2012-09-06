@@ -136,8 +136,10 @@ ol, ul {
 	text-decoration:none;
 }
 
+#navigation a:hover, #navigation a.active { color: #E39117; }
+
 #navigation a.active, #navigation a.active:visited, #navigation a.active:hover {
-	color:#db8600;
+	color:#E39117;
 }
 
 #navigation li .infoBubble .middle p a {
