@@ -44,12 +44,6 @@
                     <input type="hidden" class="uploader" onchange="this.form.fakeupload.value = this.value;" id="returned_video_id" name="panda_video_id"/>
                     <input type="hidden" id="upload_filename" class="panda_upload_filename" disabled="disabled"/>
                 </div>
-                <p class="asterisk error">*</p>
-                <p class="error">
-                    We're sorry but you cannot upload this type of file. Video files must be AAC,
-                    AVI, 3GP, MOV, MP3, MP4, MPEG, OGG, WAV, WEBM, WMA, or WMV.
-                </p>
-
                 <script type="text/javascript">
 
                     // grabs cloud_id, access_key, and secret_key for Panda
@@ -100,7 +94,7 @@
 			<div class="input_custom-text input_text80 width600 left">
 				<div class="custom-input_center custom-input_partial">
 					<span class="custom-input_top"></span>
-					<input type="text" name="search" value="Video Title"/>
+					<input type="text" name="title" value="Video Title"/>
 					<span class="custom-input_bottom"></span>
 				</div>
 				
@@ -155,6 +149,16 @@
 				</li>
 			</ul>
 		</li>
+        <li class="input-field clear">
+            <fieldset>
+                <select class="select-3" name="sport_id">
+                    <option class="default">Pick a Sport</option>
+                    {foreach item=single from=$sports}
+                        <option value="{$single->getId()}">{$single->getSportName()}</option>
+                    {/foreach}
+                </select>
+            </fieldset>
+        </li>
 		<li class="input-field clear">
 			<button value="Join" type="submit" class="button_black_large left button_round">Continue</button> 
 			<span class="form-steps">Step 2 of 3</span>

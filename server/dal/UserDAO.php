@@ -347,7 +347,7 @@ class UserDAO extends BaseDOA
 			$this->prep->bindValue(":id", $userId, \PDO::PARAM_INT);
 			$this->prep->bindValue(":status", $status, \PDO::PARAM_INT);
 
-			$this->prep->execute();
+			return $this->prep->execute();
 		}
 		catch (\PDOException $exception)
 		{

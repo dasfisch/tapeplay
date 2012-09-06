@@ -229,7 +229,15 @@ class UserBLL extends BaseBLL
 	 */
 	public function updateStatus($status)
 	{
-		return $this->dal->updateStatus($this->getUser()->getUserId(), $status);
+		if($this->dal->updateStatus($this->getUser()->getUserId(), $status)) {
+            $user = $this->getUser();
+
+            $user->setStatus($status);
+
+            $this->setUser($user);
+
+            return true;
+        }
 	}
 
 
