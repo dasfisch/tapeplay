@@ -328,6 +328,10 @@ if (isset($route->method))
 
 			if ($posted && (!isset($post['chosenSport']) || $post['chosenSport'] == ''))
 			{
+                echo '<pre>';
+                var_dump($post);
+                exit;
+
 				// TODO: Process uploaded video
 				$video = new Video();
 

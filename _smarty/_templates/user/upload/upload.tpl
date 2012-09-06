@@ -6,10 +6,14 @@
 	<strong>For college recruits</strong>, you should to adhere to NCAA rules. That means only footage from regular season games&ndash;competition and highlight tapes, but no skills tapes. 
 </p>
 
-<form>
+<form id="uploading" method="post" action="{#baseUrl#}user/upload/">
 	<ul class="form-fields">
 		<li class="input-field clear">
-			
+
+            <div id="progressArea" style="vertical-align: middle;height:30px;">
+                <div id="progressMeter" class="panda_upload_progress" style="float:left;"></div>
+                <div id="uploadComplete" class="successMessage" style="float:left;visibility: hidden; margin-left:15px;">Upload Complete!</div>
+            </div>
 			<div class="input_custom-text input_text80 upload width440 left">
 				<div class="custom-input_center custom-input_partial">
 					<span class="custom-input_top"></span>
@@ -28,7 +32,63 @@
 				</div>
 				
 			</div>
-			<a href="#" class="button_black_large button_round left upload"">Browse</a>
+            <div id="uploadInputs" class="input">
+                <div id="localUploadButton" class="bigButton black">
+                    <div class="topRight whiteBg"></div>
+                    <div class="bottomRight whiteBg"></div>
+                    <div class="middle">
+                        <input type="submit" value="Upload" id="upload_button" name="upload_button" class="large black" />
+                    </div>
+                    <input type="file" class="uploader" onchange="this.form.fakeupload.value = this.value;" />
+
+                    <input type="hidden" class="uploader" onchange="this.form.fakeupload.value = this.value;" id="returned_video_id" name="panda_video_id"/>
+                    <input type="hidden" id="upload_filename" class="panda_upload_filename" disabled="disabled"/>
+                </div>
+                <p class="asterisk error">*</p>
+                <p class="error">
+                    We're sorry but you cannot upload this type of file. Video files must be AAC,
+                    AVI, 3GP, MOV, MP3, MP4, MPEG, OGG, WAV, WEBM, WMA, or WMV.
+                </p>
+
+                <script type="text/javascript">
+
+                    // grabs cloud_id, access_key, and secret_key for Panda
+                    var panda_access_details = {$pandaAccessDetails};
+
+                    // set options for <widget> parameter below
+                    var html_5_options = {};
+                    var flash_options = {};
+
+                    function uploadSuccessful_Handler()
+                    {
+                        // enable the submit button
+                        $("input[id=submitButton]").removeAttr("disabled");
+
+                        // tell user video upload is complete
+                        $("#uploadComplete").css("visibility", "visible");
+                    }
+
+                    function newFileSelected_Handler()
+                    {
+                        // need to hide upload inputs
+                        $("#localUploadFile").css("display", "none");
+                        $("#localUploadButton").css("display", "none");
+                    }
+
+                    // creates the uploader component with the customized options
+                    jQuery("#returned_video_id").pandaUploader(panda_access_details, {
+                        onsuccess: uploadSuccessful_Handler,
+                        onchange: newFileSelected_Handler,
+                        upload_progress_id: 'progressMeter',
+                        api_url: '{$APIURL}',
+                        uploader_dir: '.',
+                        upload_strategy: new PandaUploader.UploadOnSelect(),
+                        widget: new PandaUploader.SmartWidget(html_5_options, flash_options),
+                        allowed_extensions: ['aac', 'avi', '3gp', 'flv', 'mov', 'mp3', 'mp4', 'mpeg', 'ogg', 'wav', 'webm', 'wma', 'wmv'],
+                        file_size_limit: '250MB'
+                    });
+                </script>
+            </div>
 			<div class="error-alert">
 				<ul>
 					<li>We&rsquo;re sorry but you cannot upload this type of file. Video files must be AAC, AVI, 3GP, MOV, MP3, MP4, MPEG, OGG, WAV, WEBM, WMA, or WMV.m</li>
@@ -87,7 +147,7 @@
 				</li>
 				<li class="left">
 					<fieldset>
-						<select class="select-8" name="gender">
+						<select class="select-8" name="videoYear">
 							<option class="default">Video Year</option>
 							{$videoYears}
 						</select>
