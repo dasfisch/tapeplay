@@ -1,6 +1,7 @@
 <?php
 require_once ("enum/controllers/AccountMethods.php");
 require_once ("enum/AccountTypeEnum.php");
+require_once("enum/AccountTypeEnum.php");
 
 require_once("bll/SchoolBLL.php");
 require_once("bll/StatsBLL.php");
@@ -15,6 +16,26 @@ use tapeplay\server\bll\UserBLL;
 use tapeplay\server\model\SearchFilter;
 
 global $controller, $dataValidator, $get, $inputFilter, $post, $route, $smarty, $userBLL;
+
+if($userBLL->getUser()) {
+    $step = $userBLL->getUser()->getStatus();
+
+    if($step == AccountStatusEnum::$STEP2) {
+        if(isset($_SERVER['REQUEST_URI']) && $_SERVER['REQUEST_URI'] !== '/user/upload/') {
+            $_SESSION['message']['message'] = 'You\'ve finished the first step, but you haven\'t uploaded a video! Upload one now!';
+            $_SESSION['message']['type'] = 'error';
+
+            Util::setHeader('user/upload/');
+        }
+    } elseif($step == AccountStatusEnum::$STEP3) {
+        if(isset($_SERVER['REQUEST_URI']) && $_SERVER['REQUEST_URI'] !== '/user/info/') {
+            $_SESSION['message']['message'] = 'You\'ve uploaded a video. Now, finish up your profile!';
+            $_SESSION['message']['type'] = 'error';
+
+            Util::setHeader('user/info/');
+        }
+    }
+}
 
 
 // check for request method to see if we are posting data
