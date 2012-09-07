@@ -250,7 +250,7 @@ class UserDAO extends BaseDOA
 			$this->prep->bindValue(":lastLogin", (int)$user->getLastLogin(), \PDO::PARAM_INT);
 			$this->prep->bindValue(":accountType", (int)$user->getAccountType(), \PDO::PARAM_INT);
 
-			$this->prep->execute();
+			return $this->prep->execute();
 		}
 		catch (\PDOException $exception)
 		{

@@ -206,8 +206,18 @@ class UserBLL extends BaseBLL
         return $this->dal->searchUser($search);
     }
 
+    public function getPlayerUser($userId) {
+        return $this->dal->getPlayerUser($userId);
+    }
+
     public function update($user) {
-        return $this->dal->update($user);
+        if($this->dal->update($user)) {
+            $this->setUser($user);
+
+            return true;
+        }
+
+        return false;
     }
 
 	public function resetPassword($userId)
@@ -230,8 +240,6 @@ class UserBLL extends BaseBLL
 	public function updateStatus($status)
 	{
 		if($this->dal->updateStatus($this->getUser()->getUserId(), $status)) {
-            $user = $this->getUser();
-
             $user->setStatus($status);
 
             $this->setUser($user);

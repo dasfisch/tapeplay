@@ -166,5 +166,67 @@ class PlayerDAO extends BaseDOA
 		return $playerList;
 	}
 
+    public function searchPlayers(SearchFilter $searchFilter) {
+        try
+        {
+           $limit = $filter->limit;
+           $page = $filter->page;
 
+           $startLimit = ($page * $limit) - $limit;
+
+           $where = !is_null($filter->getWhere()) ? $this->_setWhere($filter->getWhere()) : null;
+           $like = !is_null($filter->getLike()) ? $this->_setLike($filter->getLike()) : null;
+           $groupBy = '';
+           $sort = !is_null($filter->getSort()) ? $this->_setSort($filter->getSort()) : null;
+
+           if((isset($where) && $where != '') && isset($like) && $like != '') {
+              $where.= ' AND ';
+           }
+            
+           $this->sql = 'SELECT
+                               users.*,
+                               p.id AS player_id, p.number, p.height, p.grade_level, p.video_access,
+                               p.position, p.weight, p.coach_name, p.graduation_month, p.graduation_year,
+                               s.id AS schoolId, s.name as schoolName, s.city as schoolCity,
+                               s.state as schoolState, s.division AS schoolDivision,
+                               sp.id AS sport_id,
+                               sp.name AS sport_name
+                           FROM
+                               users users
+                           INNER JOIN
+                               players p
+                                   ON
+                                       p.user_id=users.id
+                           LEFT JOIN
+                               schools s
+                                   ON
+                                       p.school_id=s.id
+                           LEFT JOIN
+                               sports sp
+                                   ON
+                                       sp.id = p.sport_id
+                           '.$where.'
+                           '.$like.'
+                           '.$groupBy.'
+                           '.$sort.'
+                           LIMIT '.$startLimit.','.$limit;
+
+           $this->prep = $this->dbh->prepare($this->sql);
+           //$this->prep->bindValue(":id", $id, \PDO::PARAM_INT);
+           $this->prep->execute();
+       }
+       catch (\PDOException $exception)
+       {
+           \TPErrorHandling::handlePDOException($exception->errorInfo);
+           return null;
+       }
+
+       $userList = array();
+       while ($row = $this->prep->fetch())
+       {
+           array_push($userList, User::create($row));
+       }
+
+       return $userList;
+    }
 }

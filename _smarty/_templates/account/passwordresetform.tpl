@@ -1,45 +1,68 @@
-<div id="forgotPassword">
-    <h1>Reset Your Password</h1>
-    {include file='common/message.tpl'}
-    <form name="passwordreset" action="{#baseUrl#}account/password/?auth={$auth}&email={$email}" method="post">
-        <input type="hidden" value="{$auth}" name="auth" />
-        <input type="hidden" value="{$email}" name="email" />
-        <div class="top">
-            <div class="inputField">
-                <div class="left"></div>
-                <div class="middle">
-                    <input type="text" class="standard pws" value="Password" />
-                    <input type="password" class="standard" id="password" name="password" class="hidden" />
+<h1>Reset Your Password</h1>
+{include file='common/message.tpl'}
+<form id="passwordReset" name="passwordReset" action="{#baseUrl#}account/password/?auth={$auth}&email={$email}" method="post">
+    <input type="hidden" value="{$auth}" name="auth" />
+    <input type="hidden" value="{$email}" name="email" />
+    <ul class="form-fields">
+        <li class="input-field clear">
+
+            <div class="input_custom-text input_text80 width600 left">
+                <div class="custom-input_center custom-input_partial">
+                    <span class="custom-input_top"></span>
+                    <input type="text" class="input_password" name="password" value="Enter Password" />
+                    <span class="custom-input_bottom"></span>
                 </div>
-                <div class="right"></div>
-            </div>
-            <p class="error-alert">
-                This email address is not registered
-                <br />
-                Try another email address or <a>join now</a>.
-            </p>
-            <div class="inputField">
-                <div class="left"></div>
-                <div class="middle">
-                    <input type="text" class="standard pws" value="Confirm Password" />
-                    <input type="password" class="standard" id="passwordConfirm" name="passwordConfirm" class="hidden" />
+
+                <div class="custom-input_left custom-input_partial">
+                    <span class="custom-input_top"></span>
+                    <span class="custom-input_bottom"></span>
                 </div>
-                <div class="right"></div>
+
+                <div class="custom-input_right custom-input_partial">
+                    <span class="custom-input_top"></span>
+                    <span class="custom-input_bottom"></span>
+                </div>
+
             </div>
-            <p class="error-alert">
-                This email address is not registered
-                <br />
-                Try another email address or <a>join now</a>.
-            </p>
-        </div>
-        <div class="bigButton black">
-            <div class="topLeft whiteBg"></div>
-            <div class="topRight whiteBg"></div>
-            <div class="bottomLeft whiteBg"></div>
-            <div class="bottomRight whiteBg"></div>
-            <div class="middle">
-                <input type="submit" value="Continue" id="continue" class="large black" />
+            <div class="error-alert">
+                <ul>
+                    <li>This email address is not registered.</li>
+                    <li>Try another email address or <a href="#">join now</a>.</li>
+                </ul>
             </div>
-        </div>
-    </form>
-</div>
+
+        </li>
+
+        <li class="input-field clear">
+
+            <div class="input_custom-text input_text80 width600 left">
+                <div class="custom-input_center custom-input_partial">
+                    <span class="custom-input_top"></span>
+                    <input type="text" class="input_password" name="password" value="Confirm Password" />
+                    <span class="custom-input_bottom"></span>
+                </div>
+
+                <div class="custom-input_left custom-input_partial">
+                    <span class="custom-input_top"></span>
+                    <span class="custom-input_bottom"></span>
+                </div>
+
+                <div class="custom-input_right custom-input_partial">
+                    <span class="custom-input_top"></span>
+                    <span class="custom-input_bottom"></span>
+                </div>
+
+            </div>
+            <div class="error-alert">
+                <ul>
+                    <li>This email address is not registered.</li>
+                    <li>Try another email address or <a href="#">join now</a>.</li>
+                </ul>
+            </div>
+
+        </li>
+		<li class="input-field clear">
+			<button type="submit" value="Continue" class="button_black_large left button_round">Continue</button>
+		</li>
+	</ul>
+</form>
