@@ -24,7 +24,7 @@
                         { type:"flash", src:"/media/playback/player.swf" },
                         { type:"download" }
                     ],
-                    skin:"/media/playback/skin/tapeplayer.zip",
+                    skin:"/media/playback/skins/normal/tapeplayer.zip",
                     autostart:false,
                     dock:false,
                     "controlbar.position":"over"

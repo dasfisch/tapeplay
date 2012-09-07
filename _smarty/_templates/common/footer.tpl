@@ -30,8 +30,8 @@
 						<li>
 							<dl>
 								<dt>Cool Stuff</dt>
-								<dd><a href="{#baseUrl#}blog/">Blog</a></dd>
-								<dd><a href="http://www.printfection.com/tapeplay/">Merchandise</a></dd>
+								<dd><a href="http://www.tapeplay.com/blog/" target="_blank">Blog</a></dd>
+								<dd><a href="http://www.printfection.com/tapeplay/" target="_blank">Merchandise</a></dd>
 							</dl>
 						</li>
 					</ul>

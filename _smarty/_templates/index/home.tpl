@@ -10,7 +10,7 @@
 				<span class="bold">It&rsquo;s absolutely free.</span>
 			</p>
 			<p class="button">
-				<a class="button button_black_large button_round" href="#">Join</a>
+				<a class="button button_black_large button_round" href="/user/signup/">Join</a>
 			</p>
 
 			<p class="beta-banner-footer clear">
@@ -26,21 +26,22 @@
 		<div class="left video">
 			<h2>See How TapePlay Works</h2>
 			<div id="player">
-				<video id="videoPlayer" width="522" height="302">
-					<source src="{$videoDisplayInfo->getMp4Source()}"
-							type="video/mp4"/>
-					<source src="{$videoDisplayInfo->getWebmSource()}"
-							type="video/webm"/>
-				</video>
 				<script type='text/javascript'>
-					jwplayer('videoPlayer').setup({
+					jwplayer('player').setup({
+						width: 522,
+						height: 302,
+						levels: [
+							{ldelim}file: '{$videoDisplayInfo->getMp4Source()}', type: 'video/mp4' {rdelim},
+							{ldelim}file: '{$videoDisplayInfo->getWebmSource()}', type: 'video/webm' {rdelim},
+					    ],
 						modes:[
 							{ type:"html5" },
 							{ type:"flash", src:"/media/playback/player.swf" },
 							{ type:"download" }
 						],
-						skin:"/media/playback/skin/tapeplayer.zip",
+						skin:"/media/playback/skins/small/tapeplayer.zip",
 						autostart:false,
+						stretching: 'none',
 						dock:false,
 						"controlbar.position":"over"
 					});
@@ -51,7 +52,7 @@
 			<div class="info">
 				<h3>Get Insider Tips</h3>
 				<p>
-					Discover how to get noticed by coaches and scouts at our blog. You&rsquo;ll find out about the entire recruiting process, including what makes a video stand out, recruiting events and much more. <a href="#">View Blog</a>
+					Discover how to get noticed by coaches and scouts at our blog. You&rsquo;ll find out about the entire recruiting process, including what makes a video stand out, recruiting events and much more. <a href="{#blogUrl#}" target="_blank">View Blog</a>
 				</p>
 			</div>
 			<div class="info">
@@ -86,10 +87,10 @@
 				<div class="follow-us clear">
 					<ul>
 						<li>Follow Us:</li>
-						<li><a href="#"><img src="/media/images/icon_mini-facebook.gif"/></a></li>
-						<li><a href="#"><img src="/media/images/icon_mini-myspace.gif"/></a></li>
-						<li><a href="#"><img src="/media/images/icon_mini-linkedin.gif"/></a></li>
-						<li><a href="#"><img src="/media/images/icon_mini-unknown.gif"/></a></li>
+						<li><a href="{#facebookUrl#}" target="_blank"><img src="/media/images/icon_mini-facebook.gif"/></a></li>
+						<li><a href="{#facebookUrl#}"><img src="/media/images/icon_mini-myspace.gif"/></a></li>
+						<li><a href="{#facebookUrl#}"><img src="/media/images/icon_mini-linkedin.gif"/></a></li>
+						<li><a href="{#facebookUrl#}"><img src="/media/images/icon_mini-unknown.gif"/></a></li>
 					</ul>
 				</div>
 			</div>
