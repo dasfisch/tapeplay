@@ -104,7 +104,7 @@ if (isset($route->method))
                     exit;
                 }
                 $videoCount = (isset($videos[0]->count) && (int)$videos[0]->count > 0) ? (int)$videos[0]->count : 0;
-                
+
                 $statsBll = new StatsBLL();
                 $stats = $statsBll->getPlayerStats((int)$user->getId(), (int)$user->getSport()->getId());
 
