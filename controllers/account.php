@@ -6,6 +6,7 @@ require_once("enum/AccountTypeEnum.php");
 require_once("bll/SchoolBLL.php");
 require_once("bll/StatsBLL.php");
 require_once("bll/UserBLL.php");
+require_once("bll/PlayerBLL.php");
 require_once("bll/VideoBLL.php");
 require_once("model/SearchFilter.php");
 
@@ -126,7 +127,6 @@ if (isset($route->method))
             $template = 'account/forgotpassword.tpl';
 
             if(isset($post['email']) && $post['email'] != '') {
-
                 try {
                     $dataValidator->checkEmail($post['email']);
 
@@ -188,6 +188,7 @@ if (isset($route->method))
                 $message = new stdClass();
                 $search = new SearchFilter();
 
+                $search->setWhere('method', 'users');
                 $search->setWhere('email', $get['email']);
 
                 $userBll = new UserBLL();
@@ -201,8 +202,17 @@ if (isset($route->method))
                     $hash = $userBLL->createHash($post["email"], $post["password"]);
 
                     $user[0]->setHash($hash);
+
                     if($userBLL->update($user[0])) {
-                       \Util::setHeader($controller->configuration->URLs['baseUrl']);
+                        if(isset($user[0])) {
+                            $player = $userBLL->getPlayerUser($user[0]->getUserId());
+
+                            if(isset($player)) {
+                                $userBLL->setUser($player);
+
+                                \Util::setHeader($controller->configuration->URLs['baseUrl']);
+                            }
+                        }
                     } else {
                         $message->message = 'There was an error processing your request. Please try again!';
                         $message->type = 'error-alert';
