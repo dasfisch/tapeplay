@@ -28,7 +28,7 @@
 					<li>Try another email address or <a href="#">join now</a>.</li>
 				</ul>
 			</div>
-			
+			<p class="clear">&nbsp;</p>
 		</li>
 		<li class="input-field clear">
 			<button type="submit" value="Continue" class="button_black_large left button_round">Continue</button> 

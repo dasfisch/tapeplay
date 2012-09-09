@@ -1,7 +1,41 @@
 // page init
 jQuery(function(){
+	initSelectText();
 	jcf.customForms.replaceAll();
+	initSelectFix();
 });
+
+// select text init
+function initSelectText() {
+	max = 18;
+	jQuery('.fixedSelect').each(function() {
+		var select = jQuery(this);
+		var options = select.find('option');
+		options.each(function() {
+			var option = jQuery(this);
+			var value = option.text();
+			option.text(value.substring(0, max));
+		});
+	});
+}
+
+// select fix init
+function initSelectFix() {
+	jQuery('.fixedSelect').each(function() {
+		var select = jQuery(this);
+		var jcfSelect = select.get(0).jcf;
+		var selectArea = select.parents('form').find('.select-area');
+		var curWidth = selectArea.width();
+		
+		jQuery(jcfSelect.fakeElement).bind('click', function(){
+			selectArea.css({width:curWidth})
+		});
+		select.bind('change', function(e) {
+			selectArea.css({width:'auto'})
+			e.preventDefault();
+		});
+	});
+}
 
 /*
  * JavaScript Custom Forms 1.4.1
@@ -385,14 +419,13 @@ jcf.lib = {
 		return node;
 	},
 	fireEvent: function(element,event) {
-		if (document.createEventObject){
-			var evt = document.createEventObject();
-			return element.fireEvent('on'+event,evt)
-		}
-		else{
+		if(element.dispatchEvent){
 			var evt = document.createEvent('HTMLEvents');
 			evt.initEvent(event, true, true );
 			return !element.dispatchEvent(evt);
+		}else if(document.createEventObject){
+			var evt = document.createEventObject();
+			return element.fireEvent('on'+event,evt);
 		}
 	},
 	isParent: function(p, c) {
@@ -731,7 +764,6 @@ jcf.lib = {
 jcf.lib.domReady(function(){
 	jcf.initStyles();
 });
-
 
 // custom scrollbars module
 jcf.addModule({
@@ -1309,7 +1341,6 @@ jcf.addPlugin({
 	}
 });
 
-
 // custom select module
 jcf.addModule({
 	name:'select',
@@ -1336,8 +1367,8 @@ jcf.addModule({
 		dropScrollableClass:'options-overflow',
 		dropClass:'select-options',
 		dropClassPrefix:'drop-',
-		dropStructure:'<div class="drop-holder"><div class="drop-list"><div class="drop-frame"></div></div></div>',
-		dropSelector:'div.drop-frame'
+		dropStructure:'<div class="drop-holder"><div class="drop-list"></div></div>',
+		dropSelector:'div.drop-list'
 	},
 	checkElement: function(el){
 		return (!el.size && !el.multiple);
@@ -1366,6 +1397,9 @@ jcf.addModule({
 				width: jcf.lib.getInnerWidth(this.fakeElement) - 1,
 				height: jcf.lib.getInnerHeight(this.fakeElement) - 1
 			});
+			jcf.lib.event.add(this.realElement, 'touchstart', function(){
+				this.realElement.title = '';
+			}, this)
 		}
 		
 		// create select body

@@ -8,5 +8,5 @@
 
 <div class="clear"></div>
 <div class="ad_200x200">
-	
+	<a href="http://www.tapeplay.com/blog/"><img src="/media/images/ad_tapeplay-blog_200x200.jpg" height="200" width="200" /></a>
 </div>
