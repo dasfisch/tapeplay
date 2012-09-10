@@ -260,10 +260,7 @@ class VideoDAO extends BaseDOA
                                 videos.id
                             ".$sort."
                             LIMIT ".$startLimit.",".$limit;
-
-            echo $this->sql;
-            exit;
-
+            
 			$this->prep = $this->dbh->prepare($this->sql);
 			//$this->prep->bindValue(":id", $id, \PDO::PARAM_INT);
 			$this->prep->execute();
