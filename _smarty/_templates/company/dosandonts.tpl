@@ -32,14 +32,13 @@
 	
 	<h3>Your video cannot violate any of our other content restrictions.</h3>
 	<ul>
-		<li>DO NOT upload videos that you found on the internet or elsewhere.</li>
-		<li>NOT upload videos that contain sexually explicit content or pornography.</li> 
-		<li>DO NOT upload videos that contain hateful, defamatory or discriminatory content.</li>
-		<li>DO NOT upload videos that incite hatred against any individual or group.</li>
-		<li>DO NOT upload videos that depict unlawful acts or extreme violence.</li>
-		<li>DO NOT upload videos that depict animal cruelty or extreme violence towards animals.</li>
-		<li>DO NOT upload videos that promote fraudulent schemes, multi&ndash;level marketing (MLM) schemes, get rich quick schemes, online gaming and gambling, cash gifting, work from home businesses, or any other dubious &quot;moneymaking&quot; ventures.</li>
-		<li>DO NOT upload videos that violate any law.</li>
+		<li>DO NOT upload videos that you found on the internet or infringes any third party&rsquo;s copyrights or other rights (e.g., trademark, privacy rights, etc.).</li>
+		<li>DO NOT upload videos that contain sexually explicit material, pornography, or nudity.</li> 
+		<li>DO NOT upload videos that contain hateful, defamatory, or discriminatory material or incites hatred against any individual or group.</li>
+		<li>DO NOT upload videos that depict unlawful acts or extreme violence in a context not related to sports (ex: A regulated boxing match or checking in hockey, even if resulting in serious injury, would be allowed but a fight in a bar would not).</li>
+		<li>DO NOT upload videos that depict animal cruelty or extreme violence towards animals in a context not related to sports involving humans (ex: Bullfighting or horseback riding/show jumping would be permitted but not cock or dog fighting).</li>
+		<li>DO NOT upload videos that promote fraudulent schemes, multi&ndash;level marketing (MLM) schemes, get rich quick schemes, online gaming and gambling, cash gifting, work from home businesses, or any other dubious money&ndash;making ventures. </li>
+		<li>DO NOT upload videos that violate any federal law or any state or territory law of the United States of America.</li>
 	</ul>
 	<p>
 		If you have any questions regarding these Do&rsquo;s And Don&rsquo;ts, please contact us. <a href="mailto:help@tapeplay.com" title="Email help@tapeplay.com">help@tapeplay.com</a>
