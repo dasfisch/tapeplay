@@ -82,10 +82,11 @@
     $sportBll = new SportBLL();
     $sports = $sportBll->get($search);
 
-    $browser = get_browser(null, true);
+    $browser = \Util::getBrowser();
     echo '<pre>';
     var_dump($browser);
     exit;
+
     if($browser['broswer'] == 'Internet Explorer') {
         echo 'Hi tim';
     } else {
