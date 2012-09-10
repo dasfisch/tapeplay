@@ -83,12 +83,28 @@
     $sports = $sportBll->get($search);
 
     $browser = \Util::getBrowser();
-    echo '<pre>';
-    var_dump($browser);
-    exit;
 
-    if($browser['broswer'] == 'Internet Explorer') {
-        echo 'Hi tim';
+    $ie = '';
+
+    if($browser['name'] == 'Internet Explorer') {
+        $ie = ' class="ie';
+
+        switch($browser['version']) {
+            case '7.0':
+                $ie .= ' ie7';
+
+                break;
+            case '8.0':
+                $ie .= ' ie8';
+
+                break;
+            case '9.0':
+                $ie .= ' ie9';
+
+                break;
+        }
+
+        $ie.= '"';
     } else {
     }
 
@@ -99,7 +115,7 @@
         $smarty->assign('sports', $sports);
         $smarty->assign('currentSport', $sport);
         $smarty->assign('message', $message);
-        $smarty->assign('browser', $browser);
+        $smarty->assign('ie', $ie);
 
 		$smarty->assign('loginText', $userBLL->isAuthenticated() ? "Log out" : "Login");
 		$smarty->assign('loginAction', $userBLL->isAuthenticated() ? "logout" : "login");

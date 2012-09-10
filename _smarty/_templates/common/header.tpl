@@ -1,9 +1,6 @@
 <!DOCTYPE HTML>
-<!--[if lte IE 7]> <html class="ie7" id="www-tapeplay-com"> <![endif]-->  
-<!--[if IE 8]>     <html class="ie8" id="www-tapeplay-com"> <![endif]-->  
-<!--[if IE 9]>     <html class="ie9" id="www-tapeplay-com"> <![endif]-->  
-<!--[if !IE]><!--> <html id="www-tapeplay-com">             <!--<![endif]-->  
-    <head{$header}>
+<html id="www-tapeplay-com"{$ie}>
+    <head>
         <title>Tapeplay :: Home</title>
         <link rel="stylesheet" href="/css/jquery.css" type="text/css" />
         <link rel="stylesheet" href="/css/global.css" type="text/css" />
