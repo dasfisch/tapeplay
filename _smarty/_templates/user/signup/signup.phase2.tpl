@@ -26,7 +26,9 @@
 		</div>
 		
 		<div class="coach">
-			<div class="label"></div>
+			<span class="fee">
+				$199 Fee
+			</span>
 			<h2>The Coach</h2>
 			<p>
 				Inside are player videos that you can search, save, comment on with time stamps, and share instantly with your entire staff. Even when you&rsquo;re on the road. We&rsquo;re here to make finding talent quick and easy.
@@ -40,8 +42,21 @@
 			<p>
 				To join as a coach, you&rsquo;ll need a .edu email address. 
 			</p>
+			<button class="button button_black_large left button_round" type="submit" value="Sign Up">Sign Up</button> 
 		</div>
 		
 		<div class="clear"></div>
+		
+		<div class="scout clear">
+			<span class="fee">
+				$199 Fee
+			</span>
+			<h2>The Scout</h2>
+			<p>
+				You&rsquo;ll have all the access that coaches do. The only difference is that you don&rsquo;t need a .edu email address. 
+			</p>
+			<a class="button button_black_large left button_round" type="submit" value="Sign Up">Sign Up</a>
+
+		</div>
 	</form>
 </div>

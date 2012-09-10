@@ -1,6 +1,5 @@
 <div id="top">
     <h2>Browse</h2>
-    <p>Or <a href="{#baseUrl#}videos/search/">search</a> by criteria</p>
 </div>
 <div id="results">
     {if isset($videos) && !empty($videos)}

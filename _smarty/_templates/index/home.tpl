@@ -61,7 +61,7 @@
 					<ul class="form-fields">
 						<li class="input-field clear">
 
-							<div class="input_custom-text input_text36 left">
+							<div class="input_custom-text width175 input_text36 left">
 								<div class="custom-input_center custom-input_partial">
 									<span class="custom-input_top"></span>
 									<input type="text" name="search" value="Enter Email Address"/>
@@ -88,9 +88,8 @@
 					<ul>
 						<li>Follow Us:</li>
 						<li><a href="{#facebookUrl#}" target="_blank"><img src="/media/images/icon_mini-facebook.gif"/></a></li>
-						<li><a href="{#facebookUrl#}"><img src="/media/images/icon_mini-myspace.gif"/></a></li>
 						<li><a href="{#facebookUrl#}"><img src="/media/images/icon_mini-linkedin.gif"/></a></li>
-						<li><a href="{#facebookUrl#}"><img src="/media/images/icon_mini-unknown.gif"/></a></li>
+						<li><a href="{#facebookUrl#}"><img src="/media/images/icon_mini-googleplus.gif"/></a></li>
 					</ul>
 				</div>
 			</div>

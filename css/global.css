@@ -365,6 +365,11 @@ ul.lower-alpha {
 	width:185px;
 }
 
+.width175 {
+	width:175px;
+}
+
+
 fieldset ul {
 	margin-bottom:0px;
 }
@@ -419,6 +424,8 @@ fieldset li {
     color: #FFFFFF;
     display: block;
     font-size: 16px;
+    height:36px;
+    margin:0px;
     padding: 7px 12px;
     text-decoration: none;
 }
@@ -854,6 +861,22 @@ fieldset + fieldset {
 	margin-left:20px;
 }
 
+.coach .label {
+	background:transparent url(/media/images/joinTapePlay-HideCoach.png) no-repeat center center;
+	height:100%;
+	left:0px;
+	position:absolute;
+	top:0px;
+	width:100%;
+	z-index:10000;
+}
+
+.coach p, .coach ul {
+	opacity:.15;
+	filter: alpha(opacity=15);
+	-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=15)";
+}
+
 .coach h2 {
 	color:#ffffff;
 }
@@ -935,7 +958,7 @@ fieldset + fieldset {
     text-align: center;
 }
 
-.beta-banner {height:280px;}
+.beta-banner {height:250px;}
 
 .beta-banner .sign-up {
 	background-color:#e18a07;
@@ -948,7 +971,7 @@ fieldset + fieldset {
 
 .beta-banner .sign-up p {
 	font-size:15px;
-	line-height:14px;
+	line-height:16px;
 	margin-bottom:10px;
 }
 
