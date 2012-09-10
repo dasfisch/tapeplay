@@ -82,6 +82,15 @@
     $sportBll = new SportBLL();
     $sports = $sportBll->get($search);
 
+    $browser = get_browser(null, true);
+    echo '<pre>';
+    var_dump($browser);
+    exit;
+    if($browser['broswer'] == 'Internet Explorer') {
+        echo 'Hi tim';
+    } else {
+    }
+
     try {
         $sport['name'] = $sportBll->getNameFromId($sport['id'], $sports);
 
@@ -89,6 +98,7 @@
         $smarty->assign('sports', $sports);
         $smarty->assign('currentSport', $sport);
         $smarty->assign('message', $message);
+        $smarty->assign('browser', $browser);
 
 		$smarty->assign('loginText', $userBLL->isAuthenticated() ? "Log out" : "Login");
 		$smarty->assign('loginAction', $userBLL->isAuthenticated() ? "logout" : "login");
