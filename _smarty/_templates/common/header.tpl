@@ -10,8 +10,30 @@
         <script type="text/javascript" src="/js/jwplayer.js"></script>
         <script type="text/javascript" src="/js/jquery-ui.js"></script>
         <script type="text/javascript" src="/js/jquery-main.js"></script>
-		<script type="text/javascript" src="/js/tapeplay.js"></script>
+		<script type="text/javascript" src="/js/tape play.js"></script>
         <script type="text/javascript" src="/js/jquery.panda.min.js"></script>
+
+
+	{if {$smarty.server.REQUEST_URI} == '/user/personal/'}
+
+	<script type="text/javascript">
+		$(document).ready(function()
+		{
+			$('a#signup-toc').click(function()
+			{
+				  window.open('/company/tos/', 'tpModal', 'width=500, height=500, resizable=no, status=no, location=no, toolbar=no');
+				  return false;
+			});
+
+			$('a#signup-privacy').click(function()
+						{
+							  window.open('/company/privacy/', 'tpModal', 'width=500, height=500, resizable=no, status=no, location=no, toolbar=no');
+							  return false;
+						});
+		});
+	</script>
+
+	{/if}
     </head>
     <body>
       	<div id="container">

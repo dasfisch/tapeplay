@@ -30,15 +30,15 @@
 						<li>
 							<dl>
 								<dt>Cool Stuff</dt>
-								<dd><a href="http://www.tapeplay.com/blog/" target="_blank">Blog</a></dd>
-								<dd><a href="http://www.printfection.com/tapeplay/" target="_blank">Merchandise</a></dd>
+								<dd><a href="{#blogUrl#}" target="_blank">Blog</a></dd>
+								<dd><a href="{#shopUrl#}" target="_blank">Merchandise</a></dd>
 							</dl>
 						</li>
 					</ul>
 					<div class="clear"></div>
 					<div id="footer-terms">
 						<ul>
-							<li><a href="{#baseUrl#}company/terms-of-service/">Terms of Use</a> | <a href="{#baseUrl#}company/privacy-policy/">Privacy Policy</a></li>
+							<li><a href="{#baseUrl#}company/tos/">Terms of Use</a> | <a href="{#baseUrl#}company/privacy/">Privacy Policy</a></li>
 							<li>&copy; {'Y'|date} TapePlay, LLC. All Rights Reserved </li>
 						</ul>
 					</div>

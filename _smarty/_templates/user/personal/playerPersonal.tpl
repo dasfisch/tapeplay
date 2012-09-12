@@ -188,7 +188,7 @@
 						<label for="terms">
 							<span class="checkbox"><span class="check"></span></span>
 							<input type="checkbox" id="terms" name="terms" value="I agree" />
-							I agree to the <a href="#">Terms and Conditions</a> and <a href="#">Privacy Policy</a>.
+							I agree to the <a id="signup-toc" href="#">Terms and Conditions</a> and <a id="signup-privacy" href="#">Privacy Policy</a>.
 						</label>
 					</li>
 				</ul>

@@ -7,7 +7,7 @@
  * To change this template use File | Settings | File Templates.
  */
     //all include, globals (not opposed to not using globals)
-    
+
     global $controller, $route, $smarty;
 
     /**
@@ -20,7 +20,6 @@
      *              http://www.tapeplay.com/videos/notes
      *
      */
-
     if(isset($route->method)) {
         switch($route->method) {
             case 'about':
@@ -71,7 +70,19 @@
                 $smarty->display('home.tpl');
 
                 break;
-            default:
+			case 'privacy':
+				$smarty->assign('file', 'company/privacy-policy.tpl');
+
+				$smarty->display('home.tpl');
+
+				break;
+			case 'tos':
+				$smarty->assign('file', 'company/terms-of-service.tpl');
+
+				$smarty->display('home.tpl');
+
+				break;
+			default:
                 $smarty->assign('file', 'company/about.tpl');
 
                 $smarty->display('home.tpl');
