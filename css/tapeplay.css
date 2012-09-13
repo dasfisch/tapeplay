@@ -2967,3 +2967,8 @@ p.nothing {
     margin: 0px !important;
     padding: 0px !important;
 }
+
+div#popup-container
+{
+    padding: 15px 20px;
+}
