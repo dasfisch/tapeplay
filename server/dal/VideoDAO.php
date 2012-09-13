@@ -86,7 +86,7 @@ class VideoDAO extends BaseDOA
 		$this->prep->bindValue(":uploadDate", $video->getUploadDate(), \PDO::PARAM_INT);
 		$this->prep->bindValue(":recordedMonth", $video->getRecordedMonth(), \PDO::PARAM_INT);
 		$this->prep->bindValue(":recordedYear", $video->getRecordedYear(), \PDO::PARAM_INT);
-		$this->prep->bindValue(":active", $video->getActive(), \PDO::PARAM_BOOL);
+		$this->prep->bindValue(":active", $video->getActive(), \PDO::PARAM_INT);
         $this->prep->bindValue(":playerId", $playerId, \PDO::PARAM_INT);
         $this->prep->bindValue(":sportId", $video->getSportId(), \PDO::PARAM_INT);
 

@@ -352,17 +352,20 @@ if (isset($route->method))
                         }
                     }
 
-//                    try {
-//                        $sportBll = new SportBLL();
-//
-//                        $search = new SearchFilter();
-//
-//                        $search->setWhere('id')
-//
-//                        $sport = $sportBll->get($search);
-//                    } catch(Exception $e) {
-//
-//                    }
+                    try {
+                        $sportBll = new SportBLL();
+
+                        $search = new SearchFilter();
+
+                        $search->setWhere('id', $post['sport_id']);
+
+                        $sport = $sportBll->get($search);
+
+                        $userBLL->getUser()->setSport($sport[0]);
+                        $userBLL->setUser($userBLL->getUser());
+                    } catch(Exception $e) {
+
+                    }
 
                     /**
                      * @TODO: if user video uploads, check to see what sport they have attached to their account;
@@ -529,11 +532,7 @@ if (isset($route->method))
 
                         $startYear = date('Y', strtotime('now'));
 
-                        if(isset($_SESSION['postSport']) && $_SESSION['postSport'] != '') {
-                            $sportId = $_SESSION['postSport'];
-                        } else {
-                            $sport = isset($post['sport_id']) && $post['sport_id'] != '' ? $post['sport_id'] : $sport['id'];
-                        }
+                        $sportId = $user->getSport()->getId();
 
                         $statsBll = new StatsBLL();
                         try {
