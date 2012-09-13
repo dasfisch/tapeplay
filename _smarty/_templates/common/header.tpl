@@ -10,7 +10,7 @@
         <script type="text/javascript" src="/js/jwplayer.js"></script>
         <script type="text/javascript" src="/js/jquery-ui.js"></script>
         <script type="text/javascript" src="/js/jquery-main.js"></script>
-		<script type="text/javascript" src="/js/tape play.js"></script>
+		<script type="text/javascript" src="/js/tapeplay.js"></script>
         <script type="text/javascript" src="/js/jquery.panda.min.js"></script>
 
 

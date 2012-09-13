@@ -207,6 +207,10 @@ button {
 	float:left;
 	width:25%;
 }
+.five-column > li {
+	float:left;
+	width:20%;
+}
 /*
  * Global Styles
  */
@@ -369,6 +373,9 @@ ul.lower-alpha {
 	width:175px;
 }
 
+.width100 {
+	width:100px;
+}
 
 fieldset ul {
 	margin-bottom:0px;
