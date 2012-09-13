@@ -88,6 +88,15 @@ class SearchFilter
         $this->_sort[$key] = $value;
     }
 
+    public function setLimit($start, $limit=10) {
+        $this->_limit['start'] = $start;
+        $this->_limit['limit'] = $limit;
+    }
+
+    public function getLimit() {
+        return $this->_limit;
+    }
+
     public function __set($name, $value) {
         $this->$name = $value;
     }

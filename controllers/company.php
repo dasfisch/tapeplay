@@ -100,8 +100,6 @@ Notice: Undefined variable: stats in C:\Users\Tim\Sites\tapeplay\server\dal\Stat
 Notice: Undefined index: postSport in C:\Users\Tim\Sites\tapeplay\controllers\user.php on line 558
  */
 
-?>
-
 
 
 

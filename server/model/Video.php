@@ -182,7 +182,7 @@ class Video
 
     public function setPrivacy($privacy)
    	{
-   		$this->_privacy = ((int)$privacy === 1) ? true : false;
+   		$this->_privacy = ((int)$privacy === 1) ? 1 : 0;
    	}
 
    	public function getPrivacy()
