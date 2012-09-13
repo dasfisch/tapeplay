@@ -1,4 +1,267 @@
-<div id="main">
+<h1>Player Sign Up</h1>
+{include file='common/message.tpl'}
+<p>
+	The more you tell us about yourself, the easier it is for coaches and scouts to find what they&rsquo;re looking for.
+</p>
+<form id="playerInfoForm" name="playerInfoForm" action="{#baseUrl#}user/info/" method="post">
+	<ul class="five-column">
+		<li>
+			<fieldset>
+				<legend>Number</legend>
+				<div class="input_custom-text input_text80 width100 left">
+					<div class="custom-input_center custom-input_partial">
+						<span class="custom-input_top"></span>
+						<input type="text" name="number" value="##" size="4" />
+						<span class="custom-input_bottom"></span>
+					</div>
+					
+					<div class="custom-input_left custom-input_partial">
+						<span class="custom-input_top"></span>
+						<span class="custom-input_bottom"></span>
+					</div>
+										
+					<div class="custom-input_right custom-input_partial">
+						<span class="custom-input_top"></span>
+						<span class="custom-input_bottom"></span>
+					</div>
+				</div>
+			</fieldset>
+		</li>
+		<li>
+			<fieldset>
+				<legend>Level</legend>
+				<ul class="font15">
+					<li>
+						<label for="high-school">
+							<span class="checkbox"><span class="check"></span></span>
+							<input type="checkbox" id="high-school" name="school_level[]" value="high_school" /> 
+							High School
+						</label>
+					</li>
+					<li>
+						<label for="college">
+							<span class="checkbox"><span class="check"></span></span>
+							<input type="checkbox" id="college" name="school_level[]" value="college" />
+							College
+						</label>
+					</li>
+					<li>
+						<label for="professional">
+							<span class="checkbox"><span class="check"></span></span>
+							<input type="checkbox" id="professional" name="school_level[]" value="professional" />
+							Professional
+						</label>
+					</li>
+				</ul>
+			</fieldset>
+		</li>
+		<li>
+			<fieldset>
+				<legend>Grade</legend>
+				<fieldset>
+					<select class="select-2">
+						<option class="default">Select</option>
+						{section name=i start=6 loop=26 step=1}
+                            <option value="{$smarty.section.i.index}">{$smarty.section.i.index}</option>
+                        {/section}
+					</select>
+				</fieldset>
+			</fieldset>
+		</li>
+		<li>
+			<fieldset>
+				<legend>Position</legend>
+				<ul class="font15">
+                    {foreach from=$stats item=stat}
+						<li>
+							<label for="point-gaurd">
+								<span class="checkbox"><span class="check"></span></span>
+								<input type="checkbox" id="point-gaurd" name="position_id[]" value="{$stat->getId()}" /> 
+								{$stat->getStatName()}
+							</label>
+						</li>
+					{/foreach}
+				</ul>
+			</fieldset>
+		</li>
+		<li>
+			<fieldset>
+				<legend>Height</legend>
+				<fieldset>
+					<select class="select-2">
+						<option class="default">Select</option>
+						{section name=i start=48 loop=96 step=1}
+                            <option value="{$smarty.section.i.index}">{$smarty.section.i.index}</option>
+                        {/section}
+					</select>
+				</fieldset>
+			</fieldset>
+			<fieldset>
+				<legend>Weight</legend>
+				<div class="input_custom-text input_text36 left">
+					<div class="custom-input_center custom-input_partial">
+						<span class="custom-input_top"></span>
+						<input type="text" name="search" value=".lbs" size="4" />
+						<span class="custom-input_bottom"></span>
+					</div>
+					
+					<div class="custom-input_left custom-input_partial">
+						<span class="custom-input_top"></span>
+						<span class="custom-input_bottom"></span>
+					</div>
+										
+					<div class="custom-input_right custom-input_partial">
+						<span class="custom-input_top"></span>
+						<span class="custom-input_bottom"></span>
+					</div>
+					
+				</div>
+			</fieldset>
+		</li>
+	</ul>
+	<div class="clear"></div>
+	<fieldset>
+		<legend>School/Team Info</legend>
+		<ul>
+			<li class="input-field clear">
+				
+				<div class="input_custom-text input_text80 width600 left">
+					<div class="custom-input_center custom-input_partial">
+						<span class="custom-input_top"></span>
+						<input type="text" id="firstName" name="schoolSearchInput" value="School Name" />
+						<span class="custom-input_bottom"></span>
+					</div>
+					
+					<div class="custom-input_left custom-input_partial">
+						<span class="custom-input_top"></span>
+						<span class="custom-input_bottom"></span>
+					</div>
+										
+					<div class="custom-input_right custom-input_partial">
+						<span class="custom-input_top"></span>
+						<span class="custom-input_bottom"></span>
+					</div>
+					
+				</div>
+				
+				<div class="error-alert">
+					<ul>
+						<li>Enter your first name.</li>
+						<li>Do not use numbers.</li>
+					</ul>
+				</div>
+				
+			</li>
+			<li class="input-field clear">
+				
+				<div class="input_custom-text input_text80 width600 left">
+					<div class="custom-input_center custom-input_partial">
+						<span class="custom-input_top"></span>
+						<input type="text" id="lastName" name="headCoachName" value="Head Coach's Name" />
+						<span class="custom-input_bottom"></span>
+					</div>
+					
+					<div class="custom-input_left custom-input_partial">
+						<span class="custom-input_top"></span>
+						<span class="custom-input_bottom"></span>
+					</div>
+										
+					<div class="custom-input_right custom-input_partial">
+						<span class="custom-input_top"></span>
+						<span class="custom-input_bottom"></span>
+					</div>
+					
+				</div>
+				
+				<div class="error-alert">
+					<ul>
+						<li>Enter your last name.</li>
+						<li>Do not use numbers.</li>
+					</ul>
+				</div>
+			</li>
+		</ul>
+	</fieldset>
+	<fieldset>
+		<legend>Graduation Date (optional)</legend>
+		<ul class="three-column_sign-up left">
+			<li class="left">
+				<fieldset>
+					<select class="select-7" name="videoMonth">
+						<option class="default">Grad. Month</option>
+						<option value="1">January</option>
+						<option value="2">February</option>
+						<option value="3">March</option>
+						<option value="4">April</option>
+						<option value="5">May</option>
+						<option value="6">June</option>
+						<option value="7">July</option>
+						<option value="8">August</option>
+						<option value="9">September</option>
+						<option value="10">October</option>
+						<option value="11">November</option>
+						<option value="12">December</option>
+					</select>
+				</fieldset>
+			</li>
+			<li class="left">
+				<fieldset>
+					<select class="select-8" name="videoYear">
+						<option class="default">Grad. Year</option>
+						{section name=i start=$startYear loop=$startYear+5 step=1}
+                            <option value="{$smarty.section.i.index}">{$smarty.section.i.index}</option>
+                        {/section}
+					</select>
+				</fieldset>
+			</li>
+		</ul>
+	</fieldset>
+	<fieldset class="statistics">
+		<legend>Statistics (optional)</legend>
+		{if isset($stats) && count($stats) > 0}
+            <ul class="three-column">
+                {assign var=i value=0}
+                {foreach from=$stats item=stat}
+                    {if $i % $modder == 0 || $i == 0}
+                        <!--<li>-->
+                    {/if}
+                    <li>
+                    	
+                    	<div class="input_custom-text input_text36 width40 right">
+							<div class="custom-input_center custom-input_partial">
+								<span class="custom-input_top"></span>
+								<input type="text" id="lastName" name="stat[{$stat->getId()}]" value="" />
+								<span class="custom-input_bottom"></span>
+							</div>
+							
+							<div class="custom-input_left custom-input_partial">
+								<span class="custom-input_top"></span>
+								<span class="custom-input_bottom"></span>
+							</div>
+												
+							<div class="custom-input_right custom-input_partial">
+								<span class="custom-input_top"></span>
+								<span class="custom-input_bottom"></span>
+							</div>
+							
+						</div>
+						<span class="right">{$stat->getStatName()}</span>
+                   		</li>
+                    {if ($i%$modder == $modder - 1 && $i > $modder) || $i == ($statCount - 1)}
+                        <!--</li>-->
+                    {/if}
+                    {$i = $i+1}
+                {/foreach}
+            </ul>
+        {/if}
+	</fieldset>
+	<fieldset>
+		<button value="Join" type="submit" class="button_black_large left button_round">Join</button> 
+		<span class="form-steps">Step 1 of 3</span>
+	</fieldset>
+</form>
+
+<!--<div id="main">
 <h2>Player Info</h2>
 {include file='common/message.tpl'}
 <p class="facebookLogin">
@@ -8,14 +271,14 @@
 <div id="playerInfo">
     <div id="videoInfo">
         <p id="status">
-            <!--Video Status: <span class="success italic">Upload complete!</span>-->
+           Video Status: <span class="success italic">Upload complete!</span>
         </p>
         <img src="{#pandaBase#}{$video->getPandaId()}{#pandaImageExt#}" class="resultImage" />
         <div class="info">
             <h4>{$video->getTitle()}</h4>
             <p class="date">{$video->getUploadDate()|date_format:'%B %d, %Y %I:%M %p'}</p>
-            <p class="length">12:00</p><!-- ???? -->
-            <p class="bottom italic">Video file name</p><!-- ???? -->
+            <p class="length">12:00</p>
+            <p class="bottom italic">Video file name</p>
         </div>
     </div>
     <form id="playerInfoForm" name="playerInfoForm" action="{#baseUrl#}user/info/" method="post">
@@ -300,7 +563,4 @@
         </div>
     </form>
     </div>
-</div>
-<div id="ad">
-	ad
-</div>
+</div>-->

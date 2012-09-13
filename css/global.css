@@ -118,6 +118,7 @@ button {
 .contact-us-squares + .contact-us-squares + .contact-us-squares {
 	margin-left:0px;
 }
+
 /*
  * Navigation Styles
  */
@@ -203,9 +204,19 @@ button {
 	padding-bottom:5px;
 }
 
+.three-column > li {
+	float:left;
+	width:33%;
+}
+
 .four-column > li {
 	float:left;
 	width:25%;
+}
+
+.five-column > li {
+	float:left;
+	width:20%;
 }
 /*
  * Global Styles
@@ -239,6 +250,7 @@ button {
 .italic {
 	font-style:italic;
 }
+
 /* 
  * Presentation
  */
@@ -367,6 +379,14 @@ ul.lower-alpha {
 
 .width175 {
 	width:175px;
+}
+
+.width100 {
+	width:100px;
+}
+
+.width40 {
+	width:40px;
 }
 
 
@@ -2105,4 +2125,18 @@ p.nothing {
     top: 0px;
     width: 158px;
     z-index: 2;
+}
+
+.statistics {
+	width:75%;
+}
+
+.statistics li {
+	color:#666666;
+	font-size: 13px;
+}
+
+.statistics li span {
+	line-height:36px;
+	margin-right:5px;
 }

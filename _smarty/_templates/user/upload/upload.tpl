@@ -119,23 +119,33 @@
 			
 		</li>
 		<li class="input-field clear">
+            <fieldset>
+                <select class="select-9" name="sport_id">
+                    <option class="default">Pick a Sport</option>
+                    {foreach item=single from=$sports}
+                        <option value="{$single->getId()}">{$single->getSportName()}</option>
+                    {/foreach}
+                </select>
+            </fieldset>
+        </li>
+		<li class="input-field clear">
 			<ul class="three-column_sign-up left">
 				<li class="left">
 					<fieldset>
 						<select class="select-7" name="videoMonth">
 							<option class="default">Video Month</option>
-							<option value="January">January</option>
-							<option value="February">February</option>
-							<option value="March">March</option>
-							<option value="April">April</option>
-							<option value="May">May</option>
-							<option value="June">June</option>
-							<option value="July">July</option>
-							<option value="August">August</option>
-							<option value="September">September</option>
-							<option value="October">October</option>
-							<option value="November">November</option>
-							<option value="December">December</option>
+							<option value="1">January</option>
+							<option value="2">February</option>
+							<option value="3">March</option>
+							<option value="4">April</option>
+							<option value="5">May</option>
+							<option value="6">June</option>
+							<option value="7">July</option>
+							<option value="8">August</option>
+							<option value="9">September</option>
+							<option value="10">October</option>
+							<option value="11">November</option>
+							<option value="12">December</option>
 						</select>
 					</fieldset>
 				</li>
@@ -149,16 +159,6 @@
 				</li>
 			</ul>
 		</li>
-        <li class="input-field clear">
-            <fieldset>
-                <select class="select-3" name="sport_id">
-                    <option class="default">Pick a Sport</option>
-                    {foreach item=single from=$sports}
-                        <option value="{$single->getId()}">{$single->getSportName()}</option>
-                    {/foreach}
-                </select>
-            </fieldset>
-        </li>
 		<li class="input-field clear">
 			<button value="Join" type="submit" class="button_black_large left button_round">Continue</button> 
 			<span class="form-steps">Step 2 of 3</span>
