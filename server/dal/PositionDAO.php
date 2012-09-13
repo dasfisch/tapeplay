@@ -1,0 +1,58 @@
+<?php
+
+namespace tapeplay\server\dal;
+
+require_once("dal/BaseDOA.php");
+require_once("model/Position.php");
+
+use tapeplay\server\model\Position;
+use tapeplay\server\model\SearchFilter;
+
+/**
+ * Manages all db access for anything sport-related
+ */
+class SportDAO extends BaseDOA
+{
+
+	/**
+	 * Fetches the sport details
+	 * @param $id The id of the sport
+	 */
+	function get(SearchFilter $filter)
+	{
+        $where = !is_null($filter->getWhere()) ? $this->_setWhere($filter->getWhere()) : null;
+
+		$this->sql = "SELECT
+		                    *
+                        FROM
+                            positions positions"
+                        .$where;
+
+		$this->prep = $this->dbh->prepare($this->sql);
+		//$this->prep->bindValue(":id", $id, \PDO::PARAM_INT); //make sure this works like where maker
+		$this->prep->execute();
+
+        $sports = array();
+
+        while($value = $this->prep->fetch()) {
+            $sports[] = Position::create($value);
+        }
+
+        return $sports;
+	}
+
+	/**
+	 * Gets the active sports
+	 */
+	function getActive()
+	{
+		$this->sql = "SELECT * FROM sports WHERE active = 1";
+		$this->prep = $this->dbh->prepare($this->sql);
+		$this->prep->execute();
+	}
+
+	function getSportStats($id)
+	{
+
+	}
+}
