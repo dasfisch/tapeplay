@@ -70,7 +70,7 @@
             </div>
             <div class="bottom">
                 <p>
-                    <a href="">Terms of Use</a> |
+                    <a href="">Terms of Service</a> |
                     <a href="">Privacy Policy</a>
                 </p>
                 <p>

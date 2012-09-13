@@ -1,4 +1,4 @@
-<div id="content-left-column" class="left">
+<div id="{$divId}" class="left">
 	<h1>Privacy Notice</h1>
 	
 	<h2>Updated as of June, 2012</h2>

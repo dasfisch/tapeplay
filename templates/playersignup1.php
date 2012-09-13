@@ -123,7 +123,7 @@
                     By checking this box, I certify I am at least 13 years of age or older.
                 </div>
             </div>
-            <p class="error">* Please agree with our Terms of Use.</p>
+            <p class="error">* Please agree with our Terms of Service.</p>
         </div>
         <div class="bigButton black">
             <div class="topLeft whiteBg"></div>

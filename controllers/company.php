@@ -73,13 +73,30 @@
 			case 'privacy':
 				$smarty->assign('file', 'company/privacy-policy.tpl');
 
+				$smarty->assign('divId', 'content-left-column');
 				$smarty->display('home.tpl');
 
 				break;
 			case 'tos':
 				$smarty->assign('file', 'company/terms-of-service.tpl');
 
+				$smarty->assign('divId', 'content-left-column');
 				$smarty->display('home.tpl');
+
+				break;
+
+			case 'privacypop':
+				$smarty->assign('file', 'company/privacy-policy.tpl');
+
+				$smarty->assign('divId', 'popup-container');
+				$smarty->display('popup.tpl');
+
+				break;
+			case 'tospop':
+				$smarty->assign('file', 'company/terms-of-service.tpl');
+
+				$smarty->assign('divId', 'popup-container');
+				$smarty->display('popup.tpl');
 
 				break;
 			default:
