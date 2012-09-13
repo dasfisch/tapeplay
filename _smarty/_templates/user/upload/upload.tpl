@@ -119,6 +119,16 @@
 			
 		</li>
 		<li class="input-field clear">
+            <fieldset>
+                <select class="select-9" name="sport_id">
+                    <option class="default">Pick a Sport</option>
+                    {foreach item=single from=$sports}
+                        <option value="{$single->getId()}">{$single->getSportName()}</option>
+                    {/foreach}
+                </select>
+            </fieldset>
+        </li>
+		<li class="input-field clear">
 			<ul class="three-column_sign-up left">
 				<li class="left">
 					<fieldset>
@@ -149,16 +159,6 @@
 				</li>
 			</ul>
 		</li>
-        <li class="input-field clear">
-            <fieldset>
-                <select class="select-3" name="sport_id">
-                    <option class="default">Pick a Sport</option>
-                    {foreach item=single from=$sports}
-                        <option value="{$single->getId()}">{$single->getSportName()}</option>
-                    {/foreach}
-                </select>
-            </fieldset>
-        </li>
 		<li class="input-field clear">
 			<button value="Join" type="submit" class="button_black_large left button_round">Continue</button> 
 			<span class="form-steps">Step 2 of 3</span>

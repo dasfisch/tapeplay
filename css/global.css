@@ -118,6 +118,7 @@ button {
 .contact-us-squares + .contact-us-squares + .contact-us-squares {
 	margin-left:0px;
 }
+
 /*
  * Navigation Styles
  */
@@ -243,6 +244,7 @@ button {
 .italic {
 	font-style:italic;
 }
+
 /* 
  * Presentation
  */
