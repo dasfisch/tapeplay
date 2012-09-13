@@ -92,3 +92,19 @@
     } else {
         header('Location:'.$controller->configuration->URLs['baseUrl'].'company/about/');
     }
+
+/**
+ *
+Notice: Undefined index: postSport in C:\Users\Tim\Sites\tapeplay\controllers\user.php on line 517
+Notice: Undefined variable: stats in C:\Users\Tim\Sites\tapeplay\server\dal\StatsDAO.php on line 49
+Notice: Undefined index: postSport in C:\Users\Tim\Sites\tapeplay\controllers\user.php on line 558
+ */
+
+?>
+
+
+
+
+
+
+

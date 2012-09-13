@@ -45,7 +45,7 @@ use tapeplay\server\model\Sport;
 use tapeplay\server\model\User;
 use tapeplay\server\model\Video;
 
-global $controller, $post, $route, $smarty, $userBLL;
+global $controller, $post, $route, $smarty, $sport, $userBLL;
 
 $user = $userBLL->getUser();
 $user = isset($user) ? $user : null;
@@ -246,9 +246,9 @@ if (isset($route->method))
                     try {
 					    $userBLL->updateStatus(\AccountStatusEnum::$STEP2);
                     } catch(Exception $e) {
-                        echo '<pre>';
-                        var_dump($e);
-                        exit;
+//                        echo '<pre>';
+//                        var_dump($e);
+//                        exit;
                     }
 
 					// determine which page to load
@@ -345,8 +345,24 @@ if (isset($route->method))
 				{
                     if($user->getStatus() != \AccountStatusEnum::$COMPLETE) {
                         // update status
-                        $userBLL->updateStatus(\AccountStatusEnum::$STEP3);
+                        try {
+                            $userBLL->updateStatus(\AccountStatusEnum::$STEP3);
+                        } catch(Exception $e) {
+                            //there was an error; somehow we gotta figure that out.
+                        }
                     }
+
+//                    try {
+//                        $sportBll = new SportBLL();
+//
+//                        $search = new SearchFilter();
+//
+//                        $search->setWhere('id')
+//
+//                        $sport = $sportBll->get($search);
+//                    } catch(Exception $e) {
+//
+//                    }
 
                     /**
                      * @TODO: if user video uploads, check to see what sport they have attached to their account;
@@ -513,8 +529,18 @@ if (isset($route->method))
 
                         $startYear = date('Y', strtotime('now'));
 
+                        if(isset($_SESSION['postSport']) && $_SESSION['postSport'] != '') {
+                            $sportId = $_SESSION['postSport'];
+                        } else {
+                            $sport = isset($post['sport_id']) && $post['sport_id'] != '' ? $post['sport_id'] : $sport['id'];
+                        }
+
                         $statsBll = new StatsBLL();
-                        $stats = $statsBll->getStatsBySport($_SESSION['postSport']);
+                        try {
+                            $stats = $statsBll->getStatsBySport($sportId);
+                        } catch(Exception $e) {
+                            $stats = null;
+                        }
 
                         $video = null;
 
