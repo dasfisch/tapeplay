@@ -574,6 +574,7 @@ if (isset($route->method))
 						$smarty->assign("startYear", $startYear);
                         $smarty->assign('statCount', count($stats));
                         $smarty->assign('modder', $modder);
+                        $smarty->assign('modder', $modder);
                         $smarty->assign('stats', $stats);
 
 						break;

@@ -4,6 +4,18 @@
 	The more you tell us about yourself, the easier it is for coaches and scouts to find what they&rsquo;re looking for.
 </p>
 <form id="playerInfoForm" name="playerInfoForm" action="{#baseUrl#}user/info/" method="post">
+    <div id="videoInfo">
+        <p id="status">
+            Video Status: <span class="success italic">Upload complete!</span>
+        </p>
+        <img src="{#pandaBase#}{$video->getPandaId()}{#pandaImageExt#}" class="resultImage" />
+        <div class="info">
+            <h2>{$video->getTitle()}</h2>
+            <p>{$video->getUploadDate()|date_format:'%B %d, %Y %I:%M %p'}</p>
+            <p>12:00</p>
+            <p class="italic">Video file name</p>
+        </div>
+    </div>
 	<ul class="five-column">
 		<li>
 			<fieldset>
@@ -61,7 +73,7 @@
 				<fieldset>
 					<select class="select-2">
 						<option class="default">Select</option>
-						{section name=i start=6 loop=26 step=1}
+						{section name=i start=6 loop=16 step=1}
                             <option value="{$smarty.section.i.index}">{$smarty.section.i.index}</option>
                         {/section}
 					</select>
@@ -72,15 +84,7 @@
 			<fieldset>
 				<legend>Position</legend>
 				<ul class="font15">
-                    {foreach from=$stats item=stat}
-						<li>
-							<label for="point-gaurd">
-								<span class="checkbox"><span class="check"></span></span>
-								<input type="checkbox" id="point-gaurd" name="position_id[]" value="{$stat->getId()}" /> 
-								{$stat->getStatName()}
-							</label>
-						</li>
-					{/foreach}
+                    {include file=$sportName}
 				</ul>
 			</fieldset>
 		</li>

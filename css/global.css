@@ -2140,3 +2140,57 @@ p.nothing {
 	line-height:36px;
 	margin-right:5px;
 }
+
+#videoInfo {
+    margin-bottom: 30px;
+    overflow: hidden;
+}
+
+#videoInfo img {
+    float: left;
+    height: 100px;
+    margin-right: 15px;
+    width: 125px;
+}
+
+#videoInfo .info {
+    color: #666;
+    float: left;
+    height: 100px;
+    position: relative;
+    width: 500px;
+}
+
+#videoInfo .info h2 {
+    color: #666;
+    font-size: 24px;
+    line-height: normal;
+    margin-bottom: 0px;
+    padding: 0px;
+}
+
+#videoInfo .info p {
+    font-size: 12px;
+    line-height: normal;
+    margin-bottom: 0px;
+}
+
+#videoInfo .info .date {
+    font-size: 15px;
+}
+
+#videoInfo .info .length {
+    font-size: 12px;
+}
+
+#videoInfo .info .bottom {
+    bottom: 0px;
+    left: 0px;
+    position: absolute;
+}
+
+#videoInfo .info .italic {
+    bottom: 0px;
+    font-size: 12px;
+    position: absolute;
+}
