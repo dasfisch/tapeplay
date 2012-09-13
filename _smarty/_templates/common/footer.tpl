@@ -38,7 +38,7 @@
 					<div class="clear"></div>
 					<div id="footer-terms">
 						<ul>
-							<li><a href="{#baseUrl#}company/tos/">Terms of Use</a> | <a href="{#baseUrl#}company/privacy/">Privacy Policy</a></li>
+							<li><a href="{#baseUrl#}company/tos/">Terms of Service</a> | <a href="{#baseUrl#}company/privacy/">Privacy Policy</a></li>
 							<li>&copy; {'Y'|date} TapePlay, LLC. All Rights Reserved </li>
 						</ul>
 					</div>

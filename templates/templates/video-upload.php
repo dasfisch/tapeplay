@@ -201,7 +201,7 @@
 			</fieldset>
 			<div class="error-alert">
 				<ul>
-					<li>Please agree with our Terms of Use.</li>
+					<li>Please agree with our Terms of Service.</li>
 				</ul>
 			</div>
 		</li>

@@ -88,8 +88,8 @@
 					<ul>
 						<li>Follow Us:</li>
 						<li><a href="{#facebookUrl#}" target="_blank"><img src="/media/images/icon_mini-facebook.gif"/></a></li>
-						<li><a href="{#facebookUrl#}"><img src="/media/images/icon_mini-linkedin.gif"/></a></li>
-						<li><a href="{#facebookUrl#}"><img src="/media/images/icon_mini-googleplus.gif"/></a></li>
+						<li><a href="{#linkedInUrl#}" target="_blank"><img src="/media/images/icon_mini-linkedin.gif"/></a></li>
+						<li><a href="{#googlePlusUrl#}" target="_blank"><img src="/media/images/icon_mini-googleplus.gif"/></a></li>
 					</ul>
 				</div>
 			</div>

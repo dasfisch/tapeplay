@@ -226,7 +226,7 @@
 					<div class="clear"></div>
 					<div id="footer-terms">
 						<ul>
-							<li><a href="#">Terms of Use</a> | <a href="#">Privacy Policy</a></li>
+							<li><a href="#">Terms of Service</a> | <a href="#">Privacy Policy</a></li>
 							<li>&copy; 2011 TapePlay, LLC. All Rights Reserved </li>
 						</ul>
 					</div>
