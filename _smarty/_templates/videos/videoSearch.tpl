@@ -1,30 +1,43 @@
-<div id="content-left-column" class="left">
-    <div id="search">
-        <form name="search" method="post" action="{#baseUrl#}videos/search/">
-            <div class="inputField">
-                <div class="left"></div>
-                <div class="middle">
-                    <input type="text" class="standard" id="searchVal" name="searchVal" />
-                </div>
-                <div class="right"></div>
-            </div>
-            <div class="bigButton black">
-                <div class="topRight whiteBg"></div>
-                <div class="bottomRight whiteBg"></div>
-                <div class="middle">
-                    <input type="submit" value="Search" id="sendSearch" class="large black" />
-                </div>
-            </div>
-        </form>
-    </div>
-    {if $videoCount > 0}
-        <p class="resultTotal">{$videoCount} results</p>
-    {/if}
-    <div id="results">
-        {if $videoCount > 0}
+<div class="search">
+	<div id="content-left-column" class="left">
+	
+		<form name="search" method="post" action="{#baseUrl#}videos/search/">
+			<ul class="form-fields">
+				<li class="input-field clear">
+					
+					<div class="input_custom-text input_text80 width425 left">
+						<div class="custom-input_center custom-input_partial">
+							<span class="custom-input_top"></span>
+							<input type="text" name="search" value=""/>
+							<span class="custom-input_bottom"></span>
+						</div>
+						
+						<div class="custom-input_left custom-input_partial">
+							<span class="custom-input_top"></span>
+							<span class="custom-input_bottom"></span>
+						</div>
+											
+						<div class="custom-input_right custom-input_partial">
+							<span class="custom-input_top"></span>
+							<span class="custom-input_bottom"></span>
+						</div>
+						
+					</div>
+					
+					<button href="#" class="button_black_medium left">Search</button>
+				</li>
+				<li>
+					{if $videoCount > 0}
+				        <p class="results">{$videoCount} results</p>
+				    {/if}
+				</li>
+			</ul>
+		</form>
+		
+		{if $videoCount > 0}
             {foreach from=$videos item=video}
                 {if $video->getPrivacy() == true}
-                    <div class="result opaque">
+                   <!-- <div class="result opaque">
                         <div class="infoOpen">
                             <img src="{#pandaBase#}{$video->getPandaId()}{#pandaImageExt#}" class="resultImage locked" />
                             <div class="info">
@@ -50,30 +63,35 @@
                             <div class="bottomRight"></div>
                             <div class="direction"></div>
                         </div>
-                    </div>
+                    </div> -->
                 {else}
-                    <a href="{#baseUrl#}videos/view/{$video->getId()}/">
-                        <div class="result">
-                            <img src="{#pandaBase#}{$video->getPandaId()}{#pandaImageExt#}" class="resultImage" />
-                            <div class="info">
-                                <h2>{$video->getPlayer()->getFirstName()} {$video->getPlayer()->getLastName()}</h2>
-                                <p class="position">Chicago, IL</p>
-                                <p class="title">{$video->getTitle()}</p>
-                                <p class="date"><?php echo date('F, Y', strtotime('now')); ?></p>
-                            </div>
-                        </div>
-                    </a>
+                	<ul class="result-list">
+						<li>
+							<a href="{#baseUrl#}videos/view/{$video->getId()}/" class="video-link"></a>
+							<div class="result-image left">
+								<img class="resultImage" src="{#pandaBase#}{$video->getPandaId()}{#pandaImageExt#}">
+							</div>
+							<ul class="left">
+								<li class="header">{$video->getPlayer()->getFirstName()} {$video->getPlayer()->getLastName()}</li>
+								<li class="position-height">Postition, Height</li>
+								<li class="video-title">{$video->getTitle()}</li>
+								<li class="month-year"><?php echo date('F, Y', strtotime('now')); ?></li>
+							</ul>
+							<div class="clear"></div>
+						</li>
+					</ul>
                 {/if}
             {/foreach}
         {else}
-            <h2 class="nothing">No results were found!</h2>
-            <p class="nothing">Please try a different search!</p>
+            <h2>Sorry, no results were found.</h2>
         {/if}
-    </div>
-    {if $videoCount > 0}
-        {include file='common/pagination.tpl'}
-    {/if}
-</div>
-<div id="content-right-column" class="right">
-    {include file='common/sidebar/share.tpl'}
+		
+		{if $videoCount > 0}
+	        {include file='common/pagination.tpl'}
+	    {/if}
+		
+	</div>
+	<div id="content-right-column" class="right">
+	    {include file='common/sidebar/search.tpl'}
+	</div>
 </div>

@@ -1,4 +1,4 @@
-
+<!--
 <h2>Your Search Criteria</h2>
 <div class="criterium">
     <div class="option">
@@ -64,3 +64,10 @@
         <input type="hidden" value="95" name="max_height" />
     </div>
 </div>
+
+-->
+
+<div class="ad_300x250 right">
+	<a href="http://www.tapeplay.com/blog/"><img src="/media/images/ad_tapeplay-blog_ad_tapeplay-blog_300x250.jpg.jpg" height="200" width="200" /></a>
+</div>
+<div class="clear"></div>
