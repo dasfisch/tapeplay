@@ -21,13 +21,13 @@
 		{
 			$('a#signup-toc').click(function()
 			{
-				  window.open('/company/tos/', 'tpModal', 'width=500, height=500, resizable=no, status=no, location=no, toolbar=no');
+				  window.open('/company/tospop/', 'tpModal', 'width=500, height=500, resizable=no, status=no, location=no, toolbar=no');
 				  return false;
 			});
 
 			$('a#signup-privacy').click(function()
 						{
-							  window.open('/company/privacy/', 'tpModal', 'width=500, height=500, resizable=no, status=no, location=no, toolbar=no');
+							  window.open('/company/privacypop/', 'tpModal', 'width=500, height=500, resizable=no, status=no, location=no, toolbar=no');
 							  return false;
 						});
 		});

@@ -45,7 +45,7 @@ use tapeplay\server\model\Sport;
 use tapeplay\server\model\User;
 use tapeplay\server\model\Video;
 
-global $controller, $post, $route, $smarty, $sport, $userBLL;
+global $controller, $inputFilter, $post, $route, $smarty, $sport, $userBLL;
 
 $user = $userBLL->getUser();
 $user = isset($user) ? $user : null;
@@ -441,6 +441,9 @@ if (isset($route->method))
 						Util::setHeader("user/payment/");
 						break;
 					case AccountTypeEnum::$PLAYER:
+                        echo '<pre>';
+                        var_dump($post);
+                        exit;
 
 						// get player basics and add
                         $userBLL->getUser()->setNumber($post["number"]);
@@ -573,8 +576,9 @@ if (isset($route->method))
 
 						$smarty->assign("startYear", $startYear);
                         $smarty->assign('statCount', count($stats));
+                        $smarty->assign('hash', $inputFilter->createHash());
                         $smarty->assign('modder', $modder);
-                        $smarty->assign('modder', $modder);
+
                         $smarty->assign('stats', $stats);
 
 						break;

@@ -4,6 +4,9 @@
 	The more you tell us about yourself, the easier it is for coaches and scouts to find what they&rsquo;re looking for.
 </p>
 <form id="playerInfoForm" name="playerInfoForm" action="{#baseUrl#}user/info/" method="post">
+    <input type="hidden" name="sport" value="{$postSport}" />
+    <input type="hidden" name="user_id" value="{$userId}" />
+    <input type="hidden" name="hash" id="hash" value="{$hash}" />
     <div id="videoInfo">
         <p id="status">
             Video Status: <span class="success italic">Upload complete!</span>
@@ -71,7 +74,7 @@
 			<fieldset>
 				<legend>Grade</legend>
 				<fieldset>
-					<select class="select-2">
+					<select class="select-2" name="gradeLevel">
 						<option class="default">Select</option>
 						{section name=i start=6 loop=16 step=1}
                             <option value="{$smarty.section.i.index}">{$smarty.section.i.index}</option>
@@ -84,7 +87,7 @@
 			<fieldset>
 				<legend>Position</legend>
 				<ul class="font15">
-                    {include file=$sportName}
+
 				</ul>
 			</fieldset>
 		</li>
@@ -92,7 +95,7 @@
 			<fieldset>
 				<legend>Height</legend>
 				<fieldset>
-					<select class="select-2">
+					<select class="select-2" class="height">
 						<option class="default">Select</option>
 						{section name=i start=48 loop=96 step=1}
                             <option value="{$smarty.section.i.index}">{$smarty.section.i.index}</option>
@@ -105,7 +108,7 @@
 				<div class="input_custom-text input_text36 left">
 					<div class="custom-input_center custom-input_partial">
 						<span class="custom-input_top"></span>
-						<input type="text" name="search" value=".lbs" size="4" />
+						<input type="text" name="weight" value="lbs" size="4" />
 						<span class="custom-input_bottom"></span>
 					</div>
 					
@@ -132,7 +135,8 @@
 				<div class="input_custom-text input_text80 width600 left">
 					<div class="custom-input_center custom-input_partial">
 						<span class="custom-input_top"></span>
-						<input type="text" id="firstName" name="schoolSearchInput" value="School Name" />
+						<input type="text" value="School Name" id="schoolSearchInput" name="schoolSearchInput" value="School Name" />
+                        <input type="hidden" class="passer" name="schoolId" value="" />
 						<span class="custom-input_bottom"></span>
 					</div>
 					

@@ -1,4 +1,4 @@
-<div id="content-left-column" class="left">
+<div id="{$divId}" class="left">
 	<h1>Terms of Service (&quot;TOS&quot;)</h1>
 	
 	<p>
@@ -378,6 +378,8 @@ TapePlay. A revised Terms of Service will be effective as of the date it is post
 	</p>
 </div>
 
+{if $divId eq 'content-left-column'}
 <div id="content-right-column" class="right">
 	{include file='common/sidebar/share.tpl'}
 </div>
+{/if}

@@ -11,48 +11,35 @@ use tapeplay\server\model\SearchFilter;
 /**
  * Manages all db access for anything sport-related
  */
-class SportDAO extends BaseDOA
+class PositionDAO extends BaseDOA
 {
 
-	/**
-	 * Fetches the sport details
-	 * @param $id The id of the sport
-	 */
-	function get(SearchFilter $filter)
+	function getPositionsByPlayer($playerId)
 	{
-        $where = !is_null($filter->getWhere()) ? $this->_setWhere($filter->getWhere()) : null;
+		try
+		{
+			$this->sql = "SELECT pos.id, pos.name
+							FROM positions pos
+							INNER JOIN player_positions pp ON pos.id = pp.position_id
+							INNER JOIN players ply ON ply.id = pp.player_id
+							WHERE ply.id = :playerId";
 
-		$this->sql = "SELECT
-		                    *
-                        FROM
-                            positions positions"
-                        .$where;
+			$this->prep = $this->dbh->prepare($this->sql);
+			$this->prep->bindValue(":playerId", $playerId, \PDO::PARAM_INT);
+			$this->prep->execute();
+		}
+		catch (\PDOException $exception)
+		{
+			\TPErrorHandling::handlePDOException($exception->errorInfo);
+			return null;
+		}
 
-		$this->prep = $this->dbh->prepare($this->sql);
-		//$this->prep->bindValue(":id", $id, \PDO::PARAM_INT); //make sure this works like where maker
-		$this->prep->execute();
+		$positionList = array();
+		while ($row = $this->prep->fetch())
+		{
+			array_push($positionList, Position::create($row));
+		}
 
-        $sports = array();
-
-        while($value = $this->prep->fetch()) {
-            $sports[] = Position::create($value);
-        }
-
-        return $sports;
-	}
-
-	/**
-	 * Gets the active sports
-	 */
-	function getActive()
-	{
-		$this->sql = "SELECT * FROM sports WHERE active = 1";
-		$this->prep = $this->dbh->prepare($this->sql);
-		$this->prep->execute();
-	}
-
-	function getSportStats($id)
-	{
-
+		return $positionList;
 	}
 }

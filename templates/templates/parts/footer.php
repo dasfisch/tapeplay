@@ -38,7 +38,7 @@
 					<div class="clear"></div>
 					<div id="footer-terms">
 						<ul>
-							<li><a href="/home.php?page=terms-of-service">Terms of Use</a> | <a href="/home.php?page=privacy-policy">Privacy Policy</a></li>
+							<li><a href="/home.php?page=terms-of-service">Terms of Service</a> | <a href="/home.php?page=privacy-policy">Privacy Policy</a></li>
 							<li>&copy; 2011 TapePlay, LLC. All Rights Reserved </li>
 						</ul>
 					</div>

@@ -1,37 +1,22 @@
 <?php
 
-namespace tapeplay\server\bll;
+    namespace tapeplay\server\bll;
 
-require_once("dal/CoachDAO.php");
-require_once("bll/BaseBLL.php");
-require_once("model/Coach.php");
+    require_once("dal/PositionDAO.php");
+    require_once("bll/BaseBLL.php");
 
-use tapeplay\server\dal\CoachDAO;
-use tapeplay\server\model\Coach;
+    use tapeplay\server\bll\BaseBLL;
+    use tapeplay\server\dal\PositionDAO;
 
-/**
- * Manages all logic associate with a Coach.
- */
-class PositionBLL extends BaseBLL
-{
+    class PositionBLL extends BaseBLL
+    {
+        function __construct()
+        {
+            $this->dal = new PositionDAO();
+        }
 
-	function __construct()
-	{
-		$this->dal = new PositionDAO();
-	}
-
-
-	//////////////////////////////////////////////////////////
-	// Public Methods (API)
-	//////////////////////////////////////////////////////////
-
-	/**
-	 * Retrieves the coach object based on coach id sent.
-	 * @param $id int The ID of the coach that we want to grab.
-	 * @return Coach The coach that matches the ID.
-	 */
-	public function getPositionsBySport($sportid)
-	{
-		return $this->dal->get($sportId);
-	}
-}
+        public function getPositionsByPlayer($player)
+        {
+            return $this->dal->getPositionsByPlayer($player);
+        }
+    }
