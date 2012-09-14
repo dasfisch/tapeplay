@@ -4,11 +4,13 @@ namespace tapeplay\server\bll;
 
 require_once ("dal/PlayerDAO.php");
 require_once ("bll/BaseBLL.php");
+require_once ("bll/PositionBLL.php");
 require_once ("bll/StatsBLL.php");
 require_once ("model/Player.php");
 
 use tapeplay\server\dal\PlayerDAO;
 use tapeplay\server\bll\StatsBLL;
+use tapeplay\server\bll\PositionBLL;
 use tapeplay\server\model\Player;
 
 class PlayerBLL extends BaseBLL
@@ -22,11 +24,17 @@ class PlayerBLL extends BaseBLL
 	{
         $statsBLL = new StatsBLL();
 
+		$player = new Player();
         $player = $this->dal->get($id);
 
         $stats = $statsBLL->getPlayerStats($id, (int)$player->getSport()->getSportId());
 
         $player->setStats((array)$stats);
+
+		$positionBLL = new PositionBLL();
+		$positions = $positionBLL->getPositionsByPlayer($player->getId());
+
+		$player->getSport()->setPositions($positions);
 
         return $player;
 	}

@@ -7,6 +7,7 @@ class Sport
 	private $id;
 	private $sportName;
 	private $active;
+	private $positions;
 
     public function create($args) {
         $sport = new Sport();
@@ -51,4 +52,14 @@ class Sport
     public function __isset($name) {
         return isset($this->$name);
     }
+
+	public function setPositions(array $positions)
+	{
+		$this->positions = $positions;
+	}
+
+	public function getPositions()
+	{
+		return $this->positions;
+	}
 }
