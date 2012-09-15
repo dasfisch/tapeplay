@@ -35,9 +35,10 @@ class UserDAO extends BaseDOA
             $this->sql = 'SELECT
                                 u.*,
                                 p.id AS player_id, p.number, p.height, p.grade_level, p.video_access,
-                                p.position, p.weight, p.coach_name, p.graduation_month, p.graduation_year,
+                                p.weight, p.coach_name, p.graduation_month, p.graduation_year,
                                 s.id AS schoolId, s.name as schoolName, s.city as schoolCity,
                                 s.state as schoolState, s.division AS schoolDivision,
+                                pos.name as position,
                                 sp.id AS sport_id,
                                 sp.name AS sport_name
                             FROM
@@ -54,6 +55,14 @@ class UserDAO extends BaseDOA
                                 sports sp
                                     ON
                                         sp.id = p.sport_id
+                            LEFT JOIN
+                                player_positions as playPos
+                                    ON
+                                        playPos.player_id=p.id
+                            LEFT JOIN
+                                positions as pos
+                                    ON
+                                        pos.id=playPos.position_id
                             WHERE u.id = :id';
 
 			$this->prep = $this->dbh->prepare($this->sql);

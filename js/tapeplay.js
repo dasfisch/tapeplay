@@ -568,7 +568,27 @@ jQuery(document).ready(function(){
     	if (event.type == "blur" && ($(this).get(0)).value == ("" || ($(this).get(0)).defaultValue)) {
     		($(this).get(0)).type = "text";
     	}
-    })
+    });
+
+    jQuery('input').each(function(index, element) {
+        var $element = $(element);
+        var defaultValue = $element.val();
+
+        console.log(defaultValue)
+
+        $element.focus(function() {
+            var actualValue = $element.val();
+            if (actualValue == defaultValue) {
+                $element.val('');
+            }
+        });
+        $element.blur(function() {
+            var actualValue = $element.val();
+            if (!actualValue) {
+                $element.val(defaultValue);
+            }
+        });
+    });
 });
 
 function openBubble(obj) {
