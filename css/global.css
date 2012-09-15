@@ -425,7 +425,6 @@ fieldset li {
 	background-color:#000000;
 	border:none;
 	color:#ffffff;
-	display:block;
 	font-size:36px;
 	padding:38px 52px;
 	text-decoration:none;
@@ -2146,6 +2145,15 @@ p.nothing {
 	z-index:1000;
 }
 
+.result-list .locked .video-link {
+	background:transparent url(/media/images/background_locked-white-70_1x1.png) repeat 0px 0px;
+}
+
+.result-list .locked .video-link img {
+	margin-left:80px;
+	margin-top:25px;
+}
+
 .result-list > li {
 	padding:20px 0px 20px 45px;
 	position:relative;
@@ -2208,6 +2216,48 @@ p.nothing {
 
 .pagination .previous {margin-right:60px;}
 .pagination .next {margin-left:60px;}
+
+.browse {
+	color:#666666;
+}
+
+.browse > li {
+	float:left;
+	height:210px;
+	margin-right:50px;
+	position:relative;
+	width:125px;
+}
+
+.browse a {
+	height:100%;
+	left:0px;
+	position:absolute;
+	top:0px;
+	width:100%;
+}
+
+.browse .video-image img {
+	width:100%;
+}
+
+.browse .name {
+	font-size:18px;
+}
+
+.browse .position-height, .browse .month-year {
+	font-size:12px;
+	line-height:18px;
+}
+
+.browse .locked a {
+	background:transparent url(/media/images/background_locked-white-70_1x1.png) repeat 0px 0px;
+}
+
+.browse .locked a img {
+	margin-top:5px;
+	margin-left:35px;
+}
 
 #videoInfo {
     margin-bottom: 30px;
