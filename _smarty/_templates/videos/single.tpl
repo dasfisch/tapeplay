@@ -2,7 +2,7 @@
 	<h1>{$player->getFirstName()} {$player->getLastName()}</h1>
 	<ul class="video-title-data">
 		<li>{$video->getTitle()}</li>
-		<li>{$video->getRecordedMonth()}, {$video->getRecordedYear()}</li>
+		<li>{$video->getRecordedMonthName()}, {$video->getRecordedYear()}</li>
 	</ul>
 	<a href="{#baseUrl#}videos/search/{if $goBack ==1}?back=1{/if}" class="return">Back to search results</a>
 	<div class="clear"></div>

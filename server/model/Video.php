@@ -8,26 +8,27 @@ class Video
 {
 	public static function create($arr)
 	{
-        $player = new Player();
-        $video = new Video();
+		$player = new Player();
+		$video = new Video();
 
-        $video->setId($arr["0"]);
-        $video->setPandaId($arr["panda_id"]);
-        $video->setTitle($arr["title"]);
-        $video->setUploadDate($arr["uploaded_date"]);
-        $video->setRecordedMonth($arr["recorded_month"]);
-        $video->setRecordedYear($arr["recorded_year"]);
-        $video->setActive($arr["active"]);
-        $video->setViews($arr["views"]);
-        $video->setSaves($arr["saves"]);
-        $video->setPrivacy($arr['is_private']);
-        $video->setSportId($arr['sport_id']);
+		$video->setId($arr["0"]);
+		$video->setPandaId($arr["panda_id"]);
+		$video->setTitle($arr["title"]);
+		$video->setUploadDate($arr["uploaded_date"]);
+		$video->setRecordedMonth($arr["recorded_month"]);
+		$video->setRecordedYear($arr["recorded_year"]);
+		$video->setActive($arr["active"]);
+		$video->setViews($arr["views"]);
+		$video->setSaves($arr["saves"]);
+		$video->setPrivacy($arr['is_private']);
+		$video->setSportId($arr['sport_id']);
 
-        if(isset($arr['first_name'])) {
-            $video->setPlayer($player->create($arr));
-        }
+		if (isset($arr['first_name']))
+		{
+			$video->setPlayer($player->create($arr));
+		}
 
-        $video->count = $arr['videoCount'];
+		$video->count = $arr['videoCount'];
 
 		return $video;
 	}
@@ -43,24 +44,24 @@ class Video
 	private $_active;
 	private $_comments;
 	private $_saves;
-    private $_sportId;
-    private $_privacy;
-    private $_player;
+	private $_sportId;
+	private $_privacy;
+	private $_player;
 
-    /**
-     * We should bring this down to two methods. The magic methods
-     * will make our lives easier.
-     *
-     * This way we can just do the following:
-     *
-     * $this->_id = 23;
-     * echo $this->_id;
-     *
-     * Or we can do as regular methods:
-     *
-     * $this->set('_id', 23);
-     * $this->get('_id');
-     */
+	/**
+	 * We should bring this down to two methods. The magic methods
+	 * will make our lives easier.
+	 *
+	 * This way we can just do the following:
+	 *
+	 * $this->_id = 23;
+	 * echo $this->_id;
+	 *
+	 * Or we can do as regular methods:
+	 *
+	 * $this->set('_id', 23);
+	 * $this->get('_id');
+	 */
 //    public function __set($name, $value) {
 //        $this->$name = $value;
 //    }
@@ -140,6 +141,11 @@ class Video
 		return $this->_recordedMonth;
 	}
 
+	public function getRecordedMonthName()
+	{
+		return date("F", mktime(0, 0, 0, ($this->_recordedMonth)));
+	}
+
 	public function setRecordedYear($uploadYear)
 	{
 		$this->_recordedYear = $uploadYear;
@@ -170,43 +176,43 @@ class Video
 		return $this->_uploadDate;
 	}
 
-    public function setSaves($saves)
-   	{
-   		$this->_saves = $saves;
-   	}
+	public function setSaves($saves)
+	{
+		$this->_saves = $saves;
+	}
 
-   	public function getSaves()
-   	{
-   		return $this->_saves;
-   	}
+	public function getSaves()
+	{
+		return $this->_saves;
+	}
 
-    public function setPrivacy($privacy)
-   	{
-   		$this->_privacy = ((int)$privacy === 1) ? 1 : 0;
-   	}
+	public function setPrivacy($privacy)
+	{
+		$this->_privacy = ((int)$privacy === 1) ? 1 : 0;
+	}
 
-   	public function getPrivacy()
-   	{
-   		return $this->_privacy;
-   	}
+	public function getPrivacy()
+	{
+		return $this->_privacy;
+	}
 
-    public function setPlayer($user)
-   	{
-   		$this->_player = $user;
-   	}
+	public function setPlayer($user)
+	{
+		$this->_player = $user;
+	}
 
-   	public function getPlayer()
-   	{
-   		return $this->_player;
-   	}
+	public function getPlayer()
+	{
+		return $this->_player;
+	}
 
-    public function setSportId($sportId)
-   	{
-   		$this->_sportId = $sportId;
-   	}
+	public function setSportId($sportId)
+	{
+		$this->_sportId = $sportId;
+	}
 
-   	public function getSportId()
-   	{
-   		return $this->_sportId;
-   	}
+	public function getSportId()
+	{
+		return $this->_sportId;
+	}
 }
