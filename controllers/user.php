@@ -608,6 +608,39 @@ if (isset($route->method))
 						break;
 				}
 
+                if(!isset($_SESSION['postSport']) || $_SESSION['postSport'] == 0 || $_SESSION['postSport'] == '') {
+                    $videoBLL = new VideoBLL();
+
+                    $search = new SearchFilter();
+
+                    $search->setSort('name', 'uploaded_date');
+                    $search->setSort('method', 'videos');
+                    $search->setSort('order', 'DESC');
+                    $search->setWhere('method', 'videos');
+                    $search->setWhere('player_id', $user->getId());
+
+                    $search->limit = 1;
+                    $search->page = 1;
+
+                    if(!isset($_SESSION['last_video']) || (int)$_SESSION['last_video'] <= 0) {
+                        $search->setWhere('player_id', $user->getId());
+                    } else {
+                        $search->setWhere('id', $_SESSION['last_video']);
+                    }
+
+                    try {
+                        $video = $videoBLL->search($search);
+
+                        $smarty->assign('video', $video[0]);
+
+                        echo '<pre>';
+                        var_dump($video);
+                        exit;
+                    } catch(Exception $e) {
+
+                    }
+                }
+
 				$smarty->assign('file', $template);
                 $smarty->assign('postSport', $_SESSION['postSport']);
                 $smarty->assign('userId', $userBLL->getUser()->getId());
