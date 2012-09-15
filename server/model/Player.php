@@ -18,9 +18,9 @@ class Player extends User
 	{
 		$player = new Player();
 
-        //on a get, I need to figure out the sql to get the player_id back properly
-        $arr["player_id"] = isset($arr["player_id"]) ? $arr["player_id"] : 1;
-        $arr["position"] = isset($arr["position"]) ? $arr["position"] : 0;
+		//on a get, I need to figure out the sql to get the player_id back properly
+		$arr["player_id"] = isset($arr["player_id"]) ? $arr["player_id"] : 1;
+		$arr["position"] = isset($arr["position"]) ? $arr["position"] : 0;
 
 		// set user attributes
 		$player->setUserId($arr["id"]);
@@ -39,11 +39,11 @@ class Player extends User
 		// set player attributes
 		$player->setId($arr["player_id"]);
 		$player->setNumber($arr["number"]);
-        $player->setConvertedHeight($arr["height"]);
-        $player->setHeight($arr["height"]);
-        $player->setGradeLevel($arr["grade_level"]);
-        $player->setOrdinalGradeLevel($arr["grade_level"]);
-        $player->setPlayingLevel($arr["grade_level"]);
+		$player->setConvertedHeight($arr["height"]);
+		$player->setHeight($arr["height"]);
+		$player->setGradeLevel($arr["grade_level"]);
+		$player->setOrdinalGradeLevel($arr["grade_level"]);
+		$player->setPlayingLevel($arr["grade_level"]);
 		$player->setVideoAccess($arr["video_access"]);
 		$player->setPosition($arr["position"]);
 		$player->setWeight($arr["weight"]);
@@ -52,22 +52,23 @@ class Player extends User
 		$player->setGraduationYear($arr["graduation_year"]);
 
 		// set school, if the user has one associated with them
-        if(isset($arr['schoolId']) && (int)$arr['schoolId'] > 0) {
-            $school = new School();
-            $school->setId($arr["schoolId"]);
-            $school->setName($arr["schoolName"]);
-            $school->setCity($arr["schoolCity"]);
-            $school->setState($arr["schoolState"]);
-            $school->setDivision($arr["schoolDivision"]);
+		if (isset($arr['schoolId']) && (int)$arr['schoolId'] > 0)
+		{
+			$school = new School();
+			$school->setId($arr["schoolId"]);
+			$school->setName($arr["schoolName"]);
+			$school->setCity($arr["schoolCity"]);
+			$school->setState($arr["schoolState"]);
+			$school->setDivision($arr["schoolDivision"]);
 
-            $player->setSchool($school);
-        }
+			$player->setSchool($school);
+		}
 
 		$sport = new Sport();
 		$sport->setId($arr["sport_id"]);
 		$sport->setSportName($arr["sport_name"]);
 
-        $player->setSport($sport);
+		$player->setSport($sport);
 
 		return $player;
 	}
@@ -76,8 +77,8 @@ class Player extends User
 	private $_number;
 	private $_position;
 	private $_gradeLevel;
-    private $_ordGradeLevel;
-    private $_convertedHeight;
+	private $_ordGradeLevel;
+	private $_convertedHeight;
 	private $_height;
 	private $_videoAccess;
 	private $_sport;
@@ -87,8 +88,8 @@ class Player extends User
 	private $_coachName;
 	private $_graduationMonth;
 	private $_graduationYear;
-    private $_playingLevel;
-    private $_myVideos;
+	private $_playingLevel;
+	private $_myVideos;
 
 	function __construct(User $user = null)
 	{
@@ -124,56 +125,73 @@ class Player extends User
 		return $this->_gradeLevel;
 	}
 
-    public function setOrdinalGradeLevel($gradeLevel)
-   	{
-   		$this->_ordGradeLevel = $gradeLevel. gmdate("S", (((abs($gradeLevel) + 9) % 10) + ((abs($gradeLevel / 10) % 10) == 1) * 10) * 86400);
-   	}
+	public function setOrdinalGradeLevel($gradeLevel)
+	{
+		$this->_ordGradeLevel = $gradeLevel . gmdate("S", (((abs($gradeLevel) + 9) % 10) + ((abs($gradeLevel / 10) % 10) == 1) * 10) * 86400);
+	}
 
-   	public function getOrdinalGradeLevel()
-   	{
-   		return $this->_ordGradeLevel;
-   	}
+	public function getOrdinalGradeLevel()
+	{
+		return $this->_ordGradeLevel;
+	}
 
-    public function setPlayingLevel($gradeLevel) {
-        if($gradeLevel < 9) {
-            $this->_playingLevel = 'Grade School';
-        } elseif($gradeLevel < 13) {
-            $this->_playingLevel = 'High School';
-        } elseif($gradeLevel < 17) {
-            $this->_playingLevel = 'College';
-        } else {
-            $this->_playingLevel = 'Professional';
-        }
-    }
+	public function setPlayingLevel($gradeLevel)
+	{
+		if ($gradeLevel < 9)
+		{
+			$this->_playingLevel = 'Grade School';
+		}
+		elseif ($gradeLevel < 13)
+		{
+			$this->_playingLevel = 'High School';
+		}
+		elseif ($gradeLevel < 17)
+		{
+			$this->_playingLevel = 'College';
+		}
+		else
+		{
+			$this->_playingLevel = 'Professional';
+		}
+	}
 
-    public function getPlayingLevel() {
-        return $this->_playingLevel;
-    }
+	public function getPlayingLevel()
+	{
+		return $this->_playingLevel;
+	}
 
-    public function setHeight($height)
-   	{
-   		$this->_height = $height;
-   	}
+	public function setHeight($height)
+	{
+		$this->_height = $height;
+	}
 
-   	public function getHeight()
-   	{
-   		return $this->_height;
-   	}
+	public function getHeight()
+	{
+		return $this->_height;
+	}
 
-    public function setConvertedHeight($height)
-   	{
-        $feet = $height % 12;
-        $inches = $height - ($feet * 12);
+	public function getFriendlyHeight()
+	{
+		$feet = floor($this->_height / 12);
+		$inches = $this->_height % 12;
 
-        $final = $feet.'\' '.$inches.'"';
+		return $feet . "' " . $inches . "\"";
+	}
 
-        $this->_convertedHeight = $final;
-   	}
+	public function setConvertedHeight($height)
+	{
+		$feet = $height % 12;
+		$inches = $height - ($feet * 12);
 
-   	public function getConvertedHeight()
-   	{
-   		return $this->_convertedHeight;
-   	}
+		$final = $feet . '\' ' . $inches . '"';
+
+		$this->_convertedHeight = $final;
+	}
+
+	public function getConvertedHeight()
+	{
+		return $this->_convertedHeight;
+	}
 
 	public function setId($id)
 	{
@@ -285,15 +303,18 @@ class Player extends User
 		return $this->_graduationYear;
 	}
 
-    public function setMyVideos($videos) {
-        $this->_myVideos = $videos;
-    }
+	public function setMyVideos($videos)
+	{
+		$this->_myVideos = $videos;
+	}
 
-    public function getMyVideos() {
-        return $this->_myVideos;
-    }
+	public function getMyVideos()
+	{
+		return $this->_myVideos;
+	}
 
-    public function __isset($name) {
-        return isset($this->$name);
-    }
+	public function __isset($name)
+	{
+		return isset($this->$name);
+	}
 }

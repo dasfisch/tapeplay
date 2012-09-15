@@ -1,5 +1,4 @@
 <h1>Player Sign Up</h1>
-{include file='common/message.tpl'}
 <p>
 	The more you tell us about yourself, the easier it is for coaches and scouts to find what they&rsquo;re looking for.
 </p>

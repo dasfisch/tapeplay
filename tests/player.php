@@ -9,22 +9,8 @@ use tapeplay\server\model\School;
 
 $bll = new PlayerBLL();
 
-$school = new School();
-$school->setId(1);
-$school->setName("North Carolina");
+$player = $bll->get(14);
 
-$player = new Player();
-$player->setNumber(23);
-$player->setGuardianSignup(1);
-$player->setSchool($school);
-$player->setHeight(15);
-$player->setGradeLevel(10);
-$player->setVideoAccess(1);
-
-$userID = 1;
-
-$bll->insert($player, $userID);
-
-?>
+print_r($player);
 
 

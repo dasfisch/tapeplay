@@ -4,7 +4,7 @@
 	<div class="contact-us-squares left">
 		<h2>General Inquiries</h2>
 		<p>
-			If you need help, please <a href="#" title="Frequently Asked Questions (FAQ)">visit our FAQs</a>. There you'll find answers to many common questions about using TapePlay.
+			If you need help, please <a href="{#baseUrl#}company/faq/" title="Frequently Asked Questions (FAQ)">visit our FAQs</a>. There you'll find answers to many common questions about using TapePlay.
 		</p>
 		<p>
 			Still can&rsquo;t find the answer? We&rsquo;re here to help. Drop us a line.

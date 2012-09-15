@@ -10,7 +10,7 @@
 				<ul>
 					<li class="video-image"><img src="{#pandaBase#}{$video->getPandaId()}{#pandaImageExt#}"/></li>
 					<li class="name">{$video->getPlayer()->getFirstName()} {$video->getPlayer()->getLastName()}</li>
-					<li class="position-height">{$video->getPlayer()->getPosition()}, {$video->getPlayer()->getHeight()}"</li>
+					<li class="position-height">{$video->getPlayer()->getPosition()}, {$video->getPlayer()->getFriendlyHeight()}</li>
 					<li class="month-year">{$video->getUploadDate()|date_format:"%B %Y"}</li>
 				</ul>
 			</li>
@@ -20,7 +20,7 @@
 				<ul>
 					<li class="video-image"><img src="{#pandaBase#}{$video->getPandaId()}{#pandaImageExt#}"/></li>
 					<li class="name">{$video->getPlayer()->getFirstName()} {$video->getPlayer()->getLastName()}</li>
-					<li class="position-height">{$video->getPlayer()->getPosition()}, {$video->getPlayer()->getHeight()}"</li>
+					<li class="position-height">{$video->getPlayer()->getPosition()}, {$video->getPlayer()->getFriendlyHeight()}</li>
 					<li class="month-year">{$video->getUploadDate()|date_format:"%B %Y"}</li>
 				</ul>
         	</li>

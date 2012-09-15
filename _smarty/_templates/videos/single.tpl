@@ -48,7 +48,7 @@
 				<h1>#{$player->getNumber()} {$player->getFirstName()} {$player->getLastName()}</h1>
 				<span class="grade"><img src="/media/images/icon_high-school-athlete.png" /></span>
 				<ul class="user-profile">
-					<li>{$player->getPosition()}, {$player->getHeight()}&quot;, {$player->getWeight()}.lbs</li>
+					<li>{$player->getPosition()}, {$player->getFriendlyHeight()}, {$player->getWeight()} lbs</li>
 					<li>{$player->getGradeLevel()}/{$player->getAge()}</li>
 					<li>{$player->getSchool()->getName()}</li>
 					<li>Coach&rsquo;s Name</li>

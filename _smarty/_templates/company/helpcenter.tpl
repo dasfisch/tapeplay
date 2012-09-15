@@ -4,13 +4,13 @@
 	<h2>Get Started</h2>
 
 	<p>
-		TapePlay was created for the player. We&rsquo;re here to give power back to the talented athletes that deserve to be seen by coaches and scouts, not just the well connected. <a href="{#baseurl#}company/faq/" title="Get Started">Get started now</a>.
+		TapePlay was created for the player. We&rsquo;re here to give power back to the talented athletes that deserve to be seen by coaches and scouts, not just the well connected. <a href="{#baseUrl#}company/getstarted/" title="Get Started">Get started now</a>.
 	</p>
 
 	<h2>Frequently Asked Questions</h2>
 
 	<p>
-		If you need help, please <a href="{#baseurl#}company/faq/" title="Frequently Asked Questions (FAQ)">visit our FAQs</a>. There you&rsquo;ll find answers to many common questions about using TapePlay.
+		If you need help, please <a href="{#baseUrl#}company/faq/" title="Frequently Asked Questions (FAQ)">visit our FAQs</a>. There you&rsquo;ll find answers to many common questions about using TapePlay.
 	</p>
 
 	<h2>Do&rsquo;s and Don&rsquo;ts</h2>
@@ -22,7 +22,7 @@
 	<h2>Advertising</h2>
 
 	<p>
-		Get access to one of the most highly engaged audiences around with TapePlay. <a href="{#baseUrl#}company/advertising" title="Advertising">Learn more</a>.
+		Get access to one of the most highly engaged audiences around with TapePlay. <a href="{#baseUrl#}company/advertising/" title="Advertising">Learn more</a>.
 	</p>
 </div>
 
