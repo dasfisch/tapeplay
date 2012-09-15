@@ -640,7 +640,7 @@ if (isset($route->method))
                 }
 
 				$smarty->assign('file', $template);
-                $smarty->assign('postSport', $_SESSION['postSport']);
+                $smarty->assign('postSport', $sportId);
                 $smarty->assign('userId', $userBLL->getUser()->getId());
 
 				$smarty->display("home.tpl");
