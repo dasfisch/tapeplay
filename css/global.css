@@ -514,6 +514,10 @@ form fieldset + .error-alert {
 	color:#ff0000;
 	text-decoration:underline;
 }
+
+.error {
+	color:#ff0000;
+}
 /* Checkbox */
 .checkbox {
 	background-image: url('/media/images/form/checkbox.gif');
