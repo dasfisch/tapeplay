@@ -631,9 +631,11 @@ if (isset($route->method))
                     try {
                         $video = $videoBLL->search($search);
 
+                        $sportId = $video->getSportId();
+
                         $smarty->assign('video', $video[0]);
                     } catch(Exception $e) {
-
+                        $sportId = 8;
                     }
                 }
 
