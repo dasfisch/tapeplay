@@ -632,10 +632,6 @@ if (isset($route->method))
                         $video = $videoBLL->search($search);
 
                         $smarty->assign('video', $video[0]);
-
-                        echo '<pre>';
-                        var_dump($video);
-                        exit;
                     } catch(Exception $e) {
 
                     }
