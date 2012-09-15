@@ -60,19 +60,7 @@
 				</ul>
 			</div>
 		</li>
-		<li class="input-field clear">
-			<fieldset class="left">
-				<ul class="font15">
-					<li>
-						<label for="i-agree">
-							<span class="checkbox"><span class="check"></span></span>
-							<input type="checkbox" id="i-agree" name="remember_me" /> 
-							Remember Me
-						</label>
-					</li>
-				</ul>
-			</fieldset>
-		</li>
+
 		<li class="input-field clear">
 			<button type="submit" class="button_black_large left button_round">Log In</button> 
 		</li>
