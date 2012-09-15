@@ -1,47 +1,142 @@
-<div id="content-left-column">
-	<div id="video">
-		<div id="primaryInfo">
-			<div id="left">
-				<h2>{$player->getFirstName()} {$player->getLastName()}</h2>
-				<p class="title">{$video->getTitle()}</p>
-				<p class="date">{$video->getRecordedMonth()} / {$video->getRecordedYear()}</p>
+<div class="single">
+	<h1>{$player->getFirstName()} {$player->getLastName()}</h1>
+	<ul class="video-title-data">
+		<li>{$video->getTitle()}</li>
+		<li>{$video->getRecordedMonth()}, {$video->getRecordedYear()}</li>
+	</ul>
+	<a href="{#baseUrl#}videos/search/{if $goBack ==1}?back=1{/if}" class="return">Back to search results</a>
+	<div class="clear"></div>
+	<div class="video-player">
+		<video id="videoPlayer" width="890" height="455">
+            <source src="{$videoDisplayInfo->getMp4Source()}"
+                    type="video/mp4"/>
+            <source src="{$videoDisplayInfo->getWebmSource()}"
+                    type="video/webm"/>
+        </video>
+        <script type='text/javascript'>
+            jwplayer('videoPlayer').setup({
+                modes:[
+                    { type:"html5" },
+                    { type:"flash", src:"/media/playback/player.swf" },
+                    { type:"download" }
+                ],
+                skin:"/media/playback/skins/normal/tapeplayer.zip",
+                autostart:false,
+                dock:false,
+                "controlbar.position":"over"
+            });
+        </script>
+	</div>
+	<div class="video-data">
+		<ul>
+			<li class="views"><b>{$video->getViews()}</b> Views</li>
+			<li class="saves"><b>{$video->getSaves()}</b> Saves</li>
+			<li class="upload-date">Uploaded {$video->getUploadDate()|date_format:"%B %d, %Y %I:%M %p"}</li>
+			<li class="report"><a href="#">Report</a></li>
+			{if isset($user) && !empty($user)}<li class="save"><a href="#">Save</a></li>{/if}
+			<li class="share"><a href="#">Share</a></li>
+		</ul>
+		<input type="hidden" id="hash" value="{$hash}"/>
+		<input type="hidden" id="user-id" value="{$userId}"/>
+		<input type="hidden" id="video-id" value="{$video->getId()}"/>
+		<div class="clear"></div>
+	</div>
+	
+	<div class="video-content">
+		<div class="content-left left">
+			<div class="user-info">
+				<h1>#{$player->getNumber()} {$player->getFirstName()} {$player->getLastName()}</h1>
+				<span class="grade"><img src="/media/images/icon_high-school-athlete.png" /></span>
+				<ul class="user-profile">
+					<li>{$player->getPosition()}, {$player->getHeight()}&quot;, {$player->getWeight()}.lbs</li>
+					<li>{$player->getGradeLevel()}/{$player->getAge()}</li>
+					<li>{$player->getSchool()->getName()}</li>
+					<li>Coach&rsquo;s Name</li>
+				</ul>
+				
+				{if isset($stats) && count($stats) > 0}
+					<ul class="user-stats three-column">
+						{assign var=i value=0}
+						{foreach from=$stats item=stat}
+							{if $i % $modder == 0 || $i == 0}
+							<li>
+							{/if}
+							{$stat->getStatName()}: {$stat->getStatValue()}
+							{if ($i%$modder == $modder - 1 && $i > $modder) || $i == ($statCount - 1)}
+							</li>
+							{/if}
+							{$i = $i+1}
+						{/foreach}
+					</ul>
+				{/if}
+			
+				<div class="clear"></div>
 			</div>
-			<div id="right">
-				<a href="{#baseUrl#}videos/search/{if $goBack ==1}?back=1{/if}">Back to search results</a>
-			</div>
-		</div>
-		<div id="player">
-            <video id="videoPlayer" width="890" height="455">
-                <source src="{$videoDisplayInfo->getMp4Source()}"
-                        type="video/mp4"/>
-                <source src="{$videoDisplayInfo->getWebmSource()}"
-                        type="video/webm"/>
-            </video>
-            <script type='text/javascript'>
-                jwplayer('videoPlayer').setup({
-                    modes:[
-                        { type:"html5" },
-                        { type:"flash", src:"/media/playback/player.swf" },
-                        { type:"download" }
-                    ],
-                    skin:"/media/playback/skins/normal/tapeplayer.zip",
-                    autostart:false,
-                    dock:false,
-                    "controlbar.position":"over"
-                });
-            </script>
-		</div>
-		<div id="videoInfo">
-			<ul id="left">
-				<li class="basic"><span class="bold">{$video->getViews()}</span> views</li>
-				<li class="basic"><span class="bold">{$video->getSaves()}</span> saves</li>
-				<li class="basic"><span class="italic">Uploaded {$video->getUploadDate()|date_format:"%B %d, %Y %I:%M %p"}</span></li>
+			<h2>More videos from {$player->getFirstName()} {$player->getLastName()}</h2>
+			<ul class="more-videos">
+			
+				{if isset($videos) && count($videos) > 0}
+					{foreach from=$videos item=video}
+						{if $video->getPrivacy() == true}
+							<li class="locked">
+								<a href="#" onclick="return false;"><img src="/media/images/background_lock.png" /></a>
+								<div class="video-image">
+									<img src="https://s3.amazonaws.com/tpvideosdev/ba5dc5411fa485fa43056f4f3e18d600_1.jpg"/>
+								</div>
+								<ul>
+									<li class="video-title">{$video->getTitle()}</li>
+									<li class="name">{$player->getFirstName()} {$player->getLastName()}</li>
+									<li class="month-year">{$video->getUploadDate()}</li>
+								</ul>
+								<div class="clear"></div>
+							</li>
+							<!-- BUBBLE STUFF
+							<div class="infoBubble leftCentered">
+								<div class="topLeft"></div>
+								<div class="topRight"></div>
+								<div class="middle">
+									<p>
+										<strong>We're sorry.</strong> Only account holders can view this video.
+										<br/><br/>
+										Want to view this video?
+										<br/>
+										<a>Join</a> or <a>log in</a>.
+									</p>
+								</div>
+								<div class="directionTopLeft"></div>
+								<div class="bottomRight"></div>
+								<div class="direction"></div>
+							</div> -->
+						{else}
+							<li>
+								<a href="{#baseUrl#}videos/view/{$video->getId()}/"></a>
+								<div class="video-image">
+									<img src="https://s3.amazonaws.com/tpvideosdev/ba5dc5411fa485fa43056f4f3e18d600_1.jpg"/>
+								</div>
+								<ul>
+									<li class="video-title">{$video->getTitle()}</li>
+									<li class="name">{$player->getFirstName()} {$player->getLastName()}</li>
+									<li class="month-year">{$video->getUploadDate()}</li>
+								</ul>
+								<div class="clear"></div>
+							</li>
+						{/if}
+					{/foreach}
+				{/if}
+		
 			</ul>
-			<ul id="right">
-				<input type="hidden" id="hash" value="{$hash}"/>
-				<input type="hidden" id="user-id" value="{$userId}"/>
-				<input type="hidden" id="video-id" value="{$video->getId()}"/>
-				<li class="link bubble">
+		</div>
+		<div class="content-right left">
+			<div class="ad_300x250 right">
+				<a href="http://www.tapeplay.com/blog/"><img src="/media/images/ad_tapeplay-blog_300x250.jpg" /></a>
+			</div>
+		</div>
+	</div>
+	
+</div>
+<div class="clear"></div>
+
+					<!-- SHARE BUBBLE STUFF
 					<a class="infoOpen">Share</a>
 
 					<div class="infoBubble">
@@ -66,10 +161,9 @@
 						</div>
 						<div class="bottomLeft"></div>
 						<div class="bottomRight"></div>
-					</div>
-				</li>
-				<li class="link">
-				{if isset($user) && !empty($user)}
+					</div> -->
+
+					<!-- SAVE BUBBLE STUFF
 					<a id="save">Save</a>
 
 					<div class="infoBubble">
@@ -82,7 +176,7 @@
 						<div class="bottomLeft"></div>
 						<div class="bottomRight"></div>
 					</div>
-					{else}
+
 					<a class="infoOpen">Save</a>
 
 					<div class="infoBubble">
@@ -98,9 +192,9 @@
 						</div>
 						<div class="bottomLeft"></div>
 						<div class="bottomRight"></div>
-					</div>
-				{/if}
-				</li>
+					</div> -->
+
+				<!-- REPORT BUBBLE STUFF
 				<li class="link last">
 					<a class="infoOpen">Report Video</a>
 
@@ -117,106 +211,4 @@
 						<div class="bottomLeft"></div>
 						<div class="bottomRight"></div>
 					</div>
-				</li>
-			</ul>
-		</div>
-		<div id="leftCol">
-			<div id="info">
-				<div id="top">
-					<div id="person">
-						<h3>#{$player->getNumber()} {$player->getFirstName()} {$player->getLastName()}</h3>
-
-						<p>{$player->getPosition()}, {$player->getHeight()}</p>
-
-						<p>{$player->getGradeLevel()}/{$player->getAge()}, {$player->getSchool()->getName()}</p>
-
-						<p>City, State</p>
-
-						<p>Coach's Name</p>
-					</div>
-					<div id="level">
-						<h4>Hs</h4>
-
-						<p>High school athlete</p>
-					</div>
-				</div>
-				<div id="bottom">
-				{if isset($stats) && count($stats) > 0}
-					<ul class="stats">
-						{assign var=i value=0}
-						{foreach from=$stats item=stat}
-							{if $i % $modder == 0 || $i == 0}
-							<li>
-							{/if}
-							<p>{$stat->getStatName()}: {$stat->getStatValue()}</p>
-							{if ($i%$modder == $modder - 1 && $i > $modder) || $i == ($statCount - 1)}
-							</li>
-							{/if}
-							{$i = $i+1}
-						{/foreach}
-					</ul>
-				{/if}
-				</div>
-			</div>
-			<div id="moreVideos">
-				<h2>More videos from {$player->getFirstName()} {$player->getLastName()}</h2>
-			{if isset($videos) && count($videos) > 0}
-				{foreach from=$videos item=video}
-					{if $video->getPrivacy() == true}
-						<div class="result infoOpen">
-							<div class="opaque">
-								<img src="{#pandaBase#}{$video->getPandaId()}{#pandaImageExt#}"
-									 class="resultImage locked"/>
-
-								<div class="info">
-									<h4>{$video->getTitle()}</h4>
-
-									<p class="title">{$player->getFirstName()} {$player->getLastName()}</p>
-
-									<p class="date">{$video->getUploadDate()}</p>
-								</div>
-							</div>
-						</div>
-						<div class="infoBubble leftCentered">
-							<div class="topLeft"></div>
-							<div class="topRight"></div>
-							<div class="middle">
-								<p>
-									<strong>We're sorry.</strong> Only account holders can view this video.
-									<br/><br/>
-									Want to view this video?
-									<br/>
-									<a>Join</a> or <a>log in</a>.
-								</p>
-							</div>
-							<div class="directionTopLeft"></div>
-							<div class="bottomRight"></div>
-							<div class="direction"></div>
-						</div>
-						{else}
-						<a href="{#baseUrl#}videos/view/{$video->getId()}/">
-							<div class="result">
-								<img src="{#pandaBase#}{$video->getPandaId()}{#pandaImageExt#}" class="resultImage"/>
-
-								<div class="info">
-									<h4>{$video->getTitle()}</h4>
-
-									<p class="title">{$player->getFirstName()} {$player->getLastName()}</p>
-
-									<p class="date">{$video->getUploadDate()}</p>
-								</div>
-							</div>
-						</a>
-					{/if}
-				{/foreach}
-			{/if}
-			</div>
-		</div>
-		<div id="rightCol">
-			<div id="sideAd">
-				<p>Hello</p>
-			</div>
-			<div id="facebook"></div>
-		</div>
-	</div>
-</div>
+				</li> -->
