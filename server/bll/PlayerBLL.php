@@ -57,4 +57,8 @@ class PlayerBLL extends BaseBLL
     public function setStat($playerId, $statId, $statValue) {
         return $this->dal->insertPlayerStat($playerId, $statId, $statValue);
     }
+
+    public function setPosition($playerId, $positionId) {
+        return $this->dal->insertPlayerPosition($playerId, $positionId);
+    }
 }

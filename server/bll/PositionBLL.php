@@ -19,4 +19,9 @@
         {
             return $this->dal->getPositionsByPlayer($player);
         }
+
+        public function getPositionsBySport($sportId)
+        {
+            return $this->dal->getPositionsBySport($sportId);
+        }
     }

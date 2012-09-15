@@ -86,16 +86,24 @@
 		<li>
 			<fieldset>
 				<legend>Position</legend>
-				<ul class="font15">
-
-				</ul>
+                <ul class="font15">
+                    {foreach from=$positions item=position}
+                        <li>
+                            <label for="professional">
+                                <span class="checkbox"><span class="check"></span></span>
+                                <input type="checkbox" id="professional" name="position[]" value="{$position->getId()}" />
+                                {$position->getName()}
+                            </label>
+                        </li>
+                    {/foreach}
+                </ul>
 			</fieldset>
 		</li>
 		<li>
 			<fieldset>
 				<legend>Height</legend>
 				<fieldset>
-					<select class="select-2" class="height">
+					<select class="select-2" class="height" name="height">
 						<option class="default">Select</option>
 						{section name=i start=48 loop=96 step=1}
                             <option value="{$smarty.section.i.index}">{$smarty.section.i.index}</option>
@@ -195,7 +203,7 @@
 		<ul class="three-column_sign-up left">
 			<li class="left">
 				<fieldset>
-					<select class="select-7" name="videoMonth">
+					<select class="select-7" name="graduationMonth">
 						<option class="default">Grad. Month</option>
 						<option value="1">January</option>
 						<option value="2">February</option>
@@ -214,7 +222,7 @@
 			</li>
 			<li class="left">
 				<fieldset>
-					<select class="select-8" name="videoYear">
+					<select class="select-8" name="graduationYear">
 						<option class="default">Grad. Year</option>
 						{section name=i start=$startYear loop=$startYear+5 step=1}
                             <option value="{$smarty.section.i.index}">{$smarty.section.i.index}</option>

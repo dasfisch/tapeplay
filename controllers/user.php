@@ -9,6 +9,7 @@ require_once("enum/controllers/UserMethods.php");
 
 require_once("bll/Panda.php");
 require_once("bll/PlayerBLL.php");
+require_once("bll/PositionBLL.php");
 require_once("bll/SchoolBLL.php");
 require_once("bll/SportBLL.php");
 require_once("bll/StatsBLL.php");
@@ -20,6 +21,7 @@ require_once("bll/StatsBLL.php");
 
 require_once("model/Coach.php");
 require_once("model/Player.php");
+require_once("model/Position.php");
 require_once("model/School.php");
 require_once("model/Scout.php");
 require_once("model/SearchFilter.php");
@@ -30,6 +32,7 @@ require_once("model/VideoNote.php");
 
 use tapeplay\server\bll\Panda;
 use tapeplay\server\bll\PlayerBLL;
+use tapeplay\server\bll\PositionBLL;
 use tapeplay\server\bll\SchoolBLL;
 use tapeplay\server\bll\SportBLL;
 use tapeplay\server\bll\StatsBLL;
@@ -38,6 +41,7 @@ use tapeplay\server\bll\VideoBLL;
 
 use tapeplay\server\model\Coach;
 use tapeplay\server\model\Player;
+use tapeplay\server\model\Position;
 use tapeplay\server\model\School;
 use tapeplay\server\model\Scout;
 use tapeplay\server\model\SearchFilter;
@@ -441,22 +445,28 @@ if (isset($route->method))
 						Util::setHeader("user/payment/");
 						break;
 					case AccountTypeEnum::$PLAYER:
-                        echo '<pre>';
-                        var_dump($post);
-                        exit;
-
 						// get player basics and add
                         $userBLL->getUser()->setNumber($post["number"]);
-						$userBLL->getUser()->setGradeLevel($post["gradeLevel"]);
-						$userBLL->getUser()->setPosition($post['position']);
-						$userBLL->getUser()->setHeight($post['height']);
-						$userBLL->getUser()->setWeight($post["weight"]);
-						$userBLL->getUser()->setCoachName($post["headCoachName"]);
-						$userBLL->getUser()->setGraduationMonth($post["graduationMonth"]);
-						$userBLL->getUser()->setGraduationYear($post["graduationYear"]);
+                        $userBLL->getUser()->setGradeLevel($post["gradeLevel"]);
+                        $userBLL->getUser()->setHeight($post['height']);
+                        $userBLL->getUser()->setWeight($post["weight"]);
+                        $userBLL->getUser()->setCoachName($post["headCoachName"]);
+                        $userBLL->getUser()->setGraduationMonth($post["graduationMonth"]);
+                        $userBLL->getUser()->setGraduationYear($post["graduationYear"]);
 
                         if(isset($post['schoolId']) && (int)$post["schoolId"] > 0) {
                             $userBLL->getUser()->getSchool()->setId((int)$post["schoolId"]);
+                        }
+
+                        if(isset($post['position'])) {
+                            $playerBLL = new PlayerBLL();
+
+                            foreach($post['position'] as $position) {
+                                try {
+                                    $playerBLL->setPosition($user->getId(), $position);
+                                } catch (Exception $e) {
+                                }
+                            }
                         }
 
                         if(isset($post['schoolId']) && $post['schoolId'] != '') {
@@ -478,12 +488,12 @@ if (isset($route->method))
 
                         $userBLL->getUser()->setSport($sport[0]);
 
-						$playerBLL = new PlayerBLL();
+                        $playerBLL = new PlayerBLL();
 
-						if ($playerBLL->update($userBLL->getUser()))
-						{
-							// update status to most recently completed step
-							$userBLL->updateStatus(\AccountStatusEnum::$COMPLETE);
+                        if ($playerBLL->update($userBLL->getUser()))
+                        {
+                            // update status to most recently completed step
+                            $userBLL->updateStatus(\AccountStatusEnum::$COMPLETE);
 
                             // INsert player stats if they exist
                             if(isset($post['stat'])) {
@@ -536,12 +546,25 @@ if (isset($route->method))
                         $startYear = date('Y', strtotime('now'));
 
                         $sportId = $user->getSport()->getId();
+                        if(!isset($sportId) || $sportId == 0) {
+                            $videos = $user->getMyVideos();
+
+                            $sportId = $videos[0]->getSportId();
+                        }
 
                         $statsBll = new StatsBLL();
                         try {
                             $stats = $statsBll->getStatsBySport($sportId);
                         } catch(Exception $e) {
                             $stats = null;
+                        }
+
+                        try {
+                            $positionBll = new PositionBLL();
+
+                            $positions = $positionBll->getPositionsBySport($sportId);
+                        } catch(Exception $e) {
+
                         }
 
                         $video = null;
@@ -577,6 +600,7 @@ if (isset($route->method))
 						$smarty->assign("startYear", $startYear);
                         $smarty->assign('statCount', count($stats));
                         $smarty->assign('hash', $inputFilter->createHash());
+                        $smarty->assign('positions', $positions);
                         $smarty->assign('modder', $modder);
 
                         $smarty->assign('stats', $stats);

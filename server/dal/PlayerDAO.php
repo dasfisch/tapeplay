@@ -77,7 +77,7 @@ class PlayerDAO extends BaseDOA
     public function insertPlayerStat($playerId, $statId, $statValue)
    	{
    		$this->sql = "INSERT INTO
-                            player_stats
+                        player_stats
    						(
    						    player_id,
    						    stat_id,
@@ -101,6 +101,29 @@ class PlayerDAO extends BaseDOA
    		return ($this->prep->rowCount() > 0) ? $this->dbh->lastInsertId() : -1;
    	}
 
+    public function insertPlayerPosition($playerId, $positionId) {
+        $this->sql = "INSERT INTO
+                            player_positions
+      						(
+      						    player_id,
+      						    position_id
+                            )
+      						VALUES
+      						(
+                                :playerId,
+      						    :positionId
+                            );";
+
+        $this->prep = $this->dbh->prepare($this->sql);
+        $this->prep->bindValue(":playerId", $playerId, \PDO::PARAM_INT);
+        $this->prep->bindValue(":positionId", $positionId, \PDO::PARAM_INT);
+
+        $this->prep->execute();
+
+        // return the player with his id
+        return ($this->prep->rowCount() > 0) ? $this->dbh->lastInsertId() : -1;
+    }
+
 	function update(Player $player)
 	{
 		$this->sql = "UPDATE players SET
@@ -108,7 +131,6 @@ class PlayerDAO extends BaseDOA
 						height = :height,
 						grade_level = :gradeLevel,
 						video_access = :videoAccess,
-						position = :position,
 						weight = :weight,
 						coach_name = :coachName,
 						graduation_month = :graduationMonth,
@@ -124,7 +146,6 @@ class PlayerDAO extends BaseDOA
 		$this->prep->bindValue(":height", $player->getHeight(), \PDO::PARAM_INT);
 		$this->prep->bindValue(":gradeLevel", $player->getGradeLevel(), \PDO::PARAM_STR);
 		$this->prep->bindValue(":videoAccess", $player->getVideoAccess(), \PDO::PARAM_INT);
-		$this->prep->bindValue(":position", $player->getPosition(), \PDO::PARAM_INT);
 		$this->prep->bindValue(":weight", $player->getWeight(), \PDO::PARAM_INT);
 		$this->prep->bindValue(":coachName", $player->getCoachName(), \PDO::PARAM_STR);
 		$this->prep->bindValue(":graduationMonth", $player->getGraduationMonth(), \PDO::PARAM_INT);

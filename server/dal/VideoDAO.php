@@ -27,7 +27,6 @@ class VideoDAO extends BaseDOA
 				"FROM videos " .
 				"WHERE id = :videoId";
 
-		print $this->sql;
 		$this->prep = $this->dbh->prepare($this->sql);
 		$this->prep->bindValue(":videoId", $videoId, \PDO::PARAM_INT);
 
@@ -47,9 +46,29 @@ class VideoDAO extends BaseDOA
 	{
 		try
 		{
-			$this->sql = "SELECT * FROM videos v INNER JOIN player_videos pv ON v.id = pv.video_id WHERE pv.player_id = :playerId";
+            $this->sql = "SELECT
+                                id,
+                                panda_id as panda_id,
+                                panda_id as views,
+                                panda_id as videoCount,
+                                panda_id as saves,
+                                is_private,
+                                title,
+                                uploaded_date,
+                                recorded_month,
+                                recorded_year,
+                                active,
+                                player_id,
+                                sport_id
+                            FROM
+                                videos
+                            WHERE
+                                player_id = :player_id
+                            ORDER BY
+                                uploaded_date";
+
 			$this->prep = $this->dbh->prepare($this->sql);
-			$this->prep->bindValue(":playerId", $playerId, \PDO::PARAM_INT);
+			$this->prep->bindValue(":player_id", $playerId, \PDO::PARAM_INT);
 			$this->prep->execute();
 		}
 		catch (\PDOException $exception)
@@ -59,6 +78,7 @@ class VideoDAO extends BaseDOA
 		}
 
 		$videoList = array();
+
 		while ($row = $this->prep->fetch())
 		{
 			array_push($videoList, Video::create($row));
@@ -86,7 +106,7 @@ class VideoDAO extends BaseDOA
 		$this->prep->bindValue(":uploadDate", $video->getUploadDate(), \PDO::PARAM_INT);
 		$this->prep->bindValue(":recordedMonth", $video->getRecordedMonth(), \PDO::PARAM_INT);
 		$this->prep->bindValue(":recordedYear", $video->getRecordedYear(), \PDO::PARAM_INT);
-		$this->prep->bindValue(":active", $video->getActive(), \PDO::PARAM_INT);
+		$this->prep->bindValue(":active", $video->getActive(), \PDO::PARAM_BOOL);
         $this->prep->bindValue(":playerId", $playerId, \PDO::PARAM_INT);
         $this->prep->bindValue(":sportId", $video->getSportId(), \PDO::PARAM_INT);
 

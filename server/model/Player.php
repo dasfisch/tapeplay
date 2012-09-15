@@ -20,6 +20,7 @@ class Player extends User
 
         //on a get, I need to figure out the sql to get the player_id back properly
         $arr["player_id"] = isset($arr["player_id"]) ? $arr["player_id"] : 1;
+        $arr["position"] = isset($arr["position"]) ? $arr["position"] : 0;
 
 		// set user attributes
 		$player->setUserId($arr["id"]);
@@ -87,6 +88,7 @@ class Player extends User
 	private $_graduationMonth;
 	private $_graduationYear;
     private $_playingLevel;
+    private $_myVideos;
 
 	function __construct(User $user = null)
 	{
@@ -282,6 +284,14 @@ class Player extends User
 	{
 		return $this->_graduationYear;
 	}
+
+    public function setMyVideos($videos) {
+        $this->_myVideos = $videos;
+    }
+
+    public function getMyVideos() {
+        return $this->_myVideos;
+    }
 
     public function __isset($name) {
         return isset($this->$name);
