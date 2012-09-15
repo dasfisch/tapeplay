@@ -24,6 +24,9 @@ button {
 	font-family:Arial, Helvetica, Verdana, sans-serif;
 }
 
+b {
+	font-weight:bold;
+}
 /*
  * Layout
  */
@@ -511,6 +514,10 @@ form fieldset + .error-alert {
 	color:#ff0000;
 	text-decoration:underline;
 }
+
+.error {
+	color:#ff0000;
+}
 /* Checkbox */
 .checkbox {
 	background-image: url('/media/images/form/checkbox.gif');
@@ -616,7 +623,6 @@ fieldset + fieldset {
 	height:250px;
 	width:300px;
 }
-
 /*
  * CUSTOM INPUT BOX
  */
@@ -2311,4 +2317,148 @@ p.nothing {
     bottom: 0px;
     font-size: 12px;
     position: absolute;
+}
+
+.single h1 {
+	color:#000000;
+	font-size:40px;
+	line-height:46px;
+	margin-bottom:0px;
+}
+
+.single .video-title-data {
+	float:left;
+	font-size:18px;
+	line-height:21px;
+	margin-bottom:18px;
+}
+.single .return {
+	float:right;
+	margin-right:65px;
+}
+
+.video-data {
+	background-color:#f2f2f2;
+	width:890px;
+}
+
+.video-data ul {
+	margin-bottom:0px;
+}
+
+.video-data li {
+	float:left;
+	font-size:15px;
+	line-height:50px;
+}
+
+.video-data .views, .video-data .saves, .video-data .upload-date {
+	float:left;
+	margin-left:42px;
+}
+
+.video-data .report, .video-data .save, .video-data .share {
+	float:right;
+	margin-right:42px;
+}
+
+.single .video-content {
+	margin-top:30px;
+}
+
+.single .content-left {
+	margin-right:30px;
+	width:560px; 
+}
+.single .content-right {
+	width:300px;
+}
+
+.single .more-videos .video-image img {
+	width:100%;
+}
+
+.single .more-videos .video-image {
+	width:125px;
+}
+
+.single .user-info {
+	background-color:#f2f2f2;
+	padding:20px 45px;
+	position:relative;
+}
+
+.single .user-info h1 {
+	font-size:30px;
+	width:375px;
+}
+
+.single .grade {
+	color:#ffffff;
+	background-color:#e18a07;
+	position:absolute;
+	right:45px;
+	top:20px;
+}
+
+.single .user-profile, .single .user-stats {
+	color:#666666;
+	font-size:13px;
+	line-height:20px;
+	margin-bottom:18px;
+}
+
+.single .user-stats {
+	border-top:1px solid #d9d9d9;
+	padding-top:18px;
+}
+
+.single .content-left h2 {
+	margin-top:30px;
+}
+
+.single .more-videos>li {
+	padding:10px 0px;
+	position:relative;
+} 
+
+.single .more-videos>li:hover {
+	background-color:#F8E8C8
+} 
+
+.single .more-videos .video-image img {
+	float:left;
+	margin-right:15px;
+	width:100%;
+}
+
+.single .more-videos .video-image {
+	width:125px;
+}
+
+.single .more-videos .video-title {
+	font-size:18px;
+	margin-bottom:5px;
+}
+
+.single .more-videos ul {
+	color:#666666;
+	font-size:14px;
+	line-height:18px;
+}
+
+.single .more-videos a {
+	height:100%;
+	left:0px;
+	position:absolute;
+	top:0px;
+	width:100%;
+}
+
+.single .more-videos .locked a {
+	background:transparent url(/media/images/background_locked-white-70_1x1.png) repeat 0px 0px;
+}
+
+.single .more-videos .locked a img {
+	margin:10px 0px 0px 15px;
 }

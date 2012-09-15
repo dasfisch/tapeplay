@@ -68,6 +68,6 @@
 -->
 
 <div class="ad_300x250 right">
-	<a href="http://www.tapeplay.com/blog/"><img src="/media/images/ad_tapeplay-blog_ad_tapeplay-blog_300x250.jpg.jpg" height="200" width="200" /></a>
+	<a href="http://www.tapeplay.com/blog/"><img src="/media/images/ad_tapeplay-blog_ad_tapeplay-blog_300x250.jpg" /></a>
 </div>
 <div class="clear"></div>
