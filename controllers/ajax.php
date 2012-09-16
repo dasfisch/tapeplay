@@ -97,8 +97,12 @@
 
                     $schools = $schoolBLL->getSchoolsByName($post['schoolName']);
 
-                    foreach($schools as $key=>$school) {
-                        $encoded[] = $school->encodeJson();
+                    if(isset($schools) && !empty($schools)) {
+                        foreach($schools as $key=>$school) {
+                            $encoded[] = $school->encodeJson();
+                        }
+                    } else {
+
                     }
 
                     echo json_encode($encoded);
