@@ -1311,7 +1311,10 @@ label[for="i-agree"] {
 /* Info Bubble */
 .infoOpen {
     color: #E39117;
-    display: inline;
+}
+
+.infoOpen.videoTitle {
+    width: 195px;
 }
 
 .infoBubble {
@@ -1386,12 +1389,12 @@ label[for="i-agree"] {
     width: 12px;
 }
 
-.infoBubble .directionBottomRight {
+.infoBubble .directionBottomLeft {
     background-image: url('/media/images/pop_up_corners/pop_btm-lt-point.png');
     height: 12px;
     left: -1px;
     position: absolute;
-    bottom: -12px;
+    bottom: -11px;
     width: 12px;
 }
 

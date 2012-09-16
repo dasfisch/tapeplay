@@ -590,6 +590,7 @@ function openBubble(obj) {
     var bubble = obj.children('.infoBubble');
 
     var bubbleWidth = bubble.width();
+    var bubbleHeight = bubble.outerHeight();
     var thisHeight = obj.height();
     var thisWidth = obj.width();
 
@@ -601,22 +602,22 @@ function openBubble(obj) {
         thePosition.left = position.left - (bubbleWidth * .5) + (thisWidth * .5);
     }
 
-    thePosition.top = position.top + thisHeight + 12;
+//    thePosition.top = position.top + thisHeight + 12;
 
     /**
      * @TODO: Positioning;
      */
-//    if(bubble.hasClass('topCentered')) {
-//        thePosition.top = obj.parents().next().height() / 2;
-//    } else {
-//        thePosition.top = position.top + thisHeight + 12;
-//    }
-//
-//    if(bubble.hasClass('topCentered')) {
-//        thePosition.left = thisWidth / 2;
-//    } else {
-//        thePosition.top = position.top + thisHeight + 12;
-//    }
+    if(bubble.hasClass('above')) {
+        thePosition.top = obj.parents().next().height() / 2;
+    } else {
+        thePosition.top = position.top + thisHeight + 12;
+    }
+
+    if(bubble.hasClass('above')) {
+        thePosition.top = obj.offset().top - bubbleHeight - 12;
+    } else {
+        thePosition.top = position.top + thisHeight + 12;
+    }
 
     bubble
             .css('left', thePosition.left)
