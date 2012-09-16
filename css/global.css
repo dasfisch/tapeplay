@@ -27,6 +27,14 @@ button {
 b {
 	font-weight:bold;
 }
+
+input {
+	font-family:Arial, Helvetica, Verdana, sans-serif;
+}
+p {
+	max-width:730px;
+}
+
 /*
  * Layout
  */
@@ -1016,7 +1024,7 @@ fieldset + fieldset {
 
 .beta-banner .sign-up p {
 	font-size:15px;
-	line-height:16px;
+	line-height:20px;
 	margin-bottom:10px;
 }
 
@@ -1032,7 +1040,7 @@ fieldset + fieldset {
 }
 
 .beta-banner-footer {
-	border-top:1px dashed #ffffff;
+	border-top:2px dashed #ffffff;
 	margin:0px -25px;
 	padding-top:10px;
 }

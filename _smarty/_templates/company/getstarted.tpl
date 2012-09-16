@@ -27,7 +27,7 @@
 		</li>
 	</ol>
 	
-	<h2>Coaches and Scouts</h2>
+	<!-- <h2>Coaches and Scouts</h2>
 	
 	<ol class="bullets">
 		<li class="bold">
@@ -48,7 +48,7 @@
 				<span class="bold">Find talent.</span> Search for any video or player. Watch videos. Click &quot;Browse&quot; to explore the entire video library of TapePlay. 
 			</p>
 		</li>
-	</ol>
+	</ol> -->
 	
 </div>
 

@@ -12,7 +12,7 @@
 
             <div id="progressArea" style="vertical-align: middle;height:30px;">
                 <div id="progressMeter" class="panda_upload_progress" style="float:left;"></div>
-                <div id="uploadComplete" class="successMessage" style="float:left;visibility: hidden; margin-left:15px;">Upload Complete!</div>
+                <div id="uploadComplete" class="successMessage" style="float:left;visibility: hidden; margin-left:15px; color:#00ff12;">Upload Complete.</div>
             </div>
 			<div class="input_custom-text input_text80 upload width440 left" id="localUploadFile">
 				<div class="custom-input_center custom-input_partial">
