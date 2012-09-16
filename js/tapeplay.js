@@ -372,22 +372,22 @@ jQuery(document).ready(function(){
 
     jQuery('#ad').width(adWidth);
 
-    jQuery("input:text").each(function () {
-        var v = this.value;
-
-        jQuery(this).blur(function () {
-            // if input is empty, reset value to default
-            if (this.value.length == 0) {
-                this.value = v;
-                jQuery(this).css('color', '#b2b2b2');
-            }
-        })
-        .focus(function () {
-            // when input is focused, clear its contents
-            this.value = "";
-            jQuery(this).css('color', '#333333');
-        });
-    });
+//    jQuery("input:text").each(function () {
+//        var v = this.value;
+//
+//        jQuery(this).blur(function () {
+//            // if input is empty, reset value to default
+//            if (this.value.length == 0) {
+//                this.value = v;
+//                jQuery(this).css('color', '#b2b2b2');
+//            }
+//        })
+//        .focus(function () {
+//            // when input is focused, clear its contents
+//            this.value = "";
+//            jQuery(this).css('color', '#333333');
+//        });
+//    });
 
     jQuery('.plusCircle').click(function() {
 
@@ -517,6 +517,9 @@ jQuery(document).ready(function(){
                     schoolName: jQuery('#schoolSearchInput').val()
                 },
                 function( data ) {
+                    console.log(data);
+                    return;
+
                     response( jQuery.map( eval(data), function( item ) {
                         return {
                             label: item.name,
@@ -570,24 +573,12 @@ jQuery(document).ready(function(){
     	}
     });
 
-    jQuery('input').each(function(index, element) {
-        var $element = $(element);
-        var defaultValue = $element.val();
-
-        console.log(defaultValue)
-
-        $element.focus(function() {
-            var actualValue = $element.val();
-            if (actualValue == defaultValue) {
-                $element.val('');
-            }
-        });
-        $element.blur(function() {
-            var actualValue = $element.val();
-            if (!actualValue) {
-                $element.val(defaultValue);
-            }
-        });
+    jQuery("input[type=text]").bind('focus blur', function(event) {
+    	if (event.type == "blur" && (($(this).get(0)).value == "" || ($(this).get(0)).value == ($(this).get(0)).defaultValue)) {
+    		($(this).get(0)).value = ($(this).get(0)).defaultValue;
+    	} else if(event.type == "focus" && ($(this).get(0)).defaultValue == ($(this).get(0)).value) {
+            ($(this).get(0)).value = '';
+        }
     });
 });
 

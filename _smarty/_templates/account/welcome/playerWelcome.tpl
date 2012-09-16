@@ -5,11 +5,12 @@
         <input type="hidden" id="user-id" value="{$user->getUserId()}" />
         <ul>
             <li>
-                <a href="#" class="opener">Saved Videos ({$savedVideoNumber})</a>
+                <a href="#" class="opener">{$myVideoWording} ({$videoCount})</a>
                 <div class="slide">
                     <div class="holder scrollable-area">
                         <ul>
-                                {foreach $savedVideos as $video}
+                            {if isset($videos) && !empty($videos)}
+                                {foreach $videos as $video}
                                     <li>
                                     {if $video->getPrivacy() == true}
                                         <div class="result opaque">
@@ -72,6 +73,7 @@
                                     {/if}
                                     </li>
                                 {/foreach}
+                            {/if}
                         </ul>
                     </div>
                 </div>
