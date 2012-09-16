@@ -1309,6 +1309,11 @@ label[for="i-agree"] {
 }
 
 /* Info Bubble */
+.infoOpen {
+    color: #E39117;
+    display: inline;
+}
+
 .infoBubble {
     background-color: #fff;
     border: 1px solid #aaa;

@@ -90,7 +90,6 @@
 			</div>
 		</li>
 		<li class="input-field clear">
-			<a href="#" class="clear">Examples of video titles</a>
 			<div class="input_custom-text input_text80 width600 left">
 				<div class="custom-input_center custom-input_partial">
 					<span class="custom-input_top"></span>
@@ -107,9 +106,20 @@
 					<span class="custom-input_top"></span>
 					<span class="custom-input_bottom"></span>
 				</div>
-				
 			</div>
-			
+            <div class="infoOpen">
+                Examples of video titles
+                <div class="infoBubble">
+                    <div class="directionTopMiddle"></div>
+                    <div class="topLeft"></div>
+                    <div class="topRight"></div>
+                    <div class="middle">
+                        <p><span class="bold">Success!</span> This video has beens saved to your account.</p>
+                    </div>
+                    <div class="bottomLeft"></div>
+                    <div class="bottomRight"></div>
+                </div>
+            </div>
 			<div class="error-alert">
 				<ul>
 					<li>Enter your first and last name here.</li>
