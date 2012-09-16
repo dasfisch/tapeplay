@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html id="www-tapeplay-com"{$ie}>
     <head>
-        <title>Tapeplay :: Home</title>
+        <title>Tapeplay :: {$title}</title>
         <link rel="stylesheet" href="/css/jquery.css" type="text/css" />
         <link rel="stylesheet" href="/css/global.css" type="text/css" />
         <link rel="stylesheet" href="/css/custom-form.css" type="text/css" />

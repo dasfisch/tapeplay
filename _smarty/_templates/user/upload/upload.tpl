@@ -133,7 +133,11 @@
                 <select class="select-9" name="sport_id">
                     <option class="default">Pick a Sport</option>
                     {foreach item=single from=$sports}
-                        <option value="{$single->getId()}">{$single->getSportName()}</option>
+                        {if $sport.id == $single->getId()}
+                            <option value="{$single->getId()}" selected>{$single->getSportName()}</option>
+                        {else}
+                            <option value="{$single->getId()}">{$single->getSportName()}</option>
+                        {/if}
                     {/foreach}
                 </select>
             </fieldset>

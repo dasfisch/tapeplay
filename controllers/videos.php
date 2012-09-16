@@ -40,6 +40,7 @@
                 $smarty->assign('page', $page);
                 $smarty->assign('videos', $videos);
                 $smarty->assign('file', 'videos/browse.tpl');
+                $smarty->assign("title", 'Browse '.$sport['name'].' TapePlay');
 
                 $smarty->display('home.tpl');
 
@@ -54,6 +55,7 @@
 
                 $smarty->assign('notes', $notes);
                 $smarty->assign('video', $video);
+                $smarty->assign("title", 'About TapePlay');
 
                 $smarty->display('videoNotes');
 
@@ -102,6 +104,7 @@
                 $smarty->assign('videoDisplayInfo', $videoDisplayInfo);
                 $smarty->assign('videos', $videos);
                 $smarty->assign('file', 'videos/single.tpl');
+                $smarty->assign("title", $player->getFirstName().' '.$player->getLastName().' on TapePlay');
 
                 $smarty->display('home.tpl');
 
@@ -114,8 +117,12 @@
                 $search = new SearchFilter();
                 $video = new VideoBLL();
 
+                $title = '';
+
                 if(isset($post['searchVal']) && $post['searchVal'] != '') {
                     $search->setLike('title', $post['searchVal']);
+
+                    $title = 'Search Videos for '.$post['searchVal'].' on TapePlay';
 
                     $_SESSION['search'] = serialize($search);
                 } else {
@@ -139,6 +146,7 @@
                 $smarty->assign('videoCount', count($videos));
                 $smarty->assign('videos', $videos);
                 $smarty->assign('file', 'videos/videoSearch.tpl');
+                $smarty->assign("title", $title);
 
                 $smarty->display('home.tpl');
 
@@ -210,6 +218,7 @@
                     $smarty->assign('hash', $inputFilter->createHash());
                     $smarty->assign('message', $message);
                     $smarty->assign('video', $video[0]);
+                    $smarty->assign("title", 'Share Videos from TapePlay');
 
                     $smarty->display('home.tpl');
                 } else {
@@ -239,6 +248,7 @@
                 $smarty->assign('videoCount', count($videos));
                 $smarty->assign('videos', $videos);
                 $smarty->assign('file', 'videos/videoSearch.tpl');
+                $smarty->assign("title", 'Browse TapePlay');
 
                 $smarty->display('home.tpl');
 
@@ -266,6 +276,7 @@
         $smarty->assign('videoCount', count($videos));
         $smarty->assign('videos', $videos);
         $smarty->assign('file', 'videos/videoSearch.tpl');
+        $smarty->assign("title", 'Browse TapePlay');
 
         $smarty->display('home.tpl');
     }
