@@ -261,7 +261,7 @@ class VideoDAO extends BaseDOA
                             LEFT JOIN
                                 sports sports
                                     ON
-                                        sports.id=players.sport_id
+                                        sports.id=videos.sport_id
                             LEFT JOIN
                                 schools schools
                                     ON
