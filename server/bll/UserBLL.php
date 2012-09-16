@@ -161,7 +161,9 @@ class UserBLL extends BaseBLL
 		}
 		else
 		{
-			// auth failed
+            $_SESSION['message']['message'] = 'Your username or password were incorrect!';
+            $_SESSION['message']['type'] = 'error';
+
 			return false;
 		}
 	}
