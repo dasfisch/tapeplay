@@ -23,7 +23,8 @@
                 skin:"/media/playback/skins/normal/tapeplayer.zip",
                 autostart:false,
                 dock:false,
-                "controlbar.position":"over"
+                "controlbar.position":"over",
+				"controlbar.idlehide": true
             });
         </script>
 	</div>

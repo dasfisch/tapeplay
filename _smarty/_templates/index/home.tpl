@@ -43,7 +43,8 @@
 						autostart:false,
 						stretching: 'none',
 						dock:false,
-						"controlbar.position":"over"
+						"controlbar.position":"over",
+						"controlbar.idlehide": true
 					});
 				</script>
 			</div>
