@@ -356,13 +356,7 @@ jQuery(document).ready(function(){
             openBubble(jQuery(this));
         },
         function() {
-            var _this = jQuery(this);
-
-            jQuery(document).click(function(event) {
-                if(jQuery(event.target).parents('.infoBubble').length <= 0) {
-                    _this.next('.infoBubble').fadeOut();
-                }
-            });
+            jQuery('.infoBubble').fadeOut();
         }
     );
 
@@ -568,15 +562,17 @@ jQuery(document).ready(function(){
     		($(this).get(0)).type = 'password';
     	}
 
-    	if (event.type == "blur" && ($(this).get(0)).value == ("" || ($(this).get(0)).defaultValue)) {
+        if (event.type == "blur" && (($(this).get(0)).value == "" || ($(this).get(0)).value == ($(this).get(0)).defaultValue)) {
     		($(this).get(0)).type = "text";
     	}
     });
 
     jQuery("input[type=text]").bind('focus blur', function(event) {
     	if (event.type == "blur" && (($(this).get(0)).value == "" || ($(this).get(0)).value == ($(this).get(0)).defaultValue)) {
+            jQuery(this).css('color', '#B2B2B2');
     		($(this).get(0)).value = ($(this).get(0)).defaultValue;
     	} else if(event.type == "focus" && ($(this).get(0)).defaultValue == ($(this).get(0)).value) {
+            jQuery(this).css('color', '#000');
             ($(this).get(0)).value = '';
         }
     });
@@ -591,7 +587,8 @@ function openBubble(obj) {
 
     var position = obj.position();
 
-    var bubble = obj.next('.infoBubble');
+    var bubble = obj.children('.infoBubble');
+
     var bubbleWidth = bubble.width();
     var thisHeight = obj.height();
     var thisWidth = obj.width();

@@ -80,29 +80,30 @@
                                 {if isset($user) && !empty($user) && $user->getAccountType() == 1}
                                     <a href="{#baseUrl#}user/upload/" class="infoOpen {if {$smarty.server.REQUEST_URI} == '/user/upload/'}active{/if}">Upload</a>
                                 {else}
-                                    <a class="infoOpen">Upload</a>
+                                    <div class="infoOpen">Upload
                                         <div class="infoBubble">
-                                        <div class="topLeft black"></div>
-                                        <div class="topRight black"></div>
-                                        <div class="directionTopMiddle"></div>
-                                        <div class="middle">
-                                            <p>
-                                                <strong>Players</strong> must be logged into their accounts to
-                                                upload a video. <a href="{#baseUrl#}user/login/">Log in</a>.
-                                                <br /><br />
-                                                Don't have an account yet? <a href="{#baseUrl#}user/signup/">Sign up</a>.
-                                                <br /><br />
-                                                <strong>Coaches and Scouts</strong> cannot upload videos. We're
-                                                sure you're very talented, but we're not interested. Sorry.
-                                            </p>
+                                            <div class="topLeft black"></div>
+                                            <div class="topRight black"></div>
+                                            <div class="directionTopMiddle"></div>
+                                            <div class="middle">
+                                                <p>
+                                                    <strong>Players</strong> must be logged into their accounts to
+                                                    upload a video. <a href="{#baseUrl#}user/login/">Log in</a>.
+                                                    <br /><br />
+                                                    Don't have an account yet? <a href="{#baseUrl#}user/signup/">Sign up</a>.
+                                                    <br /><br />
+                                                    <strong>Coaches and Scouts</strong> cannot upload videos. We're
+                                                    sure you're very talented, but we're not interested. Sorry.
+                                                </p>
+                                            </div>
+                                            <div class="bottomLeft"></div>
+                                            <div class="bottomRight"></div>
+                                            <div class="direction"></div>
                                         </div>
-                                        <div class="bottomLeft"></div>
-                                        <div class="bottomRight"></div>
-                                        <div class="direction"></div>
                                     </div>
                                 {/if}
 							</li>
-							<li><a href="{#blogUrl#}" target="_blank">Blog</a></li>
+							<li><a href="{#baseUrl#}blog/">Blog</a></li>
 							<li><a class="{if {$smarty.server.REQUEST_URI} == '/company/help/'}active{/if}" href="{#baseUrl#}company/help/">Help</a></li>
 						</ul>
 					</div>

@@ -150,13 +150,17 @@ p {
 	padding:30px 19px 0px;
 }
 
-#navigation a, #navigation a:visited, #navigation a:hover {
+#navigation a, #navigation a:visited, #navigation a:hover,
+#navigation div, #navigation div:visited, #navigation div.hover {
 	color:#ffffff;
 	font-size:18px;
 	text-decoration:none;
 }
 
-#navigation a:hover, #navigation a.active { color: #E39117; }
+#navigation a:hover, #navigation a.active,
+#navigation div:hover, #navigation div.active {
+    color: #E39117;
+}
 
 #navigation a.active, #navigation a.active:visited, #navigation a.active:hover {
 	color:#E39117;
@@ -2366,6 +2370,7 @@ p.nothing {
 }
 
 .video-data .report, .video-data .save, .video-data .share {
+    color: #E39117;
 	float:right;
 	margin-right:42px;
 }

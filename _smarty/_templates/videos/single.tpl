@@ -33,9 +33,50 @@
 			<li class="views"><b>{$video->getViews()}</b> Views</li>
 			<li class="saves"><b>{$video->getSaves()}</b> Saves</li>
 			<li class="upload-date">Uploaded {$video->getUploadDate()|date_format:"%B %d, %Y %I:%M %p"}</li>
-			<li class="report"><a href="#">Report</a></li>
-			{if isset($user) && !empty($user)}<li class="save"><a href="#">Save</a></li>{/if}
-			<li class="share"><a href="#">Share</a></li>
+			<li class="report">
+                <div class="infoOpen">
+                    Report Video
+                    <div class="infoBubble">
+                        <div class="directionTopMiddle"></div>
+                        <div class="topLeft"></div>
+                        <div class="topRight"></div>
+                        <div class="middle">
+                            <p>
+                                Should we review this video to determine if it's appropriate?<Br/>
+                                <a id="report">Yes</a> or <a class="close">No</a>
+                            </p>
+                        </div>
+                        <div class="bottomLeft"></div>
+                        <div class="bottomRight"></div>
+                    </div>
+                </div>
+            </li>
+			{if isset($user) && !empty($user)}
+                <li class="save"><a href="#">Save</a></li>
+            {/if}
+			<li class="share">
+                <div class="infoOpen">
+                    Share
+                    <div class="infoBubble">
+                        <div class="directionTopMiddle"></div>
+                        <div class="topLeft"></div>
+                        <div class="topRight"></div>
+                        <div class="middle">
+                            <p>
+                                Embed video (copy &amp; paste link):
+                                <br/>
+                                <a>http://tapeplay.com/asd8f69j</a>
+                            </p>
+                            <p>Email this video: <a href="">click here</a></p>
+                            <p>
+                                <span class="postVideo">Post video:</span> <span class="smallShare fbBlackSmall"></span> <span class="smallShare myBlackSmall"></span> <span class="smallShare twBlackSmall"></span> <span class="smallShare inBlackSmall"></span>
+                            </p>
+                        </div>
+                        <div class="bottomLeft"></div>
+                        <div class="bottomRight"></div>
+                    </div>
+                </div>
+            </li>
 		</ul>
 		<input type="hidden" id="hash" value="{$hash}"/>
 		<input type="hidden" id="user-id" value="{$userId}"/>
@@ -136,33 +177,6 @@
 	
 </div>
 <div class="clear"></div>
-
-					<!-- SHARE BUBBLE STUFF
-					<a class="infoOpen">Share</a>
-
-					<div class="infoBubble">
-						<div class="directionTopMiddle"></div>
-						<div class="topLeft"></div>
-						<div class="topRight"></div>
-						<div class="middle">
-							<p>
-								Embed video (copy &amp; paste link):
-								<br/>
-								<a>http://tapeplay.com/asd8f69j</a>
-							</p>
-
-							<p>Email this video: <a href="{#baseUrl#}videos/email/{$video->getId()}/">click here</a></p>
-
-							<p>
-								<span class="postVideo">Post video:</span> <span class="smallShare fbBlackSmall"></span>
-								<span class="smallShare myBlackSmall"></span> <span
-									class="smallShare twBlackSmall"></span> <span
-									class="smallShare inBlackSmall"></span>
-							</p>
-						</div>
-						<div class="bottomLeft"></div>
-						<div class="bottomRight"></div>
-					</div> -->
 
 					<!-- SAVE BUBBLE STUFF
 					<a id="save">Save</a>

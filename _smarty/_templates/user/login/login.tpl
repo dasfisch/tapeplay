@@ -1,6 +1,6 @@
 <h1>Log In</h1>
 <p class="error">
-{include file='common/message.tpl'}
+    {include file='common/message.tpl'}
 </p>
 <form id="loginForm" name="login" action="{#baseUrl#}user/login/" method="post">
 	<ul class="form-fields">
