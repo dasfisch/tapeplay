@@ -101,6 +101,10 @@
                         foreach($schools as $key=>$school) {
                             $encoded[] = $school->encodeJson();
                         }
+
+                        $result['schools'] = $encoded;
+                        $result['message'] = '';
+                        $result['code'] = 200;
                     } else {
 
                     }
