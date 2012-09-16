@@ -43,7 +43,7 @@ class Player extends User
 		$player->setHeight($arr["height"]);
 		$player->setGradeLevel($arr["grade_level"]);
 		$player->setOrdinalGradeLevel($arr["grade_level"]);
-		$player->setPlayingLevel($arr["grade_level"]);
+		$player->setPlayingLevel($arr["playing_level"]);
 		$player->setVideoAccess($arr["video_access"]);
 		$player->setPosition($arr["position"]);
 		$player->setWeight($arr["weight"]);
@@ -135,24 +135,9 @@ class Player extends User
 		return $this->_ordGradeLevel;
 	}
 
-	public function setPlayingLevel($gradeLevel)
+	public function setPlayingLevel($playingLevel)
 	{
-		if ($gradeLevel < 9)
-		{
-			$this->_playingLevel = 'Grade School';
-		}
-		elseif ($gradeLevel < 13)
-		{
-			$this->_playingLevel = 'High School';
-		}
-		elseif ($gradeLevel < 17)
-		{
-			$this->_playingLevel = 'College';
-		}
-		else
-		{
-			$this->_playingLevel = 'Professional';
-		}
+		$this->_playingLevel = $playingLevel;
 	}
 
 	public function getPlayingLevel()
@@ -292,6 +277,11 @@ class Player extends User
 	{
 		return $this->_graduationMonth;
 	}
+
+	public function getGraduationMonthName()
+		{
+			return date("F", mktime(0, 0, 0, ($this->_graduationMonth)));
+		}
 
 	public function setGraduationYear($graduationYear)
 	{

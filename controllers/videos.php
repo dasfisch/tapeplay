@@ -101,6 +101,7 @@
                 $smarty->assign('video', $video[0]);
                 $smarty->assign('videoDisplayInfo', $videoDisplayInfo);
                 $smarty->assign('videos', $videos);
+				$smarty->assign('gradeLevel', $controller->configuration->gradeLevels[$player->getGradeLevel()]);
                 $smarty->assign('file', 'videos/single.tpl');
 
                 $smarty->display('home.tpl');

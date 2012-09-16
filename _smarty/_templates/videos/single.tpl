@@ -32,7 +32,7 @@
 		<ul>
 			<li class="views"><b>{$video->getViews()}</b> Views</li>
 			<li class="saves"><b>{$video->getSaves()}</b> Saves</li>
-			<li class="upload-date">Uploaded {$video->getUploadDate()|date_format:"%B %d, %Y %I:%M %p"}</li>
+			<li class="upload-date">Uploaded {$video->getUploadDate()|date_format:"%B %d, %Y"}</li>
 			<li class="report"><a href="#">Report</a></li>
 			{if isset($user) && !empty($user)}<li class="save"><a href="#">Save</a></li>{/if}
 			<li class="share"><a href="#">Share</a></li>
@@ -49,10 +49,10 @@
 				<h1>#{$player->getNumber()} {$player->getFirstName()} {$player->getLastName()}</h1>
 				<span class="grade"><img src="/media/images/icon_high-school-athlete.png" /></span>
 				<ul class="user-profile">
-					<li>{$player->getPosition()}, {$player->getFriendlyHeight()}, {$player->getWeight()} lbs</li>
-					<li>{$player->getGradeLevel()}/{$player->getAge()}</li>
-					<li>{$player->getSchool()->getName()}</li>
-					<li>Coach&rsquo;s Name</li>
+					<li>{$player->getPosition()}, {$player->getFriendlyHeight()}, {$player->getWeight()} lbs.</li>
+					<li>{$gradeLevel}, {$player->getSchool()->getName()}</li>
+					<li>Graduation Date: {$player->getGraduationMonthName()} {$player->getGraduationYear()}</li>
+					<li>Coach {$player->getCoachName()}</li>
 				</ul>
 				
 				{if isset($stats) && count($stats) > 0}
@@ -82,12 +82,12 @@
 							<li class="locked">
 								<a href="#" onclick="return false;"><img src="/media/images/background_lock.png" /></a>
 								<div class="video-image">
-									<img src="https://s3.amazonaws.com/tpvideosdev/ba5dc5411fa485fa43056f4f3e18d600_1.jpg"/>
+									<img src="{#pandaBase#}{$video->getPandaId()}{#pandaImageExt#}"/>
 								</div>
 								<ul>
 									<li class="video-title">{$video->getTitle()}</li>
 									<li class="name">{$player->getFirstName()} {$player->getLastName()}</li>
-									<li class="month-year">{$video->getUploadDate()}</li>
+									<li class="month-year">{$video->getRecordedMonthName()}, {$video->getRecordedYear()}</li>
 								</ul>
 								<div class="clear"></div>
 							</li>
@@ -112,12 +112,12 @@
 							<li>
 								<a href="{#baseUrl#}videos/view/{$video->getId()}/"></a>
 								<div class="video-image">
-									<img src="https://s3.amazonaws.com/tpvideosdev/ba5dc5411fa485fa43056f4f3e18d600_1.jpg"/>
+									<img src="{#pandaBase#}{$video->getPandaId()}{#pandaImageExt#}"/>
 								</div>
 								<ul>
 									<li class="video-title">{$video->getTitle()}</li>
 									<li class="name">{$player->getFirstName()} {$player->getLastName()}</li>
-									<li class="month-year">{$video->getUploadDate()}</li>
+									<li class="month-year">{$video->getRecordedMonthName()}, {$video->getRecordedYear()}</li>
 								</ul>
 								<div class="clear"></div>
 							</li>
@@ -129,7 +129,7 @@
 		</div>
 		<div class="content-right left">
 			<div class="ad_300x250 right">
-				<a href="http://www.tapeplay.com/blog/"><img src="/media/images/ad_tapeplay-blog_300x250.jpg" /></a>
+				<a href="{#blogUrl#}" target="_blank"><img src="/media/images/ad_tapeplay-blog_300x250.jpg" /></a>
 			</div>
 		</div>
 	</div>

@@ -130,6 +130,7 @@ class PlayerDAO extends BaseDOA
 						number = :number,
 						height = :height,
 						grade_level = :gradeLevel,
+						playing_level = :playingLevel,
 						video_access = :videoAccess,
 						weight = :weight,
 						coach_name = :coachName,
@@ -145,6 +146,7 @@ class PlayerDAO extends BaseDOA
 		$this->prep->bindValue(":number", $player->getNumber(), \PDO::PARAM_INT);
 		$this->prep->bindValue(":height", $player->getHeight(), \PDO::PARAM_INT);
 		$this->prep->bindValue(":gradeLevel", $player->getGradeLevel(), \PDO::PARAM_STR);
+		$this->prep->bindValue(":playingLevel", $player->getPlayingLevel(), \PDO::PARAM_INT);
 		$this->prep->bindValue(":videoAccess", $player->getVideoAccess(), \PDO::PARAM_INT);
 		$this->prep->bindValue(":weight", $player->getWeight(), \PDO::PARAM_INT);
 		$this->prep->bindValue(":coachName", $player->getCoachName(), \PDO::PARAM_STR);

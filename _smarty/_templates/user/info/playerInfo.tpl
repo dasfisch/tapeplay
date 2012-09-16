@@ -13,8 +13,8 @@
         <img src="{#pandaBase#}{$video->getPandaId()}{#pandaImageExt#}" class="resultImage" />
         <div class="info">
             <h2>{$video->getTitle()}</h2>
-            <p>{$video->getUploadDate()|date_format:'%B %d, %Y %I:%M %p'}</p>
-            <p>12:00</p>
+            <p>{$video->getUploadDate()|date_format:'%B %d, %Y'}</p>
+            <p>{$video->getLength()}</p>
             <p class="italic">Video file name</p>
         </div>
     </div>
@@ -90,7 +90,7 @@
                         <li>
                             <label for="professional">
                                 <span class="checkbox"><span class="check"></span></span>
-                                <input type="checkbox" id="professional" name="position[]" value="{$position->getId()}" />
+                                <input type="checkbox" name="position[]" value="{$position->getId()}" />
                                 {$position->getName()}
                             </label>
                         </li>
@@ -272,7 +272,7 @@
 	</fieldset>
 	<fieldset>
 		<button value="Join" type="submit" class="button_black_large left button_round">Join</button> 
-		<span class="form-steps">Step 1 of 3</span>
+		<span class="form-steps">Step 3 of 3</span>
 	</fieldset>
 </form>
 

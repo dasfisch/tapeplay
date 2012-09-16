@@ -453,7 +453,7 @@ if (isset($route->method))
                         $userBLL->getUser()->setCoachName($post["headCoachName"]);
                         $userBLL->getUser()->setGraduationMonth($post["graduationMonth"]);
                         $userBLL->getUser()->setGraduationYear($post["graduationYear"]);
-
+						$userBLL->getUser()->setPlayingLevel($post["school_level"]);
                         if(isset($post['schoolId']) && (int)$post["schoolId"] > 0) {
                             $userBLL->getUser()->getSchool()->setId((int)$post["schoolId"]);
                         }
