@@ -76,47 +76,69 @@ if (isset($route->method))
                  * make column null true.
                  */
 
-				switch ($userBLL->getAccountType())
-				{
-					case AccountTypeEnum::$PLAYER:
-						$template = "account/welcome/playerWelcome.tpl";
-						break;
-
-					case AccountTypeEnum::$COACH:
-						$template = "account/welcome/coachWelcome.tpl";
-						break;
-
-					case AccountTypeEnum::$SCOUT:
-						$template = "account/welcome/scoutWelcome.tpl";
-						break;
-				}
-
-//                echo $template;exit;
-
                 $user = $userBLL->getUser();
-
                 $videoBll = new VideoBLL();
-                try {
-                    $videos = $videoBll->getVideoSaves($user->getUserId());
-                } catch(Exception $e) {
-                    echo '<pre>';
-                    var_dump($e);
-                    exit;
+
+                $myVideoWorking = 'Saved Videos';
+
+                switch ($userBLL->getAccountType())
+                {
+                    case AccountTypeEnum::$PLAYER:
+                        $template = "account/welcome/playerWelcome.tpl";
+
+                        $search = new SearchFilter();
+
+                        $search->setWhere('method', 'videos');
+                        $search->setWhere('player_id', (int)$user->getId());
+
+                        try {
+                            $videos = $videoBll->search($search);
+                        } catch(Exception $e) {
+                            $videos = null;
+                        }
+
+                        $myVideoWorking = 'My Videos';
+
+                        break;
+
+                    case AccountTypeEnum::$COACH:
+                        $template = "account/welcome/coachWelcome.tpl";
+                        try {
+                            $videos = $videoBll->getVideoSaves($user->getUserId());
+                            echo '<pre>';
+                            var_dump($videos);
+                            exit;
+                        } catch(Exception $e) {
+
+                        }
+
+                        break;
+
+                    case AccountTypeEnum::$SCOUT:
+                        try {
+                            $videos = $videoBll->getVideoSaves($user->getUserId());
+                        } catch(Exception $e) {
+
+                        }
+
+                        break;
                 }
+
                 $videoCount = (isset($videos[0]->count) && (int)$videos[0]->count > 0) ? (int)$videos[0]->count : 0;
 
                 $statsBll = new StatsBLL();
                 $stats = $statsBll->getPlayerStats((int)$user->getId(), (int)$user->getSport()->getId());
 
 				// now display the template based on above selection
+                $smarty->assign('file', $template);
                 $smarty->assign('hash', $inputFilter->createHash());
-				$smarty->assign("savedVideoNumber", $videoCount);
-                $smarty->assign("savedVideos", $videos);
+                $smarty->assign("modder", ceil(count($stats) / 3));
+                $smarty->assign("myVideoWording", $myVideoWorking);
                 $smarty->assign("stats", $stats);
                 $smarty->assign("statCount", count($stats));
-                $smarty->assign("modder", ceil(count($stats) / 3));
                 $smarty->assign("user", $user);
-				$smarty->assign('file', $template);
+                $smarty->assign("videoCount", $videoCount);
+                $smarty->assign("videos", $videos);
 
 				$smarty->display("home.tpl");
 			}
