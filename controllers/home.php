@@ -32,11 +32,15 @@
 		$videoBll = new VideoBLL();
 		$videoDisplayInfo = $videoBll->getVideoDisplayInfo($controller->configuration->information['howTapeplayWorksVideoId']);
 
-        $smarty->assign('stats', $stats);
-		$smarty->assign('videoDisplayInfo', $videoDisplayInfo);
         $smarty->assign('file', 'index/home.tpl');
+        $smarty->assign('stats', $stats);
+        $smarty->assign("title", $sport['name']);
+		$smarty->assign('videoDisplayInfo', $videoDisplayInfo);
+
         $smarty->display('home.tpl');
     } else {
         $smarty->assign('file', 'index/index.tpl');
+        $smarty->assign("title", 'The world\’s evolved. So has recruiting.');
+
         $smarty->display('index.tpl');
     }

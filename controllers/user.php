@@ -147,6 +147,8 @@ if (isset($route->method))
 				}
 				else
 				{
+                    $_SESSION['message']['message'] = 'Your username or password were incorrect!';
+
 					// authentication failed
 					$smarty->assign("file", "user/login/login.tpl");
 					$smarty->display("home.tpl");
@@ -157,6 +159,8 @@ if (isset($route->method))
 				if (!isset($_SESSION["userId"]))
 				{
 					$smarty->assign("file", "user/login/login.tpl");
+                    $smarty->assign("title", 'Login');
+
 					$smarty->display("home.tpl");
 				}
 				else
@@ -177,6 +181,8 @@ if (isset($route->method))
 			{
 				// load up template
 				$smarty->assign("file", "user/login/forgot.tpl");
+                $smarty->assign("title", 'Forgot Your Password?');
+
 				$smarty->display("home.tpl");
 			}
 
@@ -202,6 +208,8 @@ if (isset($route->method))
 			else
 			{
 				$smarty->assign("file", "user/signup/signup.tpl");
+                $smarty->assign("title", 'Join TapePlay');
+
 				$smarty->display("home.tpl");
 			}
 			break;
@@ -282,6 +290,8 @@ if (isset($route->method))
 				{
 					// user was not created.  show current page again.
 					$smarty->assign('file', "user/personal/");
+                    $smarty->assign("title", 'Your Basic Info');
+
 					$smarty->display("home.tpl");
 					//
 				}
@@ -317,6 +327,8 @@ if (isset($route->method))
 				// now display the template based on above selection
 				$smarty->assign("birthYears", $birthYears);
 				$smarty->assign('file', $template);
+                $smarty->assign('title', 'Join TapePlay');
+
 				$smarty->display("home.tpl");
 			}
 
@@ -412,6 +424,9 @@ if (isset($route->method))
 				$smarty->assign("videoYears", $videoYears);
 				$smarty->assign("file", "user/upload/upload.tpl");
                 $smarty->assign('sports', $sports);
+                $smarty->assign('currentSport', $sport);
+                $smarty->assign("title", 'Upload Video File on TapePlay');
+
 				$smarty->display("home.tpl");
 			}
 
@@ -602,6 +617,7 @@ if (isset($route->method))
                         $smarty->assign('hash', $inputFilter->createHash());
                         $smarty->assign('positions', $positions);
                         $smarty->assign('modder', $modder);
+                        $smarty->assign("title", 'Player Info');
 
                         $smarty->assign('stats', $stats);
 
@@ -677,6 +693,8 @@ if (isset($route->method))
 			{
 				// newly-loaded page - load payment template
 				$smarty->assign("file", "user/payment/payment.tpl");
+                $smarty->assign("title", 'Payment Info');
+
 				$smarty->display("home.tpl");
 			}
 			break;
@@ -702,6 +720,8 @@ if (isset($route->method))
 			{
 				// load up the confirmation page
 				$smarty->assign("file", "user/confirm/confirm.tpl");
+                $smarty->assign("title", 'Confirm');
+
 				$smarty->display("home.tpl");
 			}
 

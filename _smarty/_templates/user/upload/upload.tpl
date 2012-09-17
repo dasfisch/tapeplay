@@ -90,7 +90,27 @@
 			</div>
 		</li>
 		<li class="input-field clear">
-			<a href="#" class="clear">Examples of video titles</a>
+            <div class="infoOpen videoTitle">
+                Examples of video titles
+                <div class="infoBubble above">
+                    <div class="directionBottomLeft"></div>
+                    <div class="topLeft"></div>
+                    <div class="topRight"></div>
+                    <div class="middle">
+                        <p>
+                            Keep it short and sweet. Here is what we recommend for the vidoe titles:
+                        </p>
+                        <ul>
+                            <li>Vs. Midcity Ravens</li>
+                            <li>Palmetto Golf Championship</li>
+                            <li>Highlight Tape 1</li>
+                            <li>Skills Tape 1</li>
+                        </ul>
+                    </div>
+                    <div class="bottomLeft"></div>
+                    <div class="bottomRight"></div>
+                </div>
+            </div>
 			<div class="input_custom-text input_text80 width600 left">
 				<div class="custom-input_center custom-input_partial">
 					<span class="custom-input_top"></span>
@@ -107,9 +127,7 @@
 					<span class="custom-input_top"></span>
 					<span class="custom-input_bottom"></span>
 				</div>
-				
 			</div>
-			
 			<div class="error-alert">
 				<ul>
 					<li>Enter your first and last name here.</li>
@@ -123,7 +141,11 @@
                 <select class="select-9" name="sport_id">
                     <option class="default">Pick a Sport</option>
                     {foreach item=single from=$sports}
-                        <option value="{$single->getId()}">{$single->getSportName()}</option>
+                        {if $sport.id == $single->getId()}
+                            <option value="{$single->getId()}" selected>{$single->getSportName()}</option>
+                        {else}
+                            <option value="{$single->getId()}">{$single->getSportName()}</option>
+                        {/if}
                     {/foreach}
                 </select>
             </fieldset>

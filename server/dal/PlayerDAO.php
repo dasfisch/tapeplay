@@ -208,7 +208,7 @@ class PlayerDAO extends BaseDOA
             
            $this->sql = 'SELECT
                                users.*,
-                               p.id AS player_id, p.number, p.height, p.grade_level, p.video_access,
+                               p.id AS player_id, p.number, p.height, p.grade_level, p.playing_level, p.video_access,
                                p.position, p.weight, p.coach_name, p.graduation_month, p.graduation_year,
                                s.id AS schoolId, s.name as schoolName, s.city as schoolCity,
                                s.state as schoolState, s.division AS schoolDivision,

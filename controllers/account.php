@@ -136,6 +136,7 @@ if (isset($route->method))
                 $smarty->assign("myVideoWording", $myVideoWorking);
                 $smarty->assign("stats", $stats);
                 $smarty->assign("statCount", count($stats));
+                $smarty->assign("title", 'Your TapePlay Account');
                 $smarty->assign("user", $user);
                 $smarty->assign("videoCount", $videoCount);
                 $smarty->assign("videos", $videos);
@@ -201,6 +202,7 @@ if (isset($route->method))
 
             $smarty->assign('file', $template);
             $smarty->assign('message', $message);
+            $smarty->assign("title", 'Forgot Your Password');
 
             $smarty->display('home.tpl');
 

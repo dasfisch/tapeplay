@@ -356,13 +356,7 @@ jQuery(document).ready(function(){
             openBubble(jQuery(this));
         },
         function() {
-            var _this = jQuery(this);
-
-            jQuery(document).click(function(event) {
-                if(jQuery(event.target).parents('.infoBubble').length <= 0) {
-                    _this.next('.infoBubble').fadeOut();
-                }
-            });
+            jQuery('.infoBubble').fadeOut();
         }
     );
 
@@ -568,15 +562,17 @@ jQuery(document).ready(function(){
     		($(this).get(0)).type = 'password';
     	}
 
-    	if (event.type == "blur" && ($(this).get(0)).value == ("" || ($(this).get(0)).defaultValue)) {
+        if (event.type == "blur" && (($(this).get(0)).value == "" || ($(this).get(0)).value == ($(this).get(0)).defaultValue)) {
     		($(this).get(0)).type = "text";
     	}
     });
 
     jQuery("input[type=text]").bind('focus blur', function(event) {
     	if (event.type == "blur" && (($(this).get(0)).value == "" || ($(this).get(0)).value == ($(this).get(0)).defaultValue)) {
+            jQuery(this).css('color', '#B2B2B2');
     		($(this).get(0)).value = ($(this).get(0)).defaultValue;
     	} else if(event.type == "focus" && ($(this).get(0)).defaultValue == ($(this).get(0)).value) {
+            jQuery(this).css('color', '#000');
             ($(this).get(0)).value = '';
         }
     });
@@ -591,8 +587,10 @@ function openBubble(obj) {
 
     var position = obj.position();
 
-    var bubble = obj.next('.infoBubble');
+    var bubble = obj.children('.infoBubble');
+
     var bubbleWidth = bubble.width();
+    var bubbleHeight = bubble.outerHeight();
     var thisHeight = obj.height();
     var thisWidth = obj.width();
 
@@ -604,22 +602,22 @@ function openBubble(obj) {
         thePosition.left = position.left - (bubbleWidth * .5) + (thisWidth * .5);
     }
 
-    thePosition.top = position.top + thisHeight + 12;
+//    thePosition.top = position.top + thisHeight + 12;
 
     /**
      * @TODO: Positioning;
      */
-//    if(bubble.hasClass('topCentered')) {
-//        thePosition.top = obj.parents().next().height() / 2;
-//    } else {
-//        thePosition.top = position.top + thisHeight + 12;
-//    }
-//
-//    if(bubble.hasClass('topCentered')) {
-//        thePosition.left = thisWidth / 2;
-//    } else {
-//        thePosition.top = position.top + thisHeight + 12;
-//    }
+    if(bubble.hasClass('above')) {
+        thePosition.top = obj.parents().next().height() / 2;
+    } else {
+        thePosition.top = position.top + thisHeight + 12;
+    }
+
+    if(bubble.hasClass('above')) {
+        thePosition.top = obj.offset().top - bubbleHeight - 12;
+    } else {
+        thePosition.top = position.top + thisHeight + 12;
+    }
 
     bubble
             .css('left', thePosition.left)

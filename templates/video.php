@@ -19,25 +19,27 @@
             </ul>
             <ul id="right">
                 <li class="link bubble">
-                    <a class="infoOpen">Share</a>
-                    <div class="infoBubble">
-                        <div class="directionTopMiddle"></div>
-                        <div class="topLeft"></div>
-                        <div class="topRight"></div>
-                        <div class="middle">
-                            <p>
-                                Embed video (copy &amp; paste link):
-                                <br/>
-                                <a>http://tapeplay.com/asd8f69j</a>
-                            </p>
-                            <p>Email this video: <a>click here</a></p>
-                            <p>
-                                <span class="postVideo">Post video:</span> <span class="smallShare fbBlackSmall"></span> <span class="smallShare myBlackSmall"></span> <span class="smallShare twBlackSmall"></span> <span class="smallShare inBlackSmall"></span>
-                            </p>
+                    <a class="infoOpen">
+                        Share
+                        <div class="infoBubble">
+                            <div class="directionTopMiddle"></div>
+                            <div class="topLeft"></div>
+                            <div class="topRight"></div>
+                            <div class="middle">
+                                <p>
+                                    Embed video (copy &amp; paste link):
+                                    <br/>
+                                    <a>http://tapeplay.com/asd8f69j</a>
+                                </p>
+                                <p>Email this video: <a>click here</a></p>
+                                <p>
+                                    <span class="postVideo">Post video:</span> <span class="smallShare fbBlackSmall"></span> <span class="smallShare myBlackSmall"></span> <span class="smallShare twBlackSmall"></span> <span class="smallShare inBlackSmall"></span>
+                                </p>
+                            </div>
+                            <div class="bottomLeft"></div>
+                            <div class="bottomRight"></div>
                         </div>
-                        <div class="bottomLeft"></div>
-                        <div class="bottomRight"></div>
-                    </div>
+                    </a>
                 </li>
                 <li class="link">
                     <a class="infoOpen">Save</a>

@@ -24,54 +24,63 @@
         switch($route->method) {
             case 'about':
                 $smarty->assign('file', 'company/about.tpl');
+                $smarty->assign("title", 'About TapePlay');
 
                 $smarty->display('home.tpl');
 
                 break;
             case 'advertising':
                 $smarty->assign('file', 'company/advertising.tpl');
+                $smarty->assign("title", 'Advertise With TapePlay');
 
                 $smarty->display('home.tpl');
 
                 break;
             case 'contact':
                 $smarty->assign('file', 'company/contact.tpl');
+                $smarty->assign("title", 'Contact TapePlay');
 
                 $smarty->display('home.tpl');
 
                 break;
             case 'faq':
                 $smarty->assign('file', 'company/faq.tpl');
+                $smarty->assign("title", 'Frequently Asked Questions');
 
                 $smarty->display('home.tpl');
 
                 break;
             case 'getstarted':
                 $smarty->assign('file', 'company/getstarted.tpl');
+                $smarty->assign("title", 'Get Started With TapePlay');
 
                 $smarty->display('home.tpl');
 
                 break;
             case 'guidelines':
                 $smarty->assign('file', 'company/dosandonts.tpl');
+                $smarty->assign("title", 'Community Guidelines');
 
                 $smarty->display('home.tpl');
 
                 break;
             case 'share':
                 $smarty->assign('file', 'company/share.tpl');
+                $smarty->assign("title", 'Share TapePlay');
 
                 $smarty->display('home.tpl');
 
                 break;
             case 'help':
                 $smarty->assign('file', 'company/helpcenter.tpl');
+                $smarty->assign("title", 'Help Center');
 
                 $smarty->display('home.tpl');
 
                 break;
 			case 'privacy':
 				$smarty->assign('file', 'company/privacy-policy.tpl');
+                $smarty->assign("title", 'Privacy Policy');
 
 				$smarty->assign('divId', 'content-left-column');
 				$smarty->display('home.tpl');
@@ -79,6 +88,7 @@
 				break;
 			case 'tos':
 				$smarty->assign('file', 'company/terms-of-service.tpl');
+                $smarty->assign("title", 'Terms of Service');
 
 				$smarty->assign('divId', 'content-left-column');
 				$smarty->display('home.tpl');
