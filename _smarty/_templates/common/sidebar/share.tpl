@@ -2,7 +2,6 @@
 <ul id="get-connected">
 	<li id="get-connected_facebook"><a href="{#facebookUrl#}"  target="_blank" title="{#facebookTitle#}">{#facebookTitle#}</a></li>
 	<li id="get-connected_linkedin"><a href="{#linkedInUrl#}"  target="_blank"title="{#linkedInTitle#}">{#linkedInTitle#}</a></li>
-	<li id="get-connected_twitter"><a href="{#twitterUrl#}"  target="_blank"title="{#twitterTitle#}">{#twitterTitle#}</a></li>
 	<li id="get-connected_google-plus"><a href="{#googlePlusUrl#}"  target="_blank" title="{#googlePlusTitle#}">{#googlePlusTitle#}</a></li>
 </ul>
 

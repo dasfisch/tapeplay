@@ -105,7 +105,7 @@
 					<select class="select-2" class="height" name="height">
 						<option class="default">Select</option>
 						{section name=i start=48 loop=96 step=1}
-                            <option value="{$smarty.section.i.index}">{floor($smarty.section.i.index/12)}" {$smarty.section.i.index % 5}'</option>
+                            <option value="{$smarty.section.i.index}">{floor($smarty.section.i.index/12)}" {$smarty.section.i.index % 12}'</option>
                         {/section}
 					</select>
 				</fieldset>
