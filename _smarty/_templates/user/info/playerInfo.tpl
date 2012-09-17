@@ -48,21 +48,21 @@
 					<li>
 						<label for="high-school">
 							<span class="checkbox"><span class="check"></span></span>
-							<input type="checkbox" id="high-school" name="school_level[]" value="high_school" /> 
+							<input type="checkbox" id="high-school" name="playingLevel" value="0" />
 							High School
 						</label>
 					</li>
 					<li>
 						<label for="college">
 							<span class="checkbox"><span class="check"></span></span>
-							<input type="checkbox" id="college" name="school_level[]" value="college" />
+							<input type="checkbox" id="college" name="playingLevel" value="1" />
 							College
 						</label>
 					</li>
 					<li>
 						<label for="professional">
 							<span class="checkbox"><span class="check"></span></span>
-							<input type="checkbox" id="professional" name="school_level[]" value="professional" />
+							<input type="checkbox" id="professional" name="playingLevel" value="2" />
 							Professional
 						</label>
 					</li>
@@ -75,8 +75,8 @@
 				<fieldset>
 					<select class="select-2" name="gradeLevel">
 						<option class="default">Select</option>
-						{section name=i start=6 loop=16 step=1}
-                            <option value="{$smarty.section.i.index}">{$smarty.section.i.index}</option>
+						{section name=i start=9 loop=17 step=1}
+                            <option value="{$smarty.section.i.index}">{$gradeLevels[$smarty.section.i.index]}</option>
                         {/section}
 					</select>
 				</fieldset>
@@ -105,7 +105,7 @@
 					<select class="select-2" class="height" name="height">
 						<option class="default">Select</option>
 						{section name=i start=48 loop=96 step=1}
-                            <option value="{$smarty.section.i.index}">{$smarty.section.i.index}</option>
+                            <option value="{$smarty.section.i.index}">{floor($smarty.section.i.index/12)}" {$smarty.section.i.index % 5}'</option>
                         {/section}
 					</select>
 				</fieldset>
