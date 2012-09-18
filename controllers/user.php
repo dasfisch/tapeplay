@@ -468,7 +468,7 @@ if (isset($route->method))
                         $userBLL->getUser()->setCoachName($post["headCoachName"]);
                         $userBLL->getUser()->setGraduationMonth($post["graduationMonth"]);
                         $userBLL->getUser()->setGraduationYear($post["graduationYear"]);
-
+						$userBLL->getUser()->setPlayingLevel($post["playingLevel"]);
                         if(isset($post['schoolId']) && (int)$post["schoolId"] > 0) {
                             $userBLL->getUser()->getSchool()->setId((int)$post["schoolId"]);
                         }
@@ -655,6 +655,7 @@ if (isset($route->method))
                     }
                 }
 
+				$smarty->assign('gradeLevels', $controller->configuration->gradeLevels);
 				$smarty->assign('file', $template);
                 $smarty->assign('postSport', $sportId);
                 $smarty->assign('userId', $userBLL->getUser()->getId());
