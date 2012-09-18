@@ -117,12 +117,12 @@
                 $search = new SearchFilter();
                 $video = new VideoBLL();
 
-                $title = '';
+                $title = $sport['name'].' Videos';
 
-                if(isset($post['searchVal']) && $post['searchVal'] != '') {
-                    $search->setLike('title', $post['searchVal']);
+                if(isset($post['search']) && $post['search'] != '') {
+                    $search->setLike('title', $post['search']);
 
-                    $title = 'Search Videos for '.$post['searchVal'].' on TapePlay';
+                    $title = 'Search Videos for '.$post['search'].' on TapePlay';
 
                     $_SESSION['search'] = serialize($search);
                 } else {
