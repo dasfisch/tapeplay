@@ -103,7 +103,7 @@
                                     </div>
                                 {/if}
 							</li>
-							<li><a href="{#baseUrl#}blog/">Blog</a></li>
+							<li><a href="{#blogUrl#}" target="_blank">Blog</a></li>
 							<li><a class="{if {$smarty.server.REQUEST_URI} == '/company/help/'}active{/if}" href="{#baseUrl#}company/help/">Help</a></li>
 						</ul>
 					</div>
