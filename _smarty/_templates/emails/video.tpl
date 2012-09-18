@@ -11,6 +11,13 @@
 <body marginheight="0" marginwidth="0" leftmargin="0" topmargin="0" bgcolor="#000000" style="margin:0;" link="#0000ff">
 <table width="100%" align="center" cellspacing="0" cellpadding="0" border="0" bgcolor="#000000">
 	<tr>
+		<td align="center" style="font-size:10px; line-height:13px; text-align:center;color:#ffffff;">
+			<font face="Arial, Helvetica, sans-serif" size="1" color="#ffffff" style="font-size:10px; line-height:13px;">
+				Please add <a href="mailto:no-reply@tapeplay.com">no-reply@tapeplay.com</a> to your address book.
+			</font>
+		</td>
+	</tr>
+	<tr>
 		<td>
 			<table bgcolor="#000000" width="100%" cellpadding="0" cellspacing="0" border="0">
 				<tr>
@@ -330,14 +337,13 @@
                                             </td>
                                         </tr>
 										<tr>
-											<td mc:edit="footer" align="center" style="font-size:10px; line-height:13px; text-align:center;">
-                                                <font face="Arial, Helvetica, sans-serif" size="1" color="#ffffff" style="font-size:10px; line-height:13px;">
-                                                    <span style="font-size:10px; line-height:13px; color:#ffffff;">&copy;</span>2012 All Rights Reserved.
-                                                    <a href="#" style="color:#ffffff; text-decoration:none;">
-                                                        <font color="#ffffff">TapePlay.com</font>
-                                                    </a> is a registered trademark
-                                                </font>
-                                            </td>
+											<td align="center" style="font-size:10px; line-height:13px; text-align:center;">
+												<font face="Arial, Helvetica, sans-serif" size="1" color="#000000" style="font-size:10px; line-height:13px;">
+												This email was sent by TapePlay, P.O. Box 10587, Chicago, IL 60610
+												<br/>
+												<br/>This email was sent to the address <a href="mailto:{$emailAddress}">{$emailAddress}</a>. If you no longer wish to receive these emails, it's cool - you can <a href="http://tapeplay.us4.list-manage.com/unsubscribe?u=30d887a41346b444923a0fe35&id=14ed2d8794">unsubscribe</a>. But don't think we won't miss you.
+												<br/>&copy;&nbsp;{$fullYear} All Rights Reserved.
+											</font></td>
 										</tr>
 										<tr>
                                             <td style="font-size:0; line-height:0;">
