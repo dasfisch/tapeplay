@@ -90,6 +90,7 @@ class Util
 
 		// full year will always be included
 		$smarty->assign("fullYear", date('Y'));
+		$smarty->assign("emailAddress", $to);
 
         $body = $smarty->fetch($template, false);
 
