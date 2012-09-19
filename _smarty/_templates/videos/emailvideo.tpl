@@ -3,12 +3,12 @@
         <h2 id="title">Email Video</h2>
         {$message}
         <div id="single">
-            <img src="/" class="resultImage" />
+            <img src="{#pandaBase#}{$video->getPandaId()}{#pandaImageExt#}" class="resultImage" />
             <div class="info">
                 <h2>{$video->getPlayer()->getFirstName()} {$video->getPlayer()->getLastName()}</h2>
-                <p class="position">{$video->getPlayer()->getPosition()}, {$video->getPlayer()->getConvertedHeight()}</p>
+                <p class="position">{$video->getPlayer()->getPosition()}, {$video->getPlayer()->getFriendlyHeight()}</p>
                 <p class="title">{$video->getTitle()}</p>
-                <p class="date">{$video->getUploadDate()|date_format:'%B %d, %Y %I:%M %p'}</p>
+                <p class="date">{$video->getUploadDate()|date_format:'%B %d, %Y'}</p>
             </div>
         </div>
         <form id="emailFriend" action="" method="post">
