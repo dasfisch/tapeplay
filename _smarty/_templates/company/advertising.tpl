@@ -2,13 +2,8 @@
 	<h1>Advertising</h1>
 	
 	<p>
-		Get access to one of the most highly engaged audiences around with TapePlay. Our users spend XX minutes on the site each day. The entire time they&rsquo;re busy browsing, adding comments, and sharing videos.
+		Get access to one of the most highly engaged audiences around with TapePlay.
 	</p>
-	
-	<p>
-		In short, they&rsquo;re paying attention. And we keep immaculate records that allow us to narrow your marketing campaign by all different types of criteria. So connect with your audience by targeting things like:
-	</p>
-	
 	<h3>Demographic</h3>
 	<p>
 		Based on the user&rsquo;s age, sex or combination of the two.

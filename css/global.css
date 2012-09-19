@@ -445,6 +445,12 @@ fieldset li {
 	text-decoration:none;
 }
 
+.disabled, .disabled:hover
+{
+    background-color: #aaa;
+    color: #ccc;
+}
+
 .button_black_medium, .button_black_medium:visited, .button_black_medium:hover {
 	background-color:#000000;
 	border:none;

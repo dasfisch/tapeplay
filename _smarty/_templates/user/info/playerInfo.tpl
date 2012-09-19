@@ -15,7 +15,6 @@
             <h2>{$video->getTitle()}</h2>
             <p>{$video->getUploadDate()|date_format:'%B %d, %Y'}</p>
             <p>{$video->getLength()}</p>
-            <p class="italic">Video file name</p>
         </div>
     </div>
 	<ul class="five-column">

@@ -1,9 +1,9 @@
-<h1>Video File Upload</h1>
+<h1 xmlns="http://www.w3.org/1999/html">Video File Upload</h1>
 <p>
-	Upload highlight tapes, game footage and so on. Stay away from backyard footage&ndash;street games, summer leagues, etc. <a href="#">See what makes a good video</a>
+	Upload highlight tapes, game footage and so on. Stay away from backyard footage&ndash;street games, summer leagues, etc. <a href="{#blogUrl#}/?p=99" target="_blank">See what makes a good video</a>
 </p>
 <p>
-	<strong>For college recruits</strong>, you should to adhere to NCAA rules. That means only footage from regular season games&ndash;competition and highlight tapes, but no skills tapes. 
+	<strong>For college recruits</strong>, you should to adhere to NCAA rules. That means only footage from regular season games&ndash;competition and highlight tapes, but no skills tapes.
 </p>
 
 <form id="uploading" method="post" action="{#baseUrl#}user/upload/">
@@ -12,6 +12,7 @@
 
             <div id="progressArea" style="vertical-align: middle;height:30px;">
                 <div id="progressMeter" class="panda_upload_progress" style="float:left;"></div>
+				<div id="cancelUpload" style="float:left; display:none; margin-left:15px; color:#e18a07;"><a href="#">Cancel Upload</a></div>
                 <div id="uploadComplete" class="successMessage" style="float:left;visibility: hidden; margin-left:15px; color:#00ff12;">Upload Complete.</div>
             </div>
 			<div class="input_custom-text input_text80 upload width440 left" id="localUploadFile">
@@ -20,17 +21,17 @@
 					<input type="text" id="fakeupload" name="fakeupload" value="Browse Video File" />
 					<span class="custom-input_bottom"></span>
 				</div>
-				
+
 				<div class="custom-input_left custom-input_partial">
 					<span class="custom-input_top"></span>
 					<span class="custom-input_bottom"></span>
 				</div>
-									
+
 				<div class="custom-input_right custom-input_partial">
 					<span class="custom-input_top"></span>
 					<span class="custom-input_bottom"></span>
 				</div>
-				
+
 			</div>
             <div id="uploadInputs" class="input">
                 <div id="localUploadButton" class="bigButton black">
@@ -46,6 +47,14 @@
                 </div>
                 <script type="text/javascript">
 
+					$(document).ready(function() {
+						$('#cancelUpload a').click(function() {
+						    // cancel the upload
+						    widget.abort();
+						    return false;
+						});
+					});
+
                     // grabs cloud_id, access_key, and secret_key for Panda
                     var panda_access_details = {$pandaAccessDetails};
 
@@ -56,10 +65,13 @@
                     function uploadSuccessful_Handler()
                     {
                         // enable the submit button
-                        $("input[id=submitButton]").removeAttr("disabled");
+                        $("#submitButton").removeAttr("disabled");
 
                         // tell user video upload is complete
+						$("#cancelUpload").css("display", "none");
                         $("#uploadComplete").css("visibility", "visible");
+						$("#submitButton").css("background-color", "#000");
+						$("#submitButton").css("color", "#fff");
                     }
 
                     function newFileSelected_Handler()
@@ -67,17 +79,28 @@
                         // need to hide upload inputs
                         $("#localUploadFile").css("display", "none");
                         $("#localUploadButton").css("display", "none");
+
+						$("#cancelUpload").css("display", "block");
                     }
 
+					function uploadCanceled_Handler()
+					{
+						$("#localUploadFile").css("display", "block");
+						$("#localUploadButton").css("display", "block");
+						$("#cancelUpload").css("display", "none");
+					}
+
                     // creates the uploader component with the customized options
+					var widget = new PandaUploader.SmartWidget(html_5_options, flash_options);
                     jQuery("#returned_video_id").pandaUploader(panda_access_details, {
                         onsuccess: uploadSuccessful_Handler,
                         onchange: newFileSelected_Handler,
+						onabort: uploadCanceled_Handler,
                         upload_progress_id: 'progressMeter',
                         api_url: '{$APIURL}',
                         uploader_dir: '.',
                         upload_strategy: new PandaUploader.UploadOnSelect(),
-                        widget: new PandaUploader.SmartWidget(html_5_options, flash_options),
+                        widget: widget,
                         allowed_extensions: ['aac', 'avi', '3gp', 'flv', 'mov', 'mp3', 'mp4', 'mpeg', 'ogg', 'wav', 'webm', 'wma', 'wmv'],
                         file_size_limit: '250MB'
                     });
@@ -98,7 +121,7 @@
                     <div class="topRight"></div>
                     <div class="middle">
                         <p>
-                            Keep it short and sweet. Here is what we recommend for the vidoe titles:
+                            Keep it short and sweet. Here is what we recommend for the video titles:
                         </p>
                         <ul>
                             <li>Vs. Midcity Ravens</li>
@@ -117,12 +140,12 @@
 					<input type="text" name="title" value="Video Title"/>
 					<span class="custom-input_bottom"></span>
 				</div>
-				
+
 				<div class="custom-input_left custom-input_partial">
 					<span class="custom-input_top"></span>
 					<span class="custom-input_bottom"></span>
 				</div>
-									
+
 				<div class="custom-input_right custom-input_partial">
 					<span class="custom-input_top"></span>
 					<span class="custom-input_bottom"></span>
@@ -134,7 +157,7 @@
 					<li>Do not use numbers.</li>
 				</ul>
 			</div>
-			
+
 		</li>
 		<li class="input-field clear">
             <fieldset>
@@ -182,7 +205,7 @@
 			</ul>
 		</li>
 		<li class="input-field clear">
-			<button value="Join" type="submit" class="button_black_large left button_round">Continue</button> 
+			<button id="submitButton" value="Join" type="submit" class="button_black_large left button_round disabled" disabled="disabled">Continue</button>
 			<span class="form-steps">Step 2 of 3</span>
 		</li>
 	</ul>
