@@ -9,6 +9,7 @@ require_once("bll/UserBLL.php");
 require_once("bll/PlayerBLL.php");
 require_once("bll/VideoBLL.php");
 require_once("model/SearchFilter.php");
+require_once("utility/Util.php");
 
 use tapeplay\server\bll\SchoolBLL;
 use tapeplay\server\bll\StatsBLL;
@@ -160,33 +161,27 @@ if (isset($route->method))
                     $userBll = new UserBLL();
                     $user = $userBll->search($search);
                     if(isset($user) && !empty($user)) {
+
+						// create hash to include in url to reset password
                         $hash = md5(base64_encode(implode($user)));
 
-                        $headers = 'MIME-Version: 1.0' . "\r\n";
-                        $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
-                        $headers .= "From: TapePlay Admin <digital-no-reply@tapeplay.com>\r\n";
+						// create url
+						$url = $controller->configuration->URLs['baseUrl'].'account/password/?auth='.$hash.'&email='.$post['email'];
 
-                        $subject = 'Here\'s Your Password Reset';
+						$args = array("url" => $url);
 
-                        $url = $controller->configuration->URLs['baseUrl'].'account/password/?auth='.$hash.'&email='.$post['email'];
+						// send email with above args
+						$success = \Util::sendEmail(EmailEnum::$RESET_PASSWORD, array($post['email']), "Your Password Has Been Reset", "emails/reset-password.tpl", $args);
 
-                        $body = '
-                                <div>
-                                    <h3>Here\'s your passoword</h3>
-                                    <p>
-                                        Don\'t worry. It happens to the best of us. Just go <a href="'.$url.'">here</a>,
-                                        and complete the form. That\'s it!
-                                    </p>
-                                </div>';
-
-                        if(!mail($post['email'], $subject, $body, $headers)) {
-                            $message->message = $post['email'];
+                        if(!$success)
+						{
+                            $message->message = $post['email'].' is not a registered email address!';
                             $message->type = 'error';
-                        } else {
+                        }
+						else
+						{
                             $template = 'account/passwordreset.tpl';
-
                             $smarty->assign('file', $template);
-
                             $smarty->display('home.tpl');
                         }
 

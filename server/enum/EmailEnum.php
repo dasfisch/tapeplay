@@ -9,4 +9,5 @@ class EmailEnum
 	public static $VIDEO_PUBLISH = "video-publish";
 	public static $INVITE_STAFF = "invite";
 	public static $RENEW = "renew";
+	public static $RESET_PASSWORD = "reset-password";
 }

@@ -6,7 +6,7 @@
             <div class="inputField">
                 <div class="left"></div>
                 <div class="middle">
-                    <input type="text" class="standard" id="username" name="username" value="Email Address" />
+                    <input type="text" class="standard" id="email" name="email" value="Email Address" />
                 </div>
                 <div class="right"></div>
             </div>
