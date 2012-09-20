@@ -147,10 +147,13 @@ if (isset($route->method))
 				}
 				else
 				{
-                    $_SESSION['message']['message'] = 'Your username or password were incorrect!';
+                    $message->message = 'Your username or password were incorrect!';
+                    $message->type = 'error';
 
 					// authentication failed
 					$smarty->assign("file", "user/login/login.tpl");
+                    $smarty->assign("title", 'Login');
+
 					$smarty->display("home.tpl");
 				}
 			}

@@ -1,6 +1,6 @@
 <h1>Player Sign Up</h1>
 {include file='common/message.tpl'}
-<form id="coachForm" name="login" action="{#baseUrl#}user/personal/" method="post">
+<form id="coachForm" name="login" class="joinForm" action="{#baseUrl#}user/personal/" method="post">
 	<ul class="form-fields">
 		<li class="input-field clear">
 			
@@ -169,7 +169,7 @@
 					<li>
 						<label for="i-agree">
 							<span class="checkbox"><span class="check"></span></span>
-							<input type="checkbox" id="i-agree" name="agree" value="I Agree" /> 
+							<input type="checkbox" id="i-agree" name="agree" value="I Agree" />
 							By checking this box, I certify that I am 13 years of age or older.
 						</label>
 					</li>

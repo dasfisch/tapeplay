@@ -6,7 +6,7 @@
 	<strong>For college recruits</strong>, you should to adhere to NCAA rules. That means only footage from regular season games&ndash;competition and highlight tapes, but no skills tapes.
 </p>
 
-<form id="uploading" method="post" action="{#baseUrl#}user/upload/">
+<form id="uploading" class="uploadForm" method="post" action="{#baseUrl#}user/upload/">
 	<ul class="form-fields">
 		<li class="input-field clear">
 
@@ -153,8 +153,7 @@
 			</div>
 			<div class="error-alert">
 				<ul>
-					<li>Enter your first and last name here.</li>
-					<li>Do not use numbers.</li>
+					<li>Enter a title for your video.</li>
 				</ul>
 			</div>
 

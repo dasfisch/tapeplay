@@ -12,6 +12,7 @@
         <script type="text/javascript" src="/js/jquery-main.js"></script>
 		<script type="text/javascript" src="/js/tapeplay.js"></script>
         <script type="text/javascript" src="/js/jquery.panda.min.js"></script>
+        <script type="text/javascript" src="/js/jquery.validate.min.js"></script>
 
 
 	{if {$smarty.server.REQUEST_URI} == '/user/personal/'}

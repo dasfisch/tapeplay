@@ -4,7 +4,7 @@
 		<li>{$video->getTitle()}</li>
 		<li>{$video->getRecordedMonthName()}, {$video->getRecordedYear()}</li>
 	</ul>
-	<a href="{#baseUrl#}videos/search/{if $goBack ==1}?back=1{/if}" class="return">Back to search results</a>
+	<!--<a href="{#baseUrl#}videos/search/{if $goBack ==1}?back=1{/if}" class="return">Back to search results</a>-->
 	<div class="clear"></div>
 	<div class="video-player">
 		<video id="videoPlayer" width="890" height="455">

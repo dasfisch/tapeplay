@@ -1,4 +1,14 @@
+var infoBubbleOpen = false;
+var timeout = {};
+
 jQuery(document).ready(function(){
+    jQuery.validator.addMethod('noDefault', function (value, element) {
+        if (element.value === element.defaultValue) {
+           return false;
+        }
+        return true;
+    }, 'This is not a valid input.');
+
 	jQuery.each(jQuery('.checkbox'), function() {
 			$((jQuery(this).get(0)).parentNode).bind('click', function(event) {
 				event.preventDefault();
@@ -10,13 +20,98 @@ jQuery(document).ready(function(){
 					$(this).children('input').attr('checked',true);
 				}
 			})
-	})
-});
+	});
 
-var infoBubbleOpen = false;
-var timeout = {};
 
-jQuery(document).ready(function(){
+    /**
+     * THIS IS THE CODE FOR THE JOIN PAGE (http://beta.tapeplay.com/user/signup/)
+     *
+     * The dropdowns do not validate, nor do the checkboxes. birthYear is the example
+     * of the dropdown that is not validating.
+     */
+    jQuery('.joinForm').validate(
+        {
+            debug: true,
+            rules: {
+                email: {
+                    email: true,
+                    noDefault: true,
+                    required: true
+                },
+                firstName: {
+                    noDefault: true,
+                    required: true
+                },
+                lastName: {
+                    noDefault: true,
+                    required: true
+                },
+                password: {
+                    noDefault: true,
+                    required: true
+                },
+                zipcode: {
+                    noDefault: true,
+                    required: true
+                },
+                birthYear: {
+                    required: true
+                }
+            },
+            errorPlacement: function(error, element) {
+                console.log(element);
+
+                element.parentsUntil('.input-field').siblings('.error-alert').show();
+            },
+            unhighlight: function(element, errorClass) {
+                if (this.numberOfInvalids() == 0) {
+                    jQuery(element).parentsUntil('.input-field').siblings('.error-alert').hide();
+                }
+            },
+            highlight: function(element, errorClass) {
+                console.log('error found')
+            }
+        }
+    );
+
+//    jQuery('.uploadForm').validate({
+//        rules: {
+//            title: {
+//                noDefault: true,
+//                required: true
+//            }
+//        },
+//        errorPlacement: function(error, element) {
+//            console.log(element);
+//
+//            element.parentsUntil('.input-field').siblings('.error-alert').show();
+//        },
+//        unhighlight: function(element, errorClass) {
+//            if (this.numberOfInvalids() == 0) {
+//                jQuery(element).parentsUntil('.input-field').siblings('.error-alert').hide();
+//            }
+//        }
+//    });
+//
+//    jQuery('.infoForm').validate({
+//        rules: {
+//            number: {
+//                noDefault: true,
+//                required: true
+//            }
+//        },
+//        errorPlacement: function(error, element) {
+//            console.log(element);
+//
+//            element.parentsUntil('.input-field').siblings('.error-alert').show();
+//        },
+//        unhighlight: function(element, errorClass) {
+//            if (this.numberOfInvalids() == 0) {
+//                jQuery(element).parentsUntil('.input-field').siblings('.error-alert').hide();
+//            }
+//        }
+//    });
+
     var showing = false;
 
     jQuery('#arrow').click(function(){
@@ -101,21 +196,21 @@ jQuery(document).ready(function(){
         }
     });
 
-    jQuery('.accordion .header').click(function() {
-        var clicked = jQuery(this);
-
-        clicked.children('.arrow').toggleClass('down').toggleClass('up');
-
-        jQuery(this).next().slideToggle('slow', function() {
-            var curText = clicked.children('p').children('.collapse').html();
-
-            curText = (curText == 'Collapse') ? 'Expand' : 'Collapse';
-
-            clicked.children('p').children('.collapse').html(curText);
-        });
-
-        return false;
-    }).next().hide();
+//    jQuery('.accordion .header').click(function() {
+//        var clicked = jQuery(this);
+//
+//        clicked.children('.arrow').toggleClass('down').toggleClass('up');
+//
+//        jQuery(this).next().slideToggle('slow', function() {
+//            var curText = clicked.children('p').children('.collapse').html();
+//
+//            curText = (curText == 'Collapse') ? 'Expand' : 'Collapse';
+//
+//            clicked.children('p').children('.collapse').html(curText);
+//        });
+//
+//        return false;
+//    }).next().hide();
 
     jQuery('.userEdit').click(function() {
             var _this = jQuery(this);
@@ -567,15 +662,15 @@ jQuery(document).ready(function(){
     	}
     });
 
-    jQuery("input[type=text]").bind('focus blur', function(event) {
-    	if (event.type == "blur" && (($(this).get(0)).value == "" || ($(this).get(0)).value == ($(this).get(0)).defaultValue)) {
-            jQuery(this).css('color', '#B2B2B2');
-    		($(this).get(0)).value = ($(this).get(0)).defaultValue;
-    	} else if(event.type == "focus" && ($(this).get(0)).defaultValue == ($(this).get(0)).value) {
-            jQuery(this).css('color', '#000');
-            ($(this).get(0)).value = '';
-        }
-    });
+//    jQuery("input[type=text]").bind('focus blur', function(event) {
+//    	if (event.type == "blur" && (($(this).get(0)).value == "" || ($(this).get(0)).value == ($(this).get(0)).defaultValue)) {
+//            jQuery(this).css('color', '#B2B2B2');
+//    		($(this).get(0)).value = ($(this).get(0)).defaultValue;
+//    	} else if(event.type == "focus" && ($(this).get(0)).defaultValue == ($(this).get(0)).value) {
+//            jQuery(this).css('color', '#000');
+//            ($(this).get(0)).value = '';
+//        }
+//    });
 });
 
 function openBubble(obj) {
