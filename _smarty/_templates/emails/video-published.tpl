@@ -122,7 +122,7 @@
 												<font face="Arial, Helvetica, sans-serif" size="1" color="#000000" style="font-size:10px; line-height:13px;">
 												This email was sent by TapePlay, P.O. Box 10587, Chicago, IL 60610
 												<br/>
-												<br/>This email was sent to the address <a href="mailto:{$emailAddress}">{$emailAddress}</a>. If you no longer wish to receive these emails, it's cool - you can <a href="http://tapeplay.us4.list-manage.com/unsubscribe?u=30d887a41346b444923a0fe35&id=14ed2d8794">unsubscribe</a>. But don't think we won't miss you.
+												<br/>This email was sent to the address <a href="mailto:{$emailAddress}">{$emailAddress}</a>. If you no longer wish to receive these emails, it's cool - you can <a href="{#unsubscribeUrl#}">unsubscribe</a>. But don't think we won't miss you.
 												<br/>&copy;&nbsp;{$fullYear} All Rights Reserved.
 											</font></td>
 										</tr>

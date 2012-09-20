@@ -67,7 +67,7 @@
                                 <br/>
                                 <a>http://tapeplay.com/asd8f69j</a>
                             </p>
-                            <p>Email this video: <a href="">click here</a></p>
+                            <p>Email this video: <a href="/videos/email/{$video->getId()}/">click here</a></p>
                             <p>
                                 <span class="postVideo">Post video:</span> <span class="smallShare fbBlackSmall"></span> <span class="smallShare myBlackSmall"></span> <span class="smallShare twBlackSmall"></span> <span class="smallShare inBlackSmall"></span>
                             </p>
