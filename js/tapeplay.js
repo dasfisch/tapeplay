@@ -26,8 +26,8 @@ jQuery(document).ready(function(){
     /**
      * THIS IS THE CODE FOR THE JOIN PAGE (http://beta.tapeplay.com/user/signup/)
      *
-     * The dropdowns do not validate, nor do the checkboxes. birthYear is the example
-     * of the dropdown that is not validating.
+     * The dropdowns do not validate. birthYear is the example of the dropdown
+     * that is not validating.
      */
     jQuery('.joinForm').validate(
         {
