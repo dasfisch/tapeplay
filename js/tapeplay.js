@@ -24,7 +24,7 @@ jQuery(document).ready(function(){
 
 
     /**
-     * THIS IS THE CODE FOR THE JOIN PAGE (http://beta.tapeplay.com/user/signup/)
+     * THIS IS THE CODE FOR THE JOIN PAGE (http://beta.tapeplay.com/user/personal/)
      *
      * The dropdowns do not validate. birthYear is the example of the dropdown
      * that is not validating.
