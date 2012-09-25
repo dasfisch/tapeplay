@@ -43,7 +43,7 @@ p {
 	position:relative; /* needed for footer positioning*/
 	margin:0;
 	width:100%;
-	background:transparent url(/media/images/ads/ad_this-will-your-game_590x865.jpg) no-repeat 1010px 75px;
+	background:transparent url(/media/images/ads/hp_betaAd_background_1280.jpg) no-repeat 1010px 75px;
 	
 	height:auto !important; /* real browsers */
 	height:100%; /* IE6: treated as min-height*/
@@ -434,6 +434,7 @@ fieldset li {
 	margin-left:20px;
 	padding:28px 38px;
 	text-decoration:none;
+    cursor: pointer;
 }
 
 .button_black_large, .button_black_large:visited, .button_black_large:hover {
@@ -443,6 +444,7 @@ fieldset li {
 	font-size:36px;
 	padding:38px 52px;
 	text-decoration:none;
+    cursor: pointer;
 }
 
 .disabled, .disabled:hover
@@ -459,6 +461,7 @@ fieldset li {
 	font-size:28px;
 	padding:22px 37px;
 	text-decoration:none;
+    cursor: pointer;
 }
 
 .button_orange_large, .button_orange_large:visited, .button_orange_large:hover {
@@ -470,6 +473,7 @@ fieldset li {
 	margin-left:20px;
 	padding:28px 38px;
 	text-decoration:none;
+    cursor: pointer;
 }
 
 .button_black_small, .button_black_small:visited, .button_black_small:hover {
@@ -482,6 +486,7 @@ fieldset li {
     margin:0px;
     padding: 7px 12px;
     text-decoration: none;
+    cursor: pointer;
 }
 
 .button_black_large.upload {
