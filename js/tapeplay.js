@@ -1,6 +1,8 @@
 var infoBubbleOpen = false;
 var timeout = {};
 
+setContainerBGImage();
+
 jQuery(document).ready(function(){
     jQuery.validator.addMethod('noDefault', function (value, element) {
         if (element.value === element.defaultValue) {
@@ -729,4 +731,31 @@ function openBubble(obj) {
 //    });
 
     infoBubbleOpen = true;
+}
+
+function setContainerBGImage()
+{
+	// set ad size based on browser width
+	var browserWidth = $(window).width();
+	var imageSize = "";
+
+	switch (true)
+	{
+		case browserWidth >= 1600:
+			imageSize = 1600;
+			break;
+		case browserWidth >= 1440:
+			imageSize = 1440;
+			break;
+		case browserWidth >= 1366:
+			imageSize = 1366;
+			break;
+		default:
+			imageSize = 1280;
+			break;
+	}
+
+	// create image name
+	var bgName = "hp_betaAd_background_" + imageSize.toString() + ".jpg";
+	$("#container").css("background-image", "url(/media/images/ads/" + imageSize);
 }
