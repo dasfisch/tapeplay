@@ -58,14 +58,14 @@
 			</div>
 			<div class="info">
 				<h3>Subscribe to Email Updates</h3>
-				<form>
+				<form action="http://tapeplay.us4.list-manage.com/subscribe/post?u=30d887a41346b444923a0fe35&amp;id=14ed2d8794" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
 					<ul class="form-fields">
 						<li class="input-field clear">
 
 							<div class="input_custom-text width175 input_text36 left">
 								<div class="custom-input_center custom-input_partial">
 									<span class="custom-input_top"></span>
-									<input type="text" name="search" value="Enter Email Address"/>
+									<input type="email" name="EMAIL" class="email" id="mce-EMAIL" value="Enter Email Address" required onfocus="if (value == 'Enter Email Address') { value = ''; }" onblur="if (value == '') { value = 'Enter Email Address'; }"/>
 									<span class="custom-input_bottom"></span>
 								</div>
 
@@ -78,10 +78,8 @@
 									<span class="custom-input_top"></span>
 									<span class="custom-input_bottom"></span>
 								</div>
-
 							</div>
-
-							<button type="submit" value="Submit" class="button_black_small left">Submit</button>
+							<button type="submit" id="mc-embedded-subscribe" name="subscribe" value="Submit" class="button_black_small left">Submit</button>
 						</li>
 					</ul>
 				</form>
@@ -89,7 +87,6 @@
 					<ul>
 						<li>Follow Us:</li>
 						<li><a href="{#facebookUrl#}" target="_blank"><img src="/media/images/icon_mini-facebook.gif"/></a></li>
-						<li><a href="{#linkedInUrl#}" target="_blank"><img src="/media/images/icon_mini-linkedin.gif"/></a></li>
 						<li><a href="{#googlePlusUrl#}" target="_blank"><img src="/media/images/icon_mini-googleplus.gif"/></a></li>
 					</ul>
 				</div>
