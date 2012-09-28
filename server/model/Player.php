@@ -16,6 +16,9 @@ class Player extends User
 {
 	public static function create($arr)
 	{
+        var_dump($arr);
+        exit;
+
 		$player = new Player();
 
 		//on a get, I need to figure out the sql to get the player_id back properly

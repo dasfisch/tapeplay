@@ -2,12 +2,19 @@ var infoBubbleOpen = false;
 var timeout = {};
 
 jQuery(document).ready(function(){
-    jQuery.validator.addMethod('noDefault', function (value, element) {
-        if (element.value === element.defaultValue) {
-           return false;
-        }
-        return true;
-    }, 'This is not a valid input.');
+//    jQuery.validator.addMethod('noDefault', function (value, element) {
+//        if (element.value === element.defaultValue) {
+//           return false;
+//        }
+//        return true;
+//    }, 'This is not a valid input.');
+//
+//    jQuery.validator.addMethod('noDefaultSel', function (value, element) {
+//        if (element.value === jQuery(element).find('option.default').text()) {
+//           return false;
+//        }
+//        return true;
+//    }, 'This is not a valid input.');
 
 	jQuery.each(jQuery('.checkbox'), function() {
 			$((jQuery(this).get(0)).parentNode).bind('click', function(event) {
@@ -29,50 +36,51 @@ jQuery(document).ready(function(){
      * The dropdowns do not validate. birthYear is the example of the dropdown
      * that is not validating.
      */
-    jQuery('.joinForm').validate(
-        {
-            debug: true,
-            rules: {
-                email: {
-                    email: true,
-                    noDefault: true,
-                    required: true
-                },
-                firstName: {
-                    noDefault: true,
-                    required: true
-                },
-                lastName: {
-                    noDefault: true,
-                    required: true
-                },
-                password: {
-                    noDefault: true,
-                    required: true
-                },
-                zipcode: {
-                    noDefault: true,
-                    required: true
-                },
-                birthYear: {
-                    required: true
-                }
-            },
-            errorPlacement: function(error, element) {
-                console.log(element);
-
-                element.parentsUntil('.input-field').siblings('.error-alert').show();
-            },
-            unhighlight: function(element, errorClass) {
-                if (this.numberOfInvalids() == 0) {
-                    jQuery(element).parentsUntil('.input-field').siblings('.error-alert').hide();
-                }
-            },
-            highlight: function(element, errorClass) {
-                console.log('error found')
-            }
-        }
-    );
+//    jQuery('.joinForm').validate(
+//        {
+//            rules: {
+//                email: {
+//                    email: true,
+//                    required: true
+//                },
+//                firstName: {
+//                    required: true
+//                },
+//                lastName: {
+//                    required: true
+//                },
+//                password: {
+//                    required: true
+//                },
+//                zipcode: {
+//                    required: true,
+//                    minlength: 5,
+//                    maxlength: 5
+//                },
+//                gender: {
+//                    required: true
+//                },
+//                birthYear: {
+//                    required: true
+//                }
+//            }
+////            invalidHandler: function() {
+////                console.log('asdf')
+////            },
+////            submitHandler: function() {
+////                console.log(this.invalidElements());
+////            },
+////            errorPlacement: function(error, element) {
+////                element.parentsUntil('.input-field').siblings('.error-alert').show();
+////            },
+////            unhighlight: function(element, errorClass) {
+////                jQuery(element).parentsUntil('.input-field').siblings('.error-alert').hide();
+////            },
+////            highlight: function(element, errorClass) {
+////                return;
+////            }
+//        }
+//    );
 
 //    jQuery('.uploadForm').validate({
 //        rules: {
@@ -652,7 +660,7 @@ jQuery(document).ready(function(){
         // jQuery(this).siblings('input[type="password"]').removeClass('hidden').focus();
         // jQuery(this).remove();
     // });
-    jQuery(".input_password").bind('focus blur', function(event) {
+    jQuery(".input_password").bind('click focus blur', function(event) {
     	if ($(this).attr("type") == "text") {
     		($(this).get(0)).type = 'password';
     	}
@@ -662,15 +670,15 @@ jQuery(document).ready(function(){
     	}
     });
 
-//    jQuery("input[type=text]").bind('focus blur', function(event) {
-//    	if (event.type == "blur" && (($(this).get(0)).value == "" || ($(this).get(0)).value == ($(this).get(0)).defaultValue)) {
-//            jQuery(this).css('color', '#B2B2B2');
-//    		($(this).get(0)).value = ($(this).get(0)).defaultValue;
-//    	} else if(event.type == "focus" && ($(this).get(0)).defaultValue == ($(this).get(0)).value) {
-//            jQuery(this).css('color', '#000');
-//            ($(this).get(0)).value = '';
-//        }
-//    });
+    jQuery("input[type=text]").bind('click focus blur', function(event) {
+    	if (event.type == "blur" && (($(this).get(0)).value == "" || ($(this).get(0)).value == ($(this).get(0)).defaultValue)) {
+            jQuery(this).css('color', '#B2B2B2');
+    		($(this).get(0)).value = ($(this).get(0)).defaultValue;
+    	} else if(event.type == "focus" && ($(this).get(0)).defaultValue == ($(this).get(0)).value) {
+            jQuery(this).css('color', '#000');
+            ($(this).get(0)).value = '';
+        }
+    });
 });
 
 function openBubble(obj) {

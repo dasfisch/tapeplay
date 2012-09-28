@@ -36,7 +36,7 @@
 			<div class="input_custom-text input_text80 width600 left">
 				<div class="custom-input_center custom-input_partial">
 					<span class="custom-input_top"></span>
-					<input type="text" id="lastName" name="lastName" value="Last Name" />
+					<input type="text" id="lastName" name="lastName" value="Last Name" rel="Last Name" />
 					<span class="custom-input_bottom"></span>
 				</div>
 				
