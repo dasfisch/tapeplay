@@ -6,13 +6,13 @@
 	<link rel="stylesheet" href="/css/global.css" type="text/css"/>
 	<link rel="stylesheet" href="/css/custom-form.css" type="text/css"/>
 
-    <script type="text/javascript" src="/js/jquery.js"></script>
-    <script type="text/javascript" src="/js/jwplayer.js"></script>
-    <script type="text/javascript" src="/js/jquery-ui.js"></script>
-    <script type="text/javascript" src="/js/jquery-main.js"></script>
-    <script type="text/javascript" src="/js/tapeplay.js"></script>
-    <script type="text/javascript" src="/js/jquery.panda.min.js"></script>
-    <script type="text/javascript" src="/js/jquery.validate.min.js"></script>
+	<script type="text/javascript" src="/js/jquery.js"></script>
+	<script type="text/javascript" src="/js/jwplayer.js"></script>
+	<script type="text/javascript" src="/js/jquery-ui.js"></script>
+	<script type="text/javascript" src="/js/jquery-main.js"></script>
+	<script type="text/javascript" src="/js/tapeplay.js"></script>
+	<script type="text/javascript" src="/js/jquery.panda.min.js"></script>
+	<script type="text/javascript" src="/js/jquery.validate.min.js"></script>
 
 
 {if {$smarty.server.REQUEST_URI} == '/user/personal/'}
@@ -23,8 +23,8 @@
 
 			$('a#signup-toc').click(function ()
 			{
-				var top = $(window).height()/2 - 125;
-								var left = $(window).width()/2 - 250;
+				var top = $(window).height() / 2 - 125;
+				var left = $(window).width() / 2 - 250;
 
 				window.open('/company/tospop/', 'tpModal', 'width=500, height=500, top=' + top + ', left=' + left + ', resizable=no, status=no, location=no, toolbar=no, scrollbars=yes');
 				return false;
@@ -32,8 +32,8 @@
 
 			$('a#signup-privacy').click(function ()
 			{
-				var top = $(window).height()/2 - 125;
-				var left = $(window).width()/2 - 250;
+				var top = $(window).height() / 2 - 125;
+				var left = $(window).width() / 2 - 250;
 
 				window.open('/company/privacypop/', 'tpModal', 'width=500, height=500, top=' + top + ', left=' + left + ', resizable=no, status=no, location=no, toolbar=no, scrollbars=yes');
 				return false;
@@ -42,6 +42,7 @@
 	</script>
 
 {/if}
+
 </head>
 <body>
 <div id="container">
