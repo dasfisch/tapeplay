@@ -4,19 +4,19 @@ var timeout = {};
 setContainerBGImage();
 
 jQuery(document).ready(function(){
-//    jQuery.validator.addMethod('noDefault', function (value, element) {
-//        if (element.value === element.defaultValue) {
-//           return false;
-//        }
-//        return true;
-//    }, 'This is not a valid input.');
-//
-//    jQuery.validator.addMethod('noDefaultSel', function (value, element) {
-//        if (element.value === jQuery(element).find('option.default').text()) {
-//           return false;
-//        }
-//        return true;
-//    }, 'This is not a valid input.');
+   jQuery.validator.addMethod('noDefault', function (value, element) {
+       if (element.value === element.defaultValue) {
+          return false;
+       }
+       return true;
+   }, 'This is not a valid value.');
+
+   jQuery.validator.addMethod('noDefaultSel', function (value, element) {
+       if (element.value === jQuery(element).find('option.default').text()) {
+          return false;
+       }
+       return true;
+   }, 'This is not a valid value.');
 
 	jQuery.each(jQuery('.checkbox'), function() {
 			$((jQuery(this).get(0)).parentNode).bind('click', function(event) {
@@ -38,89 +38,66 @@ jQuery(document).ready(function(){
      * The dropdowns do not validate. birthYear is the example of the dropdown
      * that is not validating.
      */
-//    jQuery('.joinForm').validate(
-//        {
-//            rules: {
-//                email: {
-//                    email: true,
-//                    required: true
-//                },
-//                firstName: {
-//                    required: true
-//                },
-//                lastName: {
-//                    required: true
-//                },
-//                password: {
-//                    required: true
-//                },
-//                zipcode: {
-//                    required: true,
-//                    minlength: 5,
-//                    maxlength: 5
-//                },
-//                gender: {
-//                    required: true
-//                },
-//                birthYear: {
-//                    required: true
-//                }
-//            }
-////            invalidHandler: function() {
-////                console.log('asdf')
-////            },
-////            submitHandler: function() {
-////                console.log(this.invalidElements());
-////            },
-////            errorPlacement: function(error, element) {
-////                element.parentsUntil('.input-field').siblings('.error-alert').show();
-////            },
-////            unhighlight: function(element, errorClass) {
-////                jQuery(element).parentsUntil('.input-field').siblings('.error-alert').hide();
-////            },
-////            highlight: function(element, errorClass) {
-////                return;
-////            }
-//        }
-//    );
+   jQuery('.joinForm').validate(
+       {
+           rules: {
+               email: {
+                   email: true,
+                   required: true
+               },
+               firstName: {
+                   noDefault: true,
+                   required: true
+               },
+               lastName: {
+                   noDefault: true,
+                   required: true
+               },
+               password: {
+                   noDefault: true,
+                   minlength: 8,
+                   required: true
+               },
+               zipcode: {
+                   required: true,
+                   minlength: 5,
+                   maxlength: 5
+               },
+               gender: {
+                   noDefaultSel: true,
+                   required: true
+               },
+               birthYear: {
+                   noDefaultSel: true,
+                   required: true
+               }
+           },
+           errorPlacement: function() {
+               return false;
+           },
+           unhighlight: function(element, errorClass) {
+               jQuery(element).parentsUntil('.input-field').siblings('.error-alert').hide();
+           },
+           highlight: function(element, errorClass) {
+               jQuery(element).parentsUntil('.input-field').siblings('.error-alert').show();
+           }
+       }
+   );
 
-//    jQuery('.uploadForm').validate({
-//        rules: {
-//            title: {
-//                noDefault: true,
-//                required: true
-//            }
-//        },
-//        errorPlacement: function(error, element) {
-//            console.log(element);
-//
-//            element.parentsUntil('.input-field').siblings('.error-alert').show();
-//        },
-//        unhighlight: function(element, errorClass) {
-//            if (this.numberOfInvalids() == 0) {
-//                jQuery(element).parentsUntil('.input-field').siblings('.error-alert').hide();
-//            }
-//        }
-//    });
-//
-//    jQuery('.infoForm').validate({
-//        rules: {
-//            number: {
-//                noDefault: true,
-//                required: true
-//            }
-//        },
-//        errorPlacement: function(error, element) {
-//            console.log(element);
-//
-//            element.parentsUntil('.input-field').siblings('.error-alert').show();
-//        },
-//        unhighlight: function(element, errorClass) {
-//            if (this.numberOfInvalids() == 0) {
-//                jQuery(element).parentsUntil('.input-field').siblings('.error-alert').hide();
-//            }
-//        }
-//    });
+    jQuery('.uploadForm').validate({
+        rules: {
+            title: {
+                noDefault: true,
+                required: true
+            }
+        },
+        unhighlight: function(element, errorClass) {
+            jQuery(element).parentsUntil('.input-field').siblings('.error-alert').hide();
+        },
+        highlight: function(element, errorClass) {
+            jQuery(element).parentsUntil('.input-field').siblings('.error-alert').show();
+        }
+    });
 
     var showing = false;
 
