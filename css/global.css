@@ -2129,7 +2129,11 @@ p.nothing {
 }
 
 .hidden {
-    display: none;
+    display: none !important;
+}
+
+.shown {
+    display: block !important;
 }
 
 .uploader,

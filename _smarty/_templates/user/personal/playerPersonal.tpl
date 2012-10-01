@@ -79,13 +79,22 @@
 				</div>
 				
 			</div>
-			
-			<div class="error-alert">
-				<ul>
-					<li>Enter valid email address.</li>
-					<li>Example: abc@generic.com</li>
-				</ul>
-			</div>
+
+            {if isset($userExists) && !empty($userExists)}
+                <div class="error-alert shown">
+                    <ul>
+                        <li>{$userExists}</li>
+                    </ul>
+                </div>
+            {else}
+                <div class="error-alert">
+                    <ul>
+                        <li>Grah!</li>
+                        <li>Enter valid email address.</li>
+                        <li>Example: abc@generic.com</li>
+                    </ul>
+                </div>
+            {/if}
 		</li>
 		<li class="input-field clear">
 			

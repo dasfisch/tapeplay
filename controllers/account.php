@@ -106,9 +106,6 @@ if (isset($route->method))
                         $template = "account/welcome/coachWelcome.tpl";
                         try {
                             $videos = $videoBll->getVideoSaves($user->getUserId());
-                            echo '<pre>';
-                            var_dump($videos);
-                            exit;
                         } catch(Exception $e) {
 
                         }

@@ -49,7 +49,7 @@ use tapeplay\server\model\Sport;
 use tapeplay\server\model\User;
 use tapeplay\server\model\Video;
 
-global $controller, $inputFilter, $post, $route, $smarty, $sport, $userBLL;
+global $controller, $inputFilter, $message, $post, $route, $smarty, $sport, $userBLL;
 
 $user = $userBLL->getUser();
 $user = isset($user) ? $user : null;
@@ -301,6 +301,13 @@ if (isset($route->method))
 			}
 			else
 			{
+                if(isset($message->message) && !empty($message->message)) {
+                    $userExists = $message->message;
+
+                    $smarty->assign('userExists', $userExists);
+                    $smarty->assign('message', '');
+                }
+
 				// determine which page to load
 				switch ($userBLL->getAccountType())
 				{

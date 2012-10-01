@@ -29,7 +29,7 @@
     use tapeplay\server\general\TapePlaySmarty;
     use tapeplay\server\model\SearchFilter;
 
-    global $configuration, $controller, $dataValidator, $get, $inputFilter, $post, $route, $smarty, $sport, $userBLL;
+    global $configuration, $controller, $dataValidator, $get, $inputFilter, $message, $post, $route, $smarty, $sport, $userBLL;
 
     $configuration = new Configuration('general.conf', CONFIG_LOCATION);
     $controller = new Controller();
@@ -129,7 +129,7 @@
             if(isset($sport) && isset($sport['name'])) {
                 $controller->open($route->class);
             } else {
-                if($route->class == 'user' && ($route->method == 'login' || $route->method == 'signup')) {
+                if($route->class == 'user' && ($route->method == 'login' || $route->method == 'personal' || $route->method == 'signup')) {
                     $controller->open($route->class);
                 } elseif($route->class == 'account' && ($route->method == 'password' || $route->method == 'forgot')) {
                     $controller->open($route->class);
