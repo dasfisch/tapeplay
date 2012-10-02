@@ -15,7 +15,7 @@
                                     {if $video->getPrivacy() == true}
                                         <div class="result opaque">
                                             <div class="infoOpen">
-                                                <img src="{#pandaBase#}{$video->getPandaId()}{#pandaImageExt#}.jpg" class="resultImage locked" />
+                                                <img src="{#pandaBase#}{$video->getPandaId()}{#pandaImageExt#}" class="resultImage locked" />
                                                 <div class="info">
                                                     <h2>{$video->getPlayer()->getFirstName()} {$video->getPlayer()->getLastName()}</h2>
                                                     <p class="position"></p>

@@ -6,7 +6,7 @@
 	<ol class="bullets">
 		<li class="bold">
 			<p>
-				<span class="bold">Create an account.</span> It&rsquo;s completely free. <a href="{#baseUrl#}user/join/" title="Create an account">Click here</a>.
+				<span class="bold">Create an account.</span> It&rsquo;s completely free. <a href="{#baseUrl#}user/signup/" title="Create an account">Click here</a>.
 			</p>
 		</li>
 		<li class="bold">
