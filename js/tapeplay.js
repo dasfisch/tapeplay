@@ -11,26 +11,41 @@ jQuery(document).ready(function(){
        return true;
    }, 'This is not a valid value.');
 
-   jQuery.validator.addMethod('noDefaultSel', function (value, element) {
-       if (element.value === jQuery(element).find('option.default').text()) {
-          return false;
-       }
-       return true;
-   }, 'This is not a valid value.');
+    jQuery.validator.addMethod('noDefaultSel', function (value, element) {
+        if (element.value === jQuery(element).find('option.default').text()) {
+           return false;
+        }
+        return true;
+    }, 'This is not a valid value.');
+
+    jQuery.validator.addMethod('checked', function (value, element) {
+        return $(element).is(':checked');
+    }, 'This is not a valid value.');
 
 	jQuery.each(jQuery('.checkbox'), function() {
-			$((jQuery(this).get(0)).parentNode).bind('click', function(event) {
-				event.preventDefault();
-				if ($(this).hasClass('on')) {
-					$(this).removeClass('on');
-					$(this).children('input').attr('checked',false);
-				} else {
-					$(this).addClass('on');
-					$(this).children('input').attr('checked',true);
-				}
-			})
-	});
+        $((jQuery(this).get(0)).parentNode).siblings('input[type=checkbox]').each(function(){
+            var position = $((jQuery(this).get(0)).parentNode).children('label').children('.checkbox').position();
 
+            console.log(position)
+            console.log(jQuery(this))
+
+            jQuery(this).css('left', position.left);
+            jQuery(this).css('position', 'absolute');
+            jQuery(this).css('top', position.top);
+        });
+
+        $((jQuery(this).get(0)).parentNode).click(function(event) {
+            event.preventDefault();
+
+            if ($(this).hasClass('on')) {
+                $(this).removeClass('on');
+                $(this).siblings('input[type=checkbox]').prop('checked',false);
+            } else {
+                $(this).addClass('on');
+                $(this).siblings('input[type=checkbox]').prop('checked','checked');
+            }
+        });
+	});
 
     /**
      * THIS IS THE CODE FOR THE JOIN PAGE (http://beta.tapeplay.com/user/personal/)
@@ -46,11 +61,9 @@ jQuery(document).ready(function(){
                    required: true
                },
                firstName: {
-                   noDefault: true,
                    required: true
                },
                lastName: {
-                   noDefault: true,
                    required: true
                },
                password: {
@@ -70,15 +83,27 @@ jQuery(document).ready(function(){
                birthYear: {
                    noDefaultSel: true,
                    required: true
+               },
+               theAgree: {
+                   required: true
                }
            },
            errorPlacement: function() {
                return false;
            },
            unhighlight: function(element, errorClass) {
+               if(jQuery(element).parentsUntil('.input-field').siblings('.error-alert').hasClass('shown')) {
+                   jQuery(element).parentsUntil('.input-field').siblings('.error-alert').removeClass('shown');
+
+                   if(jQuery(element).parentsUntil('.input-field').siblings('.error-alert').children('ul').children('li').html() == 'A user with this email already exists!') {
+                       jQuery(element).parentsUntil('.input-field').siblings('.error-alert').children('ul').html('<li>Enter valid email address.</li><li>Example: abc@generic.com</li>');
+                   }
+               }
+
                jQuery(element).parentsUntil('.input-field').siblings('.error-alert').hide();
            },
            highlight: function(element, errorClass) {
+               console.log('erroring')
                jQuery(element).parentsUntil('.input-field').siblings('.error-alert').show();
            }
        }
@@ -593,9 +618,6 @@ jQuery(document).ready(function(){
                     schoolName: jQuery('#schoolSearchInput').val()
                 },
                 function( data ) {
-                    console.log(data);
-                    return;
-
                     response( jQuery.map( eval(data), function( item ) {
                         return {
                             label: item.name,

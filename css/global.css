@@ -548,7 +548,9 @@ form fieldset + .error-alert {
     float: left;
     height: 20px;
     margin-right:10px;
+    position: relative;
     width: 20px;
+    z-index: 2;
 }
 
 .checkbox + input {
@@ -1226,6 +1228,10 @@ label[for="i-agree"] {
 
 .bigButton .middle .small {
 
+}
+
+.blackText {
+    color: #000 !important;
 }
 
 /* Button Colors */

@@ -231,10 +231,21 @@ if (isset($route->method))
 
                 $users = $userBLL->search($search);
                 if(isset($users) && !empty($users)) {
-                    $_SESSION['message']['message'] = 'A user with this email already exists!';
-                    $_SESSION['message']['type'] = 'error';
+                    $thirteenYearsBeforeNow = date('Y-m-d', strtotime('13 years ago'));
 
-                    Util::setHeader('user/personal/');
+                    $smarty->assign('userExists', 'A user with this email already exists!');
+                    $smarty->assign('message', '');
+
+                    $smarty->assign("thirteenBelow", $thirteenYearsBeforeNow);
+                    $smarty->assign('file', "user/personal/playerPersonal.tpl");
+                    $smarty->assign('message', $message);
+                    $smarty->assign('post', $post);
+                    $smarty->assign('title', 'Join TapePlay');
+                    $smarty->assign('selected', strtotime($post['birthYear']));
+
+                    $smarty->display("home.tpl");
+
+                    exit;
                 }
 
 				// create hash
@@ -293,7 +304,7 @@ if (isset($route->method))
 				{
 					// user was not created.  show current page again.
 					$smarty->assign('file', "user/personal/");
-                    $smarty->assign("title", 'Your Basic Info');
+                    $smarty->assign('title', 'Join TapePlay');
 
 					$smarty->display("home.tpl");
 					//
@@ -326,17 +337,12 @@ if (isset($route->method))
 						$template = "user/personal/playerPersonal.tpl";
 				}
 
-				$thisYear = date('Y', strtotime('now'));
-				$thirteenYearsBeforeNow = $thisYear - 13;
-				$fiftyYearsBeforeNow = $thisYear - 50;
-
-				$birthYears = "";
-				for ($i = $thirteenYearsBeforeNow; $i > $fiftyYearsBeforeNow; $i--)
-					$birthYears .= "<option value='".$i."'>" . $i . "</option>";
+                $thirteenYearsBeforeNow = date('Y-m-d', strtotime('13 years ago'));
 
 				// now display the template based on above selection
-				$smarty->assign("birthYears", $birthYears);
-				$smarty->assign('file', $template);
+                $smarty->assign("thirteenBelow", $thirteenYearsBeforeNow);
+                $smarty->assign('file', $template);
+                $smarty->assign('selected', '');
                 $smarty->assign('title', 'Join TapePlay');
 
 				$smarty->display("home.tpl");
