@@ -45,23 +45,23 @@
 				<legend>Level</legend>
 				<ul class="font15">
 					<li>
-						<label for="high-school">
+						<label for="high-school" class="singleCheck">
 							<span class="checkbox"><span class="check"></span></span>
-							<input type="checkbox" id="high-school" name="playingLevel" value="0" />
+							<input type="checkbox" id="high-school" class="single" name="playingLevel" value="0" />
 							High School
 						</label>
 					</li>
 					<li>
-						<label for="college">
+						<label for="college" class="singleCheck">
 							<span class="checkbox"><span class="check"></span></span>
-							<input type="checkbox" id="college" name="playingLevel" value="1" />
+							<input type="checkbox" id="college" class="single" name="playingLevel" value="1" />
 							College
 						</label>
 					</li>
 					<li>
-						<label for="professional">
+						<label for="professional" class="singleCheck">
 							<span class="checkbox"><span class="check"></span></span>
-							<input type="checkbox" id="professional" name="playingLevel" value="2" />
+							<input type="checkbox" id="professional" class="single" name="playingLevel" value="2" />
 							Professional
 						</label>
 					</li>

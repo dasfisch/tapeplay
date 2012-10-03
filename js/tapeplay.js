@@ -26,9 +26,6 @@ jQuery(document).ready(function(){
         $((jQuery(this).get(0)).parentNode).siblings('input[type=checkbox]').each(function(){
             var position = $((jQuery(this).get(0)).parentNode).children('label').children('.checkbox').position();
 
-            console.log(position)
-            console.log(jQuery(this))
-
             jQuery(this).css('left', position.left);
             jQuery(this).css('position', 'absolute');
             jQuery(this).css('top', position.top);
@@ -36,6 +33,11 @@ jQuery(document).ready(function(){
 
         $((jQuery(this).get(0)).parentNode).click(function(event) {
             event.preventDefault();
+
+            jQuery('.single').prop('checked', false);
+            jQuery('.singleCheck').removeClass('on');
+
+            console.log(jQuery('.singleCheck'))
 
             if ($(this).hasClass('on')) {
                 $(this).removeClass('on');
