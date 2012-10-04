@@ -8,7 +8,7 @@
     <input type="hidden" name="hash" id="hash" value="{$hash}" />
     <div id="videoInfo">
         <p id="status">
-            Video Status: <span class="success italic">Upload complete!</span>
+            Video Status: <span class="success italic">Encoding</span>
         </p>
         <img src="{#pandaBase#}{$video->getPandaId()}{#pandaImageExt#}" class="resultImage" />
         <div class="info">
@@ -103,8 +103,8 @@
 				<fieldset>
 					<select class="select-2" class="height" name="height">
 						<option class="default">Select</option>
-						{section name=i start=48 loop=96 step=1}
-                            <option value="{$smarty.section.i.index}">{floor($smarty.section.i.index/12)}" {$smarty.section.i.index % 12}'</option>
+						{section name=i start=55 loop=88 step=1}
+                            <option value="{$smarty.section.i.index}">{floor($smarty.section.i.index/12)}' {$smarty.section.i.index % 12}"</option>
                         {/section}
 					</select>
 				</fieldset>
@@ -161,7 +161,7 @@
 				<div class="input_custom-text input_text80 width600 left">
 					<div class="custom-input_center custom-input_partial">
 						<span class="custom-input_top"></span>
-						<input type="text" id="lastName" name="headCoachName" value="Head Coach's Name" />
+						<input type="text" id="headCoachName" name="headCoachName" value="Head Coach's Name" />
 						<span class="custom-input_bottom"></span>
 					</div>
 					<div class="custom-input_left custom-input_partial">

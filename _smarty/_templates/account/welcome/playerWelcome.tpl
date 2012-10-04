@@ -52,7 +52,7 @@
                                     {else}
                                         <div class="result">
                                             <a href="{#baseUrl#}videos/view/{$video->getId()}/">
-                                                <img src="{#pandaBase#}{$video->getPandaId()}{#pandaImageExt#}.jpg" class="resultImage" />
+                                                <img src="{#pandaBase#}{$video->getPandaId()}{#pandaImageExt#}" class="resultImage" />
                                                 <div class="info">
                                                     <h4>{$video->getPlayer()->getFirstName()} {$video->getPlayer()->getLastName()}</h4>
                                                     <p class="title">{$video->getTitle()}</p>

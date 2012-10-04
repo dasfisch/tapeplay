@@ -83,16 +83,26 @@
 		<input type="hidden" id="video-id" value="{$video->getId()}"/>
 		<div class="clear"></div>
 	</div>
-	
+
 	<div class="video-content">
 		<div class="content-left left">
 			<div class="user-info">
 				<h1>#{$player->getNumber()} {$player->getFirstName()} {$player->getLastName()}</h1>
-				<span class="grade"><img src="/media/images/icon_high-school-athlete.png" /></span>
+				<span class="grade">
+					{if $player->getPlayingLevel() == "0"}
+						<img src="/media/images/icon_high-school-athlete.png" />
+					{elseif $player->getPlayingLevel() == "1"}
+						<img src="/media/images/icon_college-athlete.png" />
+					{elseif $player->getPlayingLevel() == "2"}}
+						<img src="/media/images/icon_professional-athlete.png" />
+					{/if}
+				</span>
 				<ul class="user-profile">
 					<li>{$player->getPosition()}, {$player->getFriendlyHeight()}, {$player->getWeight()} lbs.</li>
-					<li>{$gradeLevel}{if $player->getSchool()}, {$player->getSchool()->getName()}{/if}</li>
-					<li>{$player->getCoachName()}</li>
+					{if $gradeLevel != "" || $player->getSchool()->getName() != ""}
+						<li>{$gradeLevel}{if $player->getSchool() != ""}, {$player->getSchool()->getName()}{/if}</li>
+					{/if}
+					<li>Coach {$player->getCoachName()}</li>
 				</ul>
 				
 				{if isset($stats) && count($stats) > 0}
