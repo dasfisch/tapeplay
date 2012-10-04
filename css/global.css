@@ -150,15 +150,13 @@ p {
 	padding:30px 19px 0px;
 }
 
-#navigation a, #navigation a:visited, #navigation a:hover,
-#navigation div, #navigation div:visited, #navigation div.hover {
+#navigation a, #navigation a:visited, #navigation a:hover {
 	color:#ffffff;
 	font-size:18px;
 	text-decoration:none;
 }
 
-#navigation a:hover, #navigation a.active,
-#navigation div:hover, #navigation div.active {
+#navigation a:hover, #navigation a.active {
     color: #E39117;
 }
 

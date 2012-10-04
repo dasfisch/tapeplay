@@ -4,7 +4,7 @@
 	<title>Tapeplay :: {$title}</title>
 	<link rel="stylesheet" href="/css/jquery.css" type="text/css"/>
 	<link rel="stylesheet" href="/css/global.css" type="text/css"/>
-	<link rel="stylesheet" href="/css/custom-form.css" type="text/css"/>
+	<link rel="stylesheet" href="/css/widgets.css" type="text/css"/>
 
 	<script type="text/javascript" src="/js/jquery.js"></script>
 	<script type="text/javascript" src="/js/jwplayer.js"></script>
@@ -97,23 +97,16 @@
 						<a href="{#baseUrl#}user/upload/"
 						   class="infoOpen {if {$smarty.server.REQUEST_URI} == '/user/upload/'}active{/if}">Upload</a>
 						{else}
-						<div class="infoOpen">Upload
-							<div class="infoBubble">
-								<div class="topLeft black"></div>
-								<div class="topRight black"></div>
-								<div class="directionTopMiddle"></div>
-								<div class="middle">
-									<p>
-										<strong>Players</strong> must be logged into their accounts to upload a video.
-										<a href="{#baseUrl#}user/login/">Log in</a>.
-										<br/><br/> Don't have an account yet? <a
-											href="{#baseUrl#}user/signup/">Sign up</a>. <br/><br/>
-										<strong>Coaches and Scouts</strong> cannot upload videos. We're sure you're very talented, but we're not interested. Sorry.
-									</p>
+						
+						<div class="popup-hover pos-2">
+							<a href="#" class="open upload-title">Upload</a>
+							<div class="popup popup-2">
+								<div class="holder">
+									<div class="frame">
+										<p><strong>Players</strong> must be logged into their accounts to upload a video. <a href="#">Log in.</a></p>
+										<p>Don&rsquo;t have an account yet? <a href="#">Sign up.</a></p>
+									</div>
 								</div>
-								<div class="bottomLeft"></div>
-								<div class="bottomRight"></div>
-								<div class="direction"></div>
 							</div>
 						</div>
 					{/if}
