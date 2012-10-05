@@ -18,7 +18,11 @@ class PlayerDAO extends BaseDOA
 		try
 		{
 			$this->sql = "SELECT
-                                users.*, players.*, schools.*, sports.*
+                                users.*,
+                                players.*,
+                                schools.*,
+                                sports.*,
+                                positions.*
                             FROM
                                 users users
                             JOIN
@@ -45,10 +49,6 @@ class PlayerDAO extends BaseDOA
 			\TPErrorHandling::handlePDOException($exception->errorInfo);
 			return null;
 		}
-//
-//        echo '<pre>';
-//        var_dump($this->prep->fetch());
-//        exit;
 
 		return Player::create($this->prep->fetch());
 	}

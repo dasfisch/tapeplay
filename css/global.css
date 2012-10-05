@@ -1452,6 +1452,7 @@ p.nothing {
 }
 
 #content-wrapper #content-left-column {
+    float: left;
     line-height: normal;
 }
 

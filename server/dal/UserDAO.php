@@ -34,11 +34,21 @@ class UserDAO extends BaseDOA
 		{
             $this->sql = 'SELECT
                                 u.*,
-                                p.id AS player_id, p.number, p.height, p.grade_level, p.video_access,
-                                p.weight, p.coach_name, p.graduation_month, p.graduation_year,
-                                s.id AS schoolId, s.name as schoolName, s.city as schoolCity,
-                                s.state as schoolState, s.division AS schoolDivision,
-                                pos.name as position,
+                                p.id AS player_id,
+                                p.number,
+                                p.height,
+                                p.grade_level,
+                                p.playing_level,
+                                p.video_access,
+                                p.weight,
+                                p.coach_name,
+                                p.graduation_month,
+                                p.graduation_year,
+                                s.id AS schoolId,
+                                s.name as schoolName,
+                                s.city as schoolCity,
+                                s.state as schoolState,
+                                s.division AS schoolDivision,
                                 sp.id AS sport_id,
                                 sp.name AS sport_name
                             FROM

@@ -34,8 +34,10 @@ jQuery(document).ready(function(){
         $((jQuery(this).get(0)).parentNode).click(function(event) {
             event.preventDefault();
 
-            jQuery('.single').prop('checked', false);
-            jQuery('.singleCheck').removeClass('on');
+            if(jQuery(this).siblings('input[type=checkbox]').hasClass('single')) {
+                jQuery('.single').prop('checked', false);
+                jQuery('.singleCheck').removeClass('on');
+            }
 
             console.log(jQuery('.singleCheck'))
 
@@ -70,7 +72,7 @@ jQuery(document).ready(function(){
                },
                password: {
                    noDefault: true,
-                   minlength: 8,
+                   minlength: 6,
                    required: true
                },
                zipcode: {
@@ -117,6 +119,9 @@ jQuery(document).ready(function(){
                 noDefault: true,
                 required: true
             }
+        },
+        errorPlacement: function() {
+            return false;
         },
         unhighlight: function(element, errorClass) {
             jQuery(element).parentsUntil('.input-field').siblings('.error-alert').hide();

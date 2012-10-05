@@ -47,23 +47,23 @@
 					<li>
 						<label for="high-school" class="singleCheck">
 							<span class="checkbox"><span class="check"></span></span>
-							<input type="checkbox" id="high-school" class="single" name="playingLevel" value="0" />
 							High School
 						</label>
+                        <input type="checkbox" id="high-school" class="single" name="playingLevel" value="0" />
 					</li>
 					<li>
 						<label for="college" class="singleCheck">
 							<span class="checkbox"><span class="check"></span></span>
-							<input type="checkbox" id="college" class="single" name="playingLevel" value="1" />
 							College
 						</label>
+                        <input type="checkbox" id="college" class="single" name="playingLevel" value="1" />
 					</li>
 					<li>
 						<label for="professional" class="singleCheck">
 							<span class="checkbox"><span class="check"></span></span>
-							<input type="checkbox" id="professional" class="single" name="playingLevel" value="2" />
 							Professional
 						</label>
+                        <input type="checkbox" id="professional" class="single" name="playingLevel" value="2" />
 					</li>
 				</ul>
 			</fieldset>
@@ -89,9 +89,9 @@
                         <li>
                             <label for="professional">
                                 <span class="checkbox"><span class="check"></span></span>
-                                <input type="checkbox" name="position[]" value="{$position->getId()}" />
                                 {$position->getName()}
                             </label>
+                            <input type="checkbox" name="position[]" value="{$position->getId()}" />
                         </li>
                     {/foreach}
                 </ul>

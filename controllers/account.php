@@ -92,6 +92,10 @@ if (isset($route->method))
                         $search->setWhere('method', 'videos');
                         $search->setWhere('player_id', (int)$user->getId());
 
+                        $search->setSort('method', 'videos');
+                        $search->setSort('name', 'uploaded_date');
+                        $search->setSort('order', 'DESC');
+
                         try {
                             $videos = $videoBll->search($search);
                         } catch(Exception $e) {

@@ -3,8 +3,9 @@
 namespace tapeplay\server\bll;
 
 require_once("bll/BaseBLL.php");
-require_once("dal/UserDAO.php");
+require_once("bll/PositionBLL.php");
 require_once("bll/VideoBLL.php");
+require_once("dal/UserDAO.php");
 require_once("model/Coach.php");
 require_once("model/Player.php");
 require_once("model/Scout.php");
@@ -16,6 +17,7 @@ require_once("enum/AccountStatusEnum.php");
 require_once("utility/Util.php");
 
 use tapeplay\server\dal\UserDAO;
+use tapeplay\server\bll\PositionBLL;
 use tapeplay\server\bll\VideoBLL;
 use tapeplay\server\model\Coach;
 use tapeplay\server\model\Player;
@@ -139,6 +141,18 @@ class UserBLL extends BaseBLL
 			{
 				case \AccountTypeEnum::$PLAYER:
 					$this->setUser($this->dal->getPlayerUser($userId));
+
+                    try {
+                        $posBll = new PositionBLL();
+
+                        $positions = $posBll->getPositionsByPlayer($this->getUser()->getId());
+
+                        $this->getUser()->setPosition($positions);
+
+                        $this->setUser($this->getUser());
+                    } catch(\Exception $e   ) {
+
+                    }
 
 					// grab saved videos
 					$videoBLL = new VideoBLL();
