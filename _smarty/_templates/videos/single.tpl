@@ -65,7 +65,7 @@
                             <p>
                                 Embed video (copy &amp; paste link):
                                 <br/>
-                                <a>http://tapeplay.com/asd8f69j</a>
+                                <a href="{#baseUrl#}videos/view/{$video->getId()}/">{#baseUrl#}videos/view/{$video->getId()}/</a>
                             </p>
                             <p>Email this video: <a href="/videos/email/{$video->getId()}/">click here</a></p>
                             <p>
@@ -93,7 +93,7 @@
 						<img src="/media/images/icon_high-school-athlete.png" />
 					{elseif $player->getPlayingLevel() == "1"}
 						<img src="/media/images/icon_college-athlete.png" />
-					{elseif $player->getPlayingLevel() == "2"}}
+					{elseif $player->getPlayingLevel() == "2"}
 						<img src="/media/images/icon_professional-athlete.png" />
 					{/if}
 				</span>
