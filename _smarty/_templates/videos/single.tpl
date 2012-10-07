@@ -34,48 +34,43 @@
 			<li class="saves"><b>{$video->getSaves()}</b> Saves</li>
 			<li class="upload-date">Uploaded {$video->getUploadDate()|date_format:"%B %d, %Y"}</li>
 			<li class="report">
-                <div class="infoOpen">
-                    Report Video
-                    <div class="infoBubble">
-                        <div class="directionTopMiddle"></div>
-                        <div class="topLeft"></div>
-                        <div class="topRight"></div>
-                        <div class="middle">
-                            <p>
-                                Should we review this video to determine if it's appropriate?<Br/>
-                                <a id="report">Yes</a> or <a class="close">No</a>
-                            </p>
-                        </div>
-                        <div class="bottomLeft"></div>
-                        <div class="bottomRight"></div>
-                    </div>
-                </div>
+                <div class="popup-hover pos-1">
+					<a href="#" class="open share-title">Report Video</a>
+					<div class="popup popup-1">
+						<div class="holder">
+							<div class="frame">
+								<p>Should we review this video to determine if it&rsquo;s appropriate?</p>
+								<p><a href="#">Yes</a> or <a href="#">No</a></p>
+								
+							</div>
+						</div>
+					</div>
+				</div>
             </li>
 			{if isset($user) && !empty($user)}
                 <li class="save"><a href="#">Save</a></li>
             {/if}
 			<li class="share">
-                <div class="infoOpen">
-                    Share
-                    <div class="infoBubble">
-                        <div class="directionTopMiddle"></div>
-                        <div class="topLeft"></div>
-                        <div class="topRight"></div>
-                        <div class="middle">
-                            <p>
-                                Embed video (copy &amp; paste link):
-                                <br/>
-                                <a href="{#baseUrl#}videos/view/{$video->getId()}/">{#baseUrl#}videos/view/{$video->getId()}/</a>
-                            </p>
-                            <p>Email this video: <a href="/videos/email/{$video->getId()}/">click here</a></p>
-                            <p>
-                                <span class="postVideo">Post video:</span> <span class="smallShare fbBlackSmall"></span> <span class="smallShare myBlackSmall"></span> <span class="smallShare twBlackSmall"></span> <span class="smallShare inBlackSmall"></span>
-                            </p>
-                        </div>
-                        <div class="bottomLeft"></div>
-                        <div class="bottomRight"></div>
-                    </div>
-                </div>
+				<div class="popup-hover pos-1">
+					<a href="#" class="open share-title">Share</a>
+					<div class="popup popup-1">
+						<div class="holder">
+							<div class="frame">
+								<p><strong>Embed video</strong> (copy &amp; paste link): <br /><span class="mark">http://tapeplay.com/2adf82</span></p>
+								<p><strong>Email video:</strong> <a href="#">click here</a></p>
+								<div class="social">
+									<strong>Post video:</strong>
+									<ul>
+										<li><a href="#"><img src="/media/images/ico-facebook.gif" width="10" height="19" alt="image description" /></a></li>
+										<li><a href="#"><img src="/media/images/ico-social-2.gif" width="16" height="19" alt="image description" /></a></li>
+										<li><a href="#"><img src="/media/images/ico-twitter.gif" width="13" height="19" alt="image description" /></a></li>
+										<li><a href="#"><img src="/media/images/ico-googleplus.gif" width="16" height="19" alt="image description" /></a></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
             </li>
 		</ul>
 		<input type="hidden" id="hash" value="{$hash}"/>

@@ -1,4 +1,4 @@
-<h1 xmlns="http://www.w3.org/1999/html">Video File Upload</h1>
+<h1>Video File Upload</h1>
 <p>
 	Upload highlight tapes, game footage and so on. Stay away from backyard footage&ndash;street games, summer leagues, etc. <a href="{#blogUrl#}/?p=99" target="_blank">See what makes a good video</a>
 </p>
@@ -113,27 +113,23 @@
 			</div>
 		</li>
 		<li class="input-field clear">
-            <div class="infoOpen videoTitle">
-                Examples of video titles
-                <div class="infoBubble above">
-                    <div class="directionBottomLeft"></div>
-                    <div class="topLeft"></div>
-                    <div class="topRight"></div>
-                    <div class="middle">
-                        <p>
-                            Keep it short and sweet. Here is what we recommend for the video titles:
-                        </p>
-                        <ul>
-                            <li>Vs. Midcity Ravens</li>
-                            <li>Palmetto Golf Championship</li>
-                            <li>Highlight Tape 1</li>
-                            <li>Skills Tape 1</li>
-                        </ul>
-                    </div>
-                    <div class="bottomLeft"></div>
-                    <div class="bottomRight"></div>
-                </div>
-            </div>
+            <div class="popup-hover pos-3">
+				<a href="#" class="open video-title">Examples of video titles</a>
+				<div class="popup popup-3">
+					<div class="holder">
+						<div class="frame">
+							<p>Keep it short and sweet. Here is what we recommend for video titles:</p>
+							<ul>
+								<li>Vs. Midcity Ravens</li>
+								<li>Palmetto Golf Championship</li>
+								<li>Highlight Tape 1</li>
+								<li>Skills Tape 1</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="clear"></div>
 			<div class="input_custom-text input_text80 width600 left">
 				<div class="custom-input_center custom-input_partial">
 					<span class="custom-input_top"></span>

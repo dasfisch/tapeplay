@@ -129,10 +129,11 @@
 	font-size:13px;
 	line-height:18px;
 	color:#666;
+	z-index:10000;
 }
 .active div.popup{display:block;}
 .popup-hover div.popup a{color:#e18a07 !important; font-size:15px !important;}
-.popup-hover div.popup p{margin:0 0 7px;}
+.popup-hover div.popup p{padding:0 0 7px; margin:0px;}
 .popup-hover div.popup p .mark{color:#000;}
 .popup-hover div.popup ul{
 	margin:0;
@@ -157,6 +158,7 @@
 }
 .popup-hover div.popup .social li{
 	float:left;
+	line-height:normal;
 	padding:0 16px 0 0;
 }
 .popup-hover div.popup .social img{vertical-align:top;}

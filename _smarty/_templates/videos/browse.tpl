@@ -4,7 +4,6 @@
 	<ul class="browse">
     {foreach from=$videos item=video}
         {if $video->getPrivacy() == true}
-        
         	<li class="locked">
 				<a href="#" onclick="return false;"><img src="/media/images/background_lock.png" /></a>
 				<ul>

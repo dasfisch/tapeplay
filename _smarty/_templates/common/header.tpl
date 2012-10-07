@@ -55,7 +55,7 @@
 
 				<form action="{#baseUrl#}" method="post" id="sportChooser">
 					<fieldset>
-						<select class="select-1" id="chosenSport" name="chosenSport">
+						<select class="select-1 fixedSelect" id="chosenSport" name="chosenSport">
 						{foreach from=$sports item=single}
 							{if $single->getId() == $sport.id}
 								<option value="{$single->getId()}" selected="selected">
