@@ -1450,6 +1450,7 @@ p.nothing {
 }
 
 #content-wrapper #content-left-column {
+    float: left;
     line-height: normal;
 }
 
@@ -2435,7 +2436,7 @@ p.nothing {
 
 .single .grade {
 	color:#ffffff;
-	background-color:#e18a07;
+	background-color:#F2F2F2;
 	position:absolute;
 	right:45px;
 	top:20px;

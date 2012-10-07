@@ -20,7 +20,6 @@ class Player extends User
 
 		//on a get, I need to figure out the sql to get the player_id back properly
 		$arr["player_id"] = isset($arr["player_id"]) ? $arr["player_id"] : 1;
-		$arr["position"] = isset($arr["position"]) ? $arr["position"] : 0;
 
 		// set user attributes
 		$player->setUserId($arr["id"]);
@@ -45,7 +44,6 @@ class Player extends User
 		$player->setOrdinalGradeLevel($arr["grade_level"]);
 		$player->setPlayingLevel($arr["playing_level"]);
 		$player->setVideoAccess($arr["video_access"]);
-		$player->setPosition($arr["position"]);
 		$player->setWeight($arr["weight"]);
 		$player->setCoachName($arr["coach_name"]);
 		$player->setGraduationMonth($arr["graduation_month"]);

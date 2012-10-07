@@ -213,7 +213,7 @@
       							<span class="checkbox"><span class="check"></span></span>
       							By checking this box, I certify that I am 13 years of age or older.
       						</label>
-                              <input type="checkbox" id="theAgree" name="theAgree" value="I Agree" />
+                            <input type="checkbox" id="theAgree" name="theAgree" value="I Agree" />
       					</li>
       				</ul>
       			</fieldset>

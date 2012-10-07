@@ -20,7 +20,7 @@
                                                     <h2>{$video->getPlayer()->getFirstName()} {$video->getPlayer()->getLastName()}</h2>
                                                     <p class="position"></p>
                                                     <p class="title">{$video->getTitle()}</p>
-                                                    <p class="date"><?php echo date('F, Y', strtotime('now')); ?></p>
+                                                    <p class="date">{$video->getUploadDate()|date_format:"%B, %Y"}</p>
                                                 </div>
                                             </div>
                                             <div class="infoBubble">
@@ -52,11 +52,11 @@
                                     {else}
                                         <div class="result">
                                             <a href="{#baseUrl#}videos/view/{$video->getId()}/">
-                                                <img src="{#pandaBase#}{$video->getPandaId()}{#pandaImageExt#}.jpg" class="resultImage" />
+                                                <img src="{#pandaBase#}{$video->getPandaId()}{#pandaImageExt#}" class="resultImage" />
                                                 <div class="info">
                                                     <h4>{$video->getPlayer()->getFirstName()} {$video->getPlayer()->getLastName()}</h4>
                                                     <p class="title">{$video->getTitle()}</p>
-                                                    <p class="date">{$video->getUploadDate()|date_format:"B%, %Y"}</p>
+                                                    <p class="date">{$video->getUploadDate()|date_format:"%B, %Y"}</p>
                                                 </div>
                                             </a>
                                             <div class="bigButton orange" id="removeVideo">
