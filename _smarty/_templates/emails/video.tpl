@@ -12,9 +12,13 @@
 <table width="100%" align="center" cellspacing="0" cellpadding="0" border="0" bgcolor="#000000">
 	<tr>
 		<td align="center" style="font-size:10px; line-height:13px; text-align:center;color:#ffffff;">
+			<br/>
 			<font face="Arial, Helvetica, sans-serif" size="1" color="#ffffff" style="font-size:10px; line-height:13px;">
-				Please add <a href="mailto:no-reply@tapeplay.com">no-reply@tapeplay.com</a> to your address book.
+				Please add <a href="mailto:{#tapeplayEmail#}">{#tapeplayEmail#}</a> to your address book.
 			</font>
+			<br/>
+			<br/>
+			<br/>
 		</td>
 	</tr>
 	<tr>
@@ -76,7 +80,7 @@
 																<tr>
 																	<td mc:edit="top-title" style="font-size:24px; line-height:31px;">
                                                                         <font face="Arial, Helvetica, sans-serif" size="5" color="#ffffff" style="font-size:24px; line-height:31px;">
-                                                                            <strong>[ {$video->getPlayer()->getSport()->getSportName()} ]</strong>
+                                                                            <strong>{$sportName}</strong>
                                                                         </font>
                                                                     </td>
 																</tr>
@@ -304,7 +308,7 @@
                                                 <img src="{#baseUrl#}media/images/none.gif" width="1" height="46" alt="image" />
                                             </td>
                                         </tr>
-										<tr>
+										<!--tr>
 											<td>
 												<table width="100%" cellpadding="0" cellspacing="0" border="0">
 													<tr>
@@ -330,7 +334,7 @@
 													</tr>
 												</table>
 											</td>
-										</tr>
+										</tr-->
 										<tr>
                                             <td style="font-size:0; line-height:0;">
                                                 <img src="{#baseUrl#}media/images/none.gif" width="1" height="11" alt="image" />
@@ -338,10 +342,11 @@
                                         </tr>
 										<tr>
 											<td align="center" style="font-size:10px; line-height:13px; text-align:center;">
-												<font face="Arial, Helvetica, sans-serif" size="1" color="#000000" style="font-size:10px; line-height:13px;">
+												<font face="Arial, Helvetica, sans-serif" size="1" color="#ffffff" style="font-size:10px; line-height:13px;">
 												This email was sent by TapePlay, P.O. Box 10587, Chicago, IL 60610
 												<br/>
-												<br/>This email was sent to the address <a href="mailto:{$emailAddress}">{$emailAddress}</a>. If you no longer wish to receive these emails, it's cool - you can <a href="{#unsubscribeUrl#}">unsubscribe</a>. But don't think we won't miss you.
+												<br/>This email was sent to the address <a style="color:#e18a07;" href="mailto:{$emailAddress}"><font color="#e18a07">{$emailAddress}</font></a>.
+												<br/>If you no longer wish to receive these emails, it's cool - you can <a style="color:#e18a07" href="{#unsubscribeUrl#}"><font color="#e18a07">unsubscribe</font></a>. But don't think we won't miss you.
 												<br/>&copy;&nbsp;{$fullYear} All Rights Reserved.
 											</font></td>
 										</tr>

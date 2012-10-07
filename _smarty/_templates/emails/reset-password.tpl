@@ -34,8 +34,8 @@
 				<br/>
 				<br/>This email was sent to the address <a style="text-decoration: underline; color:#e18a07;" href="mailto:{$emailAddress}">{$emailAddress}</a>.
 				<br/>If you no longer wish to receive these emails, it's cool - you can <a style="text-decoration: underline; color:#e18a07;"
-					href="{#unsubscribeUrl#}">unsubscribe</a>.
-				But don't think we won't miss you.
+					href="{#unsubscribeUrl#}">unsubscribe</a>. But don't think we won't miss you.
+				<br/>&copy;&nbsp;{$fullYear} All Rights Reserved.
 			</font>
 		</td>
 	</tr>
