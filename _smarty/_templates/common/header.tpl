@@ -2,6 +2,9 @@
 <html id="www-tapeplay-com"{$ie}>
 <head>
 	<title>Tapeplay :: {$title}</title>
+
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+
 	<link rel="stylesheet" href="/css/jquery.css" type="text/css"/>
 	<link rel="stylesheet" href="/css/global.css" type="text/css"/>
 	<link rel="stylesheet" href="/css/custom-form.css" type="text/css"/>
