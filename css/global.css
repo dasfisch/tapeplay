@@ -2503,3 +2503,54 @@ p.nothing {
 .single .more-videos .locked a img {
 	margin:10px 0px 0px 15px;
 }
+
+.account-page #content-left-column {
+	margin-right:35px;
+	width:585px; 
+}
+
+.account-page #content-right-column {
+	border-left:solid 1px #e5e5e5;
+	float:left;
+	margin:0px;
+	padding-left:34px;
+	width:300px;
+}
+
+.account-page .accordion .slider_account ul .btn-holder {
+	padding-top:8px;
+}
+
+.accordion .slider_sport ul.three-column {
+    color: #666666;
+    list-style: none outside none;
+    margin: 0;
+    overflow:hidden;
+    padding: 0;
+    width: auto;
+}
+
+.accordion .slider_sport ul.three-column li {
+    float: left;
+    margin: 0px;
+    padding: 0px;
+    width: 33%;
+}
+
+.slider_privacy {
+	font-size:15px;
+	line-height:18px;
+	padding:25px;
+}
+
+.account_upload-button {
+	margin-bottom:20px;
+}
+
+.account_upload-button a, .account_upload-button a:visited, .account_upload-button a:hover {
+	display:block;
+	font-size:28px;
+	padding:24px 0px;
+	text-align:center;
+	width:100%;
+}
