@@ -1,9 +1,10 @@
 var infoBubbleOpen = false;
 var timeout = {};
 
-setContainerBGImage();
-
 jQuery(document).ready(function(){
+
+    setContainerBGImage();
+
    jQuery.validator.addMethod('noDefault', function (value, element) {
        if (element.value === element.defaultValue) {
           return false;
@@ -753,23 +754,16 @@ function setContainerBGImage()
 	var browserWidth = $(window).width();
 	var imageSize = "";
 
-	switch (true)
-	{
-		case browserWidth >= 1600:
-			imageSize = 1600;
-			break;
-		case browserWidth >= 1440:
-			imageSize = 1440;
-			break;
-		case browserWidth >= 1366:
-			imageSize = 1366;
-			break;
-		default:
-			imageSize = 1280;
-			break;
-	}
+	if (browserWidth >= 1600)
+		imageSize = 1600;
+	else if (browserWidth >= 1440)
+		imageSize = 1440;
+	else if (browserWidth >= 1366)
+		imageSize = 1366;
+	else
+		imageSize = 1280;
 
 	// create image name
 	var bgName = "hp_betaAd_background_" + imageSize.toString() + ".jpg";
-	$("#container").css("background-image", "url(/media/images/ads/" + imageSize);
+	$("#container").css("background-image", "url(/media/images/ads/" + bgName + ")");
 }
