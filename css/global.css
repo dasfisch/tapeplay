@@ -514,6 +514,10 @@ fieldset li {
 	margin-left:20px;
 }
 
+.success {
+    color: #00ff12;
+}
+
 form .error-alert {
 	background:transparent url(/media/images/icon_error-alert.png) no-repeat 0px 16px;
 	color:#ff0000;
