@@ -56,8 +56,8 @@
 					<div class="popup popup-1">
 						<div class="holder">
 							<div class="frame">
-								<p><strong>Embed video</strong> (copy &amp; paste link): <br /><span class="mark">http://tapeplay.com/2adf82</span></p>
-								<p><strong>Email video:</strong> <a href="#">click here</a></p>
+								<p><strong>Embed video</strong> (copy &amp; paste link): <br /><span class="mark">{#baseUrl#}videos/view/{$video->getId()}/</span></p>
+								<p><strong>Email video:</strong> <a href="/videos/email/{$video->getId()}/">click here</a></p>
 								<div class="social">
 									<strong>Post video:</strong>
 									<ul>
