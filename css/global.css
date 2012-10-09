@@ -234,6 +234,9 @@ p {
 /*
  * Global Styles
  */
+.vertical-center {
+	vertical-align:middle;
+}
 
 .left {
 	float:left;
@@ -388,6 +391,10 @@ ul.lower-alpha {
 
 .width425{
 	width:385px;
+}
+
+.width300 {
+	width:240px;
 }
 
 .width185 {
@@ -2564,4 +2571,29 @@ p.nothing {
 .bigger {
     font-size: 15px;
     font-weight: bold;
+}
+
+.email-video #content-left-column {
+	margin-right:35px;
+	width:585px; 
+}
+
+.email-video #content-right-column {
+	border-left:solid 1px #e5e5e5;
+	float:left;
+	margin:0px;
+	padding-left:34px;
+	width:300px;
+}
+
+.email-video .result-list > li {
+	padding:0px;
+}
+
+.email-video #get-connected {
+	padding-left:0px;
+}
+
+.custom-input_center input.embed {
+	color:#e18a07;
 }

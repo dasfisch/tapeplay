@@ -1,68 +1,79 @@
-<div id="content-left-column">
-    <div id="leftCol">
-        <h2 id="title">Email Video</h2>
-        {$message}
-        <div id="single">
-            <img src="{#pandaBase#}{$video->getPandaId()}{#pandaImageExt#}" class="resultImage" />
-            <div class="info">
-                <h2>{$video->getPlayer()->getFirstName()} {$video->getPlayer()->getLastName()}</h2>
-                <p class="position">{$video->getPlayer()->getPosition()}, {$video->getPlayer()->getFriendlyHeight()}</p>
-                <p class="title">{$video->getTitle()}</p>
-                <p class="date">{$video->getUploadDate()|date_format:'%B %d, %Y'}</p>
-            </div>
-        </div>
-        <form id="emailFriend" action="" method="post">
-            <input type="hidden" name="hash" value="{$hash}" />
-            <label for="from">From</label>
-            <div class="inputField">
-                <div class="left"></div>
-                <div class="middle">
-                    <input type="text" class="standard" id="from" name="from" value="Full Name" />
-                </div>
-                <div class="right"></div>
-            </div>
-            <label for="from">To</label>
-            <div class="inputField last copy">
-                <div class="left"></div>
-                <div class="middle">
-                    <input type="text" class="standard" id="email" name="email[]" value="Email Address" />
-                </div>
-                <div class="right"></div>
-            </div>
-            <div class="addAnother">
-                <p>
-                    <span class="plusCircle"></span>
-                    <span class="addText">Add another email address</span>
-                </p>
-            </div>
-            <div class="bigButton black">
-                <div class="topLeft whiteBg"></div>
-                <div class="topRight whiteBg"></div>
-                <div class="bottomLeft whiteBg"></div>
-                <div class="bottomRight whiteBg"></div>
-                <div class="middle">
-                    <input type="submit" value="Share" id="sendSearch" class="large black" />
-                </div>
-            </div>
-        </form>
-    </div>
-    <div id="rightCol">
-        <div id="copy">
-            <p>Copy the link to share:</p>
-            <div class="inputFieldSmall">
-                <div class="left"></div>
-                <div class="middle">
-                    <input type="text" class="standard" id="from" name="from" value="Full Name" />
-                </div>
-                <div class="right"></div>
-            </div>
-        </div>
-        <div id="share">
-            <p>Other ways to share...</p>
-            <div class="shareImg facebook"></div>
-            <div class="shareImg myspace"></div>
-            <div class="shareImg twitter"></div>
-            <div class="shareImg linkedin"></div>
-        </div>
-    </div>
+<div class="email-video">
+	<div id="content-left-column">
+		<h1>Email Video</h1>
+		
+		<ul class="result-list">
+                	
+			<li>
+				<div class="result-image left">
+					<img class="resultImage" src="{#pandaBase#}{$video->getPandaId()}{#pandaImageExt#}">
+				</div>
+				<ul class="left">
+					<li class="header">{$video->getPlayer()->getFirstName()} {$video->getPlayer()->getLastName()}</li>
+					<li class="position-height">Postition, Height</li>
+					<li class="video-title">{$video->getTitle()}</li>
+					<li class="month-year"><?php echo date('F, Y', strtotime('now')); ?></li>
+				</ul>
+				<div class="clear"></div>
+			</li>
+		
+		</ul>
+		
+		<form id="emailFriend" action="" method="post">
+	        <input type="hidden" name="hash" value="{$hash}" />
+			<ul class="form-fields">
+				<li class="input-field clear">
+					<strong>From</strong>
+					<div class="input_custom-text input_text80 width440">
+						<div class="custom-input_center custom-input_partial">
+							<span class="custom-input_top"></span>
+							<input type="text" name="from" value="Full Name"/>
+							<span class="custom-input_bottom"></span>
+						</div>
+		
+						<div class="custom-input_left custom-input_partial">
+							<span class="custom-input_top"></span>
+							<span class="custom-input_bottom"></span>
+						</div>
+		
+						<div class="custom-input_right custom-input_partial">
+							<span class="custom-input_top"></span>
+							<span class="custom-input_bottom"></span>
+						</div>
+					</div>
+				</li>
+				<li class="input-field clear">
+					<strong>To</strong>
+					<div class="input_custom-text input_text80 width440">
+						<div class="custom-input_center custom-input_partial">
+							<span class="custom-input_top"></span>
+							<input type="text" name="email[]" value="Email Address"/>
+							<span class="custom-input_bottom"></span>
+						</div>
+		
+						<div class="custom-input_left custom-input_partial">
+							<span class="custom-input_top"></span>
+							<span class="custom-input_bottom"></span>
+						</div>
+		
+						<div class="custom-input_right custom-input_partial">
+							<span class="custom-input_top"></span>
+							<span class="custom-input_bottom"></span>
+						</div>
+					</div>
+				</li>
+				<li class="input-field clear">
+					<p>
+						<img src="/media/images/icon_add-plus-sign.gif" class="vertical-center" /> Add another email address
+					</p>
+				</li>
+				<li class="input-field clear">
+					<button value="Share" type="submit" class="button_black_large left button_round">Share</button>
+				</li>
+			</ul>
+		</form>
+	</div>
+	<div id="content-right-column" class="right">
+	    {include file='common/sidebar/emailVideo.tpl'}
+	</div>
 </div>
