@@ -24,10 +24,14 @@
 }
 .box .slide{margin:1px 0 31px;}
 .box .slide .holder{overflow:hidden;}
-.box .slide ul{	margin:0;	padding:0;	list-style:none;
+.box .slide ul{
+	margin:0;
+	padding:0;
+	list-style:none;
 	overflow:hidden;
 	width:552px;
-	color:#666;}
+	color:#666;
+}
 .box .slide ul li{
 	float:left;
 	width:509px;
@@ -52,7 +56,20 @@
 	text-align:center;
 	padding:43px 0 0;
 }
-.box .slide ul .btn{	font-size:15px;	line-height:20px;	display:inline-block;	color:#fff;	background: url(/media/images/btn.png) no-repeat 100% 0;	padding:0 5px 0 0;}.btn span{	float: left;	height:21px;	background: url(/media/images/btn.png) no-repeat 0 -21px;	padding:0 2px 0 4px;}
+.box .slide ul .btn{
+	font-size:15px;
+	line-height:20px;
+	display:inline-block;
+	color:#fff;
+	background: url(/media/images/btn.png) no-repeat 100% 0;
+	padding:0 5px 0 0;
+}
+.btn span{
+	float: left;
+	height:21px;
+	background: url(/media/images/btn.png) no-repeat 0 -21px;
+	padding:0 2px 0 4px;
+}
 .box .slide ul .title{
 	color:#666;
 	font-size:30px;

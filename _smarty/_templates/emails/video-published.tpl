@@ -10,10 +10,14 @@
 <body marginheight="0" marginwidth="0" leftmargin="0" topmargin="0" bgcolor="#ffffff" style="margin:0;" link="#0000ff">
 <table width="100%" align="center" cellspacing="0" cellpadding="0" border="0" bgcolor="#ffffff">
 	<tr>
-		<td align="center" style="font-size:10px; line-height:13px; text-align:center;color:#ffffff;">
-			<font face="Arial, Helvetica, sans-serif" size="1" color="#ffffff" style="font-size:10px; line-height:13px;">
-				Please add <a href="mailto:no-reply@tapeplay.com">no-reply@tapeplay.com</a> to your address book.
+		<td align="center" style="font-size:10px; line-height:13px; text-align:center;color:#000000;">
+			<br/>
+			<font face="Arial, Helvetica, sans-serif" size="1" color="#000000" style="font-size:10px; line-height:13px;">
+				Please add <a href="mailto:{#tapeplayEmail#}">{#tapeplayEmail#}</a> to your address book.
 			</font>
+			<br/>
+			<br/>
+			<br/>
 		</td>
 	</tr>
 	<tr>
@@ -47,7 +51,7 @@
 																</tr>
 																<tr><td style="font-size:0; line-height:0;"><img src="{#baseUrl#}media/images/none.gif" width="1" height="8" alt="image" /></td></tr>
 																<tr>
-																	<td style="font-size:24px; line-height:31px;"><font face="Arial, Helvetica, sans-serif" size="5" color="#ffffff" style="font-size:24px; line-height:31px;"><strong>[ {SPORT_NAME} ]</strong> </font></td>
+																	<td style="font-size:24px; line-height:31px;"><font face="Arial, Helvetica, sans-serif" size="5" color="#ffffff" style="font-size:24px; line-height:31px;"><strong>{$sportName}</strong> </font></td>
 																</tr>
 															</table>
 														</td>
@@ -69,7 +73,7 @@
 														</td>
 													</tr>
 													<tr><td style="font-size:0; line-height:0;"><img src="{#baseUrl#}media/images/none.gif" width="1" height="24" alt="image" /></td></tr>
-													<tr><td style="font-size:0; line-height:0;"><a href="{#baseUrl#}videos/{$videoId}"><img align="left" vspace="0" hspace="0" border="0" src="{#baseUrl#}email/{EMAIL_TYPE}/btn-check-it-out.gif" width="244" height="81" alt="Check it out" /></a></td></tr>
+													<tr><td style="font-size:0; line-height:0;"><a href="{#baseUrl#}videos/{$videoId}"><img align="left" vspace="0" hspace="0" border="0" src="{#baseUrl#}media/images/buttons/btn-check-it-out.gif" width="244" height="81" alt="Check it out" /></a></td></tr>
 												</table>
 											</td>
 										</tr>
@@ -97,9 +101,9 @@
 											</td>
 										</tr>
 										<tr><td style="font-size:0; line-height:0;"><img src="{#baseUrl#}media/images/none.gif" width="1" height="24" alt="image" /></td></tr>
-										<tr><td align="center" style="font-size:0; line-height:0; text-align:center;"><a href="http://blog.tapeplay.com"><img vspace="0" hspace="0" border="0" src="{#baseUrl#}email/common/btn-view.gif" width="115" height="44" alt="View Blog" /></a></td></tr>
+										<tr><td align="center" style="font-size:0; line-height:0; text-align:center;"><a href="{#blogUrl#}"><img vspace="0" hspace="0" border="0" src="{#baseUrl#}media/images/buttons/btn-email-view.gif" width="115" height="44" alt="View Blog" /></a></td></tr>
 										<tr><td style="font-size:0; line-height:0;"><img src="{#baseUrl#}media/images/none.gif" width="1" height="45" alt="image" /></td></tr>
-										<tr>
+										<!--tr>
 											<td>
 												<table width="100%" cellpadding="0" cellspacing="0" border="0">
 													<tr>
@@ -115,14 +119,15 @@
 													</tr>
 												</table>
 											</td>
-										</tr>
+										</tr-->
 										<tr><td style="font-size:0; line-height:0;"><img src="{#baseUrl#}media/images/none.gif" width="1" height="11" alt="image" /></td></tr>
 										<tr>
 											<td align="center" style="font-size:10px; line-height:13px; text-align:center;">
 												<font face="Arial, Helvetica, sans-serif" size="1" color="#000000" style="font-size:10px; line-height:13px;">
 												This email was sent by TapePlay, P.O. Box 10587, Chicago, IL 60610
 												<br/>
-												<br/>This email was sent to the address <a href="mailto:{$emailAddress}">{$emailAddress}</a>. If you no longer wish to receive these emails, it's cool - you can <a href="{#unsubscribeUrl#}">unsubscribe</a>. But don't think we won't miss you.
+												<br/>This email was sent to the address <a style="color:#e18a07;" href="mailto:{$emailAddress}"><font color="#e18a07">{$emailAddress}</font></a>.
+												<br/>If you no longer wish to receive these emails, it's cool - you can <a style="color:#e18a07" href="{#unsubscribeUrl#}"><font color="#e18a07">unsubscribe</font></a>. But don't think we won't miss you.
 												<br/>&copy;&nbsp;{$fullYear} All Rights Reserved.
 											</font></td>
 										</tr>

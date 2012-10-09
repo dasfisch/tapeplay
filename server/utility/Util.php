@@ -24,7 +24,7 @@ class Util
         $sent = array();
         $failed = array();
 
-		global $smarty;
+		global $smarty, $sport;
 
         /**
          * generate email template
@@ -41,7 +41,8 @@ class Util
 
 		// full year will always be included
 		$smarty->assign("fullYear", date('Y'));
-		$smarty->assign("emailAddress", $to);
+		$smarty->assign("emailAddress", $to[0]);
+		$smarty->assign("sportName", $sport['name']);
 
         $body = $smarty->fetch($template, false);
 

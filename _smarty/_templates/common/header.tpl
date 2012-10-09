@@ -2,6 +2,10 @@
 <html id="www-tapeplay-com"{$ie}>
 <head>
 	<title>Tapeplay :: {$title}</title>
+
+	<meta name="description" content="TapePlay is a video recruiting site to get high school and college athletes to the next level. Get in front of coaches across the country by uploading video."/>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+
 	<link rel="stylesheet" href="/css/jquery.css" type="text/css"/>
 	<link rel="stylesheet" href="/css/global.css" type="text/css"/>
 	<link rel="stylesheet" href="/css/widgets.css" type="text/css"/>
