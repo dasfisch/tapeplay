@@ -5,12 +5,14 @@ require_once("enum/AccountTypeEnum.php");
 
 require_once("bll/SchoolBLL.php");
 require_once("bll/StatsBLL.php");
+require_once("bll/PositionBLL.php");
 require_once("bll/UserBLL.php");
 require_once("bll/PlayerBLL.php");
 require_once("bll/VideoBLL.php");
 require_once("model/SearchFilter.php");
 require_once("utility/Util.php");
 
+use tapeplay\server\bll\PositionBLL;
 use tapeplay\server\bll\SchoolBLL;
 use tapeplay\server\bll\StatsBLL;
 use tapeplay\server\bll\VideoBLL;
@@ -58,7 +60,7 @@ if (isset($route->method))
 {
 	switch ($route->method)
 	{
-		case AccountMethods::$WELCOME: // http://www.tapeplay.com/account/welcome
+		case AccountMethods::$WELCOME:
             if(!$userBLL->getUser()) {
                 header('Location:'.$controller->configuration->URLs['baseUrl'].'user/login/');
             }
@@ -98,6 +100,8 @@ if (isset($route->method))
 
                         try {
                             $videos = $videoBll->search($search);
+
+                            $privacy = $videos[0]->getPrivacy();
                         } catch(Exception $e) {
                             $videos = null;
                         }
@@ -128,16 +132,45 @@ if (isset($route->method))
 
                 $videoCount = (isset($videos[0]->count) && (int)$videos[0]->count > 0) ? (int)$videos[0]->count : 0;
 
-                $statsBll = new StatsBLL();
-                $stats = $statsBll->getPlayerStats((int)$user->getId(), (int)$user->getSport()->getId());
+                try {
+                    $statsBll = new StatsBLL();
+
+                    $stats = $statsBll->getPlayerStats((int)$user->getId(), (int)$user->getSport()->getId());
+                } catch(Exception $e) {
+
+                }
+
+                try {
+                    $positionBll = new PositionBLL();
+
+                    $positions = $positionBll->getPositionsBySport($userBLL->getUser()->getSport()->getId());
+                } catch(Exception $e) {
+
+                }
+
+                $optins = array();
+
+                try {
+                    $optins = $userBLL->getMyOptins($userBLL->getUser()->getId());
+                } catch(Exception $e) {
+
+                }
 
 				// now display the template based on above selection
+                $thirteenYearsBeforeNow = date('Y-m-d', strtotime('13 years ago'));
+
                 $smarty->assign('file', $template);
+                $smarty->assign('gradeLevels', $controller->configuration->gradeLevels);
                 $smarty->assign('hash', $inputFilter->createHash());
                 $smarty->assign("modder", ceil(count($stats) / 3));
                 $smarty->assign("myVideoWording", $myVideoWorking);
+                $smarty->assign("optins", $optins);
+                $smarty->assign("positions", $positions);
+                $smarty->assign("privacy", $privacy);
+                $smarty->assign('selected', strtotime($userBLL->getUser()->getBirthYear()));
                 $smarty->assign("stats", $stats);
                 $smarty->assign("statCount", count($stats));
+                $smarty->assign("thirteenBelow", $thirteenYearsBeforeNow);
                 $smarty->assign("title", 'Your TapePlay Account');
                 $smarty->assign("user", $user);
                 $smarty->assign("videoCount", $videoCount);

@@ -35,19 +35,17 @@ jQuery(document).ready(function(){
             event.preventDefault();
 
             if(jQuery(this).siblings('input[type=checkbox]').hasClass('single')) {
-                jQuery('.single').prop('checked', false);
+                jQuery('.single').removeAttr('checked');
                 jQuery('.singleCheck').removeClass('on');
             }
 
-            console.log(jQuery('.singleCheck'))
-
             if ($(this).hasClass('on')) {
-                $(this).removeClass('on');
-                $(this).siblings('input[type=checkbox]').prop('checked',false);
+                $(this).siblings('input[type=checkbox]').removeAttr('checked');
             } else {
-                $(this).addClass('on');
-                $(this).siblings('input[type=checkbox]').prop('checked','checked');
+                $(this).siblings('input[type=checkbox]').prop('checked', 'checked');
             }
+
+            $(this).toggleClass('on');
         });
 	});
 
@@ -107,7 +105,6 @@ jQuery(document).ready(function(){
                jQuery(element).parentsUntil('.input-field').siblings('.error-alert').hide();
            },
            highlight: function(element, errorClass) {
-               console.log('erroring')
                jQuery(element).parentsUntil('.input-field').siblings('.error-alert').show();
            }
        }
@@ -146,8 +143,6 @@ jQuery(document).ready(function(){
     });
 
     jQuery('#chosenSport').change(function() {
-        console.log('the')
-
         jQuery('#sportChooser').submit();
     });
 
@@ -176,30 +171,6 @@ jQuery(document).ready(function(){
         jQuery('.potentials').slideUp();
     });
 
-    // jQuery('.checkbox').click(function(){
-        // var showing = jQuery(this).attr('showing');
-//
-        // if(typeof(showing) === 'undefined') {
-            // showing = 'false';
-        // }
-//
-        // if(showing == 'false') {
-            // jQuery(this).children('.box').children('.checkMark').show();
-            // jQuery(this).children('.checkValue').val('true');
-//
-            // jQuery(this).children('input').attr('checked', true);
-//
-            // jQuery(this).attr('showing', 'true');
-        // } else {
-            // jQuery(this).children('.box').children('.checkMark').hide();
-            // jQuery(this).children('.checkValue').val('');
-//
-            // jQuery(this).children('input').attr('checked', false);
-//
-            // jQuery(this).attr('showing', 'false');
-        // }
-    // });
-
     if(jQuery('.slider').length > 0) {
         jQuery('.slider').slider({
             range: true,
@@ -215,118 +186,45 @@ jQuery(document).ready(function(){
         }
     });
 
-//    jQuery('.accordion .header').click(function() {
-//        var clicked = jQuery(this);
-//
-//        clicked.children('.arrow').toggleClass('down').toggleClass('up');
-//
-//        jQuery(this).next().slideToggle('slow', function() {
-//            var curText = clicked.children('p').children('.collapse').html();
-//
-//            curText = (curText == 'Collapse') ? 'Expand' : 'Collapse';
-//
-//            clicked.children('p').children('.collapse').html(curText);
-//        });
-//
-//        return false;
-//    }).next().hide();
-
     jQuery('.userEdit').click(function() {
-            var _this = jQuery(this);
-
-            var inputs = _this.siblings('.accountInfo').find('input');
-
-            var inputField = jQuery(this).siblings('.accountInfo').children('.inputField');
-            var dropDown = jQuery(this).siblings('.accountInfo').children('.sportSelect');
-            var p = jQuery(this).siblings('.accountInfo').children('p');
-
-            var keys = [];
-            var post = {};
-
-            inputField.toggleClass('hidden');
-            dropDown.toggleClass('hidden');
-            p.toggleClass('hidden');
-
-            if(inputField.hasClass('hidden')) {
-                jQuery(inputs).each(function(i) {
-                    var key = {};
-
-                    key.name = jQuery(this).attr('id');
-                    key.value = jQuery(this).val();
-
-                    keys[i] = (key);
-                });
-
-                post.hash = jQuery('#hash').val();
-                post.data = keys;
-                jQuery.post(
-                    '/ajax/userupdate/',
-                    post,
-                    function(data) {
-                        if(data == 200) {
-                            var newValue = '';
-
-                            for(var i in keys) {
-                                newValue += (i < (keys.length - 1)) ? keys[i].value + " " : keys[i].value;
-                            }
-
-                            _this.siblings('.accountInfo').children('p').html(newValue);
-
-                            _this.parents('.chunk').children('.bigButton').children('.middle').children('.edit').html('Edit');
-
-                            _this.parents('.chunk').children('.status').removeClass('hidden').show();
-
-                            setTimeout(
-                                function() {
-                                    _this.parents('.chunk').children('.status').fadeOut();
-                                },
-                                2000
-                            );
-                        } else {
-
-                        }
-                    }
-                );
-            } else {
-                _this.parents('.chunk').children('.bigButton').children('.middle').children('.edit').html('Done');
-            }
-        });
-
-    jQuery('.playerEdit').click(function() {
         var _this = jQuery(this);
 
-        var inputs = _this.siblings('.accountInfo').find('input');
+        var dropDowns = _this.parentsUntil('li').children('.accountInfo').children('fieldset').children('select');
+        var inputs = _this.parentsUntil('li').children('.accountInfo').children('.input_custom-text').children('.custom-input_center').children('input');
 
-        var inputField = jQuery(this).siblings('.accountInfo').children('.inputField');
-        var dropDown = jQuery(this).siblings('.accountInfo').children('.sportSelect');
-        var p = jQuery(this).siblings('.accountInfo').children('p');
+        var inputField = _this.parentsUntil('li').children('.accountInfo').children('.input_custom-text').children('.custom-input_center');
+        var p = _this.parentsUntil('li').children('.category');
 
         var keys = [];
         var post = {};
 
-        inputField.toggleClass('hidden');
-        dropDown.toggleClass('hidden');
+        _this.parentsUntil('li').children('.accountInfo').toggleClass('hidden');
         p.toggleClass('hidden');
 
-        console.log(inputField.hasClass('hidden'))
-
-        if(inputField.hasClass('hidden')) {
-            jQuery(inputs).each(function(i) {
+        if(_this.parentsUntil('li').children('.accountInfo').hasClass('hidden')) {
+            inputs.each(function(i) {
                 var key = {};
 
-                if(jQuery(this).val() != '' && jQuery(this).val() != 'true' && typeof(jQuery(this)) !== 'undefined') {
-                    key.name = jQuery(this).attr('id');
-                    key.value = jQuery(this).val();
+                key.name = jQuery(this).attr('id');
+                key.value = jQuery(this).val();
 
-                    keys[i] = (key);
-                }
+                keys.push(key);
+            });
+
+            dropDowns.each(function(i) {
+                var key = {};
+
+                key.name = jQuery(this).attr('id');
+                key.value = jQuery(this).val();
+
+                keys.push(key);
             });
 
             post.hash = jQuery('#hash').val();
             post.data = keys;
 
             jQuery.post(
-                '/ajax/profileupdate/',
+                '/ajax/userupdate/',
                 post,
                 function(data) {
                     if(data == 200) {
@@ -336,11 +234,11 @@ jQuery(document).ready(function(){
                             newValue += (i < (keys.length - 1)) ? keys[i].value + " " : keys[i].value;
                         }
 
-                        _this.siblings('.accountInfo').children('p').html(newValue);
+                        if(inputs.attr('id') !== '_hash') {
+                            p.html(newValue);
+                        }
 
-                        _this.parents('.chunk').children('.bigButton').children('.middle').children('.edit').html('Edit');
-
-                        _this.parents('.chunk').children('.status').removeClass('hidden').show();
+                        _this.children('span').html('Edit');
 
                         setTimeout(
                             function() {
@@ -354,7 +252,127 @@ jQuery(document).ready(function(){
                 }
             );
         } else {
-            _this.parents('.chunk').children('.bigButton').children('.middle').children('.edit').html('Done');
+            _this.children('span').html('Done');
+        }
+    });
+
+    jQuery('.playerEdit').click(function() {
+        var _this = jQuery(this);
+
+        var dropDowns = _this.parentsUntil('li').children('.accountInfo').children('fieldset').children('select');
+        var inputs = _this.parentsUntil('li').children('.accountInfo').children('.input_custom-text').children('.custom-input_center').children('input');
+        var checkboxes = _this.parentsUntil('li').children('.accountInfo').children('ul').children('li').children('input[type=checkbox]');
+
+        var inputField = _this.parentsUntil('li').children('.accountInfo').children('.input_custom-text').children('.custom-input_center');
+        var p = _this.parentsUntil('li').children('.category');
+
+        var extras = [];
+        var keys = [];
+        var post = {};
+
+        _this.parentsUntil('li').children('.accountInfo').toggleClass('hidden');
+        p.toggleClass('hidden');
+
+        jQuery.each(checkboxes, function() {
+            var position = $(this).siblings('label').children('.checkbox').position();
+
+            jQuery(this).css('left', position.left);
+            jQuery(this).css('position', 'absolute');
+            jQuery(this).css('top', position.top);
+        });
+
+        if(_this.parentsUntil('li').children('.accountInfo').hasClass('hidden')) {
+            checkboxes.each(function() {
+                var key = {};
+                var extra = {};
+
+                if(jQuery(this).prop('checked') == true) {
+                    var text = jQuery(this).siblings('label').children('.display').text();
+
+                    extra.name = key.name = jQuery(this).attr('id');
+                    extra.value = key.value = jQuery(this).val();
+                    extra.type = key.type = 'checkbox';
+                    extra.theText = text;
+
+                    keys.push(key);
+                    extras.push(extra);
+                }
+            });
+
+            dropDowns.each(function() {
+                var key = {};
+                var extra = {};
+
+                extra.name = key.name = jQuery(this).attr('id');
+                extra.value = key.value = jQuery(this).val();
+                extra.type = key.type = 'dropDown';
+                extra.theText = jQuery(this).find('option:selected').text();
+
+                keys.push(key);
+                extras.push(extra);
+            });
+
+            inputs.each(function() {
+                var key = {};
+                var extra = {};
+
+                if(jQuery(this).val() != '' && jQuery(this).val() != 'true' && typeof(jQuery(this)) !== 'undefined') {
+                    extra.name = key.name = jQuery(this).attr('id');
+                    extra.theText = extra.value = key.value = jQuery(this).val();
+                    extra.type = key.type = 'text';
+
+                    keys.push(key);
+                    extras.push(extra);
+                }
+            });
+
+            post.hash = jQuery('#hash').val();
+            post.data = keys;
+
+            jQuery.post(
+                '/ajax/profileupdate/',
+                post,
+                function(data) {
+                    if(data == 200) {
+                        var newValue = '';
+                        var j = 0;
+                        var separator = ' / ';
+
+                        for(var i in extras) {
+                            separator = extras[i].type == 'checkbox' ? ', ' : ' / ';
+
+                            if(i < (extras.length - 2)) {
+                                j=parseInt(i)+1; // dafuq was this turning into a string???
+
+                                if(extras[j].type != 'checkbox') {
+                                    separator = ' / ';
+                                }
+                            }
+
+                            extras[i].theText = extras[i].name == '_number' ? '#' + extras[i].theText : extras[i].theText;
+
+                            newValue += (i < (extras.length - 1)) ? extras[i].theText + separator : extras[i].theText;
+                        }
+
+                        _this.siblings('.accountInfo').children('p').html(newValue);
+
+                        p.html(newValue);
+
+                        _this.children('span').html('Edit');
+
+                        setTimeout(
+                            function() {
+                                _this.parents('.chunk').children('.status').fadeOut();
+                            },
+                            2000
+                        );
+                    } else {
+
+                    }
+                }
+            );
+        } else {
+            _this.children('span').html('Done');
         }
     });
 
@@ -364,11 +382,11 @@ jQuery(document).ready(function(){
         var keys = [];
         var post = {};
 
-        var statHidden = _this.siblings('.accountInfo').children('#statistics').children('#stats').children('li').children('.statHidden');
-        var stats = _this.siblings('.accountInfo').children('#statistics').children('#stats').children('li').children('.stat');
+        var statHidden = _this.parentsUntil('li').children('.three-column').children('li').children('.statHidden');
+        var stats = _this.parentsUntil('li').children('.three-column').children('li').children('.stat');
 
         if(stats.first().hasClass('hidden')) {
-            var inputs = statHidden.children('.inputFieldSmall').children('.middle').children('input');
+            var inputs = statHidden.children('.input_custom-text').children('.custom-input_center').children('input');
 
             jQuery(inputs).each(function(i) {
                 var key = {};
@@ -391,48 +409,42 @@ jQuery(document).ready(function(){
                 function(data) {
                     stats.toggleClass('hidden');
                     statHidden.toggleClass('hidden');
-                    _this.parents('.chunk').children('.bigButton').children('.middle').children('.edit').html('Edit');
+
+                    _this.children('span').html('Edit');
                 }
             );
         } else {
             stats.toggleClass('hidden');
             statHidden.toggleClass('hidden');
 
-            _this.parents('.chunk').children('.bigButton').children('.middle').children('.edit').html('Done');
+            _this.children('span').html('Done');
         }
     });
 
     jQuery('.schoolEdit').click(function() {
         var _this = jQuery(this);
 
-        var inputField = jQuery(this).siblings('.accountInfo').children('.inputField');
-        var dropDown = jQuery(this).siblings('.accountInfo').children('.sportSelect');
-        var p = jQuery(this).siblings('.accountInfo').children('p');
+        var inputField = _this.parentsUntil('li').children('.accountInfo').children('.input_custom-text').children('.custom-input_center');
+        var p = _this.parentsUntil('li').children('.category');
 
-        inputField.toggleClass('hidden');
-        dropDown.toggleClass('hidden');
+        _this.parentsUntil('li').children('.accountInfo').toggleClass('hidden');
         p.toggleClass('hidden');
 
-        if(inputField.hasClass('hidden')) {
-            var schoolId = _this.siblings('.accountInfo').children('.inputField').children('.middle').children('.passer').val();
-            var schoolName = _this.siblings('.accountInfo').children('.inputField').children('.middle').children('#schoolSearchInput').val();
+        if(_this.parentsUntil('li').children('.accountInfo').hasClass('hidden')) {
+            var schoolId = _this.parentsUntil('li').children('.accountInfo').children('.input_custom-text').children('.custom-input_center').children('.passer').val();
+            var schoolName = _this.parentsUntil('li').children('.accountInfo').children('.input_custom-text').children('.custom-input_center').children('#schoolSearchInput').val();
 
             jQuery.post(
                 '/ajax/schoolupdate/',
                 {
                     hash: jQuery('#hash').val(),
-                    member: _this.attr('id'),
                     value: schoolId
                 },
                 function(data) {
-                    console.log(data)
                     if(data == 200) {
-                        console.log(schoolName);
-                        _this.siblings('.accountInfo').children('p').html(schoolName);
+                        _this.parentsUntil('li').children('.category').html(schoolName);
 
-                        _this.parents('.chunk').children('.bigButton').children('.middle').children('.edit').html('Edit');
-
-                        _this.parents('.chunk').children('.status').removeClass('hidden');
+                        _this.children('span').html('Edit');
 
                         setTimeout(
                             function() {
@@ -448,9 +460,14 @@ jQuery(document).ready(function(){
 
 //            jQuery(this).parents('.chunk').children('.bigButton').removeClass('formEdit');
         } else {
-            jQuery(this).parents('.chunk').children('.bigButton').children('.middle').children('.edit').html('Done');
-//            jQuery(this).parents('.chunk').children('.bigButton').addClass('formEdit');
+            _this.children('span').html('Done');
         }
+    });
+
+    jQuery('.btn-deactivate').click(function() {
+        jQuery.post('/ajax/deactivateme/', {hash: jQuery('#hash').val()}, function(data) {
+            document.location.reload(true);
+        });
     });
 
     if(jQuery('#main').length > 0) {
@@ -626,37 +643,57 @@ jQuery(document).ready(function(){
                 },
                 function( data ) {
                     response( jQuery.map( eval(data), function( item ) {
+                        var locale = item.city != '' ? item.city + ', ' + item.state : '';
+
                         return {
+                            desc: locale,
                             label: item.name,
                             id: item.id
                         }
                     }));
 
-                    var position = jQuery('#schoolSearchInput').parents('.inputField').position();
+                    var height = jQuery('#schoolSearchInput').parentsUntil('li').children('.accountInfo').children('.input_custom-text').outerHeight();
+                    var width = jQuery('#schoolSearchInput').parentsUntil('li').children('.accountInfo').children('.input_custom-text').outerWidth();
+                    var position = jQuery('#schoolSearchInput').parentsUntil('li').children('.accountInfo').children('.input_custom-text').offset();
 
-                    var left = position.left;
-                    var top = position.top;
-                    var height = jQuery('#schoolSearchInput').parents('.inputField').height();
-                    var width = jQuery('#schoolSearchInput').parents('.inputField').width();
+                    jQuery('#schoolSearchInput').parentsUntil('li').children('.accountInfo').children('.input_custom-text').css(
+                        {
+                            'position': 'relative',
+                            'z-index': 10
+                        }
+                    );
+
+                    var top = position.top + height - 2;
+                    width -= 6;
 
                     jQuery('.ui-autocomplete').css(
                         {
                             'border': '1px solid #ccc',
                             'border-top': 'none',
-                            'top': top + height,
-                            'left': left,
-                            'width': width + 'px'
+                            'left': (position.left) + 'px',
+                            'position': 'absolute',
+                            'top': top + 'px',
+                            'width': width + 'px',
+                            'z-index': 2
                         }
                     );
                 }
             );
         },
         select: function(event, ui) {
-
             jQuery(this).html(ui.item.label);
             jQuery(this).siblings('.passer').val(ui.item.id);
         }
-    });
+    }).data( "autocomplete" )._renderItem = function( ul, item ) {
+        console.log(item);
+
+        var append = item.desc !== '' ? '<br />' + item.desc : '';
+
+        return $( "<li>" )
+            .data( "item.autocomplete", item )
+            .append( "<a><span class='bigger'>"+ item.label + "</span>" + append + "</a>" )
+            .appendTo( ul );
+    };
 
     jQuery('.addAnother').click(function() {
         var _this = jQuery(this).siblings('.copy').first();
@@ -686,6 +723,22 @@ jQuery(document).ready(function(){
             jQuery(this).css('color', '#000');
             ($(this).get(0)).value = '';
         }
+    });
+
+    jQuery('.videoOptin').click(function() {
+        jQuery.post(
+            '/ajax/videoprivacy/',
+            {level: jQuery(this).val(), hash: jQuery('#hash').val()}
+        );
+    });
+
+    jQuery('.optin').click(function() {
+        var switcher = jQuery(this).is(':checked') ? 'on' : 'off';
+
+        jQuery.post(
+            '/ajax/optins/',
+            {optin: jQuery(this).val(), switcher: switcher, hash: jQuery('#hash').val()}
+        );
     });
 });
 

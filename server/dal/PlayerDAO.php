@@ -124,6 +124,16 @@ class PlayerDAO extends BaseDOA
         return ($this->prep->rowCount() > 0) ? $this->dbh->lastInsertId() : -1;
     }
 
+    public function deletePlayerPosition($playerId, $positionId) {
+        $this->sql = "DELETE FROM player_positions WHERE player_id=:playerId AND position_id=:positionId";
+
+        $this->prep = $this->dbh->prepare($this->sql);
+        $this->prep->bindValue(":playerId", $playerId, \PDO::PARAM_INT);
+        $this->prep->bindValue(":positionId", $positionId, \PDO::PARAM_INT);
+
+        return $this->prep->execute();
+    }
+
 	function update(Player $player)
 	{
 		$this->sql = "UPDATE players SET
@@ -251,5 +261,15 @@ class PlayerDAO extends BaseDOA
        }
 
        return $userList;
+    }
+
+    public function setMyVideoPrivacy($playerId, $privacy) {
+        $this->sql = 'UPDATE videos SET is_private=:privacy WHERE player_id=:playerId';
+
+        $this->prep = $this->dbh->prepare($this->sql);
+        $this->prep->bindValue(":privacy", $privacy, \PDO::PARAM_INT);
+        $this->prep->bindValue(":playerId", $playerId, \PDO::PARAM_INT);
+
+        return $this->prep->execute();
     }
 }

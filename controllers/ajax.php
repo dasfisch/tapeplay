@@ -1,12 +1,14 @@
 <?php
     use tapeplay\server\bll\UserBLL;
     use tapeplay\server\bll\PlayerBLL;
+    use tapeplay\server\bll\PositionBLL;
     use tapeplay\server\bll\SchoolBLL;
     use tapeplay\server\bll\StatsBLL;
     use tapeplay\server\bll\VideoBLL;
     use tapeplay\server\model\Stat;
 
     require_once("bll/PlayerBLL.php");
+    require_once("bll/PositionBLL.php");
     require_once("bll/SchoolBLL.php");
     require_once("bll/StatsBLL.php");
     require_once("bll/UserBLL.php");
@@ -110,8 +112,6 @@
                     }
 
                     echo json_encode($encoded);
-                } else {
-                    echo 'not in here';
                 }
 
                 exit;
@@ -176,6 +176,9 @@
                 break;
             case 'profileupdate':
                 if(isset($post) && !empty($post)) {
+                    $thePositions = false;
+                    $ran = false;
+
                     unset($post['hash']);
 
                     $user = $userBLL->getUser();
@@ -183,11 +186,42 @@
                     foreach($post['data'] as $data) {
                         $methodName = 'set'.ucfirst(substr($data['name'], 1, strlen($data['name'])));
 
-                        if($data['name'] != '_hash') {
+                        if($data['name'] == '_position') {
+                            $thePositions = true;
+
+                            if($ran === false) {
+                                $playerBll = new PlayerBLL();
+
+                                // my current positions
+                                $positions = $user->getPosition();
+
+                                foreach($positions as $key=>$position) {
+                                    $playerBll->deletePositions($user->getId(), $position->getId());
+
+                                    unset($positions[$key]);
+                                }
+
+                                $ran = true;
+                            }
+
+                            try {
+                                $playerBll->updatePositions($user->getId(), $data['value']);
+                            } catch(Exception $e) {
+
+                            }
+                        } elseif($data['name'] != '_hash') {
                             $user->$methodName($data['value']);
                         } else {
                             $user->setHash($userBLL->createHash($user->getEmail(), $data['value']));
                         }
+                    }
+
+                    if($thePositions === true) {
+                        $user->setPosition($positions);
+
+                        $positionBll = new PositionBLL();
+
+                        $user->setPosition($positionBll->getPositionsByPlayer($user->getId()));
                     }
 
                     $playerBll = new PlayerBLL();
@@ -220,7 +254,7 @@
                     $stat->setStatValue($val);
 
                     try {
-                        echo $statsBll->updatePlayerStat($stat, $userBLL->getUser()->getId()).'<br />';
+                        $statsBll->updatePlayerStat($stat, $userBLL->getUser()->getId());
                     } catch(Exception $e) {
                         $errors[] = $id;
                     }
@@ -230,6 +264,47 @@
                     echo 200;
                 } else {
                     echo 600;
+                }
+
+                break;
+            case 'videoprivacy':
+                try {
+                    $playerBll = new PlayerBLL();
+
+                    $playerBll->setMyVideoPrivacy((int)$userBLL->getUser()->getId(), (int)$post['level']);
+                } catch(Exception $e) {
+
+                }
+
+                break;
+            case 'optins':
+                $switch = $post['switcher'];
+
+                if($switch == 'off') {
+                    echo 'deleting;';
+                    try {
+                        $userBLL->deleteOptin($userBLL->getUser()->getId(), $post['optin']);
+                    } catch(Exception $e) {
+
+                    }
+                } else {
+                    echo 'creating';
+                    try {
+                        $userBLL->addOptin($userBLL->getUser()->getId(), $post['optin']);
+                    } catch(Exception $e) {
+
+                    }
+                }
+
+                break;
+            case 'deactivateme':
+                if($userBLL->deactivateMe($userBLL->getUser()->getUserId())) {
+                    $_SESSION['message']['message'] = 'You have been deactivated!';
+                    $_SESSION['message'][''] = 'success';
+
+                    echo 200;
+
+                    \Util::setHeader('user/logout/');
                 }
 
                 break;

@@ -61,4 +61,16 @@ class PlayerBLL extends BaseBLL
     public function setPosition($playerId, $positionId) {
         return $this->dal->insertPlayerPosition($playerId, $positionId);
     }
+
+    public function updatePositions($playerId, $positionId) {
+        return $this->dal->insertPlayerPosition($playerId, $positionId);
+    }
+
+    public function deletePositions($playerId, $positionId) {
+        return $this->dal->deletePlayerPosition($playerId, $positionId);
+    }
+
+    public function setMyVideoPrivacy($playerId, $privacy) {
+        return $this->dal->setMyVideoPrivacy($playerId, $privacy);
+    }
 }

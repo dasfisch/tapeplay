@@ -148,11 +148,11 @@
 						<select class="select-6" name="gender">
 							<option class="default">Sex</option>
                             {if isset($post) && $post.gender}
-                                <option value="m"{if $post.gender == 'm'} selected{/if}>Male</option>
-                                <option value="f"{if $post.gender == 'f'} selected{/if}>Female</option>
+                                <option value="M"{if $post.gender == 'M'} selected{/if}>Male</option>
+                                <option value="F"{if $post.gender == 'F'} selected{/if}>Female</option>
                             {else}
-                                <option value="m">Male</option>
-                                <option value="f">Female</option>
+                                <option value="M">Male</option>
+                                <option value="F">Female</option>
                             {/if}
 						</select>
 					</fieldset>

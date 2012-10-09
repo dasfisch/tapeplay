@@ -21,7 +21,8 @@ class User
         $user->setBirthYear($arr["birth_year"]);
         $user->setAge($arr["birth_year"]);
 		$user->setLastLogin($arr["last_login"]);
-		$user->setAccountType($arr["account_type"]);
+        $user->setAccountType($arr["account_type"]);
+        $user->setAccountType($arr["deactivation_date"]);
 		$user->setStatus($arr["status"]);
 
 		return $user;
@@ -29,7 +30,8 @@ class User
 
     protected  $_age;
 	protected  $_userId;
-	protected  $_firstName;
+    protected  $_deactivated;
+    protected  $_firstName;
 	protected  $_lastName;
 	protected  $_email;
 	protected  $_hash;
@@ -180,6 +182,14 @@ class User
 	{
 		return $this->_savedVideos;
 	}
+
+    public function setDeactivated() {
+        $this->_deactivated = true;
+    }
+
+    public function getDeactivated() {
+        return $this->_deactivated;
+    }
 
     public function __toString() {
         $val = '';

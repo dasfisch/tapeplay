@@ -494,7 +494,7 @@ if (isset($route->method))
 
                             foreach($post['position'] as $position) {
                                 try {
-                                    $playerBLL->setPosition($userBLL->getUser()->getId(), $position);
+                                    $playerBLL->setPosition($user->getId(), $position);
                                 } catch (Exception $e) {
                                 }
                             }

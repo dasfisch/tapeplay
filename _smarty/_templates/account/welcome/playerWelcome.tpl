@@ -5,26 +5,28 @@
 	    <input type="hidden" id="user-id" value="{$user->getUserId()}" />
 	    <ul class="accordion">
 			<li class="active">
-				<a href="#" class="opener">{$myVideoWording} ({$videoCount})</a>
+				<a class="opener">{$myVideoWording} ({$videoCount})</a>
 				<div class="slide">
 					<div class="holder scrollable-area">
 						<ul>
 							{if isset($videos) && !empty($videos)}
 	                        	{foreach $videos as $video}
 									<li>
-										<img src="{#pandaBase#}{$video->getPandaId()}{#pandaImageExt#}" width="125" height="94" alt="image description" />
-										<div class="text-holder">
-											<strong class="title">{$video->getTitle()}</strong>
-											<div class="category">Category</div>
-											<span class="date">{$video->getUploadDate()|date_format:"%B, %Y"}</span>
-											<div class="time">12:00</div>
-											<em class="info">Views: 12, Saves: 12</em>
-											<div class="btn-holder">
-												<a href="#" class="btn edit"><span>Edit</span></a><br />
-												<a href="#" class="btn delete"><span>Delete</span></a>
-											</div>
-										</div>
-										<input type="hidden" class="video-id" value="{$video->getId()}" />
+                                        <a href="{#baseUrl#}videos/view/{$video->getId()}">
+                                            <img src="{#pandaBase#}{$video->getPandaId()}{#pandaImageExt#}" width="125" height="94" alt="image description" />
+                                            <div class="text-holder">
+                                                <strong class="title">{$video->getTitle()}</strong>
+                                                <div class="category">{$user->getSport()->getSportName()}</div>
+                                                <span class="date">{$video->getUploadDate()|date_format:"%B, %Y"}</span>
+                                                <div class="time">12:00</div>
+                                                <em class="info">Views: {$video->getViews()}, Saves: {$video->getSaves()}</em>
+                                                <div class="btn-holder">
+                                                    <a class="btn edit"><span>Edit</span></a><br />
+                                                    <a class="btn delete"><span>Delete</span></a>
+                                                </div>
+                                            </div>
+                                            <input type="hidden" class="video-id" value="{$video->getId()}" />
+                                        </a>
 									</li>
 								{/foreach}
 	                        {/if}
@@ -33,16 +35,47 @@
 				</div>
 			</li>
 			<li>
-				<a href="#" class="opener">Account</a>
+				<a class="opener">Account</a>
 				<div class="slide slider_account">
-					
 					<ul>
 						<li>
 							<div class="text-holder">
 								<strong class="title">Name</strong>
 								<div class="category">{$user->getFirstName()} {$user->getLastName()}</div>
+                                <div class="accountInfo hidden">
+                                    <div class="input_custom-text input_text80 width450 left">
+                                        <div class="custom-input_center custom-input_partial">
+                                            <span class="custom-input_top"></span>
+                                            <input type="text" class="standard" id="_firstName" name="firstName" value="{$user->getFirstName()}" />
+                                            <span class="custom-input_bottom"></span>
+                                        </div>
+                                        <div class="custom-input_left custom-input_partial">
+                                            <span class="custom-input_top"></span>
+                                            <span class="custom-input_bottom"></span>
+                                        </div>
+                                        <div class="custom-input_right custom-input_partial">
+                                            <span class="custom-input_top"></span>
+                                            <span class="custom-input_bottom"></span>
+                                        </div>
+                                    </div>
+                                    <div class="input_custom-text input_text80 width450 left">
+                                        <div class="custom-input_center custom-input_partial">
+                                            <span class="custom-input_top"></span>
+                                            <input type="text" class="standard" id="_lastName" name="lastName" value="{$user->getLastName()}" />
+                                            <span class="custom-input_bottom"></span>
+                                        </div>
+                                        <div class="custom-input_left custom-input_partial">
+                                            <span class="custom-input_top"></span>
+                                            <span class="custom-input_bottom"></span>
+                                        </div>
+                                        <div class="custom-input_right custom-input_partial">
+                                            <span class="custom-input_top"></span>
+                                            <span class="custom-input_bottom"></span>
+                                        </div>
+                                    </div>
+               	                </div>
 								<div class="btn-holder">
-									<a href="#" class="btn edit"><span>Edit</span></a><br />
+									<a class="btn edit userEdit"><span>Edit</span></a><br />
 								</div>
 							</div>
 						</li>
@@ -50,17 +83,51 @@
 							<div class="text-holder">
 								<strong class="title">Email Address</strong>
 								<div class="category">{$user->getEmail()}</div>
+                                <div class="accountInfo hidden">
+                                    <div class="input_custom-text input_text80 width450 left">
+                                        <div class="custom-input_center custom-input_partial">
+                                            <span class="custom-input_top"></span>
+                                            <input type="text" class="standard" id="_email" name="email" value="{$user->getEmail()}" />
+                                            <span class="custom-input_bottom"></span>
+                                        </div>
+                                        <div class="custom-input_left custom-input_partial">
+                                            <span class="custom-input_top"></span>
+                                            <span class="custom-input_bottom"></span>
+                                        </div>
+                                        <div class="custom-input_right custom-input_partial">
+                                            <span class="custom-input_top"></span>
+                                            <span class="custom-input_bottom"></span>
+                                        </div>
+                                    </div>
+               	                </div>
 								<div class="btn-holder">
-									<a href="#" class="btn edit"><span>Edit</span></a><br />
+									<a class="btn edit userEdit"><span>Edit</span></a><br />
 								</div>
 							</div>
 						</li>
 						<li>
 							<div class="text-holder">
 								<strong class="title">Password</strong>
-								<div class="category">**********</div>
+								<div class="category">********</div>
+                                <div class="accountInfo hidden">
+                                    <div class="input_custom-text input_text80 width450 left">
+                                        <div class="custom-input_center custom-input_partial">
+                                            <span class="custom-input_top"></span>
+                                            <input type="password" class="standard" id="_hash" name="password" value="********" />
+                                            <span class="custom-input_bottom"></span>
+                                        </div>
+                                        <div class="custom-input_left custom-input_partial">
+                                            <span class="custom-input_top"></span>
+                                            <span class="custom-input_bottom"></span>
+                                        </div>
+                                        <div class="custom-input_right custom-input_partial">
+                                            <span class="custom-input_top"></span>
+                                            <span class="custom-input_bottom"></span>
+                                        </div>
+                                    </div>
+               	                </div>
 								<div class="btn-holder">
-									<a href="#" class="btn edit"><span>Edit</span></a><br />
+									<a class="btn edit userEdit"><span>Edit</span></a><br />
 								</div>
 							</div>
 						</li>
@@ -68,8 +135,48 @@
 							<div class="text-holder">
 								<strong class="title">Birth Year / Sex / Zip Code</strong>
 								<div class="category">{$user->getBirthYear()} / {$user->getGender()} / {$user->getZipcode()}</div>
+                                <div class="accountInfo hidden">
+                                    <fieldset>
+                                           {html_select_date
+                                               start_year=$thirteenBelow
+                                               display_days=false
+                                               display_months=false
+                                               end_year="-50"
+                                               prefix='_birth'
+                                               all_extra='class="select-5" id="_birthYear"'
+                                               reverse_years=true
+                                               time=$selected
+                                           }
+                                    </fieldset>
+                                </div>
+                                <div class="accountInfo hidden">
+                                    <fieldset>
+                                        <select class="select-6" name="_gender" id="_gender">
+                                           <option value="M"{if $user->getGender() == 'M'} selected{/if}>Male</option>
+                                           <option value="F"{if $user->getGender() == 'F'} selected{/if}>Female</option>
+                                        </select>
+                                    </fieldset>
+                                </div>
+                                <div class="accountInfo hidden">
+                                    <div class="input_custom-text input_text80 width450 left">
+                                        <div class="custom-input_center custom-input_partial">
+                                            <span class="custom-input_top"></span>
+                                            <input type="password" class="standard" id="_zipcode" name="zipcode" value="{$user->getZipcode()}" />
+                                            <span class="custom-input_bottom"></span>
+                                        </div>
+                                        <div class="custom-input_left custom-input_partial">
+                                            <span class="custom-input_top"></span>
+                                            <span class="custom-input_bottom"></span>
+                                        </div>
+                                        <div class="custom-input_right custom-input_partial">
+                                            <span class="custom-input_top"></span>
+                                            <span class="custom-input_bottom"></span>
+                                        </div>
+                                    </div>
+               	                </div>
+
 								<div class="btn-holder">
-									<a href="#" class="btn edit"><span>Edit</span></a><br />
+									<a class="btn edit userEdit"><span>Edit</span></a><br />
 								</div>
 							</div>
 						</li>
@@ -77,7 +184,7 @@
 							<div class="text-holder">
 								<strong class="title">Deactivate Account</strong>
 								<div class="btn-holder btn-lightbox">
-									<a href="#popup" class="btn edit show-lightbox"><span>Deactivate</span></a><br />
+									<a href="#popup" class="btn edit deactivate show-lightbox"><span>Deactivate</span></a><br />
 								</div>
 								<div class="popup-holder">
 									<div id="popup" class="lightbox">
@@ -90,8 +197,8 @@
 										</ul>
 										<p>We&rsquo;ll always look back on these times as special.</p>
 										<div class="buttons-holder">
-											<a href="#" class="btn-deactivate">Deactivate</a>
-											<a href="#" class="btn-cancel">Cancel</a>
+											<a class="btn-deactivate">Deactivate</a>
+											<a class="btn-cancel">Cancel</a>
 										</div>
 									</div>
 								</div>
@@ -102,33 +209,180 @@
 				</div>
 			</li>
 			<li>
-				<a href="#" class="opener">{$user->getSport()->getSportName()}</a>
+				<a class="opener">{$user->getSport()->getSportName()}</a>
 				<div class="slide slider_sport">
 					<ul>
 						<li>
 							<div class="text-holder">
-								<strong class="title">Number / Level / Grade</strong>
-								<div class="category">#{$user->getNumber()} / {$user->getPlayingLevel()} / {$user->getGradeLevel()}</div>
+								<strong class="title">Level / Grade / Number</strong>
+                                <div class="category">
+                                    {if $user->getPlayingLevel() == 0}
+                                        High School
+                                    {elseif $user->getPlayingLevel() == 1}
+                                        College
+                                    {elseif $user->getPlayingLevel() == 2}
+                                        Professional
+                                    {/if}
+                                    / {$user->getGradeLevel()} / #{$user->getNumber()}</div>
+                                <div class="accountInfo hidden">
+                                    <fieldset>
+                                        <select class="select-6" name="gradeLevel" id="_gradeLevel">
+                                            <option>Select a Grade</option>
+                                            {section name=i start=9 loop=17 step=1}
+                                                <option value="{$smarty.section.i.index}"
+                                                    {if $user->getGradeLevel() == $smarty.section.i.index}selected {/if}
+                                                        >{$gradeLevels[$smarty.section.i.index]}</option>
+                                             {/section}
+                                        </select>
+                                    </fieldset>
+                                </div>
+                                <div class="accountInfo hidden">
+                                    <ul class="font15">
+                                        <li>
+                                            <label for="high-school" class="singleCheck">
+                                                <span class="checkbox"><span class="check"></span></span>
+                                                <span class="display">High School</span>
+                                            </label>
+                                            <input type="checkbox" class="single" name="playingLevel" id="_playingLevel" value="0"
+                                                {if $user->getPlayingLevel() == 0}checked{/if}
+                                                    />
+                                        </li>
+                                        <li>
+                                            <label for="college" class="singleCheck">
+                                                <span class="checkbox"><span class="check"></span></span>
+                                                <span class="display">College</span>
+                                            </label>
+                                            <input type="checkbox" class="single" name="playingLevel" id="_playingLevel" value="1"
+                                                {if $user->getPlayingLevel() == 1}checked{/if}
+                                            />
+                                        </li>
+                                        <li>
+                                            <label for="professional" class="singleCheck">
+                                                <span class="checkbox"><span class="check"></span></span>
+                                                <span class="display">Professional</span>
+                                            </label>
+                                            <input type="checkbox" class="single" name="playingLevel" id="_playingLevel" value="2"
+                                                {if $user->getPlayingLevel() == 2}checked{/if}
+                                            />
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="accountInfo hidden">
+                                    <div class="input_custom-text input_text80 width450 left">
+                                        <div class="custom-input_center custom-input_partial">
+                                            <span class="custom-input_top"></span>
+                                            <input type="text" class="standard" id="_number" name="number" value="{$user->getNumber()}" />
+                                            <span class="custom-input_bottom"></span>
+                                        </div>
+                                        <div class="custom-input_left custom-input_partial">
+                                            <span class="custom-input_top"></span>
+                                            <span class="custom-input_bottom"></span>
+                                        </div>
+                                        <div class="custom-input_right custom-input_partial">
+                                            <span class="custom-input_top"></span>
+                                            <span class="custom-input_bottom"></span>
+                                        </div>
+                                    </div>
+                                </div>
 								<div class="btn-holder">
-									<a href="#" class="btn edit"><span>Edit</span></a><br />
+									<a class="btn edit playerEdit"><span>Edit</span></a><br />
 								</div>
 							</div>
 						</li>
 						<li>
 							<div class="text-holder">
-								<strong class="title">Position / Height</strong>
-								<div class="category">{$user->getPosition()} / {$user->getHeight()}</div>
+								<strong class="title">Position / Height / Weight</strong>
+								<div class="category">
+                                {foreach from=$user->getPosition() key=key item=position}
+                                    {if $user->getPosition()|@count gt 0}
+                                        {if $key lt $user->getPosition()|@count - 1}
+                                            {$position->getName()},
+                                        {else}
+                                            {$position->getName()} /
+                                        {/if}
+                                    {/if}
+                                {/foreach}
+                                {$user->getHeight()} / {$user->getWeight()} lbs</div>
+                                <div class="accountInfo hidden">
+                                    <ul class="font15">
+                                        {foreach from=$positions key=key item=position}
+                                            <li>
+                                                <label
+                                                    {foreach from=$user->getPosition() key=key item=myPosition}
+                                                        {if $position->getId() == $myPosition->getId()}class="on"{/if}
+                                                    {/foreach}>
+                                                    <span class="checkbox"><span class="check"></span></span>
+                                                    <span class="display">{$position->getName()}</span>
+                                                </label>
+                                                <input type="checkbox" name="playingLevel" id="_position" value="{$position->getId()}"
+                                                    {foreach from=$user->getPosition() key=key item=myPosition}
+                                                        {if $position->getId() == $myPosition->getId()}checked {/if}
+                                                    {/foreach}
+                                                        />
+                                            </li>
+                                        {/foreach}
+                                    </ul>
+                                </div>
+                                <div class="accountInfo hidden">
+                                    <fieldset>
+                                        <select class="select-5" class="height" id="_height" name="height">
+                                            <option class="default">Select</option>
+                                            {section name=i start=48 loop=96 step=1}
+                                                <option value="{$smarty.section.i.index}"{if $user->getHeight() == $smarty.section.i.index} selected="selected"{/if}>
+                                                    {floor($smarty.section.i.index/12)}" {$smarty.section.i.index % 12}'
+                                                </option>
+                                            {/section}
+                                        </select>
+                                    </fieldset>
+                                </div>
+                                <div class="accountInfo hidden">
+                                    <div class="input_custom-text input_text80 width185 left">
+                                        <div class="custom-input_center custom-input_partial">
+                                            <span class="custom-input_top"></span>
+                                            <input type="text" class="standard" id="_weight" name="weight" value="{$user->getWeight()}" />
+                                            <span class="custom-input_bottom"></span>
+                                        </div>
+                                        <div class="custom-input_left custom-input_partial">
+                                            <span class="custom-input_top"></span>
+                                            <span class="custom-input_bottom"></span>
+                                        </div>
+                                        <div class="custom-input_right custom-input_partial">
+                                            <span class="custom-input_top"></span>
+                                            <span class="custom-input_bottom"></span>
+                                        </div>
+                                    </div>
+                                </div>
 								<div class="btn-holder">
-									<a href="#" class="btn edit"><span>Edit</span></a><br />
+									<a class="btn edit playerEdit"><span>Edit</span></a><br />
 								</div>
 							</div>
 						</li>
 						<li>
 							<div class="text-holder">
 								<strong class="title">School Name</strong>
-								<div class="category">{if isset($school) && $school != ''}{$school}{else}Please select a school!{/if}</div>
+								<div class="category">{$user->getSchool()->getName()}</div>
+                                <div class="accountInfo hidden">
+                                    <div class="input_custom-text input_text80 left">
+                                        <div class="custom-input_center custom-input_partial">
+                                            <span class="custom-input_top"></span>
+                                            {assign var=school value=$user->getSchool()->getName()}
+                                            <input type="text" class="standard small" id="schoolSearchInput" name="schoolName"
+                                                   value="{if isset($school) && $school != ''}{$school}{else}Please select a school!{/if}" />
+                                            <input type="hidden" class="passer" value="" />
+                                            <span class="custom-input_bottom"></span>
+                                        </div>
+                                        <div class="custom-input_left custom-input_partial">
+                                            <span class="custom-input_top"></span>
+                                            <span class="custom-input_bottom"></span>
+                                        </div>
+                                        <div class="custom-input_right custom-input_partial">
+                                            <span class="custom-input_top"></span>
+                                            <span class="custom-input_bottom"></span>
+                                        </div>
+                                    </div>
+                                </div>
 								<div class="btn-holder">
-									<a href="#" class="btn edit"><span>Edit</span></a><br />
+									<a class="btn edit schoolEdit"><span>Edit</span></a><br />
 								</div>
 							</div>
 						</li>
@@ -136,34 +390,75 @@
 							<div class="text-holder">
 								<strong class="title">Head Coach&rsquo;s Name</strong>
 								<div class="category">{$user->getCoachName()}</div>
+                                <div class="accountInfo hidden">
+                                    <div class="input_custom-text input_text80 left">
+                                        <div class="custom-input_center custom-input_partial">
+                                            <span class="custom-input_top"></span>
+                                            <input type="text" class="standard small" id="_coachName" name="coachName" value="{$user->getCoachName()}" />
+                                            <input type="hidden" class="passer" value="" />
+                                            <span class="custom-input_bottom"></span>
+                                        </div>
+                                        <div class="custom-input_left custom-input_partial">
+                                            <span class="custom-input_top"></span>
+                                            <span class="custom-input_bottom"></span>
+                                        </div>
+                                        <div class="custom-input_right custom-input_partial">
+                                            <span class="custom-input_top"></span>
+                                            <span class="custom-input_bottom"></span>
+                                        </div>
+                                    </div>
+                                </div>
 								<div class="btn-holder">
-									<a href="#" class="btn edit"><span>Edit</span></a><br />
+									<a class="btn edit schoolEdit"><span>Edit</span></a><br />
+								</div>
+								<div class="btn-holder">
+									<a class="btn edit playerEdit"><span>Edit</span></a><br />
 								</div>
 							</div>
 						</li>
 						<li>
 							<div class="text-holder">
 								<strong class="title">Statistics</strong>
-								<div class="category">
 									<ul class="three-column">
 										{assign var=i value=0}
 			                            {foreach from=$stats item=stat}
 			                                {if $i%$modder == 0 || $i == 0}
 			                                    <li>
 			                                {/if}
-
-			                                {$stat->getStatName()}:
-			                                <span class="bold">{$stat->getStatValue()}</span>
-	
+                                                <div class="stat">
+                                                    <p>
+                                                        {$stat->getStatName()}:
+                                                        <span class="bold">{$stat->getStatValue()}</span>
+                                                    </p>
+                                                </div>
+                                                <div class="statHidden hidden">
+                                                    <p>
+                                                        {$stat->getStatName()}:
+                                                    </p>
+                                                    <div class="input_custom-text input_text36 left">
+                                                        <div class="custom-input_center custom-input_partial">
+                                                            <span class="custom-input_top"></span>
+                                                            <input type="text" class="standard small" id="stat" name="stat-{$stat->getId()}" value="{$stat->getStatValue()}" />
+                                                            <span class="custom-input_bottom"></span>
+                                                        </div>
+                                                        <div class="custom-input_left custom-input_partial">
+                                                            <span class="custom-input_top"></span>
+                                                            <span class="custom-input_bottom"></span>
+                                                        </div>
+                                                        <div class="custom-input_right custom-input_partial">
+                                                            <span class="custom-input_top"></span>
+                                                            <span class="custom-input_bottom"></span>
+                                                        </div>
+                                                    </div>
+                                                </div>
 			                                {if ($i%$modder == $modder - 1 && $i > $modder) || $i == ($statCount - 1)}
 			                                    </li>
 			                                {/if}
 			                                {$i=$i+1}
 			                            {/foreach}
 									</ul>
-								</div>
 								<div class="btn-holder">
-									<a href="#" class="btn edit"><span>Edit</span></a><br />
+									<a class="btn edit" id="statButton"><span>Edit</span></a><br />
 								</div>
 							</div>
 						</li>
@@ -171,387 +466,64 @@
 				</div>
 			</li>
 			<li>
-				<a href="#" class="opener">Privacy</a>
+				<a class="opener">Privacy</a>
 				<div class="slide slider_privacy">
 					<p>
 						Who can view my videos?<br />
-						<input type="radio" value="anybody" /> Anybody<br />
-						<input type="radio" value="nobody" /> Nobody<br />
+                        <input type="radio" name="visibility" class="videoOptin" value="0"
+                            {if $privacy == 0}selected {/if}
+                            /> <label>Anybody</label><br />
+   	                    <input type="radio" name="visibility" class="videoOptin" value="1"
+                            {if $privacy == 1}selected {/if}
+                            /> <label>Scouts and Coaches</label><br />
+   	                    <input type="radio" name="visibility" class="videoOptin" value="2"
+                            {if $privacy == 2}selected {/if}
+                            /> <label>Nobody</label><br />
 					</p>
-					<p>
-						<input type="checkbox" value="yes" /> Use my account info for relevant advertising. Ads help us pay the bills so we can keep improving TapePlay for you.
-					</p>
+                    <p>
+                        <input type="checkbox" name="allowFacebook" class="optin" value="3"
+                            {foreach from=$optins key=key item=optin}
+                                {if $optin.0 == 3}checked {/if}
+                            {/foreach}
+                            />
+   	                    <label for="allowFacebook">Allow TapePlay to import my Facebook info</label>
+   	                </p>
+   	                <p>
+   	                    <input type="checkbox" name="relevantAdvertising" class="optin" value="2"
+                            {foreach from=$optins key=key item=optin}
+                                {if $optin.0 == 2}checked {/if}
+                            {/foreach}
+                            />
+   	                    <label for="relevantAdvertising">
+   	                        Use my account info for relevant advertising.
+   	                        <a class="infoOpen">Why?</a>
+   	                        <div class="infoBubble">
+   	                            <div class="topLeft black"></div>
+   	                            <div class="directionTopRight"></div>
+   	                            <div class="middle">
+   	                                <p>
+   	                                    Help us out by using your account info for relevant
+   	                                    advertising. Ads help us pay the bills so we can
+   	                                    keep improving TapePlay for you.
+   	                                </p>
+   	                            </div>
+   	                            <div class="bottomLeft"></div>
+   	                            <div class="bottomRight"></div>
+   	                            <div class="direction"></div>
+   	                        </div>
+   	                    </label>
+   	                </p>
+   	                <p>
+   	                    <input type="checkbox" name="sendRecommendations" class="optin" value="1"
+                           {foreach from=$optins key=key item=optin}
+                               {if $optin.0 == 1}checked {/if}
+                           {/foreach}
+                           />
+   	                    <label for="sendRecommendations">Send me recommendations about how to use TapePlay</label>
+   	                </p>
 				</div>
 			</li>
 		</ul>
-	    
-<!--
-	    <div class="accordion">
-	        <div class="header">
-	            <div class="title">Account</div>
-	            <div class="arrow down"></div>
-	        </div>
-	        <div class="body">
-
-	            <div class="chunk">
-	                <div class="accountInfo">
-	                    <h4>Email Address</h4>
-	                    <div class="inputField hidden">
-	                        <div class="left"></div>
-	                        <div class="middle">
-	                            <input type="text" class="standard" id="_email" name="email" value="{$user->getEmail()}" />
-	                        </div>
-	                        <div class="right"></div>
-	                    </div>
-	                    <p>{$user->getEmail()}</p>
-	                </div>
-	                <div class="bigButton orange userEdit">
-	                    <div class="topLeft whiteBg"></div>
-	                    <div class="topRight whiteBg"></div>
-	                    <div class="bottomLeft whiteBg"></div>
-	                    <div class="bottomRight whiteBg"></div>
-	                    <div class="middle tiny">
-	                        <span class="edit">Edit</span>
-	                    </div>
-	                </div>
-	                <div class="status hidden">
-	                    <div class="greenCheckMark"></div>
-	                    <span>Success!</span>
-	                </div>
-	            </div>
-	            <div class="chunk">
-	                <div class="accountInfo">
-	                    <h4>Password</h4>
-	                    <div class="inputField hidden">
-	                        <div class="left"></div>
-	                        <div class="middle">
-	                            <input type="password" class="standard" id="_hash" name="password" value="" />
-	                        </div>
-	                        <div class="right"></div>
-	                    </div>
-	                    <p>*********</p>
-	                </div>
-	                <div class="bigButton orange userEdit">
-	                    <div class="topLeft whiteBg"></div>
-	                    <div class="topRight whiteBg"></div>
-	                    <div class="bottomLeft whiteBg"></div>
-	                    <div class="bottomRight whiteBg"></div>
-	                    <div class="middle tiny">
-	                        <span class="deactivate">Edit</span>
-	                    </div>
-	                </div>
-	                <div class="status hidden">
-	                    <div class="greenCheckMark"></div>
-	                    <span>Success!</span>
-	                </div>
-	            </div>
-	            <div class="chunk">
-	                <div class="accountInfo">
-	                    <h4>Deactivate</h4>-->
-	                    <!--<div class="inputField hidden">
-	                        <div class="left"></div>
-	                        <div class="middle">
-	                            <input type="text" class="standard" id="birthYear" name="birthYear" value="{$birthYear}" />
-	                            <input type="text" class="standard" id="gender" name="gender" value="{$gender}" />
-	                            <input type="text" class="standard" id="zipcode" name="zipcode" value="{$zipcode}" />
-	                        </div>
-	                        <div class="right"></div>
-	                    </div>
-	                    <p>{$user->getBirthYear()} / {$user->getGender()} / {$user->getZipcode()}</p>-->
-	                <!--</div>
-	                <div class="bigButton orange" id="deactivate">
-	                    <div class="topLeft whiteBg"></div>
-	                    <div class="topRight whiteBg"></div>
-	                    <div class="bottomLeft whiteBg"></div>
-	                    <div class="bottomRight whiteBg"></div>
-	                    <div class="middle tiny">
-	                        <span class="edit">Deactivate</span>
-	                    </div>
-	                </div>
-	            </div>
-	        </div>
-	    </div>
-	    <div class="accordion">
-	        <div class="header">
-	            <div class="title">{$user->getSport()->getSportName()}</div>
-	            <div class="arrow down"></div>
-	        </div>
-	        <div class="body">
-	            <div class="chunk">
-	                <div class="accountInfo">
-	                    <h4>Number / Level / Grade</h4>
-	                    <div class="inputField numLevGrad hidden">
-	                        <div class="left"></div>
-	                        <div class="middle small">
-	                            <input type="text" class="standard small" id="_number" name="number" value="{$user->getNumber()}" />
-	                        </div>
-	                        <div class="right"></div>
-	                    </div>
-	
-	                        <fieldset>
-	                            <select class="select-5" name="_playingLevel" id="_playingLevel">
-	                                <option class="default">Grade</option>
-	                                <option>Grade School</option>
-	                                <option>High School</option>
-	                                <option>College</option>
-	                                <option>Professional</option>
-	                            </select>
-	                        </fieldset>
-	                    <div class="inputField numLevGrad hidden">
-	                        <div class="left"></div>
-	                        <div class="middle small">
-	                            <input type="text" class="standard small" id="_gradeLevel" name="grade" value="{$user->getGradeLevel()}" />
-	                        </div>
-	                        <div class="right"></div>
-	                    </div>
-	                    <p>#{$user->getNumber()} / {$user->getPlayingLevel()} / {$user->getGradeLevel()}</p>
-	                </div>
-	                <div class="bigButton orange playerEdit" id="number-level">
-	                    <div class="topLeft whiteBg"></div>
-	                    <div class="topRight whiteBg"></div>
-	                    <div class="bottomLeft whiteBg"></div>
-	                    <div class="bottomRight whiteBg"></div>
-	                    <div class="middle tiny">
-	                        <span class="edit">Edit</span>
-	                    </div>
-	                </div>
-	                <div class="status hidden">
-	                    <div class="greenCheckMark"></div>
-	                    <span>Success!</span>
-	                </div>
-	            </div>
-	            <div class="chunk">
-	                <div class="accountInfo">
-	                    <h4>Position / Height</h4>
-	                    <div class="inputField option hidden">
-	                        <div class="checkbox">
-	                            <div class="box">
-	                                <div class="checkMark"></div>
-	                            </div>
-	                            <div class="label">Point Guard</div>
-	                            <input type="checkbox" class="checkValue hidden" name="position" value="PG" />
-	                        </div>
-	                        <div class="checkbox">
-	                            <div class="box">
-	                                <div class="checkMark"></div>
-	                            </div>
-	                            <div class="label">Shooting Guard</div>
-	                            <input type="checkbox" class="checkValue hidden" name="position" value="SG" />
-	                        </div>
-	                        <div class="checkbox">
-	                            <div class="box">
-	                                <div class="checkMark"></div>
-	                            </div>
-	                            <div class="label">Small Forward</div>
-	                            <input type="checkbox" class="checkValue hidden" name="position" value="SF" />
-	                        </div>
-	                        <div class="checkbox">
-	                            <div class="box">
-	                                <div class="checkMark"></div>
-	                            </div>
-	                            <div class="label">Power Forward</div>
-	                            <input type="checkbox" class="checkValue hidden" name="position" value="PF" />
-	                        </div>
-	                        <div class="checkbox">
-	                            <div class="box">
-	                                <div class="checkMark"></div>
-	                            </div>
-	                            <div class="label">Center</div>
-	                            <input type="checkbox" class="checkValue hidden" name="position" value="C" />
-	                        </div>
-	                    </div>
-	                    <div class="inputField hidden">
-	                        <div class="height">
-	                            <div class="sportSelect">
-	                                <div class="dropper">
-	                                    <div class="leftMedium"></div>
-	                                    <div class="middleMedium middle">
-	                                        <p class="value">Height</p>
-	                                        <input type="hidden" name="height" class="dropVal" value="" />
-	                                    </div>
-	                                    <div class="rightMedium"></div>
-	                                    <ul class="potentials">
-	                                        {section name=i loop=96 start=48 step=1}
-	                                            <li>
-	                                                {$smarty.section.i.index}
-	                                                <input type="hidden" class="value" value="{$smarty.section.i.index}" />
-	                                            </li>
-	                                        {/section}
-	                                    </ul>
-	                                </div>
-	                                <div class="arrowSmall"></div>
-	                            </div>
-	                        </div>
-	                    </div>
-	                    <p>{$user->getPosition()} / {$user->getHeight()}</p>
-	                </div>
-	                <div class="bigButton orange playerEdit" id="height-position">
-	                    <div class="topLeft whiteBg"></div>
-	                    <div class="topRight whiteBg"></div>
-	                    <div class="bottomLeft whiteBg"></div>
-	                    <div class="bottomRight whiteBg"></div>
-	                    <div class="middle tiny">
-	                        <span class="edit">Edit</span>
-	                    </div>
-	                </div>
-	                <div class="status hidden">
-	                    <div class="greenCheckMark"></div>
-	                    <span>Success!</span>
-	                </div>
-	            </div>
-	            <div class="chunk">
-	                <div class="accountInfo">
-	                    <h4>School Name</h4>
-	                    <div class="inputField hidden">
-	                        <div class="left"></div>
-	                        <div class="middle">
-	                            {assign var=school value=$user->getSchool()->getName()}
-	                            <input type="text" class="standard small" id="schoolSearchInput" name="schoolName"
-	                                   value="{if isset($school) && $school != ''}{$school}{else}Please select a school!{/if}" />
-	                            <input type="hidden" class="passer" value="" />
-	                        </div>
-	                        <div class="right"></div>
-	                    </div>
-	                    <p>{if isset($school) && $school != ''}{$school}{else}Please select a school!{/if}</p>
-	                </div>
-	                <div class="bigButton orange schoolEdit" id="school">
-	                    <div class="topLeft whiteBg"></div>
-	                    <div class="topRight whiteBg"></div>
-	                    <div class="bottomLeft whiteBg"></div>
-	                    <div class="bottomRight whiteBg"></div>
-	                    <div class="middle tiny">
-	                        <span class="edit">Edit</span>
-	                    </div>
-	                </div>
-	                <div class="status hidden">
-	                    <div class="greenCheckMark"></div>
-	                    <span>Success!</span>
-	                </div>
-	            </div>
-	            <div class="chunk">
-	                <div class="accountInfo">
-	                    <h4>Head Coach's Name</h4>
-	                    <div class="inputField hidden">
-	                        <div class="left"></div>
-	                        <div class="middle">
-	                            <input type="text" class="standard small" id="_coachName" name="coachName" value="{$user->getCoachName()}" />
-	                        </div>
-	                        <div class="right"></div>
-	                    </div>
-	                    <p>{$user->getCoachName()}</p>
-	                </div>
-	                <div class="bigButton orange playerEdit" id="coach">
-	                    <div class="topLeft whiteBg"></div>
-	                    <div class="topRight whiteBg"></div>
-	                    <div class="bottomLeft whiteBg"></div>
-	                    <div class="bottomRight whiteBg"></div>
-	                    <div class="middle tiny">
-	                        <span class="edit">Edit</span>
-	                    </div>
-	                </div>
-	                <div class="status hidden">
-	                    <div class="greenCheckMark"></div>
-	                    <span>Success!</span>
-	                </div>
-	            </div>
-	            <div class="chunk">
-	                <div class="accountInfo">
-	                    <h4>Statistics</h4>
-	                    <div id="statistics">
-	                        <ul id="stats">
-	                            {assign var=i value=0}
-	                            {foreach from=$stats item=stat}
-	                                {if $i%$modder == 0 || $i == 0}
-	                                    <li>
-	                                {/if}
-	                                        <div class="stat">
-	                                            <p>
-	                                                {$stat->getStatName()}:
-	                                                <span class="bold">{$stat->getStatValue()}</span>
-	                                            </p>
-	                                        </div>
-	                                        <div class="statHidden hidden">
-	                                            <p>
-	                                                {$stat->getStatName()}:
-	                                            </p>
-	                                            <div class="inputFieldSmall">
-	                                                <div class="left"></div>
-	                                                <div class="middle">
-	                                                    <input type="text" class="standard small" id="stat" name="stat-{$stat->getId()}" value="{$stat->getStatValue()}" />
-	                                                </div>
-	                                                <div class="right"></div>
-	                                            </div>
-	                                        </div>
-	                                {if ($i%$modder == $modder - 1 && $i > $modder) || $i == ($statCount - 1)}
-	                                    </li>
-	                                {/if}
-	                                {$i=$i+1}
-	                            {/foreach}
-	                        </ul>
-	                    </div>
-	                </div>
-	                <div class="bigButton orange" id="statButton">
-	                    <div class="topLeft whiteBg"></div>
-	                    <div class="topRight whiteBg"></div>
-	                    <div class="bottomLeft whiteBg"></div>
-	                    <div class="bottomRight whiteBg"></div>
-	                    <div class="middle tiny">
-	                        <span class="edit">Edit</span>
-	                    </div>
-	                </div>
-	                <div class="status hidden">
-	                    <div class="greenCheckMark"></div>
-	                    <span>Success!</span>
-	                </div>
-	            </div>
-	        </div>
-	    </div>
-	    <div class="accordion">
-	        <div class="header">
-	            <div class="title">Privacy</div>
-	            <div class="arrow down"></div>
-	        </div>
-	        <div class="body">
-	            <div class="chunk">
-	                <p class="check">
-	                    Who can view my videos?<br />
-	                    <input type="radio" name="visibility" value="Anybody" /> <label>Anybody</label><br />
-	                    <input type="radio" name="visibility" value="Scouts and Coaches" /> <label>Scouts and Coaches</label><br />
-	                    <input type="radio" name="visibility" value="Nobody" /> <label>Nobody</label><br />
-	                </p>
-	                <br />
-	                <p class="check">
-	                    <input type="checkbox" name="allowFacebook" id="allowFacebook" />
-	                    <label for="allowFacebook">Allow TapePlay to import my Facebook info</label>
-	                </p>
-	                <p class="check">
-	                    <input type="checkbox" name="relevantAdvertising" id="relevantAdvertising" />
-	                    <label for="relevantAdvertising">
-	                        Use my account info for relevant advertising.
-	                        <a class="infoOpen">Why?</a>
-	                        <div class="infoBubble">
-	                            <div class="topLeft black"></div>
-	                            <div class="directionTopRight"></div>
-	                            <div class="middle">
-	                                <p>
-	                                    Help us out by using your account info for relevant
-	                                    advertising. Ads help us pay the bills so we can
-	                                    keep improving TapePlay for you.
-	                                </p>
-	                            </div>
-	                            <div class="bottomLeft"></div>
-	                            <div class="bottomRight"></div>
-	                            <div class="direction"></div>
-	                        </div>
-	                    </label>
-	                </p>
-	                <p class="check">
-	                    <input type="checkbox" name="sendRecommendations" id="sendRecommendations" />
-	                    <label for="sendRecommendations">Send me recommendations about how to use TapePlay</label>
-	                </p>
-	            </div>
-	        </div>
-	    </div>-->
 	</div>
 	<div id="content-right-column" class="right">
 	    {include file='common/sidebar/account.tpl'}

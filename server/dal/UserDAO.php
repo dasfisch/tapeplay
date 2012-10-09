@@ -243,9 +243,6 @@ class UserDAO extends BaseDOA
 	 */
 	public function update(User $user)
 	{
-        $user->setGender('M');
-        $user->setBirthYear(1987);
-
 		try
 		{
 			$this->sql = "UPDATE users " .
@@ -376,4 +373,91 @@ class UserDAO extends BaseDOA
 
 		return ($this->prep->rowCount() > 0);
 	}
+
+    public function addOptin($userId, $optInId) {
+        try
+        {
+            $this->sql = 'INSERT INTO user_opt_ins VALUES (:optInId, :userId)';
+
+            $this->prep = $this->dbh->prepare($this->sql);
+            $this->prep->bindValue(":userId", $userId, \PDO::PARAM_INT);
+            $this->prep->bindValue(":optInId", $optInId, \PDO::PARAM_INT);
+
+            return $this->prep->execute();
+        }
+  		catch (\PDOException $exception)
+  		{
+  			\TPErrorHandling::handlePDOException($exception->errorInfo);
+  			return null;
+  		}
+
+  		// assign the user to this id
+  		return ($this->prep->rowCount() > 0) ? $this->dbh->lastInsertId() : -1;
+    }
+
+    public function deleteOptin($userId, $optInId) {
+        $this->sql = 'DELETE FROM user_opt_ins WHERE opt_in_id=:optInId AND user_id=:userId';
+
+        $this->prep = $this->dbh->prepare($this->sql);
+        $this->prep->bindValue(":userId", $userId, \PDO::PARAM_INT);
+        $this->prep->bindValue(":optInId", $optInId, \PDO::PARAM_INT);
+
+        return $this->prep->execute();
+    }
+
+    public function getMyOptIns($userId) {
+        try {
+            $this->sql = 'SELECT * FROM user_opt_ins WHERE user_id=:userId';
+
+            $this->prep = $this->dbh->prepare($this->sql);
+            $this->prep->bindValue(":userId", $userId, \PDO::PARAM_INT);
+
+            $this->prep->execute();
+        }
+  		catch (\PDOException $exception)
+  		{
+  			\TPErrorHandling::handlePDOException($exception->errorInfo);
+  			return null;
+  		}
+
+        $optIns = array();
+        while ($row = $this->prep->fetch())
+        {
+            array_push($optIns, $row);
+        }
+
+        return $optIns;
+    }
+
+    public function deactivateMe($userId) {
+        try {
+            $this->sql = 'UPDATE users SET deactivation_date=UNIX_TIMESTAMP() WHERE id=:userId';
+
+            $this->prep = $this->dbh->prepare($this->sql);
+            $this->prep->bindValue(":userId", $userId, \PDO::PARAM_INT);
+
+            return $this->prep->execute();
+        }
+  		catch (\PDOException $exception)
+  		{
+  			\TPErrorHandling::handlePDOException($exception->errorInfo);
+  			return null;
+  		}
+    }
+
+    public function reactivateMe($userId) {
+        try {
+            $this->sql = 'UPDATE users SET deactivation_date=null WHERE id=:userId';
+
+            $this->prep = $this->dbh->prepare($this->sql);
+            $this->prep->bindValue(":userId", $userId, \PDO::PARAM_INT);
+
+            return $this->prep->execute();
+        }
+  		catch (\PDOException $exception)
+  		{
+  			\TPErrorHandling::handlePDOException($exception->errorInfo);
+  			return null;
+  		}
+    }
 }

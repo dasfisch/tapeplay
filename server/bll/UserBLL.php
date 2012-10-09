@@ -143,6 +143,13 @@ class UserBLL extends BaseBLL
 					$this->setUser($this->dal->getPlayerUser($userId));
 
                     try {
+                        if(isset($this->getUser()->getDeactivated) && $this->getUser()->getDeactivated != null) {
+                            $this->reactivatMe($this->getUser()->getUserId());
+                        }
+
+                        $this->getUser()->setDeactivated(null);
+                        $this->setUser($this->getUser());
+
                         $posBll = new PositionBLL();
 
                         $positions = $posBll->getPositionsByPlayer($this->getUser()->getId());
@@ -265,6 +272,26 @@ class UserBLL extends BaseBLL
             return true;
         }
 	}
+
+    public function deleteOptin($userId, $optInId) {
+        return $this->dal->deleteOptin($userId, $optInId);
+    }
+
+    public function addOptin($userId, $optInId) {
+        return $this->dal->addOptin($userId, $optInId);
+    }
+
+    public function getMyOptins($userId) {
+        return $this->dal->getMyOptIns($userId);
+    }
+
+    public function deactivateMe($userId) {
+        return $this->dal->deactivateMe($userId);
+    }
+
+    public function reactivateMe($userId) {
+        return $this->dal->reactivateMe($userId);
+    }
 
 
 	//////////////////////////////////////////////////////////

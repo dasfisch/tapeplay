@@ -2,12 +2,14 @@
     //all include, globals (not opposed to not using globals)
 
     use tapeplay\server\bll\PlayerBLL;
+    use tapeplay\server\bll\PositionBLL;
     use tapeplay\server\bll\StatsBLL;
     use tapeplay\server\bll\VideoBLL;
     use tapeplay\server\model\SearchFilter;
     use tapeplay\server\model\Video;
 
     require_once("bll/PlayerBLL.php");
+    require_once("bll/PositionBLL.php");
     require_once("bll/VideoBLL.php");
 
     global $controller, $get, $inputFilter, $post, $route, $smarty, $sport, $userBLL;
@@ -72,6 +74,16 @@
 
                 $video = $videoBll->search($search);
                 $player = $video[0]->getPlayer();
+
+                $positionBll = new PositionBLL();
+
+                try {
+                    $positions = $positionBll->getPositionsByPlayer($player->getId());
+
+                    $player->setPosition($positions);
+                } catch(Exception $e) {
+
+                }
 
                 $videoDisplayInfo = $videoBll->getVideoDisplayInfo($video[0]->getPandaId());
 

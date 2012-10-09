@@ -41,7 +41,7 @@
 							<div class="frame">
 								<p>Should we review this video to determine if it&rsquo;s appropriate?</p>
 								<p><a href="#">Yes</a> or <a href="#">No</a></p>
-								
+
 							</div>
 						</div>
 					</div>
@@ -93,7 +93,11 @@
 					{/if}
 				</span>
 				<ul class="user-profile">
-					<li>{$player->getPosition()}, {$player->getFriendlyHeight()}, {$player->getWeight()} lbs.</li>
+					<li>
+                        {foreach from=$player->getPosition() key=key item=position}
+                            {$position->getName()},
+                        {/foreach}
+                    {$player->getFriendlyHeight()}, {$player->getWeight()} lbs.</li>
 					{if $gradeLevel != "" || $player->getSchool()->getName() != ""}
 						<li>{$gradeLevel}{if $player->getSchool() != ""}, {$player->getSchool()->getName()}{/if}</li>
 					{/if}

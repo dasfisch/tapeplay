@@ -2532,9 +2532,15 @@ p.nothing {
 
 .accordion .slider_sport ul.three-column li {
     float: left;
-    margin: 0px;
+    margin: 0px 10px 0px 0px;
     padding: 0px;
-    width: 33%;
+    width: 30%;
+}
+
+.accordion .slider_sport ul.three-column li p,
+.accordion .slider_sport ul.three-column li p span {
+    font-size: 11px;
+    margin: 0px;
 }
 
 .slider_privacy {
@@ -2553,4 +2559,9 @@ p.nothing {
 	padding:24px 0px;
 	text-align:center;
 	width:100%;
+}
+
+.bigger {
+    font-size: 15px;
+    font-weight: bold;
 }
