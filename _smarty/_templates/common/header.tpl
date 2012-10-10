@@ -18,6 +18,11 @@
 	<script type="text/javascript" src="/js/jquery.panda.min.js"></script>
 	<script type="text/javascript" src="/js/jquery.validate.min.js"></script>
 
+{if {$smarty.server.REQUEST_URI} != '/'}
+	<script type="text/javascript">
+		setContainerBGImage();
+	</script>
+{/if}
 
 {if {$smarty.server.REQUEST_URI} == '/user/personal/'}
 

@@ -3,8 +3,6 @@ var timeout = {};
 
 jQuery(document).ready(function(){
 
-    setContainerBGImage();
-
    jQuery.validator.addMethod('noDefault', function (value, element) {
        if (element.value === element.defaultValue) {
           return false;

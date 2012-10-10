@@ -329,7 +329,7 @@
                                             <option class="default">Select</option>
                                             {section name=i start=48 loop=96 step=1}
                                                 <option value="{$smarty.section.i.index}"{if $user->getHeight() == $smarty.section.i.index} selected="selected"{/if}>
-                                                    {floor($smarty.section.i.index/12)}" {$smarty.section.i.index % 12}'
+                                                    {floor($smarty.section.i.index/12)}' {$smarty.section.i.index % 12}"
                                                 </option>
                                             {/section}
                                         </select>
