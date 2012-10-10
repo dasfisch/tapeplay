@@ -202,7 +202,7 @@ if (isset($route->method))
 						// create url
 						$url = $controller->configuration->URLs['baseUrl'].'account/password/?auth='.$hash.'&email='.$post['email'];
 
-						$args = array("url" => $url);
+						$args = array("forgotPasswordUrl" => $url);
 
 						// send email with above args
 						$success = \Util::sendEmail(EmailEnum::$RESET_PASSWORD, array($post['email']), "Your Password Has Been Reset", "emails/reset-password.tpl", $args);

@@ -18,6 +18,11 @@
 	<script type="text/javascript" src="/js/jquery.panda.min.js"></script>
 	<script type="text/javascript" src="/js/jquery.validate.min.js"></script>
 
+{if {$smarty.server.REQUEST_URI} != '/'}
+	<script type="text/javascript">
+		setContainerBGImage();
+	</script>
+{/if}
 
 {if {$smarty.server.REQUEST_URI} == '/user/personal/'}
 
@@ -84,7 +89,7 @@
 					</li>
 					<li>
 						<a class="{if {$smarty.server.REQUEST_URI} == '/user/logout/'}active{/if}"
-						   href="{#baseUrl#}user/logout/">Logout</a>
+						   href="{#baseUrl#}user/logout/">Log Out</a>
 					</li>
 					{else}
 					<li>
@@ -93,7 +98,7 @@
 					</li>
 					<li>
 						<a class="{if {$smarty.server.REQUEST_URI} == '/user/login/'}active{/if}"
-						   href="{#baseUrl#}user/login/">Login</a>
+						   href="{#baseUrl#}user/login/">Log In</a>
 					</li>
 				{/if}
 					<li>
