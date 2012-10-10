@@ -427,4 +427,20 @@ class VideoDAO extends BaseDOA
 		// return the email address
 		return $row[0];
 	}
+
+    public function deleteVideo($videoId) {
+        try {
+            $this->sql = "DELETE FROM videos WHERE id=:videoId";
+echo $query;exit;
+            $this->prep = $this->dbh->prepare($this->sql);
+            $this->prep->bindValue(":videoId", $videoId, \PDO::PARAM_STR);
+
+            return $this->prep->execute();
+        }
+        catch (\PDOException $exception)
+        {
+            \TPErrorHandling::handlePDOException($exception->errorInfo);
+            return null;
+        }
+    }
 }

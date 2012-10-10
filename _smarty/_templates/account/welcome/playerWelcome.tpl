@@ -1,6 +1,6 @@
 <div class="account-page">
 	<div id="content-left-column">
-	    <h1>Welcome, {$user->getFirstName()} {$user->getLastName()}</h1>
+	    <h1>Welcome, {$user->getFirstName()}</h1>
 	    <input type="hidden" id="hash" value="{$hash}" />
 	    <input type="hidden" id="user-id" value="{$user->getUserId()}" />
 	    <ul class="accordion">
@@ -8,21 +8,28 @@
 				<a class="opener">{$myVideoWording} ({$videoCount})</a>
 				<div class="slide">
 					<div class="holder scrollable-area">
-						<ul>
+						<ul id="videos">
 							{if isset($videos) && !empty($videos)}
 	                        	{foreach $videos as $video}
 									<li>
-                                        <a href="{#baseUrl#}videos/view/{$video->getId()}">
+                                        <a href="{#baseUrl#}videos/view/{$video->getId()}/">
                                             <img src="{#pandaBase#}{$video->getPandaId()}{#pandaImageExt#}" width="125" height="94" alt="image description" />
                                             <div class="text-holder">
                                                 <strong class="title">{$video->getTitle()}</strong>
                                                 <div class="category">{$user->getSport()->getSportName()}</div>
-                                                <span class="date">{$video->getUploadDate()|date_format:"%B, %Y"}</span>
+                                                <span class="date">
+                                                    {if $video->getRecordedMonth() != 0}
+                                                        {$video->getRecordedMonth()} /
+                                                    {/if}
+                                                    {if $video->getRecordedYear() != 0}
+                                                        {$video->getRecordedYear()}
+                                                    {/if}
+                                                </span>
                                                 <div class="time">12:00</div>
                                                 <em class="info">Views: {$video->getViews()}, Saves: {$video->getSaves()}</em>
                                                 <div class="btn-holder">
                                                     <a class="btn edit"><span>Edit</span></a><br />
-                                                    <a class="btn delete"><span>Delete</span></a>
+                                                    <a class="btn delete deleteVideo" id="video-{$video->getId()}"><span>Delete</span></a>
                                                 </div>
                                             </div>
                                             <input type="hidden" class="video-id" value="{$video->getId()}" />
@@ -471,13 +478,13 @@
 					<p>
 						Who can view my videos?<br />
                         <input type="radio" name="visibility" class="videoOptin" value="0"
-                            {if $privacy == 0}selected {/if}
+                            {if $privacy == 0}checked {/if}
                             /> <label>Anybody</label><br />
    	                    <input type="radio" name="visibility" class="videoOptin" value="1"
-                            {if $privacy == 1}selected {/if}
+                            {if $privacy == 1}checked {/if}
                             /> <label>Scouts and Coaches</label><br />
    	                    <input type="radio" name="visibility" class="videoOptin" value="2"
-                            {if $privacy == 2}selected {/if}
+                            {if $privacy == 2}checked {/if}
                             /> <label>Nobody</label><br />
 					</p>
                     <p>

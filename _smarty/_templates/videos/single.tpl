@@ -1,8 +1,15 @@
-<div class="single">
+<div class="single" xmlns="http://www.w3.org/1999/html">
 	<h1>{$player->getFirstName()} {$player->getLastName()}</h1>
 	<ul class="video-title-data">
 		<li>{$video->getTitle()}</li>
-		<li>{$video->getRecordedMonthName()}, {$video->getRecordedYear()}</li>
+		<li>
+            {if $video->getRecordedMonth() != 0}
+                {$video->getRecordedMonth()} /
+            {/if}
+            {if $video->getRecordedYear() != 0}
+                {$video->getRecordedYear()}
+            {/if}
+        </li>
 	</ul>
 	<!--<a href="{#baseUrl#}videos/search/{if $goBack ==1}?back=1{/if}" class="return">Back to search results</a>-->
 	<div class="clear"></div>
@@ -40,8 +47,7 @@
 						<div class="holder">
 							<div class="frame">
 								<p>Should we review this video to determine if it&rsquo;s appropriate?</p>
-								<p><a href="#">Yes</a> or <a href="#">No</a></p>
-
+                                <p><a id="report">Yes, please review</a></p>
 							</div>
 						</div>
 					</div>
@@ -56,8 +62,8 @@
 					<div class="popup popup-1">
 						<div class="holder">
 							<div class="frame">
-								<p><strong>Embed video</strong> (copy &amp; paste link): <br /><span class="mark">{#baseUrl#}videos/view/{$video->getId()}/</span></p>
-								<p><strong>Email video:</strong> <a href="/videos/email/{$video->getId()}/">click here</a></p>
+								<p><strong>Embed video</strong> (copy &amp; paste link): <br /><span class="mark">http://tapeplay.com/2adf82</span></p>
+								<p><strong>Email video:</strong> <a href="{#baseUrl#}videos/email/{$video->getId()}/">click here</a></p>
 								<div class="social">
 									<strong>Post video:</strong>
 									<ul>
@@ -95,7 +101,9 @@
 				<ul class="user-profile">
 					<li>
                         {foreach from=$player->getPosition() key=key item=position}
-                            {$position->getName()},
+                            {if $position->getName() != 'Individual'}
+                                {$position->getName()},
+                            {/if}
                         {/foreach}
                     {$player->getFriendlyHeight()}, {$player->getWeight()} lbs.</li>
 					{if $gradeLevel != "" || $player->getSchool()->getName() != ""}
@@ -136,7 +144,14 @@
 								<ul>
 									<li class="video-title">{$video->getTitle()}</li>
 									<li class="name">{$player->getFirstName()} {$player->getLastName()}</li>
-									<li class="month-year">{$video->getUploadDate()|date_format:"%B %d, %Y"}</li>
+									<li class="month-year">
+                                        {if $video->getRecordedMonth() != 0}
+                                            {$video->getRecordedMonth()} /
+                                        {/if}
+                                        {if $video->getRecordedYear() != 0}
+                                            {$video->getRecordedYear()}
+                                        {/if}
+                                    </li>
 								</ul>
 								<div class="clear"></div>
 							</li>
@@ -166,7 +181,14 @@
 								<ul>
 									<li class="video-title">{$video->getTitle()}</li>
 									<li class="name">{$player->getFirstName()} {$player->getLastName()}</li>
-									<li class="month-year">{$video->getUploadDate()|date_format:"%B %d, %Y"}</li>
+									<li class="month-year">
+                                        {if $video->getRecordedMonth() != 0}
+                                            {$video->getRecordedMonth()} /
+                                        {/if}
+                                        {if $video->getRecordedYear() != 0}
+                                            {$video->getRecordedYear()}
+                                        {/if}
+                                    </li>
 								</ul>
 								<div class="clear"></div>
 							</li>

@@ -183,4 +183,8 @@ class VideoBLL extends BaseBLL
 
 		return $sourceUrl;
 	}
+
+    public function deleteVideo($videoId) {
+        return $this->dal->deleteVideo($videoId);
+    }
 }

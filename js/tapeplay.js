@@ -1,8 +1,9 @@
 var infoBubbleOpen = false;
 var timeout = {};
 
-jQuery(document).ready(function(){
+setContainerBGImage();
 
+jQuery(document).ready(function(){
    jQuery.validator.addMethod('noDefault', function (value, element) {
        if (element.value === element.defaultValue) {
           return false;
@@ -464,9 +465,34 @@ jQuery(document).ready(function(){
     });
 
     jQuery('.btn-deactivate').click(function() {
-        jQuery.post('/ajax/deactivateme/', {hash: jQuery('#hash').val()}, function(data) {
-            document.location.reload(true);
-        });
+        var r = confirm('Are you sure you want to deactivate your account?');
+        if (r == true) {
+            jQuery.post('/ajax/deactivateme/', {hash: jQuery('#hash').val()}, function(data) {
+                document.location.reload(true);
+            });
+        }
+        else {
+            //close the popup
+        }
+    });
+
+    jQuery('.deleteVideo').click(function() {
+        var _this = jQuery(this);
+
+        console.log(_this.parentsUntil('li'));
+        return;
+
+        var r = confirm('Are you sure you want to delete this video?');
+        if (r == true) {
+            jQuery.post('/ajax/deletevideo/', {hash: jQuery('#hash').val(), videoId: _this.prop('id')}, function(data) {
+                if(data == 200) {
+                    _this.parents('li').fadeOut('slow');
+                }
+            });
+        }
+        else {
+            //close the popup
+        }
     });
 
     if(jQuery('#main').length > 0) {
@@ -495,23 +521,6 @@ jQuery(document).ready(function(){
     var adWidth = windowWidth - 1010;
 
     jQuery('#ad').width(adWidth);
-
-//    jQuery("input:text").each(function () {
-//        var v = this.value;
-//
-//        jQuery(this).blur(function () {
-//            // if input is empty, reset value to default
-//            if (this.value.length == 0) {
-//                this.value = v;
-//                jQuery(this).css('color', '#b2b2b2');
-//            }
-//        })
-//        .focus(function () {
-//            // when input is focused, clear its contents
-//            this.value = "";
-//            jQuery(this).css('color', '#333333');
-//        });
-//    });
 
     jQuery('.plusCircle').click(function() {
 
@@ -619,7 +628,7 @@ jQuery(document).ready(function(){
 
                 text = data;
 
-                _this.parents('.infoBubble').children('.middle').children('p').html(text);
+                _this.parents('.popup').children('.holder').children('.frame').html(text);
 
                 setTimeout(function(){
                     _this.parents('.infoBubble').fadeOut();
@@ -632,73 +641,77 @@ jQuery(document).ready(function(){
         jQuery('.infoBubble').fadeOut();
     });
 
-    jQuery('#schoolSearchInput').autocomplete({
-        source: function( request, response ) {
-            jQuery.post(
-                "/ajax/schools/",
-                {
-                    hash: jQuery('#hash').val(),
-                    schoolName: jQuery('#schoolSearchInput').val()
-                },
-                function( data ) {
-                    response( jQuery.map( eval(data), function( item ) {
-                        var locale = item.city != '' ? item.city + ', ' + item.state : '';
+    if(jQuery('#schoolSearchInput').length > 0) {
+        jQuery('#schoolSearchInput').autocomplete({
+            source: function( request, response ) {
+                jQuery.post(
+                    "/ajax/schools/",
+                    {
+                        hash: jQuery('#hash').val(),
+                        schoolName: jQuery('#schoolSearchInput').val()
+                    },
+                    function( data ) {
+                        response( jQuery.map( eval(data), function( item ) {
+                            var locale = item.city != '' ? item.city + ', ' + item.state : '';
 
-                        return {
-                            desc: locale,
-                            label: item.name,
-                            id: item.id
-                        }
-                    }));
+                            return {
+                                desc: locale,
+                                label: item.name,
+                                id: item.id
+                            }
+                        }));
 
-                    var height = jQuery('#schoolSearchInput').parentsUntil('li').children('.accountInfo').children('.input_custom-text').outerHeight();
-                    var width = jQuery('#schoolSearchInput').parentsUntil('li').children('.accountInfo').children('.input_custom-text').outerWidth();
-                    var position = jQuery('#schoolSearchInput').parentsUntil('li').children('.accountInfo').children('.input_custom-text').offset();
+                        var height = jQuery('#schoolSearchInput').parentsUntil('li').children('.accountInfo').children('.input_custom-text').outerHeight();
+                        var width = jQuery('#schoolSearchInput').parentsUntil('li').children('.accountInfo').children('.input_custom-text').outerWidth();
+                        var position = jQuery('#schoolSearchInput').parentsUntil('li').children('.accountInfo').children('.input_custom-text').offset();
 
-                    jQuery('#schoolSearchInput').parentsUntil('li').children('.accountInfo').children('.input_custom-text').css(
-                        {
-                            'position': 'relative',
-                            'z-index': 10
-                        }
-                    );
+                        jQuery('#schoolSearchInput').parentsUntil('li').children('.accountInfo').children('.input_custom-text').css(
+                            {
+                                'position': 'relative',
+                                'z-index': 10
+                            }
+                        );
 
-                    var top = position.top + height - 2;
-                    width -= 6;
+                        var top = position.top + height - 2;
+                        width -= 6;
 
-                    jQuery('.ui-autocomplete').css(
-                        {
-                            'border': '1px solid #ccc',
-                            'border-top': 'none',
-                            'left': (position.left) + 'px',
-                            'position': 'absolute',
-                            'top': top + 'px',
-                            'width': width + 'px',
-                            'z-index': 2
-                        }
-                    );
-                }
-            );
-        },
-        select: function(event, ui) {
-            jQuery(this).html(ui.item.label);
-            jQuery(this).siblings('.passer').val(ui.item.id);
-        }
-    }).data( "autocomplete" )._renderItem = function( ul, item ) {
-        console.log(item);
+                        jQuery('.ui-autocomplete').css(
+                            {
+                                'border': '1px solid #ccc',
+                                'border-top': 'none',
+                                'left': (position.left) + 'px',
+                                'position': 'absolute',
+                                'top': top + 'px',
+                                'width': width + 'px',
+                                'z-index': 2
+                            }
+                        );
+                    }
+                );
+            },
+            select: function(event, ui) {
+                jQuery(this).html(ui.item.label);
+                jQuery(this).siblings('.passer').val(ui.item.id);
+            }
+        }).data( "autocomplete" )._renderItem = function( ul, item ) {
+            console.log(item);
 
-        var append = item.desc !== '' ? '<br />' + item.desc : '';
+            var append = item.desc !== '' ? '<br />' + item.desc : '';
 
-        return $( "<li>" )
-            .data( "item.autocomplete", item )
-            .append( "<a><span class='bigger'>"+ item.label + "</span>" + append + "</a>" )
-            .appendTo( ul );
-    };
+            return $( "<li>" )
+                .data( "item.autocomplete", item )
+                .append( "<a><span class='bigger'>"+ item.label + "</span>" + append + "</a>" )
+                .appendTo( ul );
+        };
+    }
 
     jQuery('.addAnother').click(function() {
-        var _this = jQuery(this).siblings('.copy').first();
+        var _this = jQuery(this).parentsUntil('#emailFriend').children('.copy').first().html();
 
-        _this.after(_this.clone());
+        jQuery(this).parentsUntil('#emailFriend').children('.copy').append(_this);
     });
+
+    jQuery('#emailFriend').validate();
 
     // jQuery('.pws').focus(function() {
         // jQuery(this).siblings('input[type="password"]').removeClass('hidden').focus();
@@ -805,16 +818,23 @@ function setContainerBGImage()
 	var browserWidth = $(window).width();
 	var imageSize = "";
 
-	if (browserWidth >= 1600)
-		imageSize = 1600;
-	else if (browserWidth >= 1440)
-		imageSize = 1440;
-	else if (browserWidth >= 1366)
-		imageSize = 1366;
-	else
-		imageSize = 1280;
+	switch (true)
+	{
+		case browserWidth >= 1600:
+			imageSize = 1600;
+			break;
+		case browserWidth >= 1440:
+			imageSize = 1440;
+			break;
+		case browserWidth >= 1366:
+			imageSize = 1366;
+			break;
+		default:
+			imageSize = 1280;
+			break;
+	}
 
 	// create image name
 	var bgName = "hp_betaAd_background_" + imageSize.toString() + ".jpg";
-	$("#container").css("background-image", "url(/media/images/ads/" + bgName + ")");
+	$("#container").css("background-image", "url(/media/images/ads/" + imageSize);
 }

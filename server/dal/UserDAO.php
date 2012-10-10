@@ -129,7 +129,8 @@ class UserDAO extends BaseDOA
                                 users.birth_year,
                                 users.last_login,
                                 users.account_type,
-                                users.status
+                                users.status,
+                                users.deactivation_date
                             FROM
                                 users users
                             '.$where.'

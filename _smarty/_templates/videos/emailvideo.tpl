@@ -10,9 +10,23 @@
 				</div>
 				<ul class="left">
 					<li class="header">{$video->getPlayer()->getFirstName()} {$video->getPlayer()->getLastName()}</li>
-					<li class="position-height">Postition, Height</li>
+					<li class="position-height">
+                        {foreach from=$video->getPlayer()->getPosition() key=key item=position}
+                            {if $position->getName() != 'Individual'}
+                                {$position->getName()},
+                            {/if}
+                        {/foreach}
+                        {$video->getPlayer()->getHeight()}
+                    </li>
 					<li class="video-title">{$video->getTitle()}</li>
-					<li class="month-year"><?php echo date('F, Y', strtotime('now')); ?></li>
+					<li class="month-year">
+                        {if $video->getRecordedMonth() != 0}
+                            {$video->getRecordedMonth()} /
+                        {/if}
+                        {if $video->getRecordedYear() != 0}
+                            {$video->getRecordedYear()}
+                        {/if}
+                    </li>
 				</ul>
 				<div class="clear"></div>
 			</li>
@@ -42,12 +56,12 @@
 						</div>
 					</div>
 				</li>
-				<li class="input-field clear">
+				<li class="input-field clear copy">
 					<strong>To</strong>
 					<div class="input_custom-text input_text80 width440">
 						<div class="custom-input_center custom-input_partial">
 							<span class="custom-input_top"></span>
-							<input type="text" name="email[]" value="Email Address"/>
+							<input type="text" name="email[]" value="Email Address" class="required email noDefault" />
 							<span class="custom-input_bottom"></span>
 						</div>
 		
@@ -64,7 +78,7 @@
 				</li>
 				<li class="input-field clear">
 					<p>
-						<img src="/media/images/icon_add-plus-sign.gif" class="vertical-center" /> Add another email address
+						<img src="/media/images/icon_add-plus-sign.gif" class="vertical-center addAnother" /> Add another email address
 					</p>
 				</li>
 				<li class="input-field clear">

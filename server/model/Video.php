@@ -20,7 +20,7 @@ class Video
 		$video->setActive($arr["active"]);
 		$video->setViews($arr["views"]);
 		$video->setSaves($arr["saves"]);
-		$video->setPrivacy($arr['is_private']);
+		$video->setPrivacy((int)$arr['is_private']);
 		$video->setSportId($arr['sport_id']);
 
 		if (isset($arr['first_name']))
@@ -188,7 +188,7 @@ class Video
 
 	public function setPrivacy($privacy)
 	{
-		$this->_privacy = ((int)$privacy === 1) ? 1 : 0;
+		$this->_privacy = $privacy;
 	}
 
 	public function getPrivacy()
