@@ -84,7 +84,7 @@
 					</li>
 					<li>
 						<a class="{if {$smarty.server.REQUEST_URI} == '/user/logout/'}active{/if}"
-						   href="{#baseUrl#}user/logout/">Logout</a>
+						   href="{#baseUrl#}user/logout/">Log Out</a>
 					</li>
 					{else}
 					<li>
