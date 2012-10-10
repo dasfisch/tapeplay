@@ -2528,7 +2528,8 @@ p.nothing {
 	width:300px;
 }
 
-.account-page .accordion .slider_account ul .btn-holder {
+.account-page .accordion .slider_account ul .btn-holder,
+.account-page .accordion .slider_sport ul .btn-holder {
 	padding-top:8px;
 }
 
@@ -2552,6 +2553,15 @@ p.nothing {
 .accordion .slider_sport ul.three-column li p span {
     font-size: 11px;
     margin: 0px;
+}
+
+.accordion .slide ul .btn-holder{
+	position:absolute;
+	right:0;
+	top:0;
+	width:104px;
+	text-align:center;
+	padding:24px 0 0;
 }
 
 .slider_privacy {

@@ -464,6 +464,7 @@
 			                                {$i=$i+1}
 			                            {/foreach}
 									</ul>
+									<div class="clear"></div>
 								<div class="btn-holder">
 									<a class="btn edit" id="statButton"><span>Edit</span></a><br />
 								</div>
