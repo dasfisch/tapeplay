@@ -6,7 +6,10 @@
 	<meta name="description" content="TapePlay is a video recruiting site to get high school and college athletes to the next level. Get in front of coaches across the country by uploading video."/>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 
-	{if preg_match('/^\/videos\/email\/([0-9]+)\/$/', {$smarty.server.REQUEST_URI})}
+	{if preg_match('/^\/videos\/email\/([0-9]+)\/$/', {$smarty.server.REQUEST_URI}) ||
+		preg_match('/^\/videos\/view\/([0-9]+)\/$/', {$smarty.server.REQUEST_URI}) ||
+		preg_match('/^\/watch\/([0-9]+)\/$/', {$smarty.server.REQUEST_URI})
+	}
 		<meta property="og:title" content="{$video->getTitle()} Feat. {$video->getPlayer()->getFirstName()} on TapePlay" />
 		<meta property="og:description" content="{$video->getTitle()} Feat. {$video->getPlayer()->getFirstName()} on TapePlay" />
 		<meta property="og:image" content="{#pandaBase#}{$video->getPandaId()}{#pandaImageExt#}" />
