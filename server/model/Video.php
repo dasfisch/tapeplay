@@ -3,6 +3,7 @@
 namespace tapeplay\server\model;
 
 require_once('Player.php');
+require_once('Sport.php');
 
 class Video
 {
@@ -21,7 +22,15 @@ class Video
 		$video->setViews($arr["views"]);
 		$video->setSaves($arr["saves"]);
 		$video->setPrivacy((int)$arr['is_private']);
-		$video->setSportId($arr['sport_id']);
+        $video->setSportId($arr['sport_id']);
+
+
+
+        $sport = new Sport();
+        $sport->setId($arr["sport_id"]);
+        $sport->setSportName($arr["sport_name"]);
+
+        $video->setSport($sport);
 
 		if (isset($arr['first_name']))
 		{
@@ -44,7 +53,8 @@ class Video
 	private $_active;
 	private $_comments;
 	private $_saves;
-	private $_sportId;
+    private $_sportId;
+    private $_sport;
 	private $_privacy;
 	private $_player;
 
@@ -215,4 +225,14 @@ class Video
 	{
 		return $this->_sportId;
 	}
+
+    public function setSport(Sport $sport)
+   	{
+   		$this->_sport = $sport;
+   	}
+
+   	public function getSport()
+   	{
+   		return $this->_sport;
+   	}
 }
