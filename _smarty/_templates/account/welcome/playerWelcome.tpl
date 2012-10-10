@@ -25,7 +25,7 @@
                                                         {$video->getRecordedYear()}
                                                     {/if}
                                                 </span>
-                                                <div class="time">12:00</div>
+                                                <div class="time"></div>
                                                 <em class="info">Views: {$video->getViews()}, Saves: {$video->getSaves()}</em>
                                                 <div class="btn-holder">
                                                     <a class="btn edit"><span>Edit</span></a><br />

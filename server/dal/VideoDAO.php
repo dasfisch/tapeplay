@@ -431,7 +431,7 @@ class VideoDAO extends BaseDOA
     public function deleteVideo($videoId) {
         try {
             $this->sql = "DELETE FROM videos WHERE id=:videoId";
-echo $query;exit;
+
             $this->prep = $this->dbh->prepare($this->sql);
             $this->prep->bindValue(":videoId", $videoId, \PDO::PARAM_STR);
 
