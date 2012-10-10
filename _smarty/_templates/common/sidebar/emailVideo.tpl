@@ -4,7 +4,7 @@
 		<div class="input_custom-text width300 input_text36">
 			<div class="custom-input_center custom-input_partial">
 				<span class="custom-input_top"></span>
-				<input type="email" required="" value="http://www.tapeplay.com/watch?v" class="embed" name="embed">
+				<input type="email" required="" value="{#baseUrl#}watch/{$video->getId()}/" class="embed" name="embed" onclick="jQuery(this).select()" />
 				<span class="custom-input_bottom"></span>
 			</div>
 

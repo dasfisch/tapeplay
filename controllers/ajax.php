@@ -308,6 +308,11 @@
                 }
 
                 break;
+            case 'deletevideo':
+                $videoBll = new VideoBLL();
+                if($videoBll->deleteVideo($post['videoId'])) {
+                    echo 200;
+                }
         }
     } else {
         echo 'redirect '.$get['hash'];
