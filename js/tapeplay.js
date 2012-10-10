@@ -838,3 +838,27 @@ function setContainerBGImage()
 	var bgName = "hp_betaAd_background_" + imageSize.toString() + ".jpg";
 	$("#container").css("background-image", "url(/media/images/ads/" + imageSize);
 }
+
+function openFacebook(url, title)
+	{
+		window.open('http://www.facebook.com/sharer.php?u=' + encodeURIComponent(url) + '&t=' + encodeURIComponent(title), 'fbSharer', 'toolbar=0,status=0,width=626,height=436');
+		return false;
+	}
+
+	function openGooglePlus(url)
+	{
+		window.open('https://plus.google.com/share?url=' + encodeURIComponent(url), 'gSharer', 'toolbar=0,status=0,width=626,height=436');
+		return false;
+	}
+
+	function openMySpace(url)
+	{
+		window.open('http://www.myspace.com/?url=' + encodeURIComponent(url), 'myspaceSharer');
+		return false;
+	}
+
+	function openTwitter(url, tweet)
+	{
+		window.open('https://twitter.com/intent/tweet?text=' + encodeURIComponent(tweet) + '&url=' + encodeURIComponent(url), 'twitterSharer', 'toolbar=0,status=0,width=626,height=436');
+		return false;
+	}
