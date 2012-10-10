@@ -19,7 +19,7 @@
 
 				Forgot your password? Don't worry. It happens to the best of us.
 				<br/>
-				<br/><a style="text-decoration: underline; color:#e18a07;" href="{$resetPasswordUrl}">Just go here to reset your password.</a>
+				<br/><a style="text-decoration: underline; color:#e18a07;" href="{$forgotPasswordUrl}">Just go here to reset your password.</a>
 				<br/>
 				<br/>
 				<br/>

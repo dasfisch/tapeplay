@@ -93,7 +93,7 @@
 					</li>
 					<li>
 						<a class="{if {$smarty.server.REQUEST_URI} == '/user/login/'}active{/if}"
-						   href="{#baseUrl#}user/login/">Login</a>
+						   href="{#baseUrl#}user/login/">Log In</a>
 					</li>
 				{/if}
 					<li>
