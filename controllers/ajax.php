@@ -310,7 +310,10 @@
                 break;
             case 'deletevideo':
                 $videoBll = new VideoBLL();
-                if($videoBll->deleteVideo($post['videoId'])) {
+
+                $id = explode('-', $post['videoId']);
+
+                if($videoBll->deleteVideo($id[1])) {
                     echo 200;
                 }
         }

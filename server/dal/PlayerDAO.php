@@ -171,33 +171,67 @@ class PlayerDAO extends BaseDOA
 //		return ($this->prep->rowCount() > 0);
 	}
 
-	/**
-	 * @param SearchFilter $filter
-	 * @return array An array of players who match the search query.
-	 */
-	function getPlayers(SearchFilter $filter)
-	{
-		try
-		{
-			$this->sql = "SELECT * FROM players p INNER JOIN users u ON p.user_id = u.id LEFT JOIN schools s ON p.school_id = s.id";
-			$this->prep = $this->dbh->prepare($this->sql);
-			//$this->prep->bindValue(":id", $id, \PDO::PARAM_INT);
-			$this->prep->execute();
-		}
-		catch (\PDOException $exception)
-		{
-			\TPErrorHandling::handlePDOException($exception->errorInfo);
-			return null;
-		}
+    /**
+   	 * @param SearchFilter $filter
+   	 * @return array An array of players who match the search query.
+   	 */
+   	function getPlayers(SearchFilter $filter)
+   	{
+   		try
+   		{
+   			$this->sql = "SELECT * FROM players p INNER JOIN users u ON p.user_id = u.id LEFT JOIN schools s ON p.school_id = s.id";
+   			$this->prep = $this->dbh->prepare($this->sql);
+   			//$this->prep->bindValue(":id", $id, \PDO::PARAM_INT);
+   			$this->prep->execute();
+   		}
+   		catch (\PDOException $exception)
+   		{
+   			\TPErrorHandling::handlePDOException($exception->errorInfo);
+   			return null;
+   		}
 
-		$playerList = array();
-		while ($row = $this->prep->fetch())
-		{
-			array_push($playerList, Player::create($row));
-		}
+   		$playerList = array();
+   		while ($row = $this->prep->fetch())
+   		{
+   			array_push($playerList, Player::create($row));
+   		}
 
-		return $playerList;
-	}
+   		return $playerList;
+   	}
+
+    /**
+   	 * @param SearchFilter $filter
+   	 * @return array An array of players who match the search query.
+   	 */
+   	function getPlayersByUserId($userId)
+   	{
+   		try
+   		{
+   			$this->sql = "SELECT u.*, p.*, s.*, sp.id as sport_id, sp.name as sport_name FROM
+   			                players p
+   			                INNER JOIN users u ON p.user_id = u.id
+   			                LEFT JOIN schools s ON p.school_id = s.id
+   			                JOIN sports sp ON sp.id = p.sport_id
+   			                WHERE p.user_id=:userId";
+
+   			$this->prep = $this->dbh->prepare($this->sql);
+   			$this->prep->bindValue(":userId", $userId, \PDO::PARAM_INT);
+   			$this->prep->execute();
+   		}
+   		catch (\PDOException $exception)
+   		{
+   			\TPErrorHandling::handlePDOException($exception->errorInfo);
+   			return null;
+   		}
+
+   		$playerList = array();
+   		while ($row = $this->prep->fetch())
+   		{
+   			array_push($playerList, Player::create($row));
+   		}
+
+   		return $playerList;
+   	}
 
     public function searchPlayers(SearchFilter $searchFilter) {
         try

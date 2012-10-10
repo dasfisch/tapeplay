@@ -479,14 +479,11 @@ jQuery(document).ready(function(){
     jQuery('.deleteVideo').click(function() {
         var _this = jQuery(this);
 
-        console.log(_this.parentsUntil('li'));
-        return;
-
         var r = confirm('Are you sure you want to delete this video?');
         if (r == true) {
             jQuery.post('/ajax/deletevideo/', {hash: jQuery('#hash').val(), videoId: _this.prop('id')}, function(data) {
                 if(data == 200) {
-                    _this.parents('li').fadeOut('slow');
+                    _this.parents('li').first().fadeOut('slow');
                 }
             });
         }

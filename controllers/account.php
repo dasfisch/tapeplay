@@ -5,6 +5,7 @@ require_once("enum/AccountTypeEnum.php");
 
 require_once("bll/SchoolBLL.php");
 require_once("bll/StatsBLL.php");
+require_once("bll/PlayerBLL.php");
 require_once("bll/PositionBLL.php");
 require_once("bll/UserBLL.php");
 require_once("bll/PlayerBLL.php");
@@ -12,6 +13,7 @@ require_once("bll/VideoBLL.php");
 require_once("model/SearchFilter.php");
 require_once("utility/Util.php");
 
+use tapeplay\server\bll\PlayerBLL;
 use tapeplay\server\bll\PositionBLL;
 use tapeplay\server\bll\SchoolBLL;
 use tapeplay\server\bll\StatsBLL;
@@ -102,6 +104,10 @@ if (isset($route->method))
                             $videos = $videoBll->search($search);
 
                             $privacy = $videos[0]->getPrivacy();
+
+                            $playerBLL = new PlayerBLL();
+
+                            $info = $playerBLL->getPlayersByUserId($userBLL->getUser()->getUserId());
                         } catch(Exception $e) {
                             $videos = null;
                         }
@@ -202,7 +208,7 @@ if (isset($route->method))
 						// create url
 						$url = $controller->configuration->URLs['baseUrl'].'account/password/?auth='.$hash.'&email='.$post['email'];
 
-						$args = array("forgotPasswordUrl" => $url);
+						$args = array("url" => $url);
 
 						// send email with above args
 						$success = \Util::sendEmail(EmailEnum::$RESET_PASSWORD, array($post['email']), "Your Password Has Been Reset", "emails/reset-password.tpl", $args);
