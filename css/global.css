@@ -641,6 +641,10 @@ fieldset + fieldset {
 	background:transparent url(/media/images/get-connected_google-plus.png) no-repeat center center;
 }
 
+#get-connected_myspace a {
+	background:transparent url(/media/images/get-connected_myspace.png) no-repeat center center;
+}
+
 /*
  * AD WiDGET
  */
@@ -2661,4 +2665,8 @@ p.nothing {
 
 .text-holder input[type="checkbox"] {
 	visibility:hidden;
+}
+
+.statHidden .three-column .input_text36 {
+    width: 60px;
 }

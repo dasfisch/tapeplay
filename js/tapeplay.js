@@ -256,8 +256,83 @@ jQuery(document).ready(function(){
         }
     });
 
+    jQuery('.videoEdit').click(function() {
+        var _this = jQuery(this);
+
+        console.log(_this);
+        return;
+
+        var dropDowns = _this.parentsUntil('li').children('.accountInfo').children('fieldset').children('select');
+        var inputs = _this.parentsUntil('li').children('.accountInfo').children('.input_custom-text').children('.custom-input_center').children('input');
+
+        var inputField = _this.parentsUntil('li').children('.accountInfo').children('.input_custom-text').children('.custom-input_center');
+        var p = _this.parentsUntil('li').children('.category');
+
+        var keys = [];
+        var post = {};
+
+        _this.parentsUntil('li').children('.accountInfo').toggleClass('hidden');
+        p.toggleClass('hidden');
+
+        if(_this.parentsUntil('li').children('.accountInfo').hasClass('hidden')) {
+            inputs.each(function(i) {
+                var key = {};
+
+                key.name = jQuery(this).attr('id');
+                key.value = jQuery(this).val();
+
+                keys.push(key);
+            });
+
+            dropDowns.each(function(i) {
+                var key = {};
+
+                key.name = jQuery(this).attr('id');
+                key.value = jQuery(this).val();
+
+                keys.push(key);
+            });
+
+            post.hash = jQuery('#hash').val();
+            post.data = keys;
+
+            jQuery.post(
+                '/ajax/userupdate/',
+                post,
+                function(data) {
+                    if(data == 200) {
+                        var newValue = '';
+
+                        for(var i in keys) {
+                            newValue += (i < (keys.length - 1)) ? keys[i].value + " " : keys[i].value;
+                        }
+
+                        if(inputs.attr('id') !== '_hash') {
+                            p.html(newValue);
+                        }
+
+                        _this.children('span').html('Edit');
+
+                        setTimeout(
+                            function() {
+                                _this.parents('.chunk').children('.status').fadeOut();
+                            },
+                            2000
+                        );
+                    } else {
+
+                    }
+                }
+            );
+        } else {
+            _this.children('span').html('Done');
+        }
+    });
+
     jQuery('.playerEdit').click(function() {
         var _this = jQuery(this);
+
+        var playerId = _this.parentsUntil('.parentHolder').siblings('.player-id').val();
 
         var dropDowns = _this.parentsUntil('li').children('.accountInfo').children('fieldset').children('select');
         var inputs = _this.parentsUntil('li').children('.accountInfo').children('.input_custom-text').children('.custom-input_center').children('input');
@@ -328,6 +403,7 @@ jQuery(document).ready(function(){
 
             post.hash = jQuery('#hash').val();
             post.data = keys;
+            post.playerId = playerId;
 
             jQuery.post(
                 '/ajax/profileupdate/',
@@ -376,13 +452,15 @@ jQuery(document).ready(function(){
         }
     });
 
-    jQuery('#statButton').click(function() {
+    jQuery('.statButton').click(function() {
         var _this = jQuery(this);
+
+        var playerId = _this.parentsUntil('.parentHolder').siblings('.player-id').val();
 
         var keys = [];
         var post = {};
 
-        var statHidden = _this.parentsUntil('li').children('.three-column').children('li').children('.statHidden');
+        var statHidden = _this.parents('.btn-holder').siblings('.statHidden');
         var stats = _this.parentsUntil('li').children('.three-column').children('li').children('.stat');
 
         if(stats.first().hasClass('hidden')) {
@@ -401,7 +479,7 @@ jQuery(document).ready(function(){
 
             post.hash = jQuery('#hash').val();
             post.data = keys;
-            post.player = jQuery('#user-id').val();
+            post.playerId = playerId;
 
             jQuery.post(
                 '/ajax/updatestats/',
@@ -424,6 +502,8 @@ jQuery(document).ready(function(){
     jQuery('.schoolEdit').click(function() {
         var _this = jQuery(this);
 
+        var playerId = _this.parentsUntil('.parentHolder').siblings('.player-id').val();
+
         var inputField = _this.parentsUntil('li').children('.accountInfo').children('.input_custom-text').children('.custom-input_center');
         var p = _this.parentsUntil('li').children('.category');
 
@@ -438,7 +518,8 @@ jQuery(document).ready(function(){
                 '/ajax/schoolupdate/',
                 {
                     hash: jQuery('#hash').val(),
-                    value: schoolId
+                    value: schoolId,
+                    playerId: playerId
                 },
                 function(data) {
                     if(data == 200) {

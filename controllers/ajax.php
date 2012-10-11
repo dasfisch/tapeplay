@@ -74,10 +74,9 @@
                 if(isset($post['video'])) {
                     $to = $controller->configuration->errorReporting['reportEmail'];
 
-                    $subject = 'Someone reported an issue!';
+                    $subject = 'TapePlay Video Flag';
 
-                    $body = 'Someone reported <a href="'.$controller->configuration->URLs['baseUrl'].'videos/view/'.$post['video'].'">this video</a>!
-                                Please verify it violates our privacy policy, and, if it does, please contact our administrators to remove it!"';
+					$body = 'A video has been flagged for inappropriate content. Review it here: <a href="' . $controller->configuration->URLs['baseUrl'] . 'videos/view/' . $post['video'] . '">this video</a>';
 
                     $headers = "Content-type: text/html\r\n";
 
@@ -181,7 +180,9 @@
 
                     unset($post['hash']);
 
-                    $user = $userBLL->getUser();
+
+                    var_dump($playerBll->get($post['playerId']));
+                    exit
 
                     foreach($post['data'] as $data) {
                         $methodName = 'set'.ucfirst(substr($data['name'], 1, strlen($data['name'])));
@@ -196,7 +197,7 @@
                                 $positions = $user->getPosition();
 
                                 foreach($positions as $key=>$position) {
-                                    $playerBll->deletePositions($user->getId(), $position->getId());
+                                    $playerBll->deletePositions($post['playerId'], $position->getId());
 
                                     unset($positions[$key]);
                                 }
@@ -205,7 +206,7 @@
                             }
 
                             try {
-                                $playerBll->updatePositions($user->getId(), $data['value']);
+                                $playerBll->updatePositions($post['playerId'], $data['value']);
                             } catch(Exception $e) {
 
                             }
@@ -221,7 +222,7 @@
 
                         $positionBll = new PositionBLL();
 
-                        $user->setPosition($positionBll->getPositionsByPlayer($user->getId()));
+                        $user->setPosition($positionBll->getPositionsByPlayer($post['playerId']));
                     }
 
                     $playerBll = new PlayerBLL();
@@ -254,7 +255,7 @@
                     $stat->setStatValue($val);
 
                     try {
-                        $statsBll->updatePlayerStat($stat, $userBLL->getUser()->getId());
+                        $statsBll->updatePlayerStat($stat, $post['playerId']);
                     } catch(Exception $e) {
                         $errors[] = $id;
                     }

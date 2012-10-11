@@ -62,15 +62,14 @@
 					<div class="popup popup-1">
 						<div class="holder">
 							<div class="frame">
-								<p><strong>Embed video</strong> (copy &amp; paste link): <br /><span class="mark">http://tapeplay.com/2adf82</span></p>
+								<p><strong>Embed video</strong> (copy &amp; paste link): <br /><span class="mark" onclick="jQuery(this).select()">{#baseUrl#}watch/{$video->getId()}</span></p>
 								<p><strong>Email video:</strong> <a href="{#baseUrl#}videos/email/{$video->getId()}/">click here</a></p>
 								<div class="social">
 									<strong>Post video:</strong>
 									<ul>
-										<li><a href="#"><img src="/media/images/ico-facebook.gif" width="10" height="19" alt="image description" /></a></li>
-										<li><a href="#"><img src="/media/images/ico-social-2.gif" width="16" height="19" alt="image description" /></a></li>
-										<li><a href="#"><img src="/media/images/ico-twitter.gif" width="13" height="19" alt="image description" /></a></li>
-										<li><a href="#"><img src="/media/images/ico-googleplus.gif" width="16" height="19" alt="image description" /></a></li>
+										<li><a href="#" onclick="openFacebook('{#baseUrl#}watch/{$video->getId()}/')"><img src="/media/images/ico-facebook.gif" width="10" height="19" alt="Share on Facebook" /></a></li>
+										<li><a href="#" onclick="openGooglePlus('{#baseUrl#}watch/{$video->getId()}/')"><img src="/media/images/ico-googleplus.gif" width="16" height="19" alt="Share on Google+" /></a></li>
+										<li><a href="#" onclick="openTwitter('{#baseUrl#}watch/{$video->getId()}/', '{$video->getTitle()} Feat. {$video->getPlayer()->getFirstName()} on TapePlay')"><img src="/media/images/ico-twitter.gif" width="13" height="19" alt="Share on Twitter" /></a></li>
 									</ul>
 								</div>
 							</div>
