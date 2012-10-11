@@ -140,7 +140,7 @@ if (isset($route->method))
 
                                     $myPositions = $positionBll->getPositionsByPlayer($player->getId());
                                     if(isset($positions) && !empty($positions)) {
-                                        $player->setPosition($positions);
+                                        $player->setPosition($myPositions);
                                     }
                                 } catch(Exception $e) {
 

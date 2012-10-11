@@ -259,27 +259,27 @@ jQuery(document).ready(function(){
     jQuery('.videoEdit').click(function() {
         var _this = jQuery(this);
 
-        console.log(_this);
-        return;
+        var videoForm = _this.parents('.btn-holder').siblings('a').children('.accountInfo');
+        var videoInfo = _this.parents('.btn-holder').siblings('a').children('.videoInfo');
 
-        var dropDowns = _this.parentsUntil('li').children('.accountInfo').children('fieldset').children('select');
-        var inputs = _this.parentsUntil('li').children('.accountInfo').children('.input_custom-text').children('.custom-input_center').children('input');
-
-        var inputField = _this.parentsUntil('li').children('.accountInfo').children('.input_custom-text').children('.custom-input_center');
-        var p = _this.parentsUntil('li').children('.category');
+        var dropDowns = videoForm.children('fieldset').children('select');
+        var inputs = videoForm.children('.input_custom-text').children('.custom-input_center').children('input');
 
         var keys = [];
         var post = {};
+        var title = '';
 
-        _this.parentsUntil('li').children('.accountInfo').toggleClass('hidden');
-        p.toggleClass('hidden');
+        videoForm.toggleClass('hidden');
+        videoInfo.toggleClass('hidden');
 
-        if(_this.parentsUntil('li').children('.accountInfo').hasClass('hidden')) {
+        if(videoForm.hasClass('hidden')) {
             inputs.each(function(i) {
                 var key = {};
 
                 key.name = jQuery(this).attr('id');
                 key.value = jQuery(this).val();
+
+                title = key.value;
 
                 keys.push(key);
             });
@@ -295,30 +295,18 @@ jQuery(document).ready(function(){
 
             post.hash = jQuery('#hash').val();
             post.data = keys;
+            post.videoId = _this.parents('li').children('.video-id').val();
 
             jQuery.post(
-                '/ajax/userupdate/',
+                '/ajax/videoupdate/',
                 post,
                 function(data) {
                     if(data == 200) {
                         var newValue = '';
 
-                        for(var i in keys) {
-                            newValue += (i < (keys.length - 1)) ? keys[i].value + " " : keys[i].value;
-                        }
-
-                        if(inputs.attr('id') !== '_hash') {
-                            p.html(newValue);
-                        }
+                        videoInfo.children('.title').html(title);
 
                         _this.children('span').html('Edit');
-
-                        setTimeout(
-                            function() {
-                                _this.parents('.chunk').children('.status').fadeOut();
-                            },
-                            2000
-                        );
                     } else {
 
                     }
@@ -461,10 +449,10 @@ jQuery(document).ready(function(){
         var post = {};
 
         var statHidden = _this.parents('.btn-holder').siblings('.statHidden');
-        var stats = _this.parentsUntil('li').children('.three-column').children('li').children('.stat');
+        var stats = _this.parentsUntil('li').children('.three-column').children('li');
 
-        if(stats.first().hasClass('hidden')) {
-            var inputs = statHidden.children('.input_custom-text').children('.custom-input_center').children('input');
+        if(stats.first().hasClass('hidden') || (stats.length === 0 && _this.children('span').html() === 'Done')) {
+            var inputs = statHidden.children('.three-column').children('li').children('.input_custom-text').children('.custom-input_center').children('input');
 
             jQuery(inputs).each(function(i) {
                 var key = {};
@@ -512,7 +500,7 @@ jQuery(document).ready(function(){
 
         if(_this.parentsUntil('li').children('.accountInfo').hasClass('hidden')) {
             var schoolId = _this.parentsUntil('li').children('.accountInfo').children('.input_custom-text').children('.custom-input_center').children('.passer').val();
-            var schoolName = _this.parentsUntil('li').children('.accountInfo').children('.input_custom-text').children('.custom-input_center').children('#schoolSearchInput').val();
+            var schoolName = _this.parentsUntil('li').children('.accountInfo').children('.input_custom-text').children('.custom-input_center').children('.schoolSearchInput').val();
 
             jQuery.post(
                 '/ajax/schoolupdate/',
@@ -719,14 +707,14 @@ jQuery(document).ready(function(){
         jQuery('.infoBubble').fadeOut();
     });
 
-    if(jQuery('#schoolSearchInput').length > 0) {
-        jQuery('#schoolSearchInput').autocomplete({
+    if(jQuery('.schoolSearchInput').length > 0) {
+        jQuery('.schoolSearchInput').autocomplete({
             source: function( request, response ) {
                 jQuery.post(
                     "/ajax/schools/",
                     {
                         hash: jQuery('#hash').val(),
-                        schoolName: jQuery('#schoolSearchInput').val()
+                        schoolName: request.term
                     },
                     function( data ) {
                         response( jQuery.map( eval(data), function( item ) {
@@ -739,31 +727,31 @@ jQuery(document).ready(function(){
                             }
                         }));
 
-                        var height = jQuery('#schoolSearchInput').parentsUntil('li').children('.accountInfo').children('.input_custom-text').outerHeight();
-                        var width = jQuery('#schoolSearchInput').parentsUntil('li').children('.accountInfo').children('.input_custom-text').outerWidth();
-                        var position = jQuery('#schoolSearchInput').parentsUntil('li').children('.accountInfo').children('.input_custom-text').offset();
-
-                        jQuery('#schoolSearchInput').parentsUntil('li').children('.accountInfo').children('.input_custom-text').css(
-                            {
-                                'position': 'relative',
-                                'z-index': 10
-                            }
-                        );
-
-                        var top = position.top + height - 2;
-                        width -= 6;
-
-                        jQuery('.ui-autocomplete').css(
-                            {
-                                'border': '1px solid #ccc',
-                                'border-top': 'none',
-                                'left': (position.left) + 'px',
-                                'position': 'absolute',
-                                'top': top + 'px',
-                                'width': width + 'px',
-                                'z-index': 2
-                            }
-                        );
+//                        var height = jQuery('.schoolSearchInput').data('lastClicked').parentsUntil('li').children('.accountInfo').children('.input_custom-text').outerHeight();
+//                        var width = jQuery('.schoolSearchInput').data('lastClicked').parentsUntil('li').children('.accountInfo').children('.input_custom-text').outerWidth();
+//                        var position = jQuery('.schoolSearchInput').data('lastClicked').parentsUntil('li').children('.accountInfo').children('.input_custom-text').offset();
+//
+//                        jQuery('.schoolSearchInput').data('lastClicked').parentsUntil('li').children('.accountInfo').children('.input_custom-text').css(
+//                            {
+//                                'position': 'relative',
+//                                'z-index': 10
+//                            }
+//                        );
+//
+//                        var top = position.top + height - 2;
+//                        width -= 6;
+//
+//                        jQuery('.ui-autocomplete').css(
+//                            {
+//                                'border': '1px solid #ccc',
+//                                'border-top': 'none',
+//                                'left': (position.left) + 'px',
+//                                'position': 'absolute',
+//                                'top': top + 'px',
+//                                'width': width + 'px',
+//                                'z-index': 2
+//                            }
+//                        );
                     }
                 );
             },
@@ -781,6 +769,8 @@ jQuery(document).ready(function(){
                 .append( "<a><span class='bigger'>"+ item.label + "</span>" + append + "</a>" )
                 .appendTo( ul );
         };
+    } else {
+        console.log(jQuery('.schoolSearchInput'))
     }
 
     jQuery('.addAnother').click(function() {

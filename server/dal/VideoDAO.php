@@ -160,6 +160,40 @@ class VideoDAO extends BaseDOA
         return $this->prep->execute();
     }
 
+    public function update(Video $video) {
+        try {
+            $this->sql = "UPDATE
+                                videos
+                            SET
+                                panda_id=:pandaId,
+                                title=:title,
+                                uploaded_date=:uploadDate,
+                                recorded_month=:recordedMonth,
+                                recorded_year=:recordedYear,
+                                active=:active
+                            WHERE id=:id";
+
+            $this->prep = $this->dbh->prepare($this->sql);
+
+            $this->prep->bindValue(":pandaId", $video->getPandaId(), \PDO::PARAM_STR);
+            $this->prep->bindValue(":title", $video->getTitle(), \PDO::PARAM_STR);
+            $this->prep->bindValue(":uploadDate", $video->getUploadDate(), \PDO::PARAM_INT);
+            $this->prep->bindValue(":recordedMonth", $video->getRecordedMonth(), \PDO::PARAM_INT);
+            $this->prep->bindValue(":recordedYear", $video->getRecordedYear(), \PDO::PARAM_INT);
+            $this->prep->bindValue(":active", $video->getActive(), \PDO::PARAM_BOOL);
+            $this->prep->bindValue(":id", $video->getId(), \PDO::PARAM_INT);
+
+            $this->prep->execute();
+
+            return ($this->prep->rowCount() > 0);
+        }
+        catch (\PDOException $exception)
+        {
+            \TPErrorHandling::handlePDOException($exception->errorInfo);
+            return null;
+        }
+    }
+
 	/**
 	 * Inserts a view from a user.
 	 * @param $userId int The user who viewed the video.

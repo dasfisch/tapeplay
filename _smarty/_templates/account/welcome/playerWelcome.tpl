@@ -29,7 +29,7 @@
                                                     <div class="time"></div>
                                                     <em class="info">Views: {$video->getViews()}, Saves: {$video->getSaves()}</em>
                                                 </div>
-                                                <div class="accountInfo">
+                                                <div class="accountInfo hidden">
                                                     <div class="input_custom-text input_text80 width450 left">
                                                         <div class="custom-input_center custom-input_partial">
                                                             <span class="custom-input_top"></span>
@@ -45,7 +45,7 @@
                                                             <span class="custom-input_bottom"></span>
                                                         </div>
                                                     </div>
-                                                    <ul class="three-column_sign-up left">
+                                                    <!--<ul class="three-column_sign-up left">
                                                         <li class="left">
                                                             <fieldset>
                                                                 <select class="select-7" name="videoMonth">
@@ -73,7 +73,7 @@
                                                                 </select>
                                                             </fieldset>
                                                         </li>
-                                                    </ul>
+                                                    </ul>-->
                                                 </div>
                                                 <div class="btn-holder">
                                                     <a class="btn edit videoEdit"><span>Edit</span></a><br />
@@ -423,7 +423,7 @@
                                             <div class="custom-input_center custom-input_partial">
                                                 <span class="custom-input_top"></span>
                                                 {assign var=school value=$player->getSchool()->getName()}
-                                                <input type="text" class="standard small" id="schoolSearchInput" name="schoolName"
+                                                <input type="text" class="standard small schoolSearchInput" name="schoolName"
                                                        value="{if isset($school) && $school != ''}{$school}{else}Please select a school!{/if}" />
                                                 <input type="hidden" class="passer" value="" />
                                                 <span class="custom-input_bottom"></span>
@@ -479,14 +479,16 @@
                                     {if $player->getStats()|@count gt 0}
                                         <ul class="three-column">
                                             {foreach from=$player->getStats() item=stat}
-                                                <li>
-                                                    <div class="stat">
-                                                        <p>
-                                                            {$stat->getStatName()}:
-                                                            <span class="bold">{$stat->getStatValue()}</span>
-                                                        </p>
-                                                    </div>
-                                                </li>
+                                                {if {$stat->getStatValue()} !== ''}
+                                                    <li>
+                                                        <div class="stat">
+                                                            <p>
+                                                                {$stat->getStatName()}:
+                                                                <span class="bold">{$stat->getStatValue()}</span>
+                                                            </p>
+                                                        </div>
+                                                    </li>
+                                                {/if}
                                             {/foreach}
                                         </ul>
                                     {/if}
@@ -500,15 +502,17 @@
                                                     <div class="input_custom-text input_text36 left">
                                                         <div class="custom-input_center custom-input_partial">
                                                             <span class="custom-input_top"></span>
-                                                            {assign var=inputSet value=true}
-                                                            {foreach from=$player->getStats() item=myStat}
-                                                                {if $myStat->getId() == $stat->getId()}
-                                                                    <input type="text" class="standard small" id="stat" name="stat-{$stat->getId()}"
-                                                                        value="{$myStat->getStatvalue()}" />
-                                                                    {$inputSet=false}
-                                                                    {continue}
-                                                                {/if}
-                                                            {/foreach}
+                                                            {assign var=inputSet value=false}
+                                                            {if $player->getStats()|@count gt 0}
+                                                                {foreach from=$player->getStats() item=myStat}
+                                                                    {if $myStat->getId() == $stat->getId()}
+                                                                        <input type="text" class="standard small" id="stat" name="stat-{$stat->getId()}"
+                                                                            value="{$myStat->getStatvalue()}" />
+                                                                        {$inputSet=true}
+                                                                        {continue}
+                                                                    {/if}
+                                                                {/foreach}
+                                                            {/if}
                                                             {if $inputSet === false}
                                                                 <input type="text" class="standard small" id="stat" name="stat-{$stat->getId()}" />
                                                             {/if}

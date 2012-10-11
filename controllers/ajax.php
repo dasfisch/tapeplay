@@ -5,6 +5,7 @@
     use tapeplay\server\bll\SchoolBLL;
     use tapeplay\server\bll\StatsBLL;
     use tapeplay\server\bll\VideoBLL;
+    use tapeplay\server\model\SearchFilter;
     use tapeplay\server\model\Stat;
 
     require_once("bll/PlayerBLL.php");
@@ -13,6 +14,7 @@
     require_once("bll/StatsBLL.php");
     require_once("bll/UserBLL.php");
     require_once("bll/VideoBLL.php");
+    require_once("model/SearchFilter.php");
     require_once("model/Stat.php");
 
     global $controller, $get, $inputFilter, $post, $route, $smarty, $sport, $userBLL;
@@ -181,9 +183,10 @@
 
                     unset($post['hash']);
 
+                    $playerBll = new PlayerBLL();
+                    $positionBll = new PositionBLL();
 
-                    var_dump($playerBll->get($post['playerId']));
-                    exit
+                    $player = $playerBll->getPlayersByPlayerId($post['playerId']);
 
                     foreach($post['data'] as $data) {
                         $methodName = 'set'.ucfirst(substr($data['name'], 1, strlen($data['name'])));
@@ -192,10 +195,8 @@
                             $thePositions = true;
 
                             if($ran === false) {
-                                $playerBll = new PlayerBLL();
-
                                 // my current positions
-                                $positions = $user->getPosition();
+                                $positions = $positionBll->getPositionsByPlayer($post['playerId']);
 
                                 foreach($positions as $key=>$position) {
                                     $playerBll->deletePositions($post['playerId'], $position->getId());
@@ -211,27 +212,24 @@
                             } catch(Exception $e) {
 
                             }
-                        } elseif($data['name'] != '_hash') {
-                            $user->$methodName($data['value']);
                         } else {
-                            $user->setHash($userBLL->createHash($user->getEmail(), $data['value']));
+                            $player->$methodName($data['value']);
                         }
                     }
 
-                    if($thePositions === true) {
-                        $user->setPosition($positions);
+                    /**
+                     * This will be run after the restructure of the users
+                     */
+//                    if($thePositions === true) {
+//                        $player->setPosition($positions);
+//
+//                        $positionBll = new PositionBLL();
+//
+//                        $user->setPosition($positionBll->getPositionsByPlayer($post['playerId']));
+//                    }
 
-                        $positionBll = new PositionBLL();
-
-                        $user->setPosition($positionBll->getPositionsByPlayer($post['playerId']));
-                    }
-
-                    $playerBll = new PlayerBLL();
-
-                    $result = $playerBll->update($user);
+                    $result = $playerBll->update($player);
                     if($result === true) {
-                        $userBLL->setUser($user);
-
                         echo 200;
                     } else {
                         echo 600;
@@ -244,6 +242,7 @@
             case 'updatestats':
                 $errors = array();
 
+                $playerBll = new PlayerBLL();
                 $statsBll = new StatsBLL();
 
                 foreach($post['data'] as $stat) {
@@ -256,8 +255,15 @@
                     $stat->setStatValue($val);
 
                     try {
-                        $statsBll->updatePlayerStat($stat, $post['playerId']);
+                        if($stat->getStatValue() != '') {
+                            if($statsBll->getSinglePlayerStat($id[1], $post['playerId'])) {
+                                $statsBll->updatePlayerStat($stat, $post['playerId']);
+                            } else {
+                                $playerBll->setStat($post['playerId'], $id[1], $val);
+                            }
+                        }
                     } catch(Exception $e) {
+                        var_dump($e);
                         $errors[] = $id;
                     }
                 }
@@ -267,6 +273,32 @@
                 } else {
                     echo 600;
                 }
+
+                break;
+            case 'videoupdate':
+                $search = new SearchFilter();
+                $videoBll = new VideoBLL();
+
+                $search->setWhere('id', $post['videoId']);
+                $search->setWhere('method', 'videos');
+
+                try {
+                    $video = $videoBll->search($search);
+
+                    foreach($post['data'] as $data) {
+                        $methodName = 'set'.ucfirst(substr($data['name'], 1, strlen($data['name'])));
+
+                        $video[0]->$methodName($data['value']);
+                    }
+
+                    $videoBll->update($video[0]);
+
+                    echo 200;
+                } catch(Exception $e) {
+                    echo 600;
+                }
+
+                exit;
 
                 break;
             case 'videoprivacy':

@@ -187,4 +187,8 @@ class VideoBLL extends BaseBLL
     public function deleteVideo($videoId) {
         return $this->dal->deleteVideo($videoId);
     }
+
+    public function update(Video $video) {
+        return $this->dal->update($video);
+    }
 }

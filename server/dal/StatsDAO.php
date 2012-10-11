@@ -53,62 +53,119 @@ class StatsDAO extends BaseDOA
         }
     }
 
-	/**
-	 * Fetches the sport details
-	 * @param $id The id of the sport
-	 */
-	function getStatsByPlayer($playerId, $sportId)
-	{
-        try
-        {
-            $stats = null;
+    /**
+   	 * Fetches the sport details
+   	 * @param $id The id of the sport
+   	 */
+   	public function getStatsByPlayer($playerId, $sportId)
+   	{
+           try
+           {
+               $stats = null;
 
-            $this->sql = 'SELECT
-                                  stats.id AS stat_id,
-                                  stats.stat_name AS stat_name,
-                                  stats.sort AS stat_sort,
-                                  stats.stat_validation_id AS stat_validation_id,
-                                  stats.stat_category_id AS stat_category_id,
-                                  stat_val.id AS validation_id,
-                                  stat_val.name AS validation_name,
-                                  stat_val.regex AS validation_regex,
-                                  sports.*, ps.value
-                            FROM
-                                stats stats
-                            LEFT JOIN
-                                player_stats ps
-                                    ON
-                                        ps.stat_id=stats.id
-                            JOIN
-                                sports sports
-                                    ON
-                                        sports.id=stats.sport_id
-                            JOIN
-                                stat_validations stat_val
-                                    ON
-                                        stat_val.id=stats.stat_validation_id
-                            WHERE
-                                ps.player_id=:id
-                            AND
-                                sports.id=:sport_id';
+               $this->sql = 'SELECT
+                                     stats.id AS stat_id,
+                                     stats.stat_name AS stat_name,
+                                     stats.sort AS stat_sort,
+                                     stats.stat_validation_id AS stat_validation_id,
+                                     stats.stat_category_id AS stat_category_id,
+                                     stat_val.id AS validation_id,
+                                     stat_val.name AS validation_name,
+                                     stat_val.regex AS validation_regex,
+                                     sports.*, ps.value
+                               FROM
+                                   stats stats
+                               LEFT JOIN
+                                   player_stats ps
+                                       ON
+                                           ps.stat_id=stats.id
+                               JOIN
+                                   sports sports
+                                       ON
+                                           sports.id=stats.sport_id
+                               JOIN
+                                   stat_validations stat_val
+                                       ON
+                                           stat_val.id=stats.stat_validation_id
+                               WHERE
+                                   ps.player_id=:id
+                               AND
+                                   sports.id=:sport_id';
 
-            $this->prep = $this->dbh->prepare($this->sql);
-            $this->prep->bindValue(":id", $playerId, \PDO::PARAM_INT);
-            $this->prep->bindValue(":sport_id", $sportId, \PDO::PARAM_INT);
-            $this->prep->execute();
+               $this->prep = $this->dbh->prepare($this->sql);
+               $this->prep->bindValue(":id", $playerId, \PDO::PARAM_INT);
+               $this->prep->bindValue(":sport_id", $sportId, \PDO::PARAM_INT);
+               $this->prep->execute();
 
-            while($value = $this->prep->fetch()) {
-                $stats[] = Stat::create($value);
-            }
+               while($value = $this->prep->fetch()) {
+                   $stats[] = Stat::create($value);
+               }
 
-            return $stats;
-        }
-        catch (\PDOException $exception)
-        {
-            \TPErrorHandling::handlePDOException($exception->errorInfo);
-            return null;
-        }
-	}
+               return $stats;
+           }
+           catch (\PDOException $exception)
+           {
+               \TPErrorHandling::handlePDOException($exception->errorInfo);
+               return null;
+           }
+   	}
+
+    /**
+   	 * Fetches the sport details
+   	 * @param $id The id of the sport
+   	 */
+   	public function getSingleStatByPlayer($playerId, $statId)
+   	{
+       try
+       {
+           $stats = null;
+
+           $this->sql = 'SELECT
+                                 stats.id AS stat_id,
+                                 stats.stat_name AS stat_name,
+                                 stats.sort AS stat_sort,
+                                 stats.stat_validation_id AS stat_validation_id,
+                                 stats.stat_category_id AS stat_category_id,
+                                 stat_val.id AS validation_id,
+                                 stat_val.name AS validation_name,
+                                 stat_val.regex AS validation_regex,
+                                 sports.*, ps.value
+                           FROM
+                               stats stats
+                           LEFT JOIN
+                               player_stats ps
+                                   ON
+                                       ps.stat_id=stats.id
+                           JOIN
+                               sports sports
+                                   ON
+                                       sports.id=stats.sport_id
+                           JOIN
+                               stat_validations stat_val
+                                   ON
+                                       stat_val.id=stats.stat_validation_id
+                           WHERE
+                               ps.player_id=:id
+                           AND
+                               stats.id=:stat_id';
+
+           $this->prep = $this->dbh->prepare($this->sql);
+           $this->prep->bindValue(":id", $playerId, \PDO::PARAM_INT);
+           $this->prep->bindValue(":stat_id", $statId, \PDO::PARAM_INT);
+           $this->prep->execute();
+
+           while($value = $this->prep->fetch()) {
+               $stats[] = Stat::create($value);
+           }
+
+           return $stats;
+       }
+       catch (\PDOException $exception)
+       {
+           \TPErrorHandling::handlePDOException($exception->errorInfo);
+           return null;
+       }
+   	}
 
     public function updatePlayerStat($stat, $userId) {
         try {
