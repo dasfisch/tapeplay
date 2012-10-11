@@ -425,7 +425,7 @@ class VideoDAO extends BaseDOA
 		$row = $this->prep->fetch();
 
 		// return the email address
-		return $row[0];
+		return $row[0]["email"];
 	}
 
     public function deleteVideo($videoId) {
