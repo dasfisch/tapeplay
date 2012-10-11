@@ -3,7 +3,7 @@
 <head>
 	<title>Tapeplay :: {$title}</title>
 
-	<meta name="description" content="TapePlay is a video recruiting site to get high school and college athletes to the next level. Get in front of coaches across the country by uploading video."/>
+	<meta name="description" content="{if ({$description} != '')} {$description} {else}TapePlay is a video recruiting site to get high school and college athletes to the next level. Get in front of coaches across the country by uploading video.{/if}"/>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 
 	{if preg_match('/^\/videos\/email\/([0-9]+)\/$/', {$smarty.server.REQUEST_URI}) ||
