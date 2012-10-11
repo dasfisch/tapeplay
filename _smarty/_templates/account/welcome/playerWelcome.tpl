@@ -215,29 +215,30 @@
 
 				</div>
 			</li>
+            {foreach $playerInfo as $player}
                 <li>
-                    <a class="opener">{$user->getSport()->getSportName()}</a>
+                    <a class="opener">{$player->getSport()->getSportName()}</a>
                     <div class="slide slider_sport">
                         <ul>
                             <li>
                                 <div class="text-holder">
                                     <strong class="title">Level / Grade / Number</strong>
                                     <div class="category">
-                                        {if $user->getPlayingLevel() == 0}
+                                        {if $player->getPlayingLevel() == 0}
                                             High School
-                                        {elseif $user->getPlayingLevel() == 1}
+                                        {elseif $player->getPlayingLevel() == 1}
                                             College
-                                        {elseif $user->getPlayingLevel() == 2}
+                                        {elseif $player->getPlayingLevel() == 2}
                                             Professional
                                         {/if}
-                                        / {$user->getGradeLevel()} / #{$user->getNumber()}</div>
+                                        / {$player->getGradeLevel()} / #{$player->getNumber()}</div>
                                     <div class="accountInfo hidden">
                                         <fieldset>
                                             <select class="select-6" name="gradeLevel" id="_gradeLevel">
                                                 <option>Select a Grade</option>
                                                 {section name=i start=9 loop=17 step=1}
                                                     <option value="{$smarty.section.i.index}"
-                                                        {if $user->getGradeLevel() == $smarty.section.i.index}selected {/if}
+                                                        {if $player->getGradeLevel() == $smarty.section.i.index}selected {/if}
                                                             >{$gradeLevels[$smarty.section.i.index]}</option>
                                                  {/section}
                                             </select>
@@ -251,7 +252,7 @@
                                                     <span class="display">High School</span>
                                                 </label>
                                                 <input type="checkbox" class="single" name="playingLevel" id="_playingLevel" value="0"
-                                                    {if $user->getPlayingLevel() == 0}checked{/if}
+                                                    {if $player->getPlayingLevel() == 0}checked{/if}
                                                         />
                                             </li>
                                             <li>
@@ -260,7 +261,7 @@
                                                     <span class="display">College</span>
                                                 </label>
                                                 <input type="checkbox" class="single" name="playingLevel" id="_playingLevel" value="1"
-                                                    {if $user->getPlayingLevel() == 1}checked{/if}
+                                                    {if $player->getPlayingLevel() == 1}checked{/if}
                                                 />
                                             </li>
                                             <li>
@@ -269,7 +270,7 @@
                                                     <span class="display">Professional</span>
                                                 </label>
                                                 <input type="checkbox" class="single" name="playingLevel" id="_playingLevel" value="2"
-                                                    {if $user->getPlayingLevel() == 2}checked{/if}
+                                                    {if $player->getPlayingLevel() == 2}checked{/if}
                                                 />
                                             </li>
                                         </ul>
@@ -278,7 +279,7 @@
                                         <div class="input_custom-text input_text80 width450 left">
                                             <div class="custom-input_center custom-input_partial">
                                                 <span class="custom-input_top"></span>
-                                                <input type="text" class="standard" id="_number" name="number" value="{$user->getNumber()}" />
+                                                <input type="text" class="standard" id="_number" name="number" value="{$player->getNumber()}" />
                                                 <span class="custom-input_bottom"></span>
                                             </div>
                                             <div class="custom-input_left custom-input_partial">
@@ -300,29 +301,29 @@
                                 <div class="text-holder">
                                     <strong class="title">Position / Height / Weight</strong>
                                     <div class="category">
-                                    {foreach from=$user->getPosition() key=key item=position}
-                                        {if $user->getPosition()|@count gt 0}
-                                            {if $key lt $user->getPosition()|@count - 1}
+                                    {foreach from=$player->getPosition() key=key item=position}
+                                        {if $player->getPosition()|@count gt 0}
+                                            {if $key lt $player->getPosition()|@count - 1}
                                                 {$position->getName()},
                                             {else}
                                                 {$position->getName()} /
                                             {/if}
                                         {/if}
                                     {/foreach}
-                                    {$user->getHeight()} / {$user->getWeight()} lbs</div>
+                                    {$player->getHeight()} / {$player->getWeight()} lbs</div>
                                     <div class="accountInfo hidden">
                                         <ul class="font15">
-                                            {foreach from=$positions key=key item=position}
+                                            {foreach from=$player->getSport()->getPositions() key=key item=position}
                                                 <li>
                                                     <label
-                                                        {foreach from=$user->getPosition() key=key item=myPosition}
+                                                        {foreach from=$player->getPosition() key=key item=myPosition}
                                                             {if $position->getId() == $myPosition->getId()}class="on"{/if}
                                                         {/foreach}>
                                                         <span class="checkbox"><span class="check"></span></span>
                                                         <span class="display">{$position->getName()}</span>
                                                     </label>
                                                     <input type="checkbox" name="playingLevel" id="_position" value="{$position->getId()}"
-                                                        {foreach from=$user->getPosition() key=key item=myPosition}
+                                                        {foreach from=$player->getPosition() key=key item=myPosition}
                                                             {if $position->getId() == $myPosition->getId()}checked {/if}
                                                         {/foreach}
                                                             />
@@ -335,7 +336,7 @@
                                             <select class="select-5" class="height" id="_height" name="height">
                                                 <option class="default">Select</option>
                                                 {section name=i start=48 loop=96 step=1}
-                                                    <option value="{$smarty.section.i.index}"{if $user->getHeight() == $smarty.section.i.index} selected="selected"{/if}>
+                                                    <option value="{$smarty.section.i.index}"{if $player->getHeight() == $smarty.section.i.index} selected="selected"{/if}>
                                                         {floor($smarty.section.i.index/12)}' {$smarty.section.i.index % 12}"
                                                     </option>
                                                 {/section}
@@ -346,7 +347,7 @@
                                         <div class="input_custom-text input_text80 width185 left">
                                             <div class="custom-input_center custom-input_partial">
                                                 <span class="custom-input_top"></span>
-                                                <input type="text" class="standard" id="_weight" name="weight" value="{$user->getWeight()}" />
+                                                <input type="text" class="standard" id="_weight" name="weight" value="{$player->getWeight()}" />
                                                 <span class="custom-input_bottom"></span>
                                             </div>
                                             <div class="custom-input_left custom-input_partial">
@@ -367,12 +368,12 @@
                             <li>
                                 <div class="text-holder">
                                     <strong class="title">School Name</strong>
-                                    <div class="category">{$user->getSchool()->getName()}</div>
+                                    <div class="category">{$player->getSchool()->getName()}</div>
                                     <div class="accountInfo hidden">
                                         <div class="input_custom-text input_text80 left">
                                             <div class="custom-input_center custom-input_partial">
                                                 <span class="custom-input_top"></span>
-                                                {assign var=school value=$user->getSchool()->getName()}
+                                                {assign var=school value=$player->getSchool()->getName()}
                                                 <input type="text" class="standard small" id="schoolSearchInput" name="schoolName"
                                                        value="{if isset($school) && $school != ''}{$school}{else}Please select a school!{/if}" />
                                                 <input type="hidden" class="passer" value="" />
@@ -396,12 +397,12 @@
                             <li>
                                 <div class="text-holder">
                                     <strong class="title">Head Coach&rsquo;s Name</strong>
-                                    <div class="category">{$user->getCoachName()}</div>
+                                    <div class="category">{$player->getCoachName()}</div>
                                     <div class="accountInfo hidden">
                                         <div class="input_custom-text input_text80 left">
                                             <div class="custom-input_center custom-input_partial">
                                                 <span class="custom-input_top"></span>
-                                                <input type="text" class="standard small" id="_coachName" name="coachName" value="{$user->getCoachName()}" />
+                                                <input type="text" class="standard small" id="_coachName" name="coachName" value="{$player->getCoachName()}" />
                                                 <input type="hidden" class="passer" value="" />
                                                 <span class="custom-input_bottom"></span>
                                             </div>
@@ -426,19 +427,37 @@
                             <li>
                                 <div class="text-holder">
                                     <strong class="title">Statistics</strong>
-                                        <ul class="three-column">
-                                            {assign var=i value=0}
-                                            {foreach from=$stats item=stat}
-                                                {if $i%$modder == 0 || $i == 0}
-                                                    <li>
-                                                {/if}
-                                                    <div class="stat">
-                                                        <p>
-                                                            {$stat->getStatName()}:
-                                                            <span class="bold">{$stat->getStatValue()}</span>
-                                                        </p>
-                                                    </div>
-                                                    <div class="statHidden hidden">
+                                        {if $player->getStats()|@count gt 0}
+                                            <ul class="three-column">
+                                                {assign var=i value=0}
+                                                {assign var=statCount value=$player->getStats()|@count}
+                                                {math assign=modder equation='statCount / 3' statCount=$statCount}
+                                                {foreach from=$player->getStats() item=stat}
+                                                    {if $i%$modder|ceil == 0 || $i == 0}
+                                                        <li>
+                                                    {/if}
+                                                        <div class="stat">
+                                                            <p>
+                                                                {$stat->getStatName()}:
+                                                                <span class="bold">{$stat->getStatValue()}</span>
+                                                            </p>
+                                                        </div>
+                                                    {if ($i%$modder == $modder - 1 && $i > $modder) || $i == ($statCount - 1)}
+                                                        </li>
+                                                    {/if}
+                                                    {$i=$i+1}
+                                                {/foreach}
+                                            </ul>
+                                        {/if}
+                                        <div class="statHidden hidden">
+                                            <ul class="three-column">
+                                                {assign var=statCount value=$player->getSport()->getStats()|@count}
+                                                {math assign=hiddenModder equation='statCount / 3' statCount=$statCount}
+                                                {foreach from=$player->getSport()->getStats() item=$stat}
+                                                    {$stat->getId()|var_dump}
+                                                    {if $i%$hiddenModder|ceil == 0 || $i == 0}
+                                                        <li>
+                                                    {/if}
                                                         <p>
                                                             {$stat->getStatName()}:
                                                         </p>
@@ -458,12 +477,13 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                {if ($i%$modder == $modder - 1 && $i > $modder) || $i == ($statCount - 1)}
-                                                    </li>
-                                                {/if}
-                                                {$i=$i+1}
-                                            {/foreach}
-                                        </ul>
+                                                    {if ($i%$hiddenModder == $hiddenModder - 1 && $i > $hiddenModder) || $i == ($statCount - 1)}
+                                                        </li>
+                                                    {/if}
+                                                    {$i=$i+1}
+                                                {/foreach}
+                                            </ul>
+                                        </div>
                                     <div class="btn-holder">
                                         <a class="btn edit" id="statButton"><span>Edit</span></a><br />
                                     </div>
@@ -472,6 +492,7 @@
                         </ul>
                     </div>
                 </li>
+            {/foreach}
 			<li>
 				<a class="opener">Privacy</a>
 				<div class="slide slider_privacy">

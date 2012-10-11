@@ -207,15 +207,36 @@ class PlayerDAO extends BaseDOA
    	{
    		try
    		{
-   			$this->sql = "SELECT u.*, p.*, s.*, sp.id as sport_id, sp.name as sport_name FROM
+   			$this->sql = "SELECT u.*,
+                                p.id as player_id,
+                                p.number as number,
+                                p.height as height,
+                                p.grade_level as grade_level,
+                                p.video_access as video_access,
+                                p.playing_level as playing_level,
+                                p.weight as weight,
+                                p.coach_name as coach_name,
+                                p.graduation_month as graduation_month,
+                                p.graduation_year as graduation_year,
+                                p.user_id as user_id,
+                                p.school_id as school_id,
+                                p.sport_id as sport_id,
+                                s.id as schoolId,
+                                s.name as schoolName,
+                                s.city as schoolCity,
+                                s.state as schoolState,
+                                s.division as schoolDivision, sp.id as sport_id, sp.name as sport_name FROM
    			                players p
    			                INNER JOIN users u ON p.user_id = u.id
    			                LEFT JOIN schools s ON p.school_id = s.id
+   			                LEFT JOIN player_positions ppos ON ppos.player_id=p.id
+   			                LEFT JOIN positions pos ON pos.id=ppos.position_id
    			                JOIN sports sp ON sp.id = p.sport_id
-   			                WHERE p.user_id=:userId";
+   			                WHERE p.user_id=:userId
+   			                GROUP BY s.id";
 
    			$this->prep = $this->dbh->prepare($this->sql);
-   			$this->prep->bindValue(":userId", $userId, \PDO::PARAM_INT);
+   			$this->prep->bindValue(":userId", (int)$userId, \PDO::PARAM_INT);
    			$this->prep->execute();
    		}
    		catch (\PDOException $exception)

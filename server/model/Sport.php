@@ -62,4 +62,14 @@ class Sport
 	{
 		return $this->positions;
 	}
+
+    public function setStats(array $stats)
+   	{
+   		$this->_stats = $stats;
+   	}
+
+   	public function getStats()
+   	{
+   		return $this->_stats;
+   	}
 }
