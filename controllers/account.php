@@ -107,7 +107,47 @@ if (isset($route->method))
 
                             $playerBLL = new PlayerBLL();
 
-                            $info = $playerBLL->getPlayersByUserId($userBLL->getUser()->getUserId());
+                            $playerInfo = $playerBLL->getPlayersByUserId($userBLL->getUser()->getUserId());
+
+                            $positionBll = new PositionBLL();
+                            $statsBll = new StatsBLL();
+
+                            foreach($playerInfo as $player) {
+                                try {
+                                    $stats = $statsBll->getPlayerStats((int)$player->getId(), (int)$player->getSport()->getId());
+
+                                    if(isset($stats) && !empty($stats)) {
+                                        $player->setStats($stats);
+                                    }
+
+                                    $stats = $statsBll->getStatsBySport((int)$player->getSport()->getId());
+                                    if(isset($stats) && !empty($stats)) {
+                                        $stats[0]->count = count($stats);
+                                        $stats[0]->modder = ceil(count($stats) / 3);
+
+                                        $player->getSport()->setStats($stats);
+                                    }
+                                } catch(Exception $e) {
+
+                                }
+
+                                try {
+                                    $positions = $positionBll->getPositionsBySport((int)$player->getSport()->getId());
+
+                                    if(isset($positions) && !empty($positions)) {
+                                        $player->getSport()->setPositions($positions);
+                                    }
+
+                                    $myPositions = $positionBll->getPositionsByPlayer($player->getId());
+                                    if(isset($positions) && !empty($positions)) {
+                                        $player->setPosition($positions);
+                                    }
+                                } catch(Exception $e) {
+
+                                }
+                            }
+
+                            $smarty->assign('playerInfo', $playerInfo);
                         } catch(Exception $e) {
                             $videos = null;
                         }
@@ -138,22 +178,6 @@ if (isset($route->method))
 
                 $videoCount = (isset($videos[0]->count) && (int)$videos[0]->count > 0) ? (int)$videos[0]->count : 0;
 
-                try {
-                    $statsBll = new StatsBLL();
-
-                    $stats = $statsBll->getPlayerStats((int)$user->getId(), (int)$user->getSport()->getId());
-                } catch(Exception $e) {
-
-                }
-
-                try {
-                    $positionBll = new PositionBLL();
-
-                    $positions = $positionBll->getPositionsBySport($userBLL->getUser()->getSport()->getId());
-                } catch(Exception $e) {
-
-                }
-
                 $optins = array();
 
                 try {
@@ -171,10 +195,9 @@ if (isset($route->method))
                 $smarty->assign("modder", ceil(count($stats) / 3));
                 $smarty->assign("myVideoWording", $myVideoWorking);
                 $smarty->assign("optins", $optins);
-                $smarty->assign("positions", $positions);
+//                $smarty->assign("positions", $positions);
                 $smarty->assign("privacy", $privacy);
                 $smarty->assign('selected', strtotime($userBLL->getUser()->getBirthYear()));
-                $smarty->assign("stats", $stats);
                 $smarty->assign("statCount", count($stats));
                 $smarty->assign("thirteenBelow", $thirteenYearsBeforeNow);
                 $smarty->assign("title", 'Your TapePlay Account');

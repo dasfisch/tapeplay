@@ -1953,9 +1953,6 @@ function initPopups()
 	initPopup({
 		openEvent:'click'
 	});
-	initPopup({
-		popupHolderClass:'popup-hover'
-	});
 }
 if (window.addEventListener)
 	window.addEventListener("load", initPopups, false);

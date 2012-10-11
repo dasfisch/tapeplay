@@ -259,6 +259,8 @@ jQuery(document).ready(function(){
     jQuery('.playerEdit').click(function() {
         var _this = jQuery(this);
 
+        var playerId = _this.parentsUntil('.parentHolder').siblings('.player-id').val();
+
         var dropDowns = _this.parentsUntil('li').children('.accountInfo').children('fieldset').children('select');
         var inputs = _this.parentsUntil('li').children('.accountInfo').children('.input_custom-text').children('.custom-input_center').children('input');
         var checkboxes = _this.parentsUntil('li').children('.accountInfo').children('ul').children('li').children('input[type=checkbox]');
@@ -328,6 +330,7 @@ jQuery(document).ready(function(){
 
             post.hash = jQuery('#hash').val();
             post.data = keys;
+            post.playerId = playerId;
 
             jQuery.post(
                 '/ajax/profileupdate/',
@@ -376,13 +379,15 @@ jQuery(document).ready(function(){
         }
     });
 
-    jQuery('#statButton').click(function() {
+    jQuery('.statButton').click(function() {
         var _this = jQuery(this);
+
+        var playerId = _this.parentsUntil('.parentHolder').siblings('.player-id').val();
 
         var keys = [];
         var post = {};
 
-        var statHidden = _this.parentsUntil('li').children('.three-column').children('li').children('.statHidden');
+        var statHidden = _this.parents('.btn-holder').siblings('.statHidden');
         var stats = _this.parentsUntil('li').children('.three-column').children('li').children('.stat');
 
         if(stats.first().hasClass('hidden')) {
@@ -401,7 +406,7 @@ jQuery(document).ready(function(){
 
             post.hash = jQuery('#hash').val();
             post.data = keys;
-            post.player = jQuery('#user-id').val();
+            post.playerId = playerId;
 
             jQuery.post(
                 '/ajax/updatestats/',
@@ -424,6 +429,8 @@ jQuery(document).ready(function(){
     jQuery('.schoolEdit').click(function() {
         var _this = jQuery(this);
 
+        var playerId = _this.parentsUntil('.parentHolder').siblings('.player-id').val();
+
         var inputField = _this.parentsUntil('li').children('.accountInfo').children('.input_custom-text').children('.custom-input_center');
         var p = _this.parentsUntil('li').children('.category');
 
@@ -438,7 +445,8 @@ jQuery(document).ready(function(){
                 '/ajax/schoolupdate/',
                 {
                     hash: jQuery('#hash').val(),
-                    value: schoolId
+                    value: schoolId,
+                    playerId: playerId
                 },
                 function(data) {
                     if(data == 200) {
@@ -835,27 +843,3 @@ function setContainerBGImage()
 	var bgName = "hp_betaAd_background_" + imageSize.toString() + ".jpg";
 	$("#container").css("background-image", "url(/media/images/ads/" + imageSize);
 }
-
-function openFacebook(url, title)
-	{
-		window.open('http://www.facebook.com/sharer.php?u=' + encodeURIComponent(url) + '&t=' + encodeURIComponent(title), 'fbSharer', 'toolbar=0,status=0,width=626,height=436');
-		return false;
-	}
-
-	function openGooglePlus(url)
-	{
-		window.open('https://plus.google.com/share?url=' + encodeURIComponent(url), 'gSharer', 'toolbar=0,status=0,width=626,height=436');
-		return false;
-	}
-
-	function openMySpace(url)
-	{
-		window.open('http://www.myspace.com/?url=' + encodeURIComponent(url), 'myspaceSharer');
-		return false;
-	}
-
-	function openTwitter(url, tweet)
-	{
-		window.open('https://twitter.com/intent/tweet?text=' + encodeURIComponent(tweet) + '&url=' + encodeURIComponent(url), 'twitterSharer', 'toolbar=0,status=0,width=626,height=436');
-		return false;
-	}
