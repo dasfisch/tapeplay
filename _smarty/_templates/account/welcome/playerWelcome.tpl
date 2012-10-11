@@ -15,20 +15,68 @@
                                         <a href="{#baseUrl#}videos/view/{$video->getId()}/">
                                             <img src="{#pandaBase#}{$video->getPandaId()}{#pandaImageExt#}" width="125" height="94" alt="image description" />
                                             <div class="text-holder">
-                                                <strong class="title">{$video->getTitle()}</strong>
-                                                <div class="category">{$video->getSport()->getSportName()}</div>
-                                                <span class="date">
-                                                    {if $video->getRecordedMonth() != 0}
-                                                        {$video->getRecordedMonth()} /
-                                                    {/if}
-                                                    {if $video->getRecordedYear() != 0}
-                                                        {$video->getRecordedYear()}
-                                                    {/if}
-                                                </span>
-                                                <div class="time"></div>
-                                                <em class="info">Views: {$video->getViews()}, Saves: {$video->getSaves()}</em>
+                                                <div class="videoInfo">
+                                                    <strong class="title">{$video->getTitle()}</strong>
+                                                    <div class="category">{$video->getSport()->getSportName()}</div>
+                                                    <div class="date">
+                                                        {if $video->getRecordedMonth() != 0}
+                                                            {$video->getRecordedMonth()} /
+                                                        {/if}
+                                                        {if $video->getRecordedYear() != 0}
+                                                            {$video->getRecordedYear()}
+                                                        {/if}
+                                                    </div>
+                                                    <div class="time"></div>
+                                                    <em class="info">Views: {$video->getViews()}, Saves: {$video->getSaves()}</em>
+                                                </div>
+                                                <div class="accountInfo">
+                                                    <div class="input_custom-text input_text80 width450 left">
+                                                        <div class="custom-input_center custom-input_partial">
+                                                            <span class="custom-input_top"></span>
+                                                            <input type="text" class="standard" id="_title" name="title" value="{$video->getTitle()}" />
+                                                            <span class="custom-input_bottom"></span>
+                                                        </div>
+                                                        <div class="custom-input_left custom-input_partial">
+                                                            <span class="custom-input_top"></span>
+                                                            <span class="custom-input_bottom"></span>
+                                                        </div>
+                                                        <div class="custom-input_right custom-input_partial">
+                                                            <span class="custom-input_top"></span>
+                                                            <span class="custom-input_bottom"></span>
+                                                        </div>
+                                                    </div>
+                                                    <ul class="three-column_sign-up left">
+                                                        <li class="left">
+                                                            <fieldset>
+                                                                <select class="select-7" name="videoMonth">
+                                                                    <option class="default">Video Month</option>
+                                                                    <option value="1">January</option>
+                                                                    <option value="2">February</option>
+                                                                    <option value="3">March</option>
+                                                                    <option value="4">April</option>
+                                                                    <option value="5">May</option>
+                                                                    <option value="6">June</option>
+                                                                    <option value="7">July</option>
+                                                                    <option value="8">August</option>
+                                                                    <option value="9">September</option>
+                                                                    <option value="10">October</option>
+                                                                    <option value="11">November</option>
+                                                                    <option value="12">December</option>
+                                                                </select>
+                                                            </fieldset>
+                                                        </li>
+                                                        <li class="left">
+                                                            <fieldset>
+                                                                <select class="select-8" name="videoYear">
+                                                                    <option class="default">Video Year</option>
+                                                                    {$videoYears}
+                                                                </select>
+                                                            </fieldset>
+                                                        </li>
+                                                    </ul>
+                                                </div>
                                                 <div class="btn-holder">
-                                                    <a class="btn edit"><span>Edit</span></a><br />
+                                                    <a class="btn edit videoEdit"><span>Edit</span></a><br />
                                                     <a class="btn delete deleteVideo" id="video-{$video->getId()}"><span>Delete</span></a>
                                                 </div>
                                             </div>
@@ -430,35 +478,22 @@
                                     <strong class="title">Statistics</strong>
                                     {if $player->getStats()|@count gt 0}
                                         <ul class="three-column">
-                                            {assign var=i value=0}
-                                            {assign var=statCount value=$player->getStats()|@count}
-                                            {math assign=modder equation='statCount / 3' statCount=$statCount}
                                             {foreach from=$player->getStats() item=stat}
-                                                {if $i%$modder|ceil == 0 || $i == 0}
-                                                    <li>
-                                                {/if}
+                                                <li>
                                                     <div class="stat">
                                                         <p>
                                                             {$stat->getStatName()}:
                                                             <span class="bold">{$stat->getStatValue()}</span>
                                                         </p>
                                                     </div>
-                                                {if ($i%$modder == $modder - 1 && $i > $modder) || $i == ($statCount - 1)}
-                                                    </li>
-                                                {/if}
-                                                {$i=$i+1}
+                                                </li>
                                             {/foreach}
                                         </ul>
                                     {/if}
                                     <div class="statHidden hidden">
-                                        {assign var=j value=0}
-                                        {assign var=statCount value=$player->getSport()->getStats()|@count}
-                                        {math assign=hiddenModder equation='statCount / 3' statCount=$statCount}
                                         <ul class="three-column">
                                             {foreach $player->getSport()->getStats() as $stat}
-                                                {if $j%$hiddenModder|ceil == 0 || $j == 0}
-                                                    <li>
-                                                {/if}
+                                                <li>
                                                     <p>
                                                         {$stat->getStatName()}:
                                                     </p>
@@ -488,10 +523,7 @@
                                                             <span class="custom-input_bottom"></span>
                                                         </div>
                                                     </div>
-                                                {if ($j%$hiddenModder == $hiddenModder - 1 && $j > $hiddenModder) || $j == ($statCount - 1)}
-                                                    </li>
-                                                {/if}
-                                                {$j=$j+1}
+                                                </li>
                                             {/foreach}
                                         </ul>
                                     </div>

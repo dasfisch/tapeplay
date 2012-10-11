@@ -183,7 +183,7 @@
 
 
                     var_dump($playerBll->get($post['playerId']));
-                    exit;
+                    exit
 
                     foreach($post['data'] as $data) {
                         $methodName = 'set'.ucfirst(substr($data['name'], 1, strlen($data['name'])));
