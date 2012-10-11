@@ -393,8 +393,12 @@ if (isset($route->method))
 
                         $sport = $sportBll->get($search);
 
-                        $userBLL->getUser()->setSport($sport[0]);
-                        $userBLL->setUser($userBLL->getUser());
+//                        $userBLL->getUser()->setSport($sport[0]);
+//                        $userBLL->setUser($userBLL->getUser());
+
+                        $playerBLL = new PlayerBLL();
+
+                        $myPlayerInfo = $playerBLL->getPlayersByUserId($userBLL->getUser()->getUserId());
                     } catch(Exception $e) {
 
                     }
@@ -406,11 +410,18 @@ if (isset($route->method))
                      *
                      * For now, disallow multiple sports
                      */
+                    $sports = array();
 
-                    $_SESSION['postSport'] = $userBLL->getUser()->getSport()->getId() != $post['sport_id'] ? (int)$post['sport_id'] : (int)$userBLL->getUser()->getSport()->getId();
+                    if(isset($myPlayerInfo)) {
+                        foreach($myPlayerInfo as $player) {
+                            $sports[] = $player->getSport()->getId();
+                        }
+                    }
+
+                    $_SESSION['postSport'] = $post['sport_id'];
                     $_SESSION['last_video'] = $userBLL->getLastInsertID();
 
-                    if(!$userBLL->getUser()->getSport()->getId() == $post['sport_id']) {
+                    if(!in_array($post['sport_id'], $sports)) {
                         // insert succeeded - go to info page
                         Util::setHeader("user/info/");
                     } else {

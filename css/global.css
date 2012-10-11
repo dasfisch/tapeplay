@@ -217,6 +217,11 @@ p {
 	padding-bottom:5px;
 }
 
+.two-column > li, .two-column > div {
+	float:left;
+	width:50%;
+}
+
 .three-column > li {
 	float:left;
 	width:33%;
@@ -413,6 +418,9 @@ ul.lower-alpha {
 	width:40px;
 }
 
+.width24 {
+	width:24px;
+}
 
 fieldset ul {
 	margin-bottom:0px;
@@ -662,6 +670,7 @@ fieldset + fieldset {
  */
 
 .input_custom-text {
+	background-color:#ffffff;
 	height:100%;
 	padding-left:20px;
 	padding-right:20px;
@@ -2549,10 +2558,25 @@ p.nothing {
     width: 30%;
 }
 
+.accordion .slider_sport ul li ul li {
+    float: none;
+    margin: 0 0 5px;
+    padding: 0px;
+    width: auto;
+}
+
 .accordion .slider_sport ul.three-column li p,
 .accordion .slider_sport ul.three-column li p span {
-    font-size: 11px;
+    font-size: 13px;
     margin: 0px;
+}
+
+.text-holder .accountInfo {
+	margin-top:16px;
+}
+
+.text-holder .accountInfo:first-child {
+	margin-top:16px;
 }
 
 .accordion .slide ul .btn-holder{
@@ -2610,4 +2634,25 @@ p.nothing {
 
 .custom-input_center input.embed {
 	color:#e18a07;
+}
+
+.statHidden span {
+	font-size:12px;
+	font-weight:bold;
+}
+
+.slider_sport ul li .three-column li {
+	margin-bottom:12px;
+}
+
+.slider_account legend, .slider_sport legend {
+	padding-bottom:0px;
+}
+
+.slider_account fieldset + fieldset, .slider_sport fieldset + fieldset {
+    margin-top: 16px;
+}
+
+.text-holder input[type="checkbox"] {
+	visibility:hidden;
 }

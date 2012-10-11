@@ -60,7 +60,7 @@
 	top:0;
 	width:104px;
 	text-align:center;
-	padding:8px 0 0;
+	padding:24px 0 0;
 }
 .accordion .btn{
 	font-size:15px;
@@ -136,7 +136,7 @@
 }
 .popup-hover:hover div.popup{display:block;}
 .popup-hover div.popup a{color:#e18a07 !important; font-size:15px !important;}
-.popup-hover div.popup p{margin:0 0 7px;}
+.popup-hover div.popup p{padding:0 0 7px; margin-bottom:0px;}
 .popup-hover div.popup p .mark{color:#000;}
 .popup-hover div.popup ul{
 	margin:0;
@@ -1113,7 +1113,7 @@ form .select-9{width:545px;}
 .scrollable-area {
 	overflow: auto;
 	height: 200px;
-	width: 400px;
+	width: 577px;
 }
 .anyscrollable .text,
 .hscrollable .text {
