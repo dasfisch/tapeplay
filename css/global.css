@@ -106,12 +106,11 @@ p {
 }
 
 #content-left-column {
-	margin-top:24px;
 	width:670px;
 }
 
 #content-right-column {
-	margin:24px 40px 0px 45px;
+	margin:0px 40px 0px 45px;
 	width:200px;
 }
 
@@ -1169,9 +1168,15 @@ label[for="i-agree"] {
 
 .bigButton {
     cursor: pointer;
+    cursor: hand;
     float: left;
     overflow: hidden;
     position: relative;
+}
+
+#upload_button {
+	cursor:pointer;
+	cursor:hand;
 }
 
 .bigButton .topLeft {
@@ -2165,6 +2170,7 @@ p.nothing {
 .bigButton input[type="file"]  {
     -moz-opacity:0;
     cursor: pointer;
+    cursor: hand;
     filter:alpha(opacity:0);
     font-size: 50px;
     height: 80px;
