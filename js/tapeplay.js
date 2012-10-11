@@ -259,6 +259,8 @@ jQuery(document).ready(function(){
     jQuery('.playerEdit').click(function() {
         var _this = jQuery(this);
 
+        var playerId = _this.parentsUntil('.parentHolder').siblings('.player-id').val();
+
         var dropDowns = _this.parentsUntil('li').children('.accountInfo').children('fieldset').children('select');
         var inputs = _this.parentsUntil('li').children('.accountInfo').children('.input_custom-text').children('.custom-input_center').children('input');
         var checkboxes = _this.parentsUntil('li').children('.accountInfo').children('ul').children('li').children('input[type=checkbox]');
@@ -328,6 +330,7 @@ jQuery(document).ready(function(){
 
             post.hash = jQuery('#hash').val();
             post.data = keys;
+            post.playerId = playerId;
 
             jQuery.post(
                 '/ajax/profileupdate/',
@@ -426,6 +429,8 @@ jQuery(document).ready(function(){
     jQuery('.schoolEdit').click(function() {
         var _this = jQuery(this);
 
+        var playerId = _this.parentsUntil('.parentHolder').siblings('.player-id').val();
+
         var inputField = _this.parentsUntil('li').children('.accountInfo').children('.input_custom-text').children('.custom-input_center');
         var p = _this.parentsUntil('li').children('.category');
 
@@ -440,7 +445,8 @@ jQuery(document).ready(function(){
                 '/ajax/schoolupdate/',
                 {
                     hash: jQuery('#hash').val(),
-                    value: schoolId
+                    value: schoolId,
+                    playerId: playerId
                 },
                 function(data) {
                     if(data == 200) {

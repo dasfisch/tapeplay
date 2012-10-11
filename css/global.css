@@ -217,6 +217,11 @@ p {
 	padding-bottom:5px;
 }
 
+.two-column > li, .two-column > div {
+	float:left;
+	width:50%;
+}
+
 .three-column > li {
 	float:left;
 	width:33%;
@@ -267,7 +272,7 @@ p {
 	font-style:italic;
 }
 
-/*
+/* 
  * Presentation
  */
 body {
@@ -413,6 +418,9 @@ ul.lower-alpha {
 	width:40px;
 }
 
+.width24 {
+	width:24px;
+}
 
 fieldset ul {
 	margin-bottom:0px;
@@ -634,6 +642,10 @@ fieldset + fieldset {
 	background:transparent url(/media/images/get-connected_google-plus.png) no-repeat center center;
 }
 
+#get-connected_myspace a {
+	background:transparent url(/media/images/get-connected_myspace.png) no-repeat center center;
+}
+
 /*
  * AD WiDGET
  */
@@ -662,6 +674,7 @@ fieldset + fieldset {
  */
 
 .input_custom-text {
+	background-color:#ffffff;
 	height:100%;
 	padding-left:20px;
 	padding-right:20px;
@@ -2420,7 +2433,7 @@ p.nothing {
 
 .single .content-left {
 	margin-right:30px;
-	width:560px;
+	width:560px; 
 }
 .single .content-right {
 	width:300px;
@@ -2472,11 +2485,11 @@ p.nothing {
 .single .more-videos>li {
 	padding:10px 0px;
 	position:relative;
-}
+} 
 
 .single .more-videos>li:hover {
 	background-color:#F8E8C8
-}
+} 
 
 .single .more-videos .video-image img {
 	float:left;
@@ -2517,7 +2530,7 @@ p.nothing {
 
 .account-page #content-left-column {
 	margin-right:35px;
-	width:585px;
+	width:585px; 
 }
 
 .account-page #content-right-column {
@@ -2528,7 +2541,8 @@ p.nothing {
 	width:300px;
 }
 
-.account-page .accordion .slider_account ul .btn-holder {
+.account-page .accordion .slider_account ul .btn-holder,
+.account-page .accordion .slider_sport ul .btn-holder {
 	padding-top:8px;
 }
 
@@ -2548,10 +2562,34 @@ p.nothing {
     width: 30%;
 }
 
+.accordion .slider_sport ul li ul li {
+    float: none;
+    margin: 0 0 5px;
+    padding: 0px;
+    width: auto;
+}
+
 .accordion .slider_sport ul.three-column li p,
 .accordion .slider_sport ul.three-column li p span {
-    font-size: 11px;
+    font-size: 13px;
     margin: 0px;
+}
+
+.text-holder .accountInfo {
+	margin-top:16px;
+}
+
+.text-holder .accountInfo:first-child {
+	margin-top:16px;
+}
+
+.accordion .slide ul .btn-holder{
+	position:absolute;
+	right:0;
+	top:0;
+	width:104px;
+	text-align:center;
+	padding:24px 0 0;
 }
 
 .slider_privacy {
@@ -2579,7 +2617,7 @@ p.nothing {
 
 .email-video #content-left-column {
 	margin-right:35px;
-	width:585px;
+	width:585px; 
 }
 
 .email-video #content-right-column {
@@ -2602,4 +2640,27 @@ p.nothing {
 	color:#e18a07;
 }
 
-.statHidden
+.statHidden span {
+	font-size:12px;
+	font-weight:bold;
+}
+
+.slider_sport ul li .three-column li {
+	margin-bottom:12px;
+}
+
+.slider_account legend, .slider_sport legend {
+	padding-bottom:0px;
+}
+
+.slider_account fieldset + fieldset, .slider_sport fieldset + fieldset {
+    margin-top: 16px;
+}
+
+.text-holder input[type="checkbox"] {
+	visibility:hidden;
+}
+
+.statHidden .three-column .input_text36 {
+    width: 60px;
+}

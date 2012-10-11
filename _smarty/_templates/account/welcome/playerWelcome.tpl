@@ -465,10 +465,18 @@
                                                     <div class="input_custom-text input_text36 left">
                                                         <div class="custom-input_center custom-input_partial">
                                                             <span class="custom-input_top"></span>
-                                                            {foreach $player->getStats() as $myStat}
-                                                                <input type="text" class="standard small" id="stat" name="stat-{$stat->getId()}"
-                                                                    value="{if $myStat->getId() == $stat->getId()}{$myStat->getStatValue()}{/if}" />
+                                                            {assign var=inputSet value=true}
+                                                            {foreach from=$player->getStats() item=myStat}
+                                                                {if $myStat->getId() == $stat->getId()}
+                                                                    <input type="text" class="standard small" id="stat" name="stat-{$stat->getId()}"
+                                                                        value="{$myStat->getStatvalue()}" />
+                                                                    {$inputSet=false}
+                                                                    {continue}
+                                                                {/if}
                                                             {/foreach}
+                                                            {if $inputSet === false}
+                                                                <input type="text" class="standard small" id="stat" name="stat-{$stat->getId()}" />
+                                                            {/if}
                                                             <span class="custom-input_bottom"></span>
                                                         </div>
                                                         <div class="custom-input_left custom-input_partial">
