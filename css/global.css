@@ -267,7 +267,7 @@ p {
 	font-style:italic;
 }
 
-/* 
+/*
  * Presentation
  */
 body {
@@ -2420,7 +2420,7 @@ p.nothing {
 
 .single .content-left {
 	margin-right:30px;
-	width:560px; 
+	width:560px;
 }
 .single .content-right {
 	width:300px;
@@ -2472,11 +2472,11 @@ p.nothing {
 .single .more-videos>li {
 	padding:10px 0px;
 	position:relative;
-} 
+}
 
 .single .more-videos>li:hover {
 	background-color:#F8E8C8
-} 
+}
 
 .single .more-videos .video-image img {
 	float:left;
@@ -2517,7 +2517,7 @@ p.nothing {
 
 .account-page #content-left-column {
 	margin-right:35px;
-	width:585px; 
+	width:585px;
 }
 
 .account-page #content-right-column {
@@ -2579,7 +2579,7 @@ p.nothing {
 
 .email-video #content-left-column {
 	margin-right:35px;
-	width:585px; 
+	width:585px;
 }
 
 .email-video #content-right-column {
@@ -2601,3 +2601,5 @@ p.nothing {
 .custom-input_center input.embed {
 	color:#e18a07;
 }
+
+.statHidden

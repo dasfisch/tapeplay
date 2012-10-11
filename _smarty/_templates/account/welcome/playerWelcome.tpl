@@ -216,7 +216,8 @@
 				</div>
 			</li>
             {foreach $playerInfo as $player}
-                <li>
+                <li class="parentHolder">
+                    <input type="hidden" class="player-id" value="{$player->getId()}" />
                     <a class="opener">{$player->getSport()->getSportName()}</a>
                     <div class="slide slider_sport">
                         <ul>
@@ -427,65 +428,67 @@
                             <li>
                                 <div class="text-holder">
                                     <strong class="title">Statistics</strong>
-                                        {if $player->getStats()|@count gt 0}
-                                            <ul class="three-column">
-                                                {assign var=i value=0}
-                                                {assign var=statCount value=$player->getStats()|@count}
-                                                {math assign=modder equation='statCount / 3' statCount=$statCount}
-                                                {foreach from=$player->getStats() item=stat}
-                                                    {if $i%$modder|ceil == 0 || $i == 0}
-                                                        <li>
-                                                    {/if}
-                                                        <div class="stat">
-                                                            <p>
-                                                                {$stat->getStatName()}:
-                                                                <span class="bold">{$stat->getStatValue()}</span>
-                                                            </p>
-                                                        </div>
-                                                    {if ($i%$modder == $modder - 1 && $i > $modder) || $i == ($statCount - 1)}
-                                                        </li>
-                                                    {/if}
-                                                    {$i=$i+1}
-                                                {/foreach}
-                                            </ul>
-                                        {/if}
-                                        <div class="statHidden hidden">
-                                            <ul class="three-column">
-                                                {assign var=statCount value=$player->getSport()->getStats()|@count}
-                                                {math assign=hiddenModder equation='statCount / 3' statCount=$statCount}
-                                                {foreach from=$player->getSport()->getStats() item=$stat}
-                                                    {$stat->getId()|var_dump}
-                                                    {if $i%$hiddenModder|ceil == 0 || $i == 0}
-                                                        <li>
-                                                    {/if}
+                                    {if $player->getStats()|@count gt 0}
+                                        <ul class="three-column">
+                                            {assign var=i value=0}
+                                            {assign var=statCount value=$player->getStats()|@count}
+                                            {math assign=modder equation='statCount / 3' statCount=$statCount}
+                                            {foreach from=$player->getStats() item=stat}
+                                                {if $i%$modder|ceil == 0 || $i == 0}
+                                                    <li>
+                                                {/if}
+                                                    <div class="stat">
                                                         <p>
                                                             {$stat->getStatName()}:
+                                                            <span class="bold">{$stat->getStatValue()}</span>
                                                         </p>
-                                                        <div class="input_custom-text input_text36 left">
-                                                            <div class="custom-input_center custom-input_partial">
-                                                                <span class="custom-input_top"></span>
-                                                                <input type="text" class="standard small" id="stat" name="stat-{$stat->getId()}" value="{$stat->getStatValue()}" />
-                                                                <span class="custom-input_bottom"></span>
-                                                            </div>
-                                                            <div class="custom-input_left custom-input_partial">
-                                                                <span class="custom-input_top"></span>
-                                                                <span class="custom-input_bottom"></span>
-                                                            </div>
-                                                            <div class="custom-input_right custom-input_partial">
-                                                                <span class="custom-input_top"></span>
-                                                                <span class="custom-input_bottom"></span>
-                                                            </div>
+                                                    </div>
+                                                {if ($i%$modder == $modder - 1 && $i > $modder) || $i == ($statCount - 1)}
+                                                    </li>
+                                                {/if}
+                                                {$i=$i+1}
+                                            {/foreach}
+                                        </ul>
+                                    {/if}
+                                    <div class="statHidden hidden">
+                                        {assign var=j value=0}
+                                        {assign var=statCount value=$player->getSport()->getStats()|@count}
+                                        {math assign=hiddenModder equation='statCount / 3' statCount=$statCount}
+                                        <ul class="three-column">
+                                            {foreach $player->getSport()->getStats() as $stat}
+                                                {if $j%$hiddenModder|ceil == 0 || $j == 0}
+                                                    <li>
+                                                {/if}
+                                                    <p>
+                                                        {$stat->getStatName()}:
+                                                    </p>
+                                                    <div class="input_custom-text input_text36 left">
+                                                        <div class="custom-input_center custom-input_partial">
+                                                            <span class="custom-input_top"></span>
+                                                            {foreach $player->getStats() as $myStat}
+                                                                <input type="text" class="standard small" id="stat" name="stat-{$stat->getId()}"
+                                                                    value="{if $myStat->getId() == $stat->getId()}{$myStat->getStatValue()}{/if}" />
+                                                            {/foreach}
+                                                            <span class="custom-input_bottom"></span>
+                                                        </div>
+                                                        <div class="custom-input_left custom-input_partial">
+                                                            <span class="custom-input_top"></span>
+                                                            <span class="custom-input_bottom"></span>
+                                                        </div>
+                                                        <div class="custom-input_right custom-input_partial">
+                                                            <span class="custom-input_top"></span>
+                                                            <span class="custom-input_bottom"></span>
                                                         </div>
                                                     </div>
-                                                    {if ($i%$hiddenModder == $hiddenModder - 1 && $i > $hiddenModder) || $i == ($statCount - 1)}
-                                                        </li>
-                                                    {/if}
-                                                    {$i=$i+1}
-                                                {/foreach}
-                                            </ul>
-                                        </div>
+                                                {if ($j%$hiddenModder == $hiddenModder - 1 && $j > $hiddenModder) || $j == ($statCount - 1)}
+                                                    </li>
+                                                {/if}
+                                                {$j=$j+1}
+                                            {/foreach}
+                                        </ul>
+                                    </div>
                                     <div class="btn-holder">
-                                        <a class="btn edit" id="statButton"><span>Edit</span></a><br />
+                                        <a class="btn edit statButton"><span>Edit</span></a><br />
                                     </div>
                                 </div>
                             </li>

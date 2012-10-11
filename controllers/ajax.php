@@ -254,7 +254,7 @@
                     $stat->setStatValue($val);
 
                     try {
-                        $statsBll->updatePlayerStat($stat, $userBLL->getUser()->getId());
+                        $statsBll->updatePlayerStat($stat, $post['playerId']);
                     } catch(Exception $e) {
                         $errors[] = $id;
                     }

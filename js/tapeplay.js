@@ -376,13 +376,15 @@ jQuery(document).ready(function(){
         }
     });
 
-    jQuery('#statButton').click(function() {
+    jQuery('.statButton').click(function() {
         var _this = jQuery(this);
+
+        var playerId = _this.parentsUntil('.parentHolder').siblings('.player-id').val();
 
         var keys = [];
         var post = {};
 
-        var statHidden = _this.parentsUntil('li').children('.three-column').children('li').children('.statHidden');
+        var statHidden = _this.parents('.btn-holder').siblings('.statHidden');
         var stats = _this.parentsUntil('li').children('.three-column').children('li').children('.stat');
 
         if(stats.first().hasClass('hidden')) {
@@ -401,7 +403,7 @@ jQuery(document).ready(function(){
 
             post.hash = jQuery('#hash').val();
             post.data = keys;
-            post.player = jQuery('#user-id').val();
+            post.playerId = playerId;
 
             jQuery.post(
                 '/ajax/updatestats/',

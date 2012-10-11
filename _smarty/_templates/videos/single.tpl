@@ -67,10 +67,10 @@
 								<div class="social">
 									<strong>Post video:</strong>
 									<ul>
-										<li><a href="#"><img src="/media/images/ico-facebook.gif" width="10" height="19" alt="image description" /></a></li>
-										<li><a href="#"><img src="/media/images/ico-social-2.gif" width="16" height="19" alt="image description" /></a></li>
-										<li><a href="#"><img src="/media/images/ico-twitter.gif" width="13" height="19" alt="image description" /></a></li>
-										<li><a href="#"><img src="/media/images/ico-googleplus.gif" width="16" height="19" alt="image description" /></a></li>
+										<li><a href="#" onclick="openFacebook('{#baseUrl#}watch/{$video->getId()}/')"><img src="/media/images/ico-facebook.gif" width="10" height="19" alt="image description" /></a></li>
+										<li><a href="#" onclick="openGooglePlus('{#baseUrl#}watch/{$video->getId()}/')"><img src="/media/images/myspace.gif" width="16" height="19" alt="image description" /></a></li>
+										<li><a href="#" onclick="openTwitter('{#baseUrl#}watch/{$video->getId()}/', '{$video->getTitle()} Feat. {$video->getPlayer()->getFirstName()} on TapePlay')"><img src="/media/images/ico-googleplus.gif" width="16" height="19" alt="image description" /></a></li>
+										<li><a href="#" onclick="openMySpace('{#baseUrl#}watch/{$video->getId()}/')"><img src="/media/images/ico-twitter.gif" width="13" height="19" alt="image description" /></a></li>
 									</ul>
 								</div>
 							</div>

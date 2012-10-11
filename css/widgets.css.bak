@@ -11,8 +11,6 @@
 	margin:0 0 1px;
 }
 .accordion a.opener{
-	cursor:pointer;
-	cursor:hand;
 	font-size:30px;
 	line-height:32px;
 	color:#000;
@@ -113,8 +111,7 @@
 	vertical-align:top;
 	position:relative;
 }
-
-.active {border-color:#00f;}
+.active {border-color:#00F;}
 .popup-hover a.open {
 	text-decoration:none;
 	color:#e18a07;
@@ -134,9 +131,9 @@
 	color:#666;
 	z-index:10000;
 }
-.popup-hover:hover div.popup{display:block;}
+.active div.popup{display:block;}
 .popup-hover div.popup a{color:#e18a07 !important; font-size:15px !important;}
-.popup-hover div.popup p{padding:0 0 7px; margin-bottom:0px;}
+.popup-hover div.popup p{padding:0 0 7px; margin:0px;}
 .popup-hover div.popup p .mark{color:#000;}
 .popup-hover div.popup ul{
 	margin:0;
@@ -183,7 +180,7 @@
 .popup-2{
 	width:283px;
 	right:18px;
-	top:20px;
+	top:27px;
 	line-height:16px !important;
 	background:url(../media/images/bg-popup-2-t.png) no-repeat;
 }
@@ -197,7 +194,7 @@
 }
 .popup-3{
 	width:243px;
-	bottom:31px;
+	bottom:23px;
 	left:50%;
 	margin:0 0 0 16px;
 	background:url(../media/images/bg-popup-3-t.png) no-repeat;
@@ -335,16 +332,15 @@ form .select-9{width:545px;}
 	font-weight:bold;
 	color:#fff;
 	margin: 24px 0 0 10px;
-	width:auto !important;
 }
 .select-select-1.select-area .center{
 	float:left;
 	white-space:nowrap;
-	padding:0 21px 0 13px;
+	padding:0 7px 0 13px;
 }
 .select-select-1.select-area .select-opener{
 	position: relative;
-	float:left;
+	float: right;
 	height:28px;
 	width:28px;
 	float:right;
@@ -1113,7 +1109,7 @@ form .select-9{width:545px;}
 .scrollable-area {
 	overflow: auto;
 	height: 200px;
-	width: 577px;
+	width: 400px;
 }
 .anyscrollable .text,
 .hscrollable .text {
