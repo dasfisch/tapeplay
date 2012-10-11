@@ -31,8 +31,5 @@
 	<li id="get-connected_twitter"><a id="shareTwitter" href="#"
 									  onclick="openTwitter('{#baseUrl#}watch/{$video->getId()}/', '{$video->getTitle()} Feat. {$video->getPlayer()->getFirstName()} on TapePlay')"
 									  title="{#twitterTitle#}">{#twitterTitle#}</a></li>
-	<li id="get-connected_myspace"><a id="shareMySpace" href="#"
-									  onclick="openMySpace('{#baseUrl#}watch/{$video->getId()}/')"
-									  title="{#myspaceTitle#}">{#myspaceTitle#}</a></li>
 </ul>
 <div class="clear"></div>
