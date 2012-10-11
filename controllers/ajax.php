@@ -76,10 +76,9 @@
                 if(isset($post['video'])) {
                     $to = $controller->configuration->errorReporting['reportEmail'];
 
-                    $subject = 'Someone reported an issue!';
+                    $subject = 'TapePlay Video Flag';
 
-                    $body = 'Someone reported <a href="'.$controller->configuration->URLs['baseUrl'].'videos/view/'.$post['video'].'">this video</a>!
-                                Please verify it violates our privacy policy, and, if it does, please contact our administrators to remove it!"';
+					$body = 'A video has been flagged for inappropriate content. Review it here: <a href="' . $controller->configuration->URLs['baseUrl'] . 'videos/view/' . $post['video'] . '">this video</a>';
 
                     $headers = "Content-type: text/html\r\n";
 
