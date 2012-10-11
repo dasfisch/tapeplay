@@ -117,7 +117,8 @@
                 $smarty->assign('videos', $videos);
 				$smarty->assign('gradeLevel', $controller->configuration->gradeLevels[$player->getGradeLevel()]);
                 $smarty->assign('file', 'videos/single.tpl');
-                $smarty->assign("title", $player->getFirstName().' '.$player->getLastName().' on TapePlay');
+                $smarty->assign("title", $video[0]->getTitle());
+				$smarty->assign("description", "Featuring " . $player->getFirstName() . " on TapePlay (" . $player->getSport()->getSportName() . ")");
 
                 $smarty->display('home.tpl');
 
