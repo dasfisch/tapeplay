@@ -246,18 +246,22 @@
 
                 foreach($post['data'] as $stat) {
                     $id = explode('-', $stat['name']);
-                    $val = $stat['value'];
+                    $val = $stat['value'] != 0 ? $stat['value'] : (int)0;
 
-                    $stat = new Stat();
+                    $theStat = new Stat();
 
-                    $stat->setId($id[1]);
-                    $stat->setStatValue($val);
+                    $theStat->setId($id[1]);
+                    $theStat->setStatValue($val);
 
                     try {
-                        if($stat->getStatValue() != '') {
-                            if($statsBll->getSinglePlayerStat($id[1], $post['playerId'])) {
-                                $statsBll->updatePlayerStat($stat, $post['playerId']);
+                        if($theStat->getStatValue() != '' || $theStat->getStatValue() == 0) {
+                            $curStat = $statsBll->getSinglePlayerStat($post['playerId'], $id[1]);
+
+                            if(!is_null($curStat->getId())) {
+                                echo 'updating';
+                                $statsBll->updatePlayerStat($theStat, $post['playerId']);
                             } else {
+                                echo 'creating';
                                 $playerBll->setStat($post['playerId'], $id[1], $val);
                             }
                         }

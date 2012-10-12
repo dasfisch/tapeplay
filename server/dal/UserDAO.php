@@ -23,82 +23,91 @@ use tapeplay\server\model\SearchFilter;
  */
 class UserDAO extends BaseDOA
 {
-	/**
-	 * Returns a Player, Coach, or Scout object based on account type
-	 * @param $userId int The ID of the user.
-	 * @return \tapeplay\server\model\User The retrieved user
-	 */
-	public function getPlayerUser($userId)
-	{
-		try
-		{
-            $this->sql = 'SELECT
-                                u.*,
-                                p.id AS player_id,
-                                p.number,
-                                p.height,
-                                p.grade_level,
-                                p.playing_level,
-                                p.video_access,
-                                p.weight,
-                                p.coach_name,
-                                p.graduation_month,
-                                p.graduation_year,
-                                s.id AS schoolId,
-                                s.name as schoolName,
-                                s.city as schoolCity,
-                                s.state as schoolState,
-                                s.division AS schoolDivision,
-                                sp.id AS sport_id,
-                                sp.name AS sport_name
-                            FROM
-                                users u
-                            INNER JOIN
-                                players p
-                                    ON
-                                        p.user_id=u.id
-                            LEFT JOIN
-                                schools s
-                                    ON
-                                        p.school_id=s.id
-                            LEFT JOIN
-                                sports sp
-                                    ON
-                                        sp.id = p.sport_id
-                            LEFT JOIN
-                                player_positions as playPos
-                                    ON
-                                        playPos.player_id=p.id
-                            LEFT JOIN
-                                positions as pos
-                                    ON
-                                        pos.id=playPos.position_id
-                            WHERE u.id = :id';
+    /**
+   	 * Returns a Player, Coach, or Scout object based on account type
+   	 * @param $userId int The ID of the user.
+   	 * @return \tapeplay\server\model\User The retrieved user
+   	 */
+   	public function getPlayerUser($userId, $sportId=null)
+   	{
+   		try
+   		{
+               $this->sql = 'SELECT
+                                   u.*,
+                                   p.id AS player_id,
+                                   p.number,
+                                   p.height,
+                                   p.grade_level,
+                                   p.playing_level,
+                                   p.video_access,
+                                   p.weight,
+                                   p.coach_name,
+                                   p.graduation_month,
+                                   p.graduation_year,
+                                   s.id AS schoolId,
+                                   s.name as schoolName,
+                                   s.city as schoolCity,
+                                   s.state as schoolState,
+                                   s.division AS schoolDivision,
+                                   sp.id AS sport_id,
+                                   sp.name AS sport_name
+                               FROM
+                                   users u
+                               INNER JOIN
+                                   players p
+                                       ON
+                                           p.user_id=u.id
+                               LEFT JOIN
+                                   schools s
+                                       ON
+                                           p.school_id=s.id
+                               LEFT JOIN
+                                   sports sp
+                                       ON
+                                           sp.id = p.sport_id
+                               LEFT JOIN
+                                   player_positions as playPos
+                                       ON
+                                           playPos.player_id=p.id
+                               LEFT JOIN
+                                   positions as pos
+                                       ON
+                                           pos.id=playPos.position_id
+                               WHERE u.id = :id';
 
-			$this->prep = $this->dbh->prepare($this->sql);
-			$this->prep->bindValue(":id", $userId, \PDO::PARAM_INT);
-			$this->prep->execute();
-		}
-		catch (\PDOException $exception)
-		{
-			\TPErrorHandling::handlePDOException($exception->errorInfo);
-			return null;
-		}
+               if(isset($sportId) && $sportId != null) {
+                   $this->sql .= " AND p.sport_id=:sportId";
+               }
 
-        return Player::create($this->prep->fetch());
+   			$this->prep = $this->dbh->prepare($this->sql);
+   			$this->prep->bindValue(":id", $userId, \PDO::PARAM_INT);
 
-        /**
-         * @TODO: Need to figure out how to have multiple sports;
-         * Logic needs to go for updates.
-         */
-//        while($row = $this->prep->fetch()) {
-//            echo '<pre>';
-//            var_dump($row);
-//            echo '</pre>';
-//        }
-//
-//        exit;
-	}
+               if(isset($sportId) && $sportId != null) {
+                   $this->prep->bindValue(":sportId", $sportId, \PDO::PARAM_INT);
+               }
+
+   			$this->prep->execute();
+   		}
+   		catch (\PDOException $exception)
+   		{
+   			\TPErrorHandling::handlePDOException($exception->errorInfo);
+   			return null;
+   		}
+
+           return Player::create($this->prep->fetch());
+
+           /**
+            * @TODO: Need to figure out how to have multiple sports;
+            * Logic needs to go for updates.
+            */
+   //        while($row = $this->prep->fetch()) {
+   //            echo '<pre>';
+   //            var_dump($row);
+   //            echo '</pre>';
+   //        }
+   //
+   //        exit;
+   	}
 
     public function searchUser(SearchFilter $filter)
    	{
