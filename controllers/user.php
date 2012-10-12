@@ -489,6 +489,7 @@ if (isset($route->method))
 						Util::setHeader("user/payment/");
 						break;
 					case AccountTypeEnum::$PLAYER:
+                        $post["playingLevel"] = (isset($post["playingLevel"]) && $post["playingLevel"] != '') ? $post["playingLevel"] : 0;
 						// get player basics and add
                         $userBLL->getUser()->setNumber($post["number"]);
                         $userBLL->getUser()->setGradeLevel($post["gradeLevel"]);
@@ -535,7 +536,9 @@ if (isset($route->method))
 
                         $playerBLL = new PlayerBLL();
 
-                        if($user->getStatus() == \AccountStatusEnum::$COMPLETE) {
+                        //player must be created before video is added;
+                        //user must be reset to be new player
+                        if($user->getStatus() === 100) {
                             $playerId = $playerBLL->insert($userId);
 
                             // get player basics and add
