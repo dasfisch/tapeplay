@@ -77,8 +77,8 @@
 					</div>
 				</li>
 				<li class="input-field clear">
-					<p>
-						<img src="/media/images/icon_add-plus-sign.gif" class="vertical-center addAnother" /> Add another email address
+					<p class="addAnother">
+						<img src="/media/images/icon_add-plus-sign.gif" class="vertical-center" /> Add another email address
 					</p>
 				</li>
 				<li class="input-field clear">

@@ -214,20 +214,14 @@
 		<legend>Statistics (optional)</legend>
 		{if isset($stats) && count($stats) > 0}
             <ul class="three-column">
-                {assign var=i value=0}
                 {foreach from=$stats item=stat}
-                    {if $i % $modder == 0 || $i == 0}
-                        <!--<li>-->
-                    {/if}
                     <li>
-                    	
                     	<div class="input_custom-text input_text36 width40 right">
 							<div class="custom-input_center custom-input_partial">
 								<span class="custom-input_top"></span>
 								<input type="text" id="lastName" name="stat[{$stat->getId()}]" value="" />
 								<span class="custom-input_bottom"></span>
 							</div>
-							
 							<div class="custom-input_left custom-input_partial">
 								<span class="custom-input_top"></span>
 								<span class="custom-input_bottom"></span>
@@ -239,18 +233,16 @@
 							</div>
 							
 						</div>
-						<span class="right">{$stat->getStatName()}</span>
-                   		</li>
-                    {if ($i%$modder == $modder - 1 && $i > $modder) || $i == ($statCount - 1)}
-                        <!--</li>-->
-                    {/if}
-                    {$i = $i+1}
+						<p class="right">{$stat->getStatName()}</p>
+                    </li>
                 {/foreach}
             </ul>
         {/if}
 	</fieldset>
 	<fieldset>
 		<button value="Join" type="submit" class="button_black_large left button_round">Join</button> 
-		<span class="form-steps">Step 3 of 3</span>
+        {if $user->getStatus() != 3}
+            <span class="form-steps">Step 3 of 3</span>
+        {/if}
 	</fieldset>
 </form> 

@@ -515,7 +515,7 @@
                                     {/if}
                                     <div class="statHidden hidden">
                                         <ul class="three-column">
-                                            {foreach $player->getSport()->getStats() as $stat}
+                                            {foreach $player->getSport()->getStats() as $key=>$stat}
                                                 <li>
                                                     <p>
                                                         {$stat->getStatName()}:
@@ -525,7 +525,7 @@
                                                             <span class="custom-input_top"></span>
                                                             {assign var=inputSet value=false}
                                                             {if $player->getStats()|@count gt 0}
-                                                                {foreach from=$player->getStats() item=myStat}
+                                                                {foreach $player->getStats() as $myStat}
                                                                     {if $myStat->getId() == $stat->getId()}
                                                                         <input type="text" class="standard small" id="stat" name="stat-{$stat->getId()}"
                                                                             {if $myStat->getStatValue() != '' && $myStat->getStatValue() > 0}value="{$myStat->getStatvalue()}"{/if} />
@@ -550,6 +550,7 @@
                                                     </div>
                                                 </li>
                                             {/foreach}
+                                            POOP!
                                         </ul>
                                     </div>
                                     <div class="btn-holder">

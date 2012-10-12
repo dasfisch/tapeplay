@@ -55,60 +55,75 @@ jQuery(document).ready(function(){
      * The dropdowns do not validate. birthYear is the example of the dropdown
      * that is not validating.
      */
-   jQuery('.joinForm').validate(
-       {
-           rules: {
-               email: {
-                   email: true,
-                   required: true
-               },
-               firstName: {
-                   required: true
-               },
-               lastName: {
-                   required: true
-               },
-               password: {
-                   noDefault: true,
-                   minlength: 6,
-                   required: true
-               },
-               zipcode: {
-                   required: true,
-                   minlength: 5,
-                   maxlength: 5
-               },
-               gender: {
-                   noDefaultSel: true,
-                   required: true
-               },
-               birthYear: {
-                   noDefaultSel: true,
-                   required: true
-               },
-               theAgree: {
-                   required: true
-               }
-           },
-           errorPlacement: function() {
-               return false;
-           },
-           unhighlight: function(element, errorClass) {
-               if(jQuery(element).parentsUntil('.input-field').siblings('.error-alert').hasClass('shown')) {
-                   jQuery(element).parentsUntil('.input-field').siblings('.error-alert').removeClass('shown');
+    jQuery('.joinForm').validate(
+        {
+            rules: {
+                email: {
+                    email: true,
+                    required: true
+                },
+                firstName: {
+                    required: true
+                },
+                lastName: {
+                    required: true
+                },
+                password: {
+                    noDefault: true,
+                    minlength: 6,
+                    required: true
+                },
+                zipcode: {
+                    required: true,
+                    minlength: 5,
+                    maxlength: 5
+                },
+                gender: {
+                    noDefaultSel: true,
+                    required: true
+                },
+                birthYear: {
+                    noDefaultSel: true,
+                    required: true
+                },
+                theAgree: {
+                    required: true
+                }
+            },
+            messages: {
+                zipcode: {
+                    required: 'Enter valid 5-digit zip code.',
+                    minlength: 'Enter valid 5-digit zip code.',
+                    maxlenght: 'Enter valid 5-digit zip code.'
+                },
+                gender: {
+                    noDefaultSel: 'Enter gender',
+                    required: 'Enter gender'
+                },
+                birthYear: {
+                    noDefaultSel: 'Enter birth year.',
+                    required: 'Enter birth year.'
+                },
+            },
+            errorPlacement: function(error, element) {
+                return false;
+            },
+            unhighlight: function(element, errorClass) {
+                if(jQuery(element).parentsUntil('.input-field').siblings('.error-alert').hasClass('shown')) {
+                    jQuery(element).parentsUntil('.input-field').siblings('.error-alert').removeClass('shown');
 
-                   if(jQuery(element).parentsUntil('.input-field').siblings('.error-alert').children('ul').children('li').html() == 'A user with this email already exists!') {
-                       jQuery(element).parentsUntil('.input-field').siblings('.error-alert').children('ul').html('<li>Enter valid email address.</li><li>Example: abc@generic.com</li>');
-                   }
-               }
+                    if(jQuery(element).parentsUntil('.input-field').siblings('.error-alert').children('ul').children('li').html() == 'A user with this email already exists!') {
+                        jQuery(element).parentsUntil('.input-field').siblings('.error-alert').children('ul').html('<li>Enter valid email address.</li><li>Example: abc@generic.com</li>');
+                    }
+                }
 
-               jQuery(element).parentsUntil('.input-field').siblings('.error-alert').hide();
-           },
-           highlight: function(element, errorClass) {
-               jQuery(element).parentsUntil('.input-field').siblings('.error-alert').show();
-           }
-       }
-   );
+                jQuery(element).parentsUntil('.input-field').siblings('.error-alert').hide();
+            },
+            highlight: function(element, errorClass) {
+                jQuery(element).parentsUntil('.input-field').siblings('.error-alert').show();
+            }
+        }
+    );
 
     jQuery('.uploadForm').validate({
         rules: {

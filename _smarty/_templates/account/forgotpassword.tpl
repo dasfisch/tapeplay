@@ -3,7 +3,6 @@
 <form id="passwordReset" name="passwordReset" action="{#baseUrl#}account/forgot/" method="post">
     <ul class="form-fields">
 		<li class="input-field clear">
-			
 			<div class="input_custom-text input_text80 width600 left">
 				<div class="custom-input_center custom-input_partial">
 					<span class="custom-input_top"></span>
@@ -22,7 +21,7 @@
 				</div>
 				
 			</div>
-			<div class="error-alert">
+			<div class="error-alert{if isset($showIt) && $showIt == true} shown{/if}">
 				<ul>
 					<li>This email address is not registered.</li>
 					<li>Try another email address or <a href="#">join now</a>.</li>

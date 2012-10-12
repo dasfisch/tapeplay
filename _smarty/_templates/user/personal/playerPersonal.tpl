@@ -180,7 +180,7 @@
 				</li>
 			</ul>
 			<div class="error-alert">
-				<ul>
+				<ul class="tripleUp">
 					<li>Enter birth year.</li>
 					<li>Enter sex.</li>
 					<li>Enter valid 5-digit zip code.</li>

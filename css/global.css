@@ -2193,11 +2193,18 @@ p.nothing {
 .statistics li {
 	color:#666666;
 	font-size: 13px;
+    position: relative;
 }
 
-.statistics li span {
-	line-height:36px;
-	margin-right:5px;
+.statistics li p {
+    line-height: 17px;
+    margin-right: 5px;
+    width: 150px;
+    text-align: right;
+    word-wrap: break-word;
+    margin-bottom: 0;
+    position: absolute;
+    top: 18%;
 }
 
 #content-wrapper .search #content-left-column {
@@ -2665,4 +2672,8 @@ p.nothing {
 
 .text-holder input[type="checkbox"] {
 	visibility:hidden;
+}
+
+.addAnother {
+    cursor: pointer;
 }

@@ -151,7 +151,8 @@ if (isset($route->method))
                     $message->type = 'error';
 
 					// authentication failed
-					$smarty->assign("file", "user/login/login.tpl");
+                    $smarty->assign("file", "user/login/login.tpl");
+                    $smarty->assign("message", $message);
                     $smarty->assign("title", 'Login');
 
 					$smarty->display("home.tpl");
@@ -393,8 +394,8 @@ if (isset($route->method))
 
                         $sport = $sportBll->get($search);
 
-//                        $userBLL->getUser()->setSport($sport[0]);
-//                        $userBLL->setUser($userBLL->getUser());
+                        $userBLL->getUser()->setSport($sport[0]);
+                        $userBLL->setUser($userBLL->getUser());
 
                         $playerBLL = new PlayerBLL();
 
@@ -452,6 +453,7 @@ if (isset($route->method))
 				$smarty->assign("file", "user/upload/upload.tpl");
                 $smarty->assign('sports', $sports);
                 $smarty->assign('currentSport', $sport);
+                $smarty->assign('user', $userBLL->getUser());
                 $smarty->assign("title", 'Upload Video File on TapePlay');
 
 				$smarty->display("home.tpl");
@@ -587,12 +589,18 @@ if (isset($route->method))
 
                         $startYear = date('Y', strtotime('now'));
 
-                        $sportId = $user->getSport()->getId();
-                        if(!isset($sportId) || $sportId == 0) {
-                            $videos = $user->getMyVideos();
+                        $search = new SearchFilter();
+                        $videoBLL = new VideoBLL();
 
-                            $sportId = $videos[0]->getSportId();
-                        }
+                        $search->setSort('name', 'uploaded_date');
+                        $search->setSort('method', 'videos');
+                        $search->setSort('order', 'DESC');
+                        $search->setWhere('method', 'videos');
+                        $search->setWhere('player_id', $user->getId());
+
+                        $videos = $videoBLL->search($search);
+
+                        $sportId = $videos[0]->getSport()->getId();
 
                         $statsBll = new StatsBLL();
                         try {
@@ -674,7 +682,7 @@ if (isset($route->method))
                     try {
                         $video = $videoBLL->search($search);
 
-                        $sportId = $video[0]->getSportId();
+                        $sportId = $video[0]->getSport()->getId();
 
                         $smarty->assign('video', $video[0]);
                     } catch(Exception $e) {
@@ -685,7 +693,7 @@ if (isset($route->method))
 				$smarty->assign('gradeLevels', $controller->configuration->gradeLevels);
 				$smarty->assign('file', $template);
                 $smarty->assign('postSport', $sportId);
-                $smarty->assign('userId', $userBLL->getUser()->getId());
+                $smarty->assign('user', $userBLL->getUser());
 
 				$smarty->display("home.tpl");
 			}

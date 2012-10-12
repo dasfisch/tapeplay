@@ -201,7 +201,9 @@
 		</li>
 		<li class="input-field clear">
 			<button id="submitButton" value="Join" type="submit" class="button_black_large left button_round disabled" disabled="disabled">Continue</button>
-			<span class="form-steps">Step 2 of 3</span>
+            {if $user->getStatus() != 3}
+			    <span class="form-steps">Step 2 of 3</span>
+            {/if}
 		</li>
 	</ul>
 </form>

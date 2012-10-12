@@ -58,7 +58,7 @@
 				</div>
             </li>
 			{if isset($user) && !empty($user)}
-                <li class="save"><a href="#">Save</a></li>
+                <!--<li class="save"><a href="#">Save</a></li>-->
             {/if}
 			<li class="share">
 				<div class="popup-hover pos-1">
@@ -133,73 +133,56 @@
 			
 				<div class="clear"></div>
 			</div>
-			<h2>More videos from {$player->getFirstName()} {$player->getLastName()}</h2>
-			<ul class="more-videos">
-			
-				{if isset($videos) && count($videos) > 0}
-					{foreach from=$videos item=video}
-						{if $video->getPrivacy() == true}
-							<li class="locked">
-								<a href="#" onclick="return false;"><img src="/media/images/background_lock.png" /></a>
-								<div class="video-image">
-									<img src="{#pandaBase#}{$video->getPandaId()}{#pandaImageExt#}"/>
-								</div>
-								<ul>
-									<li class="video-title">{$video->getTitle()}</li>
-									<li class="name">{$player->getFirstName()} {$player->getLastName()}</li>
-									<li class="month-year">
-                                        {if $video->getRecordedMonth() != 0}
-                                            {$video->getRecordedMonth()} /
-                                        {/if}
-                                        {if $video->getRecordedYear() != 0}
-                                            {$video->getRecordedYear()}
-                                        {/if}
+            {if isset($videos) && count($videos) > 0}
+                <h2>More videos from {$player->getFirstName()} {$player->getLastName()}</h2>
+                    <ul class="more-videos">
+                        {foreach from=$videos item=single}
+                            {if $video->getId() != $single->getId()}
+                                {if $single->getPrivacy() == true}
+                                    <li class="locked">
+                                        <a href="#" onclick="return false;"><img src="/media/images/background_lock.png" /></a>
+                                        <div class="video-image">
+                                            <img src="{#pandaBase#}{$single->getPandaId()}{#pandaImageExt#}"/>
+                                        </div>
+                                        <ul>
+                                            <li class="video-title">{$single->getTitle()}</li>
+                                            <li class="name">{$player->getFirstName()} {$player->getLastName()}</li>
+                                            <li class="month-year">
+                                                {if $single->getRecordedMonth() != 0}
+                                                    {$single->getRecordedMonth()} /
+                                                {/if}
+                                                {if $single->getRecordedYear() != 0}
+                                                    {$single->getRecordedYear()}
+                                                {/if}
+                                            </li>
+                                        </ul>
+                                        <div class="clear"></div>
                                     </li>
-								</ul>
-								<div class="clear"></div>
-							</li>
-							<!-- BUBBLE STUFF
-							<div class="infoBubble leftCentered">
-								<div class="topLeft"></div>
-								<div class="topRight"></div>
-								<div class="middle">
-									<p>
-										<strong>We're sorry.</strong> Only account holders can view this video.
-										<br/><br/>
-										Want to view this video?
-										<br/>
-										<a>Join</a> or <a>log in</a>.
-									</p>
-								</div>
-								<div class="directionTopLeft"></div>
-								<div class="bottomRight"></div>
-								<div class="direction"></div>
-							</div> -->
-						{else}
-							<li>
-								<a href="{#baseUrl#}videos/view/{$video->getId()}/"></a>
-								<div class="video-image">
-									<img src="{#pandaBase#}{$video->getPandaId()}{#pandaImageExt#}"/>
-								</div>
-								<ul>
-									<li class="video-title">{$video->getTitle()}</li>
-									<li class="name">{$player->getFirstName()} {$player->getLastName()}</li>
-									<li class="month-year">
-                                        {if $video->getRecordedMonth() != 0}
-                                            {$video->getRecordedMonth()} /
-                                        {/if}
-                                        {if $video->getRecordedYear() != 0}
-                                            {$video->getRecordedYear()}
-                                        {/if}
+                                {else}
+                                    <li>
+                                        <a href="{#baseUrl#}videos/view/{$single->getId()}/"></a>
+                                        <div class="video-image">
+                                            <img src="{#pandaBase#}{$single->getPandaId()}{#pandaImageExt#}"/>
+                                        </div>
+                                        <ul>
+                                            <li class="video-title">{$single->getTitle()}</li>
+                                            <li class="name">{$player->getFirstName()} {$player->getLastName()}</li>
+                                            <li class="month-year">
+                                                {if $single->getRecordedMonth() != 0}
+                                                    {$single->getRecordedMonth()} /
+                                                {/if}
+                                                {if $single->getRecordedYear() != 0}
+                                                    {$single->getRecordedYear()}
+                                                {/if}
+                                            </li>
+                                        </ul>
+                                        <div class="clear"></div>
                                     </li>
-								</ul>
-								<div class="clear"></div>
-							</li>
-						{/if}
-					{/foreach}
+                                {/if}
+                            {/if}
+                        {/foreach}
+                    </ul>
 				{/if}
-		
-			</ul>
 		</div>
 		<div class="content-right left">
 			<div class="ad_300x250 right">
@@ -210,53 +193,3 @@
 	
 </div>
 <div class="clear"></div>
-
-					<!-- SAVE BUBBLE STUFF
-					<a id="save">Save</a>
-
-					<div class="infoBubble">
-						<div class="directionTopMiddle"></div>
-						<div class="topLeft"></div>
-						<div class="topRight"></div>
-						<div class="middle">
-							<p><span class="bold">Success!</span> This video has been saved to your account.</p>
-						</div>
-						<div class="bottomLeft"></div>
-						<div class="bottomRight"></div>
-					</div>
-
-					<a class="infoOpen">Save</a>
-
-					<div class="infoBubble">
-						<div class="directionTopMiddle"></div>
-						<div class="topLeft"></div>
-						<div class="topRight"></div>
-						<div class="middle">
-							<p>
-								<span class="bold">We're sorry.</span> Only account holders can save videos.</p>
-							</p>
-							<p>Please <a href="{#baseUrl#}user/signup/">join</a> or <a href="{#baseUrl#}user/login/">log
-								in</a> now.</p>
-						</div>
-						<div class="bottomLeft"></div>
-						<div class="bottomRight"></div>
-					</div> -->
-
-				<!-- REPORT BUBBLE STUFF
-				<li class="link last">
-					<a class="infoOpen">Report Video</a>
-
-					<div class="infoBubble">
-						<div class="directionTopMiddle"></div>
-						<div class="topLeft"></div>
-						<div class="topRight"></div>
-						<div class="middle">
-							<p>
-								Should we review this video to determine if it's appropriate?<Br/>
-								<a id="report">Yes</a> or <a class="close">No</a>
-							</p>
-						</div>
-						<div class="bottomLeft"></div>
-						<div class="bottomRight"></div>
-					</div>
-				</li> -->

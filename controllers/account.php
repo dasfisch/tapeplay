@@ -114,13 +114,14 @@ if (isset($route->method))
 
                             foreach($playerInfo as $player) {
                                 try {
-                                    $stats = $statsBll->getPlayerStats((int)$player->getId(), (int)$player->getSport()->getId());
+                                    $myStats = $statsBll->getPlayerStats((int)$player->getId(), (int)$player->getSport()->getId());
 
-                                    if(isset($stats) && !empty($stats)) {
-                                        $player->setStats($stats);
+                                    if(isset($myStats) && !empty($myStats)) {
+                                        $player->setStats($myStats);
                                     }
 
                                     $stats = $statsBll->getStatsBySport((int)$player->getSport()->getId());
+
                                     if(isset($stats) && !empty($stats)) {
                                         $stats[0]->count = count($stats);
                                         $stats[0]->modder = ceil(count($stats) / 3);
@@ -249,8 +250,7 @@ if (isset($route->method))
                         }
 
                     } else {
-                        $message->message = $post['email'].' is not a registered email address!';
-                        $message->type = 'error';
+                        $smarty->assign('showIt', true);
                     }
                 } catch(Exception $e) {
                     $message->message = $post['email'].' is not a valid email address!';

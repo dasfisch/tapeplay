@@ -163,6 +163,7 @@ class UserBLL extends BaseBLL
 
 					// grab saved videos
 					$videoBLL = new VideoBLL();
+
 					$this->getUser()->setMyVideos($videoBLL->getPlayerVideos((int)$this->getUser()->getId()));
 
                     $this->setUser($this->getUser());
