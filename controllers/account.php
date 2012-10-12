@@ -91,20 +91,8 @@ if (isset($route->method))
                     case AccountTypeEnum::$PLAYER:
                         $template = "account/welcome/playerWelcome.tpl";
 
-                        $search = new SearchFilter();
-
-                        $search->setWhere('method', 'videos');
-                        $search->setWhere('player_id', (int)$user->getId());
-
-                        $search->setSort('method', 'videos');
-                        $search->setSort('name', 'uploaded_date');
-                        $search->setSort('order', 'DESC');
 
                         try {
-                            $videos = $videoBll->search($search);
-
-                            $privacy = $videos[0]->getPrivacy();
-
                             $playerBLL = new PlayerBLL();
 
                             $playerInfo = $playerBLL->getPlayersByUserId($userBLL->getUser()->getUserId());
@@ -113,6 +101,8 @@ if (isset($route->method))
                             $statsBll = new StatsBLL();
 
                             foreach($playerInfo as $player) {
+                                $myVideos[] = $player->getId();
+
                                 try {
                                     $myStats = $statsBll->getPlayerStats((int)$player->getId(), (int)$player->getSport()->getId());
 
@@ -148,7 +138,20 @@ if (isset($route->method))
                                 }
                             }
 
+                            $search = new SearchFilter();
+
+                            $search->setWhere('method', 'videos');
+                            $search->setWhere('player_id', $myVideos);
+
+                            $search->setSort('method', 'videos');
+                            $search->setSort('name', 'uploaded_date');
+                            $search->setSort('order', 'DESC');
+
                             $smarty->assign('playerInfo', $playerInfo);
+
+                            $videos = $videoBll->search($search);
+
+                            $privacy = $videos[0]->getPrivacy();
                         } catch(Exception $e) {
                             $videos = null;
                         }

@@ -372,7 +372,36 @@ if (isset($route->method))
                 $video->setSportId($post['sport_id']);
 
 				$videoBLL = new VideoBLL();
-				$video = $videoBLL->insert($video, (int)$userBLL->getUser()->getId());
+
+                $playerBLL = new PlayerBLL();
+
+                if($user->getStatus() == \AccountStatusEnum::$COMPLETE) {
+                    try {
+                        $myPlayerInfo = $playerBLL->getPlayersByUserId($userBLL->getUser()->getUserId());
+
+                        if(isset($myPlayerInfo)) {
+                            $sports = array();
+
+                            foreach($myPlayerInfo as $player) {
+                                $sports[] = $player->getSport()->getId();
+                            }
+
+                            if(!in_array($post['sport_id'], $sports)) {
+                                $playerId = $playerBLL->insert($userId);
+
+                                $userBLL->getUser()->setId($playerId);
+                                $userBLL->setUser($userBLL->getUser());
+                            }
+                        }
+                    } catch(Exception $e) {
+                    }
+                }
+
+                try {
+				    $video = $videoBLL->insert($video, (int)$userBLL->getUser()->getId());
+                } catch(Exception $e) {
+
+                }
 
 				if ($video->getId() > 0)
 				{
@@ -396,27 +425,8 @@ if (isset($route->method))
 
                         $userBLL->getUser()->setSport($sport[0]);
                         $userBLL->setUser($userBLL->getUser());
-
-                        $playerBLL = new PlayerBLL();
-
-                        $myPlayerInfo = $playerBLL->getPlayersByUserId($userBLL->getUser()->getUserId());
                     } catch(Exception $e) {
 
-                    }
-
-                    /**
-                     * @TODO: if user video uploads, check to see what sport they have attached to their account;
-                     * if the sport doesn't match the current posted sport, force their account to step 3, and make them
-                     * create a new player.
-                     *
-                     * For now, disallow multiple sports
-                     */
-                    $sports = array();
-
-                    if(isset($myPlayerInfo)) {
-                        foreach($myPlayerInfo as $player) {
-                            $sports[] = $player->getSport()->getId();
-                        }
                     }
 
                     $_SESSION['postSport'] = $post['sport_id'];
@@ -489,7 +499,6 @@ if (isset($route->method))
 						Util::setHeader("user/payment/");
 						break;
 					case AccountTypeEnum::$PLAYER:
-                        $post["playingLevel"] = (isset($post["playingLevel"]) && $post["playingLevel"] != '') ? $post["playingLevel"] : 0;
 						// get player basics and add
                         $userBLL->getUser()->setNumber($post["number"]);
                         $userBLL->getUser()->setGradeLevel($post["gradeLevel"]);
@@ -536,32 +545,10 @@ if (isset($route->method))
 
                         $playerBLL = new PlayerBLL();
 
-                        //player must be created before video is added;
-                        //user must be reset to be new player
-                        if($user->getStatus() === 100) {
-                            $playerId = $playerBLL->insert($userId);
-
-                            // get player basics and add
-                            $player = new Player();
-
-                            $player->setId($playerId);
-                            $player->setNumber($post["number"]);
-                            $player->setGradeLevel($post["gradeLevel"]);
-                            $player->setHeight($post['height']);
-                            $player->setWeight($post["weight"]);
-                            $player->setCoachName($post["headCoachName"]);
-                            $player->setGraduationMonth($post["graduationMonth"]);
-                            $player->setGraduationYear($post["graduationYear"]);
-                            $player->setPlayingLevel($post["playingLevel"]);
-
-                            $userBLL->setUser($player);
-                        } else {
-                            // update status to most recently completed step
-                            $userBLL->updateStatus(\AccountStatusEnum::$COMPLETE);
-                        }
-
                         if ($playerBLL->update($userBLL->getUser()))
                         {
+                            // update status to most recently completed step
+                            $userBLL->updateStatus(\AccountStatusEnum::$COMPLETE);
 
                             // INsert player stats if they exist
                             if(isset($post['stat'])) {
@@ -582,16 +569,16 @@ if (isset($route->method))
                                 }
                             }
 
-                            // this is the last step in the player signup process.  send to welcome page
+							// this is the last step in the player signup process.  send to welcome page
                             $_SESSION['message']['message'] = 'Your profile was updated!';
                             $_SESSION['message']['type'] = 'success';
 
                             $userBLL->setUser($userBLL->getUser());
 
-                            Util::setHeader("account/welcome/");
+							Util::setHeader("account/welcome/");
 
                             exit;
-                        }
+						}
 
 						break;
 				}

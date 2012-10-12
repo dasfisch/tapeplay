@@ -233,7 +233,7 @@ class PlayerDAO extends BaseDOA
    			                LEFT JOIN positions pos ON pos.id=ppos.position_id
    			                JOIN sports sp ON sp.id = p.sport_id
    			                WHERE p.user_id=:userId
-   			                GROUP BY s.id";
+   			                GROUP BY sp.id";
 
    			$this->prep = $this->dbh->prepare($this->sql);
    			$this->prep->bindValue(":userId", (int)$userId, \PDO::PARAM_INT);
@@ -293,7 +293,7 @@ class PlayerDAO extends BaseDOA
    			                LEFT JOIN positions pos ON pos.id=ppos.position_id
    			                JOIN sports sp ON sp.id = p.sport_id
    			                WHERE p.id=:userId".$extra."
-   			                GROUP BY s.id";
+   			                GROUP BY sp.id";
 
    			$this->prep = $this->dbh->prepare($this->sql);
 

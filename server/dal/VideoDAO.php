@@ -63,7 +63,15 @@ class VideoDAO extends BaseDOA
                             FROM
                                 videos
                             WHERE
-                                player_id = :player_id
+                                player_id IN (
+                                                SELECT id FROM players where user_id IN(
+                                                    SELECT
+                                                            user_id
+                                                        FROM
+                                                            players
+                                                        WHERE
+                                                            id=:player_id)
+                                            )
                             ORDER BY
                                 uploaded_date";
 
