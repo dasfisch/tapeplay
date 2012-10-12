@@ -8,7 +8,7 @@
     <input type="hidden" name="hash" id="hash" value="{$hash}" />
     <div id="videoInfo">
         <p id="status">
-            Video Status: <span class="success italic">Upload complete!</span>
+            Video Status: <span class="success italic">Encoding...</span>
         </p>
         <img src="{#pandaBase#}{$video->getPandaId()}{#pandaImageExt#}" class="resultImage" />
         <div class="info">
