@@ -42,12 +42,12 @@
                     </div>
                     <input type="file" class="uploader" onchange="this.form.fakeupload.value = this.value;" />
 
-                    <input type="hidden" class="uploader" onchange="this.form.fakeupload.value = this.value;" id="returned_video_id" name="panda_video_id" value="asdasd"/>
+                    <input type="hidden" class="uploader" onchange="this.form.fakeupload.value = this.value;" id="returned_video_id" name="panda_video_id"/>
                     <input type="hidden" id="upload_filename" class="panda_upload_filename" disabled="disabled"/>
                 </div>
                 <script type="text/javascript">
 
-					/**$(document).ready(function() {
+					$(document).ready(function() {
 						$('#cancelUpload a').click(function() {
 						    // cancel the upload
 						    widget.abort();
@@ -103,7 +103,7 @@
                         widget: widget,
                         allowed_extensions: ['aac', 'avi', '3gp', 'flv', 'mov', 'mp3', 'mp4', 'mpeg', 'ogg', 'wav', 'webm', 'wma', 'wmv'],
                         file_size_limit: '250MB'
-                    });*/
+                    });
                 </script>
             </div>
 			<div class="error-alert">
@@ -200,7 +200,7 @@
 			</ul>
 		</li>
 		<li class="input-field clear">
-			<button id="submitButton" value="Join" type="submit" class="button_black_large left button_round">Continue</button>
+			<button id="submitButton" value="Join" type="submit" class="button_black_large left button_round disabled" disabled="disabled">Continue</button>
             {if $user->getStatus() != 3}
 			    <span class="form-steps">Step 2 of 3</span>
             {/if}
