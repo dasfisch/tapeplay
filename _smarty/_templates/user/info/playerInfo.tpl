@@ -8,7 +8,7 @@
     <input type="hidden" name="hash" id="hash" value="{$hash}" />
     <div id="videoInfo">
         <p id="status">
-            Video Status: <span class="success italic">Encoding...</span>
+            Video Status: <span class="success italic">Upload complete!</span>
         </p>
         <img src="{#pandaBase#}{$video->getPandaId()}{#pandaImageExt#}" class="resultImage" />
         <div class="info">
@@ -141,7 +141,7 @@
 				<div class="input_custom-text input_text80 width600 left">
 					<div class="custom-input_center custom-input_partial">
 						<span class="custom-input_top"></span>
-						<input type="text" value="School Name" id="schoolSearchInput" name="schoolSearchInput" value="School Name" />
+						<input type="text" value="School Name" class="schoolSearchInput" name="schoolSearchInput" value="School Name" />
                         <input type="hidden" class="passer" name="schoolId" value="" />
 						<span class="custom-input_bottom"></span>
 					</div>

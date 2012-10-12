@@ -498,6 +498,7 @@ if (isset($route->method))
                         $userBLL->getUser()->setGraduationMonth($post["graduationMonth"]);
                         $userBLL->getUser()->setGraduationYear($post["graduationYear"]);
 						$userBLL->getUser()->setPlayingLevel($post["playingLevel"]);
+
                         if(isset($post['schoolId']) && (int)$post["schoolId"] > 0) {
                             $userBLL->getUser()->getSchool()->setId((int)$post["schoolId"]);
                         }
@@ -534,10 +535,30 @@ if (isset($route->method))
 
                         $playerBLL = new PlayerBLL();
 
-                        if ($playerBLL->update($userBLL->getUser()))
-                        {
+                        if($user->getStatus() == \AccountStatusEnum::$COMPLETE) {
+                            $playerId = $playerBLL->insert($userId);
+
+                            // get player basics and add
+                            $player = new Player();
+
+                            $player->setId($playerId);
+                            $player->setNumber($post["number"]);
+                            $player->setGradeLevel($post["gradeLevel"]);
+                            $player->setHeight($post['height']);
+                            $player->setWeight($post["weight"]);
+                            $player->setCoachName($post["headCoachName"]);
+                            $player->setGraduationMonth($post["graduationMonth"]);
+                            $player->setGraduationYear($post["graduationYear"]);
+                            $player->setPlayingLevel($post["playingLevel"]);
+
+                            $userBLL->setUser($player);
+                        } else {
                             // update status to most recently completed step
                             $userBLL->updateStatus(\AccountStatusEnum::$COMPLETE);
+                        }
+
+                        if ($playerBLL->update($userBLL->getUser()))
+                        {
 
                             // INsert player stats if they exist
                             if(isset($post['stat'])) {
@@ -558,16 +579,16 @@ if (isset($route->method))
                                 }
                             }
 
-							// this is the last step in the player signup process.  send to welcome page
+                            // this is the last step in the player signup process.  send to welcome page
                             $_SESSION['message']['message'] = 'Your profile was updated!';
                             $_SESSION['message']['type'] = 'success';
 
                             $userBLL->setUser($userBLL->getUser());
 
-							Util::setHeader("account/welcome/");
+                            Util::setHeader("account/welcome/");
 
                             exit;
-						}
+                        }
 
 						break;
 				}
