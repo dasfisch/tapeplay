@@ -128,8 +128,7 @@ class StatsDAO extends BaseDOA
                                  stats.stat_category_id AS stat_category_id,
                                  stat_val.id AS validation_id,
                                  stat_val.name AS validation_name,
-                                 stat_val.regex AS validation_regex,
-                                 sports.*, ps.value
+                                 stat_val.regex AS validation_regex
                            FROM
                                stats stats
                            LEFT JOIN
@@ -137,28 +136,21 @@ class StatsDAO extends BaseDOA
                                    ON
                                        ps.stat_id=stats.id
                            JOIN
-                               sports sports
-                                   ON
-                                       sports.id=stats.sport_id
-                           JOIN
                                stat_validations stat_val
                                    ON
                                        stat_val.id=stats.stat_validation_id
                            WHERE
                                ps.player_id=:id
                            AND
-                               stats.id=:stat_id';
+                               stat_id=:statId';
 
            $this->prep = $this->dbh->prepare($this->sql);
-           $this->prep->bindValue(":id", $playerId, \PDO::PARAM_INT);
-           $this->prep->bindValue(":stat_id", $statId, \PDO::PARAM_INT);
+
+           $this->prep->bindValue(":id", (int)$playerId, \PDO::PARAM_INT);
+           $this->prep->bindValue(":statId", (int)$statId, \PDO::PARAM_INT);
            $this->prep->execute();
 
-           while($value = $this->prep->fetch()) {
-               $stats[] = Stat::create($value);
-           }
-
-           return $stats;
+           return Stat::create($this->prep->fetch());
        }
        catch (\PDOException $exception)
        {

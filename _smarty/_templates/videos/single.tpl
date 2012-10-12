@@ -14,26 +14,30 @@
 	<!--<a href="{#baseUrl#}videos/search/{if $goBack ==1}?back=1{/if}" class="return">Back to search results</a>-->
 	<div class="clear"></div>
 	<div class="video-player">
-		<video id="videoPlayer" width="890" height="455">
-            <source src="{$videoDisplayInfo->getMp4Source()}"
-                    type="video/mp4"/>
-            <source src="{$videoDisplayInfo->getWebmSource()}"
-                    type="video/webm"/>
-        </video>
-        <script type='text/javascript'>
-            jwplayer('videoPlayer').setup({
-                modes:[
-                    { type:"html5" },
-                    { type:"flash", src:"/media/playback/player.swf" },
-                    { type:"download" }
-                ],
-                skin:"/media/playback/skins/normal/tapeplayer.zip",
-                autostart:false,
-                dock:false,
-                "controlbar.position":"over",
-				"controlbar.idlehide": true
-            });
-        </script>
+        {if isset($videoDisplayInfo) && !empty($videoDisplayInfo)}
+            <video id="videoPlayer" width="890" height="455">
+                <source src="{$videoDisplayInfo->getMp4Source()}"
+                        type="video/mp4"/>
+                <source src="{$videoDisplayInfo->getWebmSource()}"
+                        type="video/webm"/>
+            </video>
+            <script type='text/javascript'>
+                jwplayer('videoPlayer').setup({
+                    modes:[
+                        { type:"html5" },
+                        { type:"flash", src:"/media/playback/player.swf" },
+                        { type:"download" }
+                    ],
+                    skin:"/media/playback/skins/normal/tapeplayer.zip",
+                    autostart:false,
+                    dock:false,
+                    "controlbar.position":"over",
+                    "controlbar.idlehide": true
+                });
+            </script>
+        {else}
+            <center>We're sorry! The video you requested is not currently available!</center>
+        {/if}
 	</div>
 	<div class="video-data">
 		<ul>

@@ -73,7 +73,16 @@
                 $search->setWhere('method', $route->class);
 
                 $video = $videoBll->search($search);
-                $player = $video[0]->getPlayer();
+
+                //$player = $video[0]->getPlayer();
+                $playerSearch = new SearchFilter();
+
+                $playerSearch->setWhere('id', (int)$get['id']);
+                $playerSearch->setWhere('method', $route->class);
+
+                $player = $playerBll->getPlayersByPlayerId($video[0]->getPlayer()->getId(), $video[0]->getSportId());
+
+                $video[0]->setPlayer($player);
 
                 $positionBll = new PositionBLL();
 

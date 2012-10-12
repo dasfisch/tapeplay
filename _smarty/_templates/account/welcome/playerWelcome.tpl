@@ -190,46 +190,48 @@
 							<div class="text-holder">
 								<strong class="title">Birth Year / Sex / Zip Code</strong>
 								<div class="category">{$user->getBirthYear()} / {$user->getGender()} / {$user->getZipcode()}</div>
-                                <div class="accountInfo hidden">
-                                    <fieldset>
-                                           {html_select_date
-                                               start_year=$thirteenBelow
-                                               display_days=false
-                                               display_months=false
-                                               end_year="-50"
-                                               prefix='_birth'
-                                               all_extra='class="select-5" id="_birthYear"'
-                                               reverse_years=true
-                                               time=$selected
-                                           }
-                                    </fieldset>
-                                </div>
-                                <div class="accountInfo hidden">
-                                    <fieldset>
-                                        <select class="select-6" name="_gender" id="_gender">
-                                           <option value="M"{if $user->getGender() == 'M'} selected{/if}>Male</option>
-                                           <option value="F"{if $user->getGender() == 'F'} selected{/if}>Female</option>
-                                        </select>
-                                    </fieldset>
-                                </div>
-                                <div class="accountInfo hidden">
-                                    <div class="input_custom-text input_text80 width450 left">
-                                        <div class="custom-input_center custom-input_partial">
-                                            <span class="custom-input_top"></span>
-                                            <input type="password" class="standard" id="_zipcode" name="zipcode" value="{$user->getZipcode()}" />
-                                            <span class="custom-input_bottom"></span>
-                                        </div>
-                                        <div class="custom-input_left custom-input_partial">
-                                            <span class="custom-input_top"></span>
-                                            <span class="custom-input_bottom"></span>
-                                        </div>
-                                        <div class="custom-input_right custom-input_partial">
-                                            <span class="custom-input_top"></span>
-                                            <span class="custom-input_bottom"></span>
+                                <div class="two-column accountInfo hidden">
+                                    <div>
+                                        <fieldset>
+                                            <legend>Birth Year</legend>
+                                                {html_select_date
+                                                start_year=$thirteenBelow
+                                                display_days=false
+                                                display_months=false
+                                                end_year="-50"
+                                                prefix='_birth'
+                                                all_extra='class="select-2" id="_birthYear"'
+                                                reverse_years=true
+                                                time=$selected
+                                            }
+                                        </fieldset>
+                                        <fieldset>
+                                            <legend>Gender</legend>
+                                            <select class="select-2" name="_gender" id="_gender">
+                                               <option value="M"{if $user->getGender() == 'M'} selected{/if}>Male</option>
+                                               <option value="F"{if $user->getGender() == 'F'} selected{/if}>Female</option>
+                                            </select>
+                                        </fieldset>
+                                    </div>
+                                    <div>
+                                        <legend>Zip Code</legend>
+                                        <div class="input_custom-text input_text36 width40">
+                                            <div class="custom-input_center custom-input_partial">
+                                                <span class="custom-input_top"></span>
+                                                <input type="text" class="standard" id="_zipcode" name="zipcode" value="{$user->getZipcode()}" />
+                                                <span class="custom-input_bottom"></span>
+                                            </div>
+                                            <div class="custom-input_left custom-input_partial">
+                                                <span class="custom-input_top"></span>
+                                                <span class="custom-input_bottom"></span>
+                                            </div>
+                                            <div class="custom-input_right custom-input_partial">
+                                                <span class="custom-input_top"></span>
+                                                <span class="custom-input_bottom"></span>
+                                            </div>
                                         </div>
                                     </div>
                	                </div>
-
 								<div class="btn-holder">
 									<a class="btn edit userEdit"><span>Edit</span></a><br />
 								</div>
@@ -281,64 +283,71 @@
                                             Professional
                                         {/if}
                                         / {$player->getGradeLevel()} / #{$player->getNumber()}</div>
-                                    <div class="accountInfo hidden">
-                                        <fieldset>
-                                            <select class="select-6" name="gradeLevel" id="_gradeLevel">
-                                                <option>Select a Grade</option>
-                                                {section name=i start=9 loop=17 step=1}
-                                                    <option value="{$smarty.section.i.index}"
-                                                        {if $player->getGradeLevel() == $smarty.section.i.index}selected {/if}
-                                                            >{$gradeLevels[$smarty.section.i.index]}</option>
-                                                 {/section}
-                                            </select>
-                                        </fieldset>
-                                    </div>
-                                    <div class="accountInfo hidden">
-                                        <ul class="font15">
-                                            <li>
-                                                <label for="high-school" class="singleCheck">
-                                                    <span class="checkbox"><span class="check"></span></span>
-                                                    <span class="display">High School</span>
-                                                </label>
-                                                <input type="checkbox" class="single" name="playingLevel" id="_playingLevel" value="0"
-                                                    {if $player->getPlayingLevel() == 0}checked{/if}
+                                    <div class="two-column accountInfo hidden">
+                                        <div>
+                                            <legen>Playing Level</legen>
+                                            <fieldset>
+                                                <ul class="font15">
+                                                    <li>
+                                                        <label for="high-school" class="singleCheck">
+                                                            <span class="checkbox"><span class="check"></span></span>
+                                                            <span class="display">High School</span>
+                                                        </label>
+                                                        <input type="checkbox" class="single" name="playingLevel" id="_playingLevel" value="0"
+                                                            {if $player->getPlayingLevel() == 0}checked{/if}
+                                                                />
+                                                    </li>
+                                                    <li>
+                                                        <label for="college" class="singleCheck">
+                                                            <span class="checkbox"><span class="check"></span></span>
+                                                            <span class="display">College</span>
+                                                        </label>
+                                                        <input type="checkbox" class="single" name="playingLevel" id="_playingLevel" value="1"
+                                                            {if $player->getPlayingLevel() == 1}checked{/if}
                                                         />
-                                            </li>
-                                            <li>
-                                                <label for="college" class="singleCheck">
-                                                    <span class="checkbox"><span class="check"></span></span>
-                                                    <span class="display">College</span>
-                                                </label>
-                                                <input type="checkbox" class="single" name="playingLevel" id="_playingLevel" value="1"
-                                                    {if $player->getPlayingLevel() == 1}checked{/if}
-                                                />
-                                            </li>
-                                            <li>
-                                                <label for="professional" class="singleCheck">
-                                                    <span class="checkbox"><span class="check"></span></span>
-                                                    <span class="display">Professional</span>
-                                                </label>
-                                                <input type="checkbox" class="single" name="playingLevel" id="_playingLevel" value="2"
-                                                    {if $player->getPlayingLevel() == 2}checked{/if}
-                                                />
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div class="accountInfo hidden">
-                                        <div class="input_custom-text input_text80 width450 left">
-                                            <div class="custom-input_center custom-input_partial">
-                                                <span class="custom-input_top"></span>
-                                                <input type="text" class="standard" id="_number" name="number" value="{$player->getNumber()}" />
-                                                <span class="custom-input_bottom"></span>
-                                            </div>
-                                            <div class="custom-input_left custom-input_partial">
-                                                <span class="custom-input_top"></span>
-                                                <span class="custom-input_bottom"></span>
-                                            </div>
-                                            <div class="custom-input_right custom-input_partial">
-                                                <span class="custom-input_top"></span>
-                                                <span class="custom-input_bottom"></span>
-                                            </div>
+                                                    </li>
+                                                    <li>
+                                                        <label for="professional" class="singleCheck">
+                                                            <span class="checkbox"><span class="check"></span></span>
+                                                            <span class="display">Professional</span>
+                                                        </label>
+                                                        <input type="checkbox" class="single" name="playingLevel" id="_playingLevel" value="2"
+                                                            {if $player->getPlayingLevel() == 2}checked{/if}
+                                                        />
+                                                    </li>
+                                                </ul>
+                                            </fieldset>
+                                        </div>
+                                        <div>
+                                            <fieldset>
+                                                <legend>Grade Level</legend>
+                                                <select class="select-2" name="gradeLevel" id="_gradeLevel">
+                                                    <option>Select a Grade</option>
+                                                    {section name=i start=9 loop=17 step=1}
+                                                        <option value="{$smarty.section.i.index}"
+                                                            {if $player->getGradeLevel() == $smarty.section.i.index}selected {/if}
+                                                                >{$gradeLevels[$smarty.section.i.index]}</option>
+                                                     {/section}
+                                                </select>
+                                            </fieldset>
+                                            <fieldset>
+                                                <legend>Number</legend>
+                                                <div class="input_custom-text input_text36 width40 left">
+                                                    <div class="custom-input_center custom-input_partial">
+                                                        <span class="custom-input_top"></span>
+                                                        <input type="text" class="standard" id="_number" name="number" value="{$player->getNumber()}" />
+                                                        <span class="custom-input_bottom"></span>
+                                                    </div>
+                                                    <div class="custom-input_left custom-input_partial">
+                                                        <span class="custom-input_top"></span>
+                                                        <span class="custom-input_bottom"></span>
+                                                    </div>
+                                                    <div class="custom-input_right custom-input_partial">
+                                                        <span class="custom-input_top"></span>
+                                                        <span class="custom-input_bottom"></span>
+                                                    </div>
+                                                </div>
+                                            </fieldset>
                                         </div>
                                     </div>
                                     <div class="btn-holder">
@@ -360,53 +369,60 @@
                                         {/if}
                                     {/foreach}
                                     {$player->getHeight()} / {$player->getWeight()} lbs</div>
-                                    <div class="accountInfo hidden">
-                                        <ul class="font15">
-                                            {foreach from=$player->getSport()->getPositions() key=key item=position}
-                                                <li>
-                                                    <label
-                                                        {foreach from=$player->getPosition() key=key item=myPosition}
-                                                            {if $position->getId() == $myPosition->getId()}class="on"{/if}
-                                                        {/foreach}>
-                                                        <span class="checkbox"><span class="check"></span></span>
-                                                        <span class="display">{$position->getName()}</span>
-                                                    </label>
-                                                    <input type="checkbox" name="playingLevel" id="_position" value="{$position->getId()}"
-                                                        {foreach from=$player->getPosition() key=key item=myPosition}
-                                                            {if $position->getId() == $myPosition->getId()}checked {/if}
-                                                        {/foreach}
-                                                            />
-                                                </li>
-                                            {/foreach}
-                                        </ul>
-                                    </div>
-                                    <div class="accountInfo hidden">
-                                        <fieldset>
-                                            <select class="select-5" class="height" id="_height" name="height">
-                                                <option class="default">Select</option>
-                                                {section name=i start=48 loop=96 step=1}
-                                                    <option value="{$smarty.section.i.index}"{if $player->getHeight() == $smarty.section.i.index} selected="selected"{/if}>
-                                                        {floor($smarty.section.i.index/12)}' {$smarty.section.i.index % 12}"
-                                                    </option>
-                                                {/section}
-                                            </select>
-                                        </fieldset>
-                                    </div>
-                                    <div class="accountInfo hidden">
-                                        <div class="input_custom-text input_text80 width185 left">
-                                            <div class="custom-input_center custom-input_partial">
-                                                <span class="custom-input_top"></span>
-                                                <input type="text" class="standard" id="_weight" name="weight" value="{$player->getWeight()}" />
-                                                <span class="custom-input_bottom"></span>
-                                            </div>
-                                            <div class="custom-input_left custom-input_partial">
-                                                <span class="custom-input_top"></span>
-                                                <span class="custom-input_bottom"></span>
-                                            </div>
-                                            <div class="custom-input_right custom-input_partial">
-                                                <span class="custom-input_top"></span>
-                                                <span class="custom-input_bottom"></span>
-                                            </div>
+                                    <div class="two-column accountInfo hidden">
+                                        <div>
+                                            <fieldset>
+                                                <legend>Positions</legend>
+                                                <ul class="font15">
+                                                    {foreach from=$player->getSport()->getPositions() key=key item=position}
+                                                        <li>
+                                                            <label
+                                                                {foreach from=$player->getPosition() key=key item=myPosition}
+                                                                    {if $position->getId() == $myPosition->getId()}class="on"{/if}
+                                                                {/foreach}>
+                                                                <span class="checkbox"><span class="check"></span></span>
+                                                                <span class="display">{$position->getName()}</span>
+                                                            </label>
+                                                            <input type="checkbox" name="playingLevel" id="_position" value="{$position->getId()}"
+                                                                {foreach from=$player->getPosition() key=key item=myPosition}
+                                                                    {if $position->getId() == $myPosition->getId()}checked {/if}
+                                                                {/foreach}
+                                                                    />
+                                                        </li>
+                                                    {/foreach}
+                                                </ul>
+                                            </fieldset>
+                                        </div>
+                                        <div>
+                                            <fieldset>
+                                                <legend>Height</legend>
+                                                <select class="select-2" class="height" id="_height" name="height">
+                                                    <option class="default">Select</option>
+                                                    {section name=i start=48 loop=96 step=1}
+                                                        <option value="{$smarty.section.i.index}"{if $player->getHeight() == $smarty.section.i.index} selected="selected"{/if}>
+                                                            {floor($smarty.section.i.index/12)}' {$smarty.section.i.index % 12}"
+                                                        </option>
+                                                    {/section}
+                                                </select>
+                                            </fieldset>
+                                            <fieldset>
+                                                <legend>Weight</legend>
+                                                <div class="input_custom-text input_text36 width40">
+                                                    <div class="custom-input_center custom-input_partial">
+                                                        <span class="custom-input_top"></span>
+                                                        <input type="text" class="standard" id="_weight" name="weight" value="{$player->getWeight()}" />
+                                                        <span class="custom-input_bottom"></span>
+                                                    </div>
+                                                    <div class="custom-input_left custom-input_partial">
+                                                        <span class="custom-input_top"></span>
+                                                        <span class="custom-input_bottom"></span>
+                                                    </div>
+                                                    <div class="custom-input_right custom-input_partial">
+                                                        <span class="custom-input_top"></span>
+                                                        <span class="custom-input_bottom"></span>
+                                                    </div>
+                                                </div>
+                                            </fieldset>
                                         </div>
                                     </div>
                                     <div class="btn-holder">
@@ -448,21 +464,26 @@
                                     <strong class="title">Head Coach&rsquo;s Name</strong>
                                     <div class="category">{$player->getCoachName()}</div>
                                     <div class="accountInfo hidden">
-                                        <div class="input_custom-text input_text80 left">
-                                            <div class="custom-input_center custom-input_partial">
-                                                <span class="custom-input_top"></span>
-                                                <input type="text" class="standard small" id="_coachName" name="coachName" value="{$player->getCoachName()}" />
-                                                <input type="hidden" class="passer" value="" />
-                                                <span class="custom-input_bottom"></span>
-                                            </div>
-                                            <div class="custom-input_left custom-input_partial">
-                                                <span class="custom-input_top"></span>
-                                                <span class="custom-input_bottom"></span>
-                                            </div>
-                                            <div class="custom-input_right custom-input_partial">
-                                                <span class="custom-input_top"></span>
-                                                <span class="custom-input_bottom"></span>
-                                            </div>
+                                        <div>
+                                            <fieldset>
+                                                <legend>Coach's Name</legend>
+                                                <div class="input_custom-text input_text80 left">
+                                                    <div class="custom-input_center custom-input_partial">
+                                                        <span class="custom-input_top"></span>
+                                                        <input type="text" class="standard small" id="_coachName" name="coachName" value="{$player->getCoachName()}" />
+                                                        <input type="hidden" class="passer" value="" />
+                                                        <span class="custom-input_bottom"></span>
+                                                    </div>
+                                                    <div class="custom-input_left custom-input_partial">
+                                                        <span class="custom-input_top"></span>
+                                                        <span class="custom-input_bottom"></span>
+                                                    </div>
+                                                    <div class="custom-input_right custom-input_partial">
+                                                        <span class="custom-input_top"></span>
+                                                        <span class="custom-input_bottom"></span>
+                                                    </div>
+                                                </div>
+                                            </fieldset>
                                         </div>
                                     </div>
                                     <div class="btn-holder">
@@ -479,11 +500,11 @@
                                     {if $player->getStats()|@count gt 0}
                                         <ul class="three-column">
                                             {foreach from=$player->getStats() item=stat}
-                                                {if {$stat->getStatValue()} !== ''}
+                                                {if $stat->getStatValue() !== '' && $stat->getStatValue() > 0}
                                                     <li>
                                                         <div class="stat">
                                                             <p>
-                                                                {$stat->getStatName()}:
+                                                                <span class="statName">{$stat->getStatName()}:</span>
                                                                 <span class="bold">{$stat->getStatValue()}</span>
                                                             </p>
                                                         </div>
@@ -507,7 +528,7 @@
                                                                 {foreach from=$player->getStats() item=myStat}
                                                                     {if $myStat->getId() == $stat->getId()}
                                                                         <input type="text" class="standard small" id="stat" name="stat-{$stat->getId()}"
-                                                                            value="{$myStat->getStatvalue()}" />
+                                                                            {if $myStat->getStatValue() != '' && $myStat->getStatValue() > 0}value="{$myStat->getStatvalue()}"{/if} />
                                                                         {$inputSet=true}
                                                                         {continue}
                                                                     {/if}

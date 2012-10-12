@@ -81,4 +81,8 @@ class PlayerBLL extends BaseBLL
     public function setMyVideoPrivacy($playerId, $privacy) {
         return $this->dal->setMyVideoPrivacy($playerId, $privacy);
     }
+
+    public function getPlayerUserByPlayerAndSportId($playerId, $sportId) {
+        return $this->dal->getPlayersByPlayerAndSportId($playerId, $sportId);
+    }
 }
