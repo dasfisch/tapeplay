@@ -21,7 +21,7 @@
 					<li class="video-title">{$video->getTitle()}</li>
 					<li class="month-year">
                         {if $video->getRecordedMonth() != 0}
-                            {$video->getRecordedMonth()} /
+                            {$video->getRecordedMonthName()},
                         {/if}
                         {if $video->getRecordedYear() != 0}
                             {$video->getRecordedYear()}

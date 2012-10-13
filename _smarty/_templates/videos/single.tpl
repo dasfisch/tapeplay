@@ -4,7 +4,7 @@
 		<li>{$video->getTitle()}</li>
 		<li>
             {if $video->getRecordedMonth() != 0}
-                {$video->getRecordedMonth()} /
+                {$video->getRecordedMonthName()},
             {/if}
             {if $video->getRecordedYear() != 0}
                 {$video->getRecordedYear()}
@@ -149,7 +149,7 @@
                                             <li class="name">{$player->getFirstName()} {$player->getLastName()}</li>
                                             <li class="month-year">
                                                 {if $single->getRecordedMonth() != 0}
-                                                    {$single->getRecordedMonth()} /
+                                                    {$single->getRecordedMonthName()},
                                                 {/if}
                                                 {if $single->getRecordedYear() != 0}
                                                     {$single->getRecordedYear()}
@@ -169,7 +169,7 @@
                                             <li class="name">{$player->getFirstName()} {$player->getLastName()}</li>
                                             <li class="month-year">
                                                 {if $single->getRecordedMonth() != 0}
-                                                    {$single->getRecordedMonth()} /
+                                                    {$single->getRecordedMonthName()},
                                                 {/if}
                                                 {if $single->getRecordedYear() != 0}
                                                     {$single->getRecordedYear()}

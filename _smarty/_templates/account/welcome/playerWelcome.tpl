@@ -20,7 +20,7 @@
                                                     <div class="category">{$video->getSport()->getSportName()}</div>
                                                     <div class="date">
                                                         {if $video->getRecordedMonth() != 0}
-                                                            {$video->getRecordedMonth()} /
+                                                            {$video->getRecordedMonthName()},
                                                         {/if}
                                                         {if $video->getRecordedYear() != 0}
                                                             {$video->getRecordedYear()}

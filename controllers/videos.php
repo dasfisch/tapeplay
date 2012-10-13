@@ -195,34 +195,14 @@
 
                         $modder = (ceil(count($stats) / 3) > 1) ? ceil(count($stats) / 3) : 2;
 
-                        /**
-                         * generate email template
-                         */
-                        $headers = 'MIME-Version: 1.0' . "\r\n";
-                        $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
-                        $headers .= "From: TapePlay Admin <digital-no-reply@tapeplay.com>\r\n";
+						$args = array("from" => $post["from"],
+									"modder" => $modder,
+									"statCount" => count($stats),
+									"stats" => $stats,
+									"video" => $video[0]);
 
-                        $subject = 'The Next Big Thing';
-
-                        $smarty->assign('from', $post['from']);
-                        $smarty->assign("modder", $modder);
-                        $smarty->assign("statCount", count($stats));
-                        $smarty->assign('stats', $stats);
-                        $smarty->assign('video', $video[0]);
-
-                        $body = $smarty->fetch('emails/video.tpl', false);
-
-                        foreach($post['email'] as $key=>$email) {
-                            if(in_array($email, $sent)){
-                                continue;
-                            }
-
-                            if(mail($email, $subject, $body, $headers)) {
-                                $sent[] = $email;
-                            } else {
-                                $failed[] = $email;
-                            }
-                        }
+						// send email with above args
+						$success = \Util::sendEmail(EmailEnum::$SHARE, array($post['email']), "The Next Big Thing", "emails/video.tpl", $args);
 
                         if(count($failed) == 0) {
                             $message = '<h3 class="success">Success! Everyone got the email!</h3>';
