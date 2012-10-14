@@ -199,7 +199,8 @@
 									"modder" => $modder,
 									"statCount" => count($stats),
 									"stats" => $stats,
-									"video" => $video[0]);
+									"video" => $video[0],
+									"gradeLevel", $controller->configuration->gradeLevels[(int)$video[0]->getPlayer()->getGradeLevel()]);
 
 						// send email with above args
 						$success = \Util::sendEmail(EmailEnum::$SHARE, array($post['email']), "The Next Big Thing", "emails/video.tpl", $args);

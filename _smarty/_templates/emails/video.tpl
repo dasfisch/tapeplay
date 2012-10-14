@@ -196,13 +196,16 @@
 																									<tr>
 																										<td mc:edit="text01" style="font-size:13px; line-height:18px;">
 																											<font face="Arial, Helvetica, sans-serif" size="2" color="#666666" style="font-size:13px; line-height:18px;">
-																												{$video->getPlayer()->getPosition()}, {$video->getPlayer()->getConvertedHeight()} <br />
-																												{if ($video->getPlayer()->getGradeLevel()) > 17}
-                                                                                                                    Professional
-                                                                                                                {else}
-                                                                                                                    {$video->getPlayer()->getOrdinalGradeLevel()} Grade
-                                                                                                                {/if}
-                                                                                                                , {$video->getPlayer()->getSchool()->getName()} <br />
+																												{foreach from=$video->getPlayer()->getPosition() key=key item=position}
+																													{if $position->getName() != 'Individual'}
+																														{$position->getName()},
+																													{/if}
+																												{/foreach}
+
+																												{$video->getPlayer()->getFriendlyHeight()}, {$video->getPlayer()->getWeight()} lbs.<br />
+																												{if $gradeLevel != "" || $video->getPlayer->getSchool()->getName() != ""}
+																													{$gradeLevel}{if $video->getPlayer->getSchool() != ""}, {$video->getPlayer->getSchool()->getName()}{/if}<br/>
+																												{/if}
                                                                                                                 {assign var=city value=$video->getPlayer()->getSchool()->getCity()}
                                                                                                                 {assign var=state value=$video->getPlayer()->getSchool()->getState()}
                                                                                                                 {assign var=coach value=$video->getPlayer()->getCoachName()}
@@ -210,7 +213,7 @@
                                                                                                                     {$video->getPlayer()->getSchool()->getCity()}, {$video->getPlayer()->getSchool()->getState()} <br />
                                                                                                                 {/if}
                                                                                                                 {if isset($coach) && !empty($coach)}
-                                                                                                                    {$video->getPlayer()->getCoachName()}
+                                                                                                                    Coach {$video->getPlayer()->getCoachName()}
                                                                                                                 {/if}
 																											</font>
 																										</td>
