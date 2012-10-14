@@ -464,10 +464,7 @@ class VideoDAO extends BaseDOA
 			return null;
 		}
 
-		$row = $this->prep->fetch();
-
-		// return the email address
-		return $row[0]["email"];
+		$this->prep->fetch(\PDO::FETCH_ASSOC);
 	}
 
     public function deleteVideo($videoId) {
