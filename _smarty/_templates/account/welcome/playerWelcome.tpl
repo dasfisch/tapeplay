@@ -502,9 +502,10 @@
                                             {foreach from=$player->getStats() item=stat}
                                                 {if $stat->getStatValue() !== '' && $stat->getStatValue() > 0}
                                                     <li>
-                                                        <div class="stat">
+                                                        <div class="stat" style="padding-bottom: 10px; text-align: left;">
                                                             <p>
-                                                                <span class="statName">{$stat->getStatName()}:</span>
+                                                                <span class="statName">{$stat->getStatName()}</span>
+																<br/>
                                                                 <span class="bold">{$stat->getStatValue()}</span>
                                                             </p>
                                                         </div>
