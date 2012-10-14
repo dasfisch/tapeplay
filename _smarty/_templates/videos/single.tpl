@@ -125,6 +125,8 @@
 							{$stat->getStatName()}: {$stat->getStatValue()}
 							{if ($i%$modder == $modder - 1 && $i > $modder) || $i == ($statCount - 1)}
 							</li>
+							{else}
+							<br/>
 							{/if}
 							{$i = $i+1}
 						{/foreach}
