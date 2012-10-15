@@ -471,13 +471,14 @@ jQuery(document).ready(function(){
 
         var statHidden = _this.parents('.btn-holder').siblings('.statHidden');
         var stats = _this.parentsUntil('li').children('.three-column').children('li');
+        var statsHolder = _this.parentsUntil('li').children('.three-column');
 
         jQuery('.stats').remove();
 
-        if(stats.first().hasClass('hidden') || (stats.length === 0 && _this.children('span').html() === 'Done')) {
+        if(stats.first().hasClass('hidden') || (stats.length === 0 && _this.children('span').html() === 'Save')) {
             var inputs = statHidden.children('.three-column').children('li').children('.input_custom-text').children('.custom-input_center').children('input');
 
-            stats.html('');
+            statsHolder.html('');
 
             jQuery(inputs).each(function(i) {
                 var key = {};
@@ -495,11 +496,9 @@ jQuery(document).ready(function(){
                     newHtml.children('.stat').children('p').children('.statName').html(displayText);
                     newHtml.children('.stat').children('p').children('.bold').html(key.value);
 
-                    statHidden.siblings('.three-column').append(newHtml);
+                    statsHolder.append(newHtml);
                 }
             });
-//            console.log(stats);
-//            return;
 
             post.hash = jQuery('#hash').val();
             post.data = keys;
@@ -796,8 +795,6 @@ jQuery(document).ready(function(){
                 jQuery(this).siblings('.passer').val(ui.item.id);
             }
         }).data( "autocomplete" )._renderItem = function( ul, item ) {
-            console.log(item);
-
             var append = item.desc !== '' ? '<br />' + item.desc : '';
 
             return $( "<li>" )
@@ -805,8 +802,6 @@ jQuery(document).ready(function(){
                 .append( "<a><span class='bigger'>"+ item.label + "</span>" + append + "</a>" )
                 .appendTo( ul );
         };
-    } else {
-        console.log(jQuery('.schoolSearchInput'))
     }
 
     jQuery('.addAnother').click(function() {

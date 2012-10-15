@@ -551,7 +551,6 @@
                                                     </div>
                                                 </li>
                                             {/foreach}
-                                            POOP!
                                         </ul>
                                     </div>
                                     <div class="btn-holder">
