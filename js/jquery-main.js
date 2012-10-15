@@ -75,13 +75,13 @@ function initAccordion() {
 
 // select text init
 function initSelectText() {
-	max = 16;
+	max = 100;
 	jQuery('.fixedSelect').each(function() {
 		var select = jQuery(this);
 		var options = select.find('option');
 		options.each(function() {
 			var option = jQuery(this);
-			var value = option.text();
+			var value = $.trim(option.text());
 			option.text(value.substring(0, max));
 		});
 	});

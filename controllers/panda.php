@@ -29,13 +29,13 @@ if (isset($route->method))
 
 					// first get user associated with video so we can get email
 					$videoBLL = new VideoBLL();
-					$email = $videoBLL->getUserEmailByPandaId($videoId);
+					$emailRow = $videoBLL->getUserEmailByPandaId($videoId);
 
 					$args = array(
 						"videoId" => $videoId,
 					);
 					// send out the email!
-					Util::sendEmail(EmailEnum::$VIDEO_PUBLISH, $email, "Your Video Is Published", $args);
+					Util::sendEmail(EmailEnum::$VIDEO_PUBLISH, $emailRow, "Your Video Is Published", $args);
 					break;
 
 				case PandaNotificationTypes::$ENCODING_PROGRESS:
