@@ -108,13 +108,27 @@
                                 {$position->getName()},
                             {/if}
                         {/foreach}
-                    {$player->getFriendlyHeight()}, {$player->getWeight()} lbs.</li>
-					{if $gradeLevel != "" || $player->getSchool()->getName() != ""}
-						<li>{$gradeLevel}{if $player->getSchool() != ""}, {$player->getSchool()->getName()}{/if}</li>
-					{/if}
-					<li>Coach {$player->getCoachName()}</li>
+                    {if $player->getHeight() != "" && $player->getHeight() != 0}
+                        {$player->getFriendlyHeight()},
+                    {/if}
+                    {if $player->getWeight() != "" && $player->getWeight() != 0}
+                        {$player->getWeight()} lbs.</li>
+                    {/if}
+                    <li>
+                        {if $gradeLevel != ""}
+                            {$gradeLevel},
+                        {/if}
+                        {if $player->getSchool()->getName() != ""}
+                            {$player->getSchool()->getName()}
+                        {/if}
+                    </li>
+					<li>
+                        {if $player->getCoachName() != "" && $player->getCoachName() != 0}
+                            Coach {$player->getCoachName()}
+                        {/if}
+                    </li>
 				</ul>
-				
+
 				{if isset($stats) && count($stats) > 0}
 					<ul class="user-stats three-column">
 						{assign var=i value=0}
@@ -130,7 +144,7 @@
 						{/foreach}
 					</ul>
 				{/if}
-			
+
 				<div class="clear"></div>
 			</div>
             {if isset($videos) && count($videos) > 0}

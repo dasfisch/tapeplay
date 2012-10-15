@@ -74,62 +74,66 @@
 
                 $video = $videoBll->search($search);
 
-                //$player = $video[0]->getPlayer();
-                $playerSearch = new SearchFilter();
+                if(isset($video) && !empty($video)) {
+                    //$player = $video[0]->getPlayer();
+                    $playerSearch = new SearchFilter();
 
-                $playerSearch->setWhere('id', (int)$get['id']);
-                $playerSearch->setWhere('method', $route->class);
+                    $playerSearch->setWhere('id', (int)$get['id']);
+                    $playerSearch->setWhere('method', $route->class);
 
-                $player = $playerBll->getPlayersByPlayerId($video[0]->getPlayer()->getId(), $video[0]->getSportId());
+                    $player = $playerBll->getPlayersByPlayerId($video[0]->getPlayer()->getId(), $video[0]->getSportId());
 
-                $video[0]->setPlayer($player);
+                    $video[0]->setPlayer($player);
 
-                $positionBll = new PositionBLL();
+                    $positionBll = new PositionBLL();
 
-                try {
-                    $positions = $positionBll->getPositionsByPlayer($player->getId());
+                    try {
+                        $positions = $positionBll->getPositionsByPlayer($player->getId());
 
-                    $player->setPosition($positions);
-                } catch(Exception $e) {
+                        $player->setPosition($positions);
+                    } catch(Exception $e) {
 
+                    }
+
+                    $videoDisplayInfo = $videoBll->getVideoDisplayInfo($video[0]->getPandaId());
+
+                    //set a view
+                    try {
+                        $view = $videoBll->insertView($video[0]->getId());
+                    } catch(Exception $e) {
+                        //do something...but what...?
+                    }
+
+                    $search = new SearchFilter();
+
+                    $search->setWhere('player_id', $player->getId());
+                    $search->setWhere('method', $route->class);
+
+                    $videos = $videoBll->search($search);
+
+                    $statsBll = new StatsBLL();
+                    $stats = $statsBll->getPlayerStats($player->getId(), (int)$player->getSport()->getId());
+
+                    $modder = (ceil(count($stats) / 3) > 1) ? ceil(count($stats) / 3) : 2;
+
+                    $smarty->assign('goBack', $goBack);
+                    $smarty->assign('hash', $inputFilter->createHash());
+                    $smarty->assign("modder", $modder);
+                    $smarty->assign('player', $player);
+                    $smarty->assign("statCount", count($stats));
+                    $smarty->assign('stats', $stats);
+                    $smarty->assign('video', $video[0]);
+                    $smarty->assign('videoDisplayInfo', $videoDisplayInfo);
+                    $smarty->assign('videos', $videos);
+                    $smarty->assign('gradeLevel', $controller->configuration->gradeLevels[$player->getGradeLevel()]);
+                    $smarty->assign('file', 'videos/single.tpl');
+                    $smarty->assign("title", $video[0]->getTitle());
+                    $smarty->assign("description", "Featuring " . $player->getFirstName() . " on TapePlay (" . $player->getSport()->getSportName() . ")");
+
+                    $smarty->display('home.tpl');
+                } else {
+                    \Util::setHeader('videos/browse/');
                 }
-
-                $videoDisplayInfo = $videoBll->getVideoDisplayInfo($video[0]->getPandaId());
-
-                //set a view
-                try {
-                    $view = $videoBll->insertView($video[0]->getId());
-                } catch(Exception $e) {
-                    //do something...but what...?
-                }
-
-                $search = new SearchFilter();
-
-                $search->setWhere('player_id', $player->getId());
-                $search->setWhere('method', $route->class);
-
-                $videos = $videoBll->search($search);
-
-                $statsBll = new StatsBLL();
-                $stats = $statsBll->getPlayerStats($player->getId(), (int)$player->getSport()->getId());
-
-                $modder = (ceil(count($stats) / 3) > 1) ? ceil(count($stats) / 3) : 2;
-
-                $smarty->assign('goBack', $goBack);
-                $smarty->assign('hash', $inputFilter->createHash());
-                $smarty->assign("modder", $modder);
-                $smarty->assign('player', $player);
-                $smarty->assign("statCount", count($stats));
-                $smarty->assign('stats', $stats);
-                $smarty->assign('video', $video[0]);
-                $smarty->assign('videoDisplayInfo', $videoDisplayInfo);
-                $smarty->assign('videos', $videos);
-				$smarty->assign('gradeLevel', $controller->configuration->gradeLevels[$player->getGradeLevel()]);
-                $smarty->assign('file', 'videos/single.tpl');
-                $smarty->assign("title", $video[0]->getTitle());
-				$smarty->assign("description", "Featuring " . $player->getFirstName() . " on TapePlay (" . $player->getSport()->getSportName() . ")");
-
-                $smarty->display('home.tpl');
 
                 break;
             case 'search':
@@ -202,12 +206,12 @@
 									"video" => $video[0]);
 
 						// send email with above args
-						$success = \Util::sendEmail(EmailEnum::$SHARE, array($post['email']), "The Next Big Thing", "emails/video.tpl", $args);
+						$success = \Util::sendEmail(EmailEnum::$SHARE, $post['email'], "The Next Big Thing", "emails/video.tpl", $args);
 
                         if(count($failed) == 0) {
-                            $message = '<h3 class="success">Success! Everyone got the email!</h3>';
+                            $message = '<p class="success">Great news.<br />This video has been sent.</p>';
                         } else {
-                            $message = '<h3 class="error">The following email addresses did not receive the email:</h3><ul>';
+                            $message = '<p class="error">The following email addresses did not receive the email:</p><ul>';
 
                             foreach($failed as $key=>$fail) {
                                 $message .= '<li>'.$fail.'</li>';

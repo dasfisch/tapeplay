@@ -66,7 +66,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST")
 
 	// cleanup post variable
 	//$inputFilter = new InputFilter();
-	//$_POST = $inputFilter->process($_POST);
+	//$post = $inputFilter->process($post);
 }
 else
 {
@@ -196,11 +196,11 @@ if (isset($route->method))
 			if ($posted && (!isset($post['chosenSport']) || $post['chosenSport'] == ''))
 			{
 				// get current account type
-				if (isset($_POST["playerButton"]))
+				if (isset($post["playerButton"]))
 					$accountType = AccountTypeEnum::$PLAYER;
-				else if (isset($_POST["coachButton"]))
+				else if (isset($post["coachButton"]))
 					$accountType = AccountTypeEnum::$COACH;
-				else if (isset($_POST["scoutButton"]))
+				else if (isset($post["scoutButton"]))
 					$accountType = AccountTypeEnum::$SCOUT;
 
 				// save account type to session
@@ -255,14 +255,14 @@ if (isset($route->method))
 				// create user object based on data entered
 				$user = new User();
 				$user->setAccountType(AccountTypeEnum::$PLAYER);
-				$user->setFirstName($_POST["firstName"]);
-				$user->setLastName($_POST["lastName"]);
+				$user->setFirstName($post["firstName"]);
+				$user->setLastName($post["lastName"]);
 				$user->setHash($hash);
-				$user->setEmail($_POST["email"]);
+				$user->setEmail($post["email"]);
 				$user->setLastLogin(time());
-				$user->setBirthYear($_POST["birthYear"]);
-				$user->setGender($_POST["gender"]);
-				$user->setZipcode($_POST["zipcode"]);
+				$user->setBirthYear($post["birthYear"]);
+				$user->setGender($post["gender"]);
+				$user->setZipcode($post["zipcode"]);
 
 				// insert user, grab newly-created id and assign to session
 				$userId = $userBLL->insert($user);
@@ -364,10 +364,13 @@ if (isset($route->method))
 				// TODO: Process uploaded video
 				$video = new Video();
 
-				$video->setPandaId($_POST["panda_video_id"]); // panda id
-				$video->setTitle($_POST["title"]);
-				$video->setRecordedMonth($_POST["videoMonth"]);
-				$video->setRecordedYear($_POST["videoYear"]);
+                $post["videoMonth"] = (!isset($post["videoMonth"]) || $post["videoMonth"] == 'Video Month') ? 0 : $post["videoMonth"];
+                $post["videoYear"] = (!isset($post["videoYear"]) || $post["videoYear"] == 'Video Year') ? 0 : $post["videoYear"];
+
+				$video->setPandaId($post["panda_video_id"]); // panda id
+				$video->setTitle($post["title"]);
+				$video->setRecordedMonth($post["videoMonth"]);
+				$video->setRecordedYear($post["videoYear"]);
 				$video->setUploadDate(time()); // default to NOW
                 $video->setSportId($post['sport_id']);
 
@@ -499,6 +502,16 @@ if (isset($route->method))
 						Util::setHeader("user/payment/");
 						break;
 					case AccountTypeEnum::$PLAYER:
+                        //Basic validation
+                        $post["number"] = (!isset($post["number"]) || $post["number"] == '##') ? null : $post["number"];
+                        $post["gradeLevel"] = (!isset($post["gradeLevel"]) || $post["gradeLevel"] == 'Select') ? 0 : $post["gradeLevel"];
+                        $post["height"] = (!isset($post["height"]) || $post["height"] == 'Select') ? 0 : $post["height"];
+                        $post["weight"] = (!isset($post["weight"]) || $post["weight"] == 'lbs') ? 0 : $post["weight"];
+                        $post["headCoachName"] = (!isset($post["headCoachName"]) || $post["headCoachName"] == 'Head Coach\'s Name') ? '' : $post["headCoachName"];
+                        $post["graduationMonth"] = (!isset($post["graduationMonth"]) || $post["graduationMonth"] == 'Grad. Month') ? 0 : $post["graduationMonth"];
+                        $post["graduationYear"] = (!isset($post["graduationYear"]) || $post["graduationYear"] == 'Grad. Year') ? 0 : $post["graduationYear"];
+                        $post["playingLevel"] = (!isset($post["playingLevel"])) ? null : $post["playingLevel"];
+                        
 						// get player basics and add
                         $userBLL->getUser()->setNumber($post["number"]);
                         $userBLL->getUser()->setGradeLevel($post["gradeLevel"]);
@@ -756,9 +769,9 @@ if (isset($route->method))
 				// get template based on button selected
 				$url = "account/welcome/";
 
-				if (isset($_POST["yourAccount"]))
+				if (isset($post["yourAccount"]))
 					$url = "account/welcome/";
-				else if (isset($_POST["searchPlayers"]))
+				else if (isset($post["searchPlayers"]))
 					$url = "video/search/";
 
 				Util::setHeader($url);

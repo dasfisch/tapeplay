@@ -258,6 +258,7 @@ if (isset($route->method))
                 } catch(Exception $e) {
                     $message->message = $post['email'].' is not a valid email address!';
                     $message->type = 'error';
+                    $smarty->assign('showIt', true);
                 }
             }
 

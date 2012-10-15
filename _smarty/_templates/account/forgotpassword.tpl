@@ -1,5 +1,4 @@
 <h1>Reset Your Password</h1>
-    {include file='common/message.tpl'}
 <form id="passwordReset" name="passwordReset" action="{#baseUrl#}account/forgot/" method="post">
     <ul class="form-fields">
 		<li class="input-field clear">

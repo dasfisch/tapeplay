@@ -30,62 +30,64 @@
 				</ul>
 				<div class="clear"></div>
 			</li>
-		
 		</ul>
-		
-		<form id="emailFriend" action="" method="post">
-	        <input type="hidden" name="hash" value="{$hash}" />
-			<ul class="form-fields">
-				<li class="input-field clear">
-					<strong>From</strong>
-					<div class="input_custom-text input_text80 width440">
-						<div class="custom-input_center custom-input_partial">
-							<span class="custom-input_top"></span>
-							<input type="text" name="from" value="Full Name"/>
-							<span class="custom-input_bottom"></span>
-						</div>
-		
-						<div class="custom-input_left custom-input_partial">
-							<span class="custom-input_top"></span>
-							<span class="custom-input_bottom"></span>
-						</div>
-		
-						<div class="custom-input_right custom-input_partial">
-							<span class="custom-input_top"></span>
-							<span class="custom-input_bottom"></span>
-						</div>
-					</div>
-				</li>
-				<li class="input-field clear copy">
-					<strong>To</strong>
-					<div class="input_custom-text input_text80 width440">
-						<div class="custom-input_center custom-input_partial">
-							<span class="custom-input_top"></span>
-							<input type="text" name="email[]" value="Email Address" class="required email noDefault" />
-							<span class="custom-input_bottom"></span>
-						</div>
-		
-						<div class="custom-input_left custom-input_partial">
-							<span class="custom-input_top"></span>
-							<span class="custom-input_bottom"></span>
-						</div>
-		
-						<div class="custom-input_right custom-input_partial">
-							<span class="custom-input_top"></span>
-							<span class="custom-input_bottom"></span>
-						</div>
-					</div>
-				</li>
-				<li class="input-field clear">
-					<p class="addAnother">
-						<img src="/media/images/icon_add-plus-sign.gif" class="vertical-center" /> Add another email address
-					</p>
-				</li>
-				<li class="input-field clear">
-					<button value="Share" type="submit" class="button_black_large left button_round">Share</button>
-				</li>
-			</ul>
-		</form>
+		{if isset($message) && !empty($message)}
+            {$message}
+        {else}
+            <form id="emailFriend" action="" method="post">
+                <input type="hidden" name="hash" value="{$hash}" />
+                <ul class="form-fields">
+                    <li class="input-field clear">
+                        <strong>From</strong>
+                        <div class="input_custom-text input_text80 width440">
+                            <div class="custom-input_center custom-input_partial">
+                                <span class="custom-input_top"></span>
+                                <input type="text" name="from" value="Full Name"/>
+                                <span class="custom-input_bottom"></span>
+                            </div>
+
+                            <div class="custom-input_left custom-input_partial">
+                                <span class="custom-input_top"></span>
+                                <span class="custom-input_bottom"></span>
+                            </div>
+
+                            <div class="custom-input_right custom-input_partial">
+                                <span class="custom-input_top"></span>
+                                <span class="custom-input_bottom"></span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="input-field clear copy">
+                        <strong>To</strong>
+                        <div class="input_custom-text input_text80 width440">
+                            <div class="custom-input_center custom-input_partial">
+                                <span class="custom-input_top"></span>
+                                <input type="text" name="email[]" value="Email Address" class="required email noDefault" />
+                                <span class="custom-input_bottom"></span>
+                            </div>
+
+                            <div class="custom-input_left custom-input_partial">
+                                <span class="custom-input_top"></span>
+                                <span class="custom-input_bottom"></span>
+                            </div>
+
+                            <div class="custom-input_right custom-input_partial">
+                                <span class="custom-input_top"></span>
+                                <span class="custom-input_bottom"></span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="input-field clear">
+                        <p class="addAnother">
+                            <img src="/media/images/icon_add-plus-sign.gif" class="vertical-center" /> Add another email address
+                        </p>
+                    </li>
+                    <li class="input-field clear">
+                        <button value="Share" type="submit" class="button_black_large left button_round">Share</button>
+                    </li>
+                </ul>
+            </form>
+        {/if}
 	</div>
 	<div id="content-right-column" class="right">
 	    {include file='common/sidebar/emailVideo.tpl'}

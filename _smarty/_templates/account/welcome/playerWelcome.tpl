@@ -577,14 +577,14 @@
                             {if $privacy == 2}checked {/if}
                             /> <label>Nobody</label><br />
 					</p>
-                    <p>
+                    <!--<p>
                         <input type="checkbox" name="allowFacebook" class="optin" value="3"
                             {foreach from=$optins key=key item=optin}
                                 {if $optin.0 == 3}checked {/if}
                             {/foreach}
                             />
    	                    <label for="allowFacebook">Allow TapePlay to import my Facebook info</label>
-   	                </p>
+   	                </p>-->
    	                <p>
    	                    <input type="checkbox" name="relevantAdvertising" class="optin" value="2"
                             {foreach from=$optins key=key item=optin}
@@ -592,32 +592,18 @@
                             {/foreach}
                             />
    	                    <label for="relevantAdvertising">
-   	                        Use my account info for relevant advertising.
-   	                        <a class="infoOpen">Why?</a>
-   	                        <div class="infoBubble">
-   	                            <div class="topLeft black"></div>
-   	                            <div class="directionTopRight"></div>
-   	                            <div class="middle">
-   	                                <p>
-   	                                    Help us out by using your account info for relevant
-   	                                    advertising. Ads help us pay the bills so we can
-   	                                    keep improving TapePlay for you.
-   	                                </p>
-   	                            </div>
-   	                            <div class="bottomLeft"></div>
-   	                            <div class="bottomRight"></div>
-   	                            <div class="direction"></div>
-   	                        </div>
+   	                        Use my account info for relevant advertising. Ads help us pay the bills so
+                            we can keep improving TapePlay for you.
    	                    </label>
    	                </p>
-   	                <p>
+   	                <!--<p>
    	                    <input type="checkbox" name="sendRecommendations" class="optin" value="1"
                            {foreach from=$optins key=key item=optin}
                                {if $optin.0 == 1}checked {/if}
                            {/foreach}
                            />
    	                    <label for="sendRecommendations">Send me recommendations about how to use TapePlay</label>
-   	                </p>
+   	                </p>-->
 				</div>
 			</li>
 		</ul>

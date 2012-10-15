@@ -137,12 +137,14 @@ class VideoBLL extends BaseBLL
 
 		$videoDisplayInfo = new VideoDisplayInfo();
 
-		// set info we need to send to Smarty template for showing the video.
-		$videoDisplayInfo->setWidth($encodings[0]->width);
-		$videoDisplayInfo->setHeight($encodings[0]->height);
-		$videoDisplayInfo->setMp4Source($this->getEncoding($encodings, \PandaProfileTypes::$H264));
-		$videoDisplayInfo->setWebmSource($this->getEncoding($encodings, \PandaProfileTypes::$WEBM));
-		$videoDisplayInfo->setOggSource($this->getEncoding($encodings, \PandaProfileTypes::$OGG));
+        if(isset($encodings) && !isset($encodings->error)) {
+            // set info we need to send to Smarty template for showing the video.
+            $videoDisplayInfo->setWidth($encodings[0]->width);
+            $videoDisplayInfo->setHeight($encodings[0]->height);
+            $videoDisplayInfo->setMp4Source($this->getEncoding($encodings, \PandaProfileTypes::$H264));
+            $videoDisplayInfo->setWebmSource($this->getEncoding($encodings, \PandaProfileTypes::$WEBM));
+            $videoDisplayInfo->setOggSource($this->getEncoding($encodings, \PandaProfileTypes::$OGG));
+        }
 
 		return $videoDisplayInfo;
 	}

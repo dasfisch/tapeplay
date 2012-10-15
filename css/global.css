@@ -530,6 +530,10 @@ fieldset li {
     color: #00ff12;
 }
 
+.email-video .success {
+    font-size: 32px;
+}
+
 form .error-alert {
 	background:transparent url(/media/images/icon_error-alert.png) no-repeat 0px 16px;
 	color:#ff0000;
@@ -2244,6 +2248,7 @@ p.nothing {
 
 .result-list ul {
 	margin:0;
+    overflow: hidden;
 }
 
 .result-list > li:hover {
@@ -2256,6 +2261,7 @@ p.nothing {
 }
 
 .result-list .result-image img {
+    height: 125px;
 	width:100%;
 }
 
