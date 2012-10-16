@@ -208,7 +208,7 @@
                         {/foreach}
                     </ul>
                 {else}
-                    <h3>No new videos yet</h3>
+                    <h2>No new videos yet</h2>
                 {/if}
             {/if}
 		</div>
