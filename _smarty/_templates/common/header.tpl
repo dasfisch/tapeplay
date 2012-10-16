@@ -31,7 +31,7 @@
 
 {if {$smarty.server.REQUEST_URI} != '/'}
 	<script type="text/javascript">
-		setContainerBGImage();
+		setTimeout(setContainerBGImage, 200);
 	</script>
 {/if}
 
