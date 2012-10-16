@@ -58,6 +58,8 @@ class Video
 	private $_privacy;
 	private $_player;
 
+    public $fileExists = false;
+
 	/**
 	 * We should bring this down to two methods. The magic methods
 	 * will make our lives easier.

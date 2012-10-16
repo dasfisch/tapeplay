@@ -151,11 +151,11 @@
                     try {
                         $videos = $videoBll->search($search);
 
-                        foreach($videos as $video) {
-                            if(@fopen($panda['base'].$panda['bucket'].'/'.$video->getPandaId().$panda['imageExt'], 'r')) {
-                                $video->fileExists = true;
+                        foreach($videos as $single) {
+                            if(@fopen($panda['base'].$panda['bucket'].'/'.$single->getPandaId().$panda['imageExt'], 'r')) {
+                                $single->fileExists = true;
                             } else {
-                                $video->fileExists = false;
+                                $single->fileExists = false;
                             }
                         }
                     } catch(Exception $e) {

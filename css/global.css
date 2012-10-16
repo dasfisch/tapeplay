@@ -119,7 +119,7 @@ p {
 .contact-us-squares {
 	height:315px;
 	margin-bottom:36px;
-	width:320px;	
+	width:320px;
 }
 
 .contact-us-squares + .contact-us-squares,
@@ -135,7 +135,7 @@ p {
  * Navigation Styles
  */
 
-#navigation, #footer-navigation, #footer-navigation dl, #footer-navigation dd, 
+#navigation, #footer-navigation, #footer-navigation dl, #footer-navigation dd,
 #footer-navigation dt, #footer-terms ul {
 	list-style-type: none;
 	margin: 0;
@@ -273,7 +273,7 @@ p {
 	font-style:italic;
 }
 
-/* 
+/*
  * Presentation
  */
 body {
@@ -2454,7 +2454,7 @@ p.nothing {
 
 .single .content-left {
 	margin-right:30px;
-	width:560px; 
+	width:560px;
 }
 .single .content-right {
 	width:300px;
@@ -2506,11 +2506,11 @@ p.nothing {
 .single .more-videos>li {
 	padding:10px 0px;
 	position:relative;
-} 
+}
 
 .single .more-videos>li:hover {
 	background-color:#F8E8C8
-} 
+}
 
 .single .more-videos .video-image img {
 	float:left;
@@ -2551,7 +2551,7 @@ p.nothing {
 
 .account-page #content-left-column {
 	margin-right:35px;
-	width:585px; 
+	width:585px;
 }
 
 .account-page #content-right-column {
@@ -2642,7 +2642,7 @@ p.nothing {
 
 .email-video #content-left-column {
 	margin-right:35px;
-	width:585px; 
+	width:585px;
 }
 
 .email-video #content-right-column {
@@ -2706,4 +2706,8 @@ p.nothing {
 
 .popup-hover div.popup p .mark.link {
     font-size: 11px;
+}
+
+#report {
+    cursor: pointer;
 }
