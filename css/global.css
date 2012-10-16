@@ -43,13 +43,15 @@ p {
 	position:relative; /* needed for footer positioning*/
 	margin:0;
 	width:100%;
-	background:transparent url(/media/images/ads/hp_betaAd_background_1280.jpg) no-repeat 1010px 75px;
-	
 	height:auto !important; /* real browsers */
 	height:100%; /* IE6: treated as min-height*/
-
 	min-height:100%; /* real browsers */
 }
+
+.bg1280 { background: transparent url(/media/images/ads/hp_betaAd_background_1280.jpg) no-repeat 1010px 75px;}
+.bg1366 { background: transparent url(/media/images/ads/hp_betaAd_background_1366.jpg) no-repeat 1010px 75px;}
+.bg1440 { background: transparent url(/media/images/ads/hp_betaAd_background_1440.jpg) no-repeat 1010px 75px;}
+.bg1600 { background: transparent url(/media/images/ads/hp_betaAd_background_1600.jpg) no-repeat 1010px 75px;}
 
 #header {
 	height:75px;
