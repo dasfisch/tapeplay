@@ -149,7 +149,21 @@ if (isset($route->method))
 
                             $smarty->assign('playerInfo', $playerInfo);
 
-                            $videos = $videoBll->search($search);
+                            try {
+                                $panda = $controller->configuration->panda;
+
+                                $videos = $videoBll->search($search);
+
+                                foreach($videos as $video) {
+                                    if(@fopen($panda['base'].$panda['bucket'].'/'.$video->getPandaId().$panda['imageExt'], 'r')) {
+                                        $video->fileExists = true;
+                                    } else {
+                                        $video->fileExists = false;
+                                    }
+                                }
+                            } catch(Exception $e) {
+
+                            }
 
                             $privacy = $videos[0]->getPrivacy();
                         } catch(Exception $e) {
