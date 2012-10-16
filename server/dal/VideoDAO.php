@@ -47,23 +47,28 @@ class VideoDAO extends BaseDOA
 		try
 		{
             $this->sql = "SELECT
-                                id,
-                                panda_id as panda_id,
-                                panda_id as views,
-                                panda_id as videoCount,
-                                panda_id as saves,
-                                is_private,
-                                title,
-                                uploaded_date,
-                                recorded_month,
-                                recorded_year,
-                                active,
-                                player_id,
-                                sport_id
+                                v.id,
+                                v.panda_id as panda_id,
+                                v.panda_id as views,
+                                v.panda_id as videoCount,
+                                v.panda_id as saves,
+                                v.is_private,
+                                v.title,
+                                v.uploaded_date,
+                                v.recorded_month,
+                                v.recorded_year,
+                                v.active,
+                                v.player_id,
+                                s.id as sport_id,
+                                s.name as sport_name,
+                                s.active as sport_active
                             FROM
-                                videos
+                                videos v
+                            JOIN
+                                sports s
+                                    ON s.id=v.sport_id
                             WHERE
-                                player_id IN (
+                                v.player_id IN (
                                                 SELECT id FROM players where user_id IN(
                                                     SELECT
                                                             user_id
@@ -73,7 +78,7 @@ class VideoDAO extends BaseDOA
                                                             id=:player_id)
                                             )
                             ORDER BY
-                                uploaded_date";
+                                v.uploaded_date";
 
 			$this->prep = $this->dbh->prepare($this->sql);
 			$this->prep->bindValue(":player_id", $playerId, \PDO::PARAM_INT);

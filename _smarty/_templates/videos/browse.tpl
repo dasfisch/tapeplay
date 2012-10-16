@@ -7,7 +7,13 @@
         	<li class="locked">
 				<a href="#" onclick="return false;"><img src="/media/images/background_lock.png" /></a>
 				<ul>
-					<li class="video-image"><img src="{#pandaBase#}{$video->getPandaId()}{#pandaImageExt#}"/></li>
+					<li class="video-image">
+                        {if $video->fileExists == true}
+                            <img src="{#pandaBase#}{$video->getPandaId()}{#pandaImageExt#}"/>
+                        {else}
+                            <img src="{#baseUrl#}media/images/defaultImage.gif" />
+                        {/if}
+                    </li>
 					<li class="name">{$video->getPlayer()->getFirstName()} {$video->getPlayer()->getLastName()}</li>
 					<li class="position-height">{$video->getPlayer()->getPosition()}, {$video->getPlayer()->getFriendlyHeight()}</li>
 					<li class="month-year">{$video->getUploadDate()|date_format:"%B %Y"}</li>
@@ -17,7 +23,13 @@
         	<li>
 	        	<a href="{#baseUrl#}videos/view/{$video->getId()}/"></a>
 				<ul>
-					<li class="video-image"><img src="{#pandaBase#}{$video->getPandaId()}{#pandaImageExt#}"/></li>
+					<li class="video-image">
+                        {if $video->fileExists == true}
+                            <img src="{#pandaBase#}{$video->getPandaId()}{#pandaImageExt#}"/>
+                        {else}
+                            <img src="{#baseUrl#}media/images/defaultImage.gif" />
+                        {/if}
+                    </li>
 					<li class="name">{$video->getPlayer()->getFirstName()} {$video->getPlayer()->getLastName()}</li>
 					<li class="position-height">{$video->getPlayer()->getPosition()}, {$video->getPlayer()->getFriendlyHeight()}</li>
 					<li class="month-year">{$video->getUploadDate()|date_format:"%B %Y"}</li>

@@ -1,4 +1,4 @@
-<h1>Player Sign Up</h1>
+<h1>Player Info</h1>
 <p>
 	The more you tell us about yourself, the easier it is for coaches and scouts to find what they&rsquo;re looking for.
 </p>
@@ -10,7 +10,11 @@
         <p id="status">
             Video Status: <span class="success italic">Upload complete!</span>
         </p>
-        <img src="{#pandaBase#}{$video->getPandaId()}{#pandaImageExt#}" class="resultImage" />
+        {if isset($fileExists) && $fileExists == true}
+            <img src="{#pandaBase#}{$video->getPandaId()}{#pandaImageExt#}" class="resultImage" />
+        {else}
+            <img src="{#baseUrl#}media/images/defaultImage.gif" class="resultImage" />
+        {/if}
         <div class="info">
             <h2>{$video->getTitle()}</h2>
             <p>{$video->getUploadDate()|date_format:'%B %d, %Y'}</p>
@@ -240,9 +244,11 @@
         {/if}
 	</fieldset>
 	<fieldset>
-		<button value="Join" type="submit" class="button_black_large left button_round">Join</button> 
         {if $user->getStatus() != 3}
+            <button value="Join" type="submit" class="button_black_large left button_round">Join</button>
             <span class="form-steps">Step 3 of 3</span>
+        {else}
+            <button value="Submit" type="submit" class="button_black_large left button_round">Submit</button>
         {/if}
 	</fieldset>
 </form> 

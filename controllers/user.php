@@ -278,6 +278,12 @@ if (isset($route->method))
 //                        exit;
                     }
 
+                    try {
+                        $userBLL->addOptin($userId, 2);
+                    } catch(Exception $e) {
+
+                    }
+
 					// determine which page to load
 					switch ($userBLL->getAccountType())
 					{
@@ -669,13 +675,23 @@ if (isset($route->method))
 
                         }
 
+                        $panda = $controller->configuration->panda;
+
+                        if(fopen($panda['base'].$panda['bucket'].'/'.$video[0]->getPandaId().$panda['imageExt'], 'r')) {
+                            $fileExists = true;
+                        } else {
+                            $fileExists = false;
+                        }
+
                         $modder = (ceil(count($stats) / 3) > 1) ? ceil(count($stats) / 3) : 2;
 
-						$smarty->assign("startYear", $startYear);
-                        $smarty->assign('statCount', count($stats));
+                        $smarty->assign('fileExists', $fileExists);
                         $smarty->assign('hash', $inputFilter->createHash());
-                        $smarty->assign('positions', $positions);
                         $smarty->assign('modder', $modder);
+                        $smarty->assign('panda', $panda);
+                        $smarty->assign('positions', $positions);
+                        $smarty->assign("startYear", $startYear);
+                        $smarty->assign('statCount', count($stats));
                         $smarty->assign("title", 'Player Info');
 
                         $smarty->assign('stats', $stats);

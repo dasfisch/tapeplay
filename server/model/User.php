@@ -22,15 +22,18 @@ class User
         $user->setAge($arr["birth_year"]);
 		$user->setLastLogin($arr["last_login"]);
         $user->setAccountType($arr["account_type"]);
-        $user->setAccountType($arr["deactivation_date"]);
 		$user->setStatus($arr["status"]);
+
+        if($arr["deactivation_date"] != '' && $arr["deactivation_date"] != 0) {
+            $user->setDeactivated();
+        }
 
 		return $user;
 	}
 
     protected  $_age;
 	protected  $_userId;
-    protected  $_deactivated;
+    protected  $_deactivated = false;
     protected  $_firstName;
 	protected  $_lastName;
 	protected  $_email;

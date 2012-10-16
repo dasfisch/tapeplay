@@ -73,7 +73,9 @@ class UserDAO extends BaseDOA
                                    positions as pos
                                        ON
                                            pos.id=playPos.position_id
-                               WHERE u.id = :id';
+                               WHERE
+                                   u.id = :id
+                               GROUP BY u.id';
 
                if(isset($sportId) && $sportId != null) {
                    $this->sql .= " AND p.sport_id=:sportId";
@@ -82,11 +84,11 @@ class UserDAO extends BaseDOA
    			$this->prep = $this->dbh->prepare($this->sql);
    			$this->prep->bindValue(":id", $userId, \PDO::PARAM_INT);
 
-               if(isset($sportId) && $sportId != null) {
-                   $this->prep->bindValue(":sportId", $sportId, \PDO::PARAM_INT);
-               }
+            if(isset($sportId) && $sportId != null) {
+                $this->prep->bindValue(":sportId", $sportId, \PDO::PARAM_INT);
+            }
 
-   			$this->prep->execute();
+            $this->prep->execute();
    		}
    		catch (\PDOException $exception)
    		{
@@ -94,7 +96,7 @@ class UserDAO extends BaseDOA
    			return null;
    		}
 
-           return Player::create($this->prep->fetch());
+        return Player::create($this->prep->fetch());
 
            /**
             * @TODO: Need to figure out how to have multiple sports;

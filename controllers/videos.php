@@ -3,6 +3,7 @@
 
     use tapeplay\server\bll\PlayerBLL;
     use tapeplay\server\bll\PositionBLL;
+    use tapeplay\server\bll\SportBLL;
     use tapeplay\server\bll\StatsBLL;
     use tapeplay\server\bll\VideoBLL;
     use tapeplay\server\model\SearchFilter;
@@ -10,6 +11,7 @@
 
     require_once("bll/PlayerBLL.php");
     require_once("bll/PositionBLL.php");
+    require_once("bll/SportBLL.php");
     require_once("bll/VideoBLL.php");
 
     global $controller, $get, $inputFilter, $post, $route, $smarty, $sport, $userBLL;
@@ -38,6 +40,19 @@
                 $search->setWhere('sport_id', (int)$sport['id']);
 
                 $videos = $videoBll->search($search);
+                if(isset($videos)) {
+                    $panda = $controller->configuration->panda;
+
+                    foreach($videos as $video) {
+                        if(fopen($panda['base'].$panda['bucket'].'/'.$video->getPandaId().$panda['imageExt'], 'r')) {
+                            $video->fileExists = true;
+                        } else {
+                            $video->fileExists = false;
+                        }
+                    }
+                }
+
+                $panda = $controller->configuration->panda;
 
                 $smarty->assign('page', $page);
                 $smarty->assign('videos', $videos);
@@ -75,11 +90,35 @@
                 $video = $videoBll->search($search);
 
                 if(isset($video) && !empty($video)) {
-                    //$player = $video[0]->getPlayer();
-                    $playerSearch = new SearchFilter();
+                    $sportReset = $video[0]->getPlayer()->getSport();
 
-                    $playerSearch->setWhere('id', (int)$get['id']);
-                    $playerSearch->setWhere('method', $route->class);
+                    $sport['id'] = intval($sportReset->getId());
+                    $sport['name'] = $sportReset->getSportName();
+
+                    $_SESSION['sport'] = $sport;
+
+                    $smarty->assign('sport', $sport);
+
+                    $panda = $controller->configuration->panda;
+
+                    if(@fopen($panda['base'].$panda['bucket'].'/'.$video[0]->getPandaId().$panda['imageExt'], 'r')) {
+                        $fileExists = true;
+                    } else {
+                        $fileExists = false;
+                    }
+
+                    try {
+                        $ids = array();
+
+                        $playerInfo = $playerBll->getPlayersByUserId($user->getUserId(), false);
+                        foreach($playerInfo as $single) {
+                            if(!in_array($single->getId(), $ids)) {
+                                $ids[] = $single->getId();
+                            }
+                        }
+                    } catch(Exception $e) {
+
+                    }
 
                     $player = $playerBll->getPlayersByPlayerId($video[0]->getPlayer()->getId(), $video[0]->getSportId());
 
@@ -106,7 +145,7 @@
 
                     $search = new SearchFilter();
 
-                    $search->setWhere('player_id', $player->getId());
+                    $search->setWhere('player_id', $ids);
                     $search->setWhere('method', $route->class);
 
                     $videos = $videoBll->search($search);
@@ -119,6 +158,7 @@
                     $smarty->assign('goBack', $goBack);
                     $smarty->assign('hash', $inputFilter->createHash());
                     $smarty->assign("modder", $modder);
+                    $smarty->assign('fileExists', $fileExists);
                     $smarty->assign('player', $player);
                     $smarty->assign("statCount", count($stats));
                     $smarty->assign('stats', $stats);
@@ -166,6 +206,18 @@
 
                 $videos = $video->search($search);
 
+                if(isset($videos)) {
+                    $panda = $controller->configuration->panda;
+
+                    foreach($videos as $video) {
+                        if(fopen($panda['base'].$panda['bucket'].'/'.$video->getPandaId().$panda['imageExt'], 'r')) {
+                            $video->fileExists = true;
+                        } else {
+                            $video->fileExists = false;
+                        }
+                    }
+                }
+
                 $pages = (isset($videos[0]) && !empty($videos[0])) ? ceil($videos[0]->count / $search->limit) : null;
 
                 $smarty->assign('page', $page);
@@ -194,8 +246,12 @@
                         $failed = array();
                         $sent = array();
 
+                        $playerBll = new PlayerBLL();
+
+                        $player = $playerBll->getPlayersByPlayerId((int)$video[0]->getPlayer()->getUserId(), (int)$video[0]->getPlayer()->getSport()->getId());
+
                         $statsBll = new StatsBLL();
-                        $stats = $statsBll->getPlayerStats((int)$video[0]->getPlayer()->getUserId(), (int)$video[0]->getPlayer()->getSport()->getId());
+                        $stats = $statsBll->getPlayerStats((int)$player->getUserId(), (int)$player->getSport()->getId());
 
                         $modder = (ceil(count($stats) / 3) > 1) ? ceil(count($stats) / 3) : 2;
 
@@ -204,6 +260,7 @@
 									"statCount" => count($stats),
 									"stats" => $stats,
 									"video" => $video[0],
+                                    "player" => $player,
 									"gradeLevel", $controller->configuration->gradeLevels[(int)$video[0]->getPlayer()->getGradeLevel()]);
 
 						// send email with above args
@@ -222,9 +279,14 @@
                         }
                     }
 
+                    $playerBll = new PlayerBLL();
+
+                    $player = $playerBll->getPlayersByPlayerId((int)$video[0]->getPlayer()->getUserId(), (int)$video[0]->getPlayer()->getSport()->getId());
+
                     $smarty->assign('file', 'videos/emailvideo.tpl');
                     $smarty->assign('hash', $inputFilter->createHash());
                     $smarty->assign('message', $message);
+                    $smarty->assign('player', $player);
                     $smarty->assign('video', $video[0]);
                     $smarty->assign("title", 'Share Videos from TapePlay');
 

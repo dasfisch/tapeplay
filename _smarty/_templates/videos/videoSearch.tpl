@@ -41,7 +41,11 @@
                 	<li class="locked">
 						<a href="#" class="video-link"><img src="/media/images/background_lock.png" /></a>
 						<div class="result-image left">
-							<img class="resultImage" src="{#pandaBase#}{$video->getPandaId()}{#pandaImageExt#}">
+                            {if $video->fileExists == true}
+                                <img src="{#pandaBase#}{$video->getPandaId()}{#pandaImageExt#}" class="resultImage" />
+                            {else}
+                                <img src="{#baseUrl#}media/images/defaultImage.gif" class="resultImage" />
+                            {/if}
 						</div>
 						<ul class="left">
 							<li class="header">{$video->getPlayer()->getFirstName()} {$video->getPlayer()->getLastName()}</li>
@@ -56,7 +60,11 @@
 						<li>
 							<a href="{#baseUrl#}videos/view/{$video->getId()}/" class="video-link"></a>
 							<div class="result-image left">
-								<img class="resultImage" src="{#pandaBase#}{$video->getPandaId()}{#pandaImageExt#}">
+                                {if $video->fileExists == true}
+                                    <img src="{#pandaBase#}{$video->getPandaId()}{#pandaImageExt#}" class="resultImage" />
+                                {else}
+                                    <img src="{#baseUrl#}media/images/defaultImage.gif" class="resultImage" />
+                                {/if}
 							</div>
 							<ul class="left">
 								<li class="header">{$video->getPlayer()->getFirstName()} {$video->getPlayer()->getLastName()}</li>

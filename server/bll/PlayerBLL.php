@@ -54,8 +54,8 @@ class PlayerBLL extends BaseBLL
 		return $this->dal->update($player);
 	}
 
-    public function getPlayersByUserId($userId) {
-        return $this->dal->getPlayersByUserId($userId);
+    public function getPlayersByUserId($userId, $noGroup=false) {
+        return $this->dal->getPlayersByUserId($userId, $noGroup=false);
     }
 
     public function getPlayersByPlayerId($userId) {

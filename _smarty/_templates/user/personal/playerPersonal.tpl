@@ -224,8 +224,12 @@
       			</div>
       		</li>
 		<li class="input-field clear">
-			<button value="Join" type="submit" class="button_black_large left button_round">Join</button>
-			<span class="form-steps">Step 1 of 3</span>
+            {if $user->getStatus() != 3}
+                <button value="Join" type="submit" class="button_black_large left button_round">Join</button>
+                <span class="form-steps">Step 1 of 3</span>
+            {else}
+                <button value="Submit" type="submit" class="button_black_large left button_round">Submit</button>
+            {/if}
 		</li>
 	</ul>
 </form>

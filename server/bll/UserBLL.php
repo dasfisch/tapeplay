@@ -167,13 +167,12 @@ class UserBLL extends BaseBLL
 					$this->getUser()->setMyVideos($videoBLL->getPlayerVideos((int)$this->getUser()->getId()));
 
                     $this->setUser($this->getUser());
-
 					break;
 
 				case \AccountTypeEnum::$COACH:
 					$this->setUser($this->dal->getCoachUser($userId));
-					break;
 
+					break;
 				case \AccountTypeEnum::$SCOUT:
 					$this->setUser($this->dal->getScoutUser($userId));
 					break;

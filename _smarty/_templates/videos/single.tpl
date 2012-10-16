@@ -42,7 +42,7 @@
 	<div class="video-data">
 		<ul>
 			<li class="views"><b>{$video->getViews()}</b> Views</li>
-			<li class="saves"><b>{$video->getSaves()}</b> Saves</li>
+			<!--<li class="saves"><b>{$video->getSaves()}</b> Saves</li>-->
 			<li class="upload-date">Uploaded {$video->getUploadDate()|date_format:"%B %d, %Y"}</li>
 			<li class="report">
                 <div class="popup-hover pos-1">
@@ -66,7 +66,7 @@
 					<div class="popup popup-1">
 						<div class="holder">
 							<div class="frame">
-								<p><strong>Embed video</strong> (copy &amp; paste link): <br /><span class="mark" onclick="jQuery(this).select()">{#baseUrl#}watch/{$video->getId()}</span></p>
+								<p><strong>Embed video</strong> (copy &amp; paste link): <br /><span class="mark link" onclick="jQuery(this).select()">{#baseUrl#}videos/view/{$video->getId()}/</span></p>
 								<p><strong>Email video:</strong> <a href="{#baseUrl#}videos/email/{$video->getId()}/">click here</a></p>
 								<div class="social">
 									<strong>Post video:</strong>
@@ -158,7 +158,11 @@
                                     <li class="locked">
                                         <a href="#" onclick="return false;"><img src="/media/images/background_lock.png" /></a>
                                         <div class="video-image">
-                                            <img src="{#pandaBase#}{$single->getPandaId()}{#pandaImageExt#}"/>
+                                            {if isset($fileExists) && $fileExists == true}
+                                                <img src="{#pandaBase#}{$single->getPandaId()}{#pandaImageExt#}" class="resultImage" />
+                                            {else}
+                                                <img src="{#baseUrl#}media/images/defaultImage.gif" class="resultImage" />
+                                            {/if}
                                         </div>
                                         <ul>
                                             <li class="video-title">{$single->getTitle()}</li>
@@ -178,7 +182,11 @@
                                     <li>
                                         <a href="{#baseUrl#}videos/view/{$single->getId()}/"></a>
                                         <div class="video-image">
-                                            <img src="{#pandaBase#}{$single->getPandaId()}{#pandaImageExt#}"/>
+                                            {if isset($fileExists) && $fileExists == true}
+                                                <img src="{#pandaBase#}{$single->getPandaId()}{#pandaImageExt#}" class="resultImage" />
+                                            {else}
+                                                <img src="{#baseUrl#}media/images/defaultImage.gif" class="resultImage" />
+                                            {/if}
                                         </div>
                                         <ul>
                                             <li class="video-title">{$single->getTitle()}</li>

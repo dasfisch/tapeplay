@@ -13,7 +13,11 @@
 	                        	{foreach $videos as $video}
 									<li>
                                         <a href="{#baseUrl#}videos/view/{$video->getId()}/">
-                                            <img src="{#pandaBase#}{$video->getPandaId()}{#pandaImageExt#}" width="125" height="94" alt="image description" />
+                                            {if isset($fileExists) && $fileExists == true}
+                                                <img src="{#pandaBase#}{$video->getPandaId()}{#pandaImageExt#}" width="125" height="94" alt="image description" />
+                                            {else}
+                                                <img src="{#baseUrl#}media/images/defaultImage.gif" width="125" height="94" alt="image description" />
+                                            {/if}
                                             <div class="text-holder">
                                                 <div class="videoInfo">
                                                     <strong class="title">{$video->getTitle()}</strong>
@@ -189,7 +193,8 @@
 						<li>
 							<div class="text-holder">
 								<strong class="title">Birth Year / Sex / Zip Code</strong>
-								<div class="category">{$user->getBirthYear()} / {$user->getGender()} / {$user->getZipcode()}</div>
+								<div class="category">
+                                    {$selected|date_format:'%Y'} / {$user->getGender()} / {$user->getZipcode()}</div>
                                 <div class="two-column accountInfo hidden">
                                     <div>
                                         <fieldset>

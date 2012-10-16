@@ -6,17 +6,26 @@
                 	
 			<li>
 				<div class="result-image left">
-					<img class="resultImage" src="{#pandaBase#}{$video->getPandaId()}{#pandaImageExt#}">
+                {if isset($fileExists) && $fileExists == true}
+                    <img src="{#pandaBase#}{$video->getPandaId()}{#pandaImageExt#}" class="resultImage" />
+                {else}
+                    <img src="{#baseUrl#}media/images/defaultImage.gif" class="resultImage" />
+                {/if}
 				</div>
 				<ul class="left">
-					<li class="header">{$video->getPlayer()->getFirstName()} {$video->getPlayer()->getLastName()}</li>
+					<li class="header">{$player->getFirstName()} {$player->getLastName()}</li>
 					<li class="position-height">
-                        {foreach from=$video->getPlayer()->getPosition() key=key item=position}
+                        {foreach from=$player->getPosition() key=key item=position}
                             {if $position->getName() != 'Individual'}
                                 {$position->getName()},
                             {/if}
                         {/foreach}
-                        {$video->getPlayer()->getHeight()}
+                        {if $player->getHeight() != 0 && $player->getHeight() != ''}
+                            {$player->getFriendlyHeight()},
+                        {/if}
+                        {if $player->getWeight() != 0 && $player->getWeight() != ''}
+                            {$player->getFriendlyWeight()}
+                        {/if}
                     </li>
 					<li class="video-title">{$video->getTitle()}</li>
 					<li class="month-year">

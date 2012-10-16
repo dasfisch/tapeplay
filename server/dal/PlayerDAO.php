@@ -203,7 +203,7 @@ class PlayerDAO extends BaseDOA
    	 * @param SearchFilter $filter
    	 * @return array An array of players who match the search query.
    	 */
-   	function getPlayersByUserId($userId)
+   	function getPlayersByUserId($userId, $noGroup=true)
    	{
    		try
    		{
@@ -232,8 +232,11 @@ class PlayerDAO extends BaseDOA
    			                LEFT JOIN player_positions ppos ON ppos.player_id=p.id
    			                LEFT JOIN positions pos ON pos.id=ppos.position_id
    			                JOIN sports sp ON sp.id = p.sport_id
-   			                WHERE p.user_id=:userId
-   			                GROUP BY sp.id";
+   			                WHERE p.user_id=:userId";
+
+            if($noGroup === false) {
+                $this->sql .= " GROUP BY sp.id";
+            }
 
    			$this->prep = $this->dbh->prepare($this->sql);
    			$this->prep->bindValue(":userId", (int)$userId, \PDO::PARAM_INT);
@@ -292,8 +295,7 @@ class PlayerDAO extends BaseDOA
    			                LEFT JOIN player_positions ppos ON ppos.player_id=p.id
    			                LEFT JOIN positions pos ON pos.id=ppos.position_id
    			                JOIN sports sp ON sp.id = p.sport_id
-   			                WHERE p.id=:userId".$extra."
-   			                GROUP BY sp.id";
+   			                WHERE p.id=:userId".$extra."";
 
    			$this->prep = $this->dbh->prepare($this->sql);
 

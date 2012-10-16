@@ -2603,6 +2603,10 @@ p.nothing {
 }
 
 .accordion .slide ul .btn-holder{
+
+}
+
+.accordion .slide ul .btn-holder{
 	position:absolute;
 	right:0;
 	top:0;
@@ -2682,4 +2686,22 @@ p.nothing {
 
 .addAnother {
     cursor: pointer;
+}
+
+#videos .text-holder {
+    height: 100px;
+}
+
+#videos .text-holder .videoInfo div,
+#videos .text-holder .videoInfo em {
+    color: #666;
+}
+
+#videos .text-holder .videoInfo div:hover,
+#videos .text-holder .videoInfo em:hover {
+    text-decoration: none;
+}
+
+.popup-hover div.popup p .mark.link {
+    font-size: 11px;
 }

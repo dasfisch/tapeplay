@@ -189,7 +189,15 @@
 																									<tr>
 																										<td mc:edit="title01" style="font-size:30px; line-height:36px;">
                                                                                                             <font face="Arial, Helvetica, sans-serif" size="6" color="#666666" style="font-size:30px; line-height:36px;">
-                                                                                                                #{$video->getPlayer()->getNumber()} {$video->getPlayer()->getFirstName()} {$video->getPlayer()->getLastName()}
+                                                                                                                {if $player->getNumber() != '##'}
+                                                                                                                    #{$video->getPlayer()->getNumber()}
+                                                                                                                {/if}
+                                                                                                                {if $player->getFirstName() != ''}
+                                                                                                                    {$player->getFirstName()}
+                                                                                                                {/if}
+                                                                                                                {if $player->getLastName() != ''}
+                                                                                                                    {$player->getLastName()}
+                                                                                                                {/if}
                                                                                                             </font>
                                                                                                         </td>
 																									</tr>
@@ -201,16 +209,23 @@
 																														{$position->getName()},
 																													{/if}
 																												{/foreach}
-
-																												{$video->getPlayer()->getFriendlyHeight()}, {$video->getPlayer()->getWeight()} lbs.<br />
-																												{if $gradeLevel != "" || $video->getPlayer->getSchool()->getName() != ""}
-																													{$gradeLevel}{if $video->getPlayer->getSchool() != ""}, {$video->getPlayer->getSchool()->getName()}{/if}<br/>
-																												{/if}
-                                                                                                                {assign var=city value=$video->getPlayer()->getSchool()->getCity()}
-                                                                                                                {assign var=state value=$video->getPlayer()->getSchool()->getState()}
-                                                                                                                {assign var=coach value=$video->getPlayer()->getCoachName()}
+                                                                                                                {if $player->getHeight() != '' && $player->getHeight() != 0}
+																												    {$player->getFriendlyHeight()},
+                                                                                                                {/if}
+                                                                                                                {if $player->getWeight() != '' && $player->getWeight() != 0}
+                                                                                                                    {$player->getWeight()} lbs.<br />
+                                                                                                                {/if}
+																												{if isset($gradeLevel) && $gradeLevel != ""}
+																													{$gradeLevel},
+                                                                                                                {/if}
+                                                                                                                {if $player->getSchool() != ""}
+                                                                                                                    {$player->getSchool()->getName()}
+                                                                                                                {/if}<br/>
+                                                                                                                {assign var=city value=$player->getSchool()->getCity()}
+                                                                                                                {assign var=state value=$player->getSchool()->getState()}
+                                                                                                                {assign var=coach value=$player->getCoachName()}
                                                                                                                 {if isset($city) && !empty($city) && isset($state) && !empty($state)}
-                                                                                                                    {$video->getPlayer()->getSchool()->getCity()}, {$video->getPlayer()->getSchool()->getState()} <br />
+                                                                                                                    {$player->getSchool()->getCity()}, {$player->getSchool()->getState()} <br />
                                                                                                                 {/if}
                                                                                                                 {if isset($coach) && !empty($coach)}
                                                                                                                     Coach {$video->getPlayer()->getCoachName()}
