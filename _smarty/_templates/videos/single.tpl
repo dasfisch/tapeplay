@@ -91,7 +91,7 @@
 	<div class="video-content">
 		<div class="content-left left">
 			<div class="user-info">
-				<h1>#{$player->getNumber()} {$player->getFirstName()} {$player->getLastName()}</h1>
+				<h1>{if $player->getNumber() != 0}#{$player->getNumber()} {/if}{$player->getFirstName()} {$player->getLastName()}</h1>
 				<span class="grade">
 					{if $player->getPlayingLevel() == "0"}
 						<img src="/media/images/icon_high-school-athlete.png" />
