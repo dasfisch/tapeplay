@@ -44,7 +44,7 @@
                     $panda = $controller->configuration->panda;
 
                     foreach($videos as $video) {
-                        if(fopen($panda['base'].$panda['bucket'].'/'.$video->getPandaId().$panda['imageExt'], 'r')) {
+                        if(@fopen($panda['base'].$panda['bucket'].'/'.$video->getPandaId().$panda['imageExt'], 'r')) {
                             $video->fileExists = true;
                         } else {
                             $video->fileExists = false;
@@ -110,7 +110,7 @@
                     try {
                         $ids = array();
 
-                        $playerInfo = $playerBll->getPlayersByUserId($user->getUserId(), false);
+                        $playerInfo = $playerBll->getPlayersByUserId($video[0]->getPlayer()->getUserId(), false);
                         foreach($playerInfo as $single) {
                             if(!in_array($single->getId(), $ids)) {
                                 $ids[] = $single->getId();
@@ -148,7 +148,19 @@
                     $search->setWhere('player_id', $ids);
                     $search->setWhere('method', $route->class);
 
-                    $videos = $videoBll->search($search);
+                    try {
+                        $videos = $videoBll->search($search);
+
+                        foreach($videos as $single) {
+                            if(@fopen($panda['base'].$panda['bucket'].'/'.$single->getPandaId().$panda['imageExt'], 'r')) {
+                                $single->fileExists = true;
+                            } else {
+                                $single->fileExists = false;
+                            }
+                        }
+                    } catch(Exception $e) {
+
+                    }
 
                     $statsBll = new StatsBLL();
                     $stats = $statsBll->getPlayerStats($player->getId(), (int)$player->getSport()->getId());
@@ -210,7 +222,7 @@
                     $panda = $controller->configuration->panda;
 
                     foreach($videos as $video) {
-                        if(fopen($panda['base'].$panda['bucket'].'/'.$video->getPandaId().$panda['imageExt'], 'r')) {
+                        if(@fopen($panda['base'].$panda['bucket'].'/'.$video->getPandaId().$panda['imageExt'], 'r')) {
                             $video->fileExists = true;
                         } else {
                             $video->fileExists = false;

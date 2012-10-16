@@ -150,7 +150,8 @@
 				<div class="clear"></div>
 			</div>
             {if isset($videos) && count($videos) > 0}
-                <h2>More videos from {$player->getFirstName()} {$player->getLastName()}</h2>
+                {if count($videos) > 1}
+                    <h2>More videos from {$player->getFirstName()} {$player->getLastName()}</h2>
                     <ul class="more-videos">
                         {foreach from=$videos item=single}
                             {if $video->getId() != $single->getId()}
@@ -206,7 +207,10 @@
                             {/if}
                         {/foreach}
                     </ul>
-				{/if}
+                {else}
+                    <h2>No new videos yet</h2>
+                {/if}
+            {/if}
 		</div>
 		<div class="content-right left">
 			<div class="ad_300x250 right">
