@@ -24,7 +24,7 @@
                             {$player->getFriendlyHeight()},
                         {/if}
                         {if $player->getWeight() != 0 && $player->getWeight() != ''}
-                            {$player->getFriendlyWeight()}
+                            {$player->getWeight()}
                         {/if}
                     </li>
 					<li class="video-title">{$video->getTitle()}</li>
