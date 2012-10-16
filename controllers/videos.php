@@ -301,7 +301,7 @@
                     $smarty->assign('video', $video[0]);
                     $smarty->assign("title", 'Share Videos from TapePlay');
 
-                    //$smarty->display('home.tpl');
+                    $smarty->display('home.tpl');
                 } else {
                     header('Location:'.$controller->configuration->URLs['baseUrl'].'videos/browse/');
                 }
