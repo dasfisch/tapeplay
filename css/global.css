@@ -2691,7 +2691,7 @@ p.nothing {
 }
 
 #videos .text-holder {
-    height: 100px;
+    height: 100%;
 }
 
 #videos .text-holder .videoInfo div,

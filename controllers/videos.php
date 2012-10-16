@@ -260,11 +260,10 @@
 
                         $playerBll = new PlayerBLL();
 
-                        $player = $playerBll->getPlayersByPlayerId((int)$video[0]->getPlayer()->getUserId(), (int)$video[0]->getPlayer()->getSport()->getId());
+                        $player = $playerBll->getPlayersByPlayerId((int)$video[0]->getPlayer()->getId(), (int)$video[0]->getPlayer()->getSport()->getId());
 
                         $statsBll = new StatsBLL();
-                        $stats = $statsBll->getPlayerStats((int)$player->getUserId(), (int)$player->getSport()->getId());
-
+                        $stats = $statsBll->getPlayerStats((int)$player->getId(), (int)$player->getSport()->getId());
                         $modder = (ceil(count($stats) / 3) > 1) ? ceil(count($stats) / 3) : 2;
 
 						$args = array("from" => $post["from"],
@@ -302,7 +301,7 @@
                     $smarty->assign('video', $video[0]);
                     $smarty->assign("title", 'Share Videos from TapePlay');
 
-                    $smarty->display('home.tpl');
+                    //$smarty->display('home.tpl');
                 } else {
                     header('Location:'.$controller->configuration->URLs['baseUrl'].'videos/browse/');
                 }
