@@ -5,7 +5,7 @@
 
     <link rel="shortcut icon" href="{#baseUrl#}favicon.ico" />
 
-	<meta name="description" content="{if ({$description} != '')} {$description} {else}TapePlay is a video recruiting site to get high school and college athletes to the next level. Get in front of coaches across the country by uploading video.{/if}"/>
+	<meta name="description" content="{if isset($description)} {$description} {else}TapePlay is a video recruiting site to get high school and college athletes to the next level. Get in front of coaches across the country by uploading video.{/if}"/>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 
 	{if preg_match('/^\/videos\/view\/([0-9]+)\/$/', {$smarty.server.REQUEST_URI}) ||
