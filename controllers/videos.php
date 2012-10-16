@@ -292,7 +292,7 @@
 
                     $playerBll = new PlayerBLL();
 
-                    $player = $playerBll->getPlayersByPlayerId((int)$video[0]->getPlayer()->getUserId(), (int)$video[0]->getPlayer()->getSport()->getId());
+                    $player = $playerBll->getPlayersByPlayerId((int)$video[0]->getPlayer()->getId(), (int)$video[0]->getPlayer()->getSport()->getId());
 
                     $smarty->assign('file', 'videos/emailvideo.tpl');
                     $smarty->assign('hash', $inputFilter->createHash());
@@ -300,6 +300,7 @@
                     $smarty->assign('player', $player);
                     $smarty->assign('video', $video[0]);
                     $smarty->assign("title", 'Share Videos from TapePlay');
+					$smarty->assign("description", "Share videos from TapePlay");
 
                     $smarty->display('home.tpl');
                 } else {

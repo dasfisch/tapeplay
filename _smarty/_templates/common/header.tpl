@@ -8,13 +8,16 @@
 	<meta name="description" content="{if ({$description} != '')} {$description} {else}TapePlay is a video recruiting site to get high school and college athletes to the next level. Get in front of coaches across the country by uploading video.{/if}"/>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 
-	{if preg_match('/^\/videos\/email\/([0-9]+)\/$/', {$smarty.server.REQUEST_URI}) ||
-		preg_match('/^\/videos\/view\/([0-9]+)\/$/', {$smarty.server.REQUEST_URI}) ||
+	{if preg_match('/^\/videos\/view\/([0-9]+)\/$/', {$smarty.server.REQUEST_URI}) ||
 		preg_match('/^\/watch\/([0-9]+)\/$/', {$smarty.server.REQUEST_URI})
 	}
 		<meta property="og:title" content="{$video->getTitle()} Feat. {$video->getPlayer()->getFirstName()} on TapePlay" />
 		<meta property="og:description" content="{$video->getTitle()} Feat. {$video->getPlayer()->getFirstName()} on TapePlay" />
 		<meta property="og:image" content="{#pandaBase#}{$video->getPandaId()}{#pandaImageExt#}" />
+		<meta property="og:type" content="movie" />
+		<meta property="og:video:width" content="445" />
+		<meta property="og:video:type" content="application/x-shockwave-flash" />
+		<meta property="og:video" content="{#baseUrl#}media/playback/player.swf?file={$videoDisplayInfo->getMp4Source()}&autostart=true" />
 	{/if}
 
 	<link rel="stylesheet" href="/css/jquery.css" type="text/css"/>
