@@ -136,8 +136,8 @@
 							<div class="popup popup-2">
 								<div class="holder">
 									<div class="frame">
-										<p><strong>Players</strong> must be logged into their accounts to upload a video. <a href="#">Log in.</a></p>
-										<p>Don&rsquo;t have an account yet? <a href="#">Sign up.</a></p>
+										<p><strong>Players</strong> must be logged into their accounts to upload a video. <a href="/user/login/">Log in.</a></p>
+										<p>Don&rsquo;t have an account yet? <a href="/user/signup/">Sign up.</a></p>
 									</div>
 								</div>
 							</div>
