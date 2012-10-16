@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html id="www-tapeplay-com"{$ie}>
 <head>
-	<title>Tapeplay :: {$title}</title>
+	<title>Tapeplay {if {$title}}:: {$title}{/if}</title>
 
     <link rel="shortcut icon" href="{#baseUrl#}favicon.ico" />
 
