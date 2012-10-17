@@ -16,7 +16,7 @@
                                             {if isset($fileExists) && $fileExists == true}
                                                 <img src="{#pandaBase#}{$video->getPandaId()}{#pandaImageExt#}" width="125" height="94" alt="image description" />
                                             {else}
-                                                <img src="{#baseUrl#}media/images/defaultImage.gif" width="125" height="94" alt="image description" />
+                                                <img src="{#pandaBase#}{$video->getPandaId()}{#pandaImageExt#}" width="125" height="94" alt="image description" />
                                             {/if}
                                             <div class="text-holder">
                                                 <div class="videoInfo">
