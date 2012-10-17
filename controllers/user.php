@@ -19,6 +19,8 @@ require_once("bll/VideoBLL.php");
 require_once("bll/SportBLL.php");
 require_once("bll/StatsBLL.php");
 
+require_once("bll/MCAPI.php");
+
 require_once("model/Coach.php");
 require_once("model/Player.php");
 require_once("model/Position.php");
@@ -271,7 +273,14 @@ if (isset($route->method))
 				{
 					// update status
                     try {
+						// using mailchimp's api helper class to add this user to the mail list
+						$mcAPI = new MCAPI($controller->configuration->mailChimp['mailChimpAPIKey']);
+
+						// create merge vars w/ first and last name
+						$mergeVars = array('FNAME' => $post["firstName"], 'LNAME' => $post["lastName"]);
+						$addedToList = $mcAPI->listSubscribe($controller->configuration->mailChimp['playerSubscriptionListID'], $post["email"], $mergeVars);
 					    $userBLL->updateStatus(\AccountStatusEnum::$STEP2);
+
                     } catch(Exception $e) {
 //                        echo '<pre>';
 //                        var_dump($e);
