@@ -23,13 +23,13 @@
 <span>Other ways to share&hellip;</span>
 <ul id="get-connected">
 	<li id="get-connected_facebook"><a id="share-facebook" href="#"
-									   onclick="openFacebook('{#baseUrl#}watch/{$video->getId()}/')"
+									   onclick="openFacebook('{#baseUrl#}videos/view/{$video->getId()}/')"
 									   title="{#facebookTitle#}">{#facebookTitle#}</a></li>
 	<li id="get-connected_google-plus"><a id="shareGooglePlus" href="#"
-										  onclick="openGooglePlus('{#baseUrl#}watch/{$video->getId()}/')"
+										  onclick="openGooglePlus('{#baseUrl#}videos/view/{$video->getId()}/')"
 										  title="{#googlePlusTitle#}">{#googlePlusTitle#}</a></li>
 	<li id="get-connected_twitter"><a id="shareTwitter" href="#"
-									  onclick="openTwitter('{#baseUrl#}watch/{$video->getId()}/', '{$video->getTitle()} Feat. {$video->getPlayer()->getFirstName()} on TapePlay')"
+									  onclick="openTwitter('{#baseUrl#}videos/view/{$video->getId()}/', '{$video->getTitle()} Feat. {$video->getPlayer()->getFirstName()} on TapePlay')"
 									  title="{#twitterTitle#}">{#twitterTitle#}</a></li>
 </ul>
 <div class="clear"></div>

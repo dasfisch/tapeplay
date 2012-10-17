@@ -674,7 +674,7 @@ if (isset($route->method))
                             $search->setWhere('player_id', $user->getId());
                         } else {
                             $search->setWhere('id', $_SESSION['last_video']);
-                        }
+                        }	
 
                         try {
                             $video = $videoBLL->search($search);

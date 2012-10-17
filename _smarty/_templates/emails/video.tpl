@@ -189,15 +189,7 @@
 																									<tr>
 																										<td mc:edit="title01" style="font-size:30px; line-height:36px;">
                                                                                                             <font face="Arial, Helvetica, sans-serif" size="6" color="#666666" style="font-size:30px; line-height:36px;">
-                                                                                                                {if $player->getNumber() != '##'}
-                                                                                                                    #{$video->getPlayer()->getNumber()}
-                                                                                                                {/if}
-                                                                                                                {if $player->getFirstName() != ''}
-                                                                                                                    {$player->getFirstName()}
-                                                                                                                {/if}
-                                                                                                                {if $player->getLastName() != ''}
-                                                                                                                    {$player->getLastName()}
-                                                                                                                {/if}
+																											{if $player->getNumber() != 0}#{$player->getNumber()} {/if}{$player->getFirstName()} {$player->getLastName()}
                                                                                                             </font>
                                                                                                         </td>
 																									</tr>
