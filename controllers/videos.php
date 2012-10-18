@@ -254,6 +254,12 @@
 
                     $video = $videoBll->search($search);
 
+					// redirect user to browse page if video doesn't exist
+					if(!isset($video) || empty($video))
+					{
+						Util::setHeader("videos/browse/");
+					}
+
                     if(isset($post) && isset($post['hash']) && $inputFilter->validateHash($post['hash'])) {
                         $failed = array();
                         $sent = array();
@@ -273,6 +279,7 @@
 									"video" => $video[0],
                                     "player" => $player,
 									"gradeLevel", $controller->configuration->gradeLevels[(int)$video[0]->getPlayer()->getGradeLevel()]);
+
 
 						// send email with above args
 						$success = \Util::sendEmail(EmailEnum::$SHARE, $post['email'], "The Next Big Thing", "emails/video.tpl", $args);
@@ -294,11 +301,19 @@
 
                     $player = $playerBll->getPlayersByPlayerId((int)$video[0]->getPlayer()->getId(), (int)$video[0]->getPlayer()->getSport()->getId());
 
+					$panda = $controller->configuration->panda;
+					if(@fopen($panda['base'].$panda['bucket'].'/'.$video[0]->getPandaId().$panda['imageExt'], 'r')) {
+						$video[0]->fileExists = true;
+					} else {
+						$video[0]->fileExists = false;
+					}
+
                     $smarty->assign('file', 'videos/emailvideo.tpl');
                     $smarty->assign('hash', $inputFilter->createHash());
                     $smarty->assign('message', $message);
                     $smarty->assign('player', $player);
                     $smarty->assign('video', $video[0]);
+					$smarty->assign('fileExists', $video[0]->fileExists);
                     $smarty->assign("title", 'Share Videos from TapePlay');
 					$smarty->assign("description", "Share videos from TapePlay");
 

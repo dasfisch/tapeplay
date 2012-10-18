@@ -31,7 +31,7 @@
                                                         {/if}
                                                     </div>
                                                     <div class="time"></div>
-                                                    <em class="info">Views: {$video->getViews()}, Saves: {$video->getSaves()}</em>
+                                                    <em class="info">Views: {$video->getViews()}</em>
                                                 </div>
                                                 <div class="accountInfo hidden">
                                                     <div class="input_custom-text input_text80 width450 left">
