@@ -153,19 +153,22 @@ if (isset($route->method))
                                 $panda = $controller->configuration->panda;
 
                                 $videos = $videoBll->search($search);
-
-                                foreach($videos as $video) {
-                                    if(@fopen($panda['base'].$panda['bucket'].'/'.$video->getPandaId().$panda['imageExt'], 'r')) {
-                                        $video->fileExists = true;
-                                    } else {
-                                        $video->fileExists = false;
+                                if(isset($videos) && !empty($videos)) {
+                                    foreach($videos as $video) {
+                                        if(@fopen($panda['base'].$panda['bucket'].'/'.$video->getPandaId().$panda['imageExt'], 'r')) {
+                                            $video->fileExists = true;
+                                        } else {
+                                            $video->fileExists = false;
+                                        }
                                     }
+
+                                    $privacy = $videos[0]->getPrivacy();
+                                } else {
+                                    $privacy = false;
                                 }
                             } catch(Exception $e) {
 
                             }
-
-                            $privacy = $videos[0]->getPrivacy();
                         } catch(Exception $e) {
                             $videos = null;
                         }
@@ -215,7 +218,7 @@ if (isset($route->method))
                 $smarty->assign("optins", $optins);
 //                $smarty->assign("positions", $positions);
                 $smarty->assign("privacy", $privacy);
-                $smarty->assign('selected', strtotime($userBLL->getUser()->getBirthYear()));
+                $smarty->assign('selected', strtotime($user->getBirthYear()));
                 $smarty->assign("statCount", count($stats));
                 $smarty->assign("thirteenBelow", $thirteenYearsBeforeNow);
                 $smarty->assign("title", 'Your TapePlay Account');

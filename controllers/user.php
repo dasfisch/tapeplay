@@ -129,7 +129,6 @@ if (isset($route->method))
 								Util::setHeader("user/info/");
 							}
 							break;
-
 						case AccountStatusEnum::$STEP3:
 							if ($accountType == AccountTypeEnum::$PLAYER)
 							{
@@ -140,12 +139,16 @@ if (isset($route->method))
 								Util::setHeader("user/payment/");
 							}
 							break;
-
 						default:
-							print "default";
-						Util::setHeader("account/welcome/");
+                            break;
 					}
 
+                    if(!isset($sport) || !isset($sport['name']) || $sport['name'] == '') {
+                        $_SESSION['sport']['id'] = intval($userBLL->getUser()->getSport()->getId());
+                        $_SESSION['sport']['name'] = $userBLL->getUser()->getSport()->getSportName();
+                    }
+
+		            Util::setHeader("account/welcome/");
 				}
 				else
 				{
@@ -526,7 +529,7 @@ if (isset($route->method))
                         $post["graduationMonth"] = (!isset($post["graduationMonth"]) || $post["graduationMonth"] == 'Grad. Month') ? 0 : $post["graduationMonth"];
                         $post["graduationYear"] = (!isset($post["graduationYear"]) || $post["graduationYear"] == 'Grad. Year') ? 0 : $post["graduationYear"];
                         $post["playingLevel"] = (!isset($post["playingLevel"])) ? null : $post["playingLevel"];
-                        
+
 						// get player basics and add
                         $userBLL->getUser()->setNumber($post["number"]);
                         $userBLL->getUser()->setGradeLevel($post["gradeLevel"]);
@@ -674,7 +677,7 @@ if (isset($route->method))
                             $search->setWhere('player_id', $user->getId());
                         } else {
                             $search->setWhere('id', $_SESSION['last_video']);
-                        }	
+                        }
 
                         try {
                             $video = $videoBLL->search($search);

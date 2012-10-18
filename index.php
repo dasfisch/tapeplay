@@ -135,7 +135,9 @@
                     $controller->open($route->class);
                 } elseif($route->class == 'company') {
                     $controller->open($route->class);
-                } else {
+                } elseif($route->class == 'videos' && $route->method == 'view' && $route->id != '') {
+                    $controller->open($route->class);
+                }else {
                     \Util::setHeader($configuration->configuration->URLs['baseUrl']);
 
                     exit;

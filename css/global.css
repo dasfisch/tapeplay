@@ -2699,6 +2699,7 @@ p.nothing {
     color: #666;
 }
 
+#videos .text-holder a,
 #videos .text-holder .videoInfo div:hover,
 #videos .text-holder .videoInfo em:hover {
     text-decoration: none;

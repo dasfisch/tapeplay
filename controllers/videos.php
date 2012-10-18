@@ -89,6 +89,14 @@
 
                 $video = $videoBll->search($search);
 
+                /**
+                 * Set the sport for the user to be video sport
+                 */
+                if(!isset($sport) || !isset($sport['name']) || $sport['name'] == '') {
+                    $_SESSION['sport']['id'] = intval($video[0]->getSport()->getId());
+                    $_SESSION['sport']['name'] = $video[0]->getSport()->getSportName();
+                }
+
                 if(isset($video) && !empty($video)) {
                     $sportReset = $video[0]->getPlayer()->getSport();
 

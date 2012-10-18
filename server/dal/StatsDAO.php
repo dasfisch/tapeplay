@@ -42,6 +42,8 @@ class StatsDAO extends BaseDOA
             $this->prep->bindValue(":id", $sportId, \PDO::PARAM_INT);
             $this->prep->execute();
 
+            $stats = array();
+
             while($value = $this->prep->fetch()) {
                 $stats[] = Stat::create($value);
             }

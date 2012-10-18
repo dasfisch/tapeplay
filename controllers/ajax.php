@@ -308,7 +308,7 @@
                 try {
                     $playerBll = new PlayerBLL();
 
-                    $playerBll->setMyVideoPrivacy((int)$userBLL->getUser()->getId(), (int)$post['level']);
+                    $playerBll->setMyVideoPrivacy((int)$userBLL->getUser()->getUserId(), (int)$post['level']);
                 } catch(Exception $e) {
 
                 }
@@ -318,18 +318,18 @@
                 $switch = $post['switcher'];
 
                 if($switch == 'off') {
-                    echo 'deleting;';
                     try {
-                        $userBLL->deleteOptin($userBLL->getUser()->getId(), $post['optin']);
+                        $userBLL->deleteOptin($userBLL->getUser()->getUserId(), $post['optin']);
                     } catch(Exception $e) {
 
                     }
                 } else {
-                    echo 'creating';
                     try {
-                        $userBLL->addOptin($userBLL->getUser()->getId(), $post['optin']);
-                    } catch(Exception $e) {
+                        $userBLL->addOptin($userBLL->getUser()->getUserId(), $post['optin']);
 
+                        echo 200;
+                    } catch(Exception $e) {
+                        echo 600;
                     }
                 }
 
