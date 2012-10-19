@@ -281,7 +281,7 @@ if (isset($route->method))
 
 						// create merge vars w/ first and last name
 						$mergeVars = array('FNAME' => $post["firstName"], 'LNAME' => $post["lastName"]);
-						$addedToList = $mcAPI->listSubscribe($controller->configuration->mailChimp['playerSubscriptionListID'], $post["email"], $mergeVars);
+						$addedToList = $mcAPI->listSubscribe($controller->configuration->mailChimp['playerSubscriptionListID'], $post["email"], $mergeVars, "html", false);
 					    $userBLL->updateStatus(\AccountStatusEnum::$STEP2);
 
                     } catch(Exception $e) {

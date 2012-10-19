@@ -206,7 +206,7 @@
 
                     $smarty->display('home.tpl');
                 } else {
-                    \Util::setHeader('videos/browse/');
+                    \Util::setHeader('videos/notfound/');
                 }
 
                 break;
@@ -279,7 +279,7 @@
 					// redirect user to browse page if video doesn't exist
 					if(!isset($video) || empty($video))
 					{
-						Util::setHeader("videos/browse/");
+						Util::setHeader("videos/notfound/");
 					}
 
                     if(isset($post) && isset($post['hash']) && $inputFilter->validateHash($post['hash'])) {
@@ -341,9 +341,19 @@
 
                     $smarty->display('home.tpl');
                 } else {
-                    header('Location:'.$controller->configuration->URLs['baseUrl'].'videos/browse/');
+                    Util::setHeader("videos/notfound/");
                 }
 
+                break;
+
+
+            case 'notfound':
+
+                $smarty->assign('file', 'videos/videoNotFound.tpl');
+                $smarty->assign("title", 'Sorry, Video does not exist');
+                $smarty->assign("description", "");
+
+                $smarty->display('home.tpl');
                 break;
             default:
                 /**
