@@ -7,9 +7,9 @@
 			<li>
 				<div class="result-image left">
                 {if isset($fileExists) && $fileExists == true}
-                    <img src="{#pandaBase#}{$video->getPandaId()}{#pandaImageExt#}" class="resultImage" />
+                    <img src="{#pandaBase#}{$video->getPandaId()}{#pandaImageExt#}" style="width:125px;height:95px;" class="resultImage" />
                 {else}
-                    <img src="{#baseUrl#}media/images/defaultImage.gif" class="resultImage" />
+                    <img src="{#baseUrl#}media/images/defaultImage.gif" style="width:125px;height:95px;" class="resultImage" />
                 {/if}
 				</div>
 				<ul class="left">

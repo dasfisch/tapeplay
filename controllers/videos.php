@@ -158,6 +158,10 @@
 
                     $videoDisplayInfo = $videoBll->getVideoDisplayInfo($video[0]->getPandaId());
 
+                    // send to 404 page if video is not found
+                    if(@!fopen($videoDisplayInfo->getMp4Source(), 'r'))
+                        Util::setHeader("videos/notfound");
+
                     //set a view
                     try {
                         $view = $videoBll->insertView($video[0]->getId());
