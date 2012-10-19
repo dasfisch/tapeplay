@@ -31,7 +31,14 @@
                         {/if}
                     </li>
 					<li class="name">{$video->getPlayer()->getFirstName()} {$video->getPlayer()->getLastName()}</li>
-					<li class="position-height">{$video->getPlayer()->getPosition()}, {$video->getPlayer()->getFriendlyHeight()}</li>
+					<li class="position-height">
+                        {if $video->getPlayer()->positionCount > 0}
+                            {foreach $video->getPlayer()->getPosition() as $position}
+                                {$position->getName()},
+                            {/foreach}
+                        {/if}
+                        {$video->getPlayer()->getFriendlyHeight()}
+                    </li>
 					<li class="month-year">{$video->getUploadDate()|date_format:"%B %Y"}</li>
 				</ul>
         	</li>

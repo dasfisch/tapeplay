@@ -41,9 +41,23 @@
 
                 $videos = $videoBll->search($search);
                 if(isset($videos)) {
+                    $playerBll = new PlayerBLL();
+                    $positionBll = new PositionBLL();
+
                     $panda = $controller->configuration->panda;
 
                     foreach($videos as $video) {
+                        try {
+                            $positions = $positionBll->getPositionsByPlayer($video->getPlayer()->getId());
+
+                            $video->getPlayer()->setPosition($positions);
+
+                            $video->getPlayer()->positionCount = count($positions);
+                        } catch(Exception $e) {
+
+                        }
+
+
                         if(@fopen($panda['base'].$panda['bucket'].'/'.$video->getPandaId().$panda['imageExt'], 'r')) {
                             $video->fileExists = true;
                         } else {

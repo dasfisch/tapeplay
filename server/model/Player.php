@@ -89,6 +89,8 @@ class Player extends User
 	private $_playingLevel;
 	private $_myVideos;
 
+    public $positionCount;
+
 	function __construct(User $user = null)
 	{
 		$this->setSport(new Sport());
