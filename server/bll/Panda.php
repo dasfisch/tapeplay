@@ -12,16 +12,24 @@ class Panda
 	// tapeplay prod panda access: 1a606e06178431326acf
 	// tapeplay prod panda secret: f222a3ded2dea6e338e2
 
-	// TODO: Move to XML config file
-	public static $API_HOST = "api.pandastream.com";
-	public static $API_PORT = 80;
-	public static $API_VERSION = 2;
-	public static $PANDA_CLOUD_ID = "bdf2878be969369a634dbd9e37e67779";
-	public static $PANDA_ACCESS_KEY = "ea0ca69968eb021963fb";
-	public static $PANDA_SECRET_KEY = "572243fddc02e9b4d762";
+	private $API_HOST;// = "api.pandastream.com";
+	private $API_PORT;// = 80;
+	private $API_VERSION;// = 2;
+	private $PANDA_CLOUD_ID;// = "bdf2878be969369a634dbd9e37e67779";
+	private $PANDA_ACCESS_KEY;// = "ea0ca69968eb021963fb";
+	private $PANDA_SECRET_KEY;// = "572243fddc02e9b4d762";
 
 	public function __construct()
 	{
+        global $controller;
+        $panda = $controller->configuration->panda;
+
+        $this->API_HOST = $panda["api_host"];
+        $this->API_PORT = $panda["api_port"];
+        $this->API_VERSION = $panda["api_version"];
+        $this->PANDA_CLOUD_ID = $panda["cloud_id"];
+        $this->PANDA_ACCESS_KEY = $panda["access_key"];
+        $this->PANDA_SECRET_KEY = $panda["secret_key"];
 	}
 
 
@@ -54,7 +62,7 @@ class Panda
 	 */
 	public function getAPIURL()
 	{
-		return "http://" . Panda::$API_HOST . ((Panda::$API_PORT != 80) ? (":" . Panda::$API_PORT) : "") . "/v" . Panda::$API_VERSION;
+		return "http://" . $this->API_HOST . (($this->API_PORT != 80) ? (":" . $this->API_PORT) : "") . "/v" . $this->API_VERSION;
 	}
 
 	private function http_request($verb, $path, $query = null, $data = null)
@@ -84,7 +92,7 @@ class Panda
 		}
 
 		curl_setopt($curl, CURLOPT_CUSTOMREQUEST, $verb);
-		curl_setopt($curl, CURLOPT_PORT, Panda::$API_PORT);
+		curl_setopt($curl, CURLOPT_PORT, $this->API_PORT);
 
 		if (defined('CURLOPT_PROTOCOLS'))
 		{
@@ -121,8 +129,8 @@ class Panda
 	public function signed_params($verb, $request_path, $params = array(), $timestamp = null)
 	{
 		$auth_params = $params;
-		$auth_params["cloud_id"] = Panda::$PANDA_CLOUD_ID;
-		$auth_params["access_key"] = Panda::$PANDA_ACCESS_KEY;
+		$auth_params["cloud_id"] = $this->PANDA_CLOUD_ID;
+		$auth_params["access_key"] = $this->PANDA_ACCESS_KEY;
 		$auth_params["timestamp"] = $timestamp ? $timestamp : date("c");
 		$auth_params["signature"] = $this->generate_signature($verb, $request_path, array_merge($params, $auth_params));
 
@@ -139,7 +147,7 @@ class Panda
 
 	public function generate_signature($verb, $request_path, $params = array())
 	{
-		return self::signature_generator($verb, $request_path, Panda::$API_HOST, Panda::$PANDA_SECRET_KEY, $params);
+		return self::signature_generator($verb, $request_path, $this->API_HOST, $this->PANDA_SECRET_KEY, $params);
 	}
 
 	public function string_to_sign($verb, $request_path, $host, $params = array())
