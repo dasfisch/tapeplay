@@ -48,7 +48,7 @@
 
                     foreach($videos as $video) {
                         try {
-                            $positions = $positionBll->getPositionsByPlayer($video->getPlayer()->getId(), $video->getSport->getId());
+                            $positions = $positionBll->getPositionsByPlayer($video->getPlayer()->getId());
 
                             $video->getPlayer()->setPosition($positions);
 
