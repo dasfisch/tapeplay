@@ -14,10 +14,10 @@
 				<span class="bold">Upload a video.</span> To upload a video, choose a file from your computer. Give the video an accurate title and description that will help coaches and scouts discover it.
 			</p>
 			<p>
-				If you don&rsquo;t have a video, go ask yourr coach for the game video taken at school. When you come back, log in and pick up where you left off.
+				If you don&rsquo;t have a video, go ask your coach for the game video taken at school. When you come back, log in and pick up where you left off.
 			</p>
 			<p class="italic">
-				Upload Tip: You can upload as many videos as you&rsquo;d like.
+				Tip: You can upload as many videos as you&rsquo;d like.
 			</p>
 		</li>
 		<li class="bold">

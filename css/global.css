@@ -111,6 +111,8 @@ p {
 	width:670px;
 }
 
+ul.do-not-list li { margin-bottom: 1em;}
+
 #content-right-column {
 	margin:0px 40px 0px 45px;
 	width:200px;

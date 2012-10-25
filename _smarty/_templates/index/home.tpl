@@ -14,7 +14,7 @@
 			</p>
 
 			<p class="beta-banner-footer clear">
-				TapePlay is for 9th grade to pro
+				TapePlay is for 9<sup>th</sup> Grade to Pro
 			</p>
 		</div>
 		<div class="right sign-up-banner">
