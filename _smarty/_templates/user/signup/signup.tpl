@@ -20,7 +20,7 @@
 				<li>Know your video activity (Saves, Views, etc.) </li>
 			</ul>
 			<p class="font15 bold center">
-				TapePlay is for 9th grade to pro
+				TapePlay is for 9<sup>th</sup> Grade to Pro
 			</p>
 			<button class="button button_orange_large left button_round" type="submit" value="Sign Up">Sign Up</button> 
 		</div>

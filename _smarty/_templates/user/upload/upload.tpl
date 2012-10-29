@@ -1,6 +1,6 @@
-<h1>Video File Upload</h1>
+<h1>Upload Video</h1>
 <p>
-	Upload highlight tapes, game footage and so on. Stay away from backyard footage&ndash;street games, summer leagues, etc. <a href="{#blogUrl#}/?p=99" target="_blank">See what makes a good video</a>
+	Upload highlight tapes, game footage and so on. Stay away from backyard footage&ndash;street games, summer leagues, etc. <a href="{#blogUrl#}/?p=99" target="_blank">See what makes a good video.</a>
 </p>
 <p>
 	<strong>For college recruits</strong>, you should to adhere to NCAA rules. That means only footage from regular season games&ndash;competition and highlight tapes, but no skills tapes.
@@ -13,7 +13,7 @@
             <div id="progressArea" style="vertical-align: middle;height:30px;">
                 <div id="progressMeter" class="panda_upload_progress" style="float:left;"></div>
 				<div id="cancelUpload" style="float:left; display:none; margin-left:15px; color:#e18a07;"><a href="#">Cancel Upload</a></div>
-                <div id="uploadComplete" class="successMessage" style="float:left;visibility: hidden; margin-left:15px; color:#00ff12;">Upload Complete.</div>
+                <div id="uploadComplete" class="successMessage" style="float:left;visibility: hidden; margin-left:15px; color:#00ff12;">Upload Complete</div>
             </div>
 			<div class="input_custom-text input_text80 upload width440 left" id="localUploadFile">
 				<div class="custom-input_center custom-input_partial">
@@ -38,7 +38,7 @@
                     <div class="topRight whiteBg"></div>
                     <div class="bottomRight whiteBg"></div>
                     <div class="middle">
-                        <input type="submit" value="Upload" id="upload_button" name="upload_button" class="large black" />
+                        <input type="submit" value="Select File" id="upload_button" name="upload_button" class="large black" />
                     </div>
                     <input type="file" class="uploader" onchange="this.form.fakeupload.value = this.value;" />
 

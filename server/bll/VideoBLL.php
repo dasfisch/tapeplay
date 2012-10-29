@@ -171,13 +171,15 @@ class VideoBLL extends BaseBLL
 	private function getEncoding(array $encodings, $type)
 	{
 		$sourceUrl = "";
+        global $controller;
+        $amazon = $controller->configuration->amazon;
 
 		// loop through encodings and get the correct match
 		foreach ($encodings as $encoding)
 		{
 			if ($encoding->profile_name == $type)
 			{
-				$sourceUrl = \PandaUtil::$S3_BUCKET_URL . $encoding->path . $encoding->extname;
+				$sourceUrl = $amazon["baseUrl"] . "/" . $amazon["bucket"] . "/" . $encoding->path . $encoding->extname;
 
 				break;
 			}

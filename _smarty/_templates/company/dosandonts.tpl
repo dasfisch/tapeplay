@@ -31,7 +31,7 @@
 	</p>
 	
 	<h3>Your video cannot violate any of our other content restrictions.</h3>
-	<ul>
+	<ul class="do-not-list">
 		<li>DO NOT upload videos that you found on the internet or infringes any third party&rsquo;s copyrights or other rights (e.g., trademark, privacy rights, etc.).</li>
 		<li>DO NOT upload videos that contain sexually explicit material, pornography, or nudity.</li> 
 		<li>DO NOT upload videos that contain hateful, defamatory, or discriminatory material or incites hatred against any individual or group.</li>

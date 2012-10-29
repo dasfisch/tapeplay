@@ -193,7 +193,7 @@
 					<li>
 						<label for="terms">
                             <span class="checkbox"><span class="check"></span></span>
-							I agree to the <a id="signup-toc" href="#">Terms and Conditions</a> and <a id="signup-privacy" href="#">Privacy Policy</a>.
+							I agree to the <a id="signup-toc" href="#">Terms of Service</a> and <a id="signup-privacy" href="#">Privacy Policy</a>.
 						</label>
                         <input type="checkbox" id="terms" name="terms" class="required" />
 					</li>
@@ -219,7 +219,7 @@
       			</fieldset>
       			<div class="error-alert">
       				<ul>
-      					<li>We appreciate your interest; however in order to use our site you must be 13 years of age or older.</li>
+      					<li>We appreciate your interest but in order to use our site you must be 13 years of age or older.</li>
       				</ul>
       			</div>
       		</li>

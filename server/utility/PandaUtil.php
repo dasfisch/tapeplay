@@ -3,7 +3,7 @@
 class PandaUtil
 {
 
-	public static $S3_BUCKET_URL = "http://s3.amazonaws.com/tpvideosdev/";
+	//public static $S3_BUCKET_URL = "http://s3.amazonaws.com/tpvideos/";
 
 	public static $VIDEO_TAG = <<<EOD
 <video id="videoPlayer" width="{width}" height="{height}">

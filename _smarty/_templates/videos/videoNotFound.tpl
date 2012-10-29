@@ -1,8 +1,5 @@
-<h1>Unwound</h1>
+<h1>We&rsquo;re Sorry</h1>
 <p>
-	Here&rsquo;s a classic case of tangled tape. We&rsquo;re having trouble finding the page you&rsquo;re looking for. Please try again.
-</p>
-<p>
-	If that doesn&rsquo;t work, it means we&rsquo;re doing a little maintenance. (Nobody said being awesome was easy.) Please wait and try again later.
+	We&rsquo;re having trouble finding the video you&rsquo;re looking for. If you recently uploaded a video, the video is not ready yet. It&rsquo;s still rewinding. Please wait and try again later.
 </p>
 <img src="/media/images/tape-404.jpg" />

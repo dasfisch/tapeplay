@@ -1,6 +1,6 @@
 <div class="account-page">
 	<div id="content-left-column">
-	    <h1>Welcome, {$user->getFirstName()}</h1>
+	    <h1>Welcome {$user->getFirstName()}</h1>
 	    <input type="hidden" id="hash" value="{$hash}" />
 	    <input type="hidden" id="user-id" value="{$user->getUserId()}" />
 	    <ul class="accordion">
@@ -24,7 +24,7 @@
                                                     <div class="category">{$video->getSport()->getSportName()}</div>
                                                     <div class="date">
                                                         {if $video->getRecordedMonth() != 0}
-                                                            {$video->getRecordedMonthName()},
+                                                            {$video->getRecordedMonthName()}
                                                         {/if}
                                                         {if $video->getRecordedYear() != 0}
                                                             {$video->getRecordedYear()}
@@ -373,7 +373,7 @@
                                             {/if}
                                         {/if}
                                     {/foreach}
-                                    {$player->getHeight()} / {$player->getWeight()} lbs</div>
+                                    {$player->getFriendlyHeight()} / {$player->getWeight()} lbs</div>
                                     <div class="two-column accountInfo hidden">
                                         <div>
                                             <fieldset>
@@ -524,7 +524,7 @@
                                             {foreach $player->getSport()->getStats() as $key=>$stat}
                                                 <li>
                                                     <p>
-                                                        {$stat->getStatName()}:
+                                                        {$stat->getStatName()}<br/>
                                                     </p>
                                                     <div class="input_custom-text input_text36 left">
                                                         <div class="custom-input_center custom-input_partial">

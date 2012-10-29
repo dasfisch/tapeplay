@@ -9,8 +9,8 @@
 						<li>
 							<dl>
 								<dt>The Basics</dt>
-								<dd><a href="{#baseUrl#}company/getstarted/">Getting Started</a></dd>
-								<dd><a href="{#baseUrl#}company/guidelines/">Rules of Video</a></dd>
+								<dd><a href="{#baseUrl#}company/getstarted/">Get Started</a></dd>
+								<dd><a href="{#baseUrl#}company/guidelines/">The Rules of Video</a></dd>
 							</dl>
 						</li>
 						<li>
@@ -22,7 +22,7 @@
 						</li>
 						<li>
 							<dl>
-								<dt>For the Curious</dt>
+								<dt>For The Curious</dt>
 								<dd><a href="{#baseUrl#}company/faq/">Frequently Asked Questions</a></dd>
 								<dd><a href="{#baseUrl#}company/about/">About TapePlay</a></dd>
 							</dl>

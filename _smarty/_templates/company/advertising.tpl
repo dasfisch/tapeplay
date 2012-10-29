@@ -6,7 +6,7 @@
 	</p>
 	<h3>Demographic</h3>
 	<p>
-		Based on the user&rsquo;s age, sex or combination of the two.
+		Market based on the user&rsquo;s age, sex or combination of the two.
 	</p>
 	
 	<h3>Geographic</h3>

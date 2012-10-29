@@ -8,7 +8,7 @@
     <input type="hidden" name="hash" id="hash" value="{$hash}" />
     <div id="videoInfo">
         <p id="status">
-            Video Status: <span class="success italic">Upload complete!</span>
+            Video Status: <span class="successMessage">Upload Complete</span>
         </p>
         {if isset($fileExists) && $fileExists == true}
             <img src="{#pandaBase#}{$video->getPandaId()}{#pandaImageExt#}" class="resultImage" />
@@ -17,7 +17,13 @@
         {/if}
         <div class="info">
             <h2>{$video->getTitle()}</h2>
-            <p>{$video->getUploadDate()|date_format:'%B %d, %Y'}</p>
+            <p> {if $video->getRecordedMonth() != 0}
+                    {$video->getRecordedMonthName()}
+                {/if}
+                {if $video->getRecordedYear() != 0}
+                    {$video->getRecordedYear()}
+                {/if}
+            </p>
             <p>{$video->getLength()}</p>
         </div>
     </div>
@@ -76,7 +82,7 @@
 			<fieldset>
 				<legend>Grade</legend>
 				<fieldset>
-					<select class="select-2" name="gradeLevel">
+					<select class="select-2" style="width: 147px;" name="gradeLevel">
 						<option class="default">Select</option>
 						{section name=i start=9 loop=17 step=1}
                             <option value="{$smarty.section.i.index}">{$gradeLevels[$smarty.section.i.index]}</option>
