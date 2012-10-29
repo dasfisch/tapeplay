@@ -689,7 +689,7 @@ if (isset($route->method))
 
                         $panda = $controller->configuration->panda;
 
-                        if(fopen($panda['base'].$panda['bucket'].'/'.$video[0]->getPandaId().$panda['imageExt'], 'r')) {
+                        if(@fopen($panda['base'].$panda['bucket'].'/'.$video[0]->getPandaId().$panda['imageExt'], 'r')) {
                             $fileExists = true;
                         } else {
                             $fileExists = false;

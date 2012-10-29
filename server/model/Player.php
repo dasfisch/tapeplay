@@ -34,6 +34,7 @@ class Player extends User
 		$player->setLastLogin($arr["last_login"]);
 		$player->setAccountType($arr["account_type"]);
 		$player->setStatus($arr["status"]);
+        $player->setLastUpdate($arr['last_modified']);
 
 		// set player attributes
 		$player->setId($arr["player_id"]);

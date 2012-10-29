@@ -1,5 +1,6 @@
 var infoBubbleOpen = false;
 var timeout = {};
+var addThis = '';
 
 jQuery(document).ready(function(){
    jQuery.validator.addMethod('noDefault', function (value, element) {
@@ -101,7 +102,7 @@ jQuery(document).ready(function(){
                 birthYear: {
                     noDefaultSel: 'Enter birth year.',
                     required: 'Enter birth year.'
-                },
+                }
             },
             errorPlacement: function(error, element) {
                 return false;
@@ -803,9 +804,11 @@ jQuery(document).ready(function(){
     }
 
     jQuery('.addAnother').click(function() {
-        var _this = jQuery(this).parentsUntil('#emailFriend').children('.copy').first().html();
+        if(addThis == '') {
+            var _this = addThis = jQuery(this).parentsUntil('#emailFriend').children('.copy').first().html();
+        }
 
-        jQuery(this).parentsUntil('#emailFriend').children('.copy').append(_this);
+        jQuery(this).parentsUntil('#emailFriend').children('.copy').append(addThis);
     });
 
     jQuery('#emailFriend').validate();
@@ -824,7 +827,7 @@ jQuery(document).ready(function(){
     	}
     });
 
-    jQuery("input[type=text]").bind('click focus blur', function(event) {
+    jQuery("input[type=text]").on('click focus blur', function(event) {
     	if (event.type == "blur" && (($(this).get(0)).value == "" || ($(this).get(0)).value == ($(this).get(0)).defaultValue)) {
             jQuery(this).css('color', '#B2B2B2');
     		($(this).get(0)).value = ($(this).get(0)).defaultValue;

@@ -129,19 +129,6 @@
                         $fileExists = false;
                     }
 
-                    try {
-                        $ids = array();
-
-                        $playerInfo = $playerBll->getPlayersByUserId($video[0]->getPlayer()->getUserId(), false);
-                        foreach($playerInfo as $single) {
-                            if(!in_array($single->getId(), $ids)) {
-                                $ids[] = $single->getId();
-                            }
-                        }
-                    } catch(Exception $e) {
-
-                    }
-
                     $player = $playerBll->getPlayersByPlayerId($video[0]->getPlayer()->getId(), $video[0]->getSportId());
 
                     $video[0]->setPlayer($player);

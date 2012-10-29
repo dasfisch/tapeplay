@@ -67,6 +67,8 @@
                         // enable the submit button
                         $("#submitButton").removeAttr("disabled");
 
+                        $("#pleaseWait").hide();
+
                         // tell user video upload is complete
 						$("#cancelUpload").css("display", "none");
                         $("#uploadComplete").css("visibility", "visible");
@@ -81,6 +83,7 @@
                         $("#localUploadButton").css("display", "none");
 
 						$("#cancelUpload").css("display", "block");
+                        jQuery('#pleaseWait').show();
                     }
 
 					function uploadCanceled_Handler()
@@ -133,7 +136,7 @@
 			<div class="input_custom-text input_text80 width600 left">
 				<div class="custom-input_center custom-input_partial">
 					<span class="custom-input_top"></span>
-					<input type="text" name="title" value="Video Title"/>
+					<input type="text" name="title" value="Video Title" maxlength="32" />
 					<span class="custom-input_bottom"></span>
 				</div>
 
@@ -201,6 +204,7 @@
 		</li>
 		<li class="input-field clear">
 			<button id="submitButton" value="Join" type="submit" class="button_black_large left button_round disabled" disabled="disabled">Continue</button>
+            <span class="hidden" id="pleaseWait">Please wait until your video is uploaded.</span>
             {if $user->getStatus() != 3}
 			    <span class="form-steps">Step 2 of 3</span>
             {/if}

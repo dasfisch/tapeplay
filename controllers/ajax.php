@@ -258,10 +258,8 @@
                             $curStat = $statsBll->getSinglePlayerStat($post['playerId'], $id[1]);
 
                             if(!is_null($curStat->getId())) {
-                                echo 'updating';
                                 $statsBll->updatePlayerStat($theStat, $post['playerId']);
                             } else {
-                                echo 'creating';
                                 $playerBll->setStat($post['playerId'], $id[1], $val);
                             }
                         }
@@ -272,6 +270,14 @@
                 }
 
                 if(empty($errors)) {
+                    $playerBll = new PlayerBLL();
+
+                    $player = $playerBll->getPlayersByPlayerId($post['playerId']);
+
+                    $player->setLastUpdate(strtotime('now'));
+
+                    $result = $userBLL->update($player);
+
                     echo 200;
                 } else {
                     echo 600;

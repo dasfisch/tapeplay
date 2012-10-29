@@ -87,7 +87,7 @@
 																		  alt="TapePlay Logo" height="69"
 																		  width="126"/> TapePlay</a></h1>
 
-				<form action="{#baseUrl#}" method="post" id="sportChooser">
+				<form action="{#baseUrl#}{$smarty.server.REQUEST_URI|substr:1}" method="post" id="sportChooser">
 					<fieldset>
 						<select class="select-1 fixedSelect" id="chosenSport" name="chosenSport">
 						{foreach from=$sports item=single}

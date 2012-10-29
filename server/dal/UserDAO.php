@@ -141,7 +141,8 @@ class UserDAO extends BaseDOA
                                 users.last_login,
                                 users.account_type,
                                 users.status,
-                                users.deactivation_date
+                                users.deactivation_date,
+                                users.last_modified
                             FROM
                                 users users
                             '.$where.'
@@ -222,9 +223,9 @@ class UserDAO extends BaseDOA
 		try
 		{
 			$this->sql = "INSERT INTO users " .
-					"(first_name, last_name, email, hash, zipcode, gender, birth_year, last_login, account_type)" .
+					"(first_name, last_name, email, hash, zipcode, gender, birth_year, last_login, last_modified, account_type)" .
 					" VALUES " .
-					"(:firstName, :lastName, :email, :hash, :zipcode, :gender, :birthYear, :lastLogin, :accountType)";
+					"(:firstName, :lastName, :email, :hash, :zipcode, :gender, :birthYear, :lastLogin, UNIX_TIMESTAMP(), :accountType)";
 
 			$this->prep = $this->dbh->prepare($this->sql);
 			$this->prep->bindValue(":firstName", $user->getFirstName(), \PDO::PARAM_STR);
@@ -234,7 +235,7 @@ class UserDAO extends BaseDOA
 			$this->prep->bindValue(":zipcode", $user->getZipcode(), \PDO::PARAM_STR);
 			$this->prep->bindValue(":gender", $user->getGender(), \PDO::PARAM_STR);
 			$this->prep->bindValue(":birthYear", $user->getBirthYear(), \PDO::PARAM_INT);
-			$this->prep->bindValue(":lastLogin", $user->getLastLogin(), \PDO::PARAM_INT);
+            $this->prep->bindValue(":lastLogin", $user->getLastLogin(), \PDO::PARAM_INT);
 			$this->prep->bindValue(":accountType", $user->getAccountType(), \PDO::PARAM_INT);
 
 			$this->prep->execute();
@@ -262,7 +263,8 @@ class UserDAO extends BaseDOA
 					"first_name=:firstName,
 					last_name=:lastName, email=:email, hash=:password,
 					zipcode=:zipcode, gender=:gender, birth_year=:birthYear,
-					last_login=:lastLogin, account_type=:accountType" .
+					last_login=:lastLogin, account_type=:accountType," .
+                    "last_modified=UNIX_TIMESTAMP()".
 					" WHERE " .
 					"id = :id";
 
@@ -275,7 +277,7 @@ class UserDAO extends BaseDOA
 			$this->prep->bindValue(":zipcode", $user->getZipcode(), \PDO::PARAM_STR);
 			$this->prep->bindValue(":gender", $user->getGender(), \PDO::PARAM_STR);
 			$this->prep->bindValue(":birthYear", (int)$user->getBirthYear(), \PDO::PARAM_INT);
-			$this->prep->bindValue(":lastLogin", (int)$user->getLastLogin(), \PDO::PARAM_INT);
+            $this->prep->bindValue(":lastLogin", (int)$user->getLastLogin(), \PDO::PARAM_INT);
 			$this->prep->bindValue(":accountType", (int)$user->getAccountType(), \PDO::PARAM_INT);
 
 			return $this->prep->execute();

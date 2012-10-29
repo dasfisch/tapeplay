@@ -23,6 +23,7 @@ class User
 		$user->setLastLogin($arr["last_login"]);
         $user->setAccountType($arr["account_type"]);
 		$user->setStatus($arr["status"]);
+        $user->setLastUpdate($arr['last_modified']);
 
         if($arr["deactivation_date"] != '' && $arr["deactivation_date"] != 0) {
             $user->setDeactivated();
@@ -46,6 +47,7 @@ class User
 	protected  $_optIns;
 	protected  $_status;
 	protected  $_savedVideos;
+    protected  $_lastUpdate;
 
 
 	public function setAccountType($accountType)
@@ -192,6 +194,14 @@ class User
 
     public function getDeactivated() {
         return $this->_deactivated;
+    }
+
+    public function setLastUpdate($last_update) {
+        $this->_lastUpdate = $last_update;
+    }
+
+    public function getLastUpdate() {
+        return $this->_lastUpdate ;
     }
 
     public function __toString() {

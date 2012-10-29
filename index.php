@@ -1,6 +1,10 @@
 <?php
     namespace tapeplay\server;
 
+    //ALTER TABLE  `users` ADD  `last_modified` INT( 13 ) NULL AFTER  `last_login`
+
+    error_reporting(0);
+
 	session_start();
     ini_set('display_errors', 'On');
 

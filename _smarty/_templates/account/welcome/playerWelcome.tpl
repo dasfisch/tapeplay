@@ -270,7 +270,7 @@
 
 				</div>
 			</li>
-            {foreach $playerInfo as $player}
+            {foreach $playerInfo as $key=>$player}
                 <li class="parentHolder">
                     <input type="hidden" class="player-id" value="{$player->getId()}" />
                     <a class="opener">{$player->getSport()->getSportName()}</a>
@@ -504,7 +504,7 @@
                                     <strong class="title">Statistics</strong>
                                     {if $player->getStats()|@count gt 0}
                                         <ul class="three-column">
-                                            {foreach from=$player->getStats() item=stat}
+                                            {foreach from=$player->getStats() item=stat key=key}
                                                 {if $stat->getStatValue() !== '' && $stat->getStatValue() > 0}
                                                     <li>
                                                         <div class="stat" style="padding-bottom: 10px; text-align: left;">
@@ -534,7 +534,7 @@
                                                                 {foreach $player->getStats() as $myStat}
                                                                     {if $myStat->getId() == $stat->getId()}
                                                                         <input type="text" class="standard small" id="stat" name="stat-{$stat->getId()}"
-                                                                            {if $myStat->getStatValue() != '' && $myStat->getStatValue() > 0}value="{$myStat->getStatvalue()}"{/if} />
+                                                                            {if $myStat->getStatValue() != '' && $myStat->getStatValue() > 0}value="{$myStat->getStatvalue()}"{/if} maxlength="4" />
                                                                         {$inputSet=true}
                                                                         {continue}
                                                                     {/if}
