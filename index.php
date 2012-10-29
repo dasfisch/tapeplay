@@ -133,7 +133,8 @@
             if(isset($sport) && isset($sport['name'])) {
                 $controller->open($route->class);
             } else {
-                if($route->class == 'user' && ($route->method == 'login' || $route->method == 'personal' || $route->method == 'signup')) {
+                if($route->class == 'user' &&
+                        ($route->method == 'login' || $route->method == 'personal' || $route->method == 'signup' || $route->method == 'upload' || $route->method == 'info')) {
                     $controller->open($route->class);
                 } elseif($route->class == 'account' && ($route->method == 'password' || $route->method == 'forgot')) {
                     $controller->open($route->class);

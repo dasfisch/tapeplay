@@ -126,7 +126,20 @@
                     if(@fopen($panda['base'].$panda['bucket'].'/'.$video[0]->getPandaId().$panda['imageExt'], 'r')) {
                         $fileExists = true;
                     } else {
-                        $fileExists = false;
+                        Util::setHeader("videos/notfound");
+                    }
+
+                    try {
+                        $ids = array();
+
+                        $playerInfo = $playerBll->getPlayersByUserId($video[0]->getPlayer()->getUserId(), false);
+                        foreach($playerInfo as $single) {
+                            if(!in_array($single->getId(), $ids)) {
+                                $ids[] = $single->getId();
+                            }
+                        }
+                    } catch(Exception $e) {
+
                     }
 
                     $player = $playerBll->getPlayersByPlayerId($video[0]->getPlayer()->getId(), $video[0]->getSportId());
@@ -144,10 +157,6 @@
                     }
 
                     $videoDisplayInfo = $videoBll->getVideoDisplayInfo($video[0]->getPandaId());
-
-                    // send to 404 page if video is not found
-                    if(@!fopen($videoDisplayInfo->getMp4Source(), 'r'))
-                        Util::setHeader("videos/notfound");
 
                     //set a view
                     try {
@@ -190,7 +199,7 @@
                     $smarty->assign('video', $video[0]);
                     $smarty->assign('videoDisplayInfo', $videoDisplayInfo);
                     $smarty->assign('videos', $videos);
-                    $smarty->assign('gradeLevel', $controller->configuration->gradeLevels[$player->getGradeLevel()]);
+//                    $smarty->assign('gradeLevel', $controller->configuration->gradeLevels[$player->getGradeLevel()]);
                     $smarty->assign('file', 'videos/single.tpl');
                     $smarty->assign("title", $video[0]->getTitle());
                     $smarty->assign("description", "Featuring " . $player->getFirstName() . " on TapePlay (" . $player->getSport()->getSportName() . ")");

@@ -212,6 +212,7 @@ if (isset($route->method))
 
                 $smarty->assign('file', $template);
                 $smarty->assign('gradeLevels', $controller->configuration->gradeLevels);
+                $smarty->assign('gradeLevel', $controller->configuration->gradeLevels[$player->getGradeLevel()]);
                 $smarty->assign('hash', $inputFilter->createHash());
                 $smarty->assign("modder", ceil(count($stats) / 3));
                 $smarty->assign("myVideoWording", $myVideoWorking);

@@ -287,7 +287,7 @@
                                         {elseif $player->getPlayingLevel() == 2}
                                             Professional
                                         {/if}
-                                        / {$player->getGradeLevel()} / #{$player->getNumber()}</div>
+                                        / {$gradeLevel} / #{$player->getNumber()}</div>
                                     <div class="two-column accountInfo hidden">
                                         <div>
                                             <legen>Playing Level</legen>

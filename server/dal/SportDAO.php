@@ -26,7 +26,7 @@ class SportDAO extends BaseDOA
 		                    *
                         FROM
                             sports sports"
-                        .$where;
+                        .$where.' ORDER BY `order` ASC';
 
 		$this->prep = $this->dbh->prepare($this->sql);
 		//$this->prep->bindValue(":id", $id, \PDO::PARAM_INT); //make sure this works like where maker
@@ -46,7 +46,7 @@ class SportDAO extends BaseDOA
 	 */
 	function getActive()
 	{
-		$this->sql = "SELECT * FROM sports WHERE active = 1";
+		$this->sql = "SELECT * FROM sports WHERE active = 1".' ORDER BY id ASC';
 		$this->prep = $this->dbh->prepare($this->sql);
 		$this->prep->execute();
 	}
