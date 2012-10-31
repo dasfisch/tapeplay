@@ -80,7 +80,7 @@
 		</li>
 		<li>
 			<fieldset>
-				<legend>Grade</legend>
+				<legend>Current Grade</legend>
 				<fieldset>
 					<select class="select-2" style="width: 147px;" name="gradeLevel">
 						<option class="default">Select</option>
@@ -187,7 +187,7 @@
 		</ul>
 	</fieldset>
 	<fieldset>
-		<legend>Graduation Date (optional)</legend>
+		<legend>Graduation Date (if applicable)</legend>
 		<ul class="three-column_sign-up left">
 			<li class="left">
 				<fieldset>

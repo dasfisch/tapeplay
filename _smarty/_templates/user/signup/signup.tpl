@@ -17,7 +17,7 @@
 				<li>It&rsquo;s completely free</li>
 				<li>Let coaches and scouts find you</li>
 				<li>Upload as many videos as you want</li>
-				<li>Know your video activity (Saves, Views, etc.) </li>
+				<li>Know your video activity</li>
 			</ul>
 			<p class="font15 bold center">
 				TapePlay is for 9<sup>th</sup> Grade to Pro

@@ -97,6 +97,12 @@ p {
 	width:126px;
 }
 
+#beta {
+	left:170px;
+	position:absolute;
+	top:-4px;
+}
+
 #logo a {
 	display:block;
 	height:100%;
@@ -453,7 +459,15 @@ fieldset li {
     cursor: pointer;
 }
 
-.button_black_large, .button_black_large:visited, .button_black_large:hover {
+#splash_content .button_gray_large, #splash_content .button_gray_large:visited {
+	background-color:#e18a07;
+}
+
+#splash_content .button_gray_large:hover {
+	background-color:#c97901;	
+}
+
+.button_black_large, .button_black_large:visited {
 	background-color:#000000;
 	border:none;
 	color:#ffffff;
@@ -469,7 +483,7 @@ fieldset li {
     color: #ccc;
 }
 
-.button_black_medium, .button_black_medium:visited, .button_black_medium:hover {
+.button_black_medium, .button_black_medium:visited {
 	background-color:#000000;
 	border:none;
 	color:#ffffff;
@@ -492,7 +506,7 @@ fieldset li {
     cursor: pointer;
 }
 
-.button_black_small, .button_black_small:visited, .button_black_small:hover {
+.button_black_small, .button_black_small:visited {
     background-color: #000000;
     border: medium none;
     color: #FFFFFF;
@@ -503,6 +517,11 @@ fieldset li {
     padding: 7px 12px;
     text-decoration: none;
     cursor: pointer;
+}
+
+
+.button_black_large:hover, .button_black_medium:hover, .button_black_small:hover {
+	background-color:#333333;
 }
 
 .button_black_large.upload {
@@ -728,7 +747,7 @@ fieldset + fieldset {
 }
 
 .input_text80 {
-	height:80px;
+	height:75px;
 }
 
 .input_text80 input {
@@ -2595,7 +2614,7 @@ p.nothing {
 .accordion .slider_sport ul.three-column li p,
 .accordion .slider_sport ul.three-column li p span {
     font-size: 13px;
-    margin: 0px;
+    margin: 12px 0px 0px 0px;
 }
 
 .text-holder .accountInfo {
@@ -2694,6 +2713,7 @@ p.nothing {
 
 #videos .text-holder {
     height: 100%;
+    min-height:100px;
 }
 
 #videos .text-holder .videoInfo div,

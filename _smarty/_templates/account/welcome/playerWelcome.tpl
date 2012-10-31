@@ -81,6 +81,7 @@
                                                 </div>
                                                 <div class="btn-holder">
                                                     <a class="btn edit videoEdit"><span>Edit</span></a><br />
+                                                    <a class="btn edit videoEdit"><span>Share</span></a><br />
                                                     <a class="btn delete deleteVideo" id="video-{$video->getId()}"><span>Delete</span></a>
                                                 </div>
                                             </div>
@@ -590,7 +591,7 @@
                             />
    	                    <label for="allowFacebook">Allow TapePlay to import my Facebook info</label>
    	                </p>-->
-   	                <p>
+   	                <!--<p>
    	                    <input type="checkbox" name="relevantAdvertising" class="optin" value="2"
                             {foreach from=$optins key=key item=optin}
                                 {if $optin.0 == 2}checked {/if}
@@ -600,7 +601,7 @@
    	                        Use my account info for relevant advertising. Ads help us pay the bills so
                             we can keep improving TapePlay for you.
    	                    </label>
-   	                </p>
+   	                </p>-->
    	                <!--<p>
    	                    <input type="checkbox" name="sendRecommendations" class="optin" value="1"
                            {foreach from=$optins key=key item=optin}

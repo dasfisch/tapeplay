@@ -30,7 +30,6 @@
 				<div class="clear"></div>
 				<ul class="login-menu font15">
 					<li><a href="{#baseUrl#}company/privacy/">Privacy Policy</a></li>
-					<li><a href="{#baseUrl#}company/getstarted/">Get Started</a></li>
 					<li><a href="{#baseUrl#}user/login/">Log In</a></li>
 				</ul>
 			</div>    

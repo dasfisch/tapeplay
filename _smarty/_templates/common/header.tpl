@@ -86,7 +86,7 @@
 				<h1 id="logo"><a href="/" title="TapePlay Home Page"><img src="/media/images/logo_126x69.png"
 																		  alt="TapePlay Logo" height="69"
 																		  width="126"/> TapePlay</a></h1>
-
+				<h2 id="beta"><img src="/media/images/img_beta.png" alt="Beta" /></h2>
 				<form action="{#baseUrl#}{$smarty.server.REQUEST_URI|substr:1}" method="post" id="sportChooser">
 					<fieldset>
 						<select class="select-1 fixedSelect" id="chosenSport" name="chosenSport">
