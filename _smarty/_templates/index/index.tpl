@@ -1,5 +1,5 @@
 <div id="container">
-	<div id="content">
+	<div id="content" class="landing">
 		<div id="content-wrapper">
 			<div id="splash_header">
 				<div class="left">

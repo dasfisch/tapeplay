@@ -2787,3 +2787,7 @@ p.nothing {
 .womenstennis {
     background: transparent url(/media/images/team_bgs/Tennis-Tile.jpg) repeat 1010px 75px;
 }
+
+#content.landing {
+    background-color: #000 !important;
+}
