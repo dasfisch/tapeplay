@@ -15,31 +15,17 @@
 				<div id="cancelUpload" style="float:left; display:none; margin-left:15px; color:#e18a07;"><a href="#">Cancel Upload</a></div>
                 <div id="uploadComplete" class="successMessage" style="float:left;visibility: hidden; margin-left:15px; color:#00ff12;">Upload Complete</div>
             </div>
-			<div class="input_custom-text input_text80 upload width440 left" id="localUploadFile">
-				<div class="custom-input_center custom-input_partial">
-					<span class="custom-input_top"></span>
-					<input type="text" id="fakeupload" name="fakeupload" value="Browse Video File" />
-					<span class="custom-input_bottom"></span>
-				</div>
-
-				<div class="custom-input_left custom-input_partial">
-					<span class="custom-input_top"></span>
-					<span class="custom-input_bottom"></span>
-				</div>
-
-				<div class="custom-input_right custom-input_partial">
-					<span class="custom-input_top"></span>
-					<span class="custom-input_bottom"></span>
-				</div>
-
-			</div>
+            <input type="text" class="hidden" id="fakeupload" name="fakeupload" value="Browse Video File" />
             <div id="uploadInputs" class="input">
+                <div style="float: left">Select a file:</div>
                 <div id="localUploadButton" class="bigButton black">
                     <div class="topRight whiteBg"></div>
                     <div class="bottomRight whiteBg"></div>
                     <div class="middle">
                         <input type="submit" value="Select File" id="upload_button" name="upload_button" class="large black" />
                     </div>
+                    <div class="topLeft whiteBg"></div>
+                    <div class="bottomLeft whiteBg"></div>
                     <input type="file" class="uploader" onchange="this.form.fakeupload.value = this.value;" />
 
                     <input type="hidden" class="uploader" onchange="this.form.fakeupload.value = this.value;" id="returned_video_id" name="panda_video_id"/>
@@ -67,7 +53,7 @@
                         // enable the submit button
                         $("#submitButton").removeAttr("disabled");
 
-                        $("#pleaseWait").hide();
+                        jQuery('#pleaseWait').css("display", "hide");
 
                         // tell user video upload is complete
 						$("#cancelUpload").css("display", "none");
@@ -83,7 +69,9 @@
                         $("#localUploadButton").css("display", "none");
 
 						$("#cancelUpload").css("display", "block");
-                        jQuery('#pleaseWait').show();
+                        jQuery('#pleaseWait').css("display", "block");
+
+                        console.log(jQuery('#pleaseWait').html());
                     }
 
 					function uploadCanceled_Handler()

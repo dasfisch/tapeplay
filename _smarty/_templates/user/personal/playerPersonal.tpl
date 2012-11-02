@@ -162,7 +162,7 @@
 						<div class="custom-input_center custom-input_partial">
 							<span class="custom-input_top"></span>
 							<input type="text" id="zipcode" name="zipcode"
-                                   value="{if isset($post) && $post.zipcode != ''}{$post.zipcode}" class="blackText"{else}Zip code"{/if} maxlength="5" />
+                                   value="{if isset($post) && $post.zipcode != ''}{$post.zipcode}" class="blackText"{else}Zip Code"{/if} maxlength="5" />
 							<span class="custom-input_bottom"></span>
 						</div>
 						
