@@ -17,7 +17,7 @@
             </div>
             <input type="text" class="hidden" id="fakeupload" name="fakeupload" value="Browse Video File" />
             <div id="uploadInputs" class="input">
-                <div style="float: left">Select a file:</div>
+                <div class="selectfile">Select a file:</div>
                 <div id="localUploadButton" class="bigButton black">
                     <div class="topRight whiteBg"></div>
                     <div class="bottomRight whiteBg"></div>
@@ -53,7 +53,7 @@
                         // enable the submit button
                         $("#submitButton").removeAttr("disabled");
 
-                        jQuery('#pleaseWait').css("display", "hide");
+                        jQuery('#pleaseWait').css("display", "none");
 
                         // tell user video upload is complete
 						$("#cancelUpload").css("display", "none");

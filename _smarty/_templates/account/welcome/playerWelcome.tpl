@@ -52,7 +52,7 @@
                                                 </div>
                                                 <div class="btn-holder">
                                                     <a class="btn edit videoEdit"><span>Edit</span></a>
-                                                    <a class="btn" href="{#baseUrl#}videos/email/{$video->getId()}"><span>Share</span></a>
+                                                    <a class="btn edit" href="{#baseUrl#}videos/email/{$video->getId()}"><span>Share</span></a>
                                                     <a class="btn delete deleteVideo" id="video-{$video->getId()}"><span>Delete</span></a>
                                                 </div>
                                             </div>

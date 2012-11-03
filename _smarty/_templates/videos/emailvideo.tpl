@@ -1,9 +1,7 @@
 <div class="email-video">
 	<div id="content-left-column">
 		<h1>Email Video</h1>
-		
 		<ul class="result-list">
-                	
 			<li>
 				<div class="result-image left">
                 {if isset($fileExists) && $fileExists == true}
