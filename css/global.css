@@ -2197,11 +2197,11 @@ p.nothing {
 }
 
 .hidden {
-    display: none !important;
+    display: none;
 }
 
 .shown {
-    display: block !important;
+    display: block;
 }
 
 .uploader,
@@ -2801,4 +2801,10 @@ p.nothing {
 
 #content.landing {
     background-color: #000 !important;
+}
+
+.selectfile {
+    font-weight: bold;
+    margin-right: 15px;
+    padding-top: 27px;
 }
