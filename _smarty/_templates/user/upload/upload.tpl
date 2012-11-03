@@ -9,7 +9,6 @@
 <form id="uploading" class="uploadForm" method="post" action="{#baseUrl#}user/upload/">
 	<ul class="form-fields">
 		<li class="input-field clear">
-
             <div id="progressArea" style="vertical-align: middle;height:30px;">
                 <div id="progressMeter" class="panda_upload_progress" style="float:left;"></div>
 				<div id="cancelUpload" style="float:left; display:none; margin-left:15px; color:#e18a07;"><a href="#">Cancel Upload</a></div>
@@ -54,6 +53,8 @@
                         $("#submitButton").removeAttr("disabled");
 
                         jQuery('#pleaseWait').css("display", "none");
+
+                        console.log(jQuery('#pleaseWait').html() + ' hiding');
 
                         // tell user video upload is complete
 						$("#cancelUpload").css("display", "none");
