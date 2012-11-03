@@ -54,8 +54,6 @@
 
                         jQuery('#pleaseWait').css("display", "none");
 
-                        console.log(jQuery('#pleaseWait').html() + ' hiding');
-
                         // tell user video upload is complete
 						$("#cancelUpload").css("display", "none");
                         $("#uploadComplete").css("visibility", "visible");
@@ -71,8 +69,6 @@
 
 						$("#cancelUpload").css("display", "block");
                         jQuery('#pleaseWait').css("display", "block");
-
-                        console.log(jQuery('#pleaseWait').html());
                     }
 
 					function uploadCanceled_Handler()
