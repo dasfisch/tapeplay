@@ -598,6 +598,14 @@ if (isset($route->method))
 
                                     }
                                 }
+
+                                try {
+                                    $userBLL->getUser()->setLastUpdate(strtotime('now'));
+
+                                    $userBLL->update($user->getUser());
+                                } catch(Exception $e) {
+
+                                }
                             }
 
 							// this is the last step in the player signup process.  send to welcome page

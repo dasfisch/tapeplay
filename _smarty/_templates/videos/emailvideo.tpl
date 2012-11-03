@@ -51,7 +51,7 @@
                         <div class="input_custom-text input_text80 width440">
                             <div class="custom-input_center custom-input_partial">
                                 <span class="custom-input_top"></span>
-                                <input type="text" name="from" value="Full Name" class="required email noDefault" />
+                                <input type="text" name="from" value="Full Name" class="required noDefault" />
                                 <span class="custom-input_bottom"></span>
                             </div>
 
