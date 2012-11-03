@@ -2809,3 +2809,9 @@ p.nothing {
     margin-right: 15px;
     padding-top: 27px;
 }
+
+#pleaseWait {
+    float: left;
+    margin-left: 15px;
+    padding-top: 47px;
+}
