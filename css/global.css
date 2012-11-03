@@ -2804,6 +2804,7 @@ p.nothing {
 }
 
 .selectfile {
+    float: left;
     font-weight: bold;
     margin-right: 15px;
     padding-top: 27px;
