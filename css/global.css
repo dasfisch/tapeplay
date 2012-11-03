@@ -63,6 +63,7 @@ p {
 }
 
 #content {
+    background-color: #fff;
 	height:100%;
 	padding-bottom:215px; /* bottom padding for footer */
 	width:1010px;
@@ -2744,4 +2745,60 @@ p.nothing {
 .character-max {
 	font-size:11px;
 	margin-right:315px;
+}
+
+.football {
+    background: transparent url(/media/images/team_bgs/Football-Tile.jpg) repeat 1010px 75px;
+}
+
+.mensbasketball,
+.womensbasketball {
+    background: transparent url(/media/images/team_bgs/Basketball-Tile.jpg) repeat 1010px 75px;
+}
+
+.golf,
+.menslacrosse,
+.menssoccer,
+.womenslacrosse,
+.womenssoccer {
+    background: transparent url(/media/images/team_bgs/Grass-Tile.jpg) repeat 1010px 75px;
+}
+
+.baseball,
+.softballfastpitch {
+    background: transparent url(/media/images/team_bgs/Dirt-Tile.jpg) repeat 1010px 75px;
+}
+
+.hockey {
+    background: transparent url(/media/images/team_bgs/Ice-Tile.jpg) repeat 1010px 75px;
+}
+
+.mensvolleyball,
+.womensvolleyball {
+    background: transparent url(/media/images/team_bgs/Wood-Tile.jpg) repeat 1010px 75px;
+}
+
+.menscrosscountry,
+.menstrackfield,
+.womenscrosscountry,
+.womenstrackfield {
+    background: transparent url(/media/images/team_bgs/Track-Tile.jpg) repeat 1010px 75px;
+}
+
+.gymnastics {
+    background: transparent url(/media/images/team_bgs/Gymnastics-Tile.jpg) repeat 1010px 75px;
+}
+
+.mensswimmingdiving,
+.womensswimmingdiving {
+    background: transparent url(/media/images/team_bgs/Water-Tile.jpg) repeat 1010px 75px;
+}
+
+.menstennis,
+.womenstennis {
+    background: transparent url(/media/images/team_bgs/Tennis-Tile.jpg) repeat 1010px 75px;
+}
+
+#content.landing {
+    background-color: #000 !important;
 }

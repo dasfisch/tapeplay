@@ -47,7 +47,13 @@
 			</div> <!-- END FOOTER -->
 			
 		</div> <!-- END CONTAINER -->
-	
+        <script type="text/javascript">
+            var sport = "{$sport.name|strtolower}";
+
+            sport = sport.replace(/([^a-zA-Z]+)/g, '');
+            console.log(sport + " is the sport")
+
+            $("#container").addClass(sport);
+        </script>
 	</body>
-	
 </html>
