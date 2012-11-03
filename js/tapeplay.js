@@ -818,13 +818,41 @@ jQuery(document).ready(function(){
         // jQuery(this).remove();
     // });
     jQuery(".input_password").bind('click focus blur', function(event) {
-    	if ($(this).attr("type") == "text") {
-    		($(this).get(0)).type = 'password';
+    	
+    	if ($("html").hasClass("ie8") || $("html").hasClass("ie7")) {
+    		
+    		var text = $(this);
+	    	var pass = $("<input type='password' class='input_password' name='password' value='' />");
+	    	
+	    	function textToPassword(event) {
+	    		$(this).replaceWith(pass);
+	    		setTimeout(function() {$(pass).focus()},100);
+	    		$(pass).bind('click focus blur', passwordToText);
+	    	}
+	    	
+	    	function passwordToText(event) {
+	    		if (event.type == "blur" && (($(this).get(0)).value == "" || ($(this).get(0)).value == ($(this).get(0)).defaultValue)) {
+	    			$(this).replaceWith(text);
+	    			$(text).bind('click focus blur', textToPassword);
+	    		}
+	    	}
+	    	
+	    	if ($(this).attr("type") == "text") {
+	    		textToPassword.call(this);
+	    	}
+    		
     	}
+    	
+    	else {
+			if ($(this).attr("type") == "text") {
+				($(this).get(0)).type = 'password';
+			}
 
-        if (event.type == "blur" && (($(this).get(0)).value == "" || ($(this).get(0)).value == ($(this).get(0)).defaultValue)) {
-    		($(this).get(0)).type = "text";
+        	if (event.type == "blur" && (($(this).get(0)).value == "" || ($(this).get(0)).value == ($(this).get(0)).defaultValue)) {
+				($(this).get(0)).type = "text";
+			}
     	}
+    	
     });
 
     jQuery("input[type=text]").on('click focus blur', function(event) {

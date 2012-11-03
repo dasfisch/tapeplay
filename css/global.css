@@ -459,6 +459,12 @@ fieldset li {
     cursor: pointer;
 }
 
+.ie9 .button_gray_large, .ie9 .button_gray_large:visited, .ie9 .button_gray_large:hover,
+.ie8 .button_gray_large, .ie8 .button_gray_large:visited, .ie8 .button_gray_large:hover {
+	padding-bottom:38px;
+	padding-top:38px;
+}
+
 #splash_content .button_gray_large, #splash_content .button_gray_large:visited {
 	background-color:#e18a07;
 }
@@ -467,7 +473,7 @@ fieldset li {
 	background-color:#c97901;	
 }
 
-.button_black_large, .button_black_large:visited {
+.button_black_large, .button_black_large:visited, .button_black_large:hover {
 	background-color:#000000;
 	border:none;
 	color:#ffffff;
@@ -1065,7 +1071,7 @@ fieldset + fieldset {
 	color: #000000;
     font-size: 60px;
     font-weight: bold;
-    margin: 26px 0 0;
+    margin: 26px 0 30px;
     text-align: center;
 }
 
@@ -1258,7 +1264,7 @@ label[for="i-agree"] {
     font-size: 30px;
     font-weight: normal;
     float: left;
-    height: 80px;
+    height: 75px;
     padding: 0px 30px;
     position: relative;
     z-index: 1;
@@ -2733,4 +2739,9 @@ p.nothing {
 
 #report {
     cursor: pointer;
+}
+
+.character-max {
+	font-size:11px;
+	margin-right:315px;
 }

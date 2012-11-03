@@ -132,6 +132,9 @@
 					</div>
 				</div>
 			</div>
+			<div class="right character-max">
+				32 character max
+			</div>
 			<div class="clear"></div>
 			<div class="input_custom-text input_text80 width600 left">
 				<div class="custom-input_center custom-input_partial">

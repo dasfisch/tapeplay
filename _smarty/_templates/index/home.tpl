@@ -1,6 +1,6 @@
 <div class="beta_home">
 	<h1>Let&rsquo;s get you noticed.</h1>
-	<h2>The world&rsquo;s evolved. So has recruiting.</h2>
+	<!--<h2>The world&rsquo;s evolved. So has recruiting.</h2>-->
 
 	<div class="beta-banner">
 		<div class="left sign-up">

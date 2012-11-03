@@ -8,7 +8,7 @@
 				<div class="left">
 					<h1>(beta)</h1>
 					<h2>Video makes the world go round.</h2>
-					<h3>The world&rsquo;s evolved. So has recruiting.</h3>
+					<!--<h3>The world&rsquo;s evolved. So has recruiting.</h3>-->
 				</div>
 			</div>
 			

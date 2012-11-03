@@ -68,7 +68,7 @@
 	display:inline-block;
 	color:#fff;
 	padding:0 5px 0 0;
-	margin:0 0 4px;
+	margin:0px;
 }
 .accordion .btn.edit{background: url(../media/images/btn.png) no-repeat 100% 0;}
 .accordion .btn.delete{background: url(../media/images/btn.png) no-repeat 100% -42px;}

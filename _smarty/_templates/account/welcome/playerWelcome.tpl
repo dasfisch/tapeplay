@@ -12,7 +12,6 @@
 							{if isset($videos) && !empty($videos)}
 	                        	{foreach $videos as $video}
 									<li>
-                                        <a href="{#baseUrl#}videos/view/{$video->getId()}/">
                                             {if isset($fileExists) && $fileExists == true}
                                                 <img src="{#pandaBase#}{$video->getPandaId()}{#pandaImageExt#}" width="125" height="94" alt="image description" />
                                             {else}
@@ -49,44 +48,15 @@
                                                             <span class="custom-input_bottom"></span>
                                                         </div>
                                                     </div>
-                                                    <!--<ul class="three-column_sign-up left">
-                                                        <li class="left">
-                                                            <fieldset>
-                                                                <select class="select-7" name="videoMonth">
-                                                                    <option class="default">Video Month</option>
-                                                                    <option value="1">January</option>
-                                                                    <option value="2">February</option>
-                                                                    <option value="3">March</option>
-                                                                    <option value="4">April</option>
-                                                                    <option value="5">May</option>
-                                                                    <option value="6">June</option>
-                                                                    <option value="7">July</option>
-                                                                    <option value="8">August</option>
-                                                                    <option value="9">September</option>
-                                                                    <option value="10">October</option>
-                                                                    <option value="11">November</option>
-                                                                    <option value="12">December</option>
-                                                                </select>
-                                                            </fieldset>
-                                                        </li>
-                                                        <li class="left">
-                                                            <fieldset>
-                                                                <select class="select-8" name="videoYear">
-                                                                    <option class="default">Video Year</option>
-                                                                    {$videoYears}
-                                                                </select>
-                                                            </fieldset>
-                                                        </li>
-                                                    </ul>-->
+                                                   
                                                 </div>
                                                 <div class="btn-holder">
-                                                    <a class="btn edit videoEdit"><span>Edit</span></a><br />
-                                                    <a class="btn edit videoEdit"><span>Share</span></a><br />
+                                                    <a class="btn edit videoEdit"><span>Edit</span></a>
+                                                    <a class="btn edit videoEdit"><span>Share</span></a>
                                                     <a class="btn delete deleteVideo" id="video-{$video->getId()}"><span>Delete</span></a>
                                                 </div>
                                             </div>
                                             <input type="hidden" class="video-id" value="{$video->getId()}" />
-                                        </a>
 									</li>
 								{/foreach}
 	                        {/if}
@@ -325,7 +295,7 @@
                                             </fieldset>
                                         </div>
                                         <div>
-                                            <fieldset>
+                                           <fieldset>
                                                 <legend>Grade Level</legend>
                                                 <select class="select-2" name="gradeLevel" id="_gradeLevel">
                                                     <option>Select a Grade</option>
@@ -335,7 +305,26 @@
                                                                 >{$gradeLevels[$smarty.section.i.index]}</option>
                                                      {/section}
                                                 </select>
+                                                
                                             </fieldset>
+                                            <!-- CODE FROM PSD2HTML -->
+                                            <fieldset>
+												<select class="select-2">
+													<option class="default">Select</option>
+													<option>9th</option>
+													<option>10th</option>
+													<option>11th</option>
+													<option>12th</option>
+													<option>13th</option>
+													<option>14th</option>
+													<option>15th</option>
+													<option>16th</option>
+													<option>13th</option>
+													<option>14th</option>
+													<option>15th</option>
+													<option>16th</option>
+												</select>
+											</fieldset>
                                             <fieldset>
                                                 <legend>Number</legend>
                                                 <div class="input_custom-text input_text36 width40 left">
