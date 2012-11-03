@@ -22,7 +22,7 @@
                     <div class="topRight whiteBg"></div>
                     <div class="bottomRight whiteBg"></div>
                     <div class="middle">
-                        <input type="submit" value="Select File" id="upload_button" name="upload_button" class="large black" />
+                        <input type="submit" value="Browse" id="upload_button" name="upload_button" class="large black" />
                     </div>
                     <div class="topLeft whiteBg"></div>
                     <div class="bottomLeft whiteBg"></div>
