@@ -310,14 +310,14 @@
 	font-size:15px;
 	line-height:18px;
 }
-form .select-2{width:97px;}
-form .select-3{width:271px;}
-form .select-4{width:520px;}
-form .select-5{width:225px;}
-form .select-6{width:150px;}
-form .select-7{width:275px;}
-form .select-8{width:250px;}
-form .select-9{width:545px;}
+.select-2{width:97px;}
+.select-3{width:271px;}
+.select-4{width:520px;}
+.select-5{width:225px;}
+.select-6{width:150px;}
+.select-7{width:275px;}
+.select-8{width:250px;}
+.select-9{width:545px;}
 /* hide original element */
 .jcf-hidden {
 	display: block !important;

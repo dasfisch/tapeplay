@@ -2197,11 +2197,14 @@ p.nothing {
 }
 
 .hidden {
-    display: none;
+    /*display: none;*/
+   height:0px;
+   overflow:hidden;
 }
 
 .shown {
-    display: block;
+    /*display: block;*/
+   height:auto;
 }
 
 .uploader,

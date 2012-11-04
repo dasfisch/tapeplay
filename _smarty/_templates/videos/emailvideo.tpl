@@ -1,6 +1,9 @@
 <div class="email-video">
 	<div id="content-left-column">
 		<h1>Email Video</h1>
+		<p>
+			Recruiting Tip: Email your video to colleges or professional organizations you are interested in playing for or copy the link to share the URL. Keep a log of every contact you make and remember to follow up.
+		</p>
 		<ul class="result-list">
 			<li>
 				<div class="result-image left">
