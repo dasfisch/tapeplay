@@ -803,13 +803,13 @@ jQuery(document).ready(function(){
         };
     }
 
-    jQuery('.addAnother').click(function() {
+    /*jQuery('.addAnother').click(function() {
         if(addThis == '') {
             var _this = addThis = jQuery(this).parentsUntil('#emailFriend').children('.copy').first().html();
         }
 
         jQuery(this).parentsUntil('#emailFriend').children('.copy').append(addThis);
-    });
+    });*/
 
     jQuery('#emailFriend').validate();
 

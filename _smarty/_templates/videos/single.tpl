@@ -147,6 +147,7 @@
 					</ul>
 				{/if}
                 {if $player->getLastUpdate() > 0}
+                <div class="clear"></div>
                     <p class="italic">Statistics last update {$player->getLastUpdate()|date_format:"%m, %d, %Y"}</p>
                 {/if}
 				<div class="clear"></div>
