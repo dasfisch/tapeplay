@@ -14,7 +14,7 @@
 				<div id="cancelUpload" style="float:left; display:none; margin-left:15px; color:#e18a07;"><a href="#">Cancel Upload</a></div>
                 <div id="uploadComplete" class="successMessage" style="float:left;visibility: hidden; margin-left:15px; color:#00ff12;">Upload Complete</div>
             </div>
-            <input type="text" class="hidden" id="fakeupload" name="fakeupload" value="Browse Video File" />
+            <input type="text" class="hidden" style="display: none;" id="fakeupload" name="fakeupload" value="Browse Video File" />
             <div id="uploadInputs" class="input">
                 <div class="selectfile">Select a file:</div>
                 <div id="localUploadButton" class="bigButton black">
