@@ -1206,7 +1206,6 @@ label[for="i-agree"] {
 
 .bigButton {
     cursor: pointer;
-    cursor: hand;
     float: left;
     overflow: hidden;
     position: relative;
@@ -1214,7 +1213,6 @@ label[for="i-agree"] {
 
 #upload_button {
 	cursor:pointer;
-	cursor:hand;
 }
 
 .bigButton .topLeft {
@@ -1262,11 +1260,11 @@ label[for="i-agree"] {
     border: none;
     cursor: pointer;
     font-family: arial;
-    font-size: 30px;
+    font-size: 22px;
     font-weight: normal;
     float: left;
-    height: 75px;
-    padding: 0px 30px;
+    height: 50px;
+    padding: 10px 25px;
     position: relative;
     z-index: 1;
 }
@@ -2211,15 +2209,14 @@ p.nothing {
 .bigButton input[type="file"]  {
     -moz-opacity:0;
     cursor: pointer;
-    cursor: hand;
     filter:alpha(opacity:0);
     font-size: 50px;
-    height: 80px;
+    height: 50px;
     opacity:0;
     position: absolute;
     right: 0px;
     top: 0px;
-    width: 158px;
+    width: 127px;
     z-index: 2;
 }
 
@@ -2810,7 +2807,7 @@ p.nothing {
     float: left;
     font-weight: bold;
     margin-right: 15px;
-    padding-top: 27px;
+    padding-top: 15px;
 }
 
 #pleaseWait {

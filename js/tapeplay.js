@@ -880,6 +880,10 @@ jQuery(document).ready(function(){
             {optin: jQuery(this).val(), switcher: switcher, hash: jQuery('#hash').val()}
         );
     });
+
+    jQuery('.jcf-hidden').change(function(){
+        jQuery(this).siblings('.select-area').children('.center').css('color', '#000');
+    });
 });
 
 function openBubble(obj) {
