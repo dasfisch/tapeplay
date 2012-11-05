@@ -103,3 +103,31 @@
 	    {include file='common/sidebar/emailVideo.tpl'}
 	</div>
 </div>
+
+<script type="text/javascript">
+	tp = {};
+	
+	tp.f = {}
+
+	tp.f..createNewElement = function(e, c, a) {
+		var newElement; // New element that will be created;
+		
+		newElement = document.createElement(e);
+		if (c != null) newElement.className = c;
+		if (typeof a != 'undefined' && typeof a == 'object') {
+			for (var i in a) {
+				newElement.setAttribute(i, a[i]);
+			}
+		}
+		return newElement;
+	}
+	
+	tp.f.functions.addChildren = function(p, c) {
+		if (p && c) {
+			for (var i=0; i < c.length; i++) {
+				p.appendChild(c[i]);
+			}
+			return p;
+		}
+	}
+</script>
