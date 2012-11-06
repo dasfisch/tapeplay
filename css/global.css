@@ -2815,3 +2815,8 @@ p.nothing {
     margin-left: 15px;
     padding-top: 47px;
 }
+
+.stat-bold {
+	display:block;
+	font-weight:bold;
+}
