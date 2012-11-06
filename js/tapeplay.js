@@ -480,6 +480,10 @@ jQuery(document).ready(function(){
             statsHolder.html('');
 
             jQuery(inputs).each(function(i) {
+                if(jQuery(this).val() == "0" || jQuery(this).val() == '') {
+                    return;
+                }
+
                 var key = {};
 
                 key.name = jQuery(this).attr('name');
