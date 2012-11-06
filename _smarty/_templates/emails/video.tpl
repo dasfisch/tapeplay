@@ -279,7 +279,7 @@
                                                                                                         <td mc:edit="text02" valign="top" width="32%" style="font-size:13px; line-height:18px;">
                                                                                                             <font face="Arial, Helvetica, sans-serif" size="2" color="#666666" style="font-size:13px; line-height:18px;">
                                                                                                     {/if}
-                                                                                                                {$stat->getStatName()}: {$stat->getStatValue()}
+                                                                                                                <span style="display:block;">{$stat->getStatName()}:</span> <b>{$stat->getStatValue()}</b>
                                                                                                     {if ($i%$modder == $modder - 1 && $i > $modder) || $i == ($statCount - 1)}
                                                                                                             </font>
                                                                                                         </td>
