@@ -21,7 +21,7 @@ use tapeplay\server\bll\VideoBLL;
 use tapeplay\server\bll\UserBLL;
 use tapeplay\server\model\SearchFilter;
 
-global $controller, $dataValidator, $get, $inputFilter, $post, $route, $smarty, $userBLL;
+global $controller, $dataValidator, $get, $inputFilter, $post, $route, $smarty, $sport, $userBLL;
 
 if($userBLL->getUser()) {
     $step = $userBLL->getUser()->getStatus();
@@ -43,11 +43,10 @@ if($userBLL->getUser()) {
     }
 }
 
-
 // check for request method to see if we are posting data
 if ($_SERVER['REQUEST_METHOD'] == "POST")
 {
-	$posted = true;
+//	$posted = true;
 
 	// cleanup post variable
 	//$inputFilter = new InputFilter();
@@ -90,7 +89,6 @@ if (isset($route->method))
                 {
                     case AccountTypeEnum::$PLAYER:
                         $template = "account/welcome/playerWelcome.tpl";
-
 
                         try {
                             $playerBLL = new PlayerBLL();
