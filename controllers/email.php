@@ -56,7 +56,8 @@
 
                     $statsBll = new StatsBLL();
                     $stats = $statsBll->getPlayerStats((int)$player->getId(), (int)$player->getSport()->getId());
-                    $modder = 2;
+                    $modder = (ceil(count($stats) / 3) > 1) ? ceil(count($stats) / 3) : 2;
+                    $modder = 3;
 
                     $args = array("from" => $post["from"],
                         "modder" => $modder,
