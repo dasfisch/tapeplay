@@ -56,7 +56,7 @@
 
                     $statsBll = new StatsBLL();
                     $stats = $statsBll->getPlayerStats((int)$player->getId(), (int)$player->getSport()->getId());
-                    $modder = (ceil(count($stats) / 3) > 1) ? ceil(count($stats) / 3) : 2;
+                    $modder = 2;
 
                     $args = array("from" => $post["from"],
                         "modder" => $modder,
@@ -84,6 +84,8 @@
                     $smarty->assign('hash', $inputFilter->createHash());
                     $smarty->assign('message', $message);
                     $smarty->assign('player', $player);
+                    $smarty->assign('stats', $stats);
+                    $smarty->assign('modder', $modder);
                     $smarty->assign('video', $video[0]);
                     $smarty->assign('fileExists', $video[0]->fileExists);
                     $smarty->assign("title", 'Share Videos from TapePlay');

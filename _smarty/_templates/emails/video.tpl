@@ -275,19 +275,21 @@
                                                                                             {if isset($stats) && count($stats) > 0}
                                                                                                 {assign var=i value=0}
                                                                                                 {foreach from=$stats item=stat}
-                                                                                                    {if $i % $modder == 0 || $i == 0 || $i == ($statCount - 1)}
-                                                                                                        <td mc:edit="text02" valign="top" width="32%" style="font-size:13px; line-height:18px;">
-                                                                                                            <font face="Arial, Helvetica, sans-serif" size="2" color="#666666" style="font-size:13px; line-height:18px;">
+                                                                                                    {if $stat->getStatValue() != 0}
+                                                                                                        {if $i % $modder == 0 || $i == 0 || $i == ($statCount - 1)}
+                                                                                                            <td mc:edit="text02" valign="top" width="32%" style="font-size:13px; line-height:18px;">
+                                                                                                                <font face="Arial, Helvetica, sans-serif" size="2" color="#666666" style="font-size:13px; line-height:18px;">
+                                                                                                        {/if}
+                                                                                                                    <span style="display:block;">{$stat->getStatName()}:</span> <b>{$stat->getStatValue()}</b>
+                                                                                                        {if ($i%$modder == $modder - 1 && $i > $modder) || $i == ($statCount - 1)}
+                                                                                                                </font>
+                                                                                                            </td>
+                                                                                                            <td width="3%" style="font-size:0; line-height:0;">
+                                                                                                                <img src="{#baseUrl#}media/images/none.gif" width="1" height="1" alt="image" />
+                                                                                                            </td>
+                                                                                                        {/if}
+                                                                                                        {$i = $i+1}
                                                                                                     {/if}
-                                                                                                                <span style="display:block;">{$stat->getStatName()}:</span> <b>{$stat->getStatValue()}</b>
-                                                                                                    {if ($i%$modder == $modder - 1 && $i > $modder) || $i == ($statCount - 1)}
-                                                                                                            </font>
-                                                                                                        </td>
-                                                                                                        <td width="3%" style="font-size:0; line-height:0;">
-                                                                                                            <img src="{#baseUrl#}media/images/none.gif" width="1" height="1" alt="image" />
-                                                                                                        </td>
-                                                                                                    {/if}
-                                                                                                    {$i = $i+1}
                                                                                                 {/foreach}
                                                                                             {/if}
                                                                                         </tr>

@@ -2205,6 +2205,10 @@ p.nothing {
    height:auto;
 }
 
+.showme {
+    display: block!important;
+}
+
 .uploader,
 .bigButton input[type="file"]  {
     -moz-opacity:0;

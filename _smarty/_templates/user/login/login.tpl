@@ -18,7 +18,7 @@
 				</div>
 			</div>
             {if isset($message) && isset($message->message)}
-                <div class="error-alert shown">
+                <div class="error-alert showme">
                     <ul>
                         <li>{$message->message}</li>
                     </ul>

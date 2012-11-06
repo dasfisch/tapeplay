@@ -133,16 +133,12 @@
 					<ul class="user-stats three-column">
 						{assign var=i value=0}
 						{foreach from=$stats item=stat}
-							{if $i % $modder == 0 || $i == 0}
-							<li>
-							{/if}
-							{$stat->getStatName()}: <span class="stat-bold">{$stat->getStatValue()}</span>
-							{if ($i%$modder == $modder - 1 && $i > $modder) || $i == ($statCount - 1)}
-							</li>
-							{else}
-							<br/>
-							{/if}
-							{$i = $i+1}
+                            {if $stat->getStatValue() != 0}
+                                <li>
+                                    {$stat->getStatName()}: <span class="stat-bold">{$stat->getStatValue()}</span>
+                                </li>
+                                {$i = $i+1}
+                            {/if}
 						{/foreach}
 					</ul>
 				{/if}
