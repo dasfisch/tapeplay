@@ -67,7 +67,7 @@
                             </div>
                         </div>
                     </li>
-                    <li class="input-field clear copy">
+                    <li class="input-field clear" id="to-field">
                         <strong>To</strong>
                         <div class="input_custom-text input_text80 width440">
                             <div class="custom-input_center custom-input_partial">
@@ -89,7 +89,7 @@
                     </li>
                     <li class="input-field clear">
                         <p class="addAnother">
-                            <img src="/media/images/icon_add-plus-sign.gif" class="vertical-center" /> Add another email address
+                            <img id="add-another" src="/media/images/icon_add-plus-sign.gif" class="vertical-center" /> Add another email address
                         </p>
                     </li>
                     <li class="input-field clear">
@@ -105,29 +105,31 @@
 </div>
 
 <script type="text/javascript">
-	tp = {};
-	
-	tp.f = {}
 
-	tp.f..createNewElement = function(e, c, a) {
-		var newElement; // New element that will be created;
+	function removeEmailField(element) {
+		$($(element).parent()).remove();
+	}
+
+	jQuery(document).ready(function(){
+		function buildEmailField() {
+			var li = $('<li class="input-field clear"></li>');
+			
+			$(li).append("<strong class='clear'>To</strong>")
+			.append('<div class="input_custom-text input_text80 width440 left"><div class="custom-input_center custom-input_partial"><span class="custom-input_top"></span><input type="text" name="email[]" value="Email Address" class="required email noDefault" /><span class="custom-input_bottom"></span></div><div class="custom-input_left custom-input_partial"><span class="custom-input_top"></span><span class="custom-input_bottom"></span></div><div class="custom-input_right custom-input_partial"><span class="custom-input_top"></span><span class="custom-input_bottom"></span></div></div>')
+			.append('<a class="remove-email" href="#" onclick="removeEmailField(this);return false"><img src="/media/images/cancel.gif" /></a>');
+			
+			return li;
+		}
 		
-		newElement = document.createElement(e);
-		if (c != null) newElement.className = c;
-		if (typeof a != 'undefined' && typeof a == 'object') {
-			for (var i in a) {
-				newElement.setAttribute(i, a[i]);
-			}
-		}
-		return newElement;
-	}
+		$(".addAnother").bind('click',function() {
+
+			var button = $(".addAnother").parent();
+			
+			$(buildEmailField()).insertBefore(button);
+			
+		})	
+		
+	});
+
 	
-	tp.f.functions.addChildren = function(p, c) {
-		if (p && c) {
-			for (var i=0; i < c.length; i++) {
-				p.appendChild(c[i]);
-			}
-			return p;
-		}
-	}
 </script>

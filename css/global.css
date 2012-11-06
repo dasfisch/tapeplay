@@ -2820,3 +2820,8 @@ p.nothing {
 	display:block;
 	font-weight:bold;
 }
+
+.remove-email {
+	float:left;
+	padding:25px 0px 0px 10px;
+}
