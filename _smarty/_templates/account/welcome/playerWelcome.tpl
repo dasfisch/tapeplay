@@ -508,6 +508,9 @@
                                                 {/if}
                                             {/foreach}
                                         </ul>
+                                    {else}
+                                        <ul class="three-column">
+                                        </ul>
                                     {/if}
                                     <div class="statHidden hidden">
                                         <ul class="three-column">
