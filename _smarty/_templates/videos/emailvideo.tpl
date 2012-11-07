@@ -114,8 +114,7 @@
 		function buildEmailField() {
 			var li = $('<li class="input-field clear"></li>');
 			
-			$(li).append("<strong class='clear'>To</strong>")
-			.append('<div class="input_custom-text input_text80 width440 left"><div class="custom-input_center custom-input_partial"><span class="custom-input_top"></span><input type="text" name="email[]" value="Email Address" class="required email noDefault" /><span class="custom-input_bottom"></span></div><div class="custom-input_left custom-input_partial"><span class="custom-input_top"></span><span class="custom-input_bottom"></span></div><div class="custom-input_right custom-input_partial"><span class="custom-input_top"></span><span class="custom-input_bottom"></span></div></div>')
+			$(li).append('<div class="input_custom-text input_text80 width440 left"><div class="custom-input_center custom-input_partial"><span class="custom-input_top"></span><input type="text" name="email[]" value="Email Address" class="required email noDefault" /><span class="custom-input_bottom"></span></div><div class="custom-input_left custom-input_partial"><span class="custom-input_top"></span><span class="custom-input_bottom"></span></div><div class="custom-input_right custom-input_partial"><span class="custom-input_top"></span><span class="custom-input_bottom"></span></div></div>')
 			.append('<a class="remove-email" href="#" onclick="removeEmailField(this);return false"><img src="/media/images/cancel.gif" /></a>');
 			
 			return li;

@@ -470,7 +470,7 @@ fieldset li {
 	background-color:#e18a07;
 }
 
-#splash_content .button_gray_large:hover {
+#splash_content .button_gray_large:hover, .button_orange_large:hover {
 	background-color:#c97901;	
 }
 
@@ -501,7 +501,7 @@ fieldset li {
     cursor: pointer;
 }
 
-.button_orange_large, .button_orange_large:visited, .button_orange_large:hover {
+.button_orange_large, .button_orange_large:visited {
 	background-color:#e18a07;
 	border:none;
 	color:#ffffff;
@@ -562,6 +562,10 @@ fieldset li {
 
 .email-video .success {
     font-size: 32px;
+}
+
+.email-video h1 + p {
+	margin-bottom:30px;
 }
 
 form .error-alert {
@@ -2828,4 +2832,12 @@ p.nothing {
 .remove-email {
 	float:left;
 	padding:25px 0px 0px 10px;
+}
+
+.accordion .btn-holder .btn {
+	margin-bottom:5px;
+}
+
+.accountInfo .input_custom-text + .input_custom-text {
+	margin-top:15px;
 }
