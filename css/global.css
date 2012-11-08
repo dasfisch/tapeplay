@@ -2635,6 +2635,8 @@ p.nothing {
 
 .text-holder .accountInfo {
 	margin-top:16px;
+    position: relative;
+    z-index: 1000;
 }
 
 .text-holder .accountInfo:first-child {
@@ -2849,9 +2851,10 @@ p.nothing {
     position: absolute;
     top: 0px;
     width: 100%;
+    z-index: 500;
 }
 
-#videos .singleVidoe {
+#videos .singleVideo {
 	float:left;
 	width:509px;
 	margin:0 0 5px;

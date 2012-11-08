@@ -56,20 +56,7 @@
 
                     $statsBll = new StatsBLL();
                     $stats = $statsBll->getPlayerStats((int)$player->getId(), (int)$player->getSport()->getId());
-                    $modder = (ceil(count($stats) / 3) > 1) ? ceil(count($stats) / 3) : 2;
                     $modder = 3;
-
-                    $args = array("from" => $post["from"],
-                        "modder" => $modder,
-                        "statCount" => count($stats),
-                        "stats" => $stats,
-                        "video" => $video[0],
-                                                "player" => $player,
-                        "gradeLevel", $controller->configuration->gradeLevels[(int)$video[0]->getPlayer()->getGradeLevel()]);
-
-
-                    // send email with above args
-//                    $success = \Util::sendEmail(EmailEnum::$SHARE, $post['email'], "The Next Big Thing", "emails/video.tpl", $args);
 
                     $playerBll = new PlayerBLL();
 
@@ -87,6 +74,7 @@
                     $smarty->assign('player', $player);
                     $smarty->assign('stats', $stats);
                     $smarty->assign('modder', $modder);
+                    $smarty->assign('statCount', count($stats));
                     $smarty->assign('video', $video[0]);
                     $smarty->assign('fileExists', $video[0]->fileExists);
                     $smarty->assign("title", 'Share Videos from TapePlay');

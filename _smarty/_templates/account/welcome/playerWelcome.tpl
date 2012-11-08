@@ -11,7 +11,7 @@
 						<ul id="videos">
 							{if isset($videos) && !empty($videos)}
 	                        	{foreach $videos as $video}
-									<li class="singleVidoe">
+									<li class="singleVideo">
                                         <a href="{#baseUrl#}videos/view/{$video->getId()}/"></a>
                                         {if isset($fileExists) && $fileExists == true}
                                             <img src="{#pandaBase#}{$video->getPandaId()}{#pandaImageExt#}" width="125" height="94" alt="image description" />
@@ -582,7 +582,7 @@
                             />
    	                    <label for="allowFacebook">Allow TapePlay to import my Facebook info</label>
    	                </p>-->
-   	                <!--<p>
+   	                <p>
    	                    <input type="checkbox" name="relevantAdvertising" class="optin" value="2"
                             {foreach from=$optins key=key item=optin}
                                 {if $optin.0 == 2}checked {/if}
@@ -592,7 +592,7 @@
    	                        Use my account info for relevant advertising. Ads help us pay the bills so
                             we can keep improving TapePlay for you.
    	                    </label>
-   	                </p>-->
+   	                </p>
    	                <!--<p>
    	                    <input type="checkbox" name="sendRecommendations" class="optin" value="1"
                            {foreach from=$optins key=key item=optin}
