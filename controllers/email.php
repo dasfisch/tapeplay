@@ -67,10 +67,6 @@
                                                 "player" => $player,
                         "gradeLevel", $controller->configuration->gradeLevels[(int)$video[0]->getPlayer()->getGradeLevel()]);
 
-
-                    // send email with above args
-//                    $success = \Util::sendEmail(EmailEnum::$SHARE, $post['email'], "The Next Big Thing", "emails/video.tpl", $args);
-
                     $playerBll = new PlayerBLL();
 
                     $player = $playerBll->getPlayersByPlayerId((int)$video[0]->getPlayer()->getId(), (int)$video[0]->getPlayer()->getSport()->getId());
