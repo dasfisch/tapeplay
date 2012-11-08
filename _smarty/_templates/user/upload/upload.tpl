@@ -52,7 +52,8 @@
                         // enable the submit button
                         $("#submitButton").removeAttr("disabled");
 
-                        jQuery('#pleaseWait').css("display", "none");
+                        $("#pleaseWait").css("display", "none");
+                        $(".form-steps").css("visibility", "visible");
 
                         // tell user video upload is complete
 						$("#cancelUpload").css("display", "none");
@@ -68,7 +69,8 @@
                         $("#localUploadButton").css("display", "none");
 
 						$("#cancelUpload").css("display", "block");
-                        jQuery('#pleaseWait').css("display", "block");
+                        $("#pleaseWait").css("display", "block");
+                        $(".form-steps").css("visibility", "hidden");
                     }
 
 					function uploadCanceled_Handler()
@@ -76,6 +78,8 @@
 						$("#localUploadFile").css("display", "block");
 						$("#localUploadButton").css("display", "block");
 						$("#cancelUpload").css("display", "none");
+                        $("#pleaseWait").css("display", "none");
+                        $(".form-steps").css("visibility", "visible");
 					}
 
                     // creates the uploader component with the customized options
@@ -192,7 +196,7 @@
 		</li>
 		<li class="input-field clear">
 			<button id="submitButton" value="Join" type="submit" class="button_black_large left button_round disabled" disabled="disabled">Continue</button>
-            <span class="hidden" id="pleaseWait">Please wait until your video is uploaded.</span>
+            <span id="pleaseWait" style="display:none;">Please wait until your video is uploaded.</span>
             {if $user->getStatus() != 3}
 			    <span class="form-steps">Step 2 of 3</span>
             {/if}
