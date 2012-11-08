@@ -200,7 +200,7 @@ if (isset($route->method))
                 $optins = array();
 
                 try {
-                    $optins = $userBLL->getMyOptins($userBLL->getUser()->getId());
+                    $optins = $userBLL->getMyOptins($userBLL->getUser()->getUserId());
                 } catch(Exception $e) {
 
                 }
