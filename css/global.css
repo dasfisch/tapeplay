@@ -2527,11 +2527,12 @@ p.nothing {
 	color:#666666;
 	font-size:13px;
 	line-height:20px;
-	margin-bottom:18px;
+	margin-bottom:30px;
 }
 
 .single .user-stats {
 	border-top:1px solid #d9d9d9;
+    overflow: hidden;
 	padding-top:18px;
 }
 
@@ -2840,4 +2841,24 @@ p.nothing {
 
 .accountInfo .input_custom-text + .input_custom-text {
 	margin-top:15px;
+}
+
+#videos li > a {
+    height: 100%;
+    left: 0px;
+    position: absolute;
+    top: 0px;
+    width: 100%;
+}
+
+#videos .singleVidoe {
+	float:left;
+	width:509px;
+	margin:0 0 5px;
+	padding:20px 43px;
+    position: relative;
+}
+
+.user-info .italic {
+    margin-bottom: 0px;
 }

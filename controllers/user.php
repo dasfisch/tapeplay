@@ -600,9 +600,11 @@ if (isset($route->method))
                                 }
 
                                 try {
+                                    error_reporting(E_ALL);
+                                    ini_set('display_errors', 1);
                                     $userBLL->getUser()->setLastUpdate(strtotime('now'));
 
-                                    $userBLL->update($user->getUser());
+                                    $userBLL->update($user);
                                 } catch(Exception $e) {
 
                                 }

@@ -17,7 +17,9 @@
         {/if}
         <div class="info">
             <h2>{$video->getTitle()}</h2>
-            <p> {if $video->getRecordedMonth() != 0}
+            <p class="category">{$video->getSport()->getSportName()}</p>
+            <p>
+                {if $video->getRecordedMonth() != 0}
                     {$video->getRecordedMonthName()}
                 {/if}
                 {if $video->getRecordedYear() != 0}

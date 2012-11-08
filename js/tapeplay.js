@@ -273,8 +273,8 @@ jQuery(document).ready(function(){
     jQuery('.videoEdit').click(function() {
         var _this = jQuery(this);
 
-        var videoForm = _this.parents('.btn-holder').siblings('a').children('.accountInfo');
-        var videoInfo = _this.parents('.btn-holder').siblings('a').children('.videoInfo');
+        var videoForm = _this.parents('.btn-holder').siblings('.accountInfo');
+        var videoInfo = _this.parents('.btn-holder').siblings('.videoInfo');
 
         var dropDowns = videoForm.children('fieldset').children('select');
         var inputs = videoForm.children('.input_custom-text').children('.custom-input_center').children('input');

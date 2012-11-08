@@ -11,52 +11,52 @@
 						<ul id="videos">
 							{if isset($videos) && !empty($videos)}
 	                        	{foreach $videos as $video}
-									<li>
-                                            {if isset($fileExists) && $fileExists == true}
-                                                <img src="{#pandaBase#}{$video->getPandaId()}{#pandaImageExt#}" width="125" height="94" alt="image description" />
-                                            {else}
-                                                <img src="{#pandaBase#}{$video->getPandaId()}{#pandaImageExt#}" width="125" height="94" alt="image description" />
-                                            {/if}
-                                            <div class="text-holder">
-                                                <div class="videoInfo">
-                                                    <strong class="title">{$video->getTitle()}</strong>
-                                                    <div class="category">{$video->getSport()->getSportName()}</div>
-                                                    <div class="date">
-                                                        {if $video->getRecordedMonth() != 0}
-                                                            {$video->getRecordedMonthName()}
-                                                        {/if}
-                                                        {if $video->getRecordedYear() != 0}
-                                                            {$video->getRecordedYear()}
-                                                        {/if}
-                                                    </div>
-                                                    <div class="time"></div>
-                                                    <em class="info">Views: {$video->getViews()}</em>
+									<li class="singleVidoe">
+                                        <a href="{#baseUrl#}videos/view/{$video->getId()}/"></a>
+                                        {if isset($fileExists) && $fileExists == true}
+                                            <img src="{#pandaBase#}{$video->getPandaId()}{#pandaImageExt#}" width="125" height="94" alt="image description" />
+                                        {else}
+                                            <img src="{#pandaBase#}{$video->getPandaId()}{#pandaImageExt#}" width="125" height="94" alt="image description" />
+                                        {/if}
+                                        <div class="text-holder">
+                                            <div class="videoInfo">
+                                                <strong class="title">{$video->getTitle()}</strong>
+                                                <div class="category">{$video->getSport()->getSportName()}</div>
+                                                <div class="date">
+                                                    {if $video->getRecordedMonth() != 0}
+                                                        {$video->getRecordedMonthName()}
+                                                    {/if}
+                                                    {if $video->getRecordedYear() != 0}
+                                                        {$video->getRecordedYear()}
+                                                    {/if}
                                                 </div>
-                                                <div class="accountInfo hidden">
-                                                    <div class="input_custom-text input_text80 width450 left">
-                                                        <div class="custom-input_center custom-input_partial">
-                                                            <span class="custom-input_top"></span>
-                                                            <input type="text" class="standard" id="_title" name="title" value="{$video->getTitle()}" />
-                                                            <span class="custom-input_bottom"></span>
-                                                        </div>
-                                                        <div class="custom-input_left custom-input_partial">
-                                                            <span class="custom-input_top"></span>
-                                                            <span class="custom-input_bottom"></span>
-                                                        </div>
-                                                        <div class="custom-input_right custom-input_partial">
-                                                            <span class="custom-input_top"></span>
-                                                            <span class="custom-input_bottom"></span>
-                                                        </div>
+                                                <div class="time"></div>
+                                                <em class="info">Views: {$video->getViews()}</em>
+                                            </div>
+                                            <div class="accountInfo hidden">
+                                                <div class="input_custom-text input_text80 width450 left">
+                                                    <div class="custom-input_center custom-input_partial">
+                                                        <span class="custom-input_top"></span>
+                                                        <input type="text" class="standard" id="_title" name="title" value="{$video->getTitle()}" />
+                                                        <span class="custom-input_bottom"></span>
                                                     </div>
-                                                   
-                                                </div>
-                                                <div class="btn-holder">
-                                                    <a class="btn edit videoEdit"><span>Edit</span></a>
-                                                    <a class="btn edit" href="{#baseUrl#}videos/email/{$video->getId()}"><span>Share</span></a>
-                                                    <a class="btn delete deleteVideo" id="video-{$video->getId()}"><span>Delete</span></a>
+                                                    <div class="custom-input_left custom-input_partial">
+                                                        <span class="custom-input_top"></span>
+                                                        <span class="custom-input_bottom"></span>
+                                                    </div>
+                                                    <div class="custom-input_right custom-input_partial">
+                                                        <span class="custom-input_top"></span>
+                                                        <span class="custom-input_bottom"></span>
+                                                    </div>
                                                 </div>
                                             </div>
-                                            <input type="hidden" class="video-id" value="{$video->getId()}" />
+                                            <div class="btn-holder">
+                                                <a class="btn edit videoEdit"><span>Edit</span></a>
+                                                <a class="btn edit" href="{#baseUrl#}videos/email/{$video->getId()}"><span>Share</span></a>
+                                                <a class="btn delete deleteVideo" id="video-{$video->getId()}"><span>Delete</span></a>
+                                            </div>
+                                        </div>
+                                        <input type="hidden" class="video-id" value="{$video->getId()}" />
 									</li>
 								{/foreach}
 	                        {/if}
@@ -297,18 +297,17 @@
                                         <div>
                                            <fieldset>
                                                 <legend>Grade Level</legend>
-                                                <select class="select-2" name="gradeLevel" id="_gradeLevel">
-                                                    <option>Select a Grade</option>
+                                                <select class="select-2" style="width: 147px;" name="gradeLevel" id="_gradeLevel">
+                                                    <option class="default">Select a Grade</option>
                                                     {section name=i start=9 loop=17 step=1}
                                                         <option value="{$smarty.section.i.index}"
                                                             {if $player->getGradeLevel() == $smarty.section.i.index}selected {/if}
                                                                 >{$gradeLevels[$smarty.section.i.index]}</option>
                                                      {/section}
                                                 </select>
-                                                
-                                            </fieldset>
+                                           </fieldset>
                                             <!-- CODE FROM PSD2HTML -->
-                                            <fieldset>
+                                            <!-- <fieldset>
 												<select class="select-2">
 													<option class="default">Select</option>
 													<option>9th</option>
@@ -324,7 +323,7 @@
 													<option>15th</option>
 													<option>16th</option>
 												</select>
-											</fieldset>
+											</fieldset>-->
                                             <fieldset>
                                                 <legend>Number</legend>
                                                 <div class="input_custom-text input_text36 width40 left">

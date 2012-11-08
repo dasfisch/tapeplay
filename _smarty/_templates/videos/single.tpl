@@ -143,10 +143,8 @@
 					</ul>
 				{/if}
                 {if $player->getLastUpdate() > 0}
-                <div class="clear"></div>
-                    <p class="italic">Statistics last update {$player->getLastUpdate()|date_format:"%m, %d, %Y"}</p>
+                    <p class="italic">Statistics last updated {$player->getLastUpdate()|date_format:"%B %d, %Y"}</p>
                 {/if}
-				<div class="clear"></div>
 			</div>
             {if isset($videos) && count($videos) > 0}
                 {if count($videos) > 1}
