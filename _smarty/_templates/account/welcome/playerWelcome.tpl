@@ -11,7 +11,7 @@
 						<ul id="videos">
 							{if isset($videos) && !empty($videos)}
 	                        	{foreach $videos as $video}
-									<li class="singleVidoe">
+									<li class="singleVideo">
                                         <a href="{#baseUrl#}videos/view/{$video->getId()}/"></a>
                                         {if isset($fileExists) && $fileExists == true}
                                             <img src="{#pandaBase#}{$video->getPandaId()}{#pandaImageExt#}" width="125" height="94" alt="image description" />

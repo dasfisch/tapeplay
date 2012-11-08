@@ -61,6 +61,7 @@
 	width:104px;
 	text-align:center;
 	padding:5px 0 0;
+    z-index: 1000;
 }
 .accordion .btn{
 	font-size:15px;
