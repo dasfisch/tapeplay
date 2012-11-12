@@ -193,7 +193,7 @@
 					<li>
 						<label for="terms">
                             <span class="checkbox"><span class="check"></span></span>
-							I agree to the <a id="signup-toc" href="#">Terms of Service</a> and <a id="signup-privacy" href="#">Privacy Policy</a>.
+							I agree to the <a id="signup-toc" href="#" title="Terms of Service">Terms of Service</a> and <a id="signup-privacy" href="#" title="Privacy Policy">Privacy Policy</a>.
 						</label>
                         <input type="checkbox" id="terms" name="terms" class="required" />
 					</li>

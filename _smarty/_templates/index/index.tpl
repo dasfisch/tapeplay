@@ -3,7 +3,7 @@
 		<div id="content-wrapper">
 			<div id="splash_header">
 				<div class="left">
-					<img src="media/images/logo_large_286x157.jpg" alt="TapePlay Beta"/>
+					<img src="media/images/logo_large_286x157.jpg" alt="TapePlay" title="Welcome to TapePlay"/>
 				</div>
 				<div class="left">
 					<h1>(beta)</h1>
@@ -29,7 +29,7 @@
 				<!--<a href="#" class="button_gray_large button_round left" title="continue">Continue</a>-->
 				<div class="clear"></div>
 				<ul class="login-menu font15">
-					<li><a href="{#baseUrl#}company/privacy/">Privacy Policy</a></li>
-					<li><a href="{#baseUrl#}user/login/">Log In</a></li>
+					<li><a href="{#baseUrl#}company/privacy/" title="Privacy Policy">Privacy Policy</a></li>
+					<li><a href="{#baseUrl#}user/login/" title="Log In">Log In</a></li>
 				</ul>
 			</div>    

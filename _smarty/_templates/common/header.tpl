@@ -112,44 +112,44 @@
     			{if isset($user) && !empty($user)}
     				<li>
     					<a class="{if {$smarty.server.REQUEST_URI} == '/account/welcome/'}active{/if}"
-    					   href="{#baseUrl#}account/welcome/">My Account</a>
+    					   href="{#baseUrl#}account/welcome/" title="My Account">My Account</a>
     				</li>
     				<li>
     					<a class="{if {$smarty.server.REQUEST_URI} == '/user/logout/'}active{/if}"
-    					   href="{#baseUrl#}user/logout/">Log Out</a>
+    					   href="{#baseUrl#}user/logout/" title="Log Out">Log Out</a>
     				</li>
     				{else}
     				<li>
     					<a class="{if {$smarty.server.REQUEST_URI} == '/user/signup/'}active{/if}"
-    					   href="{#baseUrl#}user/signup/">Join<span class="fbSmall"></span></a>
+    					   href="{#baseUrl#}user/signup/" title="Join">Join<span class="fbSmall"></span></a>
     				</li>
     				<li>
     					<a class="{if {$smarty.server.REQUEST_URI} == '/user/login/'}active{/if}"
-    					   href="{#baseUrl#}user/login/">Log In</a>
+    					   href="{#baseUrl#}user/login/" title="Log In">Log In</a>
     				</li>
     			{/if}
     				<li>
     				{if isset($user) && !empty($user) && $user->getAccountType() == 1}
     					<a href="{#baseUrl#}user/upload/"
-    					   class="infoOpen {if {$smarty.server.REQUEST_URI} == '/user/upload/'}active{/if}">Upload</a>
+    					   class="infoOpen {if {$smarty.server.REQUEST_URI} == '/user/upload/'}active{/if}" title="Upload">Upload</a>
     					{else}
 
     					<div class="popup-hover pos-2">
-    						<a href="#" class="open upload-title">Upload</a>
+    						<a href="#" class="open upload-title" title="Upload">Upload</a>
     						<div class="popup popup-2">
     							<div class="holder">
     								<div class="frame">
-    									<p><strong>Players</strong> must be logged into their accounts to upload a video. <a href="/user/login/">Log in.</a></p>
-    									<p>Don&rsquo;t have an account yet? <a href="/user/signup/">Sign up.</a></p>
+    									<p><strong>Players</strong> must be logged into their accounts to upload a video. <a href="/user/login/" title="Log in">Log in.</a></p>
+    									<p>Don&rsquo;t have an account yet? <a href="/user/signup/" title="Sign up">Sign up.</a></p>
     								</div>
     							</div>
     						</div>
     					</div>
     				{/if}
     				</li>
-    				<li><a href="{#blogUrl#}" target="_blank">Blog</a></li>
+    				<li><a href="{#blogUrl#}" target="_blank" title="TapePlay Blog">Blog</a></li>
     				<li><a class="{if {$smarty.server.REQUEST_URI} == '/company/help/'}active{/if}"
-    					   href="{#baseUrl#}company/help/">Help</a></li>
+    					   href="{#baseUrl#}company/help/" title="Help">Help</a></li>
     			</ul>
     		</div>
     	</div>

@@ -18,7 +18,7 @@
 			</p>
 		</div>
 		<div class="right sign-up-banner">
-			<img src="/media/images/beta_home-page-banner.jpg" />
+			<img src="/media/images/beta_home-page-banner.jpg" alt="Player To-Do List: Join, Upload your game tape, Share and get notice" />
 		</div>
 	</div>
 
@@ -53,7 +53,7 @@
 			<div class="info">
 				<h3>Get Insider Tips</h3>
 				<p>
-					Discover how to get noticed by coaches and scouts at our blog. You&rsquo;ll find out about the entire recruiting process, including what makes a video stand out, recruiting events and much more. <a href="{#blogUrl#}" target="_blank">View Blog</a>
+					Discover how to get noticed by coaches and scouts at our blog. You&rsquo;ll find out about the entire recruiting process, including what makes a video stand out, recruiting events and much more. <a href="{#blogUrl#}" target="_blank" title="View Blog">View Blog</a>
 				</p>
 			</div>
 			<div class="info">
@@ -86,8 +86,8 @@
 				<div class="follow-us clear">
 					<ul>
 						<li>Follow Us:</li>
-						<li><a href="{#facebookUrl#}" target="_blank"><img src="/media/images/icon_mini-facebook.gif"/></a></li>
-						<li><a href="{#googlePlusUrl#}" target="_blank"><img src="/media/images/icon_mini-googleplus.gif"/></a></li>
+						<li><a href="{#facebookUrl#}" target="_blank" title="TapePlay on Facebook"><img src="/media/images/icon_mini-facebook.gif"/></a></li>
+						<li><a href="{#googlePlusUrl#}" target="_blank" title="TapePlay on Google+"><img src="/media/images/icon_mini-googleplus.gif"/></a></li>
 					</ul>
 				</div>
 			</div>

@@ -94,11 +94,11 @@
 				<h1>{if $player->getNumber() != 0}#{$player->getNumber()} {/if}{$player->getFirstName()} {$player->getLastName()}</h1>
 				<span class="grade">
 					{if $player->getPlayingLevel() == "0"}
-						<img src="/media/images/icon_high-school-athlete.png" />
+						<img src="/media/images/icon_high-school-athlete.png" alt="High School Athlete" title="High School Athlete"/>
 					{elseif $player->getPlayingLevel() == "1"}
-						<img src="/media/images/icon_college-athlete.png" />
+						<img src="/media/images/icon_college-athlete.png" alt="College Athlete" title="College Athlete"/>
 					{elseif $player->getPlayingLevel() == "2"}
-						<img src="/media/images/icon_professional-athlete.png" />
+						<img src="/media/images/icon_professional-athlete.png" alt="Professional Athlete" title="Professional Athlete"/>
 					{/if}
 				</span>
 				<ul class="user-profile">
@@ -154,7 +154,7 @@
                             {if $video->getId() != $single->getId()}
                                 {if $single->getPrivacy() == true}
                                     <li class="locked">
-                                        <a href="#" onclick="return false;"><img src="/media/images/background_lock.png" /></a>
+                                        <a href="#" onclick="return false;" title="{$single->getTitle()}"><img src="/media/images/background_lock.png" /></a>
                                         <div class="video-image">
                                             {if isset($fileExists) && $fileExists == true}
                                                 <img src="{#pandaBase#}{$single->getPandaId()}{#pandaImageExt#}" class="resultImage" />
@@ -178,7 +178,7 @@
                                     </li>
                                 {else}
                                     <li>
-                                        <a href="{#baseUrl#}videos/view/{$single->getId()}/"></a>
+                                        <a href="{#baseUrl#}videos/view/{$single->getId()}/" title="{$single->getTitle()}"></a>
                                         <div class="video-image">
                                             {if isset($fileExists) && $fileExists == true}
                                                 <img src="{#pandaBase#}{$single->getPandaId()}{#pandaImageExt#}" class="resultImage" />

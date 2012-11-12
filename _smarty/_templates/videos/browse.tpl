@@ -21,7 +21,7 @@
 			</li>
         {else}
         	<li>
-	        	<a href="{#baseUrl#}videos/view/{$video->getId()}/"></a>
+	        	<a href="{#baseUrl#}videos/view/{$video->getId()}/" title="{$video->getTitle()}"></a>
 				<ul>
 					<li class="video-image">
                         {if $video->fileExists == true}
