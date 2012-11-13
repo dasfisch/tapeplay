@@ -58,7 +58,7 @@
 			</div>
 		</li>
 		<li class="input-field clear">
-			<button type="submit" class="button_black_large left button_round">Log In</button> 
+			<button type="submit" class="button_black_large left button_round analytics" id="login">Log In</button>
 		</li>
 		<li class="input-field clear font15">
 			<a href="{#baseUrl#}account/forgot/" title="Forgot your password?">Forgot your password?</a>

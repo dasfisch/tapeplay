@@ -5,7 +5,7 @@
 	    <input type="hidden" id="user-id" value="{$user->getUserId()}" />
 	    <ul class="accordion">
 			<li class="active">
-				<a class="opener">{$myVideoWording} ({$videoCount})</a>
+				<a class="opener analytics" id="my-videos">{$myVideoWording} ({$videoCount})</a>
 				<div class="slide">
 					<div class="holder scrollable-area">
 						<ul id="videos">
@@ -51,9 +51,9 @@
                                                 </div>
                                             </div>
                                             <div class="btn-holder">
-                                                <a class="btn edit videoEdit"><span>Edit</span></a>
+                                                <a class="btn edit videoEdit" id="video-edit-{$video->getId()}"><span>Edit</span></a>
                                                 <a class="btn edit" href="{#baseUrl#}videos/email/{$video->getId()}"><span>Share</span></a>
-                                                <a class="btn delete deleteVideo" id="video-{$video->getId()}"><span>Delete</span></a>
+                                                <a class="btn delete deleteVideo" id="video-delete-{$video->getId()}"><span>Delete</span></a>
                                             </div>
                                         </div>
                                         <input type="hidden" class="video-id" value="{$video->getId()}" />
@@ -65,7 +65,7 @@
 				</div>
 			</li>
 			<li>
-				<a class="opener">Account</a>
+				<a class="opener analytics" id="my-account">Account</a>
 				<div class="slide slider_account">
 					<ul>
 						<li>
@@ -105,7 +105,7 @@
                                     </div>
                	                </div>
 								<div class="btn-holder">
-									<a class="btn edit userEdit"><span>Edit</span></a><br />
+									<a class="btn edit userEdit" id="user-name-edit"><span>Edit</span></a><br />
 								</div>
 							</div>
 						</li>
@@ -131,7 +131,7 @@
                                     </div>
                	                </div>
 								<div class="btn-holder">
-									<a class="btn edit userEdit"><span>Edit</span></a><br />
+									<a class="btn edit userEdit" id="user-email-edit"><span>Edit</span></a><br />
 								</div>
 							</div>
 						</li>
@@ -157,7 +157,7 @@
                                     </div>
                	                </div>
 								<div class="btn-holder">
-									<a class="btn edit userEdit"><span>Edit</span></a><br />
+									<a class="btn edit userEdit" id="user-password-edit"><span>Edit</span></a><br />
 								</div>
 							</div>
 						</li>
@@ -209,7 +209,7 @@
                                     </div>
                	                </div>
 								<div class="btn-holder">
-									<a class="btn edit userEdit"><span>Edit</span></a><br />
+									<a class="btn edit userEdit" id="user-birth-sex-zip-edit"><span>Edit</span></a><br />
 								</div>
 							</div>
 						</li>
@@ -230,7 +230,7 @@
 										</ul>
 										<p>We&rsquo;ll always look back on these times as special.</p>
 										<div class="buttons-holder">
-											<a class="btn-deactivate">Deactivate</a>
+											<a class="btn-deactivate" id="user-deactivate">Deactivate</a>
 											<a class="btn-cancel">Cancel</a>
 										</div>
 									</div>
@@ -244,7 +244,7 @@
             {foreach $playerInfo as $key=>$player}
                 <li class="parentHolder">
                     <input type="hidden" class="player-id" value="{$player->getId()}" />
-                    <a class="opener">{$player->getSport()->getSportName()}</a>
+                    <a class="opener analytics" id="my-sport">{$player->getSport()->getSportName()}</a>
                     <div class="slide slider_sport">
                         <ul>
                             <li>
@@ -345,7 +345,7 @@
                                         </div>
                                     </div>
                                     <div class="btn-holder">
-                                        <a class="btn edit playerEdit"><span>Edit</span></a><br />
+                                        <a class="btn edit playerEdit" id="player-level-grade-number-edit"><span>Edit</span></a><br />
                                     </div>
                                 </div>
                             </li>
@@ -420,7 +420,7 @@
                                         </div>
                                     </div>
                                     <div class="btn-holder">
-                                        <a class="btn edit playerEdit"><span>Edit</span></a><br />
+                                        <a class="btn edit playerEdit" id="user-position-height-weight-edit"><span>Edit</span></a><br />
                                     </div>
                                 </div>
                             </li>
@@ -449,7 +449,7 @@
                                         </div>
                                     </div>
                                     <div class="btn-holder">
-                                        <a class="btn edit schoolEdit"><span>Edit</span></a><br />
+                                        <a class="btn edit schoolEdit" id="user-school-edit"><span>Edit</span></a><br />
                                     </div>
                                 </div>
                             </li>
@@ -481,10 +481,7 @@
                                         </div>
                                     </div>
                                     <div class="btn-holder">
-                                        <a class="btn edit schoolEdit"><span>Edit</span></a><br />
-                                    </div>
-                                    <div class="btn-holder">
-                                        <a class="btn edit playerEdit"><span>Edit</span></a><br />
+                                        <a class="btn edit playerEdit" id="user-coach-edit"><span>Edit</span></a><br />
                                     </div>
                                 </div>
                             </li>
@@ -551,7 +548,7 @@
                                         </ul>
                                     </div>
                                     <div class="btn-holder">
-                                        <a class="btn edit statButton"><span>Edit</span></a><br />
+                                        <a class="btn edit statButton" id="user-stat-edit"><span>Edit</span></a><br />
                                     </div>
                                 </div>
                             </li>
@@ -560,17 +557,17 @@
                 </li>
             {/foreach}
 			<li>
-				<a class="opener">Privacy</a>
+				<a class="opener analytics" id="my-privacy">Privacy</a>
 				<div class="slide slider_privacy">
 					<p>
 						Who can view my videos?<br />
-                        <input type="radio" name="visibility" class="videoOptin" value="0"
+                        <input type="radio" name="visibility" class="videoOptin analytics" id="video-privacy-anybody" value="0"
                             {if $privacy == 0}checked {/if}
                             /> <label>Anybody</label><br />
-   	                    <input type="radio" name="visibility" class="videoOptin" value="1"
+   	                    <input type="radio" name="visibility" class="videoOptin analytics" id="video-privacy-scouts-coaches" value="1"
                             {if $privacy == 1}checked {/if}
                             /> <label>Scouts and Coaches</label><br />
-   	                    <input type="radio" name="visibility" class="videoOptin" value="2"
+   	                    <input type="radio" name="visibility" class="videoOptin analytics" id="video-privacy-nobody" value="2"
                             {if $privacy == 2}checked {/if}
                             /> <label>Nobody</label><br />
 					</p>
@@ -583,7 +580,7 @@
    	                    <label for="allowFacebook">Allow TapePlay to import my Facebook info</label>
    	                </p>-->
    	                <p>
-   	                    <input type="checkbox" name="relevantAdvertising" class="optin" value="2"
+   	                    <input type="checkbox" class="analytics" id="relevant-advertising" name="relevantAdvertising" class="optin" value="2"
                             {foreach from=$optins key=key item=optin}
                                 {if $optin.0 == 2}checked {/if}
                             {/foreach}

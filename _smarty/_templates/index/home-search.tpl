@@ -2,10 +2,8 @@
 	<div class="ad_970x250">
 	
 	</div>
-	
 	<h1>Video makes the world go round.</h1>
 	<h2>The world&rsquo;s evolved. So has recruiting.</h2>
-	
 	<form id="search" action="{#baseUrl#}videos/search/" method="post">
 		<ul class="form-fields">
 			<li class="input-field clear">
@@ -26,9 +24,7 @@
 						<span class="custom-input_top"></span>
 						<span class="custom-input_bottom"></span>
 					</div>
-					
 				</div>
-				
 				<a href="#" class="button_black_large left">Search</a>
 			</li>
 			<li class="clear">
@@ -114,17 +110,14 @@
 										<input type="text" name="search" value=".lbs" size="4" />
 										<span class="custom-input_bottom"></span>
 									</div>
-									
 									<div class="custom-input_left custom-input_partial">
 										<span class="custom-input_top"></span>
 										<span class="custom-input_bottom"></span>
 									</div>
-														
 									<div class="custom-input_right custom-input_partial">
 										<span class="custom-input_top"></span>
 										<span class="custom-input_bottom"></span>
 									</div>
-									
 								</div>
 							</fieldset>
 						</li>
@@ -134,5 +127,4 @@
 			</li>
 		</ul>
 	</form>
-	
 </div>

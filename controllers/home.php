@@ -30,7 +30,12 @@
 
 		// grab video for "how-to"
 		$videoBll = new VideoBLL();
-		$videoDisplayInfo = $videoBll->getVideoDisplayInfo($controller->configuration->information['howTapeplayWorksVideoId']);
+
+        try {
+		    $videoDisplayInfo = $videoBll->getVideoDisplayInfo($controller->configuration->information['howTapeplayWorksVideoId']);
+        } catch(Exception $e) {
+            $videoDisplayInfo = null;
+        }
 
         $smarty->assign('file', 'index/home.tpl');
         $smarty->assign('stats', $stats);

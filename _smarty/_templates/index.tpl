@@ -13,7 +13,8 @@
         <script type="text/javascript" src="/js/jquery-ui.js"></script>
         <script type="text/javascript" src="/js/jquery-main.js"></script>
         <script type="text/javascript" src="/js/jquery.validate.min.js"></script>
-		<script type="text/javascript" src="/js/tapeplay.js"></script>
+        <script type="text/javascript" src="/js/tapeplay.js"></script>
+        <script type="text/javascript" src="/js/analytics.js"></script>
         <script type="text/javascript" src="/js/jquery.panda.min.js"></script>
         
         <!-- OLD HEADER STYLES/SCRIPTS
@@ -26,7 +27,19 @@
 		<script type="text/javascript" src="/js/tapeplay.js"></script>
         <script type="text/javascript" src="/js/jquery.panda.min.js"></script>
         -->
-        
+        <script type="text/javascript">
+            var _gaq = _gaq || [];
+
+            _gaq.push(['_setAccount', 'UA-33496208-1']);
+            _gaq.push(['_setDomainName', 'www.tapeplay.com']);
+            _gaq.push(['_trackPageview']);
+
+            (function() {
+                var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+                ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+                var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+            })();
+        </script>
     </head>
     <body class="splash">
 {include file=${file}}

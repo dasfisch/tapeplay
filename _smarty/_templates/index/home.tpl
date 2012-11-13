@@ -1,7 +1,6 @@
 <div class="beta_home">
 	<h1>Let&rsquo;s get you noticed.</h1>
 	<!--<h2>The world&rsquo;s evolved. So has recruiting.</h2>-->
-
 	<div class="beta-banner">
 		<div class="left sign-up">
 			<h3>Dear Players:</h3>
@@ -21,32 +20,33 @@
 			<img src="/media/images/beta_home-page-banner.jpg" alt="Player To-Do List: Join, Upload your game tape, Share and get notice" />
 		</div>
 	</div>
-
 	<div class="sub-home-sub-info">
 		<div class="left video">
 			<h2>See How TapePlay Works</h2>
 			<div id="player">
-				<script type='text/javascript'>
-					jwplayer('player').setup({
-						width: 522,
-						height: 302,
-						levels: [
-							{ldelim}file: '{$videoDisplayInfo->getMp4Source()}', type: 'video/mp4' {rdelim},
-							{ldelim}file: '{$videoDisplayInfo->getWebmSource()}', type: 'video/webm' {rdelim},
-					    ],
-						modes:[
-							{ type:"html5" },
-							{ type:"flash", src:"/media/playback/player.swf" },
-							{ type:"download" }
-						],
-						skin:"/media/playback/skins/small/tapeplayer.zip",
-						autostart:false,
-						stretching: 'none',
-						dock:false,
-						"controlbar.position":"over",
-						"controlbar.idlehide": true
-					});
-				</script>
+                {if isset($videoDisplayInfo) && $videoDisplayInfo->getMp4Source() != ''}
+                    <script type='text/javascript'>
+                        jwplayer('player').setup({
+                            width: 522,
+                            height: 302,
+                            levels: [
+                                {ldelim}file: '{$videoDisplayInfo->getMp4Source()}', type: 'video/mp4' {rdelim},
+                                {ldelim}file: '{$videoDisplayInfo->getWebmSource()}', type: 'video/webm' {rdelim},
+                            ],
+                            modes:[
+                                { type:"html5" },
+                                { type:"flash", src:"/media/playback/player.swf" },
+                                { type:"download" }
+                            ],
+                            skin:"/media/playback/skins/small/tapeplayer.zip",
+                            autostart:false,
+                            stretching: 'none',
+                            dock:false,
+                            "controlbar.position":"over",
+                            "controlbar.idlehide": true
+                        });
+                    </script>
+                {/if}
 			</div>
 		</div>
 		<div class="right copy">
@@ -61,19 +61,16 @@
 				<form action="http://tapeplay.us4.list-manage.com/subscribe/post?u=30d887a41346b444923a0fe35&amp;id=14ed2d8794" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
 					<ul class="form-fields">
 						<li class="input-field clear">
-
 							<div class="input_custom-text width175 input_text36 left">
 								<div class="custom-input_center custom-input_partial">
 									<span class="custom-input_top"></span>
 									<input type="email" name="EMAIL" class="email" id="mce-EMAIL" value="Enter Email Address" required onfocus="if (value == 'Enter Email Address') { value = ''; }" onblur="if (value == '') { value = 'Enter Email Address'; }"/>
 									<span class="custom-input_bottom"></span>
 								</div>
-
 								<div class="custom-input_left custom-input_partial">
 									<span class="custom-input_top"></span>
 									<span class="custom-input_bottom"></span>
 								</div>
-
 								<div class="custom-input_right custom-input_partial">
 									<span class="custom-input_top"></span>
 									<span class="custom-input_bottom"></span>

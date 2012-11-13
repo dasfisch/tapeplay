@@ -93,7 +93,7 @@
                         </p>
                     </li>
                     <li class="input-field clear">
-                        <button value="Share" type="submit" class="button_black_large left button_round">Share</button>
+                        <button value="Share" type="submit" class="button_black_large left button_round analytics" id="share-video-{$video->getId()}">Share</button>
                     </li>
                 </ul>
             </form>
