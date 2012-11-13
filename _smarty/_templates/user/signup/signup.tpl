@@ -22,7 +22,7 @@
 			<p class="font15 bold center">
 				TapePlay is for 9<sup>th</sup> Grade to Pro
 			</p>
-			<button class="button button_orange_large left button_round" type="submit" value="Sign Up">Sign Up</button> 
+			<button class="button button_orange_large left button_round analytics" id="sign-up" type="submit" value="Sign Up">Sign Up</button>
 		</div>
 		
 		<div class="coach">

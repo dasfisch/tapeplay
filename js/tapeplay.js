@@ -157,6 +157,10 @@ jQuery(document).ready(function(){
     });
 
     jQuery('#chosenSport').change(function() {
+        var id = jQuery(this).prop('id');
+
+        _gaq.push(['_trackEvent', 'user-action', id]);
+
         jQuery('#sportChooser').submit();
     });
 
@@ -254,6 +258,12 @@ jQuery(document).ready(function(){
 
                         _this.children('span').html('Edit');
 
+                        _gaq.push(['_trackEvent',
+                              'user-action',           // The top-level name for your online content categories.  Required parameter.
+                              _this.prop('id'),  // Sets the value of "Section" to "Life & Style" for this particular aricle.  Required parameter.
+                              'player-account-page'
+                           ]);
+
                         setTimeout(
                             function() {
                                 _this.parents('.chunk').children('.status').fadeOut();
@@ -319,6 +329,12 @@ jQuery(document).ready(function(){
                         var newValue = '';
 
                         videoInfo.children('.title').html(title);
+
+                        _gaq.push(['_trackEvent',
+                              'user-action',           // The top-level name for your online content categories.  Required parameter.
+                              _this.prop('id'),  // Sets the value of "Section" to "Life & Style" for this particular aricle.  Required parameter.
+                              'player-account-page'
+                           ]);
 
                         _this.children('span').html('Edit');
                     } else {
@@ -444,6 +460,12 @@ jQuery(document).ready(function(){
 
                         _this.children('span').html('Edit');
 
+                        _gaq.push(['_trackEvent',
+                              'user-action',           // The top-level name for your online content categories.  Required parameter.
+                              _this.prop('id'),  // Sets the value of "Section" to "Life & Style" for this particular aricle.  Required parameter.
+                              'player-account-page'
+                           ]);
+
                         setTimeout(
                             function() {
                                 _this.parents('.chunk').children('.status').fadeOut();
@@ -514,6 +536,12 @@ jQuery(document).ready(function(){
                     stats.toggleClass('hidden');
                     statHidden.toggleClass('hidden');
 
+                    _gaq.push(['_trackEvent',
+                          'user-action',           // The top-level name for your online content categories.  Required parameter.
+                          _this.prop('id'),  // Sets the value of "Section" to "Life & Style" for this particular aricle.  Required parameter.
+                          'player-account-page'
+                       ]);
+
                     _this.children('span').html('Edit');
                 }
             );
@@ -553,6 +581,12 @@ jQuery(document).ready(function(){
 
                         _this.children('span').html('Edit');
 
+                        _gaq.push(['_trackEvent',
+                              'user-action',           // The top-level name for your online content categories.  Required parameter.
+                              _this.prop('id'),  // Sets the value of "Section" to "Life & Style" for this particular aricle.  Required parameter.
+                              'player-account-page'
+                           ]);
+
                         setTimeout(
                             function() {
                                 _this.parents('.chunk').children('.status').fadeOut();
@@ -573,8 +607,15 @@ jQuery(document).ready(function(){
 
     jQuery('.btn-deactivate').click(function() {
         var r = confirm('Are you sure you want to deactivate your account?');
+
         if (r == true) {
             jQuery.post('/ajax/deactivateme/', {hash: jQuery('#hash').val()}, function(data) {
+                _gaq.push(['_trackEvent',
+                      'user-action',           // The top-level name for your online content categories.  Required parameter.
+                      'user-deactivate',  // Sets the value of "Section" to "Life & Style" for this particular aricle.  Required parameter.
+                      'player-account-page'
+                   ]);
+
                 document.location.reload(true);
             });
         }
@@ -590,6 +631,12 @@ jQuery(document).ready(function(){
         if (r == true) {
             jQuery.post('/ajax/deletevideo/', {hash: jQuery('#hash').val(), videoId: _this.prop('id')}, function(data) {
                 if(data == 200) {
+                    _gaq.push(['_trackEvent',
+                          'user-action',           // The top-level name for your online content categories.  Required parameter.
+                          _this.prop('id'),  // Sets the value of "Section" to "Life & Style" for this particular aricle.  Required parameter.
+                          'player-account-page'
+                       ]);
+
                     _this.parents('li').first().fadeOut('slow');
                 }
             });

@@ -31,7 +31,7 @@
 							<dl>
 								<dt>Cool Stuff</dt>
 								<dd><a href="{#blogUrl#}" target="_blank">Blog</a></dd>
-								<dd><a href="{#shopUrl#}" target="_blank">Merchandise</a></dd>
+								<dd><a href="{#shopUrl#}" target="_blank" class="analytics" id="merchandise">Merchandise</a></dd>
 							</dl>
 						</li>
 					</ul>

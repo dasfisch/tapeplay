@@ -31,6 +31,7 @@
     <script type="text/javascript" src="/js/jquery-ui.js"></script>
     <script type="text/javascript" src="/js/jquery-main.js"></script>
     <script type="text/javascript" src="/js/tapeplay.js"></script>
+    <script type="text/javascript" src="/js/analytics.js"></script>
     <script type="text/javascript" src="/js/jquery.panda.min.js"></script>
     <script type="text/javascript" src="/js/jquery.validate.min.js"></script>
 
@@ -70,7 +71,8 @@
            var _gaq = _gaq || [];
 
            _gaq.push(['_setAccount', 'UA-33496208-1']);
-           _gaq.push(['_setDomainName', 'tapeplay.com']);
+           _gaq.push(['_setDomainName', 'www.tapeplay.com']);
+           _gaq.push(['_setLocalRemoteServerMode']);
            _gaq.push(['_trackPageview']);
 
            (function() {

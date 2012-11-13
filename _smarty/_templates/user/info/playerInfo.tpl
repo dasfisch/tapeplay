@@ -253,10 +253,10 @@
 	</fieldset>
 	<fieldset>
         {if $user->getStatus() != 3}
-            <button value="Join" type="submit" class="button_black_large left button_round">Join</button>
+            <button value="Join" type="submit" class="button_black_large left button_round analytics" id="player-info-join">Join</button>
             <span class="form-steps">Step 3 of 3</span>
         {else}
-            <button value="Submit" type="submit" class="button_black_large left button_round">Submit</button>
+            <button value="Submit" type="submit" class="button_black_large left button_round analytics" id="player-info-continue">Submit</button>
         {/if}
 	</fieldset>
 </form> 

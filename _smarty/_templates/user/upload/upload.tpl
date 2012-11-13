@@ -27,16 +27,23 @@
                     <div class="bottomLeft whiteBg"></div>
                     <input type="file" class="uploader" onchange="this.form.fakeupload.value = this.value;" />
 
-                    <input type="hidden" class="uploader" onchange="this.form.fakeupload.value = this.value;" id="returned_video_id" name="panda_video_id"/>
+                    <input type="hidden" class="uploader analytics" onchange="this.form.fakeupload.value = this.value;" id="browsed-video" name="panda_video_id"/>
                     <input type="hidden" id="upload_filename" class="panda_upload_filename" disabled="disabled"/>
                 </div>
                 <script type="text/javascript">
 
 					$(document).ready(function() {
 						$('#cancelUpload a').click(function() {
+                            _gaq.push(['_trackEvent',
+                                  'user-action',           // The top-level name for your online content categories.  Required parameter.
+                                  'cancel-upload',  // Sets the value of "Section" to "Life & Style" for this particular aricle.  Required parameter.
+                                  'user/upload'
+                               ]);
+
 						    // cancel the upload
 						    widget.abort();
-						    return false;
+
+                            return false;
 						});
 					});
 
@@ -84,7 +91,7 @@
 
                     // creates the uploader component with the customized options
 					var widget = new PandaUploader.SmartWidget(html_5_options, flash_options);
-                    jQuery("#returned_video_id").pandaUploader(panda_access_details, {
+                    jQuery("#browsed-video").pandaUploader(panda_access_details, {
                         onsuccess: uploadSuccessful_Handler,
                         onchange: newFileSelected_Handler,
 						onabort: uploadCanceled_Handler,
@@ -195,7 +202,7 @@
 			</ul>
 		</li>
 		<li class="input-field clear">
-			<button id="submitButton" value="Join" type="submit" class="button_black_large left button_round disabled" disabled="disabled">Continue</button>
+			<button id="submitButton" value="Join" type="submit" class="button_black_large left button_round analytics disabled" id="finished-upload" disabled="disabled">Continue</button>
             <span id="pleaseWait" style="display:none;">Please wait until your video is uploaded.</span>
             {if $user->getStatus() != 3}
 			    <span class="form-steps">Step 2 of 3</span>
