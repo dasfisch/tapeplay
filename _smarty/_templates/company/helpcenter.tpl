@@ -4,7 +4,7 @@
 	<h2>Get Started</h2>
 
 	<p>
-		TapePlay was created for the player. We&rsquo;re here to give power back to the talented athletes that deserve to be seen by coaches and scouts, not just the well connected. <a href="{#baseUrl#}company/getstarted/" title="Get Started">Get started now</a>.
+		TapePlay was created for the player. We&rsquo;re here to give exposure to all talented athletes that deserve to be seen by coaches and scouts, not just the well connected. <a href="{#baseUrl#}company/getstarted/" title="Get Started">Get started now</a>.
 	</p>
 
 	<h2>Frequently Asked Questions</h2>

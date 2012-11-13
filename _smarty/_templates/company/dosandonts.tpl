@@ -5,7 +5,7 @@
 	
 	<h3>Comply with the NCAA rules. (Unless you are a professional athlete.)</h3>
 	<p>
-		If you&rsquo;re not a professional athlete, your uploaded video(s) must be restricted to regularly scheduled (regular&ndash;season) high school, preparatory school or two&ndash;year college contests which the institution made no prior arrangements for recording.
+		If you&rsquo;re not a professional athlete, your uploaded video(s) must be restricted to regularly scheduled (regular&ndash;season) high school, preparatory school or two&ndash;year college contests which the institution made no prior arrangements to record.
 	</p>
 	
 	<h3>You must have created the video you upload or participated in its content.</h3>

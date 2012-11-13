@@ -119,6 +119,7 @@
         $smarty->assign('currentSport', $sport);
         $smarty->assign('message', $message);
         $smarty->assign('ie', $ie);
+        $smarty->assign('isAuthenticated', $userBLL->isAuthenticated());
 
 		$smarty->assign('loginText', $userBLL->isAuthenticated() ? "Log out" : "Login");
 		$smarty->assign('loginAction', $userBLL->isAuthenticated() ? "logout" : "login");

@@ -14,7 +14,7 @@
 				<span class="bold">Upload a video.</span> To upload a video, choose a file from your computer. Give the video an accurate title and description that will help coaches and scouts discover it.
 			</p>
 			<p>
-				If you don&rsquo;t have a video, go ask your coach for the game video taken at school. When you come back, log in and pick up where you left off.
+                If you don&rsquo;t have a video, ask your coach for a game video taken at school. When you return to the site, log in and pick up where you left off.
 			</p>
 			<p class="italic">
 				Tip: You can upload as many videos as you&rsquo;d like.
@@ -25,6 +25,11 @@
 				<span class="bold">Complete your player information.</span> The more information you give us, the better chance a coach or scout will find your video.
 			</p>
 		</li>
+        <li class="bold">
+            <p>
+                <span class="bold">Share your video</span>. Email your video URL to colleges or professional organizations you are interested in playing for. Keep a log of every contact you make and remember to follow up.
+            </p>
+        </li>
 	</ol>
 	
 	<!-- <h2>Coaches and Scouts</h2>

@@ -125,6 +125,9 @@
         more detailed you are, the better chance a coach or scout will find you. Make your video titles clear, direct
         and accurate. And never ever be misleading.
     </p>
+    <p>
+        Email your video URL to colleges or professional organizations you are interested in playing for. Keep a log of every contact you make and remember to follow up.
+    </p>
 </div>
 <div id="content-right-column" class="right">
 {include file='common/sidebar/share.tpl'}

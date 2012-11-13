@@ -108,6 +108,7 @@ if (isset($route->method))
 	{
 		case UserMethods::$LOGIN: // http://www.tapeplay.com/user/login/
 
+
 			if ($posted && (!isset($post['chosenSport']) || $post['chosenSport'] == ''))
 			{
 				if ($userBLL->authenticate($post["username"], $post["password"]))
@@ -165,6 +166,12 @@ if (isset($route->method))
 			}
 			else
 			{
+                if ($userBLL->isAuthenticated())
+                {
+                    // redirect to account page
+                    Util::setHeader("/account/welcome/");
+                }
+
 				if (!isset($_SESSION["userId"]))
 				{
 					$smarty->assign("file", "user/login/login.tpl");

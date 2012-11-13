@@ -8,7 +8,7 @@
 			</span>
 			<h2>Player</h2>
 			<p>
-				TapePlay was created for the player. We&rsquo;re here to give power back to the talented athletes that deserve to be seen by coaches and scouts, not just the well connected.
+				TapePlay was created for the player.  We&rsquo;re here to give exposure to all talented athletes that deserve to be seen by coaches and scouts, not just the well connected.
 			</p>
 			<p>
 				It&rsquo;s simple. Upload videos and get seen by the people who matter. 

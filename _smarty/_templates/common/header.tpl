@@ -109,7 +109,7 @@
     		</div>
     		<div class="right">
     			<ul id="navigation" class="clear">
-    			{if isset($user) && !empty($user)}
+    			{if $isAuthenticated}
     				<li>
     					<a class="{if {$smarty.server.REQUEST_URI} == '/account/welcome/'}active{/if}"
     					   href="{#baseUrl#}account/welcome/" title="My Account">My Account</a>

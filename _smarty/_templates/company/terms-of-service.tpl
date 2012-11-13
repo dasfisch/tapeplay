@@ -1,4 +1,4 @@
-<div id="{$divId}" class="left">
+<div id="{$divId}" class="left" xmlns="http://www.w3.org/1999/html">
 	<h1>Terms of Service (&quot;TOS&quot;)</h1>
 	
 	<p>
@@ -41,7 +41,7 @@
 	
 	<h2>3. Privacy</h2>
 	<p>
-		Your privacy rights are set forth in our Privacy Notice, which is herein incorporated. Please review the Privacy Notice to learn about:
+		Your privacy rights are set forth in our <a href="/company/privacy/">Privacy Policy</a>, which is herein incorporated. Please review the Privacy Notice to learn about:
 	</p>
 	<ul class="bullets">
 		<li>What information we may collect about you;</li>
@@ -54,15 +54,15 @@
 		REGISTRATION: To fully use the TapePlay Services, you must register as a member by providing a name, valid email address, password, birth year, sex and zip code. You must provide complete and accurate registration information to TapePlay and notify us if your information changes. If you are a business, government, or non-profit entity, the person whose email address is associated with the account must have the authority to bind the entity to this Agreement.  For example (but not limited to), the coach of a college team registering under their name@college.edu account must individually have the authority to make such decisions or have permission from the college and/or the associated organization to do so.  
 	</p>
 	<p>
-		ACCOUNT SECURITY: You are responsible for all activity that occurs under your account, including any activity by unauthorized users. You must not allow others to use your account. You must safeguard the confidentiality of your password. If you are using a computer that others have access to, you must log out of your account after using the TapePlay Services. If you become aware of an unauthorized access to your account, you must change your password and notify us immediately at help@tapeplay.com.
+		ACCOUNT SECURITY: You are responsible for all activity that occurs under your account, including any activity by unauthorized users. You must not allow others to use your account. You must safeguard the confidentiality of your password. If you are using a computer that others have access to, you must log out of your account after using the TapePlay Services. If you become aware of an unauthorized access to your account, you must change your password and notify us immediately at <a href="mailto:help@tapeplay.com" title="Email TapePlay Help">help@tapeplay.com</a>.
 	</p>
-	
+
 	<h2>5. Subscriptions And Purchases</h2>
 	<p>
 		OPTIONS: In addition to offering (free) Player memberships, we offer Coach and Scout subscriptions. TapePlay Coach and Scout subscribers must purchase a subscription to use certain TapePlay Servicesand/or make specific, limited commercial uses of the TapePlay Services and Content (See Paragraph 2b above). Please see our join page for current features and pricing. Features and prices are subject to change. All fees may be subject to taxes.
 	</p>
 	<p>
-		CANCELATION AND REFUNDS: Users who purchase Coach or Scout subscriptions of at least one year will have thirty (30) days after their purchase to cancel and receive a full refund. After the cancellation period ends, all purchases are final and all fees paid are non-refundable, even if your account is later deleted or terminated by TapePlay (See Paragraph 6 below). If you have questions, please contact help@tapeplay.com.
+		CANCELLATION AND REFUNDS: Users who purchase Coach or Scout subscriptions of at least one year will have thirty (30) days after their purchase to cancel and receive a full refund. After the cancellation period ends, all purchases are final and all fees paid are non-refundable, even if your account is later deleted or terminated by TapePlay (See Paragraph 6 below). If you have questions, please contact <a href="mailto:help@tapeplay.com" title="Email TapePlay Help">help@tapeplay.com</a>.
 	</p>
 	<p>
 		END OF SUBSCRIPTION: When a TapePlay subscription ends, the account will be deleted and access will be prohibited in accordance with Paragraph 6 below. Notices will be sent via e-mail to remind TapePlay subscribers their subscription is coming to a close.
@@ -113,7 +113,7 @@ other work (collectively, &quot;Content&quot;) that:
 		<li>Violates any federal law or any state or territory law of the United States of America.</li>
 	</ul>
 	<p>
-		All videos you submit must also comply with our <a href="#&quot; title="Community Guidelines">Do&rsquo;s and Don&rsquo;ts: The Rules of Video</a>, which are herein 
+		All videos you submit must also comply with our <a href="/company/guidelines/" title="Community Guidelines">Do&rsquo;s and Don&rsquo;ts: The Rules of Video</a>, which are herein
 incorporated into this Agreement.
 	</p>
 	<h2>8. Licenses Granted By You</h2>
@@ -221,8 +221,8 @@ statutes.
 	<h2>14.  ALLEGED COPYRIGHT INFRINGEMENT AND DMCA §512(c) NOTIFICATION</h2>
 	<p>
 		TapePlay respects the intellectual property rights of others.  In accordance with the Digital Millennium 
-Copyright Act of 1998 (&quot;DMCA&quot;), which may be found at <a href="http://www.copyright.gov/title17/">http://www.copyright.gov/title17/</a>, with a 
-summary at <a href="http://www.copyright.gov/legislation/dmca.pdf">http://www.copyright.gov/legislation/dmca.pdf</a>, TapePlay will seriously investigate and 
+Copyright Act of 1998 (&quot;DMCA&quot;), which may be found at <a href="http://www.copyright.gov/title17/" target="_blank">http://www.copyright.gov/title17/</a>, with a
+summary at <a href="http://www.copyright.gov/legislation/dmca.pdf" target="_blank">http://www.copyright.gov/legislation/dmca.pdf</a>, TapePlay will seriously investigate and
 respond to all claims of copyright infringement, even though users, members, and subscribers agree to 
 indemnify, defend, and hold TapePlay harmless from all claims, causes, costs, expenses, fees (including 
 reasonable attorneys' fees), judgments, liabilities, losses, and damages arising from or relating to their
@@ -264,7 +264,7 @@ agent:
 		<li>FAX NUMBER: (optional)</li>
 	</ul>
 	<p>
-		For other intellectual property or legal claims, please send us a notice at <a href="mailto:legal@tapeplay.com&quot; title="Email TapePlay Legal">legal@tapeplay.com</a>.
+		For other intellectual property or legal claims, please send us a notice at <a href="mailto:legal@tapeplay.com" title="Email TapePlay Legal">legal@tapeplay.com</a>.
 	</p>
 	
 	<h2>15. Disclaimers</h2>
@@ -348,10 +348,10 @@ without TapePlay&rsquo;s prior written consent. No third party shall have any ri
 		NOTICES: You consent to receive all communications including notices, agreements, disclosures, or 
 other information from TapePlay electronically. TapePlay may provide all such communications by email 
 or by posting them on the TapePlay Service. For support-related inquiries, you may send an email to 
-help@tapeplay.com. 
+<a href="mailto:help@tapeplay.com" title="Email TapePlay Help">help@tapeplay.com</a>.
 	</p>
 	<p>
-		You may send notices of a legal nature to TapePlay at legal@tapeplay.com or the following address:
+		You may send notices of a legal nature to TapePlay at <a href="mailto:legal@tapeplay.com" title="Email TapePlay Legal">legal@tapeplay.com</a> or the following address:
 	</p>
 	<ul class="italic">
 		<li>TapePlay, LLC</li>

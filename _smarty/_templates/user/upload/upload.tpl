@@ -3,7 +3,7 @@
 	Upload highlight tapes, game footage and so on. Stay away from backyard footage&ndash;street games, summer leagues, etc. <a href="{#blogUrl#}/?p=99" target="_blank" title="Read what makes a good video">Read what makes a good video.</a>
 </p>
 <p>
-	<strong>For college recruits</strong>, you should to adhere to NCAA rules. That means only footage from regular season games&ndash;competition and highlight tapes, but no skills tapes.
+	<strong>For college recruits</strong>, you should adhere to NCAA rules. That means only footage from regular season games&ndash;competition and highlight tapes, but no skills tapes.
 </p>
 
 <form id="uploading" class="uploadForm" method="post" action="{#baseUrl#}user/upload/">

@@ -107,7 +107,7 @@
 
 	<p>
 		If you have registered for a TapePlay Account, you may update or correct your personal profile information,
-		email preferences and privacy settings at any time by visiting your <a href="#"
+		email preferences and privacy settings at any time by visiting your <a href="/user/login/"
 																			   title="Your Account Profile Page">account
 		profile page</a>.
 	</p>
@@ -136,7 +136,7 @@
 
 	<p>
 		TapePlay does not provide any PI to these third-party advertisers without your consent. If you have a TapePlay
-		Account, you may, of course, decline to receive advertisements by visiting <a href="#"
+		Account, you may, of course, decline to receive advertisements by visiting <a href="/user/login/"
 																					  title="Your Account Privacy">your
 		account privacy settings page</a>.
 	</p>
