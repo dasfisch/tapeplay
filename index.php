@@ -143,7 +143,9 @@
                     $controller->open($route->class);
                 } elseif($route->class == 'videos' && $route->method == 'view' && $route->id != '') {
                     $controller->open($route->class);
-                }else {
+                } elseif($route->class == 'email' && $route->method == 'video' && $route->id != '') {
+                    $controller->open($route->class);
+                } else {
                     \Util::setHeader($configuration->configuration->URLs['baseUrl']);
 
                     exit;
