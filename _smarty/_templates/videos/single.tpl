@@ -32,7 +32,10 @@
                     autostart:false,
                     dock:false,
                     "controlbar.position":"over",
-                    "controlbar.idlehide": true
+                    "controlbar.idlehide": true,
+                    "plugins": {
+                          "gapro-2": {}
+                    }
                 });
             </script>
         {else}
