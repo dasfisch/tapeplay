@@ -13,8 +13,8 @@
 	</ul>
 	<!--<a href="{#baseUrl#}videos/search/{if $goBack ==1}?back=1{/if}" class="return">Back to search results</a>-->
 	<div class="clear"></div>
-	<div class="video-player">
-        {if isset($videoDisplayInfo) && !empty($videoDisplayInfo)}
+	<div class="video-player" style="width:890px; height:455px;">
+        {if {$encodingComplete}}
             <video id="videoPlayer" width="890" height="455">
                 <source src="{$videoDisplayInfo->getMp4Source()}"
                         type="video/mp4"/>
