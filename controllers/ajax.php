@@ -356,7 +356,7 @@
 
                 $id = explode('-', $post['videoId']);
 
-                if($videoBll->deleteVideo($id[1])) {
+                if($videoBll->deleteVideo($id[2])) {
                     echo 200;
                 }
         }

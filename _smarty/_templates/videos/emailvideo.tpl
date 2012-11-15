@@ -116,7 +116,17 @@
 			
 			$(li).append('<div class="input_custom-text input_text80 width440 left"><div class="custom-input_center custom-input_partial"><span class="custom-input_top"></span><input type="text" name="email[]" value="Email Address" class="required email noDefault" /><span class="custom-input_bottom"></span></div><div class="custom-input_left custom-input_partial"><span class="custom-input_top"></span><span class="custom-input_bottom"></span></div><div class="custom-input_right custom-input_partial"><span class="custom-input_top"></span><span class="custom-input_bottom"></span></div></div>')
 			.append('<a class="remove-email" href="#" onclick="removeEmailField(this);return false"><img src="/media/images/cancel.gif" /></a>');
-			
+
+            jQuery(li).children('div').children('.custom-input_center').children('input[type=text]').on('click focus blur', function(event) {
+                if (event.type == "blur" && (($(this).get(0)).value == "" || ($(this).get(0)).value == ($(this).get(0)).defaultValue)) {
+                    jQuery(this).css('color', '#B2B2B2');
+                    ($(this).get(0)).value = ($(this).get(0)).defaultValue;
+                } else if((event.type == "focus") && ($(this).get(0)).defaultValue == ($(this).get(0)).value) {
+                    jQuery(this).css('color', '#000');
+                    ($(this).get(0)).value = '';
+                }
+            });
+
 			return li;
 		}
 		

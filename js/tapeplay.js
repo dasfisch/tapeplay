@@ -637,6 +637,13 @@ jQuery(document).ready(function(){
                           'player-account-page'
                        ]);
 
+                    var curTotal = _this.parentsUntil('.active').siblings('.opener').html().split('(');
+                    curTotal = curTotal[1].replace(/\)/, '');
+
+                    curTotal = parseInt(curTotal) - 1;
+
+                    _this.parentsUntil('.active').siblings('.opener').html('My Videos (' + curTotal + ')');
+
                     _this.parents('li').first().fadeOut('slow');
                 }
             });
@@ -892,9 +899,7 @@ jQuery(document).ready(function(){
 	    		textToPassword.call(this);
 	    	}
     		
-    	}
-    	
-    	else {
+    	} else {
 			if ($(this).attr("type") == "text") {
 				($(this).get(0)).type = 'password';
 			}
@@ -906,11 +911,11 @@ jQuery(document).ready(function(){
     	
     });
 
-    jQuery("input[type=text]").on('click focus blur', function(event) {
+    jQuery('input[type=text]').on('click focus blur', function(event) {
     	if (event.type == "blur" && (($(this).get(0)).value == "" || ($(this).get(0)).value == ($(this).get(0)).defaultValue)) {
             jQuery(this).css('color', '#B2B2B2');
     		($(this).get(0)).value = ($(this).get(0)).defaultValue;
-    	} else if(event.type == "focus" && ($(this).get(0)).defaultValue == ($(this).get(0)).value) {
+    	} else if((event.type == "focus") && ($(this).get(0)).defaultValue == ($(this).get(0)).value) {
             jQuery(this).css('color', '#000');
             ($(this).get(0)).value = '';
         }
