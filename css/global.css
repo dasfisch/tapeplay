@@ -2869,3 +2869,17 @@ p.nothing {
 #localUploadButton {
     bottom: 10px;
 }
+
+#hider {
+    background-color: #fff;
+    display: block;
+    height: 0px;
+    position: absolute;
+    width: 800px;
+    z-index: 100;
+}
+
+.swfupload {
+    position: relative;
+    z-index: 10;
+}

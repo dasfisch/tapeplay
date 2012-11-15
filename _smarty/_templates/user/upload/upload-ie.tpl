@@ -16,6 +16,7 @@
             </div>
             <input type="text" class="hidden" style="display: none;" id="fakeupload" name="fakeupload" value="Browse Video File" />
             <div id="uploadInputs" class="input">
+                <div id="hider"></div>
                 <div class="selectfile">Select a file:</div>
                 <!--div id="localUploadButton" class="bigButton black">
                     <div class="topRight whiteBg"></div>
@@ -61,7 +62,8 @@
                         button_width: 87,
                         button_height: 27,
                         upload_success_handler : uploadSuccessful_Handler,
-                        upload_error_handler : uploadError_Handler
+                        upload_error_handler : uploadError_Handler,
+                        button_window_mode : SWFUpload.WINDOW_MODE.TRANSPARENT
                     {rdelim};
 
                     function uploadError_Handler(file, errorCode, message)
@@ -73,8 +75,7 @@
                             $("#cancelUpload").css("display", "none");
                             $("#pleaseWait").css("display", "none");
                             $(".form-steps").css("visibility", "visible");
-                            $(".swfupload").css("visibility", "visible");
-                            $(".selectfile").css("visibility", "visible");
+                            $('#hider').css('height', '0px');
                         }
                     }
 
@@ -103,9 +104,7 @@
                         $("#pleaseWait").css("display", "block");
                         $(".form-steps").css("visibility", "hidden");
 
-                        $(".swfupload").css("visibility", "hidden");
-                        $(".selectfile").css("visibility", "hidden");
-
+                        $('#hider').css('height', '27px');
                     }
 
 					function uploadCanceled_Handler()
@@ -115,8 +114,7 @@
 						$("#cancelUpload").css("display", "none");
                         $("#pleaseWait").css("display", "none");
                         $(".form-steps").css("visibility", "visible");
-                        $(".swfupload").css("visibility", "visible");
-                        $(".selectfile").css("visibility", "visible");
+                        $('#hider').css('height', '0px');
 					}
 
                     // creates the uploader component with the customized options
