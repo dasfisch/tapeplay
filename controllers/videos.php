@@ -123,10 +123,28 @@
 
                     $panda = $controller->configuration->panda;
 
-                    if(@fopen($panda['base'].$panda['bucket'].'/'.$video[0]->getPandaId().$panda['imageExt'], 'r')) {
+                    $videoDisplayInfo = $videoBll->getVideoDisplayInfo($video[0]->getPandaId());
+                    
+                    $encodingComplete = false;
+
+                    if ( (@fopen($videoDisplayInfo->getMp4Source(), 'r')) &&
+                         (@fopen($videoDisplayInfo->getWebmSource(), 'r')))
+                    {
+                        // both of these encodings exist - so we are good to play the video
                         $fileExists = true;
-                    } else {
-                        Util::setHeader("videos/notfound");
+                        $encodingComplete = true;
+                    }
+                    else
+                    {
+                        // check to see if a thumbnail exists
+                        if(@fopen($panda['base'].$panda['bucket'].'/'.$video[0]->getPandaId().$panda['imageExt'], 'r')) {
+                            $fileExists = true;
+                        }
+                        else
+                        {
+                            // check to see if the video has finished encoding
+                            Util::setHeader("videos/notfound/");
+                        }
                     }
 
                     try {
@@ -156,7 +174,6 @@
 
                     }
 
-                    $videoDisplayInfo = $videoBll->getVideoDisplayInfo($video[0]->getPandaId());
 
                     //set a view
                     try {
@@ -194,6 +211,7 @@
                     $smarty->assign("modder", $modder);
                     $smarty->assign('fileExists', $fileExists);
                     $smarty->assign('player', $player);
+                    $smarty->assign('encodingComplete', $encodingComplete);
                     $smarty->assign("statCount", count($stats));
                     $smarty->assign('stats', $stats);
                     $smarty->assign('video', $video[0]);
