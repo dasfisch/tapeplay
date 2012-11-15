@@ -2362,6 +2362,7 @@ p.nothing {
 	position:absolute;
 	top:0px;
 	width:100%;
+    z-index: 100;
 }
 
 .browse .video-image img {
