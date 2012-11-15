@@ -2875,7 +2875,7 @@ p.nothing {
     display: block;
     height: 0px;
     position: absolute;
-    width: 800px;
+    width: 800px !important;
     z-index: 100;
 }
 
