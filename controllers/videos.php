@@ -124,7 +124,7 @@
                     $panda = $controller->configuration->panda;
 
                     $videoDisplayInfo = $videoBll->getVideoDisplayInfo($video[0]->getPandaId());
-                    
+
                     $encodingComplete = false;
 
                     if ( (@fopen($videoDisplayInfo->getMp4Source(), 'r')) &&

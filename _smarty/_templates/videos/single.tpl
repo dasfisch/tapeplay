@@ -39,7 +39,11 @@
                 });
             </script>
         {else}
-            <center>We're sorry! The video you requested is not currently available!</center>
+            <div class="encoding-error">
+                <p>This video is being encoded. It will be available in a few minutes. Check back soon.</p>
+
+                <p>Tip: Longer videos will take longer to encode.</p>
+            </div>
         {/if}
 	</div>
 	<div class="video-data">
