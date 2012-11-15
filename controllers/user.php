@@ -484,11 +484,16 @@ if (isset($route->method))
 
                 $sports = $sportBll->get($search);
 
+                if(strpos($_SERVER['HTTP_USER_AGENT'], 'MSIE') !== false) {
+                    $smarty->assign("file", "user/upload/upload-ie.tpl");
+                } else {
+                    $smarty->assign("file", "user/upload/upload.tpl");
+                }
+
 				// send user to upload page
 				$smarty->assign("pandaAccessDetails", $pandaAccessDetails);
 				$smarty->assign("APIURL", $panda->getAPIURL());
 				$smarty->assign("videoYears", $videoYears);
-				$smarty->assign("file", "user/upload/upload.tpl");
                 $smarty->assign('sports', $sports);
                 $smarty->assign('currentSport', $sport);
                 $smarty->assign('user', $userBLL->getUser());

@@ -17,7 +17,7 @@
             <input type="text" class="hidden" style="display: none;" id="fakeupload" name="fakeupload" value="Browse Video File" />
             <div id="uploadInputs" class="input">
                 <div class="selectfile">Select a file:</div>
-                <div id="localUploadButton" class="bigButton black">
+                <!--div id="localUploadButton" class="bigButton black">
                     <div class="topRight whiteBg"></div>
                     <div class="bottomRight whiteBg"></div>
                     <div class="middle">
@@ -26,10 +26,12 @@
                     <div class="topLeft whiteBg"></div>
                     <div class="bottomLeft whiteBg"></div>
 
-                    <input type="file" class="uploader" onchange="this.form.fakeupload.value = this.value;" />
-                    <input type="hidden" class="uploader analytics" onchange="this.form.fakeupload.value = this.value;" id="browsed-video" name="panda_video_id"/>
-                    <input type="hidden" id="upload_filename" class="panda_upload_filename" disabled="disabled"/>
-                </div>
+                </div-->
+
+                <input type="file" class="uploader" onchange="this.form.fakeupload.value = this.value;" />
+                <input type="hidden" class="uploader analytics" onchange="this.form.fakeupload.value = this.value;" id="browsed-video" name="panda_video_id"/>
+                <input type="hidden" id="upload_filename" class="panda_upload_filename" disabled="disabled"/>
+
                 <script type="text/javascript">
 
 					$(document).ready(function() {
@@ -52,15 +54,28 @@
 
                     // set options for <widget> parameter below
                     var html_5_options = {ldelim}{rdelim};
-                    var flash_options = {ldelim}{rdelim};
+                    var flash_options =
+                    {ldelim}
+                        add_filename_field: false,
+                        button_image_url : "/user/upload/assets/browse_button.png",
+                        button_width: 87,
+                        button_height: 27,
+                        upload_success_handler : uploadSuccessful_Handler,
+                        upload_error_handler : uploadError_Handler
+                    {rdelim};
 
                     function uploadError_Handler(file, errorCode, message)
                     {
-                        $("#localUploadFile").css("display", "block");
-                        $("#localUploadButton").css("display", "block");
-                        $("#cancelUpload").css("display", "none");
-                        $("#pleaseWait").css("display", "none");
-                        $(".form-steps").css("visibility", "visible");
+                        if (errorCode == SWFUpload.FILE_CANCELLED)
+                        {
+                            $("#localUploadFile").css("display", "block");
+                            $("#localUploadButton").css("display", "block");
+                            $("#cancelUpload").css("display", "none");
+                            $("#pleaseWait").css("display", "none");
+                            $(".form-steps").css("visibility", "visible");
+                            $(".swfupload").css("visibility", "visible");
+                            $(".selectfile").css("visibility", "visible");
+                        }
                     }
 
                     function uploadSuccessful_Handler()
@@ -88,6 +103,9 @@
                         $("#pleaseWait").css("display", "block");
                         $(".form-steps").css("visibility", "hidden");
 
+                        $(".swfupload").css("visibility", "hidden");
+                        $(".selectfile").css("visibility", "hidden");
+
                     }
 
 					function uploadCanceled_Handler()
@@ -97,10 +115,12 @@
 						$("#cancelUpload").css("display", "none");
                         $("#pleaseWait").css("display", "none");
                         $(".form-steps").css("visibility", "visible");
+                        $(".swfupload").css("visibility", "visible");
+                        $(".selectfile").css("visibility", "visible");
 					}
 
                     // creates the uploader component with the customized options
-					var widget = new PandaUploader.SmartWidget(html_5_options, flash_options);
+					var widget = new PandaUploader.FlashWidget(flash_options);//new PandaUploader.SmartWidget(html_5_options, flash_options);
                     jQuery("#browsed-video").pandaUploader(panda_access_details, {
                         onsuccess: uploadSuccessful_Handler,
                         onchange: newFileSelected_Handler,

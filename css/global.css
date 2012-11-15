@@ -2865,3 +2865,7 @@ p.nothing {
 .user-info .italic {
     margin-bottom: 0px;
 }
+
+#localUploadButton {
+    bottom: 10px;
+}
