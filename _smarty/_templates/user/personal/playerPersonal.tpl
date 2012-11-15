@@ -84,7 +84,7 @@
 			</div>
 
             {if isset($userExists) && !empty($userExists)}
-                <div class="error-alert shown">
+                <div class="error-alert showme">
                     <ul>
                         <li>{$userExists}</li>
                     </ul>

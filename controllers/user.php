@@ -153,7 +153,7 @@ if (isset($route->method))
 				}
 				else
 				{
-                    $message->message = 'Your username or password were incorrect!';
+                    $message->message = 'Your username or password is incorrect!';
                     $message->type = 'error';
 
 					// authentication failed
