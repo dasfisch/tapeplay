@@ -1,0 +1,3 @@
+[submodule "server"]
+	path = server
+	url = https://github.com/dasfisch/tapeplay-server-temp.git
