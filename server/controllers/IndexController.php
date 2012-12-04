@@ -3,13 +3,15 @@
 	    public function indexAction() {
 		    $users = new Users();
 
+		    $players = $users->findFirst(57)->getPlayers();
+
 		    echo '<pre>';
 
 		    /**
 		     * findFirst() returns you the object typeof __CLASSNAME__ if there is
 		     * a match found.
 		     */
-		    foreach($users->findFirst(57)->getPlayers() as $player) {
+		    foreach($players as $player) {
 			    /**
 			     * get__CLASSNAME__() (__CLASSNAME__ REFERS TO Players) returns false if there is no relation found;
 			     * otherwise it returns an objet typeof __CLASSNAME__.
