@@ -1,10 +1,13 @@
 <?php
 	class Players extends \Phalcon\Mvc\Model {
 		public function initialize() {
-			$this->belongsTo('user_id', 'Users', 'id', array('foreignKey' => true));
-			$this->belongsTo('id', 'PlayerStats', 'player_id', array('foreignKey' => true));
+			$this->belongsTo('user_id', 'Users', 'id');
 
-			$this->hasMany('sport_id', 'Sports', 'id');
-			$this->hasMany('player_id', 'PlayerStats', 'id', array('foreignKey' => true));
+			$this->hasMany('id', 'Videos', 'player_id');
+			$this->hasMany('id', 'PlayerPositions', 'player_id');
+			$this->hasMany('id', 'PlayerStats', 'player_id');
+
+			$this->hasOne('school_id', 'Schools', 'id');
+			$this->hasOne('sport_id', 'Sports', 'id');
 		}
 	}

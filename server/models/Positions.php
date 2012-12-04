@@ -1,4 +1,2 @@
 <?php
-	class Positions extends \Phalcon\Mvc\Model {
-
-	}
+	class Positions extends \Phalcon\Mvc\Model {}

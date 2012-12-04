@@ -1,8 +1,8 @@
 <?php
-/**
- * Created by JetBrains PhpStorm.
- * User: dasfisch
- * Date: 12/2/12
- * Time: 7:36 PM
- * To change this template use File | Settings | File Templates.
- */
+	class Videos extends \Phalcon\Mvc\Model {
+		public function initialize() {
+			$this->belongsTo('player_id', 'Players', 'id');
+
+			$this->hasOne('sport_id', 'Sports', 'id');
+		}
+	}
