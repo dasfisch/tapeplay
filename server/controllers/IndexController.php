@@ -83,4 +83,10 @@
 
 		    exit;
 	    }
+
+		public function routeAction() {
+			echo 'in route index<pre>';
+			var_dump($this->dispatcher->getParams());
+			exit;
+		}
 	}

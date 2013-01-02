@@ -3,6 +3,7 @@
 		public function initialize() {
 			$this->belongsTo('player_id', 'Players', 'id');
 
+			$this->hasOne('player_id', 'Players', 'id');
 			$this->hasOne('sport_id', 'Sports', 'id');
 		}
 	}
