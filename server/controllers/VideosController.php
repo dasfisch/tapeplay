@@ -1,7 +1,10 @@
 <?php
 	class VideosController extends IndexController {
 		public function indexAction() {
-			echo 'hello';
+			/**
+			 * GET CURRENT PHALCON VERSION, duh.
+			 */
+			echo Phalcon\Version::get();
 
 			exit;
 		}
@@ -15,15 +18,26 @@
 
 			$id = $params[0];
 
-			$cacheName = 'videoForView_'.$id;
-
 			try {
+				$cache = $this->di->get('modelsCache');
+				$key = $this->router->getControllerName().'_'.$this->router->getActionName().'_4_'.$id;
+
 				$video = Videos::findFirst(array(
 					'id='.$id,
-					'cache' => array(
-						'key' => $this->router->getControllerName().'_'.$this->router->getActionName().'3_'.$id
-					)
+//					'cache' => array(
+//						'key' => $key
+//					)
 				));
+
+				echo '<pre>';
+				var_dump($video);
+				echo '</pre>';
+
+				$video = $cache->get($key);
+
+				echo '<pre>';
+				var_dump($video);
+				exit;
 
 				if($video) {
 					$this->view->setVar('title', $video->title.' :: TapePlay');
@@ -32,7 +46,7 @@
 					echo 'NONE FOUND';
 				}
 			} catch(Exception $e) {
-				echo '<pre>';
+				echo 'ERROR <pre>';
 				var_dump($e);
 				exit;
 			}
